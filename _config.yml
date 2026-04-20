@@ -1,0 +1,50 @@
+# ===================================================
+# Jekyll 기본 설정 - ChoiJC79 개인 홈페이지
+# ===================================================
+
+title: "최JC79 | 지방행정 연구자"
+description: "공직 내부자료 기반 실증 연구자 · 지방세 전문 · 박사과정"
+url: "https://ChoiJC79.github.io"
+baseurl: ""
+
+# 저자 정보
+author:
+  name: "최JC79"
+    email: ""
+      bio: "자유로운 영혼의 지방행정 연구자 · 20년 공직 경험 · 지방세 실증 연구"
+        location: "대한민국"
+
+        # Jekyll 테마
+        theme: minima
+
+        # 플러그인
+        plugins:
+          - jekyll-feed
+            - jekyll-seo-tag
+              - jekyll-sitemap
+
+              # 네비게이션 메뉴
+              header_pages:
+                - pages/about.md
+                  - pages/work.md
+                    - pages/timeline.md
+                      - pages/contact.md
+
+                      # Markdown 설정
+                      markdown: kramdown
+                      highlighter: rouge
+
+                      # 빌드 설정
+                      exclude:
+                        - Gemfile
+                          - Gemfile.lock
+                            - node_modules
+                              - vendor
+
+                              # SEO 설정
+                              lang: ko
+                              timezone: Asia/Seoul
+
+                              # 소셜 링크 (추후 업데이트)
+                              # twitter_username: 
+                              # github_username: ChoiJC79
