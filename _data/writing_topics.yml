@@ -1,0 +1,24 @@
+- id: dissertation
+  title: "박사논문"
+    description: "박사학위 논문 작성 과정 기록"
+      color: "#2563eb"
+
+      - id: policy
+        title: "정책 & 자문"
+          description: "정책 아이디어, 현장 이슈, 개선안"
+            color: "#059669"
+
+            - id: local-tax
+              title: "지방세 연구"
+                description: "등록면허세, 납세지, 역외 유출, 사례분석"
+                  color: "#dc2626"
+
+                  - id: finance
+                    title: "재무설계"
+                      description: "투자 기록, 포트폴리오 분석, 퇴직설계"
+                        color: "#f59e0b"
+
+                        - id: daily-insight
+                          title: "일상 & 인사이트"
+                            description: "독서, 운동 후 생각, 가족 기록"
+                              color: "#8b5cf6"
