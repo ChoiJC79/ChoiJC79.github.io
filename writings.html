@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글쓰기 | 최JC79</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="writings.css">
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header">
+        <div class="header-container">
+            <h1 class="logo">최JC79</h1>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">홈</a>
+                <a href="writings.html" class="nav-link active">글쓰기</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="main-container">
+        <section class="writings-section">
+            <h1 class="welcome-title">글쓰기</h1>
+            <p class="welcome-subtitle">생각과 경험을 기록하는 공간</p>
+
+            <!-- 탭 네비게이션 -->
+            <div class="tabs-navigation">
+                <button class="tab-button active" data-tab="diary">
+                    <span class="tab-emoji">📔</span> 일기
+                </button>
+                <button class="tab-button" data-tab="review">
+                    <span class="tab-emoji">⭐</span> 리뷰
+                </button>
+                <button class="tab-button" data-tab="archive">
+                    <span class="tab-emoji">📚</span> 아카이브
+                </button>
+            </div>
+
+            <!-- 일기 탭 -->
+            <div class="tab-content active" id="diary">
+                <div class="tab-form">
+                    <h2>새 일기 작성</h2>
+
+                    <div class="form-group">
+                        <label for="diary-title">제목</label>
+                        <input 
+                            type="text" 
+                            id="diary-title" 
+                            placeholder="오늘의 제목을 입력하세요"
+                            maxlength="50"
+                        >
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="diary-date">날짜</label>
+                            <input type="date" id="diary-date">
+                        </div>
+                        <div class="form-group">
+                            <label for="diary-mood">기분</label>
+                            <select id="diary-mood">
+                                <option value="">선택하세요</option>
+                                <option value="😊">😊 행복</option>
+                                <option value="😐">😐 보통</option>
+                                <option value="😔">😔 우울</option>
+                                <option value="😴">😴 피곤</option>
+                                <option value="🤗">🤗 감동</option>
+                                <option value="😤">😤 화남</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="diary-content">내용</label>
+                        <textarea 
+                            id="diary-content" 
+                            placeholder="오늘 있었던 일들을 자유롭게 써보세요..."
+                            rows="6"
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="diary-tags">태그 (쉼표로 구분)</label>
+                        <input 
+                            type="text" 
+                            id="diary-tags" 
+                            placeholder="예: 일상, 생각, 영감"
+                            maxlength="100"
+                        >
+                    </div>
+
+                    <div class="form-buttons">
+                        <button class="btn btn-primary" id="diary-save">저장하기</button>
+                        <button class="btn btn-secondary" id="diary-reset">초기화</button>
+                    </div>
+                </div>
+
+                <div class="entries-container">
+                    <h2>저장된 일기</h2>
+                    <div id="diary-list" class="entries-list"></div>
+                </div>
+            </div>
+
+            <!-- 리뷰 탭 -->
+            <div class="tab-content" id="review">
+                <div class="tab-form">
+                    <h2>새 리뷰 작성</h2>
+
+                    <div class="form-group">
+                        <label for="review-type">리뷰 유형</label>
+                        <select id="review-type">
+                            <option value="">선택하세요</option>
+                            <option value="📖">📖 책</option>
+                            <option value="📄">📄 논문</option>
+                            <option value="🎬">🎬 영화</option>
+                            <option value="🎙️">🎙️ 팟캐스트</option>
+                            <option value="🎯">🎯 경험</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="review-title">제목</label>
+                        <input 
+                            type="text" 
+                            id="review-title" 
+                            placeholder="리뷰 제목을 입력하세요"
+                            maxlength="50"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="review-author">저자/출연자/출처</label>
+                        <input 
+                            type="text" 
+                            id="review-author" 
+                            placeholder="저자 또는 출처를 입력하세요"
+                            maxlength="50"
+                        >
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="review-rating">평점</label>
+                            <select id="review-rating">
+                                <option value="">선택하세요</option>
+                                <option value="⭐">⭐ 1점</option>
+                                <option value="⭐⭐">⭐⭐ 2점</option>
+                                <option value="⭐⭐⭐">⭐⭐⭐ 3점</option>
+                                <option value="⭐⭐⭐⭐">⭐⭐⭐⭐ 4점</option>
+                                <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐ 5점</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="review-recommend">추천 여부</label>
+                            <select id="review-recommend">
+                                <option value="false">추천하지 않음</option>
+                                <option value="true">추천함</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="review-content">리뷰 내용</label>
+                        <textarea 
+                            id="review-content" 
+                            placeholder="이 작품/경험에 대한 당신의 생각을 자유롭게 써보세요..."
+                            rows="6"
+                        ></textarea>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button class="btn btn-primary" id="review-save">저장하기</button>
+                        <button class="btn btn-secondary" id="review-reset">초기화</button>
+                    </div>
+                </div>
+
+                <div class="entries-container">
+                    <h2>저장된 리뷰</h2>
+                    <div id="review-list" class="entries-list"></div>
+                </div>
+            </div>
+
+            <!-- 아카이브 탭 -->
+            <div class="tab-content" id="archive">
+                <div class="archive-filters">
+                    <div class="filter-group">
+                        <label for="filter-year">연도</label>
+                        <select id="filter-year">
+                            <option value="all">모든 연도</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="filter-type">유형</label>
+                        <select id="filter-type">
+                            <option value="all">모든 유형</option>
+                            <option value="diary">일기</option>
+                            <option value="review">리뷰</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="archive-list" class="entries-list"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 엔트리 디테일 모달 -->
+    <div class="modal" id="entryModal">
+        <div class="modal-overlay" id="entryModalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="entryModalClose">&times;</button>
+            <div id="entryModalBody"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="writings.js"></script>
+</body>
+</html>
