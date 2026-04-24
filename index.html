@@ -1,261 +1,66 @@
 <!DOCTYPE html>
-
 <html lang="ko">
-
   <head>
-
         <meta charset="UTF-8">
-
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
         <title>최JC79 | 지방행정 연구자</title>
-  
       <link rel="stylesheet" href="style.css">
-  
   </head>
-
 <body>
-
-      <!-- 헤더 -->
-
       <header class="header">
-
-                <div class="header-container">
-
-                              <h1 class="logo">최JC79</h1>h1>
-
-                              <nav class="nav">
-
-                                                <a href="index.html" class="nav-link active">홈</a>a>
-
-                                                <a href="#writings" class="nav-link">글쓰기</a>a>
-
-                              </nav>nav>
-
+                <div class="header-content">
+                              <h1 class="site-title">최JC79</h1>h1>
+                              <p class="site-subtitle">지방행정 연구자</p>p>
                 </div>div>
-
       </header>header>
 
-      <!-- 메인 콘텐츠 -->
-
-      <main class="main-container">
-
-                <!-- 환영 섹션 -->
-
-                <section class="welcome-section">
-
-                              <h1 class="welcome-title">환영합니다</h1>h1>
-
-                              <p class="welcome-subtitle">지방행정 연구자 최JC79의 블로그</p>p>
-
-                </section>section>
-
-                <!-- 카드 그리드 -->
-
-                <section class="cards-container">
-
-                              <!-- 첫 번째 행: 주요 카테고리 -->
-
-                              <div class="card card-primary" data-modal="about">
-
-                                                <div class="card-emoji">👋</div>div>
-
-                                                <h3 class="card-title">소개</h3>h3>
-
-                                                <p class="card-desc">나는 누구인가</p>p>
-
-                              </div>div>
-
-                              <div class="card card-primary" data-modal="writings">
-
-                                                <div class="card-emoji">✍️</div>div>
-
-                                                <h3 class="card-title">글쓰기</h3>h3>
-
-                                                <p class="card-desc">블로그 작성</p>p>
-
-                              </div>div>
-
-                              <div class="card card-primary" data-modal="calendar">
-
-                                                <div class="card-emoji">📅</div>div>
-
-                                                <h3 class="card-title">일정</h3>h3>
-
-                                                <p class="card-desc">주요 일정 관리</p>p>
-
-                              </div>div>
-
-                              <div class="card card-primary" data-modal="research">
-
-                                                <div class="card-emoji">📚</div>div>
-
-                                                <h3 class="card-title">연구</h3>h3>
-
-                                                <p class="card-desc">연구 주제 및 활동</p>p>
-
-                              </div>div>
-
-                              <!-- 두 번째 행: 외부 링크 -->
-
-                              <a href="https://www.jcnews.co.kr/" target="_blank" class="card card-link">
-
-                                                <div class="card-emoji">📰</div>div>
-
-                                                <h3 class="card-title">제천뉴스</h3>h3>
-
-                                                <p class="card-desc">지역 뉴스</p>p>
-
-                              </a>a>
-
-                              <a href="https://github.com/ChoiJC79" target="_blank" class="card card-link">
-
-                                                <div class="card-emoji">💻</div>div>
-
-                                                <h3 class="card-title">GitHub</h3>h3>
-
-                                                <p class="card-desc">코드 저장소</p>p>
-
-                              </a>a>
-
-                              <a href="https://claude.ai" target="_blank" class="card card-link">
-
-                                                <div class="card-emoji">🤖</div>div>
-
-                                                <h3 class="card-title">Claude</h3>h3>
-
-                                                <p class="card-desc">AI 어시스턴트</p>p>
-
-                              </a>a>
-
-                              <div class="card card-primary" data-modal="contact">
-
-                                                <div class="card-emoji">📞</div>div>
-
-                                                <h3 class="card-title">연락하기</h3>h3>
-
-                                                <p class="card-desc">나와 연결하기</p>p>
-
-                              </div>div>
-
-                              <!-- 세 번째 행: 추가 정보 -->
-
-                              <div class="card card-primary" data-modal="projects">
-
-                                                <div class="card-emoji">🔧</div>div>
-
-                                                <h3 class="card-title">프로젝트</h3>h3>
-
-                                                <p class="card-desc">진행 중인 프로젝트</p>p>
-
-                              </div>div>
-
-                              <a href="https://twitter.com" target="_blank" class="card card-link">
-
-                                                <div class="card-emoji">🐦</div>div>
-
-                                                <h3 class="card-title">SNS</h3>h3>
-
-                                                <p class="card-desc">소셜 미디어</p>p>
-
-                              </a>a>
-
-                </section>section>
-
-                <!-- 글쓰기 섹션 -->
-
-                <section id="writings" class="writings-section">
-
-                              <h2 class="section-title">📝 글쓰기</h2>h2>
-
-                              <div class="write-box">
-
-                                                <textarea id="writeInput" class="write-textarea" placeholder="오늘의 생각, 연구 내용, 또는 리뷰를 작성하세요..."></textarea>
-
-                                                <div class="write-actions">
-
-                                                                      <button class="btn btn-primary" onclick="saveWriting()">저장하기</button>button>
-
-                                                                      <button class="btn btn-secondary" onclick="clearWriting()">초기화</button>button>
-
-                                                </div>div>
-
-                              </div>div>
-
-                              <div class="writings-list">
-
-                                                <h3>저장된 글</h3>
-                              
-                                              <div id="writingsList" class="writings-items"></div>div>
-                              
-                              </div>div>
-                
-                </section>section>
-      
-              <!-- 캘린더 섹션 -->
-      
-              <section id="calendar" class="calendar-section">
-              
-                          <h2 class="section-title">📅 일정</h2>
-              
-                          <div class="calendar-container">
-                          
-                                          <div class="calendar-header">
-                                          
-                                                              <button class="btn-calendar" onclick="prevMonth()">&lt;</button>button>
-                                          
-                                                              <h3 id="monthYear"></h3>
-                                          
-                                                              <button class="btn-calendar" onclick="nextMonth()">&gt;</button>button>
-                                          
-                                          </div>div>
-                          
-                                          <div class="calendar-grid">
-                                          
-                                                              <div class="calendar-day-name">일</div>div>
-                                          
-                                                              <div class="calendar-day-name">월</div>div>
-                                          
-                                                              <div class="calendar-day-name">화</div>div>
-                                          
-                                                              <div class="calendar-day-name">수</div>div>
-                                          
-                                                              <div class="calendar-day-name">목</div>div>
-                                          
-                                                              <div class="calendar-day-name">금</div>div>
-                                          
-                                                              <div class="calendar-day-name">토</div>div>
-                                          
-                                                              <div id="calendarDays" class="calendar-days"></div>div>
-                                          
-                                          </div>div>
-                          
-                          </div>div>
-              
-              </section>section>
-      
-      </main>main>
-
-    <!-- 모달 -->
-
-    <div class="modal" id="modal">
+      <nav class="navbar">
+                <ul class="nav-menu">
+                              <li><a href="#about">소개</a>a></li>
+                            <li><a href="#research">연구</a>a></li>
+                            <li><a href="#links">링크</a>a></li>
+                </ul>ul>
+      </nav>nav>
+
+    <main class="container">
+            <section id="about" class="section">
+                        <h2>소개</h2>
+                        <p>지방행정 분야의 연구와 정책 자문을 전문으로 하는 연구자입니다.</p>
+                        <p>지방정부의 발전을 위한 다양한 연구를 진행하고 있습니다.</p>
+            </section>section>
     
-            <div class="modal-overlay" id="modalOverlay"></div>div>
+            <section id="research" class="section">
+                        <h2>주요 관심사</h2>
+                        <div class="research-items">
+                                        <div class="research-item">
+                                                            <h3>📊 지방재정</h3>
+                                                            <p>지방정부의 재정 운용 및 정책</p>
+                                        </div>div>
+                                        <div class="research-item">
+                                                            <h3>🏛️ 행정체계</h3>
+                                                            <p>지방행정 조직과 운영 체계</p>
+                                        </div>div>
+                                        <div class="research-item">
+                                                            <h3>📈 정책분석</h3>
+                                                            <p>정책 수립 및 평가 방법론</p>
+                                        </div>div>
+                        </div>div>
+            </section>section>
     
-            <div class="modal-content">
-            
-                        <button class="modal-close" id="modalClose">&times;</button>button>
-            
-                        <div id="modalBody"></div>div>
-            
-            </div>div>
-    
-    </div>div>
+            <section id="links" class="section">
+                        <h2>링크</h2>
+                        <div class="links-grid">
+                                        <a href="https://github.com/ChoiJC79" class="link-btn">GitHub</a>a>
+                                        <a href="https://claude.ai" class="link-btn">Claude</a>a>
+                                        <a href="https://twitter.com" class="link-btn">Twitter</a>a>
+                        </div>div>
+            </section>section>
+    </main>main>
 
-    <script src="script.js"></script>
-
+    <footer class="footer">
+            <p>&copy; 2026 최JC79. All rights reserved.</p>
+    </footer>footer>
 </body>
-
-</html>html></h3>
+</html>html></p></p></h2></li></li>
 </body></title>
   </head>
