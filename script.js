@@ -193,3 +193,117 @@ if (document.readyState === 'loading') {
 } else {
     initializeDateInputs();
 }
+
+// ===========================
+// 글쓰기 기능
+// ===========================
+
+function saveWriting() {
+        const input = document.getElementById('writeInput');
+        const text = input.value.trim();
+
+    if (!text) {
+                alert('글을 작성해주세요');
+                return;
+    }
+
+    let writings = JSON.parse(localStorage.getItem('writings') || '[]');
+        const writing = {
+                    id: Date.now(),
+                    text: text,
+                    date: new Date().toLocaleString('ko-KR')
+        };
+
+    writings.unshift(writing);
+        localStorage.setItem('writings', JSON.stringify(writings));
+        input.value = '';
+        displayWritings();
+        alert('글이 저장되었습니다!');
+}
+
+function clearWriting() {
+        document.getElementById('writeInput').value = '';
+}
+
+function displayWritings() {
+        const writings = JSON.parse(localStorage.getItem('writings') || '[]');
+        const list = document.getElementById('writingsList');
+
+    if (writings.length === 0) {
+                list.innerHTML = '<p class="empty-message">아직 작성된 글이 없습니다.</p>';
+                return;
+    }
+
+    list.innerHTML = writings.map(writing => `
+            <div class="writing-item">
+                        <div class="writing-date">${writing.date}</div>
+                                    <div class="writing-content">${writing.text}</div>
+                                                <button class="btn btn-small btn-delete" onclick="deleteWriting(${writing.id})">삭제</button>
+                                                        </div>
+                                                            `).join('');
+}
+
+function deleteWriting(id) {
+        if (confirm('이 글을 삭제하시겠습니까?')) {
+                    let writings = JSON.parse(localStorage.getItem('writings') || '[]');
+                    writings = writings.filter(w => w.id !== id);
+                    localStorage.setItem('writings', JSON.stringify(writings));
+                    displayWritings();
+        }
+}
+
+// ===========================
+// 캘린더 기능
+// ===========================
+
+let currentDate = new Date();
+
+function renderCalendar() {
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
+
+    document.getElementById('monthYear').innerText = `${year}년 ${month + 1}월`;
+
+    const firstDay = new Date(year, month, 1);
+        const lastDay = new Date(year, month + 1, 0);
+        const daysInMonth = lastDay.getDate();
+        const startingDayOfWeek = firstDay.getDay();
+
+    const calendarDays = document.getElementById('calendarDays');
+        calendarDays.innerHTML = '';
+
+    for (let i = 0; i < startingDayOfWeek; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.className = 'calendar-empty';
+                calendarDays.appendChild(emptyDay);
+    }
+
+    for (let day = 1; day <= daysInMonth; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day';
+                dayElement.innerText = day;
+
+            const today = new Date();
+                if (year === today.getFullYear() && month === today.getMonth() && day === today.getDate()) {
+                                dayElement.classList.add('today');
+                }
+
+            calendarDays.appendChild(dayElement);
+    }
+}
+
+function prevMonth() {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        renderCalendar();
+}
+
+function nextMonth() {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        renderCalendar();
+}
+
+// 페이지 로드 시 초기화
+document.addEventListener('DOMContentLoaded', function() {
+        displayWritings();
+        renderCalendar();
+});
