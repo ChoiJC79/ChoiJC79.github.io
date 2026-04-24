@@ -1,53 +1,8 @@
 title: "최JC79 | 지방행정 연구자"
-description: "공직 내부자료 기반 실증 연구자 - 지방세 전문 - 박사과정"
+description: "공직 내부자료 기반 심층 연구자 - 지방세 전문 - 박사과정"
 url: "https://ChoiJC79.github.io"
 baseurl: ""
 
-author:
-  name: "최JC79"
-  email: ""
-
-theme: minima
-
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
-
-header_pages:
-  - pages/about.md
-  - pages/work.md
-  - pages/timeline.md
-  - pages/contact.md
-
-markdown: kramdown
-lang: ko
-timezone: Asia/Seoul
-
-
-# 글쓰기 공간 설정
-writings:
-  default_layout: post
-    permalink: /writings/:categories/:year/:month/:day/:slug/
-
-      # 글쓰기 주제 (Topics)
-      writing_topics:
-        - id: dissertation
-            title: "박사논문"
-                description: "박사학위 논문 작성 과정 기록"
-                    color: "#2563eb"
-                      - id: policy
-                          title: "정책 & 자문"
-                              description: "정책 아이디어, 현장 이슈, 개선안"
-                                  color: "#059669"
-                                    - id: local-tax
-                                        title: "지방세 연구"
-                                            description: "등록면허세, 납세지, 역외 유출, 사례분석"
-                                                color: "#dc2626"
-                                                  - id: finance
-                                                      title: "재무설계"
-                                                          description: "투자 기록, 포트폴리오 분석, 퇴직설계"
-                                                              color: "#f59e0b"
-                                                                - id: daily-insight
-                                                                    title: "일상 & 인사이트"
-                                                                        description: "독서, 운동 후 생각, 가족 기록"
-                                                                            color: "#8b5cf6"
+# GitHub Pages 정적 사이트 설정
+# (Jekyll 테마 적용 제거)
+# index.html을 직접 사용하기 위해 테마 설정 제거
