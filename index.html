@@ -1,66 +1,259 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>최JC79 | 지방행정 연구자</title>
-      <link rel="stylesheet" href="style.css">
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>최승환 | 지방행정 연구자</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
+</head>
 <body>
-      <header class="header">
-                <div class="header-content">
-                              <h1 class="site-title">최JC79</h1>h1>
-                              <p class="site-subtitle">지방행정 연구자</p>p>
-                </div>div>
-      </header>header>
 
-      <nav class="navbar">
-                <ul class="nav-menu">
-                              <li><a href="#about">소개</a>a></li>
-                            <li><a href="#research">연구</a>a></li>
-                            <li><a href="#links">링크</a>a></li>
-                </ul>ul>
-      </nav>nav>
+  <!-- ===================== 헤더 ===================== -->
+  <header class="site-header">
+    <div class="header-bg"></div>
+    <div class="header-inner">
+      <h1 class="site-title">최 승 환</h1>
+      <p class="site-subtitle">자유로운 영혼의 지방행정 연구자</p>
+      <p class="site-desc">지방세 &nbsp;·&nbsp; 지역개발 &nbsp;·&nbsp; 정책 &nbsp;·&nbsp; 박사과정</p>
+    </div>
+  </header>
 
-    <main class="container">
-            <section id="about" class="section">
-                        <h2>소개</h2>
-                        <p>지방행정 분야의 연구와 정책 자문을 전문으로 하는 연구자입니다.</p>
-                        <p>지방정부의 발전을 위한 다양한 연구를 진행하고 있습니다.</p>
-            </section>section>
-    
-            <section id="research" class="section">
-                        <h2>주요 관심사</h2>
-                        <div class="research-items">
-                                        <div class="research-item">
-                                                            <h3>📊 지방재정</h3>
-                                                            <p>지방정부의 재정 운용 및 정책</p>
-                                        </div>div>
-                                        <div class="research-item">
-                                                            <h3>🏛️ 행정체계</h3>
-                                                            <p>지방행정 조직과 운영 체계</p>
-                                        </div>div>
-                                        <div class="research-item">
-                                                            <h3>📈 정책분석</h3>
-                                                            <p>정책 수립 및 평가 방법론</p>
-                                        </div>div>
-                        </div>div>
-            </section>section>
-    
-            <section id="links" class="section">
-                        <h2>링크</h2>
-                        <div class="links-grid">
-                                        <a href="https://github.com/ChoiJC79" class="link-btn">GitHub</a>a>
-                                        <a href="https://claude.ai" class="link-btn">Claude</a>a>
-                                        <a href="https://twitter.com" class="link-btn">Twitter</a>a>
-                        </div>div>
-            </section>section>
-    </main>main>
+  <!-- ===================== 카드 그리드 ===================== -->
+  <main class="main-grid-wrap">
+    <div class="section-label">주요 섹션</div>
+    <div class="card-grid">
 
-    <footer class="footer">
-            <p>&copy; 2026 최JC79. All rights reserved.</p>
-    </footer>footer>
+      <!-- 1행 : 주요 섹션 -->
+      <div class="card" data-modal="modal-intro" tabindex="0" role="button" aria-label="소개 열기">
+        <span class="card-emoji">👤</span>
+        <h2 class="card-title">소개</h2>
+        <p class="card-desc">경력 · 연구 · 관심분야</p>
+        <span class="card-arrow">→</span>
+      </div>
+
+      <div class="card" onclick="location.href='writings.html'" tabindex="0" role="button" aria-label="글쓰기 페이지로 이동">
+        <span class="card-emoji">📝</span>
+        <h2 class="card-title">글쓰기</h2>
+        <p class="card-desc">일기 · 리뷰 · 기록</p>
+        <span class="card-arrow">→</span>
+      </div>
+
+      <div class="card" data-modal="modal-research" tabindex="0" role="button" aria-label="연구 정보 열기">
+        <span class="card-emoji">📚</span>
+        <h2 class="card-title">연구</h2>
+        <p class="card-desc">박사논문 · 논문 · 자료</p>
+        <span class="card-arrow">→</span>
+      </div>
+
+      <!-- 2행 : 외부 링크 -->
+      <div class="card card-link" onclick="window.open('https://jecheontoday.com','_blank')" tabindex="0" role="link" aria-label="제천인터넷뉴스 바로가기">
+        <span class="card-emoji">📰</span>
+        <h2 class="card-title">제천인터넷뉴스</h2>
+        <p class="card-desc">jecheontoday.com</p>
+        <span class="card-arrow ext">↗</span>
+      </div>
+
+      <div class="card card-link" onclick="window.open('https://www.newsjournal.kr','_blank')" tabindex="0" role="link" aria-label="뉴스저널 바로가기">
+        <span class="card-emoji">📄</span>
+        <h2 class="card-title">뉴스저널</h2>
+        <p class="card-desc">newsjournal.kr</p>
+        <span class="card-arrow ext">↗</span>
+      </div>
+
+      <div class="card" data-modal="modal-contact" tabindex="0" role="button" aria-label="연락하기 열기">
+        <span class="card-emoji">✉️</span>
+        <h2 class="card-title">연락하기</h2>
+        <p class="card-desc">이메일 · 소속 · 학력</p>
+        <span class="card-arrow">→</span>
+      </div>
+
+      <!-- 3행 : 추가 정보 -->
+      <div class="card" data-modal="modal-schedule" tabindex="0" role="button" aria-label="일정 열기">
+        <span class="card-emoji">📅</span>
+        <h2 class="card-title">일정</h2>
+        <p class="card-desc">논문 · 활동 · 계획</p>
+        <span class="card-arrow">→</span>
+      </div>
+
+      <div class="card" data-modal="modal-project" tabindex="0" role="button" aria-label="프로젝트 열기">
+        <span class="card-emoji">🎯</span>
+        <h2 class="card-title">프로젝트</h2>
+        <p class="card-desc">진행 중인 과제</p>
+        <span class="card-arrow">→</span>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ===================== 푸터 ===================== -->
+  <footer class="site-footer">
+    <p>© 2024 최승환 &nbsp;|&nbsp; 충청북도 제천시 지방행정공무원 · 도시경영학 박사과정</p>
+  </footer>
+
+  <!-- ===================== 모달: 소개 ===================== -->
+  <div id="modal-intro" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-intro-title">
+    <div class="modal-box">
+      <button class="modal-close" aria-label="닫기">×</button>
+      <h2 id="modal-intro-title" class="modal-title">👤 소개</h2>
+      <div class="modal-body">
+        <div class="modal-section">
+          <h3>경력</h3>
+          <ul>
+            <li>충청북도 제천시청 지방행정공무원 (20년 재직)</li>
+            <li>팀장급 실무자 / 사무관 진급 준비 중</li>
+            <li>지방세 · 지역개발 · 정책 분야 전문</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h3>관심분야</h3>
+          <ul>
+            <li>지방세 역외유출 · 납세지와 물건지 불일치 문제</li>
+            <li>등록면허세 · 지역 간 재정 불균형</li>
+            <li>지방행정 빅데이터 분석 · 정책 개선</li>
+            <li>균형발전 · 지역개발 · 제도개선</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h3>현재 상태</h3>
+          <ul>
+            <li>세명대학교 일반대학원 도시경영학과 박사과정 (2026년 하반기 학위 취득 목표)</li>
+            <li>박사논문 마무리 단계 집중</li>
+            <li>박사 이후 자문·심의위원 활동 준비</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== 모달: 연구 ===================== -->
+  <div id="modal-research" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-research-title">
+    <div class="modal-box">
+      <button class="modal-close" aria-label="닫기">×</button>
+      <h2 id="modal-research-title" class="modal-title">📚 연구</h2>
+      <div class="modal-body">
+        <div class="modal-section">
+          <h3>박사논문</h3>
+          <ul>
+            <li>주제: 등록면허세의 납세지 · 역외유출 · 지역 간 불균형</li>
+            <li>소속: 세명대학교 일반대학원 도시경영학과</li>
+            <li>목표: 2026년 하반기 학위 취득</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h3>차기 연구 계획</h3>
+          <ul>
+            <li>제천시 민원접수 빅데이터 분석 (텍스트마이닝 + 공간분석)</li>
+            <li>자료 범위: 2023~2025년 민원 데이터</li>
+            <li>목표 학술지: 지방행정연구, 한국지방자치학회보</li>
+            <li>목표 게재: 2028년 상반기</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h3>박사 이후 계획</h3>
+          <ul>
+            <li>지자체 · 중앙부처 자문위원 · 심의위원 활동</li>
+            <li>연 1~2편 논문 발표</li>
+            <li>공직 내부자료 1차 분석을 핵심 브랜드 차별점으로</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== 모달: 일정 ===================== -->
+  <div id="modal-schedule" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-schedule-title">
+    <div class="modal-box">
+      <button class="modal-close" aria-label="닫기">×</button>
+      <h2 id="modal-schedule-title" class="modal-title">📅 일정</h2>
+      <div class="modal-body">
+        <div class="modal-section">
+          <h3>2026년 주요 일정</h3>
+          <ul>
+            <li>상반기: 박사논문 최종 마무리 및 심사</li>
+            <li>하반기: 학위 취득 예정</li>
+            <li>하반기: 민원 빅데이터 분석 연구 착수</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h3>하반기 이후 계획</h3>
+          <ul>
+            <li>자문위원 · 심의위원 공모 지원</li>
+            <li>학술논문 1편 투고</li>
+            <li>사무관 진급 준비 병행</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h3>장기 계획</h3>
+          <ul>
+            <li>공직 잔여기간 약 15년 (수단으로서의 공직)</li>
+            <li>퇴직 후 자산수익 + 지식기반수입 투트랙 설계</li>
+            <li>딸 해외유학 지원을 장기 재무목표로 설정</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== 모달: 프로젝트 ===================== -->
+  <div id="modal-project" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-project-title">
+    <div class="modal-box">
+      <button class="modal-close" aria-label="닫기">×</button>
+      <h2 id="modal-project-title" class="modal-title">🎯 프로젝트</h2>
+      <div class="modal-body">
+        <div class="modal-section">
+          <h3>🔵 박사논문 (진행 중)</h3>
+          <p>등록면허세 납세지 역외유출 분석 — 마무리 단계, 2026년 하반기 학위 취득 목표</p>
+        </div>
+        <div class="modal-section">
+          <h3>🟡 데이터 분석 (준비 중)</h3>
+          <p>제천시 민원 빅데이터 분석 — 텍스트마이닝 · 공간분석 2축, 박사 학위 후 착수</p>
+        </div>
+        <div class="modal-section">
+          <h3>🟠 부동산 활용 (검토 중)</h3>
+          <p>장락동 단독주택 — 레트로 음식점 · 임대 · 리모델링 3가지 시나리오 비교 검토</p>
+        </div>
+        <div class="modal-section">
+          <h3>🟢 재무설계 (진행 중)</h3>
+          <p>퇴직 후 월 500만원 역산 재무설계 — 연금 + 자산수익 + 지식기반수입 구조화</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== 모달: 연락하기 ===================== -->
+  <div id="modal-contact" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-contact-title">
+    <div class="modal-box">
+      <button class="modal-close" aria-label="닫기">×</button>
+      <h2 id="modal-contact-title" class="modal-title">✉️ 연락하기</h2>
+      <div class="modal-body">
+        <div class="modal-section">
+          <h3>이메일</h3>
+          <p><a href="mailto:choijc79@gmail.com" class="modal-link">choijc79@gmail.com</a></p>
+        </div>
+        <div class="modal-section">
+          <h3>소속</h3>
+          <ul>
+            <li>충청북도 제천시청</li>
+            <li>지방행정공무원 (팀장)</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h3>학력</h3>
+          <ul>
+            <li>세명대학교 일반대학원 도시경영학과 박사과정 재학</li>
+          </ul>
+        </div>
+        <div class="modal-section">
+          <h3>GitHub</h3>
+          <p><a href="https://choijc79.github.io/" target="_blank" class="modal-link">choijc79.github.io</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
-</html>html></p></p></h2></li></li>
-</body></title>
-  </head>
+</html>
