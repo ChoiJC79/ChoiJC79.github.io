@@ -3,258 +3,945 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>최승환 | 지방행정 연구자</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>최승환 포털</title>
+
+  <!-- Google Fonts: Noto Serif KR + Noto Sans KR -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* ===================================================
+       0. CSS 변수 & 리셋
+    =================================================== */
+    :root {
+      --navy:       #1e3a5f;
+      --navy-dark:  #142b47;
+      --navy-light: #2a5080;
+      --accent:     #2e86de;
+      --accent2:    #54a0ff;
+      --bg:         #f0f4f8;
+      --card:       #ffffff;
+      --text:       #222831;
+      --text-sub:   #555e6d;
+      --border:     #dde3ea;
+      --shadow:     0 2px 10px rgba(0,0,0,.08);
+      --shadow-md:  0 4px 18px rgba(0,0,0,.12);
+      --radius:     10px;
+      --radius-sm:  6px;
+      --transition: .18s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 14px;
+      color: var(--text);
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    ul { list-style: none; }
+
+    /* ===================================================
+       1. 헤더
+    =================================================== */
+    #site-header {
+      background: var(--navy);
+      color: #fff;
+      padding: 0 16px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
+    }
+
+    /* 로고 */
+    .logo {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      white-space: nowrap;
+      letter-spacing: -.5px;
+      flex-shrink: 0;
+    }
+    .logo span { color: var(--accent2); }
+
+    /* 검색창 */
+    .search-wrap {
+      flex: 1;
+      max-width: 580px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* 검색 엔진 선택 */
+    #engine-select {
+      height: 36px;
+      padding: 0 8px;
+      border: 1.5px solid rgba(255,255,255,.35);
+      border-radius: var(--radius-sm);
+      background: rgba(255,255,255,.12);
+      color: #fff;
+      font-size: .82rem;
+      cursor: pointer;
+      outline: none;
+      flex-shrink: 0;
+    }
+    #engine-select option { color: var(--text); background: #fff; }
+
+    #search-input {
+      flex: 1;
+      height: 36px;
+      padding: 0 12px;
+      border: 1.5px solid rgba(255,255,255,.35);
+      border-radius: var(--radius-sm);
+      background: rgba(255,255,255,.15);
+      color: #fff;
+      font-size: .9rem;
+      outline: none;
+      transition: border var(--transition), background var(--transition);
+    }
+    #search-input::placeholder { color: rgba(255,255,255,.55); }
+    #search-input:focus {
+      border-color: var(--accent2);
+      background: rgba(255,255,255,.22);
+    }
+
+    #search-btn {
+      height: 36px;
+      padding: 0 14px;
+      background: var(--accent2);
+      color: var(--navy-dark);
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: .85rem;
+      transition: background var(--transition), transform var(--transition);
+      flex-shrink: 0;
+    }
+    #search-btn:hover { background: #74b5ff; transform: scale(1.04); }
+
+    /* 날씨 위젯 */
+    #weather-widget {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,.12);
+      border: 1.5px solid rgba(255,255,255,.25);
+      border-radius: var(--radius-sm);
+      padding: 4px 12px;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background var(--transition);
+      font-size: .85rem;
+    }
+    #weather-widget:hover { background: rgba(255,255,255,.22); }
+    #weather-widget .w-emoji { font-size: 1.3rem; }
+    #weather-widget .w-temp  { font-size: 1rem; font-weight: 700; }
+    #weather-widget .w-info  { font-size: .75rem; color: rgba(255,255,255,.8); line-height: 1.3; }
+
+    /* ===================================================
+       2. 트렌드 + 즐겨찾기 바
+    =================================================== */
+    #sub-bar {
+      background: var(--navy-dark);
+      color: #fff;
+      padding: 0 16px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      overflow: hidden;
+    }
+
+    .trend-label {
+      font-size: .75rem;
+      font-weight: 700;
+      background: var(--accent);
+      border-radius: 4px;
+      padding: 2px 8px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    #trend-list {
+      display: flex;
+      gap: 4px;
+      overflow: hidden;
+      flex: 1;
+    }
+    #trend-list li {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: .78rem;
+      white-space: nowrap;
+    }
+    #trend-list li a {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      padding: 2px 7px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.2);
+      transition: background var(--transition);
+    }
+    #trend-list li a:hover { background: rgba(255,255,255,.18); }
+    #trend-list li .rank {
+      font-size: .7rem;
+      color: var(--accent2);
+      font-weight: 700;
+    }
+
+    /* ===================================================
+       3. 메인 그리드
+    =================================================== */
+    #main-wrap {
+      display: grid;
+      grid-template-columns: 220px 1fr 240px;
+      gap: 14px;
+      padding: 14px 16px;
+      max-width: 1400px;
+      margin: 0 auto;
+      min-height: calc(100vh - 102px - 42px); /* header + sub-bar + footer */
+    }
+
+    /* ===================================================
+       4. 공통 카드
+    =================================================== */
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .card-header {
+      background: var(--navy);
+      color: #fff;
+      padding: 8px 14px;
+      font-size: .82rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ===================================================
+       5. 좌측 사이드바: 즐겨찾기 폴더 아코디언
+    =================================================== */
+    #sidebar-left {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .fav-card { flex-shrink: 0; }
+
+    .fav-folder-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: var(--navy);
+      color: #fff;
+      font-size: .82rem;
+      font-weight: 700;
+      border-radius: var(--radius) var(--radius) 0 0;
+      cursor: pointer;
+      transition: background var(--transition);
+      border: none;
+    }
+    .fav-folder-btn:hover { background: var(--navy-light); }
+    .fav-folder-btn .arrow {
+      margin-left: auto;
+      transition: transform var(--transition);
+      font-style: normal;
+    }
+    .fav-folder-btn.open .arrow { transform: rotate(90deg); }
+
+    .fav-links {
+      display: none;
+      flex-direction: column;
+      padding: 4px 0;
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
+    .fav-links.open { display: flex; }
+
+    .fav-links a {
+      padding: 6px 14px;
+      font-size: .8rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background var(--transition);
+      border-bottom: 1px solid var(--border);
+    }
+    .fav-links a:last-child { border-bottom: none; }
+    .fav-links a:hover { background: #eef4ff; color: var(--accent); }
+    .fav-links a::before {
+      content: '›';
+      color: var(--accent2);
+      font-weight: 700;
+    }
+
+    /* ===================================================
+       6. 중앙 메인 콘텐츠
+    =================================================== */
+    #main-content {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* 탭 */
+    .tab-bar {
+      display: flex;
+      gap: 2px;
+      background: var(--navy);
+      border-radius: var(--radius) var(--radius) 0 0;
+      padding: 6px 8px 0;
+    }
+    .tab-btn {
+      padding: 6px 16px;
+      font-size: .82rem;
+      font-weight: 700;
+      color: rgba(255,255,255,.65);
+      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+      background: transparent;
+      transition: color var(--transition), background var(--transition);
+    }
+    .tab-btn.active {
+      color: var(--navy);
+      background: var(--card);
+    }
+    .tab-btn:hover:not(.active) { color: #fff; background: rgba(255,255,255,.15); }
+
+    .tab-panel {
+      display: none;
+      padding: 16px;
+      background: var(--card);
+      border-radius: 0 0 var(--radius) var(--radius);
+      border: 1px solid var(--border);
+      border-top: none;
+      min-height: 340px;
+    }
+    .tab-panel.active { display: block; }
+
+    /* ── 홈 탭 ── */
+    .home-greeting {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.05rem;
+      color: var(--navy);
+      margin-bottom: 14px;
+      border-bottom: 2px solid var(--accent2);
+      padding-bottom: 8px;
+    }
+
+    /* 오늘의 할일 */
+    .todo-section h3 {
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--text-sub);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    .todo-add {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+    .todo-add input {
+      flex: 1;
+      height: 32px;
+      padding: 0 10px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: .82rem;
+      outline: none;
+      transition: border var(--transition);
+    }
+    .todo-add input:focus { border-color: var(--accent); }
+    .todo-add button {
+      height: 32px;
+      padding: 0 12px;
+      background: var(--navy);
+      color: #fff;
+      border-radius: var(--radius-sm);
+      font-size: .82rem;
+      font-weight: 700;
+      transition: background var(--transition);
+    }
+    .todo-add button:hover { background: var(--navy-light); }
+
+    #todo-list { max-height: 200px; overflow-y: auto; }
+    #todo-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 6px;
+      border-radius: var(--radius-sm);
+      font-size: .82rem;
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+    #todo-list li:last-child { border-bottom: none; }
+    #todo-list li:hover { background: #f5f8ff; }
+    #todo-list li input[type="checkbox"] { accent-color: var(--accent); }
+    #todo-list li .todo-text { flex: 1; }
+    #todo-list li .todo-text.done {
+      text-decoration: line-through;
+      color: #aaa;
+    }
+    #todo-list li .del-btn {
+      color: #cc3333;
+      font-size: .8rem;
+      padding: 0 4px;
+    }
+    #todo-list li .del-btn:hover { color: #ff0000; }
+
+    /* ── 메모 탭 ── */
+    #memo-area {
+      width: 100%;
+      min-height: 300px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px;
+      font-size: .88rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      resize: vertical;
+      outline: none;
+      transition: border var(--transition);
+      line-height: 1.7;
+    }
+    #memo-area:focus { border-color: var(--accent); }
+    .memo-status {
+      font-size: .75rem;
+      color: var(--text-sub);
+      margin-top: 6px;
+      text-align: right;
+    }
+
+    /* ── 캘린더 탭 ── */
+    .cal-add-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .cal-add-row input {
+      height: 32px;
+      padding: 0 8px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: .8rem;
+      outline: none;
+    }
+    .cal-add-row input:focus { border-color: var(--accent); }
+    .cal-add-row input[type="date"] { flex-shrink: 0; }
+    .cal-add-row input[type="text"] { flex: 1; min-width: 120px; }
+    .cal-add-row button {
+      height: 32px;
+      padding: 0 12px;
+      background: var(--navy);
+      color: #fff;
+      border-radius: var(--radius-sm);
+      font-size: .8rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .cal-add-row button:hover { background: var(--navy-light); }
+
+    #event-list { max-height: 180px; overflow-y: auto; margin-bottom: 12px; }
+    #event-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 6px;
+      border-radius: var(--radius-sm);
+      font-size: .8rem;
+      border-bottom: 1px solid var(--border);
+    }
+    #event-list li .ev-date {
+      color: var(--accent);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    #event-list li .ev-title { flex: 1; }
+    #event-list li .del-btn { color: #cc3333; font-size: .8rem; padding: 0 4px; }
+
+    .gcal-wrap { border-radius: var(--radius-sm); overflow: hidden; }
+    .gcal-wrap iframe { display: block; width: 100%; border: none; border-radius: var(--radius-sm); }
+
+    /* ===================================================
+       7. 우측 사이드바
+    =================================================== */
+    #sidebar-right {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* 미니 캘린더 */
+    .mini-cal-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      background: var(--navy);
+      color: #fff;
+    }
+    .mini-cal-nav .cal-title { font-size: .82rem; font-weight: 700; }
+    .mini-cal-nav button {
+      color: #fff;
+      font-size: .9rem;
+      padding: 0 6px;
+      border-radius: 4px;
+      transition: background var(--transition);
+    }
+    .mini-cal-nav button:hover { background: rgba(255,255,255,.2); }
+
+    .mini-cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      text-align: center;
+      font-size: .75rem;
+      padding: 6px 8px 8px;
+      gap: 2px;
+    }
+    .mini-cal-grid .day-head {
+      color: var(--text-sub);
+      font-weight: 700;
+      padding: 3px 0;
+    }
+    .mini-cal-grid .day-head:first-child { color: #e05555; }
+    .mini-cal-grid .day-head:last-child  { color: #4477cc; }
+
+    .mini-cal-grid .cal-day {
+      padding: 4px 2px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition);
+      line-height: 1;
+    }
+    .mini-cal-grid .cal-day:hover { background: #eef4ff; }
+    .mini-cal-grid .cal-day.today {
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+    }
+    .mini-cal-grid .cal-day.other-month { color: #bbb; }
+    .mini-cal-grid .cal-day.sun { color: #e05555; }
+    .mini-cal-grid .cal-day.sat { color: #4477cc; }
+    .mini-cal-grid .cal-day.today.sun,
+    .mini-cal-grid .cal-day.today.sat { color: #fff; }
+    .mini-cal-grid .cal-day.has-memo { position: relative; }
+    .mini-cal-grid .cal-day.has-memo::after {
+      content: '';
+      position: absolute;
+      bottom: 1px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--accent2);
+    }
+
+    /* 날짜 메모 모달 */
+    #day-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0,0,0,.45);
+      align-items: center;
+      justify-content: center;
+    }
+    #day-modal.show { display: flex; }
+    .day-modal-box {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 18px;
+      width: min(340px, 90vw);
+      box-shadow: var(--shadow-md);
+    }
+    .day-modal-box h3 {
+      font-size: .9rem;
+      color: var(--navy);
+      margin-bottom: 10px;
+      font-family: 'Noto Serif KR', serif;
+    }
+    .day-modal-box textarea {
+      width: 100%;
+      height: 100px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 8px;
+      font-size: .82rem;
+      font-family: 'Noto Sans KR', sans-serif;
+      resize: none;
+      outline: none;
+    }
+    .day-modal-box textarea:focus { border-color: var(--accent); }
+    .day-modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .day-modal-actions button {
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      font-size: .82rem;
+      font-weight: 700;
+    }
+    .btn-save { background: var(--navy); color: #fff; }
+    .btn-save:hover { background: var(--navy-light); }
+    .btn-close { background: var(--border); color: var(--text); }
+    .btn-close:hover { background: #ccd4df; }
+
+    /* 퀵링크 */
+    .quicklinks-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      padding: 10px;
+    }
+    .ql-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 8px 4px;
+      border-radius: var(--radius-sm);
+      font-size: .7rem;
+      color: var(--text);
+      text-align: center;
+      transition: background var(--transition), transform var(--transition);
+      border: 1px solid var(--border);
+    }
+    .ql-item:hover {
+      background: #eef4ff;
+      color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    .ql-item .ql-icon {
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+    .ql-item .ql-name { font-weight: 700; }
+
+    /* D-Day 카운터 */
+    .dday-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 10px;
+    }
+    .dday-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      background: var(--bg);
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--accent);
+      font-size: .8rem;
+    }
+    .dday-item .dday-title { flex: 1; font-weight: 500; }
+    .dday-item .dday-count {
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+    .dday-item .dday-count.today-marker { color: #e05555; }
+    .dday-item .dday-count.past         { color: #aaa; }
+    .dday-item .del-btn { color: #cc3333; font-size: .78rem; }
+
+    .dday-add {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 0 10px 10px;
+    }
+    .dday-add input {
+      height: 30px;
+      padding: 0 8px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: .78rem;
+      outline: none;
+    }
+    .dday-add input:focus { border-color: var(--accent); }
+    .dday-add button {
+      height: 30px;
+      background: var(--navy);
+      color: #fff;
+      border-radius: var(--radius-sm);
+      font-size: .78rem;
+      font-weight: 700;
+    }
+    .dday-add button:hover { background: var(--navy-light); }
+
+    /* ===================================================
+       8. 푸터
+    =================================================== */
+    #site-footer {
+      background: var(--navy-dark);
+      color: rgba(255,255,255,.6);
+      text-align: center;
+      font-size: .75rem;
+      padding: 10px 16px;
+    }
+    #site-footer a { color: rgba(255,255,255,.75); }
+    #site-footer a:hover { color: #fff; }
+
+    /* ===================================================
+       9. 반응형
+    =================================================== */
+    @media (max-width: 1100px) {
+      #main-wrap { grid-template-columns: 200px 1fr; }
+      #sidebar-right { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; }
+      #sidebar-right .card { flex: 1 1 220px; }
+    }
+
+    @media (max-width: 720px) {
+      #main-wrap { grid-template-columns: 1fr; gap: 10px; padding: 10px; }
+      #sidebar-left, #sidebar-right { flex-direction: column; }
+      #site-header { flex-wrap: wrap; height: auto; padding: 8px 12px; gap: 8px; }
+      .search-wrap { order: 3; max-width: 100%; width: 100%; }
+      #weather-widget { order: 2; }
+      .logo { order: 1; }
+      #sub-bar { flex-wrap: wrap; height: auto; padding: 6px 12px; }
+    }
+
+    /* ===================================================
+       10. 스크롤바 스타일
+    =================================================== */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--navy-light); border-radius: 3px; }
+
+    /* ===================================================
+       11. 유틸리티
+    =================================================== */
+    .flex-row { display: flex; align-items: center; gap: 6px; }
+    .mt-6 { margin-top: 6px; }
+    .empty-msg {
+      color: var(--text-sub);
+      font-size: .8rem;
+      text-align: center;
+      padding: 14px 0;
+    }
+  </style>
 </head>
+
 <body>
 
-  <!-- ===================== 헤더 ===================== -->
-  <header class="site-header">
-    <div class="header-bg"></div>
-    <div class="header-inner">
-      <h1 class="site-title">최승환</h1>
-      <p class="site-subtitle">자유로운 영혼으로 지방행정을 연구합니다.</p>
-      <p class="site-desc">지방세 &nbsp;·&nbsp; 지역개발 &nbsp;·&nbsp; 정책 &nbsp;·&nbsp; 행정 &nbsp;·&nbsp; 공무원 &nbsp;·&nbsp; 박사과정</p>
+<!-- =====================================================
+     헤더
+====================================================== -->
+<header id="site-header">
+  <!-- 로고 -->
+  <div class="logo">최<span>승환</span></div>
+
+  <!-- 검색창 -->
+  <div class="search-wrap">
+    <select id="engine-select" title="검색 엔진 선택">
+      <option value="naver">네이버</option>
+      <option value="google">구글</option>
+      <option value="daum">다음</option>
+      <option value="jecheon">제천시청</option>
+    </select>
+    <input
+      id="search-input"
+      type="text"
+      placeholder="검색어를 입력하세요"
+      autocomplete="off"
+      aria-label="검색어 입력"
+    />
+    <button id="search-btn" aria-label="검색">검색</button>
+  </div>
+
+  <!-- 날씨 위젯 -->
+  <div id="weather-widget" title="기상청 날씨 보기" role="button" tabindex="0">
+    <span class="w-emoji" id="w-emoji">⏳</span>
+    <div>
+      <div class="w-temp" id="w-temp">--°C</div>
+      <div class="w-info" id="w-info">날씨 로딩 중</div>
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- ===================== 카드 그리드 ===================== -->
-  <main class="main-grid-wrap">
-    <div class="section-label">주요 섹션</div>
-    <div class="card-grid">
+<!-- =====================================================
+     서브바: 트렌드
+====================================================== -->
+<div id="sub-bar">
+  <span class="trend-label">🔥 트렌드</span>
+  <ul id="trend-list">
+    <li><a href="#">트렌드를 불러오는 중...</a></li>
+  </ul>
+</div>
 
-      <!-- 1행 : 주요 섹션 -->
-      <div class="card" data-modal="modal-intro" tabindex="0" role="button" aria-label="소개 열기">
-        <span class="card-emoji">👤</span>
-        <h2 class="card-title">소개</h2>
-        <p class="card-desc">경력 · 연구 · 관심분야</p>
-        <span class="card-arrow">→</span>
-      </div>
+<!-- =====================================================
+     메인 그리드
+====================================================== -->
+<div id="main-wrap">
 
-      <div class="card" onclick="location.href='writings.html'" tabindex="0" role="button" aria-label="글쓰기 페이지로 이동">
-        <span class="card-emoji">📝</span>
-        <h2 class="card-title">글쓰기</h2>
-        <p class="card-desc">메모 · 리뷰 · 기록</p>
-        <span class="card-arrow">→</span>
-      </div>
+  <!-- ── 좌측 사이드바: 즐겨찾기 ── -->
+  <aside id="sidebar-left">
 
-      <div class="card" data-modal="modal-research" tabindex="0" role="button" aria-label="연구 정보 열기">
-        <span class="card-emoji">📚</span>
-        <h2 class="card-title">연구</h2>
-        <p class="card-desc">박사논문 · 논문 · 자료</p>
-        <span class="card-arrow">→</span>
-      </div>
+    <!-- 즐겨찾기 데이터: JS에서 렌더링 -->
 
-      <!-- 2행 : 외부 링크 -->
-      <div class="card card-link" onclick="window.open('https://www.jcinews.co.kr','_blank')" tabindex="0" role="link" aria-label="제천인터넷뉴스 바로가기">
-        <span class="card-emoji">📰</span>
-        <h2 class="card-title">제천인터넷뉴스</h2>
-        <p class="card-desc">jecheontoday.com</p>
-        <span class="card-arrow ext">↗</span>
-      </div>
+  </aside>
 
-      <div class="card card-link" onclick="window.open('https://www.jnjl.kr','_blank')" tabindex="0" role="link" aria-label="뉴스저널 바로가기">
-        <span class="card-emoji">📄</span>
-        <h2 class="card-title">뉴스저널</h2>
-        <p class="card-desc">newsjournal.kr</p>
-        <span class="card-arrow ext">↗</span>
-      </div>
+  <!-- ── 중앙 메인 콘텐츠 ── -->
+  <main id="main-content">
 
-      <div class="card" data-modal="modal-contact" tabindex="0" role="button" aria-label="연락하기 열기">
-        <span class="card-emoji">✉️</span>
-        <h2 class="card-title">연락하기</h2>
-        <p class="card-desc">이메일 · 소속 · 학력</p>
-        <span class="card-arrow">→</span>
-      </div>
-
-      <!-- 3행 : 추가 정보 -->
-      <div class="card" data-modal="modal-schedule" tabindex="0" role="button" aria-label="일정 열기">
-        <span class="card-emoji">📅</span>
-        <h2 class="card-title">일정</h2>
-        <p class="card-desc">논문 · 활동 · 계획</p>
-        <span class="card-arrow">→</span>
-      </div>
-
-      <div class="card" data-modal="modal-project" tabindex="0" role="button" aria-label="프로젝트 열기">
-        <span class="card-emoji">🎯</span>
-        <h2 class="card-title">프로젝트</h2>
-        <p class="card-desc">진행 중인 과제</p>
-        <span class="card-arrow">→</span>
-      </div>
-
+    <!-- 탭 바 -->
+    <div class="tab-bar">
+      <button class="tab-btn active" data-tab="tab-home">🏠 홈</button>
+      <button class="tab-btn" data-tab="tab-memo">📝 메모</button>
+      <button class="tab-btn" data-tab="tab-cal">📅 캘린더</button>
     </div>
+
+    <!-- 홈 탭 -->
+    <div class="tab-panel active" id="tab-home">
+      <p class="home-greeting" id="home-greeting">안녕하세요, 최승환입니다. 👋</p>
+
+      <div class="todo-section">
+        <h3>📋 오늘의 할일</h3>
+        <div class="todo-add">
+          <input
+            id="todo-input"
+            type="text"
+            placeholder="할일 입력 후 Enter"
+            maxlength="100"
+            aria-label="할일 입력"
+          />
+          <button id="todo-add-btn">추가</button>
+        </div>
+        <ul id="todo-list">
+          <!-- JS 렌더링 -->
+        </ul>
+      </div>
+    </div>
+
+    <!-- 메모 탭 -->
+    <div class="tab-panel" id="tab-memo">
+      <textarea
+        id="memo-area"
+        placeholder="여기에 자유롭게 메모하세요. 자동으로 저장됩니다."
+        aria-label="메모 입력"
+      ></textarea>
+      <p class="memo-status" id="memo-status">마지막 저장: 없음</p>
+    </div>
+
+    <!-- 캘린더 탭 -->
+    <div class="tab-panel" id="tab-cal">
+      <div class="cal-add-row">
+        <input type="date" id="ev-date" aria-label="일정 날짜" />
+        <input type="text" id="ev-title" placeholder="일정 제목 입력" maxlength="60" aria-label="일정 제목" />
+        <button id="ev-add-btn">추가</button>
+      </div>
+      <ul id="event-list">
+        <!-- JS 렌더링 -->
+      </ul>
+      <!-- Google Calendar embed (공개 캘린더 예시 - 본인 캘린더 ID로 교체하세요) -->
+      <div class="gcal-wrap">
+        <iframe
+          src="https://calendar.google.com/calendar/embed?src=ko.south_korea%23holiday%40group.v.calendar.google.com&ctz=Asia%2FSeoul&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0&hl=ko"
+          width="100%"
+          height="220"
+          title="Google Calendar"
+        ></iframe>
+      </div>
+    </div>
+
   </main>
 
-  <!-- ===================== 푸터 ===================== -->
-  <footer class="site-footer">
-    <p>© 2024 최승환 &nbsp;|&nbsp; 충청북도 제천시 지방행정공무원 · 도시경영학 박사과정</p>
-  </footer>
+  <!-- ── 우측 사이드바 ── -->
+  <aside id="sidebar-right">
 
-  <!-- ===================== 모달: 소개 ===================== -->
-  <div id="modal-intro" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-intro-title">
-    <div class="modal-box">
-      <button class="modal-close" aria-label="닫기">×</button>
-      <h2 id="modal-intro-title" class="modal-title">👤 소개</h2>
-      <div class="modal-body">
-        <div class="modal-section">
-          <h3>경력</h3>
-          <ul>
-            <li>충청북도 제천시청 지방행정공무원 (20년 재직)</li>
-            <li>팀장급 실무자 </li>
-            <li>지방세 · 지역개발 · 정책 분야 전문</li>
-          </ul>
-        </div>
-        <div class="modal-section">
-          <h3>관심분야</h3>
-          <ul>
-            <li>지방세 역외유출 · 납세지와 물건지 불일치 문제</li>
-            <li>등록면허세 · 지역 간 재정 불균형</li>
-            <li>지방행정 빅데이터 분석 · 정책 개선</li>
-            <li>균형발전 · 지역개발 · 제도개선</li>
-          </ul>
-        </div>
-        <div class="modal-section">
-          <h3>현재 상태</h3>
-          <ul>
-            <li>세명대학교 일반대학원 도시경영학과 박사과정 (2026년 하반기 학위 취득 목표)</li>
-            <li>박사논문 마무리 단계 집중</li>
-            <li>박사 이후 자문·심의위원 활동 준비</li>
-          </ul>
-        </div>
+    <!-- 미니 캘린더 -->
+    <div class="card" id="mini-cal-card">
+      <div class="mini-cal-nav">
+        <button id="cal-prev" aria-label="이전 달">◀</button>
+        <span class="cal-title" id="cal-title"></span>
+        <button id="cal-next" aria-label="다음 달">▶</button>
+      </div>
+      <div class="mini-cal-grid" id="mini-cal-grid">
+        <!-- JS 렌더링 -->
       </div>
     </div>
-  </div>
 
-  <!-- ===================== 모달: 연구 ===================== -->
-  <div id="modal-research" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-research-title">
-    <div class="modal-box">
-      <button class="modal-close" aria-label="닫기">×</button>
-      <h2 id="modal-research-title" class="modal-title">📚 연구</h2>
-      <div class="modal-body">
-        <div class="modal-section">
-          <h3>박사논문</h3>
-          <ul>
-            <li>주제: 등록면허세의 납세지 · 역외유출 · 지역 간 불균형</li>
-            <li>소속: 세명대학교 일반대학원 도시경영학과</li>
-            <li>목표: 박사학위 취득</li>
-          </ul>
-        </div>
-        <div class="modal-section">
-          <h3>차기 연구 계획</h3>
-          <ul>
-            <li>제천시 빅데이터 분석 (텍스트마이닝 + 공간분석)</li>
-            <li>자료 범위: 2023~2025년 민원 데이터</li>
-            <li>목표 학술지: 지방행정연구, 한국지방자치학회보</li>
-            <li>목표 게재: 2028년 상반기</li>
-          </ul>
-        </div>
-        <div class="modal-section">
-          <h3>박사 이후 계획</h3>
-          <ul>
-            <li>자문위원 · 심의위원 활동</li>
-            <li>연간 1~2편 논문 발표</li>
-            <li>공직 내부자료 분석</li>
-          </ul>
-        </div>
+    <!-- 퀵링크 -->
+    <div class="card">
+      <div class="card-header">⚡ 퀵링크</div>
+      <div class="quicklinks-grid">
+        <a class="ql-item" href="https://www.jecheon.go.kr" target="_blank" rel="noopener">
+          <span class="ql-icon">🏛️</span><span class="ql-name">제천시청</span>
+        </a>
+        <a class="ql-item" href="https://www.wetax.go.kr" target="_blank" rel="noopener">
+          <span class="ql-icon">💰</span><span class="ql-name">위택스</span>
+        </a>
+        <a class="ql-item" href="https://www.riss.kr" target="_blank" rel="noopener">
+          <span class="ql-icon">📚</span><span class="ql-name">RISS</span>
+        </a>
+        <a class="ql-item" href="https://claude.ai" target="_blank" rel="noopener">
+          <span class="ql-icon">🤖</span><span class="ql-name">Claude AI</span>
+        </a>
+        <a class="ql-item" href="https://www.naver.com" target="_blank" rel="noopener">
+          <span class="ql-icon">🔍</span><span class="ql-name">네이버</span>
+        </a>
+        <a class="ql-item" href="https://www.youtube.com" target="_blank" rel="noopener">
+          <span class="ql-icon">▶️</span><span class="ql-name">유튜브</span>
+        </a>
       </div>
     </div>
-  </div>
 
-  <!-- ===================== 모달: 일정 ===================== -->
-  <div id="modal-schedule" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-schedule-title">
-    <div class="modal-box">
-      <button class="modal-close" aria-label="닫기">×</button>
-      <h2 id="modal-schedule-title" class="modal-title">📅 일정</h2>
-      <div class="modal-body">
-        <div class="modal-section">
-          <h3>2026년 주요 일정</h3>
-          <ul>
-            <li>상반기: 박사논문 최종 마무리 및 심사</li>
-            <li>하반기: 학위 취득 예정</li>
-            <li>향후: 빅데이터 분석 연구 착수</li>
-          </ul>
-        </div>
-        <div class="modal-section">
-          <h3>하반기 이후 계획</h3>
-          <ul>
-            <li>자문위원 · 심의위원 공모 지원</li>
-            <li>학술논문 1편 투고</li>
-            <li>퇴직 후 인생 준비 병행</li>
-          </ul>
-        </div>
-        <div class="modal-section">
-          <h3>장기 계획</h3>
-          <ul>
-            <li>공직 잔여기간 약 15년 (수단으로서의 공직)</li>
-            <li>퇴직 후 지식기반수입 설계</li>
-            <li>해외 체류를 장기 목표로 설정</li>
-          </ul>
-        </div>
+    <!-- D-Day 카운터 -->
+    <div class="card" id="dday-card">
+      <div class="card-header">⏳ D-Day</div>
+      <ul class="dday-list" id="dday-list">
+        <!-- JS 렌더링 -->
+      </ul>
+      <div class="dday-add">
+        <input type="text" id="dday-title-input" placeholder="이벤트 이름" maxlength="40" aria-label="D-Day 이름" />
+        <input type="date" id="dday-date-input" aria-label="D-Day 날짜" />
+        <button id="dday-add-btn">+ D-Day 추가</button>
       </div>
     </div>
-  </div>
 
-  <!-- ===================== 모달: 프로젝트 ===================== -->
-  <div id="modal-project" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-project-title">
-    <div class="modal-box">
-      <button class="modal-close" aria-label="닫기">×</button>
-      <h2 id="modal-project-title" class="modal-title">🎯 프로젝트</h2>
-      <div class="modal-body">
-        <div class="modal-section">
-          <h3>🔵 박사논문 (진행 중)</h3>
-          <p>등록면허세 납세지 역외유출 분석 — 마무리 단계, 2027년 박사학위 취득 목표</p>
-        </div>
-        <div class="modal-section">
-          <h3>🟡 데이터 분석 (준비 중)</h3>
-          <p>제천시 빅데이터 분석 — 텍스트마이닝 · 공간분석 2축, 박사 학위 후 착수</p>
-        </div>
-        <div class="modal-section">
-          <h3>🟠 부동산 활용 (검토 중)</h3>
-          <p>장락동 — 레트로 음식점 · 임대 · 리모델링 3가지 시나리오 비교 검토</p>
-        </div>
-        <div class="modal-section">
-          <h3>🟢 재무설계 (진행 중)</h3>
-          <p>퇴직 후 월 500만원 역산 재무설계 — 연금 + 자산수익 + 지식기반수입 구조화</p>
-        </div>
-              <div class="modal-section" style="margin-top: 20px;">        <iframe src="https://calendar.google.com/calendar/embed?src=loveuhm%40gmail.com&ctz=Asia%2FSeoul" style="border: 0; width: 100%; height: 500px; border-radius: 8px;" frameborder="0" scrolling="no" allowfullscreen></iframe>iframe>      </div>
-      </div>
-    </div>
-  </div>
+  </aside>
+</div>
 
-  <!-- ===================== 모달: 연락하기 ===================== -->
-  <div id="modal-contact" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-contact-title">
-    <div class="modal-box">
-      <button class="modal-close" aria-label="닫기">×</button>
-      <h2 id="modal-contact-title" class="modal-title">✉️ 연락하기</h2>
-      <div class="modal-body">
-        <div class="modal-section">
-          <h3>이메일</h3>
-          <p><a href="mailto:choijc79@gmail.com" class="modal-link">choijc79@gmail.com</a></p>
-        </div>
-        <div class="modal-section">
-          <h3>소속</h3>
-          <ul>
-            <li>충청북도 제천시청</li>
-            <li>지방행정공무원 (팀장)</li>
-          </ul>
-        </div>
-        <div class="modal-section">
-          <h3>학력</h3>
-          <ul>
-            <li>세명대학교 일반대학원 도시경영학과 박사과정 재학</li>
-          </ul>
-        </div>
-        <div class="modal-section">
-          <h3>GitHub</h3>
-          <p><a href="https://choijc79.github.io/" target="_blank" class="modal-link">choijc79.github.io</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
-</body>
-</html>
+<!-- =====================================================
+     날짜 메모 모달
+====================================================== -->
+<div id="day-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="day-modal-box">
+    <h3 id="modal-title">📅 날짜 메모</h3>
+    <textarea id="day-memo-
