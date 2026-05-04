@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>일기장 | 최승환</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --해군: #1e3a5f;
+      --해군중간: #2c5282;
+      --파란색: #2563eb;
+      --파란색-lt: #3b82f6;
+      --bg-start: #f0f4ff;
+      --bg-end: #e8edf7;
+      --카드-bg: #ffffff;
+      --카드데두리: rgba(30,58,95,0.10);
+      --텍스트-메인: #1a2540;
+      --텍스트-하위: #4a5568;
+      --텍스트-뮤트: #718096;
+      --새도우-sm: 0 2px 12px rgba(30,58,95,0.08);
+      --새도우-md: 0 8px 32px rgba(30,58,95,0.14);
+      --새도우-lg: 0 16px 48px rgba(30,58,95,0.20);
+      --반지름: 14px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Noto Sans KR', system-ui, sans-serif;
+      background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
+      min-height: 100vh;
+      color: var(--텍스트-메인);
+    }
+    .diary-header {
+      background: linear-gradient(135deg, var(--해군) 0%, var(--해군중간) 100%);
+      color: #fff;
+      padding: 32px 24px 28px;
+      text-align: center;
+    }
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none; font-size: 0.85rem;
+      margin-bottom: 12px; transition: color .2s;
+    }
+    .back-btn:hover { color: #fff; }
+    .diary-header h1 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 700; margin-bottom: 6px;
+    }
+    .diary-header .subtitle { font-size: 0.9rem; opacity: 0.75; }
+    .diary-tabs {
+      display: flex; justify-content: center; gap: 8px;
+      padding: 18px 24px 0;
+      max-width: 800px; margin: 0 auto;
+    }
+    .tab-btn {
+      padding: 8px 20px; border-radius: 999px;
+      border: 2px solid var(--카드데두리);
+      background: var(--카드-bg); color: var(--텍스트-하위);
+      font-size: 0.9rem; font-weight: 500;
+      cursor: pointer; transition: all .2s;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--해군); color: #fff; border-color: var(--해군);
+    }
+    .diary-main { max-width: 800px; margin: 0 auto; padding: 24px 16px 60px; }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    .write-card {
+      background: var(--카드-bg); border-radius: var(--반지름);
+      box-shadow: var(--새도우-md); padding: 28px; margin-bottom: 16px;
+    }
+    .write-card h2 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.1rem; font-weight: 700; color: var(--해군);
+      margin-bottom: 18px; display: flex; align-items: center; gap: 8px;
+    }
+    .form-row { margin-bottom: 14px; }
+    .form-row label {
+      display: block; font-size: 0.82rem; font-weight: 600;
+      color: var(--텍스트-하위); margin-bottom: 5px;
+    }
+    .form-row input[type="text"],
+    .form-row select,
+    .form-row textarea {
+      width: 100%; padding: 10px 14px;
+      border: 1.5px solid var(--카드데두리); border-radius: 8px;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 0.95rem; color: var(--텍스트-메인);
+      background: #fafbff; transition: border-color .2s, box-shadow .2s; outline: none;
+    }
+    .form-row input:focus, .form-row select:focus, .form-row textarea:focus {
+      border-color: var(--파란색);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.12); background: #fff;
+    }
+    .form-row textarea { min-height: 180px; resize: vertical; line-height: 1.7; }
+    .form-row-inline { display: flex; gap: 12px; margin-bottom: 14px; }
+    .form-row-inline .form-row { flex: 1; margin-bottom: 0; }
+    .form-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 4px; }
+    .btn {
+      padding: 9px 22px; border-radius: 8px;
+      font-size: 0.9rem; font-weight: 600;
+      cursor: pointer; transition: all .2s; border: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--해군) 0%, var(--해군중간) 100%);
+      color: #fff; box-shadow: var(--새도우-sm);
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-secondary {
+      background: var(--bg-start); color: var(--텍스트-하위);
+      border: 1.5px solid var(--카드데두리);
+    }
+    .btn-secondary:hover { background: var(--bg-end); }
+    .btn-danger { background: #fee2e2; color: #dc2626; border: 1.5px solid #fecaca; }
+    .btn-danger:hover { background: #fecaca; }
+    .list-toolbar {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 16px; flex-wrap: wrap;
+    }
+    .search-box {
+      flex: 1; min-width: 160px;
+      padding: 8px 14px; border-radius: 8px;
+      border: 1.5px solid var(--카드데두리);
+      font-size: 0.9rem; background: var(--카드-bg);
+      outline: none; transition: border-color .2s;
+    }
+    .search-box:focus { border-color: var(--파란색); }
+    .filter-select {
+      padding: 8px 12px; border-radius: 8px;
+      border: 1.5px solid var(--카드데두리);
+      font-size: 0.88rem; background: var(--카드-bg);
+      color: var(--텍스트-하위); outline: none;
+    }
+    .entry-count { font-size: 0.82rem; color: var(--텍스트-뮤트); margin-left: auto; }
+    .entry-list { display: flex; flex-direction: column; gap: 14px; }
+    .entry-card {
+      background: var(--카드-bg); border-radius: var(--반지름);
+      box-shadow: var(--새도우-sm); padding: 20px 22px;
+      border-left: 4px solid var(--파란색-lt);
+      cursor: pointer; transition: box-shadow .2s, transform .2s;
+    }
+    .entry-card:hover { box-shadow: var(--새도우-md); transform: translateY(-2px); }
+    .entry-header {
+      display: flex; align-items: flex-start;
+      justify-content: space-between; gap: 10px; margin-bottom: 8px;
+    }
+    .entry-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.05rem; font-weight: 700; color: var(--해군);
+    }
+    .entry-meta { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .mood-badge { font-size: 1.2rem; line-height: 1; }
+    .category-tag {
+      display: inline-block; padding: 2px 9px; border-radius: 999px;
+      font-size: 0.75rem; font-weight: 600;
+      background: var(--bg-start); color: var(--해군중간);
+      border: 1px solid var(--카드데두리);
+    }
+    .entry-date { font-size: 0.78rem; color: var(--텍스트-뮤트); margin-bottom: 6px; }
+    .entry-preview {
+      font-size: 0.88rem; color: var(--텍스트-하위); line-height: 1.6;
+      display: -webkit-box; -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .entry-actions { display: flex; gap: 6px; margin-top: 12px; }
+    .empty-state { text-align: center; padding: 60px 20px; color: var(--텍스트-뮤트); }
+    .empty-state .emoji { font-size: 3rem; margin-bottom: 12px; }
+    .empty-state p { font-size: 0.95rem; }
+    .detail-card {
+      background: var(--카드-bg); border-radius: var(--반지름);
+      box-shadow: var(--새도우-md); padding: 32px 28px;
+    }
+    .detail-top {
+      border-bottom: 1.5px solid var(--카드데두리);
+      padding-bottom: 16px; margin-bottom: 20px;
+    }
+    .detail-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.5rem; font-weight: 700; color: var(--해군); margin-bottom: 8px;
+    }
+    .detail-meta {
+      display: flex; gap: 12px; align-items: center;
+      font-size: 0.82rem; color: var(--텍스트-뮤트); flex-wrap: wrap;
+    }
+    .detail-body {
+      font-size: 1rem; line-height: 1.9; color: var(--텍스트-메인);
+      white-space: pre-wrap; font-family: 'Noto Serif KR', serif;
+    }
+    .detail-actions { display: flex; gap: 10px; margin-top: 24px; justify-content: flex-end; }
+    .toast {
+      position: fixed; bottom: 28px; right: 24px;
+      background: var(--해군); color: #fff; padding: 12px 20px;
+      border-radius: 8px; font-size: 0.9rem;
+      box-shadow: var(--새도우-lg);
+      opacity: 0; transform: translateY(12px);
+      transition: all .3s; z-index: 9999; pointer-events: none;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.45); z-index: 1000;
+      align-items: center; justify-content: center;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: #fff; border-radius: var(--반지름);
+      padding: 28px; max-width: 360px; width: 90%;
+      box-shadow: var(--새도우-lg); text-align: center;
+    }
+    .modal-box h3 { font-size: 1.1rem; margin-bottom: 10px; color: var(--해군); }
+    .modal-box p { font-size: 0.9rem; color: var(--텍스트-하위); margin-bottom: 20px; }
+    .modal-actions { display: flex; gap: 10px; justify-content: center; }
+    @media (max-width: 600px) {
+      .write-card, .detail-card { padding: 18px 14px; }
+      .diary-tabs { padding: 14px 12px 0; gap: 6px; }
+      .tab-btn { padding: 6px 14px; font-size: 0.82rem; }
+      .form-row-inline { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="diary-header">
+    <a href="index.html" class="back-btn">← 홈으로 돌아가기</a>
+    <h1>📓 나만의 일기장</h1>
+    <p class="subtitle">최승환 | 지방행정 연구자의 개인 기록</p>
+  </header>
+  <div class="diary-tabs">
+    <button class="tab-btn active" onclick="switchTab('write')">✏️ 새 일기 쓰기</button>
+    <button class="tab-btn" onclick="switchTab('list')">📋 일기 목록</button>
+  </div>
+  <main class="diary-main">
+    <div id="panel-write" class="panel active">
+      <div class="write-card">
+        <h2>✏️ <span id="form-title-label">새 일기 작성</span></h2>
+        <input type="hidden" id="edit-id" value="" />
+        <div class="form-row">
+          <label>제목</label>
+          <input type="text" id="title" placeholder="오늘 하루를 한 마디로 표현하면..." maxlength="80" />
+        </div>
+        <div class="form-row-inline">
+          <div class="form-row">
+            <label>날짜</label>
+            <input type="text" id="entry-date" placeholder="YYYY-MM-DD" maxlength="10" />
+          </div>
+          <div class="form-row">
+            <label>기분</label>
+            <select id="mood">
+              <option value="😊">😊 좋음</option>
+              <option value="😐">😐 보통</option>
+              <option value="😢">😢 슬픔</option>
+              <option value="😤">😤 화남</option>
+              <option value="😴">😴 피곤함</option>
+              <option value="🤩">🤩 최고</option>
+              <option value="😰">😰 불안</option>
+              <option value="🙏">🙏 감사</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>카테고리</label>
+            <select id="category">
+              <option value="일상">일상</option>
+              <option value="업무">업무</option>
+              <option value="연구">연구</option>
+              <option value="여행">여행</option>
+              <option value="독서">독서</option>
+              <option value="기타">기타</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <label>내용</label>
+          <textarea id="content" placeholder="오늘의 이야기를 자유롭게 적어주세요..."></textarea>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-secondary" onclick="resetForm()">초기화</button>
+          <button class="btn btn-primary" onclick="saveEntry()">💾 저장하기</button>
+        </div>
+      </div>
+    </div>
+    <div id="panel-list" class="panel">
+      <div class="list-toolbar">
+        <input type="text" class="search-box" id="search-input" placeholder="🔍 제목·내용 검색..." oninput="renderList()" />
+        <select class="filter-select" id="filter-category" onchange="renderList()">
+          <option value="">전체 카테고리</option>
+          <option value="일상">일상</option>
+          <option value="업무">업무</option>
+          <option value="연구">연구</option>
+          <option value="여행">여행</option>
+          <option value="독서">독서</option>
+          <option value="기타">기타</option>
+        </select>
+        <select class="filter-select" id="filter-mood" onchange="renderList()">
+          <option value="">전체 기분</option>
+          <option value="😊">😊 좋음</option>
+          <option value="😐">😐 보통</option>
+          <option value="😢">😢 슬픔</option>
+          <option value="😤">😤 화남</option>
+          <option value="😴">😴 피곤함</option>
+          <option value="🤩">🤩 최고</option>
+          <option value="😰">😰 불안</option>
+          <option value="🙏">🙏 감사</option>
+        </select>
+        <span class="entry-count" id="entry-count"></span>
+      </div>
+      <div class="entry-list" id="entry-list"></div>
+    </div>
+    <div id="panel-detail" class="panel">
+      <div class="detail-card" id="detail-content"></div>
+    </div>
+  </main>
+  <div class="modal-overlay" id="delete-modal">
+    <div class="modal-box">
+      <h3>🗑️ 일기 삭제</h3>
+      <p>이 일기를 삭제하시겠습니까?<br/>삭제된 일기는 복구할 수 없습니다.</p>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" onclick="closeDeleteModal()">취소</button>
+        <button class="btn btn-danger" onclick="confirmDelete()">삭제하기</button>
+      </div>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script>
+    const STORAGE_KEY = 'choijc79_diary_entries';
+    function loadEntries() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+      catch(e) { return []; }
+    }
+    function saveEntries(entries) { localStorage.setItem(STORAGE_KEY, JSON.stringify(entries)); }
+    function todayString() {
+      const d = new Date();
+      return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+    }
+    function formatDate(str) {
+      if (!str) return '';
+      const p = str.split('-');
+      return p[0]+'년 '+parseInt(p[1])+'월 '+parseInt(p[2])+'일';
+    }
+    function switchTab(name) {
+      document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
+      document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+      document.getElementById('panel-'+name).classList.add('active');
+      var idx = {write:0, list:1, detail:2};
+      var tabs = document.querySelectorAll('.tab-btn');
+      if (tabs[idx[name]]) tabs[idx[name]].classList.add('active');
+      if (name === 'list') renderList();
+    }
+    function saveEntry() {
+      var title = document.getElementById('title').value.trim();
+      var content = document.getElementById('content').value.trim();
+      var date = document.getElementById('entry-date').value.trim() || todayString();
+      var mood = document.getElementById('mood').value;
+      var category = document.getElementById('category').value;
+      var editId = document.getElementById('edit-id').value;
+      if (!title) { showToast('❗ 제목을 입력해주세요.'); return; }
+      if (!content) { showToast('❗ 내용을 입력해주세요.'); return; }
+      var entries = loadEntries();
+      if (editId) {
+        var idx = entries.findIndex(function(e){ return e.id === editId; });
+        if (idx !== -1) {
+          entries[idx] = Object.assign({}, entries[idx], {title:title, content:content, date:date, mood:mood, category:category, updatedAt:Date.now()});
+          saveEntries(entries); resetForm(); showToast('✅ 일기가 수정되었습니다.'); switchTab('list'); return;
+        }
+      }
+      entries.unshift({id:Date.now().toString(), title:title, content:content, date:date, mood:mood, category:category, createdAt:Date.now(), updatedAt:Date.now()});
+      saveEntries(entries); resetForm(); showToast('✅ 일기가 저장되었습니다.'); switchTab('list');
+    }
+    function resetForm() {
+      document.getElementById('edit-id').value = '';
+      document.getElementById('title').value = '';
+      document.getElementById('content').value = '';
+      document.getElementById('entry-date').value = todayString();
+      document.getElementById('mood').value = '😊';
+      document.getElementById('category').value = '일상';
+      document.getElementById('form-title-label').textContent = '새 일기 작성';
+    }
+    function renderList() {
+      var entries = loadEntries();
+      var q = document.getElementById('search-input').value.toLowerCase();
+      var cat = document.getElementById('filter-category').value;
+      var mood = document.getElementById('filter-mood').value;
+      var filtered = entries.filter(function(e) {
+        var mq = !q || e.title.toLowerCase().includes(q) || e.content.toLowerCase().includes(q);
+        var mc = !cat || e.category === cat;
+        var mm = !mood || e.mood === mood;
+        return mq && mc && mm;
+      });
+      var container = document.getElementById('entry-list');
+      document.getElementById('entry-count').textContent = filtered.length + '개의 일기';
+      if (filtered.length === 0) {
+        container.innerHTML = '<div class="empty-state"><div class="emoji">📭</div><p>일기가 없습니다.<br/>첫 번째 일기를 작성해보세요!</p></div>'; return;
+      }
+      container.innerHTML = filtered.map(function(e) {
+        var preview = e.content.replace(/
+/g,' ').slice(0,80) + (e.content.length > 80 ? '…' : '');
+        return '<div class="entry-card" onclick="showDetail(''+e.id+'')">'+
+          '<div class="entry-header"><div class="entry-title">'+escHtml(e.title)+'</div>'+
+          '<div class="entry-meta"><span class="mood-badge">'+e.mood+'</span><span class="category-tag">'+escHtml(e.category)+'</span></div></div>'+
+          '<div class="entry-date">📅 '+formatDate(e.date)+'</div>'+
+          '<div class="entry-preview">'+escHtml(preview)+'</div>'+
+          '<div class="entry-actions" onclick="event.stopPropagation()">'+
+          '<button class="btn btn-secondary" style="padding:5px 14px;font-size:.82rem;" onclick="editEntry(''+e.id+'')">✏️ 수정</button>'+
+          '<button class="btn btn-danger" style="padding:5px 14px;font-size:.82rem;" onclick="openDeleteModal(''+e.id+'')">🗑️ 삭제</button>'+
+          '</div></div>';
+      }).join('');
+    }
+    function showDetail(id) {
+      var entries = loadEntries();
+      var e = entries.find(function(x){ return x.id === id; });
+      if (!e) return;
+      document.getElementById('detail-content').innerHTML =
+        '<div class="detail-top">'+
+          '<div class="detail-title">'+e.mood+' '+escHtml(e.title)+'</div>'+
+          '<div class="detail-meta">'+
+            '<span>📅 '+formatDate(e.date)+'</span>'+
+            '<span>🏷️ '+escHtml(e.category)+'</span>'+
+            '<span>📝 '+e.content.length+'자</span>'+
+          '</div></div>'+
+        '<div class="detail-body">'+escHtml(e.content)+'</div>'+
+        '<div class="detail-actions">'+
+          '<button class="btn btn-secondary" onclick="switchTab('list')">← 목록으로</button>'+
+          '<button class="btn btn-secondary" onclick="editEntry(''+e.id+'')">✏️ 수정</button>'+
+          '<button class="btn btn-danger" onclick="openDeleteModal(''+e.id+'')">🗑️ 삭제</button>'+
+        '</div>';
+      document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
+      document.getElementById('panel-detail').classList.add('active');
+    }
+    function editEntry(id) {
+      var entries = loadEntries();
+      var e = entries.find(function(x){ return x.id === id; });
+      if (!e) return;
+      document.getElementById('edit-id').value = e.id;
+      document.getElementById('title').value = e.title;
+      document.getElementById('content').value = e.content;
+      document.getElementById('entry-date').value = e.date;
+      document.getElementById('mood').value = e.mood;
+      document.getElementById('category').value = e.category;
+      document.getElementById('form-title-label').textContent = '일기 수정';
+      switchTab('write');
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+    var _deleteId = null;
+    function openDeleteModal(id) { _deleteId = id; document.getElementById('delete-modal').classList.add('open'); }
+    function closeDeleteModal() { _deleteId = null; document.getElementById('delete-modal').classList.remove('open'); }
+    function confirmDelete() {
+      if (!_deleteId) return;
+      saveEntries(loadEntries().filter(function(e){ return e.id !== _deleteId; }));
+      closeDeleteModal(); showToast('🗑️ 일기가 삭제되었습니다.'); switchTab('list');
+    }
+    var _toastTimer = null;
+    function showToast(msg) {
+      var t = document.getElementById('toast');
+      t.textContent = msg; t.classList.add('show');
+      clearTimeout(_toastTimer);
+      _toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 2800);
+    }
+    function escHtml(str) {
+      return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    }
+    document.addEventListener('DOMContentLoaded', function(){
+      document.getElementById('entry-date').value = todayString();
+    });
+  </script>
+</body>
+</html>
