@@ -1,992 +1,781 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>최승환 | 지방행정 연구자</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #1a1a2e;
-      --secondary: #16213e;
-      --accent: #0f3460;
-      --highlight: #e94560;
-      --text-light: #eaeaea;
-      --text-muted: #a8a8a8;
-      --success: #06d6a0;
-      --warning: #ef476f;
-      --bg-dark: #0f0f1e;
-      --bg-card: #1a1a2e;
-      --border: #2a2a4e;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: linear-gradient(135deg, var(--bg-dark) 0%, var(--primary) 100%);
-      color: var(--text-light);
-      font-family: 'Noto Sans KR', sans-serif;
-      line-height: 1.6;
-      overflow-x: hidden;
-      min-height: 100vh;
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      background: rgba(10, 10, 20, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      padding: 1rem 2rem;
-    }
-
-    .header-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 1.4rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, var(--highlight), var(--success));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: -0.02em;
-      cursor: pointer;
-    }
-
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 2rem;
-    }
-
-    nav a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      transition: all 0.3s;
-    }
-
-    nav a:hover { color: var(--highlight); }
-
-    #hero {
-      margin-top: 70px;
-      padding: 3rem 2rem;
-      background: linear-gradient(180deg, rgba(15, 52, 96, 0.3) 0%, transparent 100%);
-    }
-
-    .hero-container { max-width: 1400px; margin: 0 auto; }
-
-    .hero-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-      margin-bottom: 4rem;
-    }
-
-    .hero-text h1 {
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      font-weight: 700;
-      margin-bottom: 1rem;
-      line-height: 1.2;
-    }
-
-    .hero-text p {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      line-height: 1.8;
-      margin-bottom: 2rem;
-    }
-
-    .hero-image {
-      width: 100%;
-      height: 400px;
-      background: linear-gradient(135deg, var(--accent) 0%, var(--highlight) 100%);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 120px;
-      box-shadow: 0 20px 60px rgba(233, 69, 96, 0.2);
-    }
-
-    .cta-buttons {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 0.8rem 2rem;
-      border: none;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-      text-decoration: none;
-      display: inline-block;
-      letter-spacing: 0.05em;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--highlight), #ff6b7a);
-      color: white;
-      box-shadow: 0 8px 24px rgba(233, 69, 96, 0.3);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(233, 69, 96, 0.4);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--text-light);
-      border: 1px solid var(--border);
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--highlight);
-      color: var(--highlight);
-      background: rgba(233, 69, 96, 0.1);
-    }
-
-    .widgets-section {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 4rem;
-    }
-
-    .widget {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 2rem;
-      transition: all 0.3s;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    }
-
-    .widget:hover {
-      border-color: var(--highlight);
-      transform: translateY(-5px);
-      box-shadow: 0 12px 48px rgba(233, 69, 96, 0.15);
-    }
-
-    .widget-title {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--highlight);
-      margin-bottom: 1rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .weather-temp {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin: 1rem 0;
-      background: linear-gradient(135deg, var(--success), var(--highlight));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .weather-desc {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    .weather-detail {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 1.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
-      font-size: 0.85rem;
-    }
-
-    #search-widget input {
-      width: 100%;
-      padding: 1rem;
-      background: var(--primary);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      color: var(--text-light);
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-    }
-
-    #search-widget input:focus {
-      outline: none;
-      border-color: var(--highlight);
-      box-shadow: 0 0 12px rgba(233, 69, 96, 0.2);
-    }
-
-    .search-results {
-      max-height: 300px;
-      overflow-y: auto;
-    }
-
-    .search-result-item {
-      padding: 0.8rem;
-      background: var(--primary);
-      border-radius: 4px;
-      margin-bottom: 0.5rem;
-      cursor: pointer;
-      transition: all 0.2s;
-      font-size: 0.85rem;
-    }
-
-    .search-result-item:hover {
-      background: var(--accent);
-      padding-left: 1.2rem;
-    }
-
-    .news-item {
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--border);
-      cursor: pointer;
-    }
-
-    .news-item:last-child { border-bottom: none; }
-
-    .news-item:hover {
-      padding-left: 0.5rem;
-      color: var(--highlight);
-    }
-
-    .news-title {
-      font-size: 0.9rem;
-      font-weight: 600;
-      margin-bottom: 0.3rem;
-      line-height: 1.4;
-    }
-
-    .news-source {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-
-    section {
-      padding: 6rem 2rem;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 3rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .section-title::before {
-      content: '';
-      width: 4px;
-      height: 2.5rem;
-      background: linear-gradient(180deg, var(--highlight), var(--success));
-      border-radius: 2px;
-    }
-
-    .section-subtitle {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-    }
-
-    #about { background: var(--primary); }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    .about-text p {
-      margin-bottom: 1.5rem;
-      color: var(--text-muted);
-      line-height: 1.9;
-    }
-
-    .about-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .meta-card {
-      background: var(--bg-card);
-      padding: 1.5rem;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--highlight);
-    }
-
-    .meta-label {
-      font-size: 0.75rem;
-      color: var(--highlight);
-      text-transform: uppercase;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      margin-bottom: 0.5rem;
-    }
-
-    .meta-value {
-      font-size: 0.95rem;
-      color: var(--text-light);
-      line-height: 1.6;
-    }
-
-    #research { background: var(--primary); }
-
-    .research-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .research-card {
-      background: var(--bg-card);
-      padding: 2rem;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      transition: all 0.3s;
-    }
-
-    .research-card:hover {
-      border-color: var(--highlight);
-      transform: translateY(-8px);
-      box-shadow: 0 16px 48px rgba(233, 69, 96, 0.2);
-    }
-
-    .research-num {
-      font-size: 2.5rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, var(--highlight), var(--success));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 0.5rem;
-    }
-
-    .research-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-
-    .research-desc {
-      color: var(--text-muted);
-      line-height: 1.8;
-      font-size: 0.9rem;
-    }
-
-    #blog { background: linear-gradient(135deg, var(--bg-dark) 0%, var(--primary) 100%); }
-
-    .blog-container {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 4rem;
-    }
-
-    .blog-posts {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .blog-post {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 2rem;
-      transition: all 0.3s;
-      cursor: pointer;
-    }
-
-    .blog-post:hover {
-      border-color: var(--highlight);
-      box-shadow: 0 12px 40px rgba(233, 69, 96, 0.15);
-      transform: translateX(5px);
-    }
-
-    .blog-date {
-      font-size: 0.8rem;
-      color: var(--highlight);
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .blog-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-
-    .blog-post:hover .blog-title { color: var(--highlight); }
-
-    .blog-excerpt {
-      color: var(--text-muted);
-      line-height: 1.8;
-      margin-bottom: 1rem;
-    }
-
-    .blog-tags {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-
-    .tag {
-      background: var(--accent);
-      color: var(--highlight);
-      padding: 0.3rem 0.7rem;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
-
-    .blog-form {
-      background: var(--bg-card);
-      padding: 2rem;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      position: sticky;
-      top: 100px;
-    }
-
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-      color: var(--text-light);
-    }
-
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      width: 100%;
-      padding: 0.8rem;
-      background: var(--primary);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      color: var(--text-light);
-      font-family: 'Noto Sans KR', sans-serif;
-    }
-
-    .form-group textarea { min-height: 120px; }
-
-    .form-group input:focus,
-    .form-group textarea:focus { 
-      outline: none;
-      border-color: var(--highlight);
-      box-shadow: 0 0 12px rgba(233, 69, 96, 0.2);
-    }
-
-    .form-submit {
-      width: 100%;
-      padding: 0.9rem;
-      background: linear-gradient(135deg, var(--highlight), #ff6b7a);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .form-submit:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(233, 69, 96, 0.3);
-    }
-
-    #guestbook { background: var(--primary); }
-
-    .guestbook-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-    }
-
-    .guestbook-form {
-      background: var(--bg-card);
-      padding: 2rem;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-    }
-
-    .guestbook-entries {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .guestbook-entry {
-      background: var(--bg-card);
-      padding: 1.5rem;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      transition: all 0.3s;
-    }
-
-    .guestbook-entry:hover {
-      border-color: var(--highlight);
-      box-shadow: 0 8px 24px rgba(233, 69, 96, 0.1);
-    }
-
-    .entry-author {
-      font-weight: 700;
-      color: var(--highlight);
-      margin-bottom: 0.5rem;
-    }
-
-    .entry-date {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-bottom: 0.8rem;
-    }
-
-    .entry-text {
-      color: var(--text-muted);
-      line-height: 1.8;
-    }
-
-    #career { background: linear-gradient(135deg, var(--bg-dark) 0%, var(--primary) 100%); }
-
-    .timeline {
-      position: relative;
-      padding-left: 3rem;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(180deg, var(--highlight), var(--success), transparent);
-    }
-
-    .timeline-item {
-      position: relative;
-      padding-bottom: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -15px;
-      top: 0;
-      width: 12px;
-      height: 12px;
-      background: var(--highlight);
-      border-radius: 50%;
-      box-shadow: 0 0 0 4px var(--primary), 0 0 0 6px var(--highlight);
-    }
-
-    .timeline-year {
-      font-size: 0.9rem;
-      color: var(--highlight);
-      font-weight: 700;
-    }
-
-    .timeline-role {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin: 0.5rem 0;
-    }
-
-    .timeline-org {
-      color: var(--text-muted);
-    }
-
-    footer {
-      background: var(--bg-dark);
-      border-top: 1px solid var(--border);
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .footer-link {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color 0.3s;
-    }
-
-    .footer-link:hover { color: var(--highlight); }
-
-    .footer-text {
-      color: var(--text-muted);
-      font-size: 0.85rem;
-    }
-
-    .success-msg {
-      background: var(--success);
-      color: var(--bg-dark);
-      padding: 1rem;
-      border-radius: 6px;
-      margin-bottom: 1rem;
-    }
-
-    @media (max-width: 768px) {
-      nav ul { gap: 1rem; }
-      .hero-content { grid-template-columns: 1fr; }
-      .about-grid { grid-template-columns: 1fr; }
-      .blog-container { grid-template-columns: 1fr; }
-      .guestbook-container { grid-template-columns: 1fr; }
-      .blog-form { position: static; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="최승환 — 지방행정 연구자, 제천시청 팀장, 행정학 박사">
+<meta property="og:title" content="최승환 | 지방행정 연구자">
+<meta property="og:description" content="공직은 수단, 연구는 정체성, 자유는 목적.">
+<title>최승환 | 지방행정 연구자</title>
+<style>
+:root {
+  --bg: #0f0f13;
+  --bg2: #16161e;
+  --bg3: #1e1e2a;
+  --card: #1a1a24;
+  --border: rgba(255,255,255,0.08);
+  --accent: #7c6ff7;
+  --accent2: #5dcaa5;
+  --text: #e8e8f0;
+  --muted: #888899;
+  --tag: #2a2a3a;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(15,15,19,0.85); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 56px;
+}
+.nav-logo { font-size: 15px; font-weight: 600; color: var(--accent); letter-spacing: 0.5px; }
+.nav-links { display: flex; gap: 4px; }
+.nav-links button {
+  background: none; border: none; color: var(--muted); font-size: 13px;
+  padding: 6px 12px; border-radius: 6px; cursor: pointer; transition: all .2s;
+}
+.nav-links button:hover, .nav-links button.active { color: var(--text); background: var(--bg3); }
+
+/* PAGES */
+.page { display: none; padding: 2rem; max-width: 860px; margin: 0 auto; }
+.page.active { display: block; }
+
+/* WIDGET BAR */
+.widget-bar { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 2rem; }
+.widget-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; }
+.widget-label { font-size: 11px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+
+/* WEATHER */
+.weather-main { display: flex; align-items: center; gap: 10px; }
+.weather-temp { font-size: 28px; font-weight: 700; }
+.weather-icon { font-size: 28px; }
+.weather-desc { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.weather-sub { font-size: 11px; color: var(--muted); margin-top: 6px; }
+
+/* SEARCH */
+.search-wrap { position: relative; margin-bottom: 8px; }
+.search-wrap input {
+  width: 100%; background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--text); padding: 9px 36px 9px 12px;
+  font-size: 14px; outline: none; font-family: inherit;
+}
+.search-wrap input:focus { border-color: var(--accent); }
+.search-wrap button {
+  position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+  background: none; border: none; color: var(--muted); cursor: pointer; font-size: 16px; padding: 0;
+}
+.search-engines { display: flex; gap: 6px; flex-wrap: wrap; }
+.se-btn {
+  background: var(--bg3); border: 1px solid var(--border); color: var(--muted);
+  font-size: 11px; padding: 4px 10px; border-radius: 6px; cursor: pointer; transition: all .15s;
+}
+.se-btn:hover, .se-btn.active { color: var(--text); border-color: var(--accent); }
+
+/* TRENDING */
+.trend-list { display: flex; flex-direction: column; gap: 6px; }
+.trend-item { display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 3px 0; }
+.trend-rank { font-size: 11px; font-weight: 700; color: var(--accent); min-width: 16px; }
+.trend-rank.top3 { color: var(--accent2); }
+.trend-word { font-size: 13px; color: var(--text); transition: color .15s; }
+.trend-item:hover .trend-word { color: var(--accent); }
+.trend-new { font-size: 10px; color: var(--accent2); margin-left: 4px; }
+
+/* HERO */
+.hero { text-align: center; padding: 3rem 1rem 2rem; }
+.avatar {
+  width: 96px; height: 96px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px; font-weight: 700; color: #fff; margin: 0 auto 1.5rem;
+}
+.hero h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+.hero .subtitle { color: var(--accent2); font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1rem; }
+.hero p { color: var(--muted); font-size: 15px; line-height: 1.7; max-width: 480px; margin: 0 auto 2rem; }
+.tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.tag { background: var(--tag); color: var(--muted); font-size: 12px; padding: 4px 12px; border-radius: 20px; border: 1px solid var(--border); }
+
+/* SECTION TITLE */
+.section-title { font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 1rem; }
+
+/* QUICK LINKS */
+.links-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; margin-bottom: 2rem; }
+.link-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+  padding: 14px 16px; cursor: pointer; transition: all .2s; text-decoration: none;
+}
+.link-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.link-card .lc-icon { font-size: 20px; margin-bottom: 8px; }
+.link-card .lc-name { font-size: 13px; font-weight: 500; color: var(--text); }
+.link-card .lc-url { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+/* BUTTONS */
+.btn {
+  background: var(--accent); color: #fff; border: none; border-radius: 8px;
+  padding: 8px 16px; font-size: 13px; cursor: pointer; transition: opacity .2s;
+}
+.btn:hover { opacity: .85; }
+.btn-sm {
+  background: var(--bg3); color: var(--muted); border: 1px solid var(--border);
+  border-radius: 6px; padding: 5px 10px; font-size: 12px; cursor: pointer;
+}
+.btn-sm:hover { color: var(--text); }
+
+/* FORM */
+.form-group { margin-bottom: 12px; }
+.form-group label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+.form-group input, .form-group textarea, .form-group select {
+  width: 100%; background: var(--bg2); border: 1px solid var(--border); border-radius: 8px;
+  color: var(--text); font-size: 14px; padding: 10px 12px; outline: none; font-family: inherit;
+}
+.form-group input:focus, .form-group textarea:focus { border-color: var(--accent); }
+.form-group textarea { resize: vertical; min-height: 120px; }
+.form-row { display: flex; gap: 10px; }
+.form-row .form-group { flex: 1; }
+
+/* ABOUT */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
+.about-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
+.about-card h3 { font-size: 13px; color: var(--accent); margin-bottom: 10px; }
+.about-card p, .about-card li { font-size: 14px; color: var(--muted); line-height: 1.8; }
+.about-card ul { padding-left: 1rem; }
+.tl-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.tl-year { font-size: 12px; color: var(--accent2); min-width: 40px; font-weight: 600; }
+.tl-desc { font-size: 13px; color: var(--muted); }
+
+/* BLOG */
+.blog-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+.blog-list { display: flex; flex-direction: column; gap: 12px; }
+.blog-item {
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 1.25rem; cursor: pointer; transition: all .2s;
+}
+.blog-item:hover { border-color: var(--accent); }
+.blog-item h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+.blog-item p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.blog-meta { display: flex; gap: 12px; margin-top: 10px; }
+.blog-meta span { font-size: 11px; color: var(--muted); }
+.blog-meta .cat { color: var(--accent2); }
+.blog-form { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+.blog-detail { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; }
+.blog-detail h2 { font-size: 22px; margin-bottom: 8px; }
+.blog-detail .bd-meta { font-size: 12px; color: var(--muted); margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+.blog-detail .bd-body { font-size: 15px; line-height: 1.9; color: #c8c8d8; white-space: pre-wrap; }
+
+/* GUESTBOOK */
+.gb-form { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+.gb-list { display: flex; flex-direction: column; gap: 10px; }
+.gb-item { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; }
+.gb-item .gb-name { font-size: 14px; font-weight: 600; color: var(--accent2); margin-bottom: 4px; }
+.gb-item .gb-msg { font-size: 14px; color: var(--muted); line-height: 1.6; }
+.gb-item .gb-date { font-size: 11px; color: var(--muted); margin-top: 6px; display: flex; justify-content: space-between; align-items: center; }
+
+/* CALENDAR */
+.cal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+.cal-header h2 { font-size: 18px; font-weight: 600; }
+.cal-nav button {
+  background: var(--bg3); border: 1px solid var(--border); color: var(--text);
+  width: 32px; height: 32px; border-radius: 6px; cursor: pointer; font-size: 16px;
+}
+.cal-nav { display: flex; gap: 8px; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-bottom: 1.5rem; }
+.cal-day-name { text-align: center; font-size: 11px; color: var(--muted); padding: 6px 0; font-weight: 600; }
+.cal-cell {
+  min-height: 52px; background: var(--card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 6px; cursor: pointer; transition: all .2s;
+}
+.cal-cell:hover { border-color: var(--accent); }
+.cal-cell.today { border-color: var(--accent); }
+.cal-cell.other-month .cal-date { color: #444; }
+.cal-cell.selected { background: var(--bg3); border-color: var(--accent2); }
+.cal-date { font-size: 12px; color: var(--muted); font-weight: 500; }
+.cal-cell.today .cal-date { color: var(--accent); font-weight: 700; }
+.cal-event-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent2); margin-top: 4px; }
+.event-panel { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
+.event-list { display: flex; flex-direction: column; gap: 8px; margin-top: 1rem; }
+.event-item { display: flex; align-items: center; gap: 10px; padding: 8px 10px; background: var(--bg3); border-radius: 8px; }
+.event-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+.event-item span { font-size: 13px; color: var(--text); }
+.event-item .ev-del { margin-left: auto; cursor: pointer; color: var(--muted); font-size: 16px; }
+.event-item .ev-del:hover { color: #e24b4a; }
+
+/* EMPTY */
+.empty { text-align: center; padding: 3rem 1rem; color: var(--muted); font-size: 14px; }
+
+/* LINK ADD ROW */
+.link-add { display: flex; gap: 8px; margin-bottom: 2rem; flex-wrap: wrap; }
+.link-add input {
+  background: var(--bg2); border: 1px solid var(--border); border-radius: 8px;
+  color: var(--text); padding: 8px 12px; font-size: 14px; outline: none;
+}
+.link-add input:focus { border-color: var(--accent); }
+</style>
 </head>
 <body>
 
-<header>
-  <div class="header-container">
-    <div class="logo" onclick="window.location.href='#hero'">최승환</div>
-    <nav>
-      <ul>
-        <li><a href="#hero">홈</a></li>
-        <li><a href="#about">소개</a></li>
-        <li><a href="#research">연구</a></li>
-        <li><a href="#blog">블로그</a></li>
-        <li><a href="#guestbook">방명록</a></li>
-        <li><a href="#career">경력</a></li>
-        <li><a href="#contact">연락</a></li>
-      </ul>
-    </nav>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">최승환</div>
+  <div class="nav-links">
+    <button class="active" onclick="showPage('home')">홈</button>
+    <button onclick="showPage('about')">소개</button>
+    <button onclick="showPage('blog')">블로그</button>
+    <button onclick="showPage('guestbook')">방명록</button>
+    <button onclick="showPage('calendar')">일정</button>
   </div>
-</header>
+</nav>
 
-<section id="hero">
-  <div class="hero-container">
-    <div class="hero-content">
-      <div class="hero-text">
-        <h1>최승환</h1>
-        <p>지방행정 20년 경험의 실무 연구자<br>지방세·지방재정·도시행정을 연구합니다</p>
-        <div class="cta-buttons">
-          <button class="btn btn-primary" onclick="document.getElementById('blog').scrollIntoView({behavior:'smooth'})">블로그 보기</button>
-          <a href="#contact" class="btn btn-secondary">연락처</a>
+<!-- ==================== HOME ==================== -->
+<div id="page-home" class="page active">
+  <!-- 위젯 바 -->
+  <div class="widget-bar" style="margin-top:1rem;">
+
+    <!-- 날씨 -->
+    <div class="widget-card">
+      <div class="widget-label">날씨 · 제천</div>
+      <div class="weather-main">
+        <div class="weather-icon" id="w-icon">⏳</div>
+        <div>
+          <div class="weather-temp" id="w-temp">--°</div>
+          <div class="weather-desc" id="w-desc">불러오는 중...</div>
         </div>
       </div>
-      <div class="hero-image">📊</div>
+      <div class="weather-sub" id="w-sub"></div>
     </div>
 
-    <div class="widgets-section">
-      <div class="widget">
-        <div class="widget-title">🌤 날씨</div>
-        <div id="weather-content">로드 중...</div>
+    <!-- 검색 -->
+    <div class="widget-card">
+      <div class="widget-label">검색</div>
+      <div class="search-wrap">
+        <input id="search-input" placeholder="검색어를 입력하세요..."
+          onkeydown="if(event.key==='Enter') doSearch()">
+        <button onclick="doSearch()">⌕</button>
       </div>
-
-      <div class="widget">
-        <div class="widget-title">🔍 검색</div>
-        <input type="text" placeholder="검색어를 입력하세요..." id="search-input">
-        <div class="search-results" id="search-results"></div>
+      <div class="search-engines">
+        <button class="se-btn active" id="se-naver"   onclick="setSE('naver')">네이버</button>
+        <button class="se-btn"        id="se-google"  onclick="setSE('google')">구글</button>
+        <button class="se-btn"        id="se-daum"    onclick="setSE('daum')">다음</button>
+        <button class="se-btn"        id="se-youtube" onclick="setSE('youtube')">유튜브</button>
       </div>
+    </div>
 
-      <div class="widget">
-        <div class="widget-title">📰 뉴스</div>
-        <div id="news-content">로드 중...</div>
+    <!-- 실시간 검색어 -->
+    <div class="widget-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+        <div class="widget-label" style="margin-bottom:0;">실시간 검색어</div>
+        <span style="font-size:10px;color:var(--muted);" id="trend-time"></span>
+      </div>
+      <div class="trend-list" id="trend-list">
+        <div style="font-size:12px;color:var(--muted);">불러오는 중...</div>
       </div>
     </div>
   </div>
-</section>
 
-<section id="about">
-  <h2 class="section-title">소개</h2>
+  <!-- 히어로 -->
+  <div class="hero">
+    <div class="avatar">최</div>
+    <h1>최승환</h1>
+    <div class="subtitle">지방행정 연구자 · 제천시청 팀장</div>
+    <p>20년차 지방행정공무원으로, 지방세·지방재정을 연구하는 행정학 박사과정입니다.<br>공직은 수단, 연구는 정체성, 자유는 목적.</p>
+    <div class="tags">
+      <span class="tag">지방세 연구</span>
+      <span class="tag">충북 제천</span>
+      <span class="tag">행정학 박사</span>
+      <span class="tag">자전거 · 러닝</span>
+      <span class="tag">자유로운 영혼</span>
+    </div>
+  </div>
+
+  <div class="section-title">주요 링크</div>
+  <div class="links-grid" id="links-grid"></div>
+
+  <div class="section-title">링크 추가</div>
+  <div class="link-add">
+    <input id="link-icon" placeholder="🔗" style="width:60px;text-align:center;font-size:18px;">
+    <input id="link-name" placeholder="이름" style="flex:1;min-width:80px;">
+    <input id="link-url"  placeholder="https://..." style="flex:2;min-width:140px;">
+    <button class="btn" onclick="addLink()">추가</button>
+  </div>
+</div>
+
+<!-- ==================== ABOUT ==================== -->
+<div id="page-about" class="page">
+  <div style="margin-bottom:2rem;">
+    <h2 style="font-size:22px;margin-bottom:6px;">안녕하세요, 최승환입니다</h2>
+    <p style="color:var(--muted);font-size:15px;line-height:1.8;">
+      충청북도 제천시청 소속 20년차 지방행정공무원으로, 현재 팀장 직급에 있습니다.
+      지방세·지방재정을 전문으로 연구하는 행정학 박사과정이기도 합니다.
+      "자유로운 영혼의 지방행정 연구자"라는 정체성을 갖고 살아갑니다.
+    </p>
+  </div>
   <div class="about-grid">
-    <div class="about-text">
-      <p>충청북도 제천시청에서 20년간 지방행정 실무를 담당해온 팀장급 공무원으로, 행정 현장의 내부를 깊이 이해하는 연구자입니다. 공직 내부자료에 기반한 1차 분석은 외부 연구자가 접근하기 어려운 희소한 시각을 제공합니다.</p>
-      <p>등록면허세의 납세지와 물건지 불일치에 따른 세원 역외유출 문제를 중심으로 지방재정 불균형 구조를 분석하고 있습니다. 행정 실무 경험과 학술 연구 역량을 결합하여 정책 개선에 실질적으로 기여하고자 합니다.</p>
-      <p>박사학위 취득 이후에는 지자체·중앙부처 자문위원·심의위원 활동과 연 1~2편의 논문 지속 발표를 목표로 합니다.</p>
+    <div class="about-card">
+      <h3>연구 분야</h3>
+      <ul>
+        <li>지방세 · 등록면허세</li>
+        <li>납세지 · 역외유출</li>
+        <li>지방재정 분석</li>
+        <li>행정 빅데이터</li>
+      </ul>
     </div>
-    <div class="about-meta">
-      <div class="meta-card">
-        <div class="meta-label">소속</div>
-        <div class="meta-value">충청북도 제천시청<br>팀장</div>
+    <div class="about-card">
+      <h3>관심사 · 취미</h3>
+      <ul>
+        <li>자전거 · 러닝 · 배드민턴</li>
+        <li>골프</li>
+        <li>공간정보 시스템(GIS)</li>
+        <li>자동화 · 데이터 분석</li>
+      </ul>
+    </div>
+    <div class="about-card" style="grid-column:span 2;">
+      <h3>주요 이력</h3>
+      <div>
+        <div class="tl-item"><span class="tl-year">2004</span><span class="tl-desc">제천시청 지방공무원 임용</span></div>
+        <div class="tl-item"><span class="tl-year">현재</span><span class="tl-desc">제천시청 팀장 · 행정학 박사과정 수료</span></div>
+        <div class="tl-item"><span class="tl-year">2026</span><span class="tl-desc">박사학위 취득 목표 (지방세·납세지·역외유출)</span></div>
+        <div class="tl-item"><span class="tl-year">이후</span><span class="tl-desc">지방세 실무 강의 포트폴리오 확장 계획</span></div>
       </div>
-      <div class="meta-card">
-        <div class="meta-label">학력</div>
-        <div class="meta-value">세명대학교 대학원<br>도시경영학과 박사수료</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== BLOG ==================== -->
+<div id="page-blog" class="page">
+  <div class="blog-header">
+    <h2 style="font-size:20px;">블로그</h2>
+    <button class="btn" onclick="toggleBlogForm()">+ 새 글 쓰기</button>
+  </div>
+
+  <div class="blog-form" id="blog-form" style="display:none;">
+    <div class="form-row">
+      <div class="form-group">
+        <label>제목</label>
+        <input id="b-title" placeholder="글 제목">
       </div>
-      <div class="meta-card">
-        <div class="meta-label">경력</div>
-        <div class="meta-value">공직 20년<br>행정 실무 · 정책 연구</div>
+      <div class="form-group" style="max-width:140px;">
+        <label>카테고리</label>
+        <select id="b-cat">
+          <option>지방세 연구</option>
+          <option>공직일기</option>
+          <option>일상</option>
+          <option>자전거·러닝</option>
+          <option>단상</option>
+        </select>
       </div>
     </div>
+    <div class="form-group">
+      <label>내용</label>
+      <textarea id="b-body" placeholder="내용을 입력하세요..."></textarea>
+    </div>
+    <div style="display:flex;gap:8px;">
+      <button class="btn" onclick="saveBlog()">저장</button>
+      <button class="btn-sm" onclick="toggleBlogForm()">취소</button>
+    </div>
   </div>
-</section>
 
-<section id="research">
-  <h2 class="section-title">연구 분야</h2>
-  <p class="section-subtitle">공직 경험과 학술 역량을 결합한 실증 연구</p>
-  <div class="research-grid">
-    <div class="research-card">
-      <div class="research-num">01</div>
-      <div class="research-title">지방세 구조 분석</div>
-      <div class="research-desc">등록면허세를 중심으로 납세지와 물건지의 불일치 문제를 분석합니다.</div>
-    </div>
-    <div class="research-card">
-      <div class="research-num">02</div>
-      <div class="research-title">세원 역외유출</div>
-      <div class="research-desc">물건지와 납세지 간 세수 귀속의 불일치로 인한 역외유출을 규명합니다.</div>
-    </div>
-    <div class="research-card">
-      <div class="research-num">03</div>
-      <div class="research-title">지방재정 불균형</div>
-      <div class="research-desc">지역 간 재정력 격차를 분석하고 재정형평성 제고 방안을 제시합니다.</div>
-    </div>
-    <div class="research-card">
-      <div class="research-num">04</div>
-      <div class="research-title">민원 빅데이터</div>
-      <div class="research-desc">행정 민원 데이터 분석을 통해 공간적 패턴을 파악합니다.</div>
-    </div>
-    <div class="research-card">
-      <div class="research-num">05</div>
-      <div class="research-title">제도 개선</div>
-      <div class="research-desc">지방행정 제도의 공백을 발굴하고 개선안을 제시합니다.</div>
-    </div>
-    <div class="research-card">
-      <div class="research-num">06</div>
-      <div class="research-title">도시·지역 정책</div>
-      <div class="research-desc">중소도시의 재정·행정 문제를 분석합니다.</div>
+  <div id="blog-detail-view" style="display:none;">
+    <button class="btn-sm" onclick="closeBlogDetail()" style="margin-bottom:1rem;">← 목록으로</button>
+    <div class="blog-detail">
+      <h2 id="bd-title"></h2>
+      <div class="bd-meta" id="bd-meta"></div>
+      <div class="bd-body" id="bd-body"></div>
     </div>
   </div>
-</section>
 
-<section id="blog">
-  <h2 class="section-title">블로그</h2>
-  <div class="blog-container">
-    <div class="blog-posts" id="blog-posts">
-      <p style="color: var(--text-muted); text-align: center; padding: 3rem;">작성된 글이 없습니다. 첫 번째 글을 작성해보세요!</p>
-    </div>
-    <div class="blog-form">
-      <h3 style="margin-bottom: 1.5rem; color: var(--text-light);">새 글 작성</h3>
-      <div id="blog-message"></div>
-      <form id="blog-form">
-        <div class="form-group">
-          <label>제목</label>
-          <input type="text" id="blog-title" placeholder="글의 제목을 입력하세요" required>
-        </div>
-        <div class="form-group">
-          <label>카테고리</label>
-          <select id="blog-category" required>
-            <option value="">선택해주세요</option>
-            <option value="연구">연구</option>
-            <option value="정책">정책</option>
-            <option value="일상">일상</option>
-            <option value="기타">기타</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>내용</label>
-          <textarea id="blog-content" placeholder="글 내용을 입력하세요" required></textarea>
-        </div>
-        <div class="form-group">
-          <label>태그</label>
-          <input type="text" id="blog-tags" placeholder="태그1, 태그2">
-        </div>
-        <button type="submit" class="form-submit">글 발행</button>
-      </form>
-    </div>
-  </div>
-</section>
+  <div class="blog-list" id="blog-list"></div>
+</div>
 
-<section id="guestbook">
-  <h2 class="section-title">방명록</h2>
-  <div class="guestbook-container">
-    <div class="guestbook-form">
-      <h3 style="margin-bottom: 1.5rem; color: var(--text-light);">메시지 남기기</h3>
-      <div id="guestbook-message"></div>
-      <form id="guestbook-form">
-        <div class="form-group">
-          <label>이름</label>
-          <input type="text" id="guestbook-name" placeholder="이름을 입력하세요" required>
-        </div>
-        <div class="form-group">
-          <label>이메일</label>
-          <input type="email" id="guestbook-email" placeholder="이메일을 입력하세요" required>
-        </div>
-        <div class="form-group">
-          <label>메시지</label>
-          <textarea id="guestbook-message-text" placeholder="메시지를 입력하세요" required></textarea>
-        </div>
-        <button type="submit" class="form-submit">메시지 남기기</button>
-      </form>
-    </div>
-    <div class="guestbook-entries" id="guestbook-entries">
-      <p style="color: var(--text-muted); text-align: center; padding: 2rem;">아직 방명록이 없습니다.<br>첫 번째 메시지를 남겨주세요!</p>
-    </div>
+<!-- ==================== GUESTBOOK ==================== -->
+<div id="page-guestbook" class="page">
+  <div style="margin-bottom:1.5rem;">
+    <h2 style="font-size:20px;margin-bottom:4px;">방명록</h2>
+    <p style="font-size:13px;color:var(--muted);">방문해주셔서 감사합니다. 한 마디 남겨주세요 :)</p>
   </div>
-</section>
+  <div class="gb-form">
+    <div class="form-row">
+      <div class="form-group">
+        <label>이름</label>
+        <input id="gb-name" placeholder="홍길동">
+      </div>
+      <div class="form-group">
+        <label>비밀번호 (삭제용)</label>
+        <input id="gb-pw" type="password" placeholder="••••">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>메시지</label>
+      <textarea id="gb-msg" placeholder="메시지를 남겨주세요..." style="min-height:80px;"></textarea>
+    </div>
+    <button class="btn" onclick="saveGuestbook()">남기기</button>
+  </div>
+  <div class="gb-list" id="gb-list"></div>
+</div>
 
-<section id="career">
-  <h2 class="section-title">주요 경력</h2>
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-year">2005 — 현재</div>
-      <div class="timeline-role">지방행정공무원</div>
-      <div class="timeline-org">충청북도 제천시청 · 20년 재직</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-year">2020 — 현재</div>
-      <div class="timeline-role">팀장</div>
-      <div class="timeline-org">충청북도 제천시청</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-year">2024 — 현재</div>
-      <div class="timeline-role">박사과정 수료</div>
-      <div class="timeline-org">세명대학교 일반대학원</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-year">2026 예정</div>
-      <div class="timeline-role">박사학위 취득</div>
-      <div class="timeline-org">세명대학교</div>
+<!-- ==================== CALENDAR ==================== -->
+<div id="page-calendar" class="page">
+  <div class="cal-header">
+    <h2 id="cal-title"></h2>
+    <div class="cal-nav">
+      <button onclick="changeMonth(-1)">‹</button>
+      <button onclick="changeMonth(1)">›</button>
     </div>
   </div>
-</section>
-
-<section id="contact">
-  <h2 class="section-title">연락처</h2>
-  <p class="section-subtitle">지방세, 지방재정 관련 문의는 아래로 연락 주세요</p>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem;">
-    <a href="mailto:your@email.com" class="widget" style="text-decoration: none; text-align: center;">
-      <div style="font-size: 2rem; margin-bottom: 1rem;">📧</div>
-      <div class="widget-title">이메일</div>
-      <p style="color: var(--text-muted);">your@email.com</p>
-    </a>
-    <a href="#" class="widget" style="text-decoration: none; text-align: center;">
-      <div style="font-size: 2rem; margin-bottom: 1rem;">🏛</div>
-      <div class="widget-title">소속</div>
-      <p style="color: var(--text-muted);">충청북도 제천시청</p>
-    </a>
-    <a href="#" class="widget" style="text-decoration: none; text-align: center;">
-      <div style="font-size: 2rem; margin-bottom: 1rem;">🎓</div>
-      <div class="widget-title">대학원</div>
-      <p style="color: var(--text-muted);">세명대학교</p>
-    </a>
+  <div class="cal-grid" id="cal-grid"></div>
+  <div class="event-panel">
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <span style="font-size:13px;font-weight:600;" id="selected-date-label">날짜를 선택하세요</span>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:10px;">
+      <input id="ev-input" placeholder="일정 입력..."
+        style="flex:1;background:var(--bg2);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:8px 12px;font-size:13px;outline:none;">
+      <button class="btn" onclick="addEvent()">추가</button>
+    </div>
+    <div class="event-list" id="event-list"></div>
   </div>
-</section>
-
-<footer>
-  <div class="footer-links">
-    <a href="https://github.com" class="footer-link">GitHub</a>
-    <a href="https://linkedin.com" class="footer-link">LinkedIn</a>
-    <a href="https://twitter.com" class="footer-link">Twitter</a>
-  </div>
-  <p class="footer-text">© 2026 최승환 · 지방행정 연구자</p>
-</footer>
+</div>
 
 <script>
-// ===== 블로그 관리자 =====
-class BlogManager {
-  constructor() {
-    this.storageKey = 'blog_posts';
-    this.loadPosts();
-  }
+/* ========== STATE ========== */
+const DAYS   = ['일','월','화','수','목','금','토'];
+const MONTHS = ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
 
-  loadPosts() {
-    const saved = localStorage.getItem(this.storageKey);
-    this.posts = saved ? JSON.parse(saved) : [];
-  }
+let state = {
+  links: [
+    { icon:'🏛', name:'제천시청',     url:'https://www.jecheon.go.kr' },
+    { icon:'📰', name:'지방세정신문', url:'https://www.ethetp.go.kr' },
+    { icon:'📚', name:'국가법령정보', url:'https://www.law.go.kr' },
+    { icon:'🔍', name:'지방행정연구원',url:'https://www.krila.re.kr' },
+    { icon:'☁', name:'Google Drive', url:'https://drive.google.com' },
+    { icon:'📊', name:'e나라지표',    url:'https://www.index.go.kr' },
+  ],
+  blogs: [
+    {
+      id: 1, cat:'지방세 연구', date:'2026.04.20',
+      title:'등록면허세 납세지 역외유출, 무엇이 문제인가',
+      body:`지방세 중 등록면허세는 납세지 규정의 특성상 실제 경제활동이 발생하는 지자체가 아닌 법인 본점 소재지에 세수가 귀속되는 구조적 문제를 안고 있다.
 
-  addPost(title, category, content, tags) {
-    const post = {
-      id: Date.now(),
-      title,
-      category,
-      content,
-      tags: tags.split(',').map(t => t.trim()).filter(t => t),
-      date: new Date().toLocaleDateString('ko-KR'),
-      excerpt: content.substring(0, 150) + '...'
+이 문제는 특히 산업시설이 밀집한 비수도권 기초지자체에 큰 영향을 미친다. 제천시를 포함한 충북 지역의 경우, 대규모 제조업체의 공장이 위치해 있음에도 불구하고 해당 세수의 상당 부분이 수도권 본점 소재지로 귀속된다.
+
+박사논문에서는 이 역외유출의 실증적 규모를 추정하고, 납세지 개정의 정책적 타당성을 검토한다.`
+    },
+    {
+      id: 2, cat:'자전거·러닝', date:'2026.04.10',
+      title:'자전거로 제천을 달리다 — 의림지에서 청풍호까지',
+      body:`봄이 왔다. 의림지 둘레길에 벚꽃이 만개했다.
+
+오전 6시, 집을 나섰다. 자전거 안장에 앉아 페달을 밟기 시작하면 머릿속이 비워지는 느낌이 든다. 논문 스트레스도, 업무 압박도 잠시 내려놓을 수 있는 유일한 시간이다.
+
+의림지에서 청풍호까지 왕복 약 40km. 쉽지 않은 코스지만 청풍명월의 풍경 앞에서 다리 통증은 사치다. 다음 주에도 달린다.`
+    },
+    {
+      id: 3, cat:'공직일기', date:'2026.03.28',
+      title:'공무원 20년, 내가 배운 것',
+      body:`올해로 공직 생활 20년이 됐다. 돌아보면 참 많은 일이 있었다.
+
+처음 임용되던 해, 나는 행정이 세상을 바꿀 수 있다고 믿었다. 지금도 그 믿음은 크게 달라지지 않았다. 다만 방식에 대한 생각이 달라졌을 뿐.
+
+제도는 천천히 바뀐다. 그러나 바뀐다. 그 속도를 참지 못하면 소진된다. 연구는 그 기다림을 견디게 해주는 내 방식이다.`
+    },
+  ],
+  guestbook: [
+    { id:1, name:'제천시민',  msg:'제천시 발전을 위해 애쓰시는 팀장님, 늘 응원합니다!',    date:'2026.05.01', pw:'1234' },
+    { id:2, name:'행정학도', msg:'지방세 논문 잘 보고 있습니다. 좋은 연구 기대하겠습니다.', date:'2026.04.25', pw:'0000' },
+  ],
+  events: {},
+  calYear:  new Date().getFullYear(),
+  calMonth: new Date().getMonth(),
+  selectedDate: null,
+  blogView: null,
+  showBlogForm: false,
+};
+
+/* ========== NAVIGATION ========== */
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  const labels = { home:'홈', about:'소개', blog:'블로그', guestbook:'방명록', calendar:'일정' };
+  document.querySelectorAll('.nav-links button').forEach(b => {
+    if (b.textContent === labels[id]) b.classList.add('active');
+  });
+  if (id === 'home')      renderLinks();
+  if (id === 'blog')      renderBlog();
+  if (id === 'guestbook') renderGuestbook();
+  if (id === 'calendar')  renderCalendar();
+}
+
+/* ========== WEATHER ========== */
+async function loadWeather() {
+  try {
+    const r = await fetch(
+      'https://api.open-meteo.com/v1/forecast' +
+      '?latitude=37.13&longitude=128.19' +
+      '&current=temperature_2m,weathercode,windspeed_10m,relative_humidity_2m' +
+      '&timezone=Asia%2FSeoul'
+    );
+    const d = await r.json();
+    const c = d.current;
+    const code = c.weathercode;
+    const icons = {
+      0:'☀️',1:'🌤',2:'⛅',3:'☁️',45:'🌫',48:'🌫',
+      51:'🌦',53:'🌦',55:'🌧',61:'🌧',63:'🌧',65:'🌧',
+      71:'❄️',73:'❄️',75:'❄️',80:'🌦',81:'🌧',82:'⛈',
+      95:'⛈',96:'⛈',99:'⛈'
     };
-    this.posts.unshift(post);
-    this.savePosts();
-    return post;
-  }
-
-  savePosts() {
-    localStorage.setItem(this.storageKey, JSON.stringify(this.posts));
-  }
-
-  getPosts() {
-    return this.posts;
+    const descs = {
+      0:'맑음',1:'대체로 맑음',2:'부분적으로 흐림',3:'흐림',
+      45:'안개',48:'안개',51:'가벼운 이슬비',53:'이슬비',55:'이슬비',
+      61:'약한 비',63:'비',65:'강한 비',71:'약한 눈',73:'눈',75:'강한 눈',
+      80:'소나기',81:'소나기',82:'강한 소나기',95:'뇌우',96:'뇌우',99:'뇌우'
+    };
+    document.getElementById('w-icon').textContent = icons[code] || '🌡';
+    document.getElementById('w-temp').textContent = Math.round(c.temperature_2m) + '°C';
+    document.getElementById('w-desc').textContent = descs[code] || '날씨 정보';
+    document.getElementById('w-sub').textContent =
+      `습도 ${c.relative_humidity_2m}% · 바람 ${Math.round(c.windspeed_10m)}km/h`;
+  } catch(e) {
+    document.getElementById('w-icon').textContent = '🌡';
+    document.getElementById('w-temp').textContent = '--°';
+    document.getElementById('w-desc').textContent = '날씨 정보 없음';
   }
 }
 
-// ===== 방명록 관리자 =====
-class GuestbookManager {
-  constructor() {
-    this.storageKey = 'guestbook_entries';
-    this.loadEntries();
-  }
-
-  loadEntries() {
-    const saved = localStorage.getItem(this.storageKey);
-    this.entries = saved ? JSON.parse(saved) : [];
-  }
-
-  addEntry(name, email, message) {
-    const entry = {
-      id: Date.now(),
-      name,
-      email,
-      message,
-      date: new Date().toLocaleDateString('ko-KR', { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric'
-      })
-    };
-    this.entries.unshift(entry);
-    this.saveEntries();
-    return entry;
-  }
-
-  saveEntries() {
-    localStorage.setItem(this.storageKey, JSON.stringify(this.entries));
-  }
-
-  getEntries() {
-    return this.entries;
-  }
+/* ========== SEARCH ========== */
+let curSE = 'naver';
+const seUrls = {
+  naver:   'https://search.naver.com/search.naver?query=',
+  google:  'https://www.google.com/search?q=',
+  daum:    'https://search.daum.net/search?q=',
+  youtube: 'https://www.youtube.com/results?search_query=',
+};
+function setSE(se) {
+  curSE = se;
+  document.querySelectorAll('.se-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('se-' + se).classList.add('active');
+}
+function doSearch() {
+  const q = document.getElementById('search-input').value.trim();
+  if (!q) return;
+  window.open(seUrls[curSE] + encodeURIComponent(q), '_blank');
 }
 
-// ===== 초기화 =====
-const blogManager = new BlogManager();
-const guestbookManager = new GuestbookManager();
+/* ========== TRENDING ========== */
+function loadTrend() {
+  const now = new Date();
+  document.getElementById('trend-time').textContent =
+    `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')} 기준`;
 
-// ===== 블로그 렌더링 =====
-function renderBlogPosts() {
-  const container = document.getElementById('blog
+  // 실제 포털 CORS 차단으로 시뮬레이션 (배포 후 서버 프록시로 교체 가능)
+  const keywords = [
+    ['날씨', true],['제천시', false],['지방세', false],['공무원 시험', true],
+    ['행정학', false],['청풍호 여행', true],['등록면허세', false],
+    ['지방재정', false],['자전거 코스', false],['제천 맛집', true],
+  ];
+  document.getElementById('trend-list').innerHTML = keywords.map(([w, isNew], i) => `
+    <div class="trend-item" onclick="searchTrend('${w}')">
+      <span class="trend-rank${i < 3 ? ' top3' : ''}">${i+1}</span>
+      <span class="trend-word">${w}</span>
+      ${isNew ? '<span class="trend-new">NEW</span>' : ''}
+    </div>
+  `).join('');
+}
+function searchTrend(q) {
+  document.getElementById('search-input').value = q;
+  doSearch();
+}
+
+/* ========== LINKS ========== */
+function renderLinks() {
+  document.getElementById('links-grid').innerHTML = state.links.map((l, i) => `
+    <div class="link-card" onclick="window.open('${l.url}','_blank')">
+      <div class="lc-icon">${l.icon}</div>
+      <div class="lc-name">${l.name}</div>
+      <div class="lc-url">${l.url.replace('https://','').split('/')[0]}</div>
+    </div>
+  `).join('');
+}
+function addLink() {
+  const icon = document.getElementById('link-icon').value || '🔗';
+  const name = document.getElementById('link-name').value.trim();
+  const url  = document.getElementById('link-url').value.trim();
+  if (!name || !url) return;
+  state.links.push({ icon, name, url: url.startsWith('http') ? url : 'https://' + url });
+  document.getElementById('link-icon').value = '';
+  document.getElementById('link-name').value = '';
+  document.getElementById('link-url').value  = '';
+  renderLinks();
+}
+
+/* ========== BLOG ========== */
+function renderBlog() {
+  const det  = document.getElementById('blog-detail-view');
+  const list = document.getElementById('blog-list');
+  if (state.blogView !== null) {
+    det.style.display  = 'block';
+    list.style.display = 'none';
+    const b = state.blogs.find(x => x.id === state.blogView);
+    if (b) {
+      document.getElementById('bd-title').textContent = b.title;
+      document.getElementById('bd-meta').textContent  = b.date + ' · ' + b.cat;
+      document.getElementById('bd-body').textContent  = b.body;
+    }
+    return;
+  }
+  det.style.display  = 'none';
+  list.style.display = 'flex';
+  if (!state.blogs.length) {
+    list.innerHTML = '<div class="empty">아직 작성된 글이 없습니다.</div>';
+    return;
+  }
+  list.innerHTML = state.blogs.slice().reverse().map(b => `
+    <div class="blog-item" onclick="viewBlog(${b.id})">
+      <h3>${b.title}</h3>
+      <p>${b.body.substring(0,80)}...</p>
+      <div class="blog-meta">
+        <span class="cat">${b.cat}</span>
+        <span>${b.date}</span>
+      </div>
+    </div>
+  `).join('');
+}
+function viewBlog(id)     { state.blogView = id;   renderBlog(); }
+function closeBlogDetail(){ state.blogView = null; renderBlog(); }
+function toggleBlogForm() {
+  state.showBlogForm = !state.showBlogForm;
+  document.getElementById('blog-form').style.display = state.showBlogForm ? 'block' : 'none';
+}
+function saveBlog() {
+  const title = document.getElementById('b-title').value.trim();
+  const body  = document.getElementById('b-body').value.trim();
+  const cat   = document.getElementById('b-cat').value;
+  if (!title || !body) return;
+  const now  = new Date();
+  const date = `${now.getFullYear()}.${String(now.getMonth()+1).padStart(2,'0')}.${String(now.getDate()).padStart(2,'0')}`;
+  state.blogs.push({ id: Date.now(), title, body, cat, date });
+  document.getElementById('b-title').value = '';
+  document.getElementById('b-body').value  = '';
+  state.showBlogForm = false;
+  document.getElementById('blog-form').style.display = 'none';
+  renderBlog();
+}
+
+/* ========== GUESTBOOK ========== */
+function renderGuestbook() {
+  const el = document.getElementById('gb-list');
+  if (!state.guestbook.length) {
+    el.innerHTML = '<div class="empty">아직 방명록이 없습니다.</div>';
+    return;
+  }
+  el.innerHTML = state.guestbook.slice().reverse().map(g => `
+    <div class="gb-item">
+      <div class="gb-name">${g.name}</div>
+      <div class="gb-msg">${g.msg}</div>
+      <div class="gb-date">
+        <span>${g.date}</span>
+        <span style="cursor:pointer;font-size:12px;" onclick="deleteGb(${g.id})">삭제</span>
+      </div>
+    </div>
+  `).join('');
+}
+function saveGuestbook() {
+  const name = document.getElementById('gb-name').value.trim() || '익명';
+  const msg  = document.getElementById('gb-msg').value.trim();
+  const pw   = document.getElementById('gb-pw').value || '0000';
+  if (!msg) return;
+  const now  = new Date();
+  const date = `${now.getFullYear()}.${String(now.getMonth()+1).padStart(2,'0')}.${String(now.getDate()).padStart(2,'0')}`;
+  state.guestbook.push({ id: Date.now(), name, msg, date, pw });
+  document.getElementById('gb-name').value = '';
+  document.getElementById('gb-msg').value  = '';
+  document.getElementById('gb-pw').value   = '';
+  renderGuestbook();
+}
+function deleteGb(id) {
+  const pw   = prompt('비밀번호를 입력하세요:');
+  const item = state.guestbook.find(g => g.id === id);
+  if (item && pw === item.pw) {
+    state.guestbook = state.guestbook.filter(g => g.id !== id);
+    renderGuestbook();
+  } else if (pw !== null) alert('비밀번호가 틀렸습니다.');
+}
+
+/* ========== CALENDAR ========== */
+function renderCalendar() {
+  const y = state.calYear, m = state.calMonth;
+  document.getElementById('cal-title').textContent = `${y}년 ${MONTHS[m]}`;
+  const today = new Date();
+  const first = new Date(y, m, 1).getDay();
+  const last  = new Date(y, m+1, 0).getDate();
+  let html = DAYS.map(d => `<div class="cal-day-name">${d}</div>`).join('');
+  for (let i = 0; i < first; i++) {
+    const d = new Date(y, m, -first+i+1);
+    html += `<div class="cal-cell other-month"><div class="cal-date">${d.getDate()}</div></div>`;
+  }
+  for (let d = 1; d <= last; d++) {
+    const key    = `${y}-${m+1}-${d}`;
+    const isToday = d === today.getDate() && m === today.getMonth() && y === today.getFullYear();
+    const isSel   = state.selectedDate === key;
+    const hasEv   = state.events[key] && state.events[key].length;
+    html += `
+      <div class="cal-cell${isToday?' today':''}${isSel?' selected':''}"
+           onclick="selectDate('${key}',${d})">
+        <div class="cal-date">${d}</div>
+        ${hasEv ? '<div class="cal-event-dot"></div>' : ''}
+      </div>`;
+  }
+  document.getElementById('cal-grid').innerHTML = html;
+  renderEvents();
+}
+function changeMonth(dir) {
+  state.calMonth += dir;
+  if (state.calMonth > 11) { state.calMonth = 0;  state.calYear++; }
+  if (state.calMonth < 0)  { state.calMonth = 11; state.calYear--; }
+  renderCalendar();
+}
+function selectDate(key, d) {
+  state.selectedDate = key;
+  renderCalendar();
+  document.getElementById('selected-date-label').textContent =
+    `${state.calYear}년 ${state.calMonth+1}월 ${d}일`;
+}
+function renderEvents() {
+  const el  = document.getElementById('event-list');
+  const key = state.selectedDate;
+  if (!key || !state.events[key] || !state.events[key].length) {
+    el.innerHTML = '<div style="font-size:13px;color:var(--muted);margin-top:8px;">일정이 없습니다.</div>';
+    return;
+  }
+  el.innerHTML = state.events[key].map((ev, i) => `
+    <div class="event-item">
+      <div class="event-dot"></div>
+      <span>${ev}</span>
+      <span class="ev-del" onclick="deleteEvent('${key}',${i})">×</span>
+    </div>
+  `).join('');
+}
+function addEvent() {
+  const key = state.selectedDate;
+  if (!key) { alert('날짜를 먼저 선택하세요.'); return; }
+  const val = document.getElementById('ev-input').value.trim();
+  if (!val) return;
+  if (!state.events[key]) state.events[key] = [];
+  state.events[key].push(val);
+  document.getElementById('ev-input').value = '';
+  renderCalendar();
+}
+function deleteEvent(key, idx) {
+  state.events[key].splice(idx, 1);
+  renderCalendar();
+}
+
+/* ========== INIT ========== */
+renderLinks();
+renderCalendar();
+loadWeather();
+loadTrend();
+setInterval(loadWeather, 10 * 60 * 1000);
+</script>
+</body>
+</html>
