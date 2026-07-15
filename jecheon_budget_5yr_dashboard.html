@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제천시 예산 5개년 분석 | 최승환</title>
+<meta name="description" content="제천시 2021~2026 예산 5개년 분석 대시보드. 세입·세출 구조 변화, 기능별 배분 추이, 자체재원 비율 분석.">
+<meta property="og:title" content="제천시 예산 5개년 분석 | 최승환">
+<meta property="og:description" content="2021~2026 세입·세출 구조 변화, 기능별 배분 추이, 자체재원 비율 분석.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://choijc79.github.io/jecheon_budget_5yr_dashboard.html">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg:#F4F0E8; --surface:#ECE8DE; --border:#D4CEBC;
+  --text:#1A1410; --muted:#7A6A56; --accent:#E07828;
+  --green:#5A7A3A; --purple:#7A4AB0; --blue:#2563EB;
+  --red-bg:#FCEBEB; --red-text:#A32D2D;
+  --green-bg:#EAF3DE; --green-text:#3B6D11;
+}
+[data-theme="dark"] {
+  --bg:#0d1117; --surface:#161b22; --border:#2c3240;
+  --text:#E8E0D0; --muted:#8b8070; --accent:#F08840;
+  --green:#3fb950; --purple:#bc8cff; --blue:#58a6ff;
+  --red-bg:#501313; --red-text:#F7C1C1;
+  --green-bg:#173404; --green-text:#C0DD97;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.8;}
+a{color:var(--accent);text-decoration:none;}
+.site-header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px;transition:background 0.3s,border-color 0.3s;}
+.logo{font-family:'Noto Serif KR',serif;font-size:15px;color:var(--accent);letter-spacing:0.04em;}
+.nav-links{display:flex;gap:1.5rem;font-size:12px;}
+.nav-links a{color:var(--muted);transition:color 0.15s;}
+.nav-links a:hover{color:var(--accent);}
+#theme-toggle{background:none;border:1px solid var(--border);color:var(--muted);font-size:11px;padding:3px 11px;border-radius:20px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;letter-spacing:0.05em;transition:all 0.2s;margin-left:1rem;}
+#theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
+.hero{max-width:860px;margin:0 auto;padding:3rem 2rem 2rem;border-bottom:1px solid var(--border);}
+.hero-label{font-size:11px;letter-spacing:0.12em;color:var(--green);text-transform:uppercase;margin-bottom:0.6rem;}
+.hero h1{font-family:'Noto Serif KR',serif;font-size:clamp(20px,3vw,28px);font-weight:700;line-height:1.3;margin-bottom:0.6rem;}
+.hero p{color:var(--muted);font-size:13px;}
+.dash{max-width:860px;margin:0 auto;padding:2rem 2rem 4rem;}
+.section-title{font-size:12px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin:2rem 0 .9rem;padding-bottom:6px;border-bottom:1px solid var(--border);}
+.metric-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:1.5rem;}
+@media(max-width:600px){.metric-grid{grid-template-columns:repeat(2,1fr);}.two-col{grid-template-columns:1fr!important;}}
+.metric-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.9rem 1.1rem;}
+.metric-label{font-size:11px;color:var(--muted);margin-bottom:5px;}
+.metric-value{font-size:19px;font-weight:500;color:var(--text);}
+.metric-sub{font-size:11px;color:var(--muted);margin-top:4px;}
+.chart-wrap{position:relative;width:100%;margin-bottom:1.5rem;}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted);margin-bottom:8px;}
+.legend span{display:flex;align-items:center;gap:5px;}
+.legend b{width:10px;height:10px;border-radius:2px;display:inline-block;flex-shrink:0;}
+.two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:1.5rem;}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem;}
+.card-title{font-size:13px;font-weight:500;color:var(--text);margin-bottom:.75rem;}
+.tag{display:inline-block;font-size:11px;padding:3px 9px;border-radius:20px;margin:.2rem;}
+.tag-r{background:var(--red-bg);color:var(--red-text);}
+.tag-g{background:var(--green-bg);color:var(--green-text);}
+.diag-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+@media(max-width:500px){.diag-grid{grid-template-columns:repeat(2,1fr);}}
+.diag-item{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:.9rem;font-size:12px;color:var(--muted);line-height:1.5;}
+.diag-num{font-size:17px;font-weight:500;color:var(--text);display:block;margin-bottom:5px;}
+.proposal-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.proposal-item{display:flex;gap:12px;align-items:flex-start;padding:.9rem 1rem;background:var(--surface);border-radius:8px;border-left:3px solid var(--blue);}
+.proposal-num{font-size:12px;font-weight:600;color:var(--blue);min-width:20px;padding-top:1px;}
+.proposal-text{font-size:13px;color:var(--text);line-height:1.6;}
+.proposal-text small{display:block;color:var(--muted);font-size:11px;margin-top:3px;line-height:1.6;}
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:11px;color:var(--muted);letter-spacing:0.04em;margin-top:1rem;}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 예산분석</div>
+  <nav class="nav-links">
+    <a href="/">← 홈으로</a>
+    <a href="/research.html">연구·분석</a>
+    <a href="/jecheon_dashboard.html">e-지방지표</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">☾ 다크</button>
+</header>
+
+<div class="hero">
+  <div class="hero-label">Budget Analysis · 2021–2026</div>
+  <h1>제천시 예산 5개년 분석 대시보드</h1>
+  <p>2021~2026년 당초예산(본예산) 기준 · 세입·세출 구조 변화, 기능별 배분 추이, 자체재원 비율 분석 · 2026.6 작성</p>
+</div>
+
+<div class="dash">
+
+<div class="section-title">재정 총량</div>
+<div class="metric-grid">
+  <div class="metric-card">
+    <div class="metric-label">2026 본예산</div>
+    <div class="metric-value">1조 1,479억</div>
+    <div class="metric-sub">5년 누적 +27.2%</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-label">지방세(2026)</div>
+    <div class="metric-value">1,041억</div>
+    <div class="metric-sub">비중 9.1% — 5년 고정</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-label">보통교부세(2026)</div>
+    <div class="metric-value">4,200억</div>
+    <div class="metric-sub">이전재원 의존 76%</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-label">경직성 경비</div>
+    <div class="metric-value">58.8%</div>
+    <div class="metric-sub">2021년 53.5% → +5.3%p</div>
+  </div>
+</div>
+
+<div class="section-title">예산총액 추이 및 세입 구조</div>
+<div class="legend">
+  <span><b style="background:#378ADD"></b>예산총액(억원)</span>
+  <span><b style="background:#1D9E75"></b>지방세</span>
+  <span><b style="background:#D85A30"></b>보통교부세</span>
+</div>
+<div class="chart-wrap" style="height:240px">
+  <canvas id="c1"></canvas>
+</div>
+
+<div class="section-title">세출 구조 변화</div>
+<div class="two-col">
+  <div>
+    <div class="legend">
+      <span><b style="background:#378ADD"></b>사회복지</span>
+      <span><b style="background:#1D9E75"></b>환경</span>
+      <span><b style="background:#D85A30"></b>농림</span>
+      <span><b style="background:#BA7517"></b>산업·중소</span>
+      <span><b style="background:#7F77DD"></b>기타</span>
+    </div>
+    <div class="chart-wrap" style="height:240px">
+      <canvas id="c2"></canvas>
+    </div>
+  </div>
+  <div>
+    <div class="legend">
+      <span><b style="background:#378ADD"></b>경상이전</span>
+      <span><b style="background:#1D9E75"></b>자본지출</span>
+      <span><b style="background:#888780"></b>인건비</span>
+      <span><b style="background:#D85A30"></b>기타</span>
+    </div>
+    <div class="chart-wrap" style="height:240px">
+      <canvas id="c3"></canvas>
+    </div>
+  </div>
+</div>
+
+<div class="section-title">종합 진단</div>
+<div class="two-col">
+  <div class="card">
+    <div class="card-title" style="color:var(--green-text)">강점</div>
+    <div class="tag tag-g">외부재원 확보 역량</div>
+    <div class="tag tag-g">균특보조금 2.4배 증가</div>
+    <div class="tag tag-g">건전재정 전환 기민성</div>
+    <div class="tag tag-g">전략투자 일관성</div>
+    <div class="tag tag-g">복지 안전망 확충</div>
+  </div>
+  <div class="card">
+    <div class="card-title" style="color:var(--red-text)">약점</div>
+    <div class="tag tag-r">자체세원 비중 9% 고착</div>
+    <div class="tag tag-r">이전재원 의존 76%</div>
+    <div class="tag tag-r">경직성 경비 58.8%</div>
+    <div class="tag tag-r">산업투자 절대액 감소</div>
+    <div class="tag tag-r">민간이전 성과관리 부재</div>
+  </div>
+</div>
+
+<div class="section-title">핵심 지표 비교</div>
+<div class="diag-grid">
+  <div class="diag-item">
+    <span class="diag-num">453 → 370억</span>
+    산업·중소기업 예산<br>절대액 감소 (2021→2026)
+  </div>
+  <div class="diag-item">
+    <span class="diag-num">2,443 → 3,502억</span>
+    사회복지 예산<br>5년간 +43%
+  </div>
+  <div class="diag-item">
+    <span class="diag-num">315 → 100억</span>
+    2024년 순세계잉여금<br>급감 (재정 충격 현실화)
+  </div>
+  <div class="diag-item">
+    <span class="diag-num">164 → 264억</span>
+    지방소득세 +61%<br>최고 성장 세목
+  </div>
+  <div class="diag-item">
+    <span class="diag-num">229 → 539억</span>
+    균형발전특별회계<br>보조금 2.4배
+  </div>
+  <div class="diag-item">
+    <span class="diag-num">2,055억 (17.9%)</span>
+    민간이전 규모<br>성과관리 장치 미비
+  </div>
+</div>
+
+<div class="section-title">2027년 예산편성 방향(안)</div>
+<ul class="proposal-list">
+  <li class="proposal-item">
+    <span class="proposal-num">①</span>
+    <span class="proposal-text">산업·중소기업 비중 3.2% → 4.5% 복원 (약 150억 증액)<small>민간위탁금·민간보조 일몰제 적용 + 절감분 전환, 소상공인 이차보전·지역화폐·청년창업 우선 배분</small></span>
+  </li>
+  <li class="proposal-item">
+    <span class="proposal-num">②</span>
+    <span class="proposal-text">시설투자 '건설 → 운영' 연착륙 설계<small>시설비 5~7%를 준공 후 3년 프로그램 예산으로 의무 배정, 성과지표 체류일수×역내 카드매출로 전환</small></span>
+  </li>
+  <li class="proposal-item">
+    <span class="proposal-num">③</span>
+    <span class="proposal-text">자체세입 확충 — 세정·세외수입 패키지<small>제4산단 법인지방소득세·재산세 귀속 추계, 등록면허세 납세지 관리 강화, 사용료 현실화</small></span>
+  </li>
+  <li class="proposal-item">
+    <span class="proposal-num">④</span>
+    <span class="proposal-text">통합재정안정화기금 적립 규칙화<small>보통교부세 전년比 2% 이상 증가 시 증가분 30% 의무 적립 — 2026년(+120억)이 적용 첫해로 적기</small></span>
+  </li>
+  <li class="proposal-item">
+    <span class="proposal-num">⑤</span>
+    <span class="proposal-text">대규모 전략사업 연차 평탄화<small>비행장 부지·소각장 등 계속비·연차 분할 전환, 특정 연도 자본지출 쏠림 완화</small></span>
+  </li>
+  <li class="proposal-item">
+    <span class="proposal-num">⑥</span>
+    <span class="proposal-text">목적재원 연계형 패키지 편성<small>소멸기금·균특·고향사랑기부금을 정주인구+생활인구 단일 목표로 통합 설계</small></span>
+  </li>
+</ul>
+
+</div><!-- /.dash -->
+
+<footer>© 2026 최승환 · 충청북도 제천시청 · 도시경영학 박사과정 · <a href="/">choijc79.github.io</a></footer>
+
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'light';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'☀ 라이트':'☾ 다크';
+})();
+function toggleTheme(){
+  var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'☀ 라이트':'☾ 다크';
+  buildCharts();
+}
+
+function getColors(){
+  var dark=document.documentElement.getAttribute('data-theme')==='dark';
+  return {
+    grid: dark?'rgba(255,255,255,.07)':'rgba(0,0,0,.06)',
+    tick: dark?'#8b8070':'#7A6A56',
+    bar2021: dark?'#1a3a5c':'#B5D4F4'
+  };
+}
+
+var charts=[];
+function buildCharts(){
+  charts.forEach(function(c){c.destroy();});
+  charts=[];
+  var c=getColors();
+
+  charts.push(new Chart(document.getElementById('c1'),{
+    type:'bar',
+    data:{
+      labels:['2021','2022','2023','2024','2025','2026'],
+      datasets:[
+        {label:'예산총액',data:[9028,10067,10595,10827,11134,11479],backgroundColor:'#378ADD',order:1,yAxisID:'y'},
+        {label:'보통교부세',data:[3158,4000,4086,4043,4080,4200],backgroundColor:'#D85A30',order:1,yAxisID:'y'},
+        {label:'지방세',data:[823,893,957,971,973,1041],type:'line',borderColor:'#1D9E75',backgroundColor:'transparent',pointBackgroundColor:'#1D9E75',borderWidth:2,pointRadius:4,order:0,yAxisID:'y'}
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{grid:{color:c.grid},ticks:{color:c.tick,callback:function(v){return v.toLocaleString();}}},x:{grid:{display:false},ticks:{color:c.tick}}}}
+  }));
+
+  charts.push(new Chart(document.getElementById('c2'),{
+    type:'bar',
+    data:{
+      labels:['사회복지','환경','농림','문화관광','산업·중소','교통물류','국토개발','기타'],
+      datasets:[
+        {label:'2021',data:[27.1,14.1,12.0,5.3,5.0,6.3,6.1,24.1],backgroundColor:c.bar2021},
+        {label:'2026',data:[30.5,15.7,9.2,6.9,3.2,4.1,5.2,25.2],backgroundColor:'#378ADD'}
+      ]
+    },
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:c.grid},ticks:{color:c.tick,callback:function(v){return v+'%';}}},y:{grid:{display:false},ticks:{color:c.tick,font:{size:11}}}}}
+  }));
+
+  charts.push(new Chart(document.getElementById('c3'),{
+    type:'bar',
+    data:{
+      labels:['경상이전','자본지출','인건비','기타'],
+      datasets:[
+        {label:'2021',data:[41.5,32.4,12.0,14.1],backgroundColor:c.bar2021},
+        {label:'2026',data:[47.3,28.1,11.5,13.1],backgroundColor:'#378ADD'}
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{grid:{color:c.grid},ticks:{color:c.tick,callback:function(v){return v+'%';}}},x:{grid:{display:false},ticks:{color:c.tick,font:{size:11}}}}}
+  }));
+}
+
+buildCharts();
+</script>
+</body>
+</html>

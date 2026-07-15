@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>라오까이 → 사파 → 하장 오토바이 투어</title>
+<meta name="description" content="베트남 북부 산악 오토바이 투어. 라오까이 렌탈 출발, 사파·하장 4박5일 완전 가이드.">
+<meta property="og:title" content="라오까이 → 사파 → 하장 오토바이 투어 | 최승환">
+<meta property="og:description" content="베트남 북부 산악 오토바이 투어. 라오까이 렌탈 출발, 사파·하장 4박5일 완전 가이드.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://choijc79.github.io/vietnam-motorbike-tour.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="라오까이 → 사파 → 하장 오토바이 투어 | 최승환">
+<meta name="twitter:description" content="베트남 북부 산악 오토바이 투어. 라오까이 렌탈 출발, 사파·하장 4박5일 완전 가이드.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nanum+Myeongjo:wght@400;700&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+  --bg:      #F4F0E8;
+  --surface: #ECE8DE;
+  --border:  #D4CEBC;
+  --text:    #1A1410;
+  --ink:     #2A2018;
+  --muted:   #7A6A56;
+  --accent:  #E07828;
+  --red:     #D96820;
+  --light:   #FDFAF4;
+  --amber:   #E07828;
+  --green:   #5A7A3A;
+  --lake:    #E07828;
+  --purple:  #7A4AB0;
+}
+[data-theme="dark"] {
+  --bg:      #0d1117;
+  --surface: #161b22;
+  --border:  #2c3240;
+  --text:    #E8E0D0;
+  --ink:     #F0E8D8;
+  --muted:   #8b8070;
+  --accent:  #F08840;
+  --red:     #E07830;
+  --light:   #161b22;
+  --amber:   #F08840;
+  --green:   #3fb950;
+  --lake:    #F08840;
+  --purple:  #bc8cff;
+}
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--dark); color:var(--cream); font-family:'Barlow',sans-serif; font-weight:300; overflow-x:hidden; }
+
+  /* HERO */
+  .hero { position:relative; height:100vh; min-height:600px; display:flex; align-items:flex-end; padding:60px 8vw; overflow:hidden; background:linear-gradient(160deg,#0D0D0D 0%,#1a0a00 40%,#0D1A1A 100%); }
+  .hero-noise { position:absolute; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); opacity:0.04; pointer-events:none; }
+  .hero-bg-svg { position:absolute; inset:0; width:100%; height:100%; opacity:0.13; pointer-events:none; }
+  .hero-flag { position:absolute; top:40px; right:8vw; font-size:80px; opacity:0.2; animation:float 6s ease-in-out infinite; }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+  .hero-label { font-size:11px; letter-spacing:6px; text-transform:uppercase; color:var(--gold); margin-bottom:16px; opacity:0; animation:fadeUp 0.8s 0.3s forwards; }
+  .hero-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(52px,10vw,115px); line-height:0.9; letter-spacing:2px; margin-bottom:24px; opacity:0; animation:fadeUp 0.8s 0.5s forwards; }
+  .hero-title span { color:var(--red); }
+  .hero-sub { font-size:14px; color:var(--muted); letter-spacing:1.5px; opacity:0; animation:fadeUp 0.8s 0.7s forwards; max-width:500px; line-height:1.9; }
+  .hero-meta { position:absolute; right:8vw; bottom:60px; text-align:right; opacity:0; animation:fadeUp 0.8s 0.9s forwards; }
+  .hero-meta .km { font-family:'Bebas Neue',sans-serif; font-size:56px; color:var(--gold); line-height:1; }
+  .hero-meta .km-label { font-size:10px; letter-spacing:4px; color:var(--muted); text-transform:uppercase; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+
+  /* OVERVIEW */
+  .overview { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:2px; border-top:1px solid #2a2a2a; }
+  .ov-item { padding:28px 20px; background:var(--ash); text-align:center; transition:background 0.3s; }
+  .ov-item:hover { background:#333; }
+  .ov-icon { font-size:24px; margin-bottom:6px; }
+  .ov-num { font-family:'Bebas Neue',sans-serif; font-size:30px; color:var(--gold); }
+  .ov-label { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:3px; }
+
+  /* RENTAL BANNER */
+  .rental-banner { background:linear-gradient(135deg,#1a0800,#2a1200); border:1px solid #3a2010; margin:48px 8vw 0; padding:32px 36px; display:grid; grid-template-columns:auto 1fr auto; gap:28px; align-items:center; }
+  @media(max-width:700px){.rental-banner{grid-template-columns:1fr;gap:16px;}}
+  .rental-icon { font-size:44px; }
+  .rental-badge { display:inline-block; background:var(--red); color:white; font-size:9px; letter-spacing:3px; text-transform:uppercase; padding:3px 10px; margin-bottom:8px; }
+  .rental-title { font-family:'Bebas Neue',sans-serif; font-size:26px; color:var(--gold); margin-bottom:4px; }
+  .rental-name { font-size:15px; color:var(--cream); font-weight:600; margin-bottom:6px; }
+  .rental-desc { font-size:13px; color:#999; line-height:1.8; }
+  .rental-chips { display:flex; flex-direction:column; gap:8px; }
+  .rental-chip { background:var(--ash); border:1px solid #444; padding:8px 16px; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--cream); text-decoration:none; text-align:center; white-space:nowrap; transition:all 0.2s; }
+  .rental-chip:hover { background:var(--red); border-color:var(--red); }
+
+  /* SEC HEADER */
+  .sec-header { padding:72px 8vw 36px; border-bottom:1px solid #222; }
+  .sec-tag { font-size:10px; letter-spacing:5px; text-transform:uppercase; color:var(--red); margin-bottom:10px; }
+  .sec-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(36px,6vw,72px); line-height:1; }
+  .divider { width:40px; height:2px; background:var(--red); margin:14px 0 20px; }
+
+  /* DAY CARDS */
+  .days-wrap { padding:0 8vw 60px; }
+  .day-card { display:grid; grid-template-columns:110px 1fr; border-bottom:1px solid #222; padding:44px 0; opacity:0; transform:translateY(20px); transition:all 0.6s; }
+  .day-card.visible { opacity:1; transform:translateY(0); }
+  .day-num-col { padding-right:32px; padding-top:4px; }
+  .day-num { font-family:'Bebas Neue',sans-serif; font-size:60px; line-height:1; color:#252525; }
+  .day-badge { display:inline-block; background:var(--red); color:white; font-size:9px; letter-spacing:3px; text-transform:uppercase; padding:3px 8px; margin-top:-6px; }
+  .day-route { font-family:'Bebas Neue',sans-serif; font-size:clamp(20px,3vw,38px); letter-spacing:1px; margin-bottom:4px; }
+  .day-route .arrow { color:var(--gold); margin:0 6px; }
+  .day-dist { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-bottom:18px; }
+  .day-desc { font-family:'Nanum Myeongjo',serif; font-size:14.5px; line-height:1.95; color:#aaa; max-width:680px; margin-bottom:22px; }
+  .stops-grid { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:22px; }
+  .stop-chip { background:var(--ash); border:1px solid #333; padding:7px 14px; font-size:12px; color:var(--cream); text-decoration:none; display:inline-flex; align-items:center; gap:5px; transition:all 0.2s; }
+  .stop-chip:hover { background:var(--red); border-color:var(--red); }
+  .info-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  @media(max-width:600px){.info-row{grid-template-columns:1fr;}.day-card{grid-template-columns:1fr;}.day-num-col{padding:0 0 12px;}}
+  .info-block { background:var(--ash); border-left:3px solid var(--gold); padding:16px; }
+  .info-block.green { border-left-color:var(--green); }
+  .info-block.red { border-left-color:var(--red); }
+  .info-block-title { font-size:9px; letter-spacing:4px; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+  .info-block-content { font-size:13px; line-height:1.8; color:#ccc; }
+  .info-block-content strong { color:var(--cream); font-weight:600; }
+
+  /* MAP SECTION */
+  .map-section { padding:0 8vw 80px; }
+  .map-sec-header { padding:56px 0 28px; border-bottom:1px solid #222; margin-bottom:32px; }
+  .map-tabs { display:flex; gap:2px; margin-bottom:4px; flex-wrap:wrap; }
+  .map-tab { background:var(--ash); border:none; color:var(--muted); font-family:'Barlow',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; padding:11px 20px; cursor:pointer; transition:all 0.2s; }
+  .map-tab.active { background:var(--red); color:white; }
+  .map-tab:hover:not(.active) { background:#333; color:var(--cream); }
+  .map-panel { display:none; }
+  .map-panel.active { display:block; }
+  .gmap-wrap { border:1px solid #2a2a2a; overflow:hidden; }
+  .gmap-embed { width:100%; height:520px; border:0; display:block; }
+
+  /* route quick links */
+  .route-links { background:var(--charcoal); padding:18px 22px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; border:1px solid #2a2a2a; border-top:none; }
+  .route-links-label { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); width:100%; }
+  .route-btn { display:inline-block; background:var(--ash); color:var(--cream); padding:8px 16px; font-size:11px; letter-spacing:2px; text-transform:uppercase; text-decoration:none; border:1px solid #444; transition:all 0.2s; }
+  .route-btn:hover { background:var(--gold); color:var(--dark); border-color:var(--gold); }
+  .route-btn.full { background:var(--red); border-color:var(--red); }
+  .route-btn.full:hover { background:#a93226; }
+
+  /* WAYPOINTS */
+  .waypoints-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(185px,1fr)); gap:2px; margin-top:4px; }
+  .wp { background:var(--charcoal); padding:16px; border-top:2px solid transparent; transition:all 0.2s; }
+  .wp:hover { border-top-color:var(--gold); background:var(--ash); }
+  .wp-day { font-size:9px; letter-spacing:4px; text-transform:uppercase; color:var(--red); }
+  .wp-name { font-family:'Bebas Neue',sans-serif; font-size:17px; margin:3px 0; }
+  .wp-coord { font-size:10px; color:var(--muted); }
+  .wp-map-link { display:inline-block; margin-top:7px; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); text-decoration:none; }
+  .wp-map-link:hover { color:var(--cream); }
+
+  /* RESTAURANTS */
+  .resto-grid { padding:0 8vw 80px; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2px; }
+  .resto-card { background:var(--charcoal); padding:26px; border-top:1px solid #222; transition:all 0.3s; position:relative; overflow:hidden; }
+  .resto-card::before { content:''; position:absolute; bottom:0;left:0;right:0; height:3px; background:var(--red); transform:scaleX(0); transition:transform 0.3s; transform-origin:left; }
+  .resto-card:hover::before { transform:scaleX(1); }
+  .resto-card:hover { background:var(--ash); }
+  .resto-area { font-size:9px; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+  .resto-name { font-family:'Bebas Neue',sans-serif; font-size:22px; margin-bottom:4px; }
+  .resto-tag { font-size:11px; color:var(--muted); margin-bottom:12px; }
+  .resto-desc { font-size:13px; line-height:1.8; color:#999; }
+  .resto-price { margin-top:12px; font-size:11px; letter-spacing:2px; text-transform:uppercase; }
+  .resto-price span { color:var(--gold); }
+  .resto-map-link { display:inline-block; margin-top:12px; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--red); text-decoration:none; }
+  .resto-map-link:hover { color:var(--cream); }
+
+  /* ACCOMMODATION */
+  .accom-wrap { padding:0 8vw 80px; }
+  .accom-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(225px,1fr)); gap:2px; margin-top:32px; }
+  .accom-card { background:var(--charcoal); padding:26px; position:relative; overflow:hidden; transition:background 0.3s; }
+  .accom-card:hover { background:var(--ash); }
+  .accom-night { font-family:'Bebas Neue',sans-serif; font-size:56px; color:#1e1e1e; line-height:1; position:absolute; top:8px; right:12px; }
+  .accom-city { font-size:9px; letter-spacing:4px; text-transform:uppercase; color:var(--red); margin-bottom:6px; }
+  .accom-name { font-family:'Bebas Neue',sans-serif; font-size:19px; margin-bottom:5px; }
+  .accom-stars { color:var(--gold); font-size:12px; margin-bottom:9px; }
+  .accom-desc { font-size:12px; line-height:1.8; color:#999; }
+  .accom-price { margin-top:12px; font-size:13px; color:var(--gold); }
+  .accom-map-link { display:inline-block; margin-top:8px; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); text-decoration:none; }
+  .accom-map-link:hover { color:var(--cream); }
+
+  /* TIPS */
+  .tips-wrap { background:var(--charcoal); padding:72px 8vw; border-top:1px solid #222; }
+  .tips-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(205px,1fr)); gap:18px; margin-top:40px; }
+  .tip-item { padding:20px; background:var(--ash); border-left:3px solid var(--gold); }
+  .tip-icon { font-size:22px; margin-bottom:10px; }
+  .tip-title { font-size:13px; font-weight:600; margin-bottom:6px; }
+  .tip-text { font-size:12px; color:#888; line-height:1.8; }
+
+  /* FOOTER */
+  footer { padding:34px 8vw; background:#0a0a0a; border-top:1px solid #1a1a1a; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; }
+  footer .foot-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--gold); }
+  footer .foot-note { font-size:11px; color:var(--muted); }
+  .highlight { color:var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-noise"></div>
+  <svg class="hero-bg-svg" viewBox="0 0 1200 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <polyline points="80,580 180,430 440,320 660,235 860,165 1050,235 1140,310" stroke="#C0392B" stroke-width="2.2" fill="none" stroke-dasharray="7,4"/>
+    <circle cx="80" cy="580" r="8" fill="#D4A843"/><circle cx="180" cy="430" r="7" fill="#C0392B"/>
+    <circle cx="440" cy="320" r="7" fill="#C0392B"/><circle cx="660" cy="235" r="7" fill="#D4A843"/>
+    <circle cx="860" cy="165" r="7" fill="#C0392B"/><circle cx="1050" cy="235" r="7" fill="#C0392B"/>
+    <circle cx="1140" cy="310" r="7" fill="#D4A843"/>
+    <text x="52" y="565" fill="#D4A843" font-size="10" opacity="0.9">라오까이</text>
+    <text x="155" y="415" fill="#C0392B" font-size="10" opacity="0.9">사파</text>
+    <text x="415" y="305" fill="#C0392B" font-size="10" opacity="0.9">하장</text>
+    <text x="635" y="220" fill="#D4A843" font-size="10" opacity="0.9">꽌바</text>
+    <text x="840" y="150" fill="#C0392B" font-size="10" opacity="0.9">룽꾸</text>
+    <text x="1020" y="220" fill="#C0392B" font-size="10" opacity="0.9">둥반</text>
+    <text x="1110" y="295" fill="#D4A843" font-size="10" opacity="0.9">마피렝</text>
+  </svg>
+  <div class="hero-flag">🇻🇳</div>
+  <div>
+    <div class="hero-label">Vietnam Motorbike Tour · 4박 5일 · 라오까이 렌탈 출발</div>
+    <h1 class="hero-title">라오까이<br><span>→ 사파</span><br>→ 하장</h1>
+    <p class="hero-sub">하노이 야간열차 → 라오까이 오토바이 렌탈 → 출발.<br>까르스트 고원·소수민족 루프의 정수를 달린다.</p>
+  </div>
+  <div class="hero-meta">
+    <div class="km">~780</div>
+    <div class="km-label">오토바이 총 km</div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="overview">
+  <div class="ov-item"><div class="ov-icon">🗓</div><div class="ov-num">4박 5일</div><div class="ov-label">총 일정</div></div>
+  <div class="ov-item"><div class="ov-icon">🏍</div><div class="ov-num">~780km</div><div class="ov-label">오토바이 주행</div></div>
+  <div class="ov-item"><div class="ov-icon">🚂</div><div class="ov-num">D-1 야간</div><div class="ov-label">하노이→라오까이</div></div>
+  <div class="ov-item"><div class="ov-icon">📍</div><div class="ov-num">12+</div><div class="ov-label">핵심 경유지</div></div>
+  <div class="ov-item"><div class="ov-icon">🍜</div><div class="ov-num">7</div><div class="ov-label">엄선 식당</div></div>
+  <div class="ov-item"><div class="ov-icon">🏨</div><div class="ov-num">4</div><div class="ov-label">추천 숙소</div></div>
+</section>
+
+<!-- RENTAL BANNER -->
+<div class="rental-banner">
+  <div class="rental-icon">🏍</div>
+  <div>
+    <div class="rental-badge">오토바이 렌탈 거점 · 라오까이 기차역 도보 5분</div>
+    <div class="rental-title">추에 세 마이 라오까이 (구글 평점 ★5.0)</div>
+    <div class="rental-name">077 Khánh Yên, Lào Cai · 📞 +84 888 360 999</div>
+    <div class="rental-desc">
+      영업 05:30~21:00 · Honda Wave 125cc 약 <strong style="color:var(--gold)">120,000동/일</strong> (~$5~6) · 출발 전 엔진오일 교환·연료 1L 제공<br>
+      야간열차 도착 즉시 수령 가능 · 영어 소통 · Zalo·WhatsApp 예약<br>
+      <span style="color:#666;font-size:12px;">※ 예비: 368호 렌탈 (368 Khánh Yên, ☎ +84 856 965 988, 평점 4.9) — 야마하 엑사이터 보유</span>
+    </div>
+  </div>
+  <div class="rental-chips">
+    <a class="rental-chip" href="https://maps.google.com/?q=22.490452,103.9794261" target="_blank">📍 1번 렌탈샵</a>
+    <a class="rental-chip" href="https://maps.google.com/?q=22.490057,103.979312" target="_blank">📍 예비 렌탈샵</a>
+    <a class="rental-chip" href="tel:+84888360999">📞 전화 연결</a>
+  </div>
+</div>
+
+<!-- DAY BY DAY -->
+<div class="sec-header" style="margin-top:48px;">
+  <div class="sec-tag">● Day-by-Day Route</div>
+  <h2 class="sec-title">일일 코스</h2>
+</div>
+
+<div class="days-wrap">
+
+  <!-- D1 -->
+  <div class="day-card">
+    <div class="day-num-col"><div class="day-num">01</div><div class="day-badge">D-1</div></div>
+    <div class="day-content">
+      <div class="day-route">하노이 탐방<span class="arrow">→</span>야간열차 탑승</div>
+      <div class="day-dist">· 열차 약 8시간 · 라오까이 도착은 익일 새벽 6시</div>
+      <p class="day-desc">오전~오후 하노이 구시가지(호안끼엠 호수, 오꽌쯔엉 성문)를 자유 탐방하고 분짜·에그커피로 하노이 미식을 압축 체험한다. 저녁 하노이 역에서 라오까이행 야간 침대열차(Livitrans·Chapa Express) 탑승. 열차 내 침대칸이 숙박 공간이므로 별도 하노이 숙소 불필요.</p>
+      <div class="stops-grid">
+        <a class="stop-chip" href="https://maps.google.com/?q=21.034059,105.8506368" target="_blank">📍 하노이 구시가지</a>
+        <a class="stop-chip" href="https://maps.google.com/?q=21.037311,105.8521155" target="_blank">📍 오꽌쯔엉 성문</a>
+        <a class="stop-chip" href="https://maps.google.com/?q=21.021,105.841" target="_blank">📍 하노이 기차역</a>
+      </div>
+      <div class="info-row">
+        <div class="info-block"><div class="info-block-title">🍜 식사</div><div class="info-block-content"><strong>점심:</strong> 분짜 닥낌 (1 Hàng Mành)<br><strong>오후:</strong> 에그커피 카페 진<br><strong>저녁:</strong> 타히엔 비어거리 비아허이</div></div>
+        <div class="info-block red"><div class="info-block-title">⚠ 열차 예약</div><div class="info-block-content">dsvn.vn / baolau.com 사전 예약 필수. 소프트베드 4인실 약 300,000~500,000동. 성수기 2주 전 매진 잦음.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- D2 -->
+  <div class="day-card">
+    <div class="day-num-col"><div class="day-num">02</div><div class="day-badge">D-2</div></div>
+    <div class="day-content">
+      <div class="day-route">라오까이 렌탈<span class="arrow">→</span>사파</div>
+      <div class="day-dist">· 국도 4D 업힐 38km · 약 1시간 · 사파 1박</div>
+      <p class="day-desc">새벽 6시 라오까이 도착 직후 역 도보 5분 거리 렌탈샵에서 오토바이 수령. 국도 4D를 따라 사파까지 38km 업힐 — 안개가 걷히는 새벽 계곡 뷰가 압권이다. 사파 도착 후 조식, 무옹호아 계곡 계단식 논 라이딩. 맑은 날 판시판봉 케이블카 탑승 권장. 저녁 흐몽 야시장.</p>
+      <div class="stops-grid">
+        <a class="stop-chip" href="https://maps.google.com/?q=22.490452,103.9794261" target="_blank">📍 렌탈샵 출발점</a>
+        <a class="stop-chip" href="https://maps.google.com/?q=22.3404698,103.8564085" target="_blank">📍 사파 타운</a>
+        <a class="stop-chip" href="https://maps.google.com/?q=22.29,103.78" target="_blank">📍 무옹호아 계곡 논</a>
+      </div>
+      <div class="info-row">
+        <div class="info-block green"><div class="info-block-title">🍲 저녁</div><div class="info-block-content"><strong>O Quy Ho Sa Pa Restaurant</strong><br>흑계 호박전골. 찬 산간 날씨에 최적. 4인 약 100만동.</div></div>
+        <div class="info-block"><div class="info-block-title">🏨 숙소</div><div class="info-block-content"><strong>Sacred Fansipan Hotel</strong><br>계단식 논 뷰 발코니·온천탕. 1박 $40~70.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- D3 -->
+  <div class="day-card">
+    <div class="day-num-col"><div class="day-num">03</div><div class="day-badge">D-3</div></div>
+    <div class="day-content">
+      <div class="day-route">사파<span class="arrow">→</span>하장 시티</div>
+      <div class="day-dist">· 국도 4D→70B · 약 215km · 5~6시간 · 하장 1박</div>
+      <p class="day-desc">사파에서 라오까이로 내려간 뒤 국도 70B를 따라 동쪽으로 달린다. 중간 박하(Bắc Hà) 일요 소수민족 시장(주말 방문 강력 추천)·호앙수피(Hoàng Su Phì) 계단식 논(10~11월 황금빛 절정)을 경유. 하장 시내 도착 후 야경 뷰포인트. 루프 브리핑·코스 확인.</p>
+      <div class="stops-grid">
+        <a class="stop-chip" href="https://maps.google.com/?q=22.53,104.35" target="_blank">📍 호앙수피 계단식 논</a>
+        <a class="stop-chip" href="https://maps.google.com/?q=22.8055152,104.9759682" target="_blank">📍 하장 시티 호스텔</a>
+        <a class="stop-chip" href="https://maps.google.com/?q=22.8233677,104.9783376" target="_blank">📍 하장 뷰포인트</a>
+      </div>
+      <div class="info-row">
+        <div class="info-block"><div class="info-block-title">🍜 점심 (경유)</div><div class="info-block-content">박하 시장 현지식당. 흐몽식 돼지고기+쌀국수 약 40,000동. 주말 한정.</div></div>
+        <div class="info-block red"><div class="info-block-title">⚠ 주의</div><div class="info-block-content">오전 7시 이전 출발 필수. 호앙수피 경유 시 비포장 20km 구간. 우기 낙석 주의.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- D4 -->
+  <div class="day-card">
+    <div class="day-num-col"><div class="day-num">04</div><div class="day-badge">D-4</div></div>
+    <div class="day-content">
+      <div class="day-route">하장<span class="arrow">→</span>꽌바<span class="arrow">→</span>룽꾸<span class="arrow">→</span>둥반<span class="arrow">→</span>메오박</div>
+      <div class="day-dist">· 하장 루프 Day 1 · 국도 4C · 약 150km · 메오박 1박</div>
+      <p class="day-desc">하장 루프 전반부. 꽌바 헤브슨 게이트(해발 1,500m 쌍봉 전망) → 옌민 → 룽꾸 국기 게양대(베트남 최북단, 중국 국경 조망) → 둥반 고대 거리(석회암 고원 위 소수민족 타운) → 메오박. 까르스트 고원과 협곡이 교차하는 북베트남 최고의 라이딩 구간.</p>
+      <div class="stops-grid">
+        <a class="stop-chip" href="https://maps.google.com/?q=23.0492816,104.9926772" target="_blank">📍 꽌바 헤브슨 게이트</a>
+        <a class="stop-chip" href="https://maps.google.com/?q=23.3634061,105.3163001" target="_blank">📍 룽꾸 국기 게양대</a>
+        <a class="stop-chip" href="https://maps.google.com/?q=23.2782612,105.361378" target="_blank">📍 둥반 고대 거리</a>
+        <a class="stop-chip" href="https://maps.google.com/?q=23.205846,105.4153661" target="_blank">📍 파비 흐몽 마을</a>
+      </div>
+      <div class="info-row">
+        <div class="info-block green"><div class="info-block-title">🍲 저녁 · 둥반</div><div class="info-block-content"><strong>둥반 고대 거리 로컬식당</strong><br>옥수수술(Mèn Mén)+구운 양고기꼬치. 약 80,000동/인.</div></div>
+        <div class="info-block"><div class="info-block-title">🏨 숙소 · 메오박</div><div class="info-block-content"><strong>Pavi Hmong Village Homestay</strong><br>전통 토기 가옥. 저녁+옥수수 막걸리 포함. $10~18/인.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- D5 -->
+  <div class="day-card">
+    <div class="day-num-col"><div class="day-num">05</div><div class="day-badge">D-5</div></div>
+    <div class="day-content">
+      <div class="day-route">메오박<span class="arrow">→</span><span class="highlight">마피렝</span><span class="arrow">→</span>하장 귀환</div>
+      <div class="day-dist">· 하장 루프 Day 2 · 약 100km · 야간버스 하노이 복귀</div>
+      <p class="day-desc">투어의 클라이막스. <strong class="highlight">마피렝 패스(Mã Pí Lèng)</strong>는 해발 1,500m에서 뇨꿰 강 협곡을 내려다보는 베트남 최극적 구간. 절벽 위 에코롯지 카페에서 코코넛 커피·협곡 뷰. 오후 하장 귀환 후 오토바이 반납. 야간버스(19~21시)로 하노이 복귀.</p>
+      <div class="stops-grid">
+        <a class="stop-chip" href="https://maps.google.com/?q=23.24,105.4" target="_blank">📍 마피렝 패스 ★</a>
+        <a class="stop-chip" href="https://maps.google.com/?q=23.2301815,105.4139483" target="_blank">📍 마피렝 에코롯지 카페</a>
+        <a class="stop-chip" href="https://maps.google.com/?q=23.260498,105.252943" target="_blank">📍 둥반 카르스트 공원</a>
+      </div>
+      <div class="info-row">
+        <div class="info-block"><div class="info-block-title">☕ 점심 · 마피렝</div><div class="info-block-content"><strong>Mã Pí Lèng EcoLodge 카페</strong><br>협곡 뷰 절벽 위 카페. 코코넛 커피+바인미. 40,000~80,000동.</div></div>
+        <div class="info-block red"><div class="info-block-title">⚠ 귀환</div><div class="info-block-content">하장→하노이 야간버스 전날 예약 필수. 하장 시티 호스텔 예약 대행 가능. 약 7~8시간.</div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- MAP SECTION -->
+<div class="map-section">
+  <div class="map-sec-header">
+    <div class="sec-tag">● Google Maps · 오토바이 경로</div>
+    <h2 class="sec-title">구간별 루트 지도</h2>
+    <div class="divider"></div>
+    <p style="font-size:13px;color:var(--muted);line-height:1.9;max-width:640px;">탭을 클릭하면 각 구간 오토바이 경로를 구글맵에서 확인할 수 있습니다.<br>전체 루트: <strong style="color:var(--cream)">라오까이 → 사파 → 하장 → 꽌바 → 룽꾸 → 둥반 → 마피렝 → 하장</strong></p>
+  </div>
+
+  <div class="map-tabs">
+    <button class="map-tab active" onclick="showMap('full',this)">🗺 전체 루트</button>
+    <button class="map-tab" onclick="showMap('d2',this)">D2 · 라오까이→사파</button>
+    <button class="map-tab" onclick="showMap('d3',this)">D3 · 사파→하장</button>
+    <button class="map-tab" onclick="showMap('d4',this)">D4 · 하장 루프 1</button>
+    <button class="map-tab" onclick="showMap('d5',this)">D5 · 마피렝 루프</button>
+  </div>
+
+  <!-- 전체 루트 -->
+  <div class="map-panel active gmap-wrap" id="map-full">
+    <iframe class="gmap-embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed?pb=!1m58!1m12!1m3!1d1884659!2d104.68!3d22.92!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m43!3e2!4m5!1s0x36cd4e3c848c1389%3A0x5b7d360e4b5d87d2!2sLao+Cai+Railway+Station!3m2!1d22.4916!2d103.9784!4m5!1s0x36ccdb5a49ded77d%3A0x34cc33a7f0c3e484!2sSa+Pa%2C+Vietnam!3m2!1d22.3404!2d103.8564!4m5!1s0x36cd8a0240d0e319%3A0x185bda4ca99e61a1!2sH%C3%A0+Giang%2C+Vietnam!3m2!1d22.8055!2d104.9759!4m5!1s0x36ccf9f0d3801c6b%3A0x1ad99db56d5ea!2sQuan+Ba+Heaven+Gate!3m2!1d23.0492!2d104.9926!4m5!1s0x36ccf886697c6c85%3A0x28ec4b00e04b6c4b!2sLung+Cu+Flag+Tower!3m2!1d23.3634!2d105.3163!4m5!1s0x36cd685959a6c685%3A0x69d54c00ec6d6749!2sDong+Van+Ancient+Street!3m2!1d23.2782!2d105.3613!4m5!1s0x36cd85e4db1f5a3b%3A0x0!2sMeo+Vac%2C+Ha+Giang!3m2!1d23.15!2d105.43!5e0!3m2!1sko!2skr!4v1717000000000">
+    </iframe>
+  </div>
+
+  <!-- D2: 라오까이→사파 -->
+  <div class="map-panel gmap-wrap" id="map-d2">
+    <iframe class="gmap-embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d118700!2d103.917!3d22.415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e2!4m3!3m2!1d22.4916!2d103.9784!4m3!3m2!1d22.3404!2d103.8564!5e0!3m2!1sko!2skr!4v1717000000001">
+    </iframe>
+  </div>
+
+  <!-- D3: 사파→하장 -->
+  <div class="map-panel gmap-wrap" id="map-d3">
+    <iframe class="gmap-embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed?pb=!1m24!1m12!1m3!1d593000!2d104.4!3d22.57!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m9!3e2!4m3!3m2!1d22.3404!2d103.8564!4m3!3m2!1d22.8055!2d104.9759!5e0!3m2!1sko!2skr!4v1717000000002">
+    </iframe>
+  </div>
+
+  <!-- D4: 하장→꽌바→룽꾸→둥반→메오박 -->
+  <div class="map-panel gmap-wrap" id="map-d4">
+    <iframe class="gmap-embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed?pb=!1m46!1m12!1m3!1d474000!2d105.18!3d23.1!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m31!3e2!4m3!3m2!1d22.8055!2d104.9759!4m3!3m2!1d23.0492!2d104.9926!4m3!3m2!1d23.3634!2d105.3163!4m3!3m2!1d23.2782!2d105.3613!4m3!3m2!1d23.15!2d105.43!5e0!3m2!1sko!2skr!4v1717000000003">
+    </iframe>
+  </div>
+
+  <!-- D5: 메오박→마피렝→하장 -->
+  <div class="map-panel gmap-wrap" id="map-d5">
+    <iframe class="gmap-embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed?pb=!1m34!1m12!1m3!1d299000!2d105.2!3d23.18!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m19!3e2!4m3!3m2!1d23.15!2d105.43!4m3!3m2!1d23.24!2d105.4!4m3!3m2!1d23.2782!2d105.3613!4m3!3m2!1d22.8055!2d104.9759!5e0!3m2!1sko!2skr!4v1717000000004">
+    </iframe>
+  </div>
+
+  <!-- DIRECT ROUTE LINKS -->
+  <div class="route-links">
+    <div class="route-links-label">🗺 구글맵 경로 직접 열기 (오토바이/자동차 모드)</div>
+    <a class="route-btn full" href="https://www.google.com/maps/dir/Lao+Cai+Railway+Station,+Vietnam/Sa+Pa,+Vietnam/Ha+Giang,+Vietnam/Quan+Ba+Heaven+Gate/Lung+Cu+Flag+Tower/Dong+Van+Ancient+Street/Meo+Vac,+Ha+Giang/Ha+Giang,+Vietnam/@22.9,104.5,8z/am=t/" target="_blank">🏍 전체 루트 열기</a>
+    <a class="route-btn" href="https://www.google.com/maps/dir/Lao+Cai+Railway+Station/Sa+Pa,+Vietnam/@22.41,103.91,12z/am=t/" target="_blank">D2 라오까이→사파</a>
+    <a class="route-btn" href="https://www.google.com/maps/dir/Sa+Pa,+Vietnam/Ha+Giang,+Vietnam/@22.57,104.4,10z/am=t/" target="_blank">D3 사파→하장</a>
+    <a class="route-btn" href="https://www.google.com/maps/dir/Ha+Giang/Quan+Ba+Heaven+Gate/Lung+Cu+Flag+Tower/Dong+Van+Ancient+Street/Meo+Vac,+Ha+Giang/@23.1,105.1,10z/am=t/" target="_blank">D4 하장 루프 1</a>
+    <a class="route-btn" href="https://www.google.com/maps/dir/Meo+Vac,+Ha+Giang/Ma+Pi+Leng+Pass/Ha+Giang,+Vietnam/@23.1,105.1,10z/am=t/" target="_blank">D5 마피렝→하장</a>
+  </div>
+
+  <!-- WAYPOINTS GRID -->
+  <div class="waypoints-list">
+    <div class="wp"><div class="wp-day">D-1 · 출발</div><div class="wp-name">하노이 기차역</div><div class="wp-coord">21.0210°N 105.8410°E</div><a class="wp-map-link" href="https://maps.google.com/?q=21.021,105.841" target="_blank">→ 구글맵</a></div>
+    <div class="wp"><div class="wp-day">D-2 · 렌탈 ★</div><div class="wp-name">라오까이 렌탈샵</div><div class="wp-coord">22.4905°N 103.9794°E</div><a class="wp-map-link" href="https://maps.google.com/?q=22.490452,103.9794261" target="_blank">→ 구글맵</a></div>
+    <div class="wp"><div class="wp-day">D-2 · 1박</div><div class="wp-name">사파</div><div class="wp-coord">22.3405°N 103.8564°E</div><a class="wp-map-link" href="https://maps.google.com/?q=22.3404698,103.8564085" target="_blank">→ 구글맵</a></div>
+    <div class="wp"><div class="wp-day">D-3 · 2박</div><div class="wp-name">하장 시티</div><div class="wp-coord">22.8055°N 104.9760°E</div><a class="wp-map-link" href="https://maps.google.com/?q=22.8055152,104.9759682" target="_blank">→ 구글맵</a></div>
+    <div class="wp"><div class="wp-day">D-4</div><div class="wp-name">꽌바 헤브슨 게이트</div><div class="wp-coord">23.0493°N 104.9927°E</div><a class="wp-map-link" href="https://maps.google.com/?q=23.0492816,104.9926772" target="_blank">→ 구글맵</a></div>
+    <div class="wp"><div class="wp-day">D-4 · 최북단</div><div class="wp-name">룽꾸 국기 게양대</div><div class="wp-coord">23.3634°N 105.3163°E</div><a class="wp-map-link" href="https://maps.google.com/?q=23.3634061,105.3163001" target="_blank">→ 구글맵</a></div>
+    <div class="wp"><div class="wp-day">D-4</div><div class="wp-name">둥반 고대 거리</div><div class="wp-coord">23.2783°N 105.3614°E</div><a class="wp-map-link" href="https://maps.google.com/?q=23.2782612,105.361378" target="_blank">→ 구글맵</a></div>
+    <div class="wp"><div class="wp-day">D-4 · 3박</div><div class="wp-name">파비 흐몽 마을</div><div class="wp-coord">23.2058°N 105.4154°E</div><a class="wp-map-link" href="https://maps.google.com/?q=23.205846,105.4153661" target="_blank">→ 구글맵</a></div>
+    <div class="wp"><div class="wp-day">D-5 · ★클라이막스</div><div class="wp-name">마피렝 패스</div><div class="wp-coord">23.2400°N 105.4000°E</div><a class="wp-map-link" href="https://maps.google.com/?q=23.24,105.4" target="_blank">→ 구글맵</a></div>
+  </div>
+</div>
+
+<!-- RESTAURANTS -->
+<div class="sec-header">
+  <div class="sec-tag">● Curated Dining</div>
+  <h2 class="sec-title">엄선 식당 7</h2>
+</div>
+<div class="resto-grid">
+  <div class="resto-card"><div class="resto-area">📍 하노이 · D-1 점심</div><div class="resto-name">분짜 닥낌</div><div class="resto-tag">Bún Chả Đắc Kim · 미쉐린 빕구르망</div><div class="resto-desc">하노이 분짜 원조. 숯불 구운 돼지고기+쌀국수. 1 Hàng Mành.</div><div class="resto-price">1인 약 <span>90,000동</span></div><a class="resto-map-link" href="https://maps.google.com/?q=21.0322493,105.8482095" target="_blank">→ 구글맵</a></div>
+  <div class="resto-card"><div class="resto-area">📍 하노이 · D-1 오후</div><div class="resto-name">카페 진 에그커피</div><div class="resto-tag">Cà Phê Trứng · 에그커피 원조</div><div class="resto-desc">달걀 노른자 크림 에그커피. 구시가지 4층 창문 뷰. 39 Nguyễn Hữu Huân.</div><div class="resto-price">1인 약 <span>45,000동</span></div><a class="resto-map-link" href="https://maps.google.com/?q=21.034,105.851" target="_blank">→ 구글맵</a></div>
+  <div class="resto-card"><div class="resto-area">📍 라오까이 · D-2 새벽</div><div class="resto-name">기차역 앞 바인미 노점</div><div class="resto-tag">새벽 도착 첫 끼니</div><div class="resto-desc">라오까이 역 앞 새벽 노점. 렌탈 전 간단 아침. 오전 5~7시 운영. 바인미+코코넛 커피.</div><div class="resto-price">1인 약 <span>25,000동</span></div><a class="resto-map-link" href="https://maps.google.com/?q=22.4916,103.9784" target="_blank">→ 구글맵</a></div>
+  <div class="resto-card"><div class="resto-area">📍 사파 · D-2 저녁</div><div class="resto-name">O Quy Ho 레스토랑</div><div class="resto-tag">흑계 호박전골 시그니처</div><div class="resto-desc">사파 최고의 한 끼. 흑계 호박전골이 산간 찬 공기와 완벽히 어울린다. 봄파이어 뷰.</div><div class="resto-price">4인 약 <span>100만동</span></div><a class="resto-map-link" href="https://maps.google.com/?q=22.3361297,103.8438162" target="_blank">→ 구글맵</a></div>
+  <div class="resto-card"><div class="resto-area">📍 사파 · D-2</div><div class="resto-name">Hill Station Signature</div><div class="resto-tag">흐몽 퓨전 · 쌀와인</div><div class="resto-desc">소수민족 식재료 재해석 퓨전. 민족 소시지 구이·죽순·쌀와인. 37 Fansipan.</div><div class="resto-price">1인 약 <span>200,000~350,000동</span></div><a class="resto-map-link" href="https://maps.google.com/?q=22.336,103.843" target="_blank">→ 구글맵</a></div>
+  <div class="resto-card"><div class="resto-area">📍 둥반 · D-4 저녁</div><div class="resto-name">둥반 고대거리 로컬식당</div><div class="resto-tag">옥수수술 + 구운 양고기</div><div class="resto-desc">흐몽족 운영. 옥수수술(Mèn Mén)+꼬치 양고기. 고대 거리 야경과 함께.</div><div class="resto-price">1인 약 <span>60,000~100,000동</span></div><a class="resto-map-link" href="https://maps.google.com/?q=23.2782612,105.361378" target="_blank">→ 구글맵</a></div>
+  <div class="resto-card"><div class="resto-area">📍 마피렝 · D-5 점심</div><div class="resto-name">Mã Pí Lèng EcoLodge 카페</div><div class="resto-tag">절벽 위 협곡 뷰</div><div class="resto-desc">뇨꿰 강 협곡 정면 절벽 위 카페. 코코넛 커피+바인미. 이 여행 최고의 커피 한 잔.</div><div class="resto-price">1인 약 <span>40,000~80,000동</span></div><a class="resto-map-link" href="https://maps.google.com/?q=23.2301815,105.4139483" target="_blank">→ 구글맵</a></div>
+</div>
+
+<!-- ACCOMMODATION -->
+<div class="sec-header">
+  <div class="sec-tag">● Recommended Stay</div>
+  <h2 class="sec-title">숙소 추천</h2>
+</div>
+<div class="accom-wrap">
+  <div class="accom-grid">
+    <div class="accom-card"><div class="accom-night">1</div><div class="accom-city">🚂 D-1 · 야간열차</div><div class="accom-name">하노이→라오까이 침대열차</div><div class="accom-stars">Livitrans / Chapa Express</div><div class="accom-desc">소프트베드 4인 침대 칸. 열차가 곧 숙박 공간이므로 하노이 별도 숙소 불필요.</div><div class="accom-price">1인 약 300,000~500,000동</div><a class="accom-map-link" href="https://dsvn.vn" target="_blank">→ 예약: dsvn.vn</a></div>
+    <div class="accom-card"><div class="accom-night">2</div><div class="accom-city">📍 D-2 · 사파</div><div class="accom-name">Sacred Fansipan Hotel</div><div class="accom-stars">★★★★☆</div><div class="accom-desc">사파 타운 중심부. 계단식 논 전망 발코니. 온천탕 보유. 오토바이 주차 가능.</div><div class="accom-price">1박 약 $40~70</div><a class="accom-map-link" href="https://maps.google.com/?q=22.338,103.844" target="_blank">→ 구글맵</a></div>
+    <div class="accom-card"><div class="accom-night">3</div><div class="accom-city">📍 D-3 · 하장</div><div class="accom-name">Ha Giang City Hostel</div><div class="accom-stars">★★★★★ 구글 5.0</div><div class="accom-desc">루프 투어 기지. 조식 제공. 야간버스 예약 대행. 가이드·렌탈 연결. 외국인 정보 허브.</div><div class="accom-price">1박 약 $12~25</div><a class="accom-map-link" href="https://maps.google.com/?q=22.8055152,104.9759682" target="_blank">→ 구글맵</a></div>
+    <div class="accom-card"><div class="accom-night">4</div><div class="accom-city">📍 D-4 · 메오박</div><div class="accom-name">Pavi Hmong Village Homestay</div><div class="accom-stars">★★★★☆</div><div class="accom-desc">흐몽 전통 토기 가옥. 저녁 식사+옥수수 막걸리 포함. 마피렝 패스 진입 전 최적 거점.</div><div class="accom-price">1박 약 $10~18 (식사 포함)</div><a class="accom-map-link" href="https://maps.google.com/?q=23.205846,105.4153661" target="_blank">→ 구글맵</a></div>
+  </div>
+</div>
+
+<!-- TIPS -->
+<div class="tips-wrap">
+  <div class="sec-tag">● Essential Info</div>
+  <h2 class="sec-title" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,6vw,72px);">출발 전 필수 정보</h2>
+  <div class="tips-grid">
+    <div class="tip-item"><div class="tip-icon">🏍</div><div class="tip-title">라오까이 렌탈</div><div class="tip-text">추에 세 마이(077 Khánh Yên, ★5.0) 또는 368호(368 Khánh Yên, ★4.9). 기차역 도보 5분. Zalo·WhatsApp 예약 권장. Honda Wave 120,000동/일. 국제운전면허 필수.</div></div>
+    <div class="tip-item"><div class="tip-icon">🚂</div><div class="tip-title">하노이→라오까이 열차</div><div class="tip-text">dsvn.vn 또는 baolau.com 예약. 22:00 출발→06:00 도착(8시간). 소프트베드 4인실 약 300,000~500,000동. 성수기 2주 전 예약.</div></div>
+    <div class="tip-item"><div class="tip-icon">🌤</div><div class="tip-title">최적 방문 시기</div><div class="tip-text">9~11월(황금 수확기·쾌청). 3~5월(꽃·안개). 12~2월 기온 5°C 이하(방한장갑 필수). 6~8월 우기·낙석 주의.</div></div>
+    <div class="tip-item"><div class="tip-icon">📶</div><div class="tip-title">통신·내비게이션</div><div class="tip-text">Viettel SIM 현지 구입. 하장 루프 구간 신호 불안정. Google Maps 오프라인 저장 또는 MAPS.ME 필수.</div></div>
+    <div class="tip-item"><div class="tip-icon">💊</div><div class="tip-title">건강·안전</div><div class="tip-text">풀페이스 헬멧 강력 권장. 마피렝 스카이워크 오토바이 진입 불가(도보). 야간 라이딩 지양. 오토바이 특약 여행자보험 필수.</div></div>
+    <div class="tip-item"><div class="tip-icon">💰</div><div class="tip-title">예산 (1인 기준)</div><div class="tip-text">4박 5일 총 $150~250 (열차+오토바이+숙식+연료 포함). 하장 이후 현금(동화) 필수. ATM은 하장 시내가 마지막.</div></div>
+  </div>
+</div>
+
+<footer>
+  <div>
+    <div class="foot-title">🇻🇳 라오까이 렌탈 → 사파 → 하장 루프</div>
+    <div class="foot-note">4박 5일 오토바이 투어 가이드 · 2025~2026 기준</div>
+  </div>
+  <div class="foot-note" style="text-align:right;">구글맵 좌표 기반 · 현지 상황에 따라 일정 변동 가능<br>모든 가격은 시즌·환율에 따라 변동</div>
+</footer>
+
+<script>
+  function showMap(id, btn) {
+    document.querySelectorAll('.map-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.map-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('map-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);} });
+  }, {threshold:0.08});
+  document.querySelectorAll('.day-card').forEach(c => observer.observe(c));
+</script>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'light';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'☀ 라이트':'☾ 다크';
+})();
+function toggleTheme(){
+  var html=document.documentElement;
+  var now=html.getAttribute('data-theme');
+  var next=now==='dark'?'light':'dark';
+  html.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'☀ 라이트':'☾ 다크';
+}
+</script>
+</body>
+</html>

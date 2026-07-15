@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>라프로익 10년산 — 완전 가이드</title>
+<meta name="description" content="피트 스모크와 요오드, 해염의 아일라 싱글 몰트. 좋아하거나 사랑하거나 — 라프로익 10년 완전 가이드.">
+<meta property="og:title" content="라프로익 10년산 완전 가이드 | 최승환">
+<meta property="og:description" content="피트 스모크와 요오드, 해염의 아일라 싱글 몰트. 좋아하거나 사랑하거나 — 라프로익 10년 완전 가이드.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://choijc79.github.io/laphroaig10.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<meta name="twitter:card" content="summary">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+KR:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold:#5CBCD4; --gold-light:#7CDCF4; --gold-pale:#C0EAF5;
+  --deep:#1A1208; --dark:#2D1E0A; --mid:#4A2F0D; --amber:#8B4A0E;
+  --cream:#F8F2E4; --text:#2A1A06; --muted:#6B5235;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--deep);color:var(--cream);font-family:"Noto Serif KR",serif;font-weight:300;line-height:1.8;overflow-x:hidden;}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:radial-gradient(ellipse 80% 60% at 50% 40%, #0D1A2A 0%, #060E18 60%, #030609 100%);}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(201,168,76,0.08) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(139,74,14,0.12) 0%,transparent 50%);pointer-events:none;}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:1000;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:150px 150px;}
+.hero-badge{font-family:"Cormorant Garamond",serif;font-size:0.8rem;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:2rem;opacity:0;animation:fadeUp 1s 0.3s ease forwards;}
+.hero-title{font-family:"Cormorant Garamond",serif;font-size:clamp(3.5rem,8vw,7rem);font-weight:300;line-height:1.05;letter-spacing:-0.01em;color:var(--gold-light);opacity:0;animation:fadeUp 1s 0.5s ease forwards;}
+.hero-title em{font-style:italic;color:var(--gold);}
+.hero-sub{margin-top:1.5rem;font-family:"Cormorant Garamond",serif;font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;font-style:italic;color:rgba(232,201,122,0.6);letter-spacing:0.05em;opacity:0;animation:fadeUp 1s 0.7s ease forwards;}
+.hero-divider{width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:2.5rem auto;opacity:0;animation:fadeIn 1s 0.9s ease forwards;}
+.hero-desc{max-width:520px;font-size:0.9rem;color:rgba(245,232,192,0.65);letter-spacing:0.02em;opacity:0;animation:fadeUp 1s 1.1s ease forwards;}
+.scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;opacity:0;animation:fadeIn 1s 1.5s ease forwards;}
+.scroll-hint span{font-family:"Cormorant Garamond",serif;font-size:0.7rem;letter-spacing:0.3em;color:rgba(201,168,76,0.5);text-transform:uppercase;}
+.scroll-line{width:1px;height:50px;background:linear-gradient(180deg,var(--gold) 0%,transparent 100%);animation:scrollPulse 2s ease-in-out infinite;}
+.section{max-width:860px;margin:0 auto;padding:6rem 2rem;}
+.section-label{font-family:"Cormorant Garamond",serif;font-size:0.75rem;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;}
+.section-title{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:400;color:var(--gold-light);line-height:1.2;margin-bottom:2.5rem;}
+.section-title em{font-style:italic;color:var(--gold);}
+.divider-thin{width:60px;height:1px;background:var(--gold);margin-bottom:2.5rem;opacity:0.5;}
+p{color:rgba(245,232,192,0.82);font-size:0.95rem;line-height:1.9;margin-bottom:1.4rem;}
+.sep{width:100%;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,168,76,0.2) 20%,rgba(201,168,76,0.4) 50%,rgba(201,168,76,0.2) 80%,transparent 100%);margin:0;}
+.timeline{position:relative;padding-left:2rem;margin-top:2rem;}
+.timeline::before{content:"";position:absolute;left:0;top:0.5rem;bottom:0.5rem;width:1px;background:linear-gradient(180deg,transparent,var(--gold) 10%,var(--gold) 90%,transparent);opacity:0.4;}
+.tl-item{position:relative;margin-bottom:2.5rem;}
+.tl-item::before{content:"";position:absolute;left:-2.3rem;top:0.6rem;width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px rgba(201,168,76,0.6);}
+.tl-year{font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-weight:600;color:var(--gold);margin-bottom:0.3rem;}
+.tl-text{color:rgba(245,232,192,0.78);font-size:0.92rem;margin-bottom:0;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:2rem;}
+.card{background:linear-gradient(135deg,rgba(45,30,10,0.9) 0%,rgba(26,18,8,0.95) 100%);border:1px solid rgba(201,168,76,0.2);border-radius:2px;padding:2rem 1.8rem;transition:border-color 0.3s,transform 0.3s;}
+.card:hover{border-color:var(--gold);transform:translateY(-4px);}
+.card-type{font-size:0.72rem;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem;}
+.card-name{font-family:"Cormorant Garamond",serif;font-size:1.6rem;color:var(--gold-light);line-height:1.2;margin-bottom:0.8rem;}
+.card-spec{display:flex;gap:1.5rem;margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid rgba(201,168,76,0.15);}
+.spec-item{display:flex;flex-direction:column;gap:0.2rem;}
+.spec-label{font-size:0.65rem;letter-spacing:0.15em;color:rgba(201,168,76,0.5);text-transform:uppercase;}
+.spec-val{font-family:"Cormorant Garamond",serif;font-size:1rem;color:var(--gold-light);}
+.step-list{margin-top:2rem;counter-reset:steps;}
+.step{counter-increment:steps;display:grid;grid-template-columns:50px 1fr;gap:1.5rem;margin-bottom:2rem;align-items:start;}
+.step::before{content:counter(steps,decimal-leading-zero);font-family:"Cormorant Garamond",serif;font-size:1.8rem;color:rgba(201,168,76,0.3);line-height:1;text-align:right;}
+.step-title{font-family:"Cormorant Garamond",serif;font-size:1.2rem;color:var(--gold-light);margin-bottom:0.4rem;}
+.step-body{font-size:0.88rem;color:rgba(245,232,192,0.72);margin-bottom:0;}
+.tasting-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;margin:2.5rem 0;}
+.taste-card{background:rgba(45,30,10,0.5);border:1px solid rgba(201,168,76,0.15);padding:2rem;text-align:center;}
+.taste-icon{font-size:2rem;display:block;margin-bottom:1rem;}
+.taste-label{font-family:"Cormorant Garamond",serif;font-size:1.1rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.8rem;}
+.taste-notes{font-size:0.88rem;color:rgba(245,232,192,0.75);line-height:1.8;}
+.blockquote{border-left:2px solid var(--gold);padding:1.5rem 2rem;margin:3rem 0;background:rgba(201,168,76,0.05);}
+.blockquote p{font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-style:italic;color:rgba(232,201,122,0.8);margin-bottom:0.8rem;}
+.blockquote cite{font-size:0.78rem;color:rgba(201,168,76,0.5);letter-spacing:0.2em;text-transform:uppercase;}
+.spec-box{background:rgba(45,30,10,0.6);border:1px solid rgba(201,168,76,0.2);padding:2rem;margin-top:2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1.5rem;}
+.spec-box-item{text-align:center;}
+.spec-box-label{font-size:0.65rem;letter-spacing:0.2em;color:rgba(201,168,76,0.5);text-transform:uppercase;margin-bottom:0.4rem;}
+.spec-box-val{font-family:"Cormorant Garamond",serif;font-size:1.5rem;color:var(--gold-light);}
+.pair-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-top:2rem;}
+.pair-item{padding:1.2rem;background:rgba(45,30,10,0.4);border:1px solid rgba(201,168,76,0.12);text-align:center;}
+.pair-emoji{font-size:1.8rem;display:block;margin-bottom:0.6rem;}
+.pair-name{font-family:"Cormorant Garamond",serif;font-size:1rem;color:var(--gold-light);margin-bottom:0.3rem;}
+.pair-note{font-size:0.78rem;color:rgba(245,232,192,0.5);}
+.bg-alt{background:rgba(25,15,5,0.8);}
+.bg-section{padding:6rem 2rem;}
+.nav-bar{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(26,18,8,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.12);padding:0 2rem;height:52px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:"Cormorant Garamond",serif;font-size:1rem;color:var(--gold);letter-spacing:0.1em;}
+.nav-links{display:flex;gap:1.5rem;font-size:11px;color:rgba(201,168,76,0.5);letter-spacing:0.1em;}
+.nav-links a{color:rgba(201,168,76,0.5);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+footer{text-align:center;padding:4rem 2rem;border-top:1px solid rgba(201,168,76,0.1);}
+footer p{font-family:"Cormorant Garamond",serif;font-size:0.8rem;color:rgba(201,168,76,0.3);letter-spacing:0.2em;margin-bottom:0;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes scrollPulse{0%,100%{opacity:0.3;}50%{opacity:1;}}
+@media(max-width:600px){.hero-title{font-size:3rem;}.cards{grid-template-columns:1fr;}.tasting-grid{grid-template-columns:1fr;}.spec-box{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<nav class="nav-bar">
+  <div class="nav-logo">라프로익 10년산</div>
+  <div class="nav-links">
+    <a href="/whisky.html">← 위스키 목록</a>
+    <a href="/">홈</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">Islay, Scotland · Single Malt Scotch Whisky</div>
+  <h1 class="hero-title">라프로익<br><em>10년산</em></h1>
+  <p class="hero-sub">The Most Islayful of Islay Malts</p>
+  <div class="hero-divider"></div>
+  <p class="hero-desc">피트 스모크, 해염, 요오드. 좋아하거나 싫어하거나, 기억에서 사라지지 않는 위스키.<br>아일라 싱글 몰트의 원형을 이 한 병에 담았습니다.</p>
+  <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<div class="sep"></div>
+<section class="bg-alt">
+  <div class="section">
+    <div class="section-label">Overview · 개요</div>
+    <h2 class="section-title">Laphroaig 10<br><em>한 병에 담긴 이야기</em></h2>
+    <div class="divider-thin"></div>
+    <p>라프로익(Laphroaig, '넓은 만(灣)의 아름다운 움푹 들어간 곳'이라는 게일어)은 스코틀랜드 아일라(Islay) 섬 남해안에 위치한 증류소입니다. 아일라 위스키 중에서도 가장 강렬한 피트 스모크와 약품(요오드)향으로 유명하며, 위스키 세계에서 '사랑 아니면 증오'를 가장 극명하게 가르는 브랜드입니다.</p>
+<p>10년산은 라프로익의 핵심 라인으로, 영국 왕실 추천(Royal Warrant)을 받은 유일한 싱글 몰트 위스키입니다. 찰스 3세 국왕이 왕세자 시절부터 직접 즐긴 것으로 알려져 있으며, '좋아하지 않거나 사랑하거나(You'll either love it or hate it)'라는 슬로건이 그 강렬한 개성을 그대로 대변합니다.</p>
+    <div class="spec-box">
+      <div class="spec-box-item"><div class="spec-box-label">숙성 연수</div><div class="spec-box-val">10년</div></div>
+      <div class="spec-box-item"><div class="spec-box-label">도수</div><div class="spec-box-val">40%</div></div>
+      <div class="spec-box-item"><div class="spec-box-label">원산지</div><div class="spec-box-val">Islay</div></div>
+      <div class="spec-box-item"><div class="spec-box-label">스타일</div><div class="spec-box-val">Single Malt</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+<section>
+  <div class="section">
+    <div class="section-label">History · 역사</div>
+    <h2 class="section-title">Laphroaig 10의<br><em>역사</em></h2>
+    <div class="divider-thin"></div>
+    <div class="timeline"><div class="tl-item"><div class="tl-year">1815년</div><div class="tl-text">도널드 존스턴(Donald Johnston)이 아일라 남해안에 증류소를 설립합니다. 이후 존스턴 가문이 150년간 운영하며 라프로익 특유의 피티드 스타일을 확립합니다.</div></div>
+<div class="tl-item"><div class="tl-year">1994년</div><div class="tl-text">찰스 왕세자(현 찰스 3세)가 공식 방문 후 왕실 추천을 수여했습니다. 피티드 위스키에 왕실 추천이 붙은 전무후무한 사례입니다.</div></div>
+<div class="tl-item"><div class="tl-year">2012년</div><div class="tl-text">빔 산토리(Beam Suntory)에 인수되었으나, 아일라 현지 생산 방식과 자체 몰팅(Floor Malting) 전통은 그대로 유지됩니다.</div></div>
+<div class="tl-item"><div class="tl-year">현재</div><div class="tl-text">자체 피트 탄을 사용해 보리를 훈연하는 플로어 몰팅(Floor Malting)을 전체 몰트 사용량의 약 20%까지 직접 실시하며, 아일라 전통 방식을 고수하고 있습니다.</div></div></div>
+  </div>
+</section>
+
+<div class="sep"></div>
+<section class="bg-alt">
+  <div class="section">
+    <div class="section-label">Product Line · 제품 라인업</div>
+    <h2 class="section-title">Laphroaig 10<br><em>주요 제품군</em></h2>
+    <div class="divider-thin"></div>
+    <div class="cards"><div class="card">
+  <div class="card-type">주력</div>
+  <div class="card-name">10년 오리지널</div>
+  <p style="font-size:0.83rem;color:rgba(245,232,192,0.65);margin-bottom:0">버번 캐스크 10년</p>
+  <div class="card-spec">
+    <div class="spec-item"><span class="spec-label">도수</span><span class="spec-val">40%</span></div>
+    <div class="spec-item"><span class="spec-label">용량</span><span class="spec-val">700ml</span></div>
+    <div class="spec-item"><span class="spec-label">원산지</span><span class="spec-val">Islay</span></div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-type">상위</div>
+  <div class="card-name">10년 카스크 스트렝스</div>
+  <p style="font-size:0.83rem;color:rgba(245,232,192,0.65);margin-bottom:0">버번 캐스크 / 비냉각여과</p>
+  <div class="card-spec">
+    <div class="spec-item"><span class="spec-label">도수</span><span class="spec-val">~57%</span></div>
+    <div class="spec-item"><span class="spec-label">용량</span><span class="spec-val">700ml</span></div>
+    <div class="spec-item"><span class="spec-label">원산지</span><span class="spec-val">Islay</span></div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-type">특별판</div>
+  <div class="card-name">쿼터 캐스크</div>
+  <p style="font-size:0.83rem;color:rgba(245,232,192,0.65);margin-bottom:0">버번 후 소형 쿼터 캐스크 추가 숙성</p>
+  <div class="card-spec">
+    <div class="spec-item"><span class="spec-label">도수</span><span class="spec-val">48%</span></div>
+    <div class="spec-item"><span class="spec-label">용량</span><span class="spec-val">700ml</span></div>
+    <div class="spec-item"><span class="spec-label">원산지</span><span class="spec-val">Islay</span></div>
+  </div>
+</div></div>
+  </div>
+</section>
+
+<div class="sep"></div>
+<section>
+  <div class="section">
+    <div class="section-label">Production · 제조 방법</div>
+    <h2 class="section-title">한 방울의 위스키가<br><em>태어나기까지</em></h2>
+    <div class="divider-thin"></div>
+    <div class="step-list"><div class="step"><div><div class="step-title">자체 피트 몰팅</div><p class="step-body">아일라 남부 피트 매장지에서 직접 채굴한 피트(이탄)로 보리를 훈연합니다. 라프로익의 피노메놀 수치(Phenol PPM)는 약 45ppm으로 업계 최고 수준입니다.</p></div></div>
+<div class="step"><div><div class="step-title">아일라 해수면 발효</div><p class="step-body">해풍과 습기가 발효 환경에 영향을 주어 해염 뉘앙스를 만들어냅니다.</p></div></div>
+<div class="step"><div><div class="step-title">소형 스피릿 스틸</div><p class="step-body">스피릿 스틸이 소형에 가까워 오일리하고 진한 원액을 생산합니다.</p></div></div>
+<div class="step"><div><div class="step-title">버번 캐스크 숙성</div><p class="step-body">전직 버번 위스키가 담겼던 아메리칸 오크 퍼스트 필 캐스크에서 10년 숙성합니다. 오크가 스모크의 날카로움을 부드럽게 잡아줍니다.</p></div></div>
+<div class="step"><div><div class="step-title">바틀링</div><p class="step-body">40% 또는 카스크 스트렝스로 병입. 냉각여과를 최소화해 오일리한 질감을 유지합니다.</p></div></div></div>
+  </div>
+</section>
+
+<div class="sep"></div>
+<section class="bg-alt">
+  <div class="section">
+    <div class="section-label">Tasting Notes · 테이스팅 노트</div>
+    <h2 class="section-title">감각으로 만나는<br><em>Laphroaig 10</em></h2>
+    <div class="divider-thin"></div>
+    <div class="tasting-grid">
+      <div class="taste-card"><span class="taste-icon">👃</span><div class="taste-label">Nose · 향</div><div class="taste-notes">아이오다인(요오드)과 병원 소독약을 연상시키는 페놀 스모크가 먼저 치고 옵니다. 그 뒤로 해염, 해조류, 타르의 레이어. 깊이 들이쉬면 바닐라와 숨은 달콤함.</div></div>
+      <div class="taste-card"><span class="taste-icon">👅</span><div class="taste-label">Palate · 팔레트</div><div class="taste-notes">강렬하고 기름진 스모크. 페놀과 피트가 지배하지만 버번 캐스크가 선사하는 크리미한 단맛이 균형을 잡습니다. 해염과 약간의 레몬 껍질.</div></div>
+      <div class="taste-card"><span class="taste-icon">✨</span><div class="taste-label">Finish · 피니시</div><div class="taste-notes">매우 길고 강렬한 스모크 피니시. 요오드와 해염 여운이 수분간 지속됩니다.</div></div>
+    </div>
+    <div class="blockquote"><p>"Love it or hate it — there's no middle ground with Laphroaig. A singular experience."</p><cite>— Jim Murray's Whisky Bible, 94점</cite></div>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold-light);margin-top:3.5rem;margin-bottom:1rem;">푸드 페어링</h3>
+    <div class="divider-thin"></div>
+    <div class="pair-grid"><div class="pair-item"><span class="pair-emoji">🦞</span><div class="pair-name">오마르 새우·랍스터</div><div class="pair-note">해산물과 해염 공명</div></div>
+<div class="pair-item"><span class="pair-emoji">🐟</span><div class="pair-name">훈제 청어·훈제 연어</div><div class="pair-note">스모크 레이어 배가</div></div>
+<div class="pair-item"><span class="pair-emoji">🧀</span><div class="pair-name">블루치즈</div><div class="pair-note">강한 향끼리 맞대결</div></div>
+<div class="pair-item"><span class="pair-emoji">🍫</span><div class="pair-name">다크 초콜릿 85%+</div><div class="pair-note">피트와 카카오 씁쓸함</div></div>
+<div class="pair-item"><span class="pair-emoji">🥓</span><div class="pair-name">훈제 베이컨</div><div class="pair-note">스모키 공명</div></div>
+<div class="pair-item"><span class="pair-emoji">🫙</span><div class="pair-name">굴·생선 페이스트</div><div class="pair-note">아일라 전통 페어링</div></div></div>
+  </div>
+</section>
+
+<footer><p>© 2026 최승환 · choijc79.github.io · 위스키 가이드</p></footer>
+</body>
+</html>

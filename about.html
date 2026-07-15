@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>소개 | 최승환</title>
+<meta name="description" content="도시경영학 박사과정, 지방행정 연구자. 충청북도 제천시청 팀장 최승환 소개 페이지.">
+<meta property="og:title" content="소개 | 최승환">
+<meta property="og:description" content="도시경영학 박사과정, 지방행정 연구자. 충청북도 제천시청 팀장 최승환 소개 페이지.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://choijc79.github.io/about.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="소개 | 최승환">
+<meta name="twitter:description" content="도시경영학 박사과정, 지방행정 연구자. 충청북도 제천시청 팀장 최승환 소개 페이지.">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #F4F0E8;
+  --surface: #ECE8DE;
+  --border:  #D4CEBC;
+  --text:    #1A1410;
+  --ink:     #2A2018;
+  --muted:   #7A6A56;
+  --accent:  #E07828;
+  --red:     #D96820;
+  --light:   #FDFAF4;
+  --amber:   #E07828;
+  --green:   #5A7A3A;
+  --lake:    #E07828;
+  --purple:  #7A4AB0;
+}
+[data-theme="dark"] {
+  --bg:      #0d1117;
+  --surface: #161b22;
+  --border:  #2c3240;
+  --text:    #E8E0D0;
+  --ink:     #F0E8D8;
+  --muted:   #8b8070;
+  --accent:  #F08840;
+  --red:     #D84030;
+  --light:   #161b22;
+  --amber:   #F08840;
+  --green:   #3fb950;
+  --lake:    #F08840;
+  --purple:  #bc8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.8;}
+a{color:var(--accent);text-decoration:none;}
+.site-header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px;transition:background 0.3s,border-color 0.3s;}
+.logo{font-family:'Noto Serif KR',serif;font-size:15px;color:var(--accent);letter-spacing:0.04em;}
+.nav-links{display:flex;gap:1.5rem;font-size:12px;}
+.nav-links a{color:var(--muted);text-decoration:none;transition:color 0.15s;}
+.nav-links a:hover{color:var(--accent);}
+#theme-toggle{background:none;border:1px solid var(--border);color:var(--muted);font-size:11px;padding:3px 11px;border-radius:20px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;letter-spacing:0.05em;transition:all 0.2s;margin-left:1rem;}
+#theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
+
+/* ── Hero ── */
+.hero{max-width:860px;margin:0 auto;padding:5rem 2rem 3rem;display:grid;grid-template-columns:200px 1fr;gap:4rem;align-items:start;}
+.portrait{width:200px;height:260px;border-radius:4px;overflow:hidden;flex-shrink:0;position:relative;box-shadow:0 4px 24px rgba(0,0,0,0.5);}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+.portrait-initials{font-family:'Playfair Display',serif;font-size:5rem;color:var(--border);font-weight:400;font-style:italic;}
+.portrait-caption{position:absolute;bottom:1rem;left:1rem;right:1rem;}
+.portrait-caption p{font-family:'Noto Serif KR',serif;font-size:0.95rem;color:var(--ink);font-weight:600;}
+.portrait-caption span{font-size:0.65rem;color:var(--muted);letter-spacing:0.08em;}
+.hero-text{}
+.hero-label{font-size:11px;letter-spacing:0.14em;color:var(--accent);text-transform:uppercase;margin-bottom:0.8rem;}
+.hero-name{font-family:'Noto Serif KR',serif;font-size:clamp(28px,4vw,40px);font-weight:700;line-height:1.2;margin-bottom:0.4rem;}
+.hero-sub{font-size:0.82rem;color:var(--muted);letter-spacing:0.06em;margin-bottom:1.6rem;}
+.hero-intro{font-family:'Noto Serif KR',serif;font-size:0.98rem;color:var(--muted);line-height:2;border-left:2px solid var(--accent);padding-left:1.2rem;margin-bottom:1.8rem;}
+
+/* ── Tags ── */
+.tag-row{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:2rem;}
+.tag{font-size:11px;padding:3px 10px;border:1px solid rgba(224,120,40,0.28);color:var(--accent);background:rgba(224,120,40,0.08);border-radius:10px;letter-spacing:0.03em;}
+
+/* ── Contact ── */
+.contact-row{display:flex;gap:1rem;flex-wrap:wrap;}
+.contact-btn{display:inline-flex;align-items:center;gap:0.4rem;padding:0.5rem 1.1rem;background:var(--surface);border:1px solid var(--border);border-radius:4px;font-size:12px;color:var(--muted);transition:all 0.2s;}
+.contact-btn:hover{border-color:var(--accent);color:var(--text);}
+
+/* ── Section ── */
+.section{max-width:860px;margin:0 auto;padding:3rem 2rem;border-top:1px solid var(--border);}
+.section-label{font-size:11px;letter-spacing:0.14em;color:var(--accent);text-transform:uppercase;margin-bottom:1.5rem;}
+.section h2{font-family:'Noto Serif KR',serif;font-size:1.15rem;font-weight:700;margin-bottom:1.4rem;color:var(--ink);}
+
+/* ── Timeline ── */
+.timeline{display:flex;flex-direction:column;gap:1.6rem;}
+.tl-item{display:grid;grid-template-columns:120px 1fr;gap:1.5rem;align-items:start;}
+.tl-date{font-size:11px;color:var(--muted);letter-spacing:0.06em;padding-top:0.2rem;line-height:1.6;}
+.tl-body{}
+.tl-title{font-size:0.9rem;font-weight:500;color:var(--text);margin-bottom:0.25rem;}
+.tl-desc{font-size:12px;color:var(--muted);line-height:1.7;}
+.tl-dot{display:inline-block;width:6px;height:6px;background:var(--accent);border-radius:50%;margin-right:0.5rem;vertical-align:middle;flex-shrink:0;}
+
+/* ── Interest grid ── */
+.interest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.interest-card{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:1.2rem;transition:border-color 0.2s;}
+.interest-card:hover{border-color:var(--accent);}
+.interest-icon{font-size:1.6rem;margin-bottom:0.5rem;}
+.interest-title{font-size:0.85rem;font-weight:500;margin-bottom:0.25rem;}
+.interest-desc{font-size:11px;color:var(--muted);line-height:1.6;}
+
+/* ── Links grid ── */
+.links-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;}
+.page-link{display:flex;flex-direction:column;gap:0.2rem;padding:1rem 1.2rem;background:var(--surface);border:1px solid var(--border);border-radius:4px;text-decoration:none;color:inherit;transition:all 0.2s;}
+.page-link:hover{border-color:var(--accent);transform:translateY(-2px);}
+.page-link-icon{font-size:1.3rem;}
+.page-link-title{font-size:0.85rem;font-weight:500;color:var(--text);}
+.page-link-desc{font-size:11px;color:var(--muted);}
+
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:11px;color:var(--muted);letter-spacing:0.04em;margin-top:2rem;}
+
+@media(max-width:640px){
+  .hero{grid-template-columns:1fr;gap:2rem;padding-top:3rem;}
+  .portrait{width:140px;height:180px;}
+  .portrait-initials{font-size:3.5rem;}
+  .interest-grid,.links-grid{grid-template-columns:1fr 1fr;}
+  .tl-item{grid-template-columns:1fr;gap:0.3rem;}
+  .tl-date{font-size:10px;}
+}
+</style>
+
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">최승환 · 소개</div>
+  <nav class="nav-links">
+    <a href="/">← 홈으로</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9790; 다크</button>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="portrait">
+    <img src="/profile.jpg" alt="최승환 프로필 사진">
+  </div>
+  <div class="hero-text">
+    <div class="hero-label">Profile · About</div>
+    <h1 class="hero-name">최승환</h1>
+    <p class="hero-sub">충청북도 제천시청 행정공무원 · 팀장 · 도시경영학 박사과정</p>
+    <p class="hero-intro">
+      지방행정 실무가 연구의 출발점이 됐습니다. 납세지와 물건지의 불일치, 세원의 귀속 구조 — 현장에서 마주한 이 현상들을 데이터로 실증하고, 지방재정의 균형을 위한 제도 개선 방향을 찾아가고 있습니다. 또한 아이들이 다시 돌아오고 싶은 제천을 만들기 위해, 지역의 지속가능한 성장과 정주 여건에 대한 고민도 함께 이어가고 있습니다.
+    </p>
+    <div class="tag-row">
+      <span class="tag">지방세</span>
+      <span class="tag">납세지 제도</span>
+      <span class="tag">세원 역외 유출</span>
+      <span class="tag">등록면허세</span>
+      <span class="tag">지역 재정 불균형</span>
+      <span class="tag">균형발전</span>
+      <span class="tag">GIS 공간분석</span>
+      <span class="tag">행정 데이터</span>
+      <span class="tag">제도 개선</span>
+    </div>
+    <div class="contact-row">
+      <a href="mailto:7979@korea.kr" class="contact-btn">✉ 7979@korea.kr</a>
+      <a href="/research.html" class="contact-btn">📄 연구 소개</a>
+      <a href="https://choijc79.github.io" class="contact-btn">🌐 choijc79.github.io</a>
+    </div>
+  </div>
+</div>
+
+<!-- 경력 타임라인 -->
+<div class="section">
+  <div class="section-label">Career &amp; Education</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-date">현재<br>2026~</div>
+      <div class="tl-body">
+        <div class="tl-title"><span class="tl-dot"></span>제천시청 팀장급 행정공무원</div>
+        <div class="tl-desc">지방행정·지방세·지역개발·정책 제도 분야 실무 총괄. 현장 경험을 바탕으로 제도 개선 업무 수행.</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">2026. 04</div>
+      <div class="tl-body">
+        <div class="tl-title"><span class="tl-dot"></span>도시경영학 박사논문 최종본 제출</div>
+        <div class="tl-desc">140만 건의 건의 사업자 데이터를 분석해 납세지·물건지 불일치 비율이 33%에 달한다는 사실을 실증한 연구입니다.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="links-section">
+    <p class="sec-label">SITE MAP</p>
+    <div class="links-grid">
+      <a href="/column.html" class="page-link"><span class="page-link-icon">💬</span><span class="page-link-title">칼럼·기고</span><span class="page-link-desc">지방행정 현장 에세이</span></a>
+      <a href="/research.html" class="page-link"><span class="page-link-icon">📄</span><span class="page-link-title">연구·논문</span><span class="page-link-desc">도시경영학 연구 포트폴리오</span></a>
+      <a href="/local.html" class="page-link"><span class="page-link-icon">🏔</span><span class="page-link-title">제천 소개</span><span class="page-link-desc">자연·문화·관광</span></a>
+      <a href="/memo.html" class="page-link"><span class="page-link-icon">📝</span><span class="page-link-title">정리노트</span><span class="page-link-desc">공부·아이디어 메모</span></a>
+      <a href="/tour.html" class="page-link"><span class="page-link-icon">🏍</span><span class="page-link-title">바이크 투어</span><span class="page-link-desc">전국 라이딩 기록</span></a>
+      <a href="/whisky.html" class="page-link"><span class="page-link-icon">🥃</span><span class="page-link-title">위스키</span><span class="page-link-desc">위스키 가이드</span></a>
+      <a href="/chronicle.html" class="page-link"><span class="page-link-icon">📅</span><span class="page-link-title">연대기</span><span class="page-link-desc">1979 → 현재</span></a>
+      <a href="/guestbook.html" class="page-link"><span class="page-link-icon">✉️</span><span class="page-link-title">방명록</span><span class="page-link-desc">자유롭게 인사 남기기</span></a>
+      <a href="/" class="page-link"><span class="page-link-icon">🏠</span><span class="page-link-title">홈</span><span class="page-link-desc">choijc79.github.io</span></a>
+    </div>
+  </section>
+</div>
+
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/research.html">📄<br>연구</a>
+  <a href="/local.html">🏔<br>제천</a>
+  <a href="/memo.html">📝<br>노트</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>번지점프장·모노레일 위탁시설 관리개선계획 | 최승환</title>
+<meta name="description" content="청풍호 관광·레저시설 종합정비 Ⅲ — 위탁·사용허가 17개소 계약관리, 모노레일 협상, 번지점프장 용역">
+<meta property="og:title" content="번지점프장·모노레일 위탁시설 관리개선계획 | 최승환">
+<meta property="og:description" content="청풍호 관광·레저시설 종합정비 Ⅲ — 위탁·사용허가 17개소 계약관리, 모노레일 협상, 번지점프장 용역">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://choijc79.github.io/tourism-plan-03.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0d1117; --surface:#161b22; --border:#30363d;
+  --text:#e6edf3; --muted:#8b949e; --accent:#58a6ff;
+  --amber:#d29922; --lake:#5cbcd4; --green:#3fb950; --purple:#bc8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.8;}
+a{color:var(--accent);text-decoration:none;}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(13,17,23,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px;}
+.logo{font-family:'Noto Serif KR',serif;font-size:15px;color:var(--purple);letter-spacing:0.04em;}
+.nav-links{display:flex;gap:1.5rem;font-size:12px;color:var(--muted);}
+.nav-links a:hover{color:var(--text);}
+
+.hero{max-width:780px;margin:0 auto;padding:4rem 2rem 2.5rem;border-bottom:1px solid var(--border);}
+.hero-series{font-size:11px;letter-spacing:0.14em;color:var(--lake);text-transform:uppercase;margin-bottom:0.5rem;}
+.hero h1{font-family:'Noto Serif KR',serif;font-size:clamp(20px,3.5vw,30px);font-weight:700;line-height:1.4;margin-bottom:0.8rem;}
+.hero-sub{font-size:13px;color:var(--muted);line-height:1.8;}
+.meta-row{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.2rem;}
+.meta-chip{display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.9rem;border:1px solid var(--border);border-radius:20px;font-size:11px;color:var(--muted);}
+.meta-chip strong{color:var(--text);font-weight:500;}
+
+.section{max-width:780px;margin:0 auto;padding:2.8rem 2rem;}
+.section+.section{border-top:1px solid var(--border);}
+.sec-label{font-size:11px;letter-spacing:0.14em;color:var(--amber);text-transform:uppercase;margin-bottom:1.4rem;}
+.roman{font-family:'Noto Serif KR',serif;font-size:1rem;font-weight:700;color:var(--lake);margin-right:0.5rem;}
+.sec-title{font-family:'Noto Serif KR',serif;font-size:1.15rem;font-weight:700;margin-bottom:1.2rem;}
+
+p{font-size:13.5px;color:var(--muted);line-height:1.9;margin-bottom:1em;}
+p:last-child{margin-bottom:0;}
+
+.block-title{font-size:0.85rem;font-weight:500;color:var(--text);border-left:3px solid var(--lake);padding-left:0.7rem;margin:1.8rem 0 1rem;}
+
+ul.policy-list{list-style:none;display:flex;flex-direction:column;gap:0.55rem;margin-bottom:1.2rem;}
+ul.policy-list li{font-size:13px;color:var(--muted);padding-left:1.2rem;position:relative;line-height:1.8;}
+ul.policy-list li::before{content:'—';position:absolute;left:0;color:var(--lake);}
+
+/* ── 현황/개선 테이블 ── */
+.compare-table{width:100%;border-collapse:collapse;font-size:12px;margin:1rem 0 1.4rem;}
+.compare-table th{background:rgba(92,188,212,0.12);color:var(--lake);font-weight:500;padding:0.6rem 0.9rem;text-align:left;border:1px solid var(--border);font-size:11px;letter-spacing:0.06em;}
+.compare-table td{padding:0.65rem 0.9rem;border:1px solid var(--border);vertical-align:top;line-height:1.7;color:var(--muted);}
+.compare-table tr:hover td{background:rgba(255,255,255,0.02);}
+
+/* ── 예산 테이블 ── */
+.budget-table{width:100%;border-collapse:collapse;font-size:12px;margin:1rem 0;}
+.budget-table th{background:rgba(210,153,34,0.12);color:var(--amber);font-weight:500;padding:0.55rem 0.8rem;text-align:left;border:1px solid var(--border);font-size:11px;}
+.budget-table td{padding:0.55rem 0.8rem;border:1px solid var(--border);color:var(--muted);}
+.budget-table .total td{color:var(--text);font-weight:500;background:rgba(255,255,255,0.03);}
+.budget-table .num{text-align:right;}
+
+/* ── 위탁 현황 테이블 ── */
+.status-table{width:100%;border-collapse:collapse;font-size:12px;margin:1rem 0;}
+.status-table th{background:rgba(188,140,255,0.1);color:var(--purple);font-weight:500;padding:0.55rem 0.8rem;border:1px solid var(--border);font-size:11px;}
+.status-table td{padding:0.55rem 0.8rem;border:1px solid var(--border);color:var(--muted);vertical-align:top;}
+
+/* ── note ── */
+.note{background:rgba(255,255,255,0.025);border-left:3px solid var(--border);border-radius:0 6px 6px 0;padding:0.8rem 1rem;font-size:11.5px;color:var(--muted);margin:1rem 0;line-height:1.7;}
+.note-green{border-left-color:var(--green);background:rgba(63,185,80,0.05);}
+.note-amber{border-left-color:var(--amber);background:rgba(210,153,34,0.05);}
+
+/* ── 관련 링크 ── */
+.related-links{display:flex;gap:0.8rem;flex-wrap:wrap;}
+.related-link{display:inline-flex;align-items:center;gap:0.4rem;padding:0.5rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:6px;font-size:12px;color:var(--muted);transition:all 0.2s;}
+.related-link:hover{border-color:var(--accent);color:var(--text);}
+
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:11px;color:var(--muted);letter-spacing:0.04em;margin-top:2rem;}
+
+/* ── 베이지 테마 ── */
+#theme-toggle{position:fixed;bottom:1.6rem;right:1.6rem;z-index:9000;display:flex;align-items:center;gap:6px;padding:7px 16px;border-radius:20px;border:1px solid rgba(92,188,212,0.25);background:rgba(22,27,34,0.88);backdrop-filter:blur(12px);color:#e6edf3;font-size:11.5px;font-family:'Noto Sans KR',sans-serif;font-weight:300;letter-spacing:0.05em;cursor:pointer;transition:all 0.22s;box-shadow:0 2px 16px rgba(0,0,0,0.35);}
+#theme-toggle:hover{transform:translateY(-2px);}
+[data-theme="beige"]{--bg:#FAF8F4;--surface:#F2EDE5;--border:#E0D5C8;--text:#1A1410;--muted:#7A6A5A;--accent:#C86040;--lake:#B07850;--amber:#A07828;--green:#5A7A5A;--purple:#8B6B9B;}
+[data-theme="beige"] .site-header{background:rgba(250,247,242,0.96)!important;}
+[data-theme="beige"] #theme-toggle{background:rgba(250,247,242,0.94);border-color:rgba(180,150,120,0.35);color:#3A2E24;}
+[data-theme="beige"] a{color:#C86040!important;}
+[data-theme="beige"] .hero-series,[data-theme="beige"] .roman,[data-theme="beige"] .block-title,[data-theme="beige"] .compare-table th{color:#B07850!important;border-color:#E0D5C8!important;}
+[data-theme="beige"] .sec-label{color:#C86040!important;}
+[data-theme="beige"] .compare-table th{background:rgba(176,120,80,0.1)!important;}
+[data-theme="beige"] .budget-table th{background:rgba(160,120,40,0.1)!important;color:#A07828!important;}
+[data-theme="beige"] .status-table th{background:rgba(139,107,155,0.1)!important;color:#8B6B9B!important;}
+
+@media(max-width:600px){.meta-row{gap:0.6rem;}.compare-table,.budget-table,.status-table{display:block;overflow-x:auto;}}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 업무자료</div>
+  <nav class="nav-links">
+    <a href="/index.html">홈</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/about.html">소개</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-series">청풍호 관광·레저시설 종합정비 Ⅲ</div>
+  <h1>번지점프장·모노레일 등<br>위탁운영시설 관리개선계획(안)</h1>
+  <p class="hero-sub">시설관리사업소 관광레저팀 — 계약만료가 임박한 번지점프장·모노레일의 재계약 협상 및 활성화방안 수립, 위탁·사용허가 17개소의 통합 계약관리 체계 마련. 부시장 주재 간부회의 토론사항(모노레일) 포함.</p>
+  <div class="meta-row">
+    <span class="meta-chip">총사업비 <strong>10백만원</strong></span>
+    <span class="meta-chip">세부사업 <strong>2건</strong></span>
+    <span class="meta-chip">계약시설 <strong>17개소</strong></span>
+    <span class="meta-chip">핵심 <strong>계약 협상</strong></span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-label">추진배경</div>
+  <p>청풍호 관광권역 내 위탁·사용허가 시설은 관리위탁 8개소, 사용허가 9개소 등 총 17개소로, 민간 사업자·마을회 등에 운영을 맡기는 구조다. 이 가운데 번지점프장과 청풍호 모노레일은 사업 규모와 계약만료 임박성에서 가장 시급한 정비·협상 대상이다.</p>
+  <p>번지점프장(2002년 조성, 현 수탁사 ㈜조이, 2021.3.1.~2026.2.28.)은 익스트림 시설 특성상 이용객이 점차 감소하는 추세이며, 핵심설비인 이젝션시트의 노후화로 수억원 규모의 교체비용이 예상되는 반면, 국내 최대 높이(62m)라는 기존 상징성도 이미 상실된 상태다.</p>
+  <p>청풍호 모노레일(2012.8. 개통, 누적 투자비 65억원 이상)은 위탁수익이 2021년 233.7백만원에서 2024년 144.9백만원으로 약 38% 감소했으며, 운영을 포기하기도 재투자하기도 어려운 구조에 놓여 있다. 특히 모노레일 상부정차장 부지를 케이블카(로프웨이) 사업자가 소유하고 있어 협상이 난항을 겪는 사안으로, 부시장 주재 간부회의에서 별도 토론된 현안이다.</p>
+</div>
+
+<div class="section">
+  <div class="sec-label">추진방향</div>
+  <ul class="policy-list">
+    <li>번지점프장: 계약만료(2026.2.28.) 이전에 <strong>철거를 포함한 활성화방안 연구용역</strong>을 선행하고, 청풍랜드 리모델링과 연계하여 존치 여부 결정</li>
+    <li>모노레일: 요금 현실화를 전제로 <strong>시설투자비의 절반 이상을 케이블카 사업자가 분담</strong>하는 조건으로 재계약 협상 추진</li>
+    <li>기타 위탁·사용허가 시설: 17개소의 계약만료 일정을 통합 관리하여 공백 없는 재공고·재계약 체계 마련</li>
+    <li>농산물판매장 4개소: 시설 성격에 맞는 유통축산과로의 소관 이관을 검토하여 전문성 있는 운영지원 체계 마련</li>
+  </ul>
+</div>
+
+<div class="section">
+  <div class="sec-label">세부 추진내용</div>
+
+  <div class="block-title">□ 번지점프장 [위탁시설]</div>
+  <p style="font-size:12px;margin-bottom:0.5rem;">주요시설: 번지점프대, 자이언트스윙, 이젝션시트, 짚라인, 매점, 사무실, 번지점프 착륙 풀장, 인접공원 등</p>
+  <p style="font-size:12px;margin-bottom:0.8rem;">운영현황: ㈜조이 박동걸, 2021.3.1.~2026.2.28., 연간 82,069,500원(VAT포함)</p>
+  <table class="compare-table">
+    <thead><tr><th style="width:48%">현황 및 문제점</th><th>개선대책(안)</th></tr></thead>
+    <tbody>
+      <tr><td>익스트림 시설로 이용객이 점차 감소하고 있으며, 초기 투자비용과 유지보수비용 대비 관광객 유발효과가 매우 적음</td><td>청풍랜드 건물 내외부 리모델링과 연계한 활성화방안 연구용역을 발주(철거 포함 검토) 후 존치 여부 결정</td></tr>
+      <tr><td>이젝션시트 등 핵심설비가 노후되어 교체 시 수억원의 비용이 발생할 수 있으며, 여타 시설도 지속적인 보수정비 비용이 소요됨</td><td>용역 결과에 따라 부분 교체·전면 철거 여부를 결정</td></tr>
+      <tr><td>국내 최대 높이(62m)라는 상징성이 상실되었고, 매점·사무실·화장실 노후로 관광지 이미지가 저하되고 있음</td><td>활성화방안 용역 시 안전관리 기준 및 이미지 개선 방안을 함께 검토</td></tr>
+    </tbody>
+  </table>
+  <div class="note note-amber">※ 번지점프용 엘리베이터는 안전진단 제외 대상(법외시설)으로, 활성화방안 용역 시 별도의 안전관리 기준 검토가 필요함.</div>
+
+  <div class="block-title">□ 청풍호 모노레일 [위탁시설] — 부시장 주재 간부회의 토론사항</div>
+  <p style="font-size:12px;margin-bottom:0.5rem;">주요시설: 승용대차 12대(전기식), 모노레일(전기 2.91km, 기계 1.5km), 승강장, 매표소, 주차장, 특산물판매장 등</p>
+  <p style="font-size:12px;margin-bottom:0.8rem;">운영현황: 청풍로프웨이㈜, 2024.2.19.~2025.12.31., 위탁수익 연간 144,939,550원 (2021년 233,715,000원 대비 약 38% 감소)</p>
+  <table class="compare-table">
+    <thead><tr><th style="width:48%">현황 및 문제점</th><th>개선대책(안)</th></tr></thead>
+    <tbody>
+      <tr><td>운영을 포기하기도 재투자하기도 어려운 상황이며, 모노레일 상부정차장 부지를 로프웨이(케이블카) 측이 소유하고 있어 협상이 난항을 겪고 있음. 로프웨이 측은 요금 인상과 지속적인 시설투자를 요구 중이며, 현재까지 조성비·교체정비비 등 65억원 이상이 투입된 사업으로 운영 중단 시 인근 주민들의 집단민원이 우려됨</td><td>케이블카 조성 당시 시의 노력·협조 및 주민동의 과정을 재확인하며 케이블카 측과 지속적으로 협상하고, 일부 요금 현실화(케이블카 대비)를 조건으로 시설투자 비용의 절반 이상을 케이블카 측이 부담하도록 강조한 뒤 재계약을 추진</td></tr>
+    </tbody>
+  </table>
+
+  <div class="block-title">□ 기타 위탁·사용허가 시설</div>
+  <p>산악체험장, 청풍호카약카누장, 능강솟대문화공간, 금수산힐링체험센터, 청풍전통문화체험장 등 관리위탁 5개소와 청풍호오토캠핑장, 농산물판매장 4개소, 옥순봉쉼터, 청풍호유람선 등 사용허가 9개소는 대체로 정상 운영되고 있으나, 계약기간이 시설별로 분산되어 있어 통합된 일정관리 없이는 만료 직전에야 재공고 여부를 검토하게 되는 구조적 한계가 있다.</p>
+
+  <div class="block-title">□ 농산물판매장 소관 이관 검토</div>
+  <p>도곡리·상천리·억수·물태리 4개 농산물판매장은 연간 사용료 합산 약 1,290만원(12,889,820원) 수준의 소규모 시설이나, 운영 마을회에 실질적으로 필요한 것은 시설 사용허가 행정이 아니라 품질관리·판로개척·직거래 마케팅 등 유통 전문성이다.</p>
+  <div class="note note-green">유통축산과는 농산물 유통·로컬푸드·직거래장터를 전담하는 부서로, 운영 마을회에 대한 실질적인 유통·마케팅 지원이 가능함. 이관 이후에도 4개소 모두 청풍호 관광동선 내에 위치하므로, 관광객 동선 안내·홍보물 제작 등은 관광레저팀과의 협조 체계를 유지할 필요.</div>
+  <div class="note note-amber">※ 이관 추진 시 사용허가 행정(허가권자 변경, 기존 계약 승계 여부)에 대해 회계·법무 부서와 사전 협의가 선행되어야 함.</div>
+</div>
+
+<div class="section">
+  <div class="sec-label">추진일정 및 소요예산</div>
+  <table class="budget-table">
+    <thead><tr><th style="width:3rem">No.</th><th>세부사업</th><th>추진일정</th><th class="num">소요액(백만)</th></tr></thead>
+    <tbody>
+      <tr><td>14</td><td>번지점프장 폐지 또는 대안마련 활성화방안 주민의견 수렴 및 용역 발주</td><td>~'25.12.31</td><td class="num">10</td></tr>
+      <tr><td>15</td><td>모노레일 재계약 및 일부 시설투자</td><td>~'25.12.31</td><td class="num">0①</td></tr>
+      <tr class="total"><td colspan="3">합 계</td><td class="num">10</td></tr>
+    </tbody>
+  </table>
+  <div class="note note-amber">※ ① 모노레일 시설투자 분담분은 케이블카 측과의 협상 결과에 따라 최종 확정 필요 — 협상 진행 전까지는 미확정(0)으로 표기.</div>
+</div>
+
+<div class="section">
+  <div class="sec-label">위탁·사용허가 시설 계약현황 (붙임)</div>
+
+  <p style="font-size:12px;color:var(--muted);margin-bottom:0.8rem;font-weight:500;">▸ 관리위탁 (8개소)</p>
+  <table class="status-table">
+    <thead><tr><th>시설명</th><th>수탁자(대표자)</th><th>계약기간</th><th>연간 수탁료</th></tr></thead>
+    <tbody>
+      <tr><td>청풍호 관광모노레일</td><td>청풍로프웨이㈜ 오영록</td><td>2024.02.19.~2025.12.31.</td><td>144,939,550원</td></tr>
+      <tr><td>청풍호 수상비행장</td><td>—</td><td>2021.12.19. 협약만료해지</td><td>(미운영)</td></tr>
+      <tr><td>산악체험장</td><td>(사)대한서바이벌게임협회 양대환</td><td>2024.03.05.~2027.03.04.</td><td>30,500,000원</td></tr>
+      <tr><td>청풍호 카약·카누장</td><td>수산나드리영농조합법인 박재철</td><td>2021.01.01.~2025.12.31.</td><td>8,486,480원</td></tr>
+      <tr><td>능강솟대문화공간</td><td>윤영호</td><td>2022.01.01.~2024.12.31.</td><td>21,000천원+홍보물비(무상위탁)</td></tr>
+      <tr><td>금수산 힐링체험센터</td><td>화홍산업㈜ 김병찬</td><td>2024.08.01.~2027.07.31.</td><td>17,715,000원</td></tr>
+      <tr><td>청풍 전통문화체험장</td><td>본정초콜릿㈜ 이종태</td><td>2022.06.02.~2027.06.01.</td><td>14,035,100원</td></tr>
+      <tr><td>번지점프장(하강체험시설)</td><td>㈜조이 박동걸</td><td>2021.03.01.~2026.02.28.</td><td>82,069,500원(VAT포함)</td></tr>
+    </tbody>
+  </table>
+
+  <p style="font-size:12px;color:var(--muted);margin-top:1.5rem;margin-bottom:0.8rem;font-weight:500;">▸ 사용허가 (9개소)</p>
+  <table class="status-table">
+    <thead><tr><th>시설명</th><th>사용자(대표자)</th><th>계약기간</th><th>사용료</th></tr></thead>
+    <tbody>
+      <tr><td>청풍호 오토캠핑장</td><td>무암협동조합 양대환</td><td>2020.05.26.~2025.05.25.</td><td>17,477,800원</td></tr>
+      <tr><td>(구)수상비행장 클럽하우스</td><td>박세란</td><td>2020.12.14.~2025.12.13.</td><td>8,548,680원</td></tr>
+      <tr><td>도곡리 농산물판매장 ★</td><td>도곡리마을회 성기조</td><td>2024.03.01.~2026.02.28.</td><td>1,107,480원</td></tr>
+      <tr><td>상천리 농산물판매장 ★</td><td>상천리마을회</td><td>2024.01.01.~2025.12.31.</td><td>4,622,140원</td></tr>
+      <tr><td>억수 농산물판매장 ★</td><td>월악산국립공원사무소</td><td>2022.01.01.~2024.12.31.</td><td>7,059,250원(대부료)</td></tr>
+      <tr><td>옥순봉 쉼터</td><td>이혁재</td><td>2023.03.25.~2026.03.24.</td><td>무상(도로기부채납)</td></tr>
+    </tbody>
+  </table>
+  <div class="note" style="margin-top:0.8rem;">★ 유통축산과 이관 검토 대상 4개소(말미마을 농산물판매장 포함) / ※ 본 현황은 2024.7월 작성 당시 기준이며, 상당수 시설이 이미 계약만료 시점을 경과하였으므로 현행화 점검이 선행되어야 함.</div>
+</div>
+
+<div class="section">
+  <div class="sec-label">행정사항</div>
+  <div class="block-title">법적 근거 — 사용수익허가와 민간위탁의 구분</div>
+  <ul class="policy-list">
+    <li><strong>사용수익허가</strong>: 허가를 받은 자가 수익을 낼 것을 기대하여 행정재산 사용료를 납부하고 수익활동을 수행하는 것(「공유재산 및 물품관리법」) — 민간이 사적재를 공급</li>
+    <li><strong>민간위탁</strong>: 법률에 규정된 행정기관 사무의 일부를 법인·단체 또는 개인에게 맡겨 그 명의와 책임 아래 행사하도록 하는 것(「행정권한의 위임 및 위탁에 관한 규정」 제2조제3호) — 공공서비스를 공급</li>
+  </ul>
+  <div class="block-title">위수탁 계약 만료 일정 관리</div>
+  <ul class="policy-list">
+    <li>번지점프장 2026.2.28. — 활성화방안 용역 결과에 따라 재공고 또는 폐지</li>
+    <li>청풍호 모노레일 2025.12.31. — 케이블카 측과의 협상 결과에 따라 재계약</li>
+    <li>청풍호 카약카누장 2025.12.31. — 사전 재공고 절차 착수 필요</li>
+  </ul>
+  <div class="block-title">유의사항</div>
+  <p>운영 중단을 결정할 경우 인근 주민의 집단민원 가능성을 사전에 검토하고 의견수렴 절차를 선행. 부시장 주재 간부회의 토론사항(모노레일)에 대한 후속 협상 진행상황을 정기 보고한다.</p>
+</div>
+
+<div class="section" style="padding-top:1.5rem;padding-bottom:1.5rem;border-top:1px solid var(--border);">
+  <div class="sec-label">Related</div>
+  <div class="related-links">
+    <a href="/research.html" class="related-link">🔬 연구 포트폴리오</a>
+    <a href="/tourism-plan-01.html" class="related-link">Ⅰ 만남의광장·청풍랜드</a>
+    <a href="/tourism-plan-02.html" class="related-link">Ⅱ 자드락길·수경분수</a>
+    <a href="/tourism-plan-03.html" class="related-link">Ⅲ 번지점프장·모노레일</a>
+    <a href="/jecheon_9th_policy_whitepaper.html" class="related-link">📋 민선9기 공약백서</a>
+  </div>
+</div>
+<footer>제천시 시설관리사업소 관광레저팀 · 청풍호 관광·레저시설 종합정비 계획(안)</footer>
+<button id="theme-toggle" onclick="(function(){var t=document.documentElement;var b=t.getAttribute('data-theme')==='beige';t.setAttribute('data-theme',b?'dark':'beige');localStorage.setItem('theme',b?'dark':'beige');this.textContent=b?'☾ 다크':'☀ 라이트';}).call(this)">☀ 라이트</button>
+<script>
+(function(){var t=localStorage.getItem('theme')||'dark';document.documentElement.setAttribute('data-theme',t);var btn=document.getElementById('theme-toggle');if(btn)btn.textContent=t==='beige'?'☾ 다크':'☀ 라이트';})();
+</script>
+</body>
+</html>

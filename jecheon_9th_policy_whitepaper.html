@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>민선9기 제천시장직 인수위원회 — 당선인 공약사항 종합 백서</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#14233D; --navy-soft:#1F3759; --navy-pale:#E7EAF1;
+  --teal:#2F6F62; --teal-pale:#E3EEEA;
+  --gold:#B8862E; --gold-pale:#F4E9D4;
+  --paper:#FAF7F0; --surface:#FFFFFF;
+  --ink:#20241F; --muted:#6B6557; --border:#DDD6C5;
+  --red:#9B3B3B; --red-pale:#F3E4E1;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:'Noto Sans KR',sans-serif; font-size:15px; line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4 { font-family:'Noto Serif KR',serif; margin:0; color:var(--navy); }
+a { color:var(--navy); }
+.layout { display:grid; grid-template-columns:264px 1fr; min-height:100vh; }
+
+/* ---------- sidebar ---------- */
+.sidebar {
+  background:var(--navy); color:#EFEDE3; padding:28px 22px;
+  position:sticky; top:0; height:100vh; overflow-y:auto;
+}
+.sidebar .brand { font-family:'Noto Serif KR',serif; font-weight:700; font-size:15px; letter-spacing:.02em; color:#fff; border-bottom:1px solid rgba(255,255,255,.18); padding-bottom:16px; margin-bottom:18px; }
+.sidebar .brand small { display:block; font-family:'Noto Sans KR',sans-serif; font-weight:400; font-size:11.5px; color:#B9C2D6; margin-top:6px; letter-spacing:.04em; }
+.toc-group { margin-bottom:20px; }
+.toc-group > a { display:block; font-size:13.5px; font-weight:700; color:#fff; text-decoration:none; padding:7px 8px; border-radius:4px; }
+.toc-group > a:hover { background:rgba(255,255,255,.08); }
+.toc-group ul { list-style:none; margin:2px 0 0; padding:0 0 0 8px; border-left:1px solid rgba(255,255,255,.18); }
+.toc-group li a { display:flex; justify-content:space-between; gap:6px; font-size:12.5px; color:#C9D0E0; text-decoration:none; padding:5px 10px; border-radius:4px; }
+.toc-group li a:hover, .toc-group li a.active { background:rgba(255,255,255,.1); color:#fff; }
+.toc-group li a em { font-style:normal; color:#8C9AB8; }
+.sidebar-foot { margin-top:26px; padding-top:16px; border-top:1px solid rgba(255,255,255,.18); font-size:11px; color:#8C9AB8; line-height:1.6; }
+
+/* ---------- main ---------- */
+.main { min-width:0; }
+.cover {
+  position:relative; background:linear-gradient(165deg,var(--navy) 0%,var(--navy-soft) 100%);
+  color:#fff; padding:64px 56px 48px; overflow:hidden;
+}
+.cover::after {
+  content:""; position:absolute; inset:0;
+  background-image:repeating-linear-gradient(115deg, rgba(255,255,255,.025) 0 2px, transparent 2px 60px);
+  pointer-events:none;
+}
+.eyebrow { font-size:12.5px; letter-spacing:.12em; color:var(--gold); font-weight:700; }
+.cover h1 { color:#fff; font-size:34px; font-weight:900; margin:14px 0 10px; line-height:1.35; max-width:680px; }
+.cover .sub { color:#C9D0E0; font-size:15px; max-width:620px; }
+.cover .meta { display:flex; flex-wrap:wrap; gap:28px; margin-top:28px; padding-top:20px; border-top:1px solid rgba(255,255,255,.2); font-size:12.5px; color:#AEB8CE; }
+.cover .meta b { display:block; color:#fff; font-size:13.5px; font-weight:700; margin-bottom:2px; }
+
+.seal { position:absolute; right:48px; top:46px; width:122px; height:122px; }
+
+.stat-strip { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border); border-bottom:1px solid var(--border); }
+.stat { background:var(--surface); padding:22px 24px; }
+.stat .n { font-family:'Noto Serif KR',serif; font-weight:900; font-size:30px; color:var(--navy); }
+.stat .n small { font-size:14px; font-weight:700; margin-left:2px; }
+.stat .l { font-size:12.5px; color:var(--muted); margin-top:4px; }
+
+.content { padding:44px 56px 80px; max-width:1080px; }
+
+section.block { margin-bottom:54px; }
+.block-head { display:flex; align-items:baseline; gap:12px; margin-bottom:18px; padding-bottom:10px; border-bottom:2px solid var(--navy); }
+.block-head .num { font-family:'Noto Serif KR',serif; font-weight:900; font-size:22px; color:var(--navy); }
+.block-head h2 { font-size:21px; }
+.block-intro { color:var(--muted); font-size:13.5px; margin:-8px 0 18px; }
+
+/* info table (I) */
+.info-table { width:100%; border-collapse:collapse; background:var(--surface); border:1px solid var(--border); }
+.info-table th, .info-table td { border-bottom:1px solid var(--border); padding:13px 18px; text-align:left; vertical-align:top; font-size:13.8px; }
+.info-table tr:last-child th, .info-table tr:last-child td { border-bottom:none; }
+.info-table th { background:var(--navy-pale); color:var(--navy); font-weight:700; width:140px; white-space:nowrap; }
+
+/* distribution */
+.dist-wrap { background:var(--surface); border:1px solid var(--border); padding:22px 24px; margin-bottom:20px; }
+.dist-row { display:grid; grid-template-columns:96px 1fr 120px; align-items:center; gap:14px; padding:7px 0; }
+.dist-label { font-size:13px; font-weight:700; color:var(--navy); }
+.dist-track { background:var(--navy-pale); height:10px; border-radius:5px; overflow:hidden; }
+.dist-fill { background:var(--teal); height:100%; border-radius:5px; }
+.dist-value { font-size:12.5px; color:var(--muted); text-align:right; }
+.dist-value em { font-style:normal; color:var(--gold); margin-left:4px; }
+
+.core-list { list-style:none; margin:0; padding:0; background:var(--surface); border:1px solid var(--border); }
+.core-list li { display:grid; grid-template-columns:96px 1fr 180px; gap:14px; padding:11px 18px; border-bottom:1px solid var(--border); font-size:13.5px; align-items:center; }
+.core-list li:last-child { border-bottom:none; }
+.core-div { font-size:11.5px; font-weight:700; color:var(--teal); background:var(--teal-pale); padding:3px 8px; border-radius:3px; text-align:center; }
+.core-title { font-weight:500; }
+.core-dept { color:var(--muted); font-size:12.5px; text-align:right; }
+
+/* toolbar */
+.toolbar { display:flex; align-items:center; gap:10px; margin-bottom:18px; }
+.toolbar button {
+  font-family:'Noto Sans KR',sans-serif; font-size:12.8px; font-weight:700; color:var(--navy);
+  background:var(--gold-pale); border:1px solid var(--gold); padding:8px 16px; border-radius:20px; cursor:pointer;
+}
+.toolbar button.on { background:var(--gold); color:#fff; }
+.toolbar .hint { font-size:12px; color:var(--muted); }
+
+/* dept cards */
+.card { background:var(--surface); border:1px solid var(--border); margin-bottom:22px; }
+.sec-head { display:flex; align-items:baseline; gap:10px; padding:16px 20px; background:var(--navy); flex-wrap:wrap; }
+.sec-head .sec-no { font-family:'Noto Serif KR',serif; font-weight:900; color:var(--gold); font-size:13px; }
+.sec-head h3 { color:#fff; font-size:16.5px; }
+.sec-head .sec-meta { margin-left:auto; color:#AEB8CE; font-size:12px; }
+
+table.data-table { width:100%; border-collapse:collapse; }
+.data-table th { background:#F1EEE3; color:var(--navy); font-size:12px; font-weight:700; text-align:left; padding:10px 14px; border-bottom:1px solid var(--border); }
+.data-table td { padding:12px 14px; border-bottom:1px solid var(--border); font-size:13.3px; vertical-align:top; }
+.data-table tr:last-child td { border-bottom:none; }
+.data-table tr:nth-child(even) { background:#FCFBF7; }
+.data-table tr.row-core { background:var(--gold-pale); }
+.c-no { width:42px; color:var(--muted); font-weight:700; text-align:center; }
+.c-title { width:23%; font-weight:700; color:var(--navy); }
+.c-dir { color:var(--ink); font-size:12.8px; line-height:1.65; }
+.c-tag { width:84px; white-space:nowrap; }
+.c-dept { width:140px; color:var(--muted); font-size:12.5px; }
+.c-div { width:100px; color:var(--muted); font-size:12.5px; }
+.c-note { width:140px; }
+
+.badge-core { display:inline-block; background:var(--gold); color:#fff; font-size:10.5px; font-weight:700; padding:2px 6px; border-radius:3px; margin-right:6px; vertical-align:1px; }
+.pill { display:inline-block; font-size:11px; font-weight:700; padding:3px 9px; border-radius:11px; background:var(--navy-pale); color:var(--navy-soft); white-space:nowrap; }
+
+.tag { font-size:11px; font-weight:700; padding:3px 9px; border-radius:11px; white-space:nowrap; }
+.tag-out { background:#EDEAE2; color:var(--muted); }
+.tag-warn { background:var(--gold-pale); color:var(--gold); }
+.tag-move { background:var(--teal-pale); color:var(--teal); }
+tr.row-muted td { color:var(--muted); }
+tr.row-muted .c-title { color:var(--muted); text-decoration:line-through; text-decoration-color:var(--border); }
+
+/* insights */
+.insight-list { list-style:none; margin:0; padding:0; counter-reset:insight; }
+.insight-list li { counter-increment:insight; position:relative; padding:16px 20px 16px 56px; background:var(--surface); border:1px solid var(--border); margin-bottom:10px; font-size:13.8px; }
+.insight-list li::before { content:counter(insight); position:absolute; left:18px; top:16px; font-family:'Noto Serif KR',serif; font-weight:900; font-size:18px; color:var(--gold); }
+.insight-list b { color:var(--navy); }
+.insight-list .note { display:block; margin-top:6px; color:var(--muted); font-size:12.5px; }
+
+footer.doc-foot { margin-top:60px; padding-top:20px; border-top:1px solid var(--border); font-size:11.8px; color:var(--muted); }
+
+@media (max-width:980px) {
+  .layout { grid-template-columns:1fr; }
+  .sidebar { position:relative; height:auto; }
+  .cover { padding:40px 26px; }
+  .content { padding:32px 22px 60px; }
+  .stat-strip { grid-template-columns:repeat(2,1fr); }
+  .seal { display:none; }
+  .core-list li, .dist-row { grid-template-columns:1fr; gap:4px; }
+  .core-dept, .dist-value { text-align:left; }
+}
+@media print {
+  .sidebar, .toolbar { display:none !important; }
+  .layout { grid-template-columns:1fr; display:block; }
+  .cover { background:var(--navy) !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  .card { page-break-inside:avoid; }
+  body { font-size:12px; }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <nav class="sidebar">
+    <div class="brand">민선9기 제천시장직<br>인수위원회<small>당선인 공약사항 종합 백서 · 목차</small></div>
+
+    <div class="toc-group">
+      <a href="#overview">I. 당선인 개요</a>
+    </div>
+    <div class="toc-group">
+      <a href="#summary">II. 공약사항 총괄 현황</a>
+    </div>
+    <div class="toc-group">
+      <a href="#detail">III. 분과별 공약사항 상세</a>
+      <ul><li><a href="#dept-1">III-1. 기획재정 분과 <em>4</em></a></li><li><a href="#dept-2">III-2. 문화복지 분과 <em>20</em></a></li><li><a href="#dept-3">III-3. 경제산업 분과 <em>11</em></a></li><li><a href="#dept-4">III-4. 도시건설 분과 <em>15</em></a></li><li><a href="#dept-5">III-5. 청년위원회 분과 <em>3</em></a></li><li><a href="#dept-6">III-6. 여성위원회 분과 <em>3</em></a></li>
+      </ul>
+    </div>
+    <div class="toc-group">
+      <a href="#projects">IV. 시책사업 현황 (29건)</a>
+    </div>
+    <div class="toc-group">
+      <a href="#insights">V. 종합 시사점 및 추진방향</a>
+    </div>
+
+    <div class="sidebar-foot">
+      본 백서는 인수위 정리자료(공문용)를 기초로 재구성한 실무 참고용 문서입니다.<br>작성 · 2026. 6.
+    </div>
+  </nav>
+
+  <main class="main">
+    <header class="cover">
+      <svg class="seal" viewBox="0 0 200 200" aria-hidden="true">
+        <circle cx="100" cy="100" r="92" fill="none" stroke="#D9B872" stroke-width="2.5" opacity="0.9"/>
+        <circle cx="100" cy="100" r="78" fill="none" stroke="#D9B872" stroke-width="1" opacity="0.6"/>
+        <path id="sealArc" d="M 100,22 A 78,78 0 1 1 99.9,22" fill="none"/>
+        <text font-family="'Noto Serif KR',serif" font-size="13.5" fill="#E9D9AE" letter-spacing="3">
+          <textPath href="#sealArc" startOffset="2%">민선9기 · 제천시장직 인수위원회</textPath>
+        </text>
+        <text x="100" y="93" text-anchor="middle" font-family="'Noto Serif KR',serif" font-weight="900" font-size="26" fill="#F4E9D4">당선인</text>
+        <text x="100" y="122" text-anchor="middle" font-family="'Noto Serif KR',serif" font-weight="700" font-size="15" fill="#D9B872" letter-spacing="6">백서</text>
+      </svg>
+
+      <div class="eyebrow">민선9기 제천시장직 인수위원회 · 정책기획분과</div>
+      <h1>당선인 공약사항 종합 백서</h1>
+      <p class="sub">제9회 전국동시지방선거 당선인 이상천 시장 공약사항 56건 및 시책사업 29건의 실현가능성 검토를 위한 인수위 기초 정리자료</p>
+      <div class="meta">
+        <div><b>당선인</b>이상천 (민선7기 제천시장, 민선9기 당선)</div>
+        <div><b>작성일</b>2026. 6.</div>
+        <div><b>자료근거</b>민선9기 당선인 공약사항 정리(공문용)</div>
+        <div><b>문서성격</b>인수위 검토용 — 실현가능성 재검토 전제</div>
+      </div>
+    </header>
+
+    <div class="stat-strip">
+      <div class="stat"><div class="n">56<small>건</small></div><div class="l">공약사항 총계</div></div>
+      <div class="stat"><div class="n">10<small>건</small></div><div class="l">핵심공약</div></div>
+      <div class="stat"><div class="n">29<small>건</small></div><div class="l">시책사업 (별도)</div></div>
+      <div class="stat"><div class="n">6<small>개</small></div><div class="l">인수위 분과</div></div>
+    </div>
+
+    <div class="content">
+
+      <section class="block" id="overview">
+        <div class="block-head"><span class="num">I.</span><h2>당선인 개요</h2></div>
+        <table class="info-table">
+          <tr><th>성명</th><td>이상천(李相千)</td></tr>
+          <tr><th>출생 · 학력</th><td>1961년 충청북도 제천시 출생. 동명초등학교 · 대제중학교 · 제천고등학교 · 한양대학교 독어독문학과 졸업.</td></tr>
+          <tr><th>행정 경력</th><td>제천시청 7급 공채로 입직, 제천국제음악영화제 및 한방바이오엑스포 개최를 주도적으로 추진. 4급 서기관으로 승진하여 행정복지국장 등을 역임한 후 2017년 10월 명예퇴직.</td></tr>
+          <tr><th>정치 경력</th><td>명예퇴직 후 더불어민주당 입당, 충청북도당 부위원장 역임. 2018년 제7회 전국동시지방선거 제천시장 당선(민선7기). 2022년 제8회 전국동시지방선거 재선 도전 후 낙선.</td></tr>
+          <tr><th>당선 경과</th><td>2026년 4월 8일 당내 경선 승리 후 제9회 전국동시지방선거 제천시장 본선에서 당선, 민선9기 제천시장 당선인 신분 확보.</td></tr>
+          <tr><th>비고</th><td>민선7기 재직 시절 급여 상당액 비공개 기부(낙선 후 마지막 급여 전액 기부 포함) 등 정책 중심 평가를 지향해 온 행정 이력 보유.</td></tr>
+        </table>
+      </section>
+
+      <section class="block" id="summary">
+        <div class="block-head"><span class="num">II.</span><h2>공약사항 총괄 현황</h2></div>
+        <p class="block-intro">원자료 상단에 "모든 사업에 대해 실현 가능성을 면밀히 재검토할 필요가 있음"이 명시되어 있어, 본 자료는 확정안이 아닌 인수위 단계의 검토용 원안으로 다룰 필요가 있습니다.</p>
+
+        <h4 style="font-size:14px;margin-bottom:10px;color:var(--navy)">분과별 공약사항 분포</h4>
+        <div class="dist-wrap">
+        <div class="dist-row">
+          <span class="dist-label">기획재정</span>
+          <div class="dist-track"><div class="dist-fill" style="width:20%"></div></div>
+          <span class="dist-value">4건<em>(핵심 1)</em></span>
+        </div>
+        <div class="dist-row">
+          <span class="dist-label">문화복지</span>
+          <div class="dist-track"><div class="dist-fill" style="width:100%"></div></div>
+          <span class="dist-value">20건<em>(핵심 3)</em></span>
+        </div>
+        <div class="dist-row">
+          <span class="dist-label">경제산업</span>
+          <div class="dist-track"><div class="dist-fill" style="width:55%"></div></div>
+          <span class="dist-value">11건<em>(핵심 2)</em></span>
+        </div>
+        <div class="dist-row">
+          <span class="dist-label">도시건설</span>
+          <div class="dist-track"><div class="dist-fill" style="width:75%"></div></div>
+          <span class="dist-value">15건<em>(핵심 0)</em></span>
+        </div>
+        <div class="dist-row">
+          <span class="dist-label">청년위원회</span>
+          <div class="dist-track"><div class="dist-fill" style="width:15%"></div></div>
+          <span class="dist-value">3건<em>(핵심 1)</em></span>
+        </div>
+        <div class="dist-row">
+          <span class="dist-label">여성위원회</span>
+          <div class="dist-track"><div class="dist-fill" style="width:15%"></div></div>
+          <span class="dist-value">3건<em>(핵심 3)</em></span>
+        </div>
+        </div>
+
+        <h4 style="font-size:14px;margin:24px 0 10px;color:var(--navy)">핵심공약 10건</h4>
+        <ul class="core-list">
+          <li><span class="core-div">기획재정</span><span class="core-title">제2차 공공기관 유치(5극3특 지방시대, 충북 북부권 대응)</span><span class="core-dept">기획예산과</span></li>
+          <li><span class="core-div">문화복지</span><span class="core-title">45~65세 중장년층 효도수당 지급</span><span class="core-dept">노인장애인과</span></li>
+          <li><span class="core-div">문화복지</span><span class="core-title">사회복지종사자 복지포인트 지급</span><span class="core-dept">사회복지과/자치행정과</span></li>
+          <li><span class="core-div">문화복지</span><span class="core-title">천원택시 교통약자 바우처 지급</span><span class="core-dept">교통과</span></li>
+          <li><span class="core-div">경제산업</span><span class="core-title">100만평 규모 산업단지 조성</span><span class="core-dept">투자유치과</span></li>
+          <li><span class="core-div">경제산업</span><span class="core-title">청년창업특구(도심 청년 플레이그라운드) 조성</span><span class="core-dept">미래정책과/일자리경제과</span></li>
+          <li><span class="core-div">여성위원회</span><span class="core-title">고교생 글로벌 인재육성 해외연수 지원</span><span class="core-dept">홍보학습담당관</span></li>
+          <li><span class="core-div">여성위원회</span><span class="core-title">안심 24시 달빛어린이병원&amp;심야약국 운영</span><span class="core-dept">감염병관리과</span></li>
+          <li><span class="core-div">여성위원회</span><span class="core-title">18세 미만 아동 진료비 지원(100만원~3,000만원)</span><span class="core-dept">감염병관리과</span></li>
+          <li><span class="core-div">청년위원회</span><span class="core-title">88억 청년자치예산제 시행</span><span class="core-dept">미래정책과</span></li>
+        </ul>
+      </section>
+
+      <section class="block" id="detail">
+        <div class="block-head"><span class="num">III.</span><h2>분과별 공약사항 상세 (56건)</h2></div>
+        <div class="toolbar">
+          <button id="toggleCore" onclick="toggleCoreOnly()">핵심공약만 보기</button>
+          <span class="hint">표 안의 음영 처리된 항목이 핵심공약입니다.</span>
+        </div>
+        
+      <section class="card" id="dept-1">
+        <div class="sec-head">
+          <span class="sec-no">III-1</span>
+          <h3>기획재정 분과</h3>
+          <span class="sec-meta">공약 4건 · 핵심공약 1건</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th class="c-no">연번</th>
+              <th class="c-title">공약사항</th>
+              <th class="c-dir">기본방향(중점검토)</th>
+              <th class="c-tag">정책분야</th>
+              <th class="c-dept">관련부서</th>
+            </tr>
+          </thead>
+          <tbody>
+        <tr class="row-core" data-core="1">
+          <td class="c-no">1</td>
+          <td class="c-title"><span class="badge-core">핵심</span>제2차 공공기관 유치(5극3특 지방시대, 충북 북부권 대응)</td>
+          <td class="c-dir">충청북도지사 당선인 공약인 보훈병원 유치 총력 추진. 충청북도와 긴밀한 협력체계를 구축하고, 철저한 사전 대응을 통한 결과 도출.</td>
+          <td class="c-tag"><span class="pill pill-경제-도시">경제/도시</span></td>
+          <td class="c-dept">기획예산과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">2</td>
+          <td class="c-title">현장 중심 행정(직통 민원 기동대 및 민원신문고(SNS) 설치·운영)</td>
+          <td class="c-dir">시장 직속 '직통 민원기동대(민원 신속 해결팀)' 설치·운영. 실시간 민원 피드백 시스템 구축(SNS 민원신문고 등). 주민간담회 활성화 시스템 구축.</td>
+          <td class="c-tag"><span class="pill pill-경제-도시">경제/도시</span></td>
+          <td class="c-dept">자치행정과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">3</td>
+          <td class="c-title">하소동 뒷산 가족 체험 도시숲 조성(산책로, 어린이놀이터, 오색정원 등)</td>
+          <td class="c-dir">사업위치: 하소동 산 17-7 일원. 사업내용: 산책로, 오색체험숲, 야외쉼터, 어린이자연놀이터, 음수대, 약수터 정비, 화장실 등(약 2.2km). 주민설명회를 개최하여 주민 의견 적극 수렴.</td>
+          <td class="c-tag"><span class="pill pill-문화-관광">문화/관광</span></td>
+          <td class="c-dept">도시정원과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">55</td>
+          <td class="c-title">주민 발굴 마을별 맞춤예산 지원(100억원+α)</td>
+          <td class="c-dir">주민 발굴 마을별 맞춤예산 지원 확대.</td>
+          <td class="c-tag"><span class="pill pill-마을특별시">마을특별시</span></td>
+          <td class="c-dept">미래정책과/기획예산과</td>
+        </tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="card" id="dept-2">
+        <div class="sec-head">
+          <span class="sec-no">III-2</span>
+          <h3>문화복지 분과</h3>
+          <span class="sec-meta">공약 20건 · 핵심공약 3건</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th class="c-no">연번</th>
+              <th class="c-title">공약사항</th>
+              <th class="c-dir">기본방향(중점검토)</th>
+              <th class="c-tag">정책분야</th>
+              <th class="c-dept">관련부서</th>
+            </tr>
+          </thead>
+          <tbody>
+        <tr class="row-core" data-core="1">
+          <td class="c-no">4</td>
+          <td class="c-title"><span class="badge-core">핵심</span>45~65세 중장년층 효도수당 지급</td>
+          <td class="c-dir">지원대상: 4세대 이상 효도수당 → 3세대 이상 중장년(45~65세)으로 확대, 75세 이상 부모와 동일 거주 중장년(45~65세). 지원금액: 연 3회(설, 어버이날, 추석) 총 60만원.</td>
+          <td class="c-tag"><span class="pill pill-복지">복지</span></td>
+          <td class="c-dept">노인장애인과</td>
+        </tr>
+        <tr class="row-core" data-core="1">
+          <td class="c-no">5</td>
+          <td class="c-title"><span class="badge-core">핵심</span>사회복지종사자 복지포인트 지급</td>
+          <td class="c-dir">지원대상: 관내 사회복지 종사자(사회복지사, 보육교사, 생활지원사, 요양보호사 등). 지원내용: 연간 복지포인트 60만원 지급.</td>
+          <td class="c-tag"><span class="pill pill-복지">복지</span></td>
+          <td class="c-dept">사회복지과/자치행정과</td>
+        </tr>
+        <tr class="row-core" data-core="1">
+          <td class="c-no">6</td>
+          <td class="c-title"><span class="badge-core">핵심</span>천원택시 교통약자 바우처 지급</td>
+          <td class="c-dir">지원대상: 농촌 지역, 노약자 등 교통 약자. 지원내용: 월 최대 4만원 바우처 지급. 현행 교통약자 이동지원사업과의 중복지원 여부, 수혜대상 간 형평성, 재원 확보 가능성 등을 종합적으로 검토하여 기존 사업과의 연계·통합을 통한 최적화 방안 마련.</td>
+          <td class="c-tag"><span class="pill pill-복지">복지</span></td>
+          <td class="c-dept">교통과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">7</td>
+          <td class="c-title">장애인 종합복지관 건립</td>
+          <td class="c-dir">대상지역: 시내 인접 지역 검토(장락동, 고암동 인근 폐철도 부지 + 사유지 합병 활용 등 다각도 검토). 사업규모: 연면적 1,200㎡, 3~4층. 1~2층 사무실·안내데스크·휴게실·정보화교실, 3~4층 언어·운동·물리·작업·심리치료실 등 구성(안).</td>
+          <td class="c-tag"><span class="pill pill-복지">복지</span></td>
+          <td class="c-dept">노인장애인과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">8</td>
+          <td class="c-title">남부면 시니어 청춘학교 건립</td>
+          <td class="c-dir">대상지역: 남부 4개면 노인회분회와 협의 선정. 사업규모: 연면적 3,300㎡, 3~4층, 운영인력 5~6명 내외. 1~2층 사무실·휴게실·탁구장·당구장, 3~4층 강당·건강교실·상담실·체력단련실·노인일자리 지원센터 등 구성(안).</td>
+          <td class="c-tag"><span class="pill pill-복지">복지</span></td>
+          <td class="c-dept">노인장애인과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">9</td>
+          <td class="c-title">신백동 종합사회복지관 건립</td>
+          <td class="c-dir">사업위치: 주민과 협의하여 최적의 대상지 선정. 사업내용: 연면적 3,000㎡ 복합형 종합사회복지관(공동육아나눔터·다함께돌봄센터·주민문화공간 등) 건립. 신백동 도시재생사업과 연계 검토.</td>
+          <td class="c-tag"><span class="pill pill-복지">복지</span></td>
+          <td class="c-dept">사회복지과/도시디자인과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">10</td>
+          <td class="c-title">박달재 숲속도서관 조성</td>
+          <td class="c-dir">사업위치: 모정 숯가마 부지(모정리 275-6). 사업내용: 숲속 도서관(30석+작은 서점), 숲속 미술관(지역 작가 아트페어), 박달재 스토리관, 구슬비 정원(백운면 관련 작가 기념 정원) 등. 정부 공모사업 검토.</td>
+          <td class="c-tag"><span class="pill pill-문화-관광">문화/관광</span></td>
+          <td class="c-dept">시립도서관</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">11</td>
+          <td class="c-title">백운면 파크골프장 건립</td>
+          <td class="c-dir">사업위치: 백운면 평동리 또는 방학리(주민 의견 수렴 후 추진). 사업규모: 파크골프장 18홀.</td>
+          <td class="c-tag"><span class="pill pill-문화-관광">문화/관광</span></td>
+          <td class="c-dept">체육진흥과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">12</td>
+          <td class="c-title">덕산면 파크골프장 36홀 확장 조성</td>
+          <td class="c-dir">주민설명회 등 의견수렴 절차를 거쳐 18홀 공사 신속히 마무리. 추후 이용률·활성화 수준을 종합 검토 후 36홀 확장 검토.</td>
+          <td class="c-tag"><span class="pill pill-문화-관광">문화/관광</span></td>
+          <td class="c-dept">체육진흥과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">13</td>
+          <td class="c-title">제천국제음악영화제 등 축제사업 구조 재설계</td>
+          <td class="c-dir">제천국제음악영화제를 비롯한 각종 축제의 실행 및 운영 방향을 전반적으로 재검토.</td>
+          <td class="c-tag"><span class="pill pill-문화-관광">문화/관광</span></td>
+          <td class="c-dept">문화예술과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">14</td>
+          <td class="c-title">청풍면 미식로드 테마거리 조성</td>
+          <td class="c-dir">사업위치: 청풍면 물태리 일원. 미식여행 맛집투어길 조성 및 지역상권 자립형 생태구조 확립, 특화음식 발굴, 청풍호반·케이블카·모노레일 연계 체험콘텐츠 확충, 주거 취약지역 환경 정비, 마을 주민 가이드 양성 및 직영 로컬마트 운영 등. 정부 공모사업(문체부+국토부 등) 검토.</td>
+          <td class="c-tag"><span class="pill pill-문화-관광">문화/관광</span></td>
+          <td class="c-dept">관광과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">15</td>
+          <td class="c-title">청풍면 망월산 둘레길 조성</td>
+          <td class="c-dir">사업위치: 청풍주유소 뒤쪽 일원. 사업내용: 등산로 정비, 부대시설 조성 등(약 2km).</td>
+          <td class="c-tag"><span class="pill pill-문화-관광">문화/관광</span></td>
+          <td class="c-dept">도시정원과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">16</td>
+          <td class="c-title">수산면 힐링테마파크 조성</td>
+          <td class="c-dir">사업위치: 수산면 괴곡리 일원(자드락길 및 옥순봉 생태공원 인접). 복합숲 체험관, 맨발 황토 런웨이, 명상오피스, 트리하우스, 한방체험찜질방 등. 공간 다기능화(오전 명상/치유, 오후 워케이션, 저녁 주민 프로그램)로 건축·관리비 절감, 모듈러·경량공법 도입 검토.</td>
+          <td class="c-tag"><span class="pill pill-문화-관광">문화/관광</span></td>
+          <td class="c-dept">관광과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">17</td>
+          <td class="c-title">청전뜰 자연치유특구 조기 완공</td>
+          <td class="c-dir">자연치유특구는 관광객을 도심으로 유인할 중요사업으로 사업 재조정 및 신속 추진.</td>
+          <td class="c-tag"><span class="pill pill-문화-관광">문화/관광</span></td>
+          <td class="c-dept">자연치유특구과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">18</td>
+          <td class="c-title">배구전용구장 건립</td>
+          <td class="c-dir">사업위치: 학교복합시설 배구 전용구장 기능 추가 검토. 사업규모: 초중고 6개교 배구팀 활용 가능 규모 검토.</td>
+          <td class="c-tag"><span class="pill pill-문화-관광">문화/관광</span></td>
+          <td class="c-dept">홍보학습담당관/체육진흥과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">19</td>
+          <td class="c-title">제2배드민턴 전용구장 건립</td>
+          <td class="c-dir">사업위치: 대제중학교 뒤, 삼한의 초록길 인근 국공유지 및 현재 조성 중인 체육시설사업 변경 추진여부 등 다각도 검토. 사업내용: 코트 12면, 700석 규모.</td>
+          <td class="c-tag"><span class="pill pill-문화-관광">문화/관광</span></td>
+          <td class="c-dept">체육진흥과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">20</td>
+          <td class="c-title">반려동물 공공 무료놀이터(펫파크) 조성</td>
+          <td class="c-dir">사업위치: 의림지 청소년수련관 축구장 등 의림지 연계 대상지 선정. 반려동물 놀이터 및 교육 프로그램, 미니동물원 등 구성. 시민뿐 아니라 관광객까지 아우르는 지역경제 활성화 상징으로 조성.</td>
+          <td class="c-tag"><span class="pill pill-문화-관광">문화/관광</span></td>
+          <td class="c-dept">유통축산과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">21</td>
+          <td class="c-title">야외 스포츠파크(+어린이공원) 조성</td>
+          <td class="c-dir">사업위치: 송학면 무도리 150번지 일원. 사회인야구장, 풋살경기장, 족구장, 인라인스케이트장, 어린이공원 등 인조잔디 구장·그물철망·휴게쉼터 조성.</td>
+          <td class="c-tag"><span class="pill pill-문화-관광">문화/관광</span></td>
+          <td class="c-dept">체육진흥과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">22</td>
+          <td class="c-title">자작동 자작나무 마을관광숲 조성</td>
+          <td class="c-dir">사업위치: 3개 지역 113ha(두학동 산 41-1, 자작동 산3·4·5 등 일원). 자작나무 치유숲길, 명상센터, 숲속놀이터 등. 주민소득사업 연계 추진, 정부 공모사업 검토.</td>
+          <td class="c-tag"><span class="pill pill-문화-관광">문화/관광</span></td>
+          <td class="c-dept">산림과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">56</td>
+          <td class="c-title">1천만 관광도시 체류형 관광 인프라 고도화</td>
+          <td class="c-dir">관광활성화를 위한 시티패스(2만원 제천화폐) 시행 검토.</td>
+          <td class="c-tag"><span class="pill pill-문화-관광">문화/관광</span></td>
+          <td class="c-dept">관광과</td>
+        </tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="card" id="dept-3">
+        <div class="sec-head">
+          <span class="sec-no">III-3</span>
+          <h3>경제산업 분과</h3>
+          <span class="sec-meta">공약 11건 · 핵심공약 2건</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th class="c-no">연번</th>
+              <th class="c-title">공약사항</th>
+              <th class="c-dir">기본방향(중점검토)</th>
+              <th class="c-tag">정책분야</th>
+              <th class="c-dept">관련부서</th>
+            </tr>
+          </thead>
+          <tbody>
+        <tr class="row-core" data-core="1">
+          <td class="c-no">23</td>
+          <td class="c-title"><span class="badge-core">핵심</span>100만평 규모 산업단지 조성</td>
+          <td class="c-dir">충청북도지사 당선인의 모빌리티 국가산업단지 조성 공약과의 연계 및 단계별 추진방안 검토. 입지선정·타당성조사·환경영향평가·보상·실시계획 등 행정절차상 민선9기 임기 내 착공 가능 여부 검토. 입지후보지 용수확보·한전 계통용량 검토. RE100 기반 탄소중립형 산업단지 및 전력공급 체계 구축방안 검토. 국가산업단지·기회발전특구·분산에너지특구 등 국가정책 연계 국비 확보방안 검토.</td>
+          <td class="c-tag"><span class="pill pill-경제-도시">경제/도시</span></td>
+          <td class="c-dept">투자유치과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">24</td>
+          <td class="c-title">주요도로 교통신호연동체계 정비</td>
+          <td class="c-dir">현행 교통신호체계 개편에 따른 시민 불편사항 및 문제구간 전면 재점검(기존 교통량 분석·전문가 용역 결과와 현실 간 괴리 확인 필요). 주요 간선도로 및 생활권 중심 시민 체감형 신호연동체계 개선방안 검토.</td>
+          <td class="c-tag"><span class="pill pill-경제-도시">경제/도시</span></td>
+          <td class="c-dept">교통과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">25</td>
+          <td class="c-title">농어업인 공익수당 현실화</td>
+          <td class="c-dir">기존 60만원에서 100만원으로 지원금 증액. 인상에 따른 소요재원 및 재원조달 방안 검토. 단계적 인상 여부 및 대상자·지급기준 등 제도 운영방안 검토.</td>
+          <td class="c-tag"><span class="pill pill-복지">복지</span></td>
+          <td class="c-dept">농업정책과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">26</td>
+          <td class="c-title">세명대학교 상생캠퍼스 학생 도심수업 협약</td>
+          <td class="c-dir">세명대학교와의 학생 도심수업 협약 추진방안 검토 및 일반인 대상 평생대학 운영 검토. 기존 입주 창업공간·사회단체 현황과 계약 종료시점·이전대책 검토. 학생 도심 접근성 확보를 위한 무료셔틀버스 등 교통지원 방안 검토.</td>
+          <td class="c-tag"><span class="pill pill-청년-교육">청년/교육</span></td>
+          <td class="c-dept">홍보학습담당관</td>
+        </tr>
+        <tr class="row-core" data-core="1">
+          <td class="c-no">27</td>
+          <td class="c-title"><span class="badge-core">핵심</span>청년창업특구(도심 청년 플레이그라운드) 조성</td>
+          <td class="c-dir">대상지역: 원도심, 중심상권 빈점포(차없는 거리 중심). 사업량: 연 2팀 정도. 청년몰(청풍몰) 등 기존 청년창업 지원사업 성과·실패원인 분석, 원도심·중앙시장 폐점포 활용, 점포 무상 제공·창업자금(이자보전)·컨설팅 등 창업 전후 지원체계로 경쟁력·지속성 확보.</td>
+          <td class="c-tag"><span class="pill pill-청년-교육">청년/교육</span></td>
+          <td class="c-dept">미래정책과/일자리경제과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">28</td>
+          <td class="c-title">추억의 청춘 플레이 그라운드 조성</td>
+          <td class="c-dir">대상지역: 중앙시장 2층. 소유권 현황 및 매입·임대 등 공간 확보 방안 검토. 청년·가족 단위 방문객 유입을 위한 집객력 있는 콘텐츠 발굴(롤러장·피클볼 등은 수단). 유사사례·이용수요·사업성 분석, 정부 공모사업(전통시장·도시재생) 검토.</td>
+          <td class="c-tag"><span class="pill pill-경제-도시">경제/도시</span></td>
+          <td class="c-dept">일자리경제과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">29</td>
+          <td class="c-title">원도심 쌈지 주차장 및 공원 조성</td>
+          <td class="c-dir">사업위치: 교동·남현동·화산동 등 원도심 내 장기 방치 빈집. 사업방식: 소유주 10년간 토지 무상 제공, 시는 철거비 전액 지원 및 주차장·공원 조성·재산세 감면. 대상지 선정기준·재원조달 방안, 재산세 감면 인센티브, 인근 거주자 우선 주차권, 노인일자리사업 연계 청결관리 검토.</td>
+          <td class="c-tag"><span class="pill pill-경제-도시">경제/도시</span></td>
+          <td class="c-dept">건축과/세무과/노인장애인과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">30</td>
+          <td class="c-title">남현동 주차타워 건립</td>
+          <td class="c-dir">남현동(내토·동문·중앙시장) 주차타워 건립.</td>
+          <td class="c-tag"><span class="pill pill-경제-도시">경제/도시</span></td>
+          <td class="c-dept">교통과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">31</td>
+          <td class="c-title">제천시민공원 주차장 조성</td>
+          <td class="c-dir">사업위치: 성우한솔아파트 인근 제천시민공원. 주차장 조성 가능 공간 확보 여부 및 대체부지 발굴 가능성 검토.</td>
+          <td class="c-tag"><span class="pill pill-경제-도시">경제/도시</span></td>
+          <td class="c-dept">도시정원과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">32</td>
+          <td class="c-title">금성면 축산단지 인근 악취저감사업 확대</td>
+          <td class="c-dir">금성면(중전리·위림리) 축산단지 인근 악취 발생원 및 주민 불편 현황 파악. 국·도비 지원사업 연계 및 악취저감시설 확대 방안(봉양읍·송학면 등으로 확대) 검토.</td>
+          <td class="c-tag"><span class="pill pill-도농상생">도농상생</span></td>
+          <td class="c-dept">유통축산과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">33</td>
+          <td class="c-title">봉양읍 공중목욕탕 건립 및 덕산 목욕탕 확장</td>
+          <td class="c-dir">사업규모: 2층(남녀 분리). 태양광·ESS 및 산림바이오매스 활용 전기에너지 생산·폐열 활용 가능성 검토. 에너지 자립형 방식과 일반 전기·LPG 방식의 건립·운영비 비교분석. 생산 에너지를 목욕탕·어린이수영장·마을에너지로 활용하는 복합시설 조성방안 검토.</td>
+          <td class="c-tag"><span class="pill pill-도농상생">도농상생</span></td>
+          <td class="c-dept">건축과</td>
+        </tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="card" id="dept-4">
+        <div class="sec-head">
+          <span class="sec-no">III-4</span>
+          <h3>도시건설 분과</h3>
+          <span class="sec-meta">공약 15건 · 핵심공약 0건</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th class="c-no">연번</th>
+              <th class="c-title">공약사항</th>
+              <th class="c-dir">기본방향(중점검토)</th>
+              <th class="c-tag">정책분야</th>
+              <th class="c-dept">관련부서</th>
+            </tr>
+          </thead>
+          <tbody>
+        <tr data-core="0">
+          <td class="c-no">34</td>
+          <td class="c-title">수산면 내리 전원형(농촌) 테마마을 조성</td>
+          <td class="c-dir">농촌협약사업으로 예정인 청년농촌보금자리 조성사업과의 연계성 확인. 토지이용계획 검토 확인.</td>
+          <td class="c-tag"><span class="pill pill-도농상생">도농상생</span></td>
+          <td class="c-dept">농촌상생과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">35</td>
+          <td class="c-title">소방서~원뜰 도시계획도로 개설</td>
+          <td class="c-dir">안전한 보행 환경을 고려한 설계 필요.</td>
+          <td class="c-tag"><span class="pill pill-경제-도시">경제/도시</span></td>
+          <td class="c-dept">건설과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">36</td>
+          <td class="c-title">노후(20년이상) 공동주택 맑은물 안심케어</td>
+          <td class="c-dir">아파트 공용배관 고압 질소 세척 지원: 연립주택·아파트 연 10개 단지, 단지당 최대 4,000만원(자부담 30%). 저소득층 개별가구 '안심 필터 바우처': 단독주택·빌라 거주 저소득층 대상 가구당 연 3만원 상당 바우처·현물 지원.</td>
+          <td class="c-tag"><span class="pill pill-경제-도시">경제/도시</span></td>
+          <td class="c-dept">수도사업소</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">37</td>
+          <td class="c-title">제천역 광장 조성 및 주차타워 건립</td>
+          <td class="c-dir">제천역 시민광장: 약 3,300㎡, 잔디광장 등 조성 검토. 제천역세권을 혁신 거점 공간으로 구축.</td>
+          <td class="c-tag"><span class="pill pill-경제-도시">경제/도시</span></td>
+          <td class="c-dept">교통과/도시정원과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">38</td>
+          <td class="c-title">명지초 앞 안전보행 브리지 설치</td>
+          <td class="c-dir">사업위치: 현대오일뱅크~명지초입 구간. 전원형 에코브리지, 길이 65m·폭 4.5m 규모. 어린이 안전·보행에 맞는 브리지 설계 필요.</td>
+          <td class="c-tag"><span class="pill pill-경제-도시">경제/도시</span></td>
+          <td class="c-dept">건설과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">39</td>
+          <td class="c-title">영천동(비점오염)-강제동 간 보행전용 구름다리 설치</td>
+          <td class="c-dir">사업규모: 보행전용 구름다리 약 70m 규모.</td>
+          <td class="c-tag"><span class="pill pill-경제-도시">경제/도시</span></td>
+          <td class="c-dept">미래정책과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">40</td>
+          <td class="c-title">남현동 향교부지 도시재생 추진</td>
+          <td class="c-dir">대상지역: 남천동 1259·1260·1261 일원. 세부계획 수립 후 공모 추진.</td>
+          <td class="c-tag"><span class="pill pill-경제-도시">경제/도시</span></td>
+          <td class="c-dept">도시디자인과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">41</td>
+          <td class="c-title">서부시장 도시재생 잔여부지 정비</td>
+          <td class="c-dir">대상지역: 서부동 도시재생사업 잔여지. 지역주민과 협의하여 최적의 안 도출. 주변 인프라를 감안한 주·야간 다목적 활용성 확보.</td>
+          <td class="c-tag"><span class="pill pill-경제-도시">경제/도시</span></td>
+          <td class="c-dept">도시디자인과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">42</td>
+          <td class="c-title">충청북도자치연수원 인근 도시계획 정비</td>
+          <td class="c-dir">주민의견 수렴 및 반영 필요.</td>
+          <td class="c-tag"><span class="pill pill-경제-도시">경제/도시</span></td>
+          <td class="c-dept">도시디자인과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">43</td>
+          <td class="c-title">명품 고암천 완성(고암천~신백동 간 산책길)</td>
+          <td class="c-dir">사업량: 고암천~신백동 간 산책길 약 4.5km. 데크설치·쌈지공원·휴게쉼터·하천변 꽃길 조성. 도시바람길숲·정원도시 조성사업 연계 검토.</td>
+          <td class="c-tag"><span class="pill pill-경제-도시">경제/도시</span></td>
+          <td class="c-dept">건설과/도시정원과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">44</td>
+          <td class="c-title">선관위~신월(하진) 간 산책길 조성</td>
+          <td class="c-dir">사업위치: 선관위~신월(하진). 사업규모: 산책길 약 1km.</td>
+          <td class="c-tag"><span class="pill pill-경제-도시">경제/도시</span></td>
+          <td class="c-dept">건설과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">45</td>
+          <td class="c-title">한수면 덕곡리 상수도 설치</td>
+          <td class="c-dir">사업규모: 덕산 신현2리(용암마을)~덕곡리 연결(약 3km).</td>
+          <td class="c-tag"><span class="pill pill-도농상생">도농상생</span></td>
+          <td class="c-dept">수도사업소</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">46</td>
+          <td class="c-title">송학면~아세아시멘트 간 도로 확장</td>
+          <td class="c-dir">사업위치: 송학보건지소~원마루~시곡1리~4리 송학천변 농로길. 2차선+보행로 조성(약 2.7km).</td>
+          <td class="c-tag"><span class="pill pill-경제-도시">경제/도시</span></td>
+          <td class="c-dept">건설과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">47</td>
+          <td class="c-title">38국도 무도교차로 오름차선 확장</td>
+          <td class="c-dir">사업위치: 송학로8길4~무도교차로(송학로8길). 오름차선 확장(약 423m).</td>
+          <td class="c-tag"><span class="pill pill-경제-도시">경제/도시</span></td>
+          <td class="c-dept">건설과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">48</td>
+          <td class="c-title">원화산 고물상 이전 후 공원 조성</td>
+          <td class="c-dir">주변 여건 및 특화 요소를 고려한 설계 필요.</td>
+          <td class="c-tag"><span class="pill pill-문화-관광">문화/관광</span></td>
+          <td class="c-dept">도시정원과</td>
+        </tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="card" id="dept-5">
+        <div class="sec-head">
+          <span class="sec-no">III-5</span>
+          <h3>청년위원회 분과</h3>
+          <span class="sec-meta">공약 3건 · 핵심공약 1건</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th class="c-no">연번</th>
+              <th class="c-title">공약사항</th>
+              <th class="c-dir">기본방향(중점검토)</th>
+              <th class="c-tag">정책분야</th>
+              <th class="c-dept">관련부서</th>
+            </tr>
+          </thead>
+          <tbody>
+        <tr class="row-core" data-core="1">
+          <td class="c-no">52</td>
+          <td class="c-title"><span class="badge-core">핵심</span>88억 청년자치예산제 시행</td>
+          <td class="c-dir">단순 의견수렴을 넘어 청년이 사업을 직접 기획·제안·심사·의결하는 청년 주도형 자치예산제 신설. 청년참여예산위원회를 30명 내외 100% 청년으로 구성, (가칭) 운영 조례 신설 검토. 민선9기(4년간) 88억원 예산 편성.</td>
+          <td class="c-tag"><span class="pill pill-청년-교육">청년/교육</span></td>
+          <td class="c-dept">미래정책과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">53</td>
+          <td class="c-title">청년 안심주택 100호 공급</td>
+          <td class="c-dir">사업대상: 청전동·신월동·하소동 등 주택·원룸촌. 건물임대(70실, 원룸·오피스텔 장기임차 재공급) + 빈집 리모델링(30실, 공유주택). 관내 대학 졸업자 우선 공급 후 제천 소재 기업 취업청년·전입예정 청년까지 확대 검토. 시세 대비 저렴한 임대료·전세사기 예방·안정적 거주기간 보장 등 운영기준 마련.</td>
+          <td class="c-tag"><span class="pill pill-청년-교육">청년/교육</span></td>
+          <td class="c-dept">건축과</td>
+        </tr>
+        <tr data-core="0">
+          <td class="c-no">54</td>
+          <td class="c-title">제천 전입 취업청년 공공주택 지역할당협약(LH, 충북개발공사 등)</td>
+          <td class="c-dir">LH·충북개발공사 등 공공주택 공급기관과 협약을 통한 지역할당 물량 확보 검토. 제천 소재 기업 취업자·산업단지 근무 청년·관내 대학 졸업 후 취업 청년을 우선 대상으로 설정. 매입임대·전세임대·행복주택 등 주거유형별 공급 가능성 검토. '일자리 공급→주거지원→지역정착' 구조 마련.</td>
+          <td class="c-tag"><span class="pill pill-청년-교육">청년/교육</span></td>
+          <td class="c-dept">건축과/미래정책과</td>
+        </tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="card" id="dept-6">
+        <div class="sec-head">
+          <span class="sec-no">III-6</span>
+          <h3>여성위원회 분과</h3>
+          <span class="sec-meta">공약 3건 · 핵심공약 3건</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th class="c-no">연번</th>
+              <th class="c-title">공약사항</th>
+              <th class="c-dir">기본방향(중점검토)</th>
+              <th class="c-tag">정책분야</th>
+              <th class="c-dept">관련부서</th>
+            </tr>
+          </thead>
+          <tbody>
+        <tr class="row-core" data-core="1">
+          <td class="c-no">49</td>
+          <td class="c-title"><span class="badge-core">핵심</span>고교생 글로벌 인재육성 해외연수 지원</td>
+          <td class="c-dir">사업대상: 제천시 거주 고등학교 2학년 재학생 등(수학여행자 대상). 지원내용: 1인당 국외체험학습비 최대 100만원 지원.</td>
+          <td class="c-tag"><span class="pill pill-청년-교육">청년/교육</span></td>
+          <td class="c-dept">홍보학습담당관</td>
+        </tr>
+        <tr class="row-core" data-core="1">
+          <td class="c-no">50</td>
+          <td class="c-title"><span class="badge-core">핵심</span>안심 24시 달빛어린이병원&amp;심야약국 운영</td>
+          <td class="c-dir">지원대상: 제천시 거주 만 18세 이하 소아·청소년 및 보호자. 달빛어린이병원 지정(소아청소년과 전문의 상주), 인근 약국 심야약국 동시 지정. 운영시간: 평일 18~22시 / 토·일·공휴일 9~22시(연중무휴). 의료운영 손실 전액 보전, '순번제 달빛어린이병원' 도입, 공공 심야약국 매칭 운영(야간운영 수당 별도 지급).</td>
+          <td class="c-tag"><span class="pill pill-복지">복지</span></td>
+          <td class="c-dept">감염병관리과</td>
+        </tr>
+        <tr class="row-core" data-core="1">
+          <td class="c-no">51</td>
+          <td class="c-title"><span class="badge-core">핵심</span>18세 미만 아동 진료비 지원(100만원~3,000만원)</td>
+          <td class="c-dir">지원대상: 제천시 1년 이상 거주 18세 미만 모든 아동. 연간 병원진료비(법정본인부담금+전액부담금+비급여) 100만원 초과분 지원, 중위소득 100% 미만 100% 지원·100% 초과 90% 지원. 지원금액: 아동 1인당 연간 최대 3,000만원.</td>
+          <td class="c-tag"><span class="pill pill-복지">복지</span></td>
+          <td class="c-dept">감염병관리과</td>
+        </tr>
+          </tbody>
+        </table>
+      </section>
+      </section>
+
+      <section class="block" id="projects">
+        <div class="block-head"><span class="num">IV.</span><h2>시책사업 현황 (29건)</h2></div>
+        <p class="block-intro">공약사항과 별도로 인수위 단계에서 정리된 시책사업입니다. 이 중 2건(주민 발굴 마을별 맞춤예산 지원(100억원+α) 등)은 공약사항으로 재분류되어 III장에 이미 포함되어 있으며, 2건은 제외 검토, 2건은 소관부서 확인이 필요한 상태입니다.</p>
+        <table class="data-table" style="background:var(--surface);border:1px solid var(--border)">
+          <thead>
+            <tr>
+              <th class="c-no">연번</th>
+              <th class="c-title">사업명</th>
+              <th class="c-dept">관련부서</th>
+              <th class="c-div">분과</th>
+              <th class="c-note">비고</th>
+            </tr>
+          </thead>
+          <tbody>
+        <tr>
+          <td class="c-no">1</td>
+          <td class="c-title">주민 발굴 마을별 맞춤예산 지원(100억원+α)</td>
+          <td class="c-dept">기획예산과</td>
+          <td class="c-div">기획재정</td>
+          <td class="c-note"><span class="tag tag-move">공약사항으로 재분류</span></td>
+        </tr>
+        <tr>
+          <td class="c-no">2</td>
+          <td class="c-title">덕산면 선고리 마을회관 건립</td>
+          <td class="c-dept">미래정책과</td>
+          <td class="c-div">기획재정</td>
+          <td class="c-note"></td>
+        </tr>
+        <tr>
+          <td class="c-no">3</td>
+          <td class="c-title">1천만 관광도시 체류형 관광 인프라 고도화</td>
+          <td class="c-dept">관광과</td>
+          <td class="c-div">문화복지</td>
+          <td class="c-note"><span class="tag tag-move">공약사항으로 재분류</span></td>
+        </tr>
+        <tr>
+          <td class="c-no">4</td>
+          <td class="c-title">수산면 실내게이트볼장 리모델링</td>
+          <td class="c-dept">체육진흥과</td>
+          <td class="c-div">문화복지</td>
+          <td class="c-note"></td>
+        </tr>
+        <tr>
+          <td class="c-no">5</td>
+          <td class="c-title">장락주공 2,3단지 경로당 이전</td>
+          <td class="c-dept">노인장애인과</td>
+          <td class="c-div">문화복지</td>
+          <td class="c-note"></td>
+        </tr>
+        <tr>
+          <td class="c-no">6</td>
+          <td class="c-title">교동 근린공원 내 족구장 설치</td>
+          <td class="c-dept">도시정원과</td>
+          <td class="c-div">문화복지</td>
+          <td class="c-note"></td>
+        </tr>
+        <tr>
+          <td class="c-no">7</td>
+          <td class="c-title">제천 정구장 막구조물(돔형) 설치</td>
+          <td class="c-dept">시설관리사업소/체육진흥과</td>
+          <td class="c-div">문화복지</td>
+          <td class="c-note"><span class="tag tag-warn">부서 확인 필요</span></td>
+        </tr>
+        <tr>
+          <td class="c-no">8</td>
+          <td class="c-title">비봉산 조망 경관농업(대류·도곡·양평·참실)</td>
+          <td class="c-dept">농업정책과</td>
+          <td class="c-div">문화복지</td>
+          <td class="c-note"></td>
+        </tr>
+        <tr>
+          <td class="c-no">9</td>
+          <td class="c-title">옥순봉 출렁다리 매점 데크 연장 설치</td>
+          <td class="c-dept">관광과</td>
+          <td class="c-div">문화복지</td>
+          <td class="c-note"></td>
+        </tr>
+        <tr>
+          <td class="c-no">10</td>
+          <td class="c-title">배달모아 수수료 지원 확대</td>
+          <td class="c-dept">일자리경제과</td>
+          <td class="c-div">경제산업</td>
+          <td class="c-note"></td>
+        </tr>
+        <tr>
+          <td class="c-no">11</td>
+          <td class="c-title">덕산면 성천 활용 주차장 조성 확대</td>
+          <td class="c-dept">교통과</td>
+          <td class="c-div">경제산업</td>
+          <td class="c-note"></td>
+        </tr>
+        <tr>
+          <td class="c-no">12</td>
+          <td class="c-title">한수 꾸러미(농산물+체험+숙박) 브랜드화</td>
+          <td class="c-dept">농업정책과/관광과</td>
+          <td class="c-div">경제산업</td>
+          <td class="c-note"></td>
+        </tr>
+        <tr>
+          <td class="c-no">13</td>
+          <td class="c-title">햇빛소득마을 제천시 추진단 지원</td>
+          <td class="c-dept">일자리경제과</td>
+          <td class="c-div">경제산업</td>
+          <td class="c-note"></td>
+        </tr>
+        <tr>
+          <td class="c-no">14</td>
+          <td class="c-title">마을특별시 제천(마을공동체지원센터 설립, 마을활동가 육성)</td>
+          <td class="c-dept">농촌상생과/자치행정과</td>
+          <td class="c-div">도시건설</td>
+          <td class="c-note"></td>
+        </tr>
+        <tr class="row-muted">
+          <td class="c-no">15</td>
+          <td class="c-title">마을 기업 지원 확대</td>
+          <td class="c-dept">일자리경제과</td>
+          <td class="c-div">도시건설</td>
+          <td class="c-note"><span class="tag tag-out">제외 검토</span></td>
+        </tr>
+        <tr>
+          <td class="c-no">16</td>
+          <td class="c-title">읍면동 노후 제설작업기 보급</td>
+          <td class="c-dept">건설과</td>
+          <td class="c-div">도시건설</td>
+          <td class="c-note"></td>
+        </tr>
+        <tr>
+          <td class="c-no">17</td>
+          <td class="c-title">금성~파크골프장(청풍호파크골프장) 간 주차장 진입도로 확장</td>
+          <td class="c-dept">체육진흥과/건설과</td>
+          <td class="c-div">도시건설</td>
+          <td class="c-note"><span class="tag tag-warn">부서 확인 필요</span></td>
+        </tr>
+        <tr>
+          <td class="c-no">18</td>
+          <td class="c-title">한수면 전기차 충전 인프라 확대</td>
+          <td class="c-dept">자연환경과</td>
+          <td class="c-div">도시건설</td>
+          <td class="c-note"></td>
+        </tr>
+        <tr>
+          <td class="c-no">19</td>
+          <td class="c-title">물순환 촉진구역사업 추진</td>
+          <td class="c-dept">자연환경과</td>
+          <td class="c-div">도시건설</td>
+          <td class="c-note"></td>
+        </tr>
+        <tr>
+          <td class="c-no">20</td>
+          <td class="c-title">마을 청년 정착 지원(빈집 활용 주거 지원 및 마을활동 수당)</td>
+          <td class="c-dept">농촌상생과</td>
+          <td class="c-div">도시건설</td>
+          <td class="c-note"></td>
+        </tr>
+        <tr>
+          <td class="c-no">21</td>
+          <td class="c-title">봉양~신림 간(국도 5호선) 조기 완공(11.2km)</td>
+          <td class="c-dept">건설과</td>
+          <td class="c-div">도시건설</td>
+          <td class="c-note"></td>
+        </tr>
+        <tr>
+          <td class="c-no">22</td>
+          <td class="c-title">안모산 마을안길 포장, 측구 정비</td>
+          <td class="c-dept">미래정책과/건설과</td>
+          <td class="c-div">도시건설</td>
+          <td class="c-note"></td>
+        </tr>
+        <tr>
+          <td class="c-no">23</td>
+          <td class="c-title">덕산면 금곡리 교량설치</td>
+          <td class="c-dept">건설과</td>
+          <td class="c-div">도시건설</td>
+          <td class="c-note"></td>
+        </tr>
+        <tr>
+          <td class="c-no">24</td>
+          <td class="c-title">덕산면 성암리 양쪽 진입로 확장</td>
+          <td class="c-dept">미래정책과/건설과</td>
+          <td class="c-div">도시건설</td>
+          <td class="c-note"></td>
+        </tr>
+        <tr>
+          <td class="c-no">25</td>
+          <td class="c-title">백운면 운학2리 진입로 확장</td>
+          <td class="c-dept">미래정책과/건설과</td>
+          <td class="c-div">도시건설</td>
+          <td class="c-note"></td>
+        </tr>
+        <tr>
+          <td class="c-no">26</td>
+          <td class="c-title">청솔A 경로당 출입구 확장(취임 즉시)</td>
+          <td class="c-dept">노인장애인과</td>
+          <td class="c-div">도시건설</td>
+          <td class="c-note"></td>
+        </tr>
+        <tr>
+          <td class="c-no">27</td>
+          <td class="c-title">신동 (구)마을회관~정미소 간 안길 확포장(270m)</td>
+          <td class="c-dept">미래정책과</td>
+          <td class="c-div">도시건설</td>
+          <td class="c-note"></td>
+        </tr>
+        <tr>
+          <td class="c-no">28</td>
+          <td class="c-title">신동 전원~영수암 간 안길 확포장(70m)</td>
+          <td class="c-dept">미래정책과</td>
+          <td class="c-div">도시건설</td>
+          <td class="c-note"></td>
+        </tr>
+        <tr class="row-muted">
+          <td class="c-no">29</td>
+          <td class="c-title">마을 돌봄 지원 확대</td>
+          <td class="c-dept">여성가족과</td>
+          <td class="c-div">여성위원회</td>
+          <td class="c-note"><span class="tag tag-out">제외 검토</span></td>
+        </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="block" id="insights">
+        <div class="block-head"><span class="num">V.</span><h2>종합 시사점 및 추진방향 제언</h2></div>
+        <ol class="insight-list">
+          <li><b>대규모 재정소요 사업의 선행 추계가 필요합니다.</b> 18세 미만 아동 진료비 지원(1인당 연 최대 3,000만원), 청년자치예산제(4년간 88억원 별도 편성), 효도수당 지원대상 확대(4세대 이상→3세대 이상 중장년), 100만평 산업단지 조성은 단일 사업으로도 임기 내 재정 운용에 미치는 영향이 커 우선적으로 소요재원 추계와 재원조달 방안 검토가 필요합니다.<span class="note">해당 항목: 공약 23, 51, 52, 4번</span></li>
+          <li><b>기존 사업과의 중복·정합성 점검이 필요한 항목이 있습니다.</b> 천원택시 교통약자 바우처는 원자료에도 기존 교통약자 이동지원사업과의 중복지원 여부 검토가 명시되어 있어, 신규 편성보다 기존 사업 통합·개편 방식의 타당성을 우선 검토하는 것이 합리적입니다.<span class="note">해당 항목: 공약 6번</span></li>
+          <li><b>공약-시책 이원화 정리가 선행되어야 합니다.</b> 시책사업 목록 중 2건(주민 발굴 마을별 맞춤예산 지원, 1천만 관광도시 체류형 관광 인프라 고도화)은 이미 공약사항으로 재분류되어 두 목록에 중복 게재되어 있습니다. 인수위 보고서 확정 전 목록 일원화가 필요합니다.</li>
+          <li><b>소관부서 미확정 사업의 조속한 정리가 필요합니다.</b> 제천 정구장 막구조물 설치, 금성~파크골프장 간 진입도로 확장 등 2건은 부서 확인이 필요한 상태로, 분과 회의를 통한 소관 확정이 선행되어야 세부 추진계획 수립이 가능합니다.</li>
+          <li><b>단계적 추진이 명시된 사업은 1단계 완료 후 확장 여부를 판단하도록 일정 관리가 필요합니다.</b> 덕산면 파크골프장(18홀 우선 완료 후 36홀 확장 검토)이 대표적이며, 유사한 구조의 사업에도 동일한 단계별 평가 체계를 적용할 필요가 있습니다.</li>
+          <li><b>분과별 업무량이 고르지 않아 추진체계 보강이 필요합니다.</b> 문화복지 분과는 공약 20건과 시책사업 7건을 합쳐 총 27건으로 전체 85건의 약 32%를 차지해 6개 분과 중 가장 큰 비중을 차지하므로, 분과 내 세부 소분류(복지·문화관광 등)와 인력 배분 재검토가 필요합니다.</li>
+          <li><b>정부 공모사업 연계가 다수 명시되어 있어 국·도비 매칭 전략 수립이 인수위 단계의 핵심 과제로 부상합니다.</b> 박달재 숲속도서관, 청풍 미식로드, 자작나무 마을관광숲, 100만평 산업단지 등 다수 사업이 공모사업 검토를 전제로 하고 있어, 공모 일정·요건을 사전에 파악해 임기 내 예산 확보 가능성을 높일 필요가 있습니다.</li>
+        </ol>
+      </section>
+
+      <footer class="doc-foot">
+        본 백서는 「민선9기 당선인 공약사항 정리(공문용)」 및 「민선9기 시책사업」 자료를 기초로 재구성한 실무 참고용 문서이며, 각 사업의 최종 추진 여부·규모·일정은 소관부서 검토 및 예산심의 결과에 따라 변경될 수 있습니다.
+      </footer>
+
+    </div>
+  </main>
+</div>
+
+<script>
+function toggleCoreOnly() {
+  document.body.classList.toggle('core-only');
+  const btn = document.getElementById('toggleCore');
+  const on = document.body.classList.contains('core-only');
+  btn.classList.toggle('on', on);
+  btn.textContent = on ? '전체 공약 보기' : '핵심공약만 보기';
+  document.querySelectorAll('.data-table tbody tr[data-core]').forEach(tr => {
+    tr.style.display = (on && tr.dataset.core === '0') ? 'none' : '';
+  });
+}
+
+const sections = document.querySelectorAll('.card[id^="dept-"]');
+const links = document.querySelectorAll('.toc-group ul li a');
+if ('IntersectionObserver' in window && sections.length) {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const link = document.querySelector(`.toc-group ul li a[href="#${entry.target.id}"]`);
+      if (!link) return;
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => obs.observe(s));
+}
+</script>
+</body>
+</html>

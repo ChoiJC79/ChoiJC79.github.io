@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>우리 동네 골목이 밤에 더 위험한 이유 — 범죄 데이터와 CPTED가 만나는 지점 — 최승환</title>
+<meta name="description" content="범죄는 무작위로 발생하지 않는다. 도시 안에서도 특정 골목, 특정 시간대에 집중된다. 그리고 그 패턴은 데이터 안에 이미 새겨져 있다. 제천시 동지역별 5대 강력범죄 발생빈도를 분석한 연구는 그 사…">
+<meta property="og:title" content="우리 동네 골목이 밤에 더 위험한 이유 — 범죄 데이터와 CPTED가 만나는 지점">
+<meta property="og:description" content="범죄는 무작위로 발생하지 않는다. 도시 안에서도 특정 골목, 특정 시간대에 집중된다. 그리고 그 패턴은 데이터 안에 이미 새겨져 있다. 제천시 동지역별 5대 강력범죄 발생빈도를 분석한 연구는 그 사…">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/columns/20260608우리동네골목이밤에더위험한이.html">
+<meta property="og:site_name" content="최승환">
+<meta property="article:published_time" content="2026-06-08">
+<link rel="canonical" href="https://choijc79.github.io/columns/20260608우리동네골목이밤에더위험한이.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d1117;--surface:#161b22;--border:#30363d;
+  --text:#e6edf3;--ink:#c9d1d9;--muted:#8b949e;
+  --accent:#58a6ff;--amber:#d29922;--green:#3fb950;
+}
+[data-theme="light"]{
+  --bg:#ffffff;--surface:#f6f8fa;--border:#d0d7de;
+  --text:#1f2328;--ink:#24292f;--muted:#656d76;
+  --accent:#0969da;--amber:#9a6700;--green:#1a7f37;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.8;}
+a{color:inherit;text-decoration:none;}
+
+/* 헤더 */
+header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);}
+.hd-inner{max-width:1100px;margin:0 auto;padding:0 2rem;height:52px;display:flex;align-items:center;gap:1.5rem;}
+.hd-logo{font-family:'Noto Serif KR',serif;font-size:15px;font-weight:700;color:var(--text);letter-spacing:0.04em;white-space:nowrap;}
+.hd-nav{display:flex;gap:1.2rem;flex:1;}
+.hd-nav a{font-size:12px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;transition:color 0.15s;}
+.hd-nav a:hover{color:var(--accent);}
+.hd-back{margin-left:auto;font-size:11px;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;border:1px solid var(--border);padding:0.3rem 0.8rem;transition:all 0.15s;white-space:nowrap;}
+.hd-back:hover{border-color:var(--accent);color:var(--accent);}
+.theme-btn{background:none;border:1px solid var(--border);color:var(--muted);font-size:11px;font-family:inherit;cursor:pointer;padding:0.3rem 0.7rem;letter-spacing:0.04em;transition:all 0.15s;white-space:nowrap;}
+.theme-btn:hover{border-color:var(--accent);color:var(--accent);}
+
+/* 아티클 */
+.article-wrap{max-width:720px;margin:0 auto;padding:3rem 2rem 5rem;}
+.a-type{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;color:#d29922;margin-bottom:1rem;}
+.a-title{font-family:'Noto Serif KR',serif;font-size:2rem;font-weight:700;line-height:1.35;color:var(--ink);margin-bottom:1.2rem;}
+.a-meta{display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);}
+.a-date{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);}
+.a-tag{font-size:11px;padding:2px 10px;border:1px solid;letter-spacing:0.03em;}
+.a-body{font-size:15px;line-height:2;color:var(--ink);}
+.a-body p{margin-bottom:1.6em;}
+.a-body h2{font-family:'Noto Serif KR',serif;font-size:1.25rem;font-weight:700;margin:2.4em 0 1em;color:var(--text);}
+.a-body h3{font-family:'Noto Serif KR',serif;font-size:1.05rem;font-weight:600;margin:2em 0 0.8em;color:var(--text);}
+.a-body ul{margin:0 0 1.6em 1.5em;}
+.a-body li{margin-bottom:0.5em;}
+.a-body strong{font-weight:500;color:var(--text);}
+
+/* 이전/다음 */
+.art-nav{max-width:720px;margin:0 auto;padding:0 2rem 4rem;display:flex;gap:1rem;justify-content:space-between;border-top:1px solid var(--border);padding-top:2rem;}
+.nav-prev,.nav-next{font-size:12px;color:var(--muted);letter-spacing:0.04em;transition:color 0.15s;max-width:45%;}
+.nav-prev:hover,.nav-next:hover{color:var(--accent);}
+.nav-next{text-align:right;margin-left:auto;}
+
+/* footer */
+footer{border-top:1px solid var(--border);text-align:center;padding:1.5rem 1rem;font-size:11px;color:var(--muted);letter-spacing:0.04em;}
+
+/* 모바일 */
+#mqb{display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;background:var(--surface);border-top:1px solid var(--border);padding:0.45rem 0.6rem;gap:0.4rem;justify-content:space-around;}
+#mqb a{flex:1;text-align:center;color:var(--muted);font-size:10px;padding:0.4rem 0.2rem;border:1px solid var(--border);line-height:1.4;}
+@media(max-width:900px){
+  .hd-nav{display:none;}
+  #mqb{display:flex;}
+  body{padding-bottom:4rem;}
+}
+@media(max-width:600px){
+  .article-wrap{padding:2rem 1.2rem 4rem;}
+  .a-title{font-size:1.5rem;}
+  .a-body{font-size:14px;}
+  .art-nav{padding:1.5rem 1.2rem 3rem;}
+}
+.a-hero{width:100%;max-height:420px;overflow:hidden;margin-bottom:2rem;}
+.a-hero-img{width:100%;height:420px;object-fit:cover;display:block;}
+@media(max-width:600px){.a-hero-img{height:240px;}}
+</style>
+</head>
+<body>
+<header>
+<div class="hd-inner">
+  <a class="hd-logo" href="/">최승환</a>
+  <nav class="hd-nav">
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/local.html">제천</a>
+  </nav>
+  <a class="hd-back" href="/column.html">← 칼럼 목록</a>
+  <button class="theme-btn" id="theme-toggle" onclick="toggleTheme()">☀ 라이트</button>
+</div>
+</header>
+
+<main>
+<div class="article-wrap">
+  <div class="a-hero"><img class="a-hero-img" src="/img/col_cpted.jpg" alt="" loading="lazy"></div>
+<div class="a-type">행정·정책</div>
+  <h1 class="a-title">우리 동네 골목이 밤에 더 위험한 이유 — 범죄 데이터와 CPTED가 만나는 지점</h1>
+  <div class="a-meta">
+    <span class="a-date">2026-06-08</span>
+    <span class="a-tag" style="border-color:#9870C844;color:#9870C8">도시환경</span><span class="a-tag" style="border-color:#9870C844;color:#9870C8">도시안전</span><span class="a-tag" style="border-color:#9870C844;color:#9870C8">행정연구</span>
+  </div>
+  <div class="a-body">
+    <p>범죄는 무작위로 발생하지 않는다. 도시 안에서도 특정 골목, 특정 시간대에 집중된다. 그리고 그 패턴은 데이터 안에 이미 새겨져 있다. 제천시 동지역별 5대 강력범죄 발생빈도를 분석한 연구는 그 사실을 다시 한번 확인시켜 준다.</p>
+<p>5대 강력범죄란 살인·강도·강간(강제추행)·절도·폭력을 뜻한다. 제천시를 동단위로 나누어 범죄 발생 건수를 집계하면, 특정 지역에 사건이 현저히 쏠리는 경향이 드러난다. 상업시설이 밀집한 구도심 일대, 야간 유동인구가 많은 골목, 조명이 부실하거나 공·폐가가 방치된 구역이 반복적으로 위험지점으로 나타난다. 반대로 가로등 정비가 잘 된 신시가지, 주민 활동이 활발한 공동주택 단지는 같은 시간대에도 범죄 발생률이 낮다.</p>
+<p>이 차이를 설명하는 개념이 CPTED(Crime Prevention Through Environmental Design), 즉 범죄예방환경설계다. 1970년대 미국에서 본격적으로 이론화된 이 접근은 단순하지만 강력한 전제에서 출발한다. 범죄자는 발각될 위험이 높고 도주가 어려운 공간을 기피한다. 그렇다면 공간을 그렇게 만들면 범죄를 줄일 수 있다.</p>
+<p>CPTED의 핵심 원리는 세 가지다. 첫째, 자연적 감시(Natural Surveillance). 지나가는 사람이 서로를 볼 수 있는 환경을 만드는 것이다. 가로등을 늘리고, 담장 높이를 낮추고, 건물 1층에 투명한 창을 내는 것이 여기 해당한다. 골목에 누군가 있다는 것을 &#x27;느낄 수 있는&#x27; 공간은 범죄자가 선택하지 않는다. 둘째, 접근통제(Access Control). 불필요한 진입로를 줄이고, CCTV와 울타리로 침입 경로를 좁히는 방식이다. 셋째, 영역성 강화(Territoriality). 주민이 그 공간의 주인이라는 감각을 환경으로 표현하는 것이다. 깔끔하게 정비된 골목, 꽃 화분이 놓인 담 아래, 주민이 직접 이름을 붙인 마을 안길은 모두 영역성의 표현이다.</p>
+<p>서울 마포구 염리동 &#x27;소금길&#x27;은 이 원리가 실제로 작동함을 보여준 사례다. 주민 참여 워크숍을 통해 골목 이름을 붙이고, 경로를 정비하고, 주요 지점에 조명을 설치한 뒤 이 지역의 범죄 발생 건수는 눈에 띄게 줄었다. 인테리어를 바꾼 게 아니라 공간의 논리를 바꾼 것이다.</p>
+<p>제천도 가능하다. 분석 결과가 가리키는 위험지점에 자연적 감시를 강화하는 조명을 먼저 설치하고, 방치된 공·폐가를 커뮤니티 공간으로 전환하거나 담장 허물기 사업과 연계하면 단기간 내 가시적인 효과를 만들 수 있다. 특히 야간 유동인구가 몰리는 원도심 골목은 조명 개선과 CCTV 사각지대 해소만으로도 체감안전도가 달라진다.</p>
+<p>범죄는 &#x27;나쁜 사람&#x27;만의 문제가 아닐 수 있다. 어두운 골목, 관리되지 않는 공간, 아무도 지나지 않는 골목이 범죄를 부른다. 그 반대도 성립한다. 밝고, 사람이 지나고, 관리된 공간은 범죄를 밀어낸다. 데이터가 이미 어느 골목이 어두운지를 알고 있다. 이제 행정이 거기에 등을 켜는 일만 남아 있다.</p>
+<p>예방적 투자가 뒤로 밀리는 이유는 효과를 입증하기가 어렵기 때문이다. 조명을 바꾸고 보행로를 넓히면 범죄가 줄었다는 것을 어떻게 증명하는가. 이것을 측정 가능하게 만드는 것이 이 접근에서 가장 중요한 과제다.</p>
+<p>범죄 발생 데이터를 기반으로 고위험 구역 3~5곳을 먼저 선정하고, 환경 개선 후 112 신고 건수 변화를 1~2년간 추적하면 그 증거가 만들어진다. 그 데이터가 다음 구역의 예산 근거가 된다. 112 신고 대응, 수사, 피해 보상에 들어가는 비용은 매년 반복된다. 환경 개선에 드는 비용은 한 번이다.</p>
+  </div>
+</div>
+
+<nav class="art-nav">
+  <a class="nav-prev" href="/columns/20260607논리로살고온기로꿈꾼다ENF.html">← 논리로 살고 온기로 꿈꾼다 — ENFP가 되고 싶은 E…</a>
+  <a class="nav-next" href="/columns/20260608낮에는공무원밤에는박사과정생.html">낮에는 공무원, 밤에는 박사과정생 →</a>
+</nav>
+</main>
+
+<footer>© 최승환 · choijc79.github.io</footer>
+
+<div id="mqb">
+  <a href="/">🏠 홈</a>
+  <a href="/about.html">소개</a>
+  <a href="/research.html">연구</a>
+  <a href="/column.html">칼럼</a>
+  <a href="/local.html">제천</a>
+</div>
+
+<script>
+function toggleTheme(){
+  var t=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  localStorage.setItem('choijc-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'☀ 라이트':'🌙 다크';
+}
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  document.addEventListener('DOMContentLoaded',function(){
+    var btn=document.getElementById('theme-toggle');
+    if(btn) btn.textContent=t==='dark'?'☀ 라이트':'🌙 다크';
+  });
+})();
+</script>
+</body>
+</html>

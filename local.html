@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제천 소개 | 최승환</title>
+<meta name="description" content="충청북도 제천의 자연·역사·문화·생활을 소개합니다. 청풍호, 월악산, 의림지, 약초의 고장.">
+<meta property="og:title" content="제천 소개 | 최승환">
+<meta property="og:description" content="충청북도 제천의 자연·역사·문화·생활을 소개합니다. 청풍호, 월악산, 의림지, 약초의 고장.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://choijc79.github.io/local.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<meta name="twitter:card" content="summary">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #F4F0E8;
+  --surface: #ECE8DE;
+  --border:  #D4CEBC;
+  --text:    #1A1410;
+  --ink:     #2A2018;
+  --muted:   #7A6A56;
+  --accent:  #E07828;
+  --red:     #D96820;
+  --light:   #FDFAF4;
+  --amber:   #E07828;
+  --green:   #5A7A3A;
+  --lake:    #E07828;
+  --purple:  #7A4AB0;
+}
+[data-theme="dark"] {
+  --bg:      #0d1117;
+  --surface: #161b22;
+  --border:  #2c3240;
+  --text:    #E8E0D0;
+  --ink:     #F0E8D8;
+  --muted:   #8b8070;
+  --accent:  #F08840;
+  --red:     #E07830;
+  --light:   #161b22;
+  --amber:   #F08840;
+  --green:   #3fb950;
+  --lake:    #F08840;
+  --purple:  #bc8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.8;}
+a{color:var(--accent);text-decoration:none;}
+
+.site-header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px;transition:background 0.3s,border-color 0.3s;}
+.logo{font-family:'Noto Serif KR',serif;font-size:15px;color:var(--accent);letter-spacing:0.04em;}
+.nav-links{display:flex;gap:1.5rem;font-size:12px;}
+.nav-links a{color:var(--muted);text-decoration:none;transition:color 0.15s;}
+.nav-links a:hover{color:var(--accent);}
+#theme-toggle{background:none;border:1px solid var(--border);color:var(--muted);font-size:11px;padding:3px 11px;border-radius:20px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;letter-spacing:0.05em;transition:all 0.2s;margin-left:1rem;}
+#theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
+
+/* ── Hero ── */
+.hero{position:relative;max-width:100%;padding:5rem 2rem 3rem;text-align:center;border-bottom:1px solid var(--border);overflow:hidden;}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 100% 80% at 50% 0%,rgba(224,120,40,0.06) 0%,transparent 70%);pointer-events:none;}
+.hero-label{font-size:11px;letter-spacing:0.14em;color:var(--accent);text-transform:uppercase;margin-bottom:0.8rem;}
+.hero h1{font-family:'Noto Serif KR',serif;font-size:clamp(28px,5vw,48px);font-weight:700;line-height:1.25;margin-bottom:1rem;color:var(--ink);}
+.hero h1 em{font-style:normal;color:var(--accent);}
+.hero p{color:var(--muted);font-size:14px;line-height:1.9;max-width:600px;margin:0 auto;}
+.hero-meta{font-size:11px;color:var(--border);margin-top:1rem;letter-spacing:0.04em;}
+
+/* ── Stats strip ── */
+.stat-strip{display:grid;grid-template-columns:repeat(4,1fr);max-width:760px;margin:0 auto;border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-top:2.5rem;}
+.stat-item{padding:1.4rem 1rem;text-align:center;background:var(--surface);border-right:1px solid var(--border);}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-family:'Noto Serif KR',serif;font-size:1.6rem;font-weight:700;color:var(--accent);line-height:1;}
+.stat-unit{font-size:11px;color:var(--muted);margin-top:0.3rem;}
+@media(max-width:600px){.stat-strip{grid-template-columns:1fr 1fr;}.stat-item{border-bottom:1px solid var(--border);}}
+
+/* ── Section ── */
+.section{max-width:760px;margin:0 auto;padding:3rem 2rem;}
+.section + .section{border-top:1px solid var(--border);}
+.section-label{font-size:11px;letter-spacing:0.14em;color:var(--accent);text-transform:uppercase;margin-bottom:1.4rem;}
+.section-title{font-family:'Noto Serif KR',serif;font-size:1.4rem;font-weight:700;margin-bottom:1rem;color:var(--ink);}
+.section-body{font-size:13.5px;color:var(--muted);line-height:1.9;}
+.section-body p{margin-bottom:0.9em;}
+
+/* ── Place cards ── */
+.place-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1.5rem;}
+@media(max-width:600px){.place-grid{grid-template-columns:1fr;}}
+.place-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.4rem;transition:border-color 0.2s;}
+.place-card:hover{border-color:var(--accent);}
+.place-emoji{font-size:1.8rem;margin-bottom:0.5rem;}
+.place-name{font-family:'Noto Serif KR',serif;font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:0.4rem;}
+.place-en{font-size:11px;color:var(--accent);letter-spacing:0.04em;margin-bottom:0.5rem;}
+.place-desc{font-size:12.5px;color:var(--muted);line-height:1.75;}
+.wiki-link{display:inline-block;margin-top:0.55rem;font-size:11px;color:var(--accent);text-decoration:none;opacity:0.6;letter-spacing:0.04em;border-bottom:1px dotted rgba(88,166,255,0.3);transition:opacity 0.15s;}
+.wiki-link:hover{opacity:1;}
+.place-tag{display:inline-block;font-size:10px;color:var(--accent);background:rgba(224,120,40,0.08);border:1px solid rgba(224,120,40,0.2);padding:1px 7px;border-radius:4px;margin-top:0.6rem;}
+
+/* ── History timeline ── */
+.timeline{position:relative;padding-left:1.8rem;margin-top:1.4rem;}
+.timeline::before{content:"";position:absolute;left:0;top:0.4rem;bottom:0.4rem;width:1px;background:linear-gradient(180deg,transparent,var(--lake) 10%,var(--lake) 90%,transparent);opacity:0.35;}
+.tl-item{position:relative;margin-bottom:1.8rem;}
+.tl-item::before{content:"";position:absolute;left:-2rem;top:0.5rem;width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 6px rgba(224,120,40,0.5);}
+.tl-year{font-family:'Noto Serif KR',serif;font-size:1rem;font-weight:700;color:var(--accent);margin-bottom:0.2rem;}
+.tl-text{font-size:13px;color:var(--muted);line-height:1.75;}
+
+/* ── Specialty grid ── */
+.spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.4rem;}
+@media(max-width:600px){.spec-grid{grid-template-columns:1fr 1fr;}}
+.spec-item{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:1.2rem;text-align:center;transition:border-color 0.2s;}
+.spec-item:hover{border-color:var(--accent);}
+.spec-emoji{font-size:1.6rem;display:block;margin-bottom:0.5rem;}
+.spec-name{font-size:0.9rem;font-weight:500;color:var(--ink);margin-bottom:0.3rem;}
+.spec-note{font-size:11.5px;color:var(--muted);line-height:1.6;}
+
+/* ── Festival cards ── */
+.fest-list{display:flex;flex-direction:column;gap:1rem;margin-top:1.4rem;}
+.fest-item{display:grid;grid-template-columns:80px 1fr;gap:1rem;background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:1.2rem;align-items:start;}
+.fest-month{font-family:'Noto Serif KR',serif;font-size:1.3rem;font-weight:700;color:var(--accent);text-align:center;line-height:1.2;}
+.fest-month small{display:block;font-size:10px;font-weight:300;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;}
+.fest-title{font-size:0.9rem;font-weight:500;color:var(--ink);margin-bottom:0.3rem;}
+.fest-desc{font-size:12px;color:var(--muted);line-height:1.7;}
+
+/* ── Info table ── */
+.info-table{width:100%;border-collapse:collapse;margin-top:1.2rem;font-size:13px;}
+.info-table tr{border-bottom:1px solid var(--border);}
+.info-table tr:last-child{border-bottom:none;}
+.info-table th{padding:0.9rem 1rem;text-align:left;color:var(--accent);font-weight:500;font-size:12px;letter-spacing:0.04em;width:120px;white-space:nowrap;background:rgba(224,120,40,0.04);}
+.info-table td{padding:0.9rem 1rem;color:var(--muted);}
+
+/* ── Personal note ── */
+.personal-note{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:1.4rem 1.6rem;margin-top:1.6rem;}
+.personal-note p{font-size:13.5px;color:var(--muted);line-height:1.9;margin:0;}
+.personal-note .note-sig{font-size:11px;color:var(--border);margin-top:0.7rem;letter-spacing:0.04em;}
+
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:11px;color:var(--muted);letter-spacing:0.04em;margin-top:2rem;}
+#mqb{display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;background:var(--surface);border-top:1px solid var(--border);padding:0.45rem 0.6rem;gap:0.4rem;justify-content:space-around;}#mqb a{flex:1;text-align:center;color:var(--muted);font-size:10px;padding:0.4rem 0.2rem;border:1px solid var(--border);line-height:1.4;text-decoration:none;transition:all 0.15s;}#mqb a:hover{border-color:var(--accent);color:var(--accent);}
+@media(max-width:900px){.nav-links{display:none;}#mqb{display:flex;}body{padding-bottom:4rem;}}
+</style>
+<style>
+/* ── 테마 토글 버튼 ── */
+
+#theme-toggle:hover{transform:translateY(-2px);box-shadow:0 6px 22px rgba(0,0,0,0.4);}
+
+
+
+/* ── 베이지 테마 ── */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">최승환 · 제천</div>
+  <nav class="nav-links">
+    <a href="/">← 홈으로</a>
+    <a href="/about.html">소개</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/tour.html">투어</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">☾ 다크</button>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-label">Jecheon · 충청북도 제천시</div>
+  <h1>청풍호가 있고<br>월악산이 있는 도시,<br><em>제천</em></h1>
+  <p>
+    한 평생을 이 도시에서 살고 일하고 있습니다. 의림지의 아침, 청풍호의 저녁, 월악산의 사계절.<br>
+    제천을, 조금 다른 눈으로 소개합니다.
+  </p>
+  <div class="hero-meta">충청북도 제천시 태생·거주·근무 · 지방행정 현장에서</div>
+
+  <div class="stat-strip">
+    <div class="stat-item">
+      <div class="stat-num">12만8천</div>
+      <div class="stat-unit">인구 (2026)</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">882㎢</div> 
+      <div class="stat-unit">면적 (도내 5위)</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">-14℃</div>
+      <div class="stat-unit">최저기온 평균 (제베리아)</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2,000년</div>
+      <div class="stat-unit">의림지 축조 추정 연도</div>
+    </div>
+  </div>
+</section>
+
+<!-- 자연·명소 -->
+<div class="section">
+  <div class="section-label">Nature &amp; Place · 자연과 명소</div>
+  <div class="section-title">제천을 제천이게 만드는 풍경들</div>
+  <div class="section-body">
+    <p>충청북도 내륙 깊숙이 자리한 제천은 산과 호수, 계곡이 도시 바로 옆에 붙어 있습니다. 서울에서 KTX로 50분이지만, 차창 밖으로 펼쳐지는 풍경은 완전히 다른 세계입니다.</p>
+  </div>
+  <div class="place-grid">
+    <div class="place-card">
+      <div class="place-emoji">🏞️</div>
+      <div class="place-name">청풍호</div>
+      <div class="place-en">Cheongpung Lake</div>
+      <div class="place-desc">충주댐 건설로 1985년 조성된 인공 호수. 수면 면적 67.5㎢, 담수량 27억 5천만 톤. 유람선, 집라인, 카약, 모노레일이 운영되며 드라이브 코스로도 손꼽힙니다. 안개 낀 이른 아침의 풍경은 한국 최고의 호수 경관 중 하나입니다.</div>
+      <span class="place-tag">호수·레저·드라이브</span>
+      <a class="wiki-link" href="https://namu.wiki/w/청풍호" target="_blank" rel="noopener">나무위키 ↗</a>
+    </div>
+    <div class="place-card">
+      <div class="place-emoji">⛰️</div>
+      <div class="place-name">월악산 국립공원</div>
+      <div class="place-en">Woraksan National Park</div>
+      <div class="place-desc">1984년 국립공원으로 지정된 해발 1,097m의 산. 영봉(靈峰)이라 불리는 정상에서 바라보는 청풍호 전경이 장관입니다. 가을 단풍과 겨울 설경이 특히 아름다우며, 수많은 코스가 유명합니다.</div>
+      <span class="place-tag">국립공원·등산·단풍</span>
+      <a class="wiki-link" href="https://namu.wiki/w/월악산" target="_blank" rel="noopener">나무위키 ↗</a>
+    </div>
+    <div class="place-card">
+      <div class="place-emoji">🌊</div>
+      <div class="place-name">의림지</div>
+      <div class="place-en">Uirimji Reservoir</div>
+      <div class="place-desc">삼한시대 조성된 것으로 추정되는 한국 최고(最古)의 저수지. 면적 158,677㎡, 둘레 1.8km. 제방 위 소나무 숲과 정자, 연꽃이 어우러진 도심 속 산책 명소입니다. 2천 년의 역사가 도시 한가운데 살아있습니다.</div>
+      <span class="place-tag">역사·산책·연꽃</span>
+      <a class="wiki-link" href="https://namu.wiki/w/의림지" target="_blank" rel="noopener">나무위키 ↗</a>
+    </div>
+    <div class="place-card">
+      <div class="place-emoji">🏛️</div>
+      <div class="place-name">청풍문화재단지</div>
+      <div class="place-en">Cheongpung Cultural Heritage</div>
+      <div class="place-desc">충주댐 수몰로 사라진 청풍면 일대의 문화재 43점을 이전·복원한 야외 박물관. 조선시대 관아와 민가, 석탑, 비석이 청풍호를 내려다보는 언덕에 펼쳐집니다. 한국의 수몰 역사와 보존 노력을 함께 볼 수 있는 곳.</div>
+      <span class="place-tag">문화재·역사·박물관</span>
+      <a class="wiki-link" href="https://namu.wiki/w/청풍문화재단지" target="_blank" rel="noopener">나무위키 ↗</a>
+    </div>
+    <div class="place-card">
+      <div class="place-emoji">🧗</div>
+      <div class="place-name">금수산·능강계곡</div>
+      <div class="place-en">Geumsusa Mountain</div>
+      <div class="place-desc">"비단처럼 아름다운 산"이라는 이름의 금수산(1,016m)과 그 아래를 흐르는 능강계곡. 여름 피서지와 가을 단풍 명소로 유명하며, 옥순봉·구담봉 절경이 청풍호와 맞닿아 있습니다.</div>
+      <span class="place-tag">계곡·단풍·피서</span>
+      <a class="wiki-link" href="https://namu.wiki/w/금수산" target="_blank" rel="noopener">나무위키 ↗</a>
+    </div>
+    <div class="place-card">
+      <div class="place-emoji">🌿</div>
+      <div class="place-name">제천 약초시장</div>
+      <div class="place-en">Jecheon Herb Market</div>
+      <div class="place-desc">전국 최대 규모의 약초 산지이자 유통 시장. 황기, 당귀, 산수유, 오미자 등 300여 종의 약초가 거래됩니다. 매년 9월 열리는 한방바이오박람회의 중심지이며, 제천을 "약초의 고장"으로 불리게 한 뿌리입니다.</div>
+      <span class="place-tag">약초·한방·전통시장</span>
+      <a class="wiki-link" href="https://namu.wiki/w/제천시" target="_blank" rel="noopener">나무위키 ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- 역사 -->
+<div class="section">
+  <div class="section-label">History · 역사</div>
+  <div class="section-title">의림지에서 KTX까지, 2천 년의 이야기</div>
+  <div class="section-body">
+    <p>제천은 삼한시대부터 교통 요충지(철도 3개 선 교차)로 기능했습니다. 한반도 내륙 깊숙이 자리한 지리적 위치가 농업과 상업, 군사 요충지의 역할을 동시에 부여했습니다.</p>
+  </div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-year">삼한~삼국시대</div>
+      <div class="tl-text">의림지(義林池) 축조. 한국 최고(最古)의 저수지로, 당시 이 지역이 농업 중심 취락이었음을 보여줍니다. 고구려·백제·신라 삼국의 각축 무대이기도 했습니다.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">고려시대</div>
+      <div class="tl-text">제주(堤州)로 불리다 제천(堤川)으로 개칭됩니다. 내륙 수운과 육로 교통의 거점으로 기능하며 충청 내륙 중심 도시의 역할을 합니다.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1895년</div>
+      <div class="tl-text">갑오개혁으로 제천군(堤川郡)이 설치됩니다. 을미사변 이후 의병 활동의 주요 무대가 되며, 유인석 의병장의 근거지로 알려집니다.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1980년대</div>
+      <div class="tl-text">충주댐 건설(1985년 준공)로 청풍면 등 수몰 지역이 생기며 청풍호가 탄생합니다. 수몰 이전 주민 이주와 문화재 이전이 이루어지고, 이후 청풍문화재단지가 조성됩니다.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1980년</div>
+      <div class="tl-text">제천시 승격. 충청북도 동부의 독립 행정 도시로 자리잡습니다.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2004~현재</div>
+      <div class="tl-text">KTX 개통으로 서울 접근성이 획기적으로 단축됩니다. 이후 의림지역사공원 조성, 한방바이오산업 클러스터 구축, 청풍호 관광 인프라 확충이 이어집니다.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 특산물 -->
+<div class="section">
+  <div class="section-label">Specialty · 특산물과 먹거리</div>
+  <div class="section-title">약초의 고장이 길러낸 것들</div>
+  <div class="section-body">
+    <p>제천은 기온차가 크고 일조량이 풍부한 내륙 기후 덕에 약초 재배의 최적지입니다. 전국 한약재 유통량의 상당 부분이 제천을 거칩니다.</p>
+  </div>
+  <div class="spec-grid">
+    <div class="spec-item">
+      <span class="spec-emoji">🌾</span>
+      <div class="spec-name">황기 (黃芪)</div>
+      <div class="spec-note">면역력 강화에 쓰이는 한약재. 제천 황기는 당도와 유효성분이 높아 최상품으로 평가받습니다.</div>
+      <a class="wiki-link" href="https://namu.wiki/w/황기" target="_blank" rel="noopener">나무위키 ↗</a>
+    </div>
+    <div class="spec-item">
+      <span class="spec-emoji">🌿</span>
+      <div class="spec-name">당귀 (當歸)</div>
+      <div class="spec-note">혈액순환, 진통에 쓰이는 약초. 제천 일대 산간 지역이 주요 산지입니다.</div>
+      <a class="wiki-link" href="https://namu.wiki/w/당귀" target="_blank" rel="noopener">나무위키 ↗</a>
+    </div>
+    <div class="spec-item">
+      <span class="spec-emoji">🍒</span>
+      <div class="spec-name">오미자 (五味子)</div>
+      <div class="spec-note">다섯 가지 맛이 나는 열매. 청풍호 인근 산간 등지에서 재배되며, 청(淸)·차·잼으로 가공됩니다.</div>
+      <a class="wiki-link" href="https://namu.wiki/w/오미자" target="_blank" rel="noopener">나무위키 ↗</a>
+    </div>
+    <div class="spec-item">
+      <span class="spec-emoji">🍎</span>
+      <div class="spec-name">사과 · 복숭아</div>
+      <div class="spec-note">큰 일교차가 당도를 높여줍니다. 제천 사과와 복숭아는 전국 대표 과일 산지입니다.</div>
+      <a class="wiki-link" href="https://namu.wiki/w/사과" target="_blank" rel="noopener">나무위키 ↗</a>
+    </div>
+    <div class="spec-item">
+      <span class="spec-emoji">🐟</span>
+      <div class="spec-name">청풍호 민물고기</div>
+      <div class="spec-note">청풍호의 쏘가리, 붕어, 민물장어. 호숫가 식당의 민물고기 매운탕은 제천의 명물입니다.</div>
+      <a class="wiki-link" href="https://namu.wiki/w/청풍호" target="_blank" rel="noopener">나무위키 ↗</a>
+    </div>
+    <div class="spec-item">
+      <span class="spec-emoji">🍜</span>
+      <div class="spec-name">두릅·취나물</div>
+      <div class="spec-note">월악산·금수산 자락에서 채취되는 봄나물. 봄철 도시 전체가 산나물 향으로 가득합니다.</div>
+      <a class="wiki-link" href="https://namu.wiki/w/두릅" target="_blank" rel="noopener">나무위키 ↗</a>
+    </div>
+  </div>
+</div>
+
+<!-- 축제·문화 -->
+<div class="section">
+  <div class="section-label">Culture · 문화와 축제</div>
+  <div class="section-title">제천의 시간표</div>
+  <div class="fest-list">
+    <div class="fest-item">
+      <div class="fest-month">8월<small>Aug</small></div>
+      <div>
+        <div class="fest-title">제천국제음악영화제 (JIMFF)</div>
+        <div class="fest-desc">2005년부터 매년 청풍호 야외무대에서 열리는 국내 유일 음악영화 전문 영화제. 음악과 영화의 결합이라는 독창적 콘셉트로 국제적 명성을 쌓았습니다. 야외 공연과 상영이 어우러지는 여름밤의 제천을 상징하는 행사입니다.</div>
+        <a class="wiki-link" href="https://namu.wiki/w/제천국제음악영화제" target="_blank" rel="noopener">나무위키 ↗</a>
+      </div>
+    </div>
+    <div class="fest-item">
+      <div class="fest-month">9월<small>Sep</small></div>
+      <div>
+        <div class="fest-title">제천 한방바이오박람회</div>
+        <div class="fest-desc">약초의 고장 제천이 개최하는 한방·바이오 전시 박람회. 한약재 체험, 건강 상담, 전통 의약 전시가 함께 열리며 제천의 한방산업 클러스터를 알리는 핵심 행사입니다.</div>
+        <a class="wiki-link" href="https://namu.wiki/w/제천시" target="_blank" rel="noopener">나무위키 ↗</a>
+      </div>
+    </div>
+    <div class="fest-item">
+      <div class="fest-month">연중<small>Year</small></div>
+      <div>
+        <div class="fest-title">의림지 연꽃 축제 · 역사공원 프로그램</div>
+        <div class="fest-desc">의림지역사문화 박물관에서는 계절별 전통 문화 체험 프로그램이 연중 운영됩니다.</div>
+        <a class="wiki-link" href="https://namu.wiki/w/의림지" target="_blank" rel="noopener">나무위키 ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 기본 정보 -->
+<div class="section">
+  <div class="section-label">Basic Info · 기본 정보</div>
+  <div class="section-title">제천시 개요</div>
+  <table class="info-table">
+    <tr><th>행정 구역</th><td>충청북도 제천시 · 1읍 7면 14동</td></tr>
+    <tr><th>면적</th><td>882.49㎢ (충청북도 내 5위)</td></tr>
+    <tr><th>인구</th><td>약 12만 8천명 (2026년 기준)</td></tr>
+    <tr><th>기후</th><td>내륙 분지형 기후. 여름 고온, 겨울 혹한 — '제베리아'(시베리아+제천) 별명</td></tr>
+    <tr><th>교통</th><td>KTX 제천역 (서울 청량리 약 50분) · 충북선 · 태백선교차 · 제천평택고속도로 · 중앙고속도로 · 38번 국도</td></tr>
+    <tr><th>산업</th><td>한방바이오산업, 관광, 농업(약초·과수), 제조업</td></tr>
+    <tr><th>홈페이지</th><td><a href="https://www.jecheon.go.kr" target="_blank">www.jecheon.go.kr</a></td></tr>
+  </table>
+
+  <div class="personal-note">
+    <p>청풍호가 안개에 잠기는 아침, 의림지 제방에서 듣는 빗소리, 월악산 정상에서 내려다보이는 청풍호. 제천은 관광지 안내문에는 잘 담기지 않는 종류의 아름다움을 가진 곳입니다. 여기서 자라고, 여기서 일하고, 여기서 연구하고, 여기서 가족과 살고 있습니다. 앞으로도 이 도시에 관한 것들을 계속 기록하겠습니다.</p>
+    <div class="note-sig">— 최승환 · 충청북도 제천시청 팀장</div>
+  </div>
+</div>
+
+<footer>© 2026 최승환 · 충청북도 제천시청 · 도시경영학 박사과정 · choijc79.github.io</footer>
+
+
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'light';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'☀ 라이트':'☾ 다크';
+})();
+function toggleTheme(){
+  var html=document.documentElement;
+  var now=html.getAttribute('data-theme');
+  var next=now==='dark'?'light':'dark';
+  html.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'☀ 라이트':'☾ 다크';
+}
+</script>
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/research.html">📄<br>연구</a>
+  <a href="/local.html">🏔<br>제천</a>
+  <a href="/memo.html">📝<br>노트</a>
+</div>
+</body>
+</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           

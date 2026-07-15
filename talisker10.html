@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>탈리스커 10년산 — 완전 가이드</title>
+<meta name="description" content="스카이 섬의 파도와 피트 스모크, 강렬한 후추. 탈리스커 10년 완전 가이드.">
+<meta property="og:title" content="탈리스커 10년산 완전 가이드 | 최승환">
+<meta property="og:description" content="스카이 섬의 파도와 피트 스모크, 강렬한 후추. 탈리스커 10년 완전 가이드.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://choijc79.github.io/talisker10.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<meta name="twitter:card" content="summary">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+KR:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold:#4A9CC0; --gold-light:#6ABCE0; --gold-pale:#C0E0F0;
+  --deep:#1A1208; --dark:#2D1E0A; --mid:#4A2F0D; --amber:#8B4A0E;
+  --cream:#F8F2E4; --text:#2A1A06; --muted:#6B5235;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--deep);color:var(--cream);font-family:"Noto Serif KR",serif;font-weight:300;line-height:1.8;overflow-x:hidden;}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:radial-gradient(ellipse 80% 60% at 50% 40%, #0A1A2A 0%, #051018 60%, #020709 100%);}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(201,168,76,0.08) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(139,74,14,0.12) 0%,transparent 50%);pointer-events:none;}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:1000;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:150px 150px;}
+.hero-badge{font-family:"Cormorant Garamond",serif;font-size:0.8rem;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:2rem;opacity:0;animation:fadeUp 1s 0.3s ease forwards;}
+.hero-title{font-family:"Cormorant Garamond",serif;font-size:clamp(3.5rem,8vw,7rem);font-weight:300;line-height:1.05;letter-spacing:-0.01em;color:var(--gold-light);opacity:0;animation:fadeUp 1s 0.5s ease forwards;}
+.hero-title em{font-style:italic;color:var(--gold);}
+.hero-sub{margin-top:1.5rem;font-family:"Cormorant Garamond",serif;font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;font-style:italic;color:rgba(232,201,122,0.6);letter-spacing:0.05em;opacity:0;animation:fadeUp 1s 0.7s ease forwards;}
+.hero-divider{width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:2.5rem auto;opacity:0;animation:fadeIn 1s 0.9s ease forwards;}
+.hero-desc{max-width:520px;font-size:0.9rem;color:rgba(245,232,192,0.65);letter-spacing:0.02em;opacity:0;animation:fadeUp 1s 1.1s ease forwards;}
+.scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;opacity:0;animation:fadeIn 1s 1.5s ease forwards;}
+.scroll-hint span{font-family:"Cormorant Garamond",serif;font-size:0.7rem;letter-spacing:0.3em;color:rgba(201,168,76,0.5);text-transform:uppercase;}
+.scroll-line{width:1px;height:50px;background:linear-gradient(180deg,var(--gold) 0%,transparent 100%);animation:scrollPulse 2s ease-in-out infinite;}
+.section{max-width:860px;margin:0 auto;padding:6rem 2rem;}
+.section-label{font-family:"Cormorant Garamond",serif;font-size:0.75rem;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;}
+.section-title{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:400;color:var(--gold-light);line-height:1.2;margin-bottom:2.5rem;}
+.section-title em{font-style:italic;color:var(--gold);}
+.divider-thin{width:60px;height:1px;background:var(--gold);margin-bottom:2.5rem;opacity:0.5;}
+p{color:rgba(245,232,192,0.82);font-size:0.95rem;line-height:1.9;margin-bottom:1.4rem;}
+.sep{width:100%;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,168,76,0.2) 20%,rgba(201,168,76,0.4) 50%,rgba(201,168,76,0.2) 80%,transparent 100%);margin:0;}
+.timeline{position:relative;padding-left:2rem;margin-top:2rem;}
+.timeline::before{content:"";position:absolute;left:0;top:0.5rem;bottom:0.5rem;width:1px;background:linear-gradient(180deg,transparent,var(--gold) 10%,var(--gold) 90%,transparent);opacity:0.4;}
+.tl-item{position:relative;margin-bottom:2.5rem;}
+.tl-item::before{content:"";position:absolute;left:-2.3rem;top:0.6rem;width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px rgba(201,168,76,0.6);}
+.tl-year{font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-weight:600;color:var(--gold);margin-bottom:0.3rem;}
+.tl-text{color:rgba(245,232,192,0.78);font-size:0.92rem;margin-bottom:0;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:2rem;}
+.card{background:linear-gradient(135deg,rgba(45,30,10,0.9) 0%,rgba(26,18,8,0.95) 100%);border:1px solid rgba(201,168,76,0.2);border-radius:2px;padding:2rem 1.8rem;transition:border-color 0.3s,transform 0.3s;}
+.card:hover{border-color:var(--gold);transform:translateY(-4px);}
+.card-type{font-size:0.72rem;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem;}
+.card-name{font-family:"Cormorant Garamond",serif;font-size:1.6rem;color:var(--gold-light);line-height:1.2;margin-bottom:0.8rem;}
+.card-spec{display:flex;gap:1.5rem;margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid rgba(201,168,76,0.15);}
+.spec-item{display:flex;flex-direction:column;gap:0.2rem;}
+.spec-label{font-size:0.65rem;letter-spacing:0.15em;color:rgba(201,168,76,0.5);text-transform:uppercase;}
+.spec-val{font-family:"Cormorant Garamond",serif;font-size:1rem;color:var(--gold-light);}
+.step-list{margin-top:2rem;counter-reset:steps;}
+.step{counter-increment:steps;display:grid;grid-template-columns:50px 1fr;gap:1.5rem;margin-bottom:2rem;align-items:start;}
+.step::before{content:counter(steps,decimal-leading-zero);font-family:"Cormorant Garamond",serif;font-size:1.8rem;color:rgba(201,168,76,0.3);line-height:1;text-align:right;}
+.step-title{font-family:"Cormorant Garamond",serif;font-size:1.2rem;color:var(--gold-light);margin-bottom:0.4rem;}
+.step-body{font-size:0.88rem;color:rgba(245,232,192,0.72);margin-bottom:0;}
+.tasting-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;margin:2.5rem 0;}
+.taste-card{background:rgba(45,30,10,0.5);border:1px solid rgba(201,168,76,0.15);padding:2rem;text-align:center;}
+.taste-icon{font-size:2rem;display:block;margin-bottom:1rem;}
+.taste-label{font-family:"Cormorant Garamond",serif;font-size:1.1rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.8rem;}
+.taste-notes{font-size:0.88rem;color:rgba(245,232,192,0.75);line-height:1.8;}
+.blockquote{border-left:2px solid var(--gold);padding:1.5rem 2rem;margin:3rem 0;background:rgba(201,168,76,0.05);}
+.blockquote p{font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-style:italic;color:rgba(232,201,122,0.8);margin-bottom:0.8rem;}
+.blockquote cite{font-size:0.78rem;color:rgba(201,168,76,0.5);letter-spacing:0.2em;text-transform:uppercase;}
+.spec-box{background:rgba(45,30,10,0.6);border:1px solid rgba(201,168,76,0.2);padding:2rem;margin-top:2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1.5rem;}
+.spec-box-item{text-align:center;}
+.spec-box-label{font-size:0.65rem;letter-spacing:0.2em;color:rgba(201,168,76,0.5);text-transform:uppercase;margin-bottom:0.4rem;}
+.spec-box-val{font-family:"Cormorant Garamond",serif;font-size:1.5rem;color:var(--gold-light);}
+.pair-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-top:2rem;}
+.pair-item{padding:1.2rem;background:rgba(45,30,10,0.4);border:1px solid rgba(201,168,76,0.12);text-align:center;}
+.pair-emoji{font-size:1.8rem;display:block;margin-bottom:0.6rem;}
+.pair-name{font-family:"Cormorant Garamond",serif;font-size:1rem;color:var(--gold-light);margin-bottom:0.3rem;}
+.pair-note{font-size:0.78rem;color:rgba(245,232,192,0.5);}
+.bg-alt{background:rgba(25,15,5,0.8);}
+.bg-section{padding:6rem 2rem;}
+.nav-bar{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(26,18,8,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.12);padding:0 2rem;height:52px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:"Cormorant Garamond",serif;font-size:1rem;color:var(--gold);letter-spacing:0.1em;}
+.nav-links{display:flex;gap:1.5rem;font-size:11px;color:rgba(201,168,76,0.5);letter-spacing:0.1em;}
+.nav-links a{color:rgba(201,168,76,0.5);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+footer{text-align:center;padding:4rem 2rem;border-top:1px solid rgba(201,168,76,0.1);}
+footer p{font-family:"Cormorant Garamond",serif;font-size:0.8rem;color:rgba(201,168,76,0.3);letter-spacing:0.2em;margin-bottom:0;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes scrollPulse{0%,100%{opacity:0.3;}50%{opacity:1;}}
+@media(max-width:600px){.hero-title{font-size:3rem;}.cards{grid-template-columns:1fr;}.tasting-grid{grid-template-columns:1fr;}.spec-box{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<nav class="nav-bar">
+  <div class="nav-logo">탈리스커 10년산</div>
+  <div class="nav-links">
+    <a href="/whisky.html">← 위스키 목록</a>
+    <a href="/">홈</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">Isle of Skye, Scotland · Single Malt Scotch Whisky</div>
+  <h1 class="hero-title">탈리스커<br><em>10년산</em></h1>
+  <p class="hero-sub">Best Dram in the World — Robert Louis Stevenson</p>
+  <div class="hero-divider"></div>
+  <p class="hero-desc">스카이 섬의 바위 해안, 거친 파도, 스모크와 후추. 소설가 스티븐슨이<br>'세상 최고의 술'이라 칭했던 섬 위스키의 원형.</p>
+  <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<div class="sep"></div>
+<section class="bg-alt">
+  <div class="section">
+    <div class="section-label">Overview · 개요</div>
+    <h2 class="section-title">Talisker 10<br><em>한 병에 담긴 이야기</em></h2>
+    <div class="divider-thin"></div>
+    <p>탈리스커(Talisker)는 스코틀랜드 서부 스카이 섬(Isle of Skye) 카본스트(Carbost) 마을에 위치하며, 스카이 섬 유일의 위스키 증류소입니다. 1830년 설립된 이후 디아지오(Diageo) 소유가 되었으며, 클래식 몰트(Classic Malts) 컬렉션의 섬 대표주자로 자리잡았습니다.</p>
+<p>10년산은 탈리스커의 핵심 표현으로, 아일라처럼 강렬하지 않으면서도 피트 스모크와 바다 소금, 강렬한 후추 스파이스가 조화를 이루는 독특한 프로파일을 가집니다. 스코틀랜드 낭만주의 소설가 로버트 루이스 스티븐슨(Robert Louis Stevenson)은 시에서 탈리스커를 '세상에서 가장 훌륭한 술(The King of drinks)'이라 묘사했습니다.</p>
+    <div class="spec-box">
+      <div class="spec-box-item"><div class="spec-box-label">숙성 연수</div><div class="spec-box-val">10년</div></div>
+      <div class="spec-box-item"><div class="spec-box-label">도수</div><div class="spec-box-val">45.8%</div></div>
+      <div class="spec-box-item"><div class="spec-box-label">원산지</div><div class="spec-box-val">Isle of Skye</div></div>
+      <div class="spec-box-item"><div class="spec-box-label">스타일</div><div class="spec-box-val">Single Malt</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+<section>
+  <div class="section">
+    <div class="section-label">History · 역사</div>
+    <h2 class="section-title">Talisker 10의<br><em>역사</em></h2>
+    <div class="divider-thin"></div>
+    <div class="timeline"><div class="tl-item"><div class="tl-year">1830년</div><div class="tl-text">휴 맥어스킬(Hugh MacAskill)이 스카이 섬 카본스트 마을에 증류소를 설립합니다. 스카이 섬의 척박한 환경이 탈리스커 특유의 강인한 성격을 빚어냈습니다.</div></div>
+<div class="tl-item"><div class="tl-year">1960년</div><div class="tl-text">대규모 화재로 증류소가 거의 전소됩니다. 재건 과정에서 원래의 설비와 공정을 최대한 충실히 복원했습니다.</div></div>
+<div class="tl-item"><div class="tl-year">1988년</div><div class="tl-text">디아지오 클래식 몰트 시리즈의 첫 번째 라인업 중 하나로 선정되며, 글로벌 프리미엄 싱글 몰트 시장에 본격 진출합니다.</div></div>
+<div class="tl-item"><div class="tl-year">현재</div><div class="tl-text">스카이 섬 관광의 필수 코스가 된 증류소 투어를 연간 수만 명이 방문합니다. 독특한 워엄 텁(Worm Tub) 냉각 방식을 여전히 사용합니다.</div></div></div>
+  </div>
+</section>
+
+<div class="sep"></div>
+<section class="bg-alt">
+  <div class="section">
+    <div class="section-label">Product Line · 제품 라인업</div>
+    <h2 class="section-title">Talisker 10<br><em>주요 제품군</em></h2>
+    <div class="divider-thin"></div>
+    <div class="cards"><div class="card">
+  <div class="card-type">주력</div>
+  <div class="card-name">10년 오리지널</div>
+  <p style="font-size:0.83rem;color:rgba(245,232,192,0.65);margin-bottom:0">버번+셰리 캐스크</p>
+  <div class="card-spec">
+    <div class="spec-item"><span class="spec-label">도수</span><span class="spec-val">45.8%</span></div>
+    <div class="spec-item"><span class="spec-label">용량</span><span class="spec-val">700ml</span></div>
+    <div class="spec-item"><span class="spec-label">원산지</span><span class="spec-val">Isle of Skye</span></div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-type">상위</div>
+  <div class="card-name">18년 오리지널</div>
+  <p style="font-size:0.83rem;color:rgba(245,232,192,0.65);margin-bottom:0">장기 숙성 복합 버전</p>
+  <div class="card-spec">
+    <div class="spec-item"><span class="spec-label">도수</span><span class="spec-val">45.8%</span></div>
+    <div class="spec-item"><span class="spec-label">용량</span><span class="spec-val">700ml</span></div>
+    <div class="spec-item"><span class="spec-label">원산지</span><span class="spec-val">Isle of Skye</span></div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-type">특별판</div>
+  <div class="card-name">스톰 Storm</div>
+  <p style="font-size:0.83rem;color:rgba(245,232,192,0.65);margin-bottom:0">NAS / 젊고 강렬한 스타일</p>
+  <div class="card-spec">
+    <div class="spec-item"><span class="spec-label">도수</span><span class="spec-val">45.8%</span></div>
+    <div class="spec-item"><span class="spec-label">용량</span><span class="spec-val">700ml</span></div>
+    <div class="spec-item"><span class="spec-label">원산지</span><span class="spec-val">Isle of Skye</span></div>
+  </div>
+</div></div>
+  </div>
+</section>
+
+<div class="sep"></div>
+<section>
+  <div class="section">
+    <div class="section-label">Production · 제조 방법</div>
+    <h2 class="section-title">한 방울의 위스키가<br><em>태어나기까지</em></h2>
+    <div class="divider-thin"></div>
+    <div class="step-list"><div class="step"><div><div class="step-title">피트 몰팅</div><p class="step-body">적당한 수준(약 25ppm)의 피트 몰트를 사용해 스모크를 부여하되, 아일라 증류소보다는 절제된 피트를 적용합니다.</p></div></div>
+<div class="step"><div><div class="step-title">긴 발효</div><p class="step-body">82~90시간의 발효로 과일향 에스터를 충분히 생성합니다.</p></div></div>
+<div class="step"><div><div class="step-title">독특한 워엄 텁 냉각</div><p class="step-body">현대식 열교환기 대신 전통적인 구리 코일(Worm Tub)을 찬물에 담가 증기를 냉각합니다. 이 방식이 탈리스커 특유의 기름진 질감과 강렬한 스파이스의 원천입니다.</p></div></div>
+<div class="step"><div><div class="step-title">버번·셰리 캐스크 숙성</div><p class="step-body">주로 리필 버번 캐스크와 일부 셰리 캐스크에서 10년 숙성합니다. 바다 소금과 스모크가 오크와 어우러집니다.</p></div></div>
+<div class="step"><div><div class="step-title">45.8% 병입</div><p class="step-body">물을 최소한으로 첨가하여 스피릿의 개성을 최대한 살립니다.</p></div></div></div>
+  </div>
+</section>
+
+<div class="sep"></div>
+<section class="bg-alt">
+  <div class="section">
+    <div class="section-label">Tasting Notes · 테이스팅 노트</div>
+    <h2 class="section-title">감각으로 만나는<br><em>Talisker 10</em></h2>
+    <div class="divider-thin"></div>
+    <div class="tasting-grid">
+      <div class="taste-card"><span class="taste-icon">👃</span><div class="taste-label">Nose · 향</div><div class="taste-notes">짭조름한 바다 공기와 피트 스모크가 먼저 열립니다. 그 뒤로 검은 후추의 강렬한 스파이스, 숯 냄새, 레몬 껍질의 시트러스.</div></div>
+      <div class="taste-card"><span class="taste-icon">👅</span><div class="taste-label">Palate · 팔레트</div><div class="taste-notes">처음부터 후추 스파이스가 강렬하게 터집니다. 미디엄 바디에 스모크, 해염, 그리고 숨어있는 달콤한 몰트의 균형.</div></div>
+      <div class="taste-card"><span class="taste-icon">✨</span><div class="taste-label">Finish · 피니시</div><div class="taste-notes">길고 따뜻하며 스파이시한 피니시. 후추와 스모크가 천천히 가라앉으며 남습니다.</div></div>
+    </div>
+    <div class="blockquote"><p>"The King of drinks, as I conceive it." — Robert Louis Stevenson</p><cite>— Whisky Advocate, 93점</cite></div>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold-light);margin-top:3.5rem;margin-bottom:1rem;">푸드 페어링</h3>
+    <div class="divider-thin"></div>
+    <div class="pair-grid"><div class="pair-item"><span class="pair-emoji">🦐</span><div class="pair-name">훈제 새우·문어</div><div class="pair-note">해산물과 해염 공명</div></div>
+<div class="pair-item"><span class="pair-emoji">🐟</span><div class="pair-name">훈제 고등어</div><div class="pair-note">스모크 레이어</div></div>
+<div class="pair-item"><span class="pair-emoji">🌶️</span><div class="pair-name">매운 소시지</div><div class="pair-note">스파이스 공명</div></div>
+<div class="pair-item"><span class="pair-emoji">🧀</span><div class="pair-name">훈제 고다 치즈</div><div class="pair-note">스모크 배가</div></div>
+<div class="pair-item"><span class="pair-emoji">🥩</span><div class="pair-name">양갈비 구이</div><div class="pair-note">강한 육향 대비</div></div>
+<div class="pair-item"><span class="pair-emoji">🫚</span><div class="pair-name">올리브유 브루스케타</div><div class="pair-note">지중해 짠맛 대비</div></div></div>
+  </div>
+</section>
+
+<footer><p>© 2026 최승환 · choijc79.github.io · 위스키 가이드</p></footer>
+</body>
+</html>

@@ -1,0 +1,1681 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏍️ 호치민 → 나트랑 오토바이 루트 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+  --bg:      #F4F0E8;
+  --surface: #ECE8DE;
+  --border:  #D4CEBC;
+  --text:    #1A1410;
+  --ink:     #2A2018;
+  --muted:   #7A6A56;
+  --accent:  #E07828;
+  --red:     #D96820;
+  --light:   #FDFAF4;
+  --amber:   #E07828;
+  --green:   #5A7A3A;
+  --lake:    #E07828;
+  --purple:  #7A4AB0;
+}
+[data-theme="dark"] {
+  --bg:      #0d1117;
+  --surface: #161b22;
+  --border:  #2c3240;
+  --text:    #E8E0D0;
+  --ink:     #F0E8D8;
+  --muted:   #8b8070;
+  --accent:  #F08840;
+  --red:     #E07830;
+  --light:   #161b22;
+  --amber:   #F08840;
+  --green:   #3fb950;
+  --lake:    #F08840;
+  --purple:  #bc8cff;
+}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 3rem 2.5rem;
+    overflow: hidden;
+    background: linear-gradient(160deg, #0e0e0e 0%, #1a0f00 60%, #0e0e0e 100%);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(245,158,11,0.04) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(245,158,11,0.04) 40px);
+    pointer-events: none;
+  }
+  .hero-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--amber);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.2s forwards;
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 12vw, 9rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: #fff;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.4s forwards;
+  }
+  .hero h1 span { color: var(--amber); }
+  .hero-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    color: var(--text-dim);
+    letter-spacing: 0.08em;
+    margin-top: 0.8rem;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.6s forwards;
+  }
+  .hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.8s forwards;
+  }
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+  .stat-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    color: var(--amber);
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    right: 2.5rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.15em;
+    writing-mode: vertical-rl;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    animation: pulse 2s infinite;
+  }
+  .hero-scroll::before {
+    content: '';
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--amber), transparent);
+  }
+  .route-visual {
+    position: absolute;
+    top: 2rem;
+    right: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    opacity: 0;
+    animation: fadeIn 1s 1s forwards;
+  }
+  .route-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--amber);
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 0 2px var(--amber);
+  }
+  .route-dot.dim { background: var(--text-muted); box-shadow: 0 0 0 2px var(--text-muted); }
+  .route-line {
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--amber), var(--text-muted));
+  }
+  .route-city {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--text-dim);
+    margin-left: 1.2rem;
+    position: relative;
+    left: 0.3rem;
+    letter-spacing: 0.05em;
+  }
+  .route-row { display: flex; align-items: center; }
+
+  /* ─── NAV ─── */
+  .day-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(14,14,14,0.95);
+    
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .day-nav::-webkit-scrollbar { display: none; }
+  .nav-btn {
+    flex-shrink: 0;
+    padding: 1rem 1.5rem;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .nav-btn:hover { color: var(--text-dim); }
+  .nav-btn.active { color: var(--amber); border-bottom-color: var(--amber); }
+
+  /* ─── SECTIONS ─── */
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* ─── DAY HEADER ─── */
+  .day-header {
+    padding: 3rem 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .day-header::after {
+    content: attr(data-day);
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 8rem;
+    color: rgba(245,158,11,0.05);
+    line-height: 1;
+    pointer-events: none;
+    letter-spacing: -0.05em;
+  }
+  .day-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--amber);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .day-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    color: #fff;
+    letter-spacing: 0.03em;
+    line-height: 1;
+  }
+  .day-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .meta-chip {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    padding: 0.25rem 0.65rem;
+    border: 1px solid;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .chip-km { border-color: var(--amber); color: var(--amber); }
+  .chip-time { border-color: var(--blue); color: var(--blue); }
+  .chip-camp { border-color: var(--green); color: var(--green); }
+  .chip-hotel { border-color: #a78bfa; color: #a78bfa; }
+  .chip-warn { border-color: var(--red); color: var(--red); }
+
+  /* ─── CONTENT BLOCKS ─── */
+  .content-area {
+    padding: 0 2.5rem 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .block { margin-bottom: 2.5rem; }
+
+  .block-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--amber);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .block-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--amber-dim), transparent);
+  }
+
+  /* ─── ROUTE SEGMENTS ─── */
+  .route-segments { display: flex; flex-direction: column; gap: 0; }
+  .seg {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 1.2rem;
+  }
+  .seg-spine {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20px;
+  }
+  .seg-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--amber);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    margin-top: 0.3rem;
+  }
+  .seg-dot.green { border-color: var(--green); }
+  .seg-dot.blue { border-color: var(--blue); }
+  .seg-dot.red { border-color: var(--red); }
+  .seg-dot.filled { background: var(--amber); }
+  .seg-dot.filled.green { background: var(--green); border-color: var(--green); }
+  .seg-connector {
+    width: 2px;
+    flex: 1;
+    background: linear-gradient(to bottom, var(--amber-dim), transparent);
+    min-height: 30px;
+  }
+  .seg-body { padding-bottom: 2rem; }
+  .seg-place {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.03em;
+  }
+  .seg-local {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    margin-left: 0.5rem;
+    letter-spacing: 0.03em;
+  }
+  .seg-road {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--blue);
+    letter-spacing: 0.08em;
+    margin-top: 0.2rem;
+  }
+  .seg-desc {
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    margin-top: 0.5rem;
+    line-height: 1.7;
+  }
+  .seg-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+  }
+  .badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.58rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+  }
+  .badge-ok { background: rgba(34,197,94,0.15); color: var(--green); }
+  .badge-warn { background: rgba(239,68,68,0.15); color: var(--red); }
+  .badge-info { background: rgba(56,189,248,0.15); color: var(--blue); }
+  .badge-amber { background: rgba(245,158,11,0.15); color: var(--amber); }
+
+  /* ─── FOOD CARDS ─── */
+  .food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+  .food-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 1.2rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .food-card:hover {
+    border-color: var(--amber-dim);
+    transform: translateY(-2px);
+  }
+  .food-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--amber);
+  }
+  .food-card.camp::before { background: var(--green); }
+  .food-card.info::before { background: var(--blue); }
+  .food-meal {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--amber);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .food-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .food-local {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 0.1rem;
+  }
+  .food-addr {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    line-height: 1.4;
+  }
+  .food-desc {
+    font-size: 0.83rem;
+    color: var(--text-dim);
+    margin-top: 0.6rem;
+    line-height: 1.6;
+  }
+  .food-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    color: var(--amber);
+    margin-top: 0.7rem;
+  }
+  .food-price span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+  .rating {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 0.3rem;
+  }
+  .stars { color: var(--amber); font-size: 0.75rem; }
+  .rating-val {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+  }
+
+  /* ─── CAMP BLOCK ─── */
+  .camp-box {
+    background: linear-gradient(135deg, rgba(34,197,94,0.05) 0%, rgba(14,14,14,0) 60%);
+    border: 1px solid rgba(34,197,94,0.25);
+    padding: 1.5rem;
+    position: relative;
+  }
+  .camp-box::before {
+    content: '⛺';
+    position: absolute;
+    top: 1rem; right: 1.2rem;
+    font-size: 1.8rem;
+    opacity: 0.2;
+  }
+  .camp-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--green);
+    letter-spacing: 0.05em;
+  }
+  .camp-local {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    margin-top: 0.1rem;
+  }
+  .camp-desc {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin-top: 0.7rem;
+    line-height: 1.7;
+  }
+  .camp-tips {
+    margin-top: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .tip-row {
+    display: flex;
+    gap: 0.6rem;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+  }
+  .tip-icon {
+    color: var(--green);
+    flex-shrink: 0;
+    font-size: 0.8rem;
+    margin-top: 0.15rem;
+  }
+
+  /* ─── WARN BOX ─── */
+  .warn-box {
+    background: rgba(239,68,68,0.05);
+    border: 1px solid rgba(239,68,68,0.25);
+    border-left: 3px solid var(--red);
+    padding: 1rem 1.2rem;
+    margin-top: 1rem;
+  }
+  .warn-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--red);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+  .warn-text { font-size: 0.83rem; color: var(--text-dim); line-height: 1.6; }
+
+  /* ─── INFO BOX ─── */
+  .info-box {
+    background: rgba(56,189,248,0.05);
+    border: 1px solid rgba(56,189,248,0.2);
+    border-left: 3px solid var(--blue);
+    padding: 1rem 1.2rem;
+    margin-top: 1rem;
+  }
+  .info-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--blue);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+  .info-text { font-size: 0.83rem; color: var(--text-dim); line-height: 1.6; }
+
+  /* ─── BUDGET TABLE ─── */
+  .budget-table { width: 100%; border-collapse: collapse; }
+  .budget-table th {
+    text-align: left;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.5rem 0.8rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .budget-table td {
+    padding: 0.7rem 0.8rem;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    border-bottom: 1px solid rgba(42,42,42,0.5);
+    vertical-align: top;
+  }
+  .budget-table tr:last-child td {
+    color: var(--amber);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border-top: 1px solid var(--amber-dim);
+    border-bottom: none;
+  }
+  .vnd {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--amber);
+    font-weight: 600;
+  }
+  .krw {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+
+  /* ─── GPS TIPS ─── */
+  .gps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.8rem;
+  }
+  .gps-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 1rem;
+    text-align: center;
+  }
+  .gps-icon { font-size: 1.5rem; margin-bottom: 0.3rem; }
+  .gps-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--blue);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .gps-desc { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.3rem; line-height: 1.5; }
+
+  /* ─── PREP CHECKLIST ─── */
+  .check-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0.5rem;
+  }
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    padding: 0.6rem 0.8rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    font-size: 0.83rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+  .check-icon { color: var(--amber); flex-shrink: 0; margin-top: 0.05rem; }
+
+  /* ─── FOOTER ─── */
+  .page-footer {
+    padding: 3rem 2.5rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--amber);
+    letter-spacing: 0.1em;
+  }
+  .footer-text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    margin-top: 0.5rem;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes pulse { 0%,100% { opacity: 0.5; } 50% { opacity: 1; } }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 600px) {
+    .day-header, .content-area { padding-left: 1.2rem; padding-right: 1.2rem; }
+    .food-grid { grid-template-columns: 1fr; }
+    .hero { padding: 2rem 1.5rem; }
+    .route-visual { display: none; }
+  }
+
+  /* divider */
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+    margin: 2.5rem 0;
+  }
+
+  .highlight {
+    color: var(--amber);
+    font-weight: 500;
+  }
+  .km-badge {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    background: rgba(245,158,11,0.1);
+    border: 1px solid var(--amber-dim);
+    color: var(--amber);
+    padding: 0.1rem 0.4rem;
+    margin-left: 0.3rem;
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="route-visual">
+    <div class="route-row">
+      <div class="seg-spine"><div class="route-dot"></div></div>
+      <div class="route-city">HCM CITY</div>
+    </div>
+    <div class="route-line"></div>
+    <div class="route-row">
+      <div class="seg-spine"><div class="route-dot dim"></div></div>
+      <div class="route-city">VUNG TAU</div>
+    </div>
+    <div class="route-line"></div>
+    <div class="route-row">
+      <div class="seg-spine"><div class="route-dot dim"></div></div>
+      <div class="route-city">MUI NE</div>
+    </div>
+    <div class="route-line"></div>
+    <div class="route-row">
+      <div class="seg-spine"><div class="route-dot dim"></div></div>
+      <div class="route-city">CA NA</div>
+    </div>
+    <div class="route-line"></div>
+    <div class="route-row">
+      <div class="seg-spine"><div class="route-dot dim"></div></div>
+      <div class="route-city">DOC LET</div>
+    </div>
+    <div class="route-line"></div>
+    <div class="route-row">
+      <div class="seg-spine"><div class="route-dot" style="background:var(--accent)"></div></div>
+      <div class="route-city">NHA TRANG</div>
+    </div>
+  </div>
+
+  <div class="hero-tag">🏍️ Vietnam Moto Journal · Dec 3–7, 2024</div>
+  <h1>호치민<br><span>→ 나트랑</span></h1>
+  <div class="hero-sub">오토바이 해안선 루트 · 노지캠핑 2회 · 로컬 맛집 완전 정복</div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-val">540</div>
+      <div class="stat-label">총 km</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">4박5일</div>
+      <div class="stat-label">여행 기간</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">2</div>
+      <div class="stat-label">노지 캠핑</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-val">₩20만</div>
+      <div class="stat-label">예상 총비용</div>
+    </div>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</section>
+
+<!-- ═══ NAV ═══ -->
+<nav class="day-nav" id="dayNav">
+  <button class="nav-btn active" onclick="showDay('prep')">출발 전 준비</button>
+  <button class="nav-btn" onclick="showDay('day1')">DAY 1 · 12/3</button>
+  <button class="nav-btn" onclick="showDay('day2')">DAY 2 · 12/4</button>
+  <button class="nav-btn" onclick="showDay('day3')">DAY 3 · 12/5</button>
+  <button class="nav-btn" onclick="showDay('day4')">DAY 4 · 12/6</button>
+  <button class="nav-btn" onclick="showDay('day5')">DAY 5 · 12/7</button>
+  <button class="nav-btn" onclick="showDay('budget')">예산 정리</button>
+</nav>
+
+<!-- ═══ PREP ═══ -->
+<section class="section active" id="sec-prep">
+  <div class="day-header" data-day="PREP">
+    <div class="day-num">// 출발 전 준비사항</div>
+    <div class="day-title">Pre-Departure Checklist</div>
+    <div class="day-meta">
+      <span class="meta-chip chip-info">🛵 오토바이 렌탈 가이드</span>
+      <span class="meta-chip chip-info">📱 필수 앱</span>
+      <span class="meta-chip chip-info">🎒 짐 체크리스트</span>
+    </div>
+  </div>
+  <div class="content-area">
+
+    <div class="block">
+      <div class="block-label">오토바이 렌탈 (호치민 1군)</div>
+      <div class="food-grid">
+        <div class="food-card info">
+          <div class="food-meal">추천 기종</div>
+          <div class="food-name">Honda Winner X 150cc</div>
+          <div class="food-local">장거리 라이딩 최적</div>
+          <div class="food-desc">연비 우수, 파워 충분. 540km 해안+국도 주행에 가장 적합. 1일 15만~20만 VND. 5일치 선불 시 협상 가능.</div>
+          <div class="food-price">75만~100만 VND <span>/ 5일</span></div>
+        </div>
+        <div class="food-card info">
+          <div class="food-meal">대안 기종</div>
+          <div class="food-name">Honda Wave 125cc</div>
+          <div class="food-local">저비용 옵션</div>
+          <div class="food-desc">세미오토. 연비 최고, 수리 쉬움. 언덕·산길에서 파워 부족 가능. 짐 적을 때 추천. 1일 8만~12만 VND.</div>
+          <div class="food-price">40만~60만 VND <span>/ 5일</span></div>
+        </div>
+        <div class="food-card info">
+          <div class="food-meal">렌탈샵 추천</div>
+          <div class="food-name">Tigit Motorbikes</div>
+          <div class="food-local">Phạm Ngũ Lão, D1</div>
+          <div class="food-desc">외국인 라이더 특화. 영어 가능. 전국 반납 옵션 있음(나트랑 반납 추가비 약 10만~15만 VND). 보험 포함 확인 필수.</div>
+          <div class="food-price">보험 포함 확인 <span>필수</span></div>
+        </div>
+      </div>
+      <div class="info-box" style="margin-top:1rem">
+        <div class="info-title">⚠️ 렌탈 시 필수 체크</div>
+        <div class="info-text">
+          ① 여권 원본 또는 사본 지참 &nbsp;②&nbsp; 국제운전면허증 소지 강력 권고 (경찰 단속 시 협상 유리) &nbsp;③&nbsp; 스크래치·흠집 전량 사진 촬영 후 계약 &nbsp;④&nbsp; 엔진오일·브레이크·타이어 상태 직접 확인 &nbsp;⑤&nbsp; 나트랑 반납 가능 여부 사전 확인 &nbsp;⑥&nbsp; 긴급 연락처(렌탈샵 베트남 번호) 저장
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="block">
+      <div class="block-label">필수 앱 4종</div>
+      <div class="gps-grid">
+        <div class="gps-card">
+          <div class="gps-icon">🗺️</div>
+          <div class="gps-name">Maps.me</div>
+          <div class="gps-desc">오프라인 지도. 비포장로·소도로 포함. 베트남 데이터 없어도 사용. <strong style="color:var(--accent)">가장 중요</strong></div>
+        </div>
+        <div class="gps-card">
+          <div class="gps-icon">🏕️</div>
+          <div class="gps-name">iOverlander</div>
+          <div class="gps-desc">라이더·캠퍼 커뮤니티. 비공식 캠핑 스팟, 급수 포인트, 위험 구간 실시간 정보</div>
+        </div>
+        <div class="gps-card">
+          <div class="gps-icon">🚖</div>
+          <div class="gps-name">Grab</div>
+          <div class="gps-desc">공항 이동·오토바이 반납 후 택시. 호치민·나트랑 공항 구간 필수</div>
+        </div>
+        <div class="gps-card">
+          <div class="gps-icon">⭐</div>
+          <div class="gps-name">Google Maps</div>
+          <div class="gps-desc">식당·편의점 검색 보조. 오프라인 저장: 베트남 남부 사전 다운로드 권장</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="block">
+      <div class="block-label">짐 체크리스트</div>
+      <div class="check-grid">
+        <div class="check-item"><span class="check-icon">✓</span>헬멧 (렌탈샵에서 포함 여부 확인, 불량이면 시내에서 구매 약 15만 VND)</div>
+        <div class="check-item"><span class="check-icon">✓</span>비옷 판초형 (12월 북쪽 구간 잔여 우기 대비, 편의점 5만 VND)</div>
+        <div class="check-item"><span class="check-icon">✓</span>타프 또는 경량 텐트 (노지 2박용)</div>
+        <div class="check-item"><span class="check-icon">✓</span>슬리핑 매트 or 경량 침낭 (12월 남부 기온 25~30도, 얇은 것 충분)</div>
+        <div class="check-item"><span class="check-icon">✓</span>모기 기피제 (노지 캠핑 시 필수)</div>
+        <div class="check-item"><span class="check-icon">✓</span>긴팔 라이딩 재킷 (햇빛 차단 + 부상 보호)</div>
+        <div class="check-item"><span class="check-icon">✓</span>국제운전면허증 + 여권 사본</div>
+        <div class="check-item"><span class="check-icon">✓</span>Viettel SIM (공항에서 구매, 7일 데이터 약 10만 VND)</div>
+        <div class="check-item"><span class="check-icon">✓</span>현금 VND 충분히 (시골 구간 ATM 없음, 100만 VND 이상 준비)</div>
+        <div class="check-item"><span class="check-icon">✓</span>물 2L 이상 항시 휴대 (독렛 이동 구간 긴 무인 지대)</div>
+        <div class="check-item"><span class="check-icon">✓</span>간단한 공구 + 예비 튜브 (렌탈샵 제공 여부 확인)</div>
+        <div class="check-item"><span class="check-icon">✓</span>보조배터리 (GPS 연속 사용 배터리 소모 큼)</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ DAY 1 ═══ -->
+<section class="section" id="sec-day1">
+  <div class="day-header" data-day="DAY1">
+    <div class="day-num">// December 3 · Day 1</div>
+    <div class="day-title">호치민 도착 & 정착</div>
+    <div class="day-meta">
+      <span class="meta-chip chip-km">🛬 공항 도착 13:00</span>
+      <span class="meta-chip chip-hotel">🛏️ 숙박: 팜응우라오 게스트하우스</span>
+      <span class="meta-chip chip-info">주행 없음 (정착의 날)</span>
+    </div>
+  </div>
+  <div class="content-area">
+
+    <div class="block">
+      <div class="block-label">공항 → 시내 동선</div>
+      <div class="route-segments">
+
+        <div class="seg">
+          <div class="seg-spine">
+            <div class="seg-dot filled"></div>
+            <div class="seg-connector"></div>
+          </div>
+          <div class="seg-body">
+            <div class="seg-place">탄손녓 국제공항 <span class="seg-local">Sân bay Tân Sơn Nhất</span></div>
+            <div class="seg-road">⏰ 도착 약 13:00~13:30</div>
+            <div class="seg-desc">
+              입국심사 후 1층 공식 판매점에서 <span class="highlight">Viettel SIM</span> 구매 (7일 무제한 약 10만 VND). 공항 내 환전소는 환율 불리 → 시내 환전 권장. ATM에서 200만 VND 출금이 현실적.
+            </div>
+            <div class="seg-badges">
+              <span class="badge badge-info">SIM 먼저 구매</span>
+              <span class="badge badge-amber">Grab 앱으로 시내 이동</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="seg">
+          <div class="seg-spine">
+            <div class="seg-dot"></div>
+            <div class="seg-connector"></div>
+          </div>
+          <div class="seg-body">
+            <div class="seg-place">오토바이 렌탈 거리 <span class="seg-local">Phạm Ngũ Lão, Quận 1</span></div>
+            <div class="seg-road">📍 공항에서 Grab 약 15분 · 15만~20만 VND</div>
+            <div class="seg-desc">
+              팜응우라오 거리는 배낭여행자 거리. 곳곳에 오토바이 렌탈샵. Tigit Motorbikes 또는 An Son 추천. <br>
+              <strong style="color:#fff">렌탈 절차:</strong> 여권 제시 → 기종 선택 → 스크래치 전량 촬영 → 헬멧·열쇠 수령 → 시험 주행 후 이상 없으면 계약. 나트랑 반납 가능 여부 반드시 협의.
+            </div>
+            <div class="seg-badges">
+              <span class="badge badge-ok">Winner X 150cc 권장</span>
+              <span class="badge badge-warn">스크래치 촬영 필수</span>
+              <span class="badge badge-info">나트랑 반납 협의</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="seg">
+          <div class="seg-spine">
+            <div class="seg-dot green"></div>
+            <div class="seg-connector" style="background: linear-gradient(to bottom, rgba(34,197,94,0.4), transparent);"></div>
+          </div>
+          <div class="seg-body">
+            <div class="seg-place">숙소 체크인 & 저녁 탐방</div>
+            <div class="seg-road">⏰ 16:00~ 자유 시간</div>
+            <div class="seg-desc">
+              팜응우라오 인근 게스트하우스 1인실 25만~35만 VND. 오토바이 실내 주차 가능한 곳 선택 필수 (체크인 전 문의). 오후에 다음날 붕따우 루트 Maps.me로 사전 확인.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-label">오늘 먹을 것</div>
+      <div class="food-grid">
+        <div class="food-card">
+          <div class="food-meal">저녁 · 로컬 단골집</div>
+          <div class="food-name">Bún Bò Huế Nam Giao</div>
+          <div class="food-local">분보후에 남자오 · 1991년 창업</div>
+          <div class="food-addr">📍 242 Đề Thám, Bến Thành, Q.1</div>
+          <div class="food-desc">
+            1991년부터 운영. 팜응우라오 배낭거리 바로 옆이지만 손님 90%가 현지인. 진한 레몬그라스 육수 기반 후에식 소고기 쌀국수. 두꺼운 면발, 고기 듬뿍.
+          </div>
+          <div class="rating"><span class="stars">★★★★</span><span class="rating-val">4.3 (532개 리뷰)</span></div>
+          <div class="food-price">9만 VND <span>/ 1그릇 · 약 5,000원</span></div>
+        </div>
+        <div class="food-card">
+          <div class="food-meal">야식 · 현지 길거리</div>
+          <div class="food-name">Bánh Mì 반미</div>
+          <div class="food-local">골목 노점 바게트 샌드위치</div>
+          <div class="food-addr">📍 팜응우라오 거리 인근 노점 어디서나</div>
+          <div class="food-desc">
+            베트남식 바게트에 돼지고기·파테·채소·소스. 밤 11시까지 영업하는 노점 즐비. 현지인이 줄 서는 곳 선택. 관광객용 가게보다 2배 맛있음.
+          </div>
+          <div class="food-price">1만5천~2만 VND <span>/ 1개 · 약 1,000원</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-label">오늘 할 일 (내일 준비)</div>
+      <div class="check-grid">
+        <div class="check-item"><span class="check-icon">✓</span>Maps.me에 베트남 남부 오프라인 지도 다운로드</div>
+        <div class="check-item"><span class="check-icon">✓</span>QL51 (호치민→붕따우) 경로 확인, 주요 주유소 위치 저장</div>
+        <div class="check-item"><span class="check-icon">✓</span>현금 200만 VND 이상 준비 (시골 ATM 없음)</div>
+        <div class="check-item"><span class="check-icon">✓</span>Grab 앱 설치 및 결제 카드 등록</div>
+        <div class="check-item"><span class="check-icon">✓</span>오토바이 기름 확인 및 만땅 주유</div>
+        <div class="check-item"><span class="check-icon">✓</span>iOverlander에서 무이네 비공식 캠핑 스팟 확인</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ DAY 2 ═══ -->
+<section class="section" id="sec-day2">
+  <div class="day-header" data-day="DAY2">
+    <div class="day-num">// December 4 · Day 2</div>
+    <div class="day-title">호치민 → 붕따우 → 무이네</div>
+    <div class="day-meta">
+      <span class="meta-chip chip-km">🏍️ 295km</span>
+      <span class="meta-chip chip-time">⏱️ 약 6~7시간</span>
+      <span class="meta-chip chip-camp">⛺ 노지캠핑 1박</span>
+    </div>
+  </div>
+  <div class="content-area">
+
+    <div class="block">
+      <div class="block-label">세부 루트 & 도로 상태</div>
+      <div class="route-segments">
+
+        <div class="seg">
+          <div class="seg-spine">
+            <div class="seg-dot filled"></div>
+            <div class="seg-connector"></div>
+          </div>
+          <div class="seg-body">
+            <div class="seg-place">호치민 출발 <span class="seg-local">Tp. Hồ Chí Minh</span></div>
+            <div class="seg-road">⏰ 07:30 출발 권장 (더워지기 전 달릴 것)</div>
+            <div class="seg-desc">팜응우라오에서 남동쪽으로 빠져나가는 것이 관건. 도심 교통체증 주의. Long Thành 방향 표지판 따라 QL51 진입.</div>
+            <div class="seg-badges">
+              <span class="badge badge-warn">아침 도심 정체 주의</span>
+              <span class="badge badge-amber">출발 전 만땅 주유</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="seg">
+          <div class="seg-spine">
+            <div class="seg-dot"></div>
+            <div class="seg-connector"></div>
+          </div>
+          <div class="seg-body">
+            <div class="seg-place">QL51 국도 구간 <span class="seg-local">Quốc lộ 51</span> <span class="km-badge">125km</span></div>
+            <div class="seg-road">🛣️ 왕복 4차선 포장도로 · 약 1시간 30분</div>
+            <div class="seg-desc">
+              호치민 → 붕따우 전용 직선 국도. 전 구간 포장 상태 양호. 대형트럭 많지만 오토바이 전용 차선 있음. 중간 <strong style="color:#fff">Long Thành</strong> 인근 주유소에서 한 번 확인.
+              <br><br>
+              <strong style="color:#fff">📸 포인트:</strong> Bà Rịa 시내 진입 전 야자수 가로수 구간. 베트남 남부 특유의 풍경.
+            </div>
+            <div class="seg-badges">
+              <span class="badge badge-ok">포장 양호</span>
+              <span class="badge badge-info">오토바이 전용 차선 있음</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="seg">
+          <div class="seg-spine">
+            <div class="seg-dot" style="border-color:var(--accent)"></div>
+            <div class="seg-connector" style="background:linear-gradient(to bottom,rgba(255,107,53,0.4),transparent)"></div>
+          </div>
+          <div class="seg-body">
+            <div class="seg-place">붕따우 정차 <span class="seg-local">Vũng Tàu</span> <span class="km-badge">+0km</span></div>
+            <div class="seg-road">⏰ 약 10:30 도착 · 2~2.5시간 탐방</div>
+            <div class="seg-desc">
+              해안 도시. 주요 포인트:
+              <br>• <strong style="color:#fff">바인콧 골목</strong> (Bánh Khọt) — 시장 인근 로컬 노점
+              <br>• <strong style="color:#fff">Front Beach (Bãi Trước)</strong> — 현지인 해수욕 해변. 관광객 거의 없음
+              <br>• 예수 그리스도 상(Christ of Vung Tau) — 오토바이로 올라가는 구불길 경험 가능. 난이도 하.
+            </div>
+            <div class="seg-badges">
+              <span class="badge badge-amber">바인콧 점심 필수</span>
+              <span class="badge badge-ok">관광객 밀집도 낮음</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="seg">
+          <div class="seg-spine">
+            <div class="seg-dot"></div>
+            <div class="seg-connector"></div>
+          </div>
+          <div class="seg-body">
+            <div class="seg-place">붕따우 → 라지아 해안선 <span class="seg-local">QL55 · La Gi</span> <span class="km-badge">85km</span></div>
+            <div class="seg-road">🛣️ QL55 왕복 2차선 · 약 1시간 30분</div>
+            <div class="seg-desc">
+              이 구간이 이번 여행 <strong style="color:var(--accent)">베스트 드라이빙 구간</strong>. 왼쪽은 바다, 오른쪽은 코코넛 야자림. 관광객 없는 순수 로컬 해안선.<br><br>
+              <strong style="color:#fff">⚠️ 도로 상태:</strong> 몇몇 구간 도로 폭 좁음. 마을 통과 시 어린이·가축 주의. 전반적으로 포장 상태 보통~양호.<br><br>
+              <strong style="color:#fff">📍 추천 경유: Hồ Tràm</strong> — 조용한 해변 마을. 잠깐 정차해 바다 보기.
+            </div>
+            <div class="seg-badges">
+              <span class="badge badge-ok">포장도로 · 경치 최고</span>
+              <span class="badge badge-warn">좁은 구간 속도 주의</span>
+              <span class="badge badge-amber">⭐ 베스트 드라이브 구간</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="seg">
+          <div class="seg-spine">
+            <div class="seg-dot"></div>
+            <div class="seg-connector"></div>
+          </div>
+          <div class="seg-body">
+            <div class="seg-place">라지아 → 무이네 <span class="seg-local">La Gi → Mũi Né</span> <span class="km-badge">85km</span></div>
+            <div class="seg-road">🛣️ QL1 병행 내륙로 또는 계속 QL55 · 약 1시간 20분</div>
+            <div class="seg-desc">
+              무이네 진입 전 <strong style="color:#fff">Phan Thiết(판티엣)</strong> 시내 경유. 판티엣 시내에서 연료 만땅 재주유 권장.<br>
+              무이네 진입 후 해안도로(Huỳnh Thúc Kháng) 방향으로 달리면 어촌·홍사구·캠핑 구간으로 이어짐.
+            </div>
+            <div class="seg-badges">
+              <span class="badge badge-amber">판티엣에서 재주유</span>
+              <span class="badge badge-ok">포장도로 전 구간</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="seg">
+          <div class="seg-spine">
+            <div class="seg-dot filled green"></div>
+          </div>
+          <div class="seg-body">
+            <div class="seg-place">무이네 도착 & 캠핑 <span class="seg-local">Mũi Né</span></div>
+            <div class="seg-road">⏰ 약 16:30~17:00 도착</div>
+            <div class="seg-desc">어촌에서 저녁 해산물 직거래 후 동쪽 해변 공터 노지 비박.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-label">오늘 먹을 것</div>
+      <div class="food-grid">
+        <div class="food-card">
+          <div class="food-meal">아침 · 출발 전</div>
+          <div class="food-name">Cơm Tấm Ba Ghiền</div>
+          <div class="food-local">껌떰 바기엔 · 돼지갈비구이 쌀밥</div>
+          <div class="food-addr">📍 84 Đặng Văn Ngữ, Phú Nhuận</div>
+          <div class="food-desc">호치민 현지인이 줄 서는 쌀밥 단골집. 돼지갈비구이+계란+땡초쌀밥 세트. 진한 피시소스 기반. 07:30 오픈.</div>
+          <div class="rating"><span class="stars">★★★★</span><span class="rating-val">3.9 (1,163개)</span></div>
+          <div class="food-price">5만~7만 VND <span>/ 1그릇</span></div>
+        </div>
+        <div class="food-card">
+          <div class="food-meal">점심 · 붕따우 명물</div>
+          <div class="food-name">Bánh Khọt 바인콧</div>
+          <div class="food-local">붕따우 로컬 특산 미니 쌀전</div>
+          <div class="food-addr">📍 붕따우 재래시장(Chợ Vũng Tàu) 인근 골목</div>
+          <div class="food-desc">
+            코코넛 밀크+새우를 넣어 구운 미니 타코야키형 쌀전. 붕따우에서만 먹을 수 있는 현지 소울푸드. 주인에게 <em style="color:var(--accent)">"Bánh khọt ngon nhất ở đâu?"</em> 물어볼 것.
+          </div>
+          <div class="food-price">2만~3만 VND <span>/ 10개</span></div>
+        </div>
+        <div class="food-card">
+          <div class="food-meal">저녁 · 어촌 직거래</div>
+          <div class="food-name">어촌 해산물 직거래</div>
+          <div class="food-local">Làng Chài Mũi Né · 무이네 어촌</div>
+          <div class="food-addr">📍 Huỳnh Thúc Kháng, Mũi Né</div>
+          <div class="food-desc">
+            오후 어선 귀항 후 현지 좌판에서 무게달아 해산물 구매 → 즉석 구이 주문. 새우·오징어·게 등 시가. 관광객용 레스토랑의 1/3 가격. 오전 7시에 가면 더 싸고 신선함.
+          </div>
+          <div class="food-price">새우 200g+밥 8만~10만 VND <span>/ 1인</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-label">캠핑 정보</div>
+      <div class="camp-box">
+        <div class="camp-title">무이네 홍사구 너머 해변 비박</div>
+        <div class="camp-local">Đồi Cát Hồng 너머 해변 공터 · 비공식 노지</div>
+        <div class="camp-desc">무이네 어촌 동쪽으로 2~3km 달리면 홍사구(붉은 모래언덕) 구간. 사구 너머 한적한 해변 공터에서 비박. iOverlander에 외국 라이더 후기 다수.</div>
+        <div class="camp-tips">
+          <div class="tip-row"><span class="tip-icon">✓</span>12월 건기라 비 걱정 거의 없음. 타프+매트만으로 충분</div>
+          <div class="tip-row"><span class="tip-icon">✓</span>식수·간식은 무이네 Circle K에서 미리 조달</div>
+          <div class="tip-row"><span class="tip-icon">✓</span>경찰 순찰 드묾. 외국 라이더들이 자주 이용하는 비공식 구간</div>
+          <div class="tip-row"><span class="tip-icon">✓</span>모기 기피제 필수. 밤 해풍으로 생각보다 시원함</div>
+          <div class="tip-row"><span class="tip-icon">⚠</span>오토바이는 텐트 바로 옆에 세워두고 짐 분리</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ DAY 3 ═══ -->
+<section class="section" id="sec-day3">
+  <div class="day-header" data-day="DAY3">
+    <div class="day-num">// December 5 · Day 3</div>
+    <div class="day-title">무이네 → 까나 → 독렛 해변</div>
+    <div class="day-meta">
+      <span class="meta-chip chip-km">🏍️ 250km</span>
+      <span class="meta-chip chip-time">⏱️ 약 5~6시간</span>
+      <span class="meta-chip chip-camp">⛺ 노지캠핑 2박</span>
+    </div>
+  </div>
+  <div class="content-area">
+
+    <div class="block">
+      <div class="block-label">세부 루트 & 도로 상태</div>
+      <div class="route-segments">
+
+        <div class="seg">
+          <div class="seg-spine">
+            <div class="seg-dot filled"></div>
+            <div class="seg-connector"></div>
+          </div>
+          <div class="seg-body">
+            <div class="seg-place">무이네 출발 <span class="seg-local">Mũi Né</span></div>
+            <div class="seg-road">⏰ 07:00 출발 권장</div>
+            <div class="seg-desc">무이네 시내에서 Bánh Căn(바인껀) 아침 해결 후 QL1 북상. 판티엣 시내 통과 시 신호등·오토바이 혼잡 주의.</div>
+          </div>
+        </div>
+
+        <div class="seg">
+          <div class="seg-spine">
+            <div class="seg-dot"></div>
+            <div class="seg-connector"></div>
+          </div>
+          <div class="seg-body">
+            <div class="seg-place">무이네 → 판티엣 → 닌투언 <span class="seg-local">Ninh Thuận</span> <span class="km-badge">120km</span></div>
+            <div class="seg-road">🛣️ QL1 4차선 국도 · 약 1시간 45분</div>
+            <div class="seg-desc">
+              QL1은 베트남 종단 국도. 이 구간은 직선 위주. 트럭 많지만 속도 유지 가능.<br>
+              닌투언 진입 후 경치 변화: 건조한 사막성 기후 지형으로 바뀜. 선인장·모래언덕 등 베트남 같지 않은 풍경.
+              <br><br>
+              <strong style="color:#fff">📍 추천 경유: Phan Rang-Tháp Chàm</strong> — 닌투언 시내. 주유 + 로컬 식당에서 물 보충.
+            </div>
+            <div class="seg-badges">
+              <span class="badge badge-ok">포장 양호 · 직선 위주</span>
+              <span class="badge badge-info">닌투언부터 경치 바뀜</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="seg">
+          <div class="seg-spine">
+            <div class="seg-dot" style="border-color:var(--accent); background:rgba(255,107,53,0.2)"></div>
+            <div class="seg-connector" style="background:linear-gradient(to bottom, rgba(255,107,53,0.5), transparent)"></div>
+          </div>
+          <div class="seg-body">
+            <div class="seg-place">⭐ 까나 해안 절경 구간 <span class="seg-local">Cà Ná, Ninh Thuận</span> <span class="km-badge">40km</span></div>
+            <div class="seg-road">🛣️ QL1이 바다와 맞닿는 절벽 구간 · 약 40분</div>
+            <div class="seg-desc">
+              <strong style="color:var(--accent)">이번 여행 최고 어드밴처 포인트.</strong> 닌투언 남쪽 끝에서 빈투언(Bình Thuận) 경계 구간. QL1이 거대한 화강암 절벽과 바다 사이 아슬아슬하게 통과.
+              <br><br>
+              오토바이를 세우고 절벽 위에서 전망 감상 가능. 주변 선인장 군락, 바위에 부딪히는 파도, 어선 풍경. 관광객 <strong style="color:#fff">거의 없음</strong>.
+              <br><br>
+              인근 현지 식당에서 점심: 생선구이+밥 5만 VND. 관광객 메뉴 없음 → 손가락으로 주문.
+            </div>
+            <div class="seg-badges">
+              <span class="badge badge-amber">⭐ 포토 스팟 최고</span>
+              <span class="badge badge-ok">관광객 거의 없음</span>
+              <span class="badge badge-warn">절벽 옆 도로 집중</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="seg">
+          <div class="seg-spine">
+            <div class="seg-dot"></div>
+            <div class="seg-connector"></div>
+          </div>
+          <div class="seg-body">
+            <div class="seg-place">까나 → 카인호아성 진입 <span class="seg-local">Khánh Hòa</span> <span class="km-badge">60km</span></div>
+            <div class="seg-road">🛣️ QL1 계속 북상 · 약 1시간</div>
+            <div class="seg-desc">
+              까나에서 북상하면 카인호아성(나트랑 속한 성) 진입. 닌호아(Ninh Hòa) 교차로에서 <strong style="color:#fff">동쪽 독렛(Dốc Lết) 방향</strong>으로 꺾어야 함.<br>
+              닌호아 → 독렛: 약 15km 해안 도로. 포장 양호. 물고기 건조 마을 통과.
+            </div>
+            <div class="seg-badges">
+              <span class="badge badge-warn">닌호아에서 독렛 방향 분기 확인</span>
+              <span class="badge badge-amber">재주유 권장</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="seg">
+          <div class="seg-spine">
+            <div class="seg-dot filled green"></div>
+          </div>
+          <div class="seg-body">
+            <div class="seg-place">독렛 해변 캠핑 <span class="seg-local">Bãi biển Dốc Lết</span></div>
+            <div class="seg-road">⏰ 약 15:00~16:00 도착</div>
+            <div class="seg-desc">나트랑 북쪽 40km. 베트남에서 손꼽히는 투명한 에메랄드 해변.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-label">오늘 먹을 것</div>
+      <div class="food-grid">
+        <div class="food-card">
+          <div class="food-meal">아침 · 무이네 로컬</div>
+          <div class="food-name">Bánh Căn 바인껀</div>
+          <div class="food-local">미니 쌀전 · 무이네 아침 명물</div>
+          <div class="food-addr">📍 무이네 시내 골목 노상 포장마차</div>
+          <div class="food-desc">달걀·새우 올린 미니 타코야키형 쌀전. 현지인들이 아침에 줄 서는 음식. 주인에게 <em style="color:var(--accent)">"Bánh căn ngon nhất"</em> 찾아달라고 할 것.</div>
+          <div class="food-price">2만~3만 VND <span>/ 10개</span></div>
+        </div>
+        <div class="food-card">
+          <div class="food-meal">점심 · 까나 현지 식당</div>
+          <div class="food-name">생선구이 + 쌀밥</div>
+          <div class="food-local">Cá nướng + cơm · 까나 로컬</div>
+          <div class="food-addr">📍 QL1 까나 구간 도로변 식당</div>
+          <div class="food-desc">관광객용 메뉴 없음. 손가락으로 생선 가리키면 구워줌. 닌투언 지역 특산 생선류 신선. 로컬 식당만 있어 가격 착함.</div>
+          <div class="food-price">5만 VND <span>/ 생선구이+밥 1인</span></div>
+        </div>
+        <div class="food-card">
+          <div class="food-meal">저녁 · 독렛 현지</div>
+          <div class="food-name">독렛 마을 해산물</div>
+          <div class="food-local">Làng Đông Hải · 독렛 해변 마을</div>
+          <div class="food-addr">📍 독렛 해변 인근 현지 식당</div>
+          <div class="food-desc">Hi Camping 주인에게 추천 식당 물어볼 것. 마을 주민들이 아는 가성비 해산물 집 안내해줌. 관광객 레스토랑과 가격 2~3배 차이.</div>
+          <div class="food-price">8만~12만 VND <span>/ 1인 (해산물 풀세트)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-label">캠핑 정보</div>
+      <div class="camp-box">
+        <div class="camp-title">Hi Camping Dốc Lết ★4.8</div>
+        <div class="camp-local">Đường Bờ Kè, TDP 1 Đông Hải, Ninh Hòa, Khánh Hòa</div>
+        <div class="camp-desc">독렛 해변 바로 앞. 자전거·오토바이 여행자 특화 캠핑 스팟. 젊은 부부가 운영. 텐트 자리+화장실+샤워 포함. 리뷰: "An absolute hidden gem." / "ideal for campers, right by the sea."</div>
+        <div class="camp-tips">
+          <div class="tip-row"><span class="tip-icon">✓</span>텐트+화장실+샤워 포함 10만~15만 VND. 사전 연락 권장 (+84 798 450 868)</div>
+          <div class="tip-row"><span class="tip-icon">✓</span>새벽 일출 명소. 04:30~05:00에 해변 나가면 장관</div>
+          <div class="tip-row"><span class="tip-icon">✓</span>12월 비수기 → 거의 전세 수준 한산</div>
+          <div class="tip-row"><span class="tip-icon">✓</span>오토바이 주차 공간 있음</div>
+          <div class="tip-row"><span class="tip-icon">⚠</span>모기 많다는 후기 있음 → 기피제+모기장 준비</div>
+        </div>
+      </div>
+      <div class="info-box">
+        <div class="info-title">대안: 완전 노지 비박</div>
+        <div class="info-text">Hi Camping 말고 독렛 해변 북쪽으로 1~2km 달리면 민가 없는 공터 해변 있음. iOverlander에서 'Doc Let Beach' 검색 시 비공식 캠핑 포인트 여러 개 확인 가능. 완전 무료.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ DAY 4 ═══ -->
+<section class="section" id="sec-day4">
+  <div class="day-header" data-day="DAY4">
+    <div class="day-num">// December 6 · Day 4</div>
+    <div class="day-title">독렛 → 나트랑 탐방</div>
+    <div class="day-meta">
+      <span class="meta-chip chip-km">🏍️ 40km</span>
+      <span class="meta-chip chip-time">⏱️ 약 1시간</span>
+      <span class="meta-chip chip-hotel">🛏️ 게스트하우스 1박</span>
+    </div>
+  </div>
+  <div class="content-area">
+
+    <div class="block">
+      <div class="block-label">나트랑 진입 루트</div>
+      <div class="route-segments">
+        <div class="seg">
+          <div class="seg-spine">
+            <div class="seg-dot filled"></div>
+            <div class="seg-connector"></div>
+          </div>
+          <div class="seg-body">
+            <div class="seg-place">독렛 → 닌호아 → 나트랑 <span class="seg-local">Dốc Lết → Nha Trang</span></div>
+            <div class="seg-road">🛣️ QL1 남하 40km · 약 50분</div>
+            <div class="seg-desc">
+              독렛에서 나와 QL1로 남하. 나트랑 시내 진입 전 <strong style="color:#fff">Cầu Bình Tân 다리</strong> 건너면 시내 도착. 나트랑 해변도로(Trần Phú)가 메인 해변 구간.
+            </div>
+            <div class="seg-badges">
+              <span class="badge badge-ok">쉬운 진입 루트</span>
+            </div>
+          </div>
+        </div>
+        <div class="seg">
+          <div class="seg-spine">
+            <div class="seg-dot green"></div>
+          </div>
+          <div class="seg-body">
+            <div class="seg-place">나트랑 시내 체크인 & 오토바이 주차</div>
+            <div class="seg-road">📍 시내 게스트하우스 · 1인실 25만~40만 VND</div>
+            <div class="seg-desc">Booking.com에서 'free parking' 필터. 오토바이 실내 보관 가능 여부 체크인 시 반드시 문의. 다음날 반납 위해 렌탈샵 연락.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-label">나트랑 로컬 맛집</div>
+      <div class="food-grid">
+        <div class="food-card">
+          <div class="food-meal">점심 · 현지인 단골</div>
+          <div class="food-name">Bún Cá Nha Trang 79</div>
+          <div class="food-local">분까 나트랑 79 · 생선국수</div>
+          <div class="food-addr">📍 15 Đ. Nguyễn Chánh, Nha Trang</div>
+          <div class="food-desc">나트랑 현지인들이 아침·점심 즐겨 찾는 생선국수 집. 신선한 생선살+해파리+어묵 토핑. 오전 5:30 오픈. 리뷰: "Simple, fresh, clean, flavourful."</div>
+          <div class="rating"><span class="stars">★★★★★</span><span class="rating-val">4.7 (382개)</span></div>
+          <div class="food-price">5만~6만 VND <span>/ 1그릇</span></div>
+        </div>
+        <div class="food-card">
+          <div class="food-meal">저녁 · 현지인 단골</div>
+          <div class="food-name">Bún Cá Nhã Trang</div>
+          <div class="food-local">분까 냐짱 · 저녁 특화</div>
+          <div class="food-addr">📍 1318 Đ. 2/4, Nha Trang</div>
+          <div class="food-desc">저녁 6시 이후 현지인 북적. 대용량 분까에 해파리+어묵+생선 풀 토핑. 리뷰: "Huge bowl of fish noodle soup, really tasty." 평점 4.9.</div>
+          <div class="rating"><span class="stars">★★★★★</span><span class="rating-val">4.9 (84개)</span></div>
+          <div class="food-price">5만~6만 VND <span>/ 1그릇</span></div>
+        </div>
+        <div class="food-card">
+          <div class="food-meal">야식 · 야시장</div>
+          <div class="food-name">넴느엉 노점 + 과일</div>
+          <div class="food-local">Nem Nướng · 돼지고기 숯불꼬치</div>
+          <div class="food-addr">📍 나트랑 담시장(Chợ Đầm) 인근 노점</div>
+          <div class="food-desc">나트랑 명물 넴느엉(돼지고기 숯불꼬치). 라이스페이퍼·허브·소스와 함께 싸먹음. 담시장 뒷골목 포장마차가 관광지 식당보다 1/3 가격.</div>
+          <div class="food-price">넴느엉 3개 2만 + 과일주스 1만 VND</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-label">나트랑 로컬 탐방 포인트</div>
+      <div class="food-grid">
+        <div class="food-card info">
+          <div class="food-meal">어드밴처 포인트</div>
+          <div class="food-name">담시장 뒷골목</div>
+          <div class="food-local">Chợ Đầm · 현지 재래시장</div>
+          <div class="food-desc">나트랑 최대 재래시장. 해산물 건어물·향신료·생활잡화 시장. 관광객 거의 없는 뒷동선이 진짜. 오전 일찍 방문할수록 현지 분위기 진함.</div>
+        </div>
+        <div class="food-card info">
+          <div class="food-meal">새벽 추천</div>
+          <div class="food-name">나트랑 해변 어부 시간</div>
+          <div class="food-local">Bãi biển Nha Trang</div>
+          <div class="food-desc">새벽 5~6시 해변. 어부들이 그물 정리하는 장면. 12월 비수기라 관광객 없음. 현지인 조깅·운동 시간과 겹쳐 로컬 분위기 최강.</div>
+        </div>
+        <div class="food-card info">
+          <div class="food-meal">숙박 팁</div>
+          <div class="food-name">게스트하우스 선택 기준</div>
+          <div class="food-local">나트랑 시내 · 1인실</div>
+          <div class="food-desc">① 오토바이 실내 주차 가능 &nbsp;② 공항(캄란) 방향 접근 쉬운 남쪽 지역 &nbsp;③ 다음날 22:45 출발 대비 짐 보관 서비스 확인. 1인실 25만~40만 VND.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ DAY 5 ═══ -->
+<section class="section" id="sec-day5">
+  <div class="day-header" data-day="DAY5">
+    <div class="day-num">// December 7 · Day 5</div>
+    <div class="day-title">나트랑 자유 탐방 → 22:45 귀국</div>
+    <div class="day-meta">
+      <span class="meta-chip chip-km">🛬 캄란 공항 22:45 출발</span>
+      <span class="meta-chip chip-warn">⚠️ 오토바이 반납 주의</span>
+    </div>
+  </div>
+  <div class="content-area">
+
+    <div class="block">
+      <div class="block-label">마지막 날 타임라인</div>
+      <div class="route-segments">
+
+        <div class="seg">
+          <div class="seg-spine"><div class="seg-dot filled"></div><div class="seg-connector"></div></div>
+          <div class="seg-body">
+            <div class="seg-place">07:30 — 로컬 반미 아침</div>
+            <div class="seg-road">📍 나트랑 시내 골목 노점 어디서나</div>
+            <div class="seg-desc">골목 반미 노점 1개 1만 5천~2만 VND. 현지인이 줄 서는 곳을 고를 것. 길가에서 Cà Phê Sữa Đá(짜페수어다, 베트남 연유 아이스커피)도 곁들이기.</div>
+          </div>
+        </div>
+
+        <div class="seg">
+          <div class="seg-spine"><div class="seg-dot"></div><div class="seg-connector"></div></div>
+          <div class="seg-body">
+            <div class="seg-place">09:00~12:00 — 나트랑 해변 & 담시장</div>
+            <div class="seg-road">⏰ 오전 자유 시간</div>
+            <div class="seg-desc">12월 비수기 아침 해변은 한적함. 어부들 그물 정리 장면 감상. 담시장 뒷골목 탐방. 기념품 구매는 담시장이 관광지 상점보다 저렴.</div>
+          </div>
+        </div>
+
+        <div class="seg">
+          <div class="seg-spine"><div class="seg-dot" style="border-color:var(--red)"></div><div class="seg-connector" style="background:linear-gradient(to bottom,rgba(239,68,68,0.4),transparent)"></div></div>
+          <div class="seg-body">
+            <div class="seg-place">14:00 — 오토바이 반납</div>
+            <div class="seg-road">📍 나트랑 시내 렌탈샵 (사전 약속 필수)</div>
+            <div class="seg-desc">
+              <strong style="color:#fff">중요:</strong> 렌탈샵과 반납 시간 전날 미리 확인. 나트랑 반납 가능 여부에 따라 카고 탁송 옵션도 있음 (렌탈샵 별도 비용 약 10만~20만 VND).
+              <br>반납 후 잔여 손상 체크 → 이의 없으면 보증금 환불.
+            </div>
+            <div class="seg-badges">
+              <span class="badge badge-warn">반납 전날 렌탈샵 연락 필수</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="seg">
+          <div class="seg-spine"><div class="seg-dot"></div><div class="seg-connector"></div></div>
+          <div class="seg-body">
+            <div class="seg-place">14:30~19:00 — 자유 시간 & 공항 준비</div>
+            <div class="seg-road">⏰ 저녁 식사 후 공항 이동 준비</div>
+            <div class="seg-desc">오후 한가한 시간. Cà Phê 카페에서 쉬거나 해변 산책. 저녁은 나트랑 시내 분까 한 그릇 마지막으로.</div>
+          </div>
+        </div>
+
+        <div class="seg">
+          <div class="seg-spine"><div class="seg-dot" style="border-color:var(--red); background:rgba(239,68,68,0.2)"></div><div class="seg-connector" style="background:linear-gradient(to bottom,rgba(239,68,68,0.4),transparent)"></div></div>
+          <div class="seg-body">
+            <div class="seg-place">19:30 — Grab으로 캄란 공항 이동</div>
+            <div class="seg-road">🚗 나트랑 시내 → 캄란 공항 35km · 약 40~50분</div>
+            <div class="seg-desc">
+              <strong style="color:var(--red)">오토바이로 공항 이동 불가</strong> (주차 불가). Grab 미리 예약 또는 숙소에 택시 요청.<br>
+              Grab 예상 요금: 약 15만~20만 VND.<br>
+              공항 도착 목표: <strong style="color:#fff">20:00~20:30</strong> (22:45 출발 기준 2시간 이상 여유).
+            </div>
+            <div class="seg-badges">
+              <span class="badge badge-warn">오토바이 공항 이동 불가</span>
+              <span class="badge badge-info">Grab 미리 예약 권장</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="seg">
+          <div class="seg-spine"><div class="seg-dot filled" style="background:var(--blue); border-color:var(--blue)"></div></div>
+          <div class="seg-body">
+            <div class="seg-place">22:45 — 캄란 공항 출발 (VJ 귀국)</div>
+            <div class="seg-road">✈️ Cam Ranh International Airport → 인천</div>
+            <div class="seg-desc">귀국. 인천 도착 약 다음날 05:30~06:00. 4박 5일, 540km, 로드에서 쓴 돈 약 15만~20만 원.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="warn-box">
+      <div class="warn-title">⚠️ 공항 이동 핵심 주의사항</div>
+      <div class="warn-text">
+        캄란 공항은 나트랑 시내에서 남쪽 35km 거리. 오토바이 주차 공간 없음. 반드시 오토바이 반납 후 Grab/택시로 이동. 22:45 출발이므로 지체 시간 고려해 <strong>20:00 이전 공항 도착</strong> 목표. Grab 예약은 출발 1시간 전 미리 잡아둘 것.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ BUDGET ═══ -->
+<section class="section" id="sec-budget">
+  <div class="day-header" data-day="COST">
+    <div class="day-num">// 예산 정리</div>
+    <div class="day-title">Total Budget Breakdown</div>
+    <div class="day-meta">
+      <span class="meta-chip chip-km">4박 5일 기준 · 1인</span>
+      <span class="meta-chip chip-info">항공권 제외</span>
+    </div>
+  </div>
+  <div class="content-area">
+
+    <div class="block">
+      <div class="block-label">일별 예상 비용</div>
+      <table class="budget-table">
+        <thead>
+          <tr>
+            <th>날짜</th>
+            <th>항목</th>
+            <th>식사</th>
+            <th>숙박</th>
+            <th>연료</th>
+            <th>기타</th>
+            <th>합계 (VND)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>12/3 Day1</td>
+            <td>도착·정착·렌탈</td>
+            <td class="vnd">15만</td>
+            <td class="vnd">30만</td>
+            <td class="vnd">—</td>
+            <td class="vnd">SIM 10만 + 렌탈 선불 80만</td>
+            <td class="vnd">135만<br><span class="krw">약 7.5만원</span></td>
+          </tr>
+          <tr>
+            <td>12/4 Day2</td>
+            <td>호치민→붕따우→무이네</td>
+            <td class="vnd">22만</td>
+            <td class="vnd">0 (캠핑)</td>
+            <td class="vnd">18만</td>
+            <td class="vnd">—</td>
+            <td class="vnd">40만<br><span class="krw">약 2.2만원</span></td>
+          </tr>
+          <tr>
+            <td>12/5 Day3</td>
+            <td>무이네→까나→독렛</td>
+            <td class="vnd">18만</td>
+            <td class="vnd">12만 (Hi Camping)</td>
+            <td class="vnd">15만</td>
+            <td class="vnd">—</td>
+            <td class="vnd">45만<br><span class="krw">약 2.5만원</span></td>
+          </tr>
+          <tr>
+            <td>12/6 Day4</td>
+            <td>나트랑 탐방</td>
+            <td class="vnd">20만</td>
+            <td class="vnd">35만</td>
+            <td class="vnd">5만</td>
+            <td class="vnd">야시장 5만</td>
+            <td class="vnd">65만<br><span class="krw">약 3.6만원</span></td>
+          </tr>
+          <tr>
+            <td>12/7 Day5</td>
+            <td>귀국일</td>
+            <td class="vnd">15만</td>
+            <td class="vnd">—</td>
+            <td class="vnd">—</td>
+            <td class="vnd">Grab 공항 20만</td>
+            <td class="vnd">35만<br><span class="krw">약 2만원</span></td>
+          </tr>
+          <tr>
+            <td colspan="2">총합 (렌탈비 Day1 포함)</td>
+            <td colspan="3" style="color:var(--text-dim); font-size:0.82rem">VND 환율 약 18원/1000VND 기준</td>
+            <td></td>
+            <td>320만~350만 VND<br><span class="krw" style="font-size:0.8rem">약 17만~20만 원</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="block">
+      <div class="block-label">항목별 상세 분류</div>
+      <div class="food-grid">
+        <div class="food-card info">
+          <div class="food-meal">오토바이 비용</div>
+          <div class="food-name">렌탈 + 연료</div>
+          <div class="food-desc">Winner X 5일 렌탈 75만~100만 VND + 연료(540km, 리터당 25,000 VND) 약 35만 VND = 합계 약 110만~135만 VND</div>
+          <div class="food-price">약 6만~7.5만원</div>
+        </div>
+        <div class="food-card info">
+          <div class="food-meal">숙박 비용</div>
+          <div class="food-name">게스트하우스 2박 + 캠핑 2박</div>
+          <div class="food-desc">호치민 1박 30만 + 나트랑 1박 35만 + 독렛 캠핑 12만 + 무이네 무료 = 약 77만 VND</div>
+          <div class="food-price">약 4.3만원</div>
+        </div>
+        <div class="food-card info">
+          <div class="food-meal">식사 비용</div>
+          <div class="food-name">5일 전체 식비</div>
+          <div class="food-desc">1일 평균 3끼 기준 약 20만 VND/일. 로컬 식당만 이용 시 실제 이보다 낮을 수 있음. 5일 총 90만~100만 VND</div>
+          <div class="food-price">약 5만원</div>
+        </div>
+        <div class="food-card info">
+          <div class="food-meal">기타 비용</div>
+          <div class="food-name">SIM + 공항 이동 + 잡비</div>
+          <div class="food-desc">SIM 10만 + Grab 공항 20만 + 기념품·간식·비상 30만 = 약 60만 VND</div>
+          <div class="food-price">약 3.3만원</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <div class="info-title">💡 절약 팁</div>
+      <div class="info-text">
+        ① Honda Wave 125cc 렌탈 시 약 3만~4만원 추가 절약 가능<br>
+        ② 무이네 완전 노지 비박 시 캠핑비 0원 (독렛도 Hi Camping 대신 인근 공터 이용 시 0원)<br>
+        ③ 편의점 도시락·생수 활용 시 식비 추가 절약 가능 (Circle K·GS25 전국 있음)<br>
+        ④ 나트랑 숙소 당일 예약 시 12월 비수기라 협상 가능
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="page-footer">
+  <div class="footer-logo">🏍️ HCM → NHA TRANG</div>
+  <div class="footer-text">DEC 3–7 · ~540KM · COASTAL HIGHWAY · CAMPING × 2</div>
+  <div class="footer-text" style="margin-top:0.3rem; font-size:0.6rem">Maps.me · iOverlander · Google Maps · Grab · Booking.com</div>
+</footer>
+
+<script>
+  function showDay(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('sec-' + id).classList.add('active');
+    event.target.classList.add('active');
+    window.scrollTo({ top: document.getElementById('dayNav').offsetTop - 10, behavior: 'smooth' });
+  }
+</script>
+
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'light';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'☀ 라이트':'☾ 다크';
+})();
+function toggleTheme(){
+  var html=document.documentElement;
+  var now=html.getAttribute('data-theme');
+  var next=now==='dark'?'light':'dark';
+  html.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'☀ 라이트':'☾ 다크';
+}
+</script>
+</body>
+</html>

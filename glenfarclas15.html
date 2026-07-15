@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>글렌파클라스 15년산 — 완전 가이드</title>
+<meta name="description" content="188년 독립 가문의 셰리 폭탄. 올로로소 셰리 오크 캐스크의 농밀한 진수. 글렌파클라스 15년 완전 가이드.">
+<meta property="og:title" content="글렌파클라스 15년산 완전 가이드 | 최승환">
+<meta property="og:description" content="188년 독립 가문의 셰리 폭탄. 올로로소 셰리 오크 캐스크의 농밀한 진수. 글렌파클라스 15년 완전 가이드.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://choijc79.github.io/glenfarclas15.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<meta name="twitter:card" content="summary">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+KR:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold:#C04040; --gold-light:#E06060; --gold-pale:#F8C0C0;
+  --deep:#1A1208; --dark:#2D1E0A; --mid:#4A2F0D; --amber:#8B4A0E;
+  --cream:#F8F2E4; --text:#2A1A06; --muted:#6B5235;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--deep);color:var(--cream);font-family:"Noto Serif KR",serif;font-weight:300;line-height:1.8;overflow-x:hidden;}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:radial-gradient(ellipse 80% 60% at 50% 40%, #280808 0%, #180404 60%, #090202 100%);}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(201,168,76,0.08) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(139,74,14,0.12) 0%,transparent 50%);pointer-events:none;}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:1000;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:150px 150px;}
+.hero-badge{font-family:"Cormorant Garamond",serif;font-size:0.8rem;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:2rem;opacity:0;animation:fadeUp 1s 0.3s ease forwards;}
+.hero-title{font-family:"Cormorant Garamond",serif;font-size:clamp(3.5rem,8vw,7rem);font-weight:300;line-height:1.05;letter-spacing:-0.01em;color:var(--gold-light);opacity:0;animation:fadeUp 1s 0.5s ease forwards;}
+.hero-title em{font-style:italic;color:var(--gold);}
+.hero-sub{margin-top:1.5rem;font-family:"Cormorant Garamond",serif;font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;font-style:italic;color:rgba(232,201,122,0.6);letter-spacing:0.05em;opacity:0;animation:fadeUp 1s 0.7s ease forwards;}
+.hero-divider{width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:2.5rem auto;opacity:0;animation:fadeIn 1s 0.9s ease forwards;}
+.hero-desc{max-width:520px;font-size:0.9rem;color:rgba(245,232,192,0.65);letter-spacing:0.02em;opacity:0;animation:fadeUp 1s 1.1s ease forwards;}
+.scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;opacity:0;animation:fadeIn 1s 1.5s ease forwards;}
+.scroll-hint span{font-family:"Cormorant Garamond",serif;font-size:0.7rem;letter-spacing:0.3em;color:rgba(201,168,76,0.5);text-transform:uppercase;}
+.scroll-line{width:1px;height:50px;background:linear-gradient(180deg,var(--gold) 0%,transparent 100%);animation:scrollPulse 2s ease-in-out infinite;}
+.section{max-width:860px;margin:0 auto;padding:6rem 2rem;}
+.section-label{font-family:"Cormorant Garamond",serif;font-size:0.75rem;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;}
+.section-title{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:400;color:var(--gold-light);line-height:1.2;margin-bottom:2.5rem;}
+.section-title em{font-style:italic;color:var(--gold);}
+.divider-thin{width:60px;height:1px;background:var(--gold);margin-bottom:2.5rem;opacity:0.5;}
+p{color:rgba(245,232,192,0.82);font-size:0.95rem;line-height:1.9;margin-bottom:1.4rem;}
+.sep{width:100%;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,168,76,0.2) 20%,rgba(201,168,76,0.4) 50%,rgba(201,168,76,0.2) 80%,transparent 100%);margin:0;}
+.timeline{position:relative;padding-left:2rem;margin-top:2rem;}
+.timeline::before{content:"";position:absolute;left:0;top:0.5rem;bottom:0.5rem;width:1px;background:linear-gradient(180deg,transparent,var(--gold) 10%,var(--gold) 90%,transparent);opacity:0.4;}
+.tl-item{position:relative;margin-bottom:2.5rem;}
+.tl-item::before{content:"";position:absolute;left:-2.3rem;top:0.6rem;width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px rgba(201,168,76,0.6);}
+.tl-year{font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-weight:600;color:var(--gold);margin-bottom:0.3rem;}
+.tl-text{color:rgba(245,232,192,0.78);font-size:0.92rem;margin-bottom:0;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:2rem;}
+.card{background:linear-gradient(135deg,rgba(45,30,10,0.9) 0%,rgba(26,18,8,0.95) 100%);border:1px solid rgba(201,168,76,0.2);border-radius:2px;padding:2rem 1.8rem;transition:border-color 0.3s,transform 0.3s;}
+.card:hover{border-color:var(--gold);transform:translateY(-4px);}
+.card-type{font-size:0.72rem;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem;}
+.card-name{font-family:"Cormorant Garamond",serif;font-size:1.6rem;color:var(--gold-light);line-height:1.2;margin-bottom:0.8rem;}
+.card-spec{display:flex;gap:1.5rem;margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid rgba(201,168,76,0.15);}
+.spec-item{display:flex;flex-direction:column;gap:0.2rem;}
+.spec-label{font-size:0.65rem;letter-spacing:0.15em;color:rgba(201,168,76,0.5);text-transform:uppercase;}
+.spec-val{font-family:"Cormorant Garamond",serif;font-size:1rem;color:var(--gold-light);}
+.step-list{margin-top:2rem;counter-reset:steps;}
+.step{counter-increment:steps;display:grid;grid-template-columns:50px 1fr;gap:1.5rem;margin-bottom:2rem;align-items:start;}
+.step::before{content:counter(steps,decimal-leading-zero);font-family:"Cormorant Garamond",serif;font-size:1.8rem;color:rgba(201,168,76,0.3);line-height:1;text-align:right;}
+.step-title{font-family:"Cormorant Garamond",serif;font-size:1.2rem;color:var(--gold-light);margin-bottom:0.4rem;}
+.step-body{font-size:0.88rem;color:rgba(245,232,192,0.72);margin-bottom:0;}
+.tasting-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;margin:2.5rem 0;}
+.taste-card{background:rgba(45,30,10,0.5);border:1px solid rgba(201,168,76,0.15);padding:2rem;text-align:center;}
+.taste-icon{font-size:2rem;display:block;margin-bottom:1rem;}
+.taste-label{font-family:"Cormorant Garamond",serif;font-size:1.1rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.8rem;}
+.taste-notes{font-size:0.88rem;color:rgba(245,232,192,0.75);line-height:1.8;}
+.blockquote{border-left:2px solid var(--gold);padding:1.5rem 2rem;margin:3rem 0;background:rgba(201,168,76,0.05);}
+.blockquote p{font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-style:italic;color:rgba(232,201,122,0.8);margin-bottom:0.8rem;}
+.blockquote cite{font-size:0.78rem;color:rgba(201,168,76,0.5);letter-spacing:0.2em;text-transform:uppercase;}
+.spec-box{background:rgba(45,30,10,0.6);border:1px solid rgba(201,168,76,0.2);padding:2rem;margin-top:2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1.5rem;}
+.spec-box-item{text-align:center;}
+.spec-box-label{font-size:0.65rem;letter-spacing:0.2em;color:rgba(201,168,76,0.5);text-transform:uppercase;margin-bottom:0.4rem;}
+.spec-box-val{font-family:"Cormorant Garamond",serif;font-size:1.5rem;color:var(--gold-light);}
+.pair-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-top:2rem;}
+.pair-item{padding:1.2rem;background:rgba(45,30,10,0.4);border:1px solid rgba(201,168,76,0.12);text-align:center;}
+.pair-emoji{font-size:1.8rem;display:block;margin-bottom:0.6rem;}
+.pair-name{font-family:"Cormorant Garamond",serif;font-size:1rem;color:var(--gold-light);margin-bottom:0.3rem;}
+.pair-note{font-size:0.78rem;color:rgba(245,232,192,0.5);}
+.bg-alt{background:rgba(25,15,5,0.8);}
+.bg-section{padding:6rem 2rem;}
+.nav-bar{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(26,18,8,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.12);padding:0 2rem;height:52px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:"Cormorant Garamond",serif;font-size:1rem;color:var(--gold);letter-spacing:0.1em;}
+.nav-links{display:flex;gap:1.5rem;font-size:11px;color:rgba(201,168,76,0.5);letter-spacing:0.1em;}
+.nav-links a{color:rgba(201,168,76,0.5);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+footer{text-align:center;padding:4rem 2rem;border-top:1px solid rgba(201,168,76,0.1);}
+footer p{font-family:"Cormorant Garamond",serif;font-size:0.8rem;color:rgba(201,168,76,0.3);letter-spacing:0.2em;margin-bottom:0;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes scrollPulse{0%,100%{opacity:0.3;}50%{opacity:1;}}
+@media(max-width:600px){.hero-title{font-size:3rem;}.cards{grid-template-columns:1fr;}.tasting-grid{grid-template-columns:1fr;}.spec-box{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<nav class="nav-bar">
+  <div class="nav-logo">글렌파클라스 15년산</div>
+  <div class="nav-links">
+    <a href="/whisky.html">← 위스키 목록</a>
+    <a href="/">홈</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">Speyside, Scotland · Single Malt Scotch Whisky</div>
+  <h1 class="hero-title">글렌파클라스<br><em>15년산</em></h1>
+  <p class="hero-sub">The Sherry Bomb — Family Pride Since 1836</p>
+  <div class="hero-divider"></div>
+  <p class="hero-desc">독립 가문이 188년을 지켜온 셰리 폭탄. 오크와 셰리, 건과일이 만들어내는<br>짙고 풍요로운 스페이사이드의 진수.</p>
+  <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<div class="sep"></div>
+<section class="bg-alt">
+  <div class="section">
+    <div class="section-label">Overview · 개요</div>
+    <h2 class="section-title">Glenfarclas 15<br><em>한 병에 담긴 이야기</em></h2>
+    <div class="divider-thin"></div>
+    <p>글렌파클라스(Glenfarclas, '푸른 초원의 계곡'이라는 게일어)는 1836년 설립 이후 그란트(Grant) 가문이 6대에 걸쳐 운영하는, 스코틀랜드에서 가장 오래된 독립 가족 경영 증류소 중 하나입니다. 대형 주류 그룹에 팔리지 않고 독립을 고수한 것이 글렌파클라스의 자랑이자 정체성입니다.</p>
+<p>15년산은 전통적인 올로로소 셰리 오크 캐스크만을 고집하는 글렌파클라스의 철학이 가장 잘 드러나는 제품입니다. 달콤한 셰리 과일, 오크 스파이스, 그리고 46%의 도수가 어우러진 짙고 농밀한 '셰리 폭탄'으로 평가받습니다.</p>
+    <div class="spec-box">
+      <div class="spec-box-item"><div class="spec-box-label">숙성 연수</div><div class="spec-box-val">15년</div></div>
+      <div class="spec-box-item"><div class="spec-box-label">도수</div><div class="spec-box-val">46%</div></div>
+      <div class="spec-box-item"><div class="spec-box-label">원산지</div><div class="spec-box-val">Speyside</div></div>
+      <div class="spec-box-item"><div class="spec-box-label">스타일</div><div class="spec-box-val">Single Malt</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+<section>
+  <div class="section">
+    <div class="section-label">History · 역사</div>
+    <h2 class="section-title">Glenfarclas 15의<br><em>역사</em></h2>
+    <div class="divider-thin"></div>
+    <div class="timeline"><div class="tl-item"><div class="tl-year">1836년</div><div class="tl-text">로버트 헤이(Robert Hay)가 설립하고, 1865년 존 그란트(John Grant)가 인수합니다.</div></div>
+<div class="tl-item"><div class="tl-year">1865년</div><div class="tl-text">그란트 가문의 소유가 시작됩니다. 이후 160년이 지난 지금도 같은 가문이 경영합니다.</div></div>
+<div class="tl-item"><div class="tl-year">1970년대</div><div class="tl-text">대형 주류 그룹들이 독립 증류소를 대거 인수하던 시절, 글렌파클라스는 독립을 선택합니다.</div></div>
+<div class="tl-item"><div class="tl-year">현재</div><div class="tl-text">조지 그란트(George Grant)가 현재 경영을 담당하며, 셰리 오크 캐스크 방침을 완고하게 유지합니다. 105 캐스크 스트렝스(60%)로도 유명합니다.</div></div></div>
+  </div>
+</section>
+
+<div class="sep"></div>
+<section class="bg-alt">
+  <div class="section">
+    <div class="section-label">Product Line · 제품 라인업</div>
+    <h2 class="section-title">Glenfarclas 15<br><em>주요 제품군</em></h2>
+    <div class="divider-thin"></div>
+    <div class="cards"><div class="card">
+  <div class="card-type">주력</div>
+  <div class="card-name">15년</div>
+  <p style="font-size:0.83rem;color:rgba(245,232,192,0.65);margin-bottom:0">올로로소 셰리 오크</p>
+  <div class="card-spec">
+    <div class="spec-item"><span class="spec-label">도수</span><span class="spec-val">46%</span></div>
+    <div class="spec-item"><span class="spec-label">용량</span><span class="spec-val">700ml</span></div>
+    <div class="spec-item"><span class="spec-label">원산지</span><span class="spec-val">Speyside</span></div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-type">일상</div>
+  <div class="card-name">10년</div>
+  <p style="font-size:0.83rem;color:rgba(245,232,192,0.65);margin-bottom:0">셰리 오크 입문</p>
+  <div class="card-spec">
+    <div class="spec-item"><span class="spec-label">도수</span><span class="spec-val">40%</span></div>
+    <div class="spec-item"><span class="spec-label">용량</span><span class="spec-val">700ml</span></div>
+    <div class="spec-item"><span class="spec-label">원산지</span><span class="spec-val">Speyside</span></div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-type">럭셔리</div>
+  <div class="card-name">105 카스크 스트렝스</div>
+  <p style="font-size:0.83rem;color:rgba(245,232,192,0.65);margin-bottom:0">NAS / 60% 고도수</p>
+  <div class="card-spec">
+    <div class="spec-item"><span class="spec-label">도수</span><span class="spec-val">60%</span></div>
+    <div class="spec-item"><span class="spec-label">용량</span><span class="spec-val">700ml</span></div>
+    <div class="spec-item"><span class="spec-label">원산지</span><span class="spec-val">Speyside</span></div>
+  </div>
+</div></div>
+  </div>
+</section>
+
+<div class="sep"></div>
+<section>
+  <div class="section">
+    <div class="section-label">Production · 제조 방법</div>
+    <h2 class="section-title">한 방울의 위스키가<br><em>태어나기까지</em></h2>
+    <div class="divider-thin"></div>
+    <div class="step-list"><div class="step"><div><div class="step-title">전통 스피릿 스틸 직화 가열</div><p class="step-body">현대 증류소 대부분이 스팀 가열을 사용하는 것과 달리, 글렌파클라스는 여전히 직화(Direct Flame)로 스틸을 가열합니다. 이 방식이 캐러멜라이징된 묵직한 풍미의 원천입니다.</p></div></div>
+<div class="step"><div><div class="step-title">올로로소 셰리 오크 캐스크 고집</div><p class="step-body">아메리칸 버번 캐스크를 혼합하지 않고, 에스파냐 헤레스(Jerez)의 올로로소 셰리 캐스크만을 사용합니다.</p></div></div>
+<div class="step"><div><div class="step-title">15년 장기 셰리 숙성</div><p class="step-body">셰리 캐스크에서 15년간 숙성하며, 오크와 셰리가 스피릿 깊숙이 배어듭니다.</p></div></div>
+<div class="step"><div><div class="step-title">비냉각여과 46% 병입</div><p class="step-body">냉각 여과 없이 병입하여 오일리한 질감을 보존합니다.</p></div></div></div>
+  </div>
+</section>
+
+<div class="sep"></div>
+<section class="bg-alt">
+  <div class="section">
+    <div class="section-label">Tasting Notes · 테이스팅 노트</div>
+    <h2 class="section-title">감각으로 만나는<br><em>Glenfarclas 15</em></h2>
+    <div class="divider-thin"></div>
+    <div class="tasting-grid">
+      <div class="taste-card"><span class="taste-icon">👃</span><div class="taste-label">Nose · 향</div><div class="taste-notes">짙은 올로로소 셰리가 가장 먼저 열립니다. 크리스마스 케이크, 건포도, 오렌지 필, 따뜻한 캐러멜의 농밀한 향.</div></div>
+      <div class="taste-card"><span class="taste-icon">👅</span><div class="taste-label">Palate · 팔레트</div><div class="taste-notes">풀바디하고 오일리합니다. 셰리 과일, 무화과, 다크 초콜릿, 오크 탄닌이 레이어를 이룹니다.</div></div>
+      <div class="taste-card"><span class="taste-icon">✨</span><div class="taste-label">Finish · 피니시</div><div class="taste-notes">매우 길고 따뜻하며 건과일 향이 가득한 피니시. 오크 스파이스가 마무리를 잡아줍니다.</div></div>
+    </div>
+    <div class="blockquote"><p>"One of the great traditional Sherried malts. Magnificently complex."</p><cite>— Malt Maniacs, 93점</cite></div>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold-light);margin-top:3.5rem;margin-bottom:1rem;">푸드 페어링</h3>
+    <div class="divider-thin"></div>
+    <div class="pair-grid"><div class="pair-item"><span class="pair-emoji">🍰</span><div class="pair-name">크리스마스 푸딩</div><div class="pair-note">셰리 과일 공명</div></div>
+<div class="pair-item"><span class="pair-emoji">🍫</span><div class="pair-name">다크 초콜릿 트러플</div><div class="pair-note">과일-초콜릿 조화</div></div>
+<div class="pair-item"><span class="pair-emoji">🧀</span><div class="pair-name">스틸튼 블루치즈</div><div class="pair-note">강한 풍미 대결</div></div>
+<div class="pair-item"><span class="pair-emoji">🥜</span><div class="pair-name">호두 케이크</div><div class="pair-note">견과류 레이어</div></div>
+<div class="pair-item"><span class="pair-emoji">🍊</span><div class="pair-name">오렌지 마멀레이드 스콘</div><div class="pair-note">셰리 과일 배가</div></div>
+<div class="pair-item"><span class="pair-emoji">🥩</span><div class="pair-name">양고기 스튜</div><div class="pair-note">짙은 소스와 균형</div></div></div>
+  </div>
+</section>
+
+<footer><p>© 2026 최승환 · choijc79.github.io · 위스키 가이드</p></footer>
+</body>
+</html>

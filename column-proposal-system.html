@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="공무원 제안제도가 현장에서 외면받는 이유는 제안자의 역량 부족이 아니라 구조적 이해충돌이다. 심사 구조 개선을 위한 세 가지 방향을 제안한다.">
+  <meta property="og:title" content="제안해도 달라지는 게 없다는 말 — 최승환">
+  <meta property="og:description" content="공무원 제안제도가 현장에서 외면받는 이유는 제안자의 역량 부족이 아니라, 심사 구조에 내장된 이해충돌이다.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://choijc79.github.io/column-proposal-system.html">
+  <meta property="og:site_name" content="최승환 · Jecheon">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="제안해도 달라지는 게 없다는 말 — 최승환">
+  <meta name="twitter:description" content="공무원 제안제도의 구조적 실패와 세 가지 개선 방향.">
+  <title>제안해도 달라지는 게 없다는 말 — 최승환</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+  --bg:      #F4F0E8;
+  --surface: #ECE8DE;
+  --border:  #D4CEBC;
+  --text:    #1A1410;
+  --ink:     #2A2018;
+  --muted:   #7A6A56;
+  --accent:  #E07828;
+  --red:     #D96820;
+  --light:   #FDFAF4;
+  --amber:   #E07828;
+  --green:   #5A7A3A;
+  --lake:    #E07828;
+  --purple:  #7A4AB0;
+}
+[data-theme="dark"] {
+  --bg:      #0d1117;
+  --surface: #161b22;
+  --border:  #2c3240;
+  --text:    #E8E0D0;
+  --ink:     #F0E8D8;
+  --muted:   #8b8070;
+  --accent:  #F08840;
+  --red:     #E07830;
+  --light:   #161b22;
+  --amber:   #F08840;
+  --green:   #3fb950;
+  --lake:    #F08840;
+  --purple:  #bc8cff;
+}
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--navy);
+      color: var(--text);
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 300;
+      line-height: 1.9;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── 헤더 ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15,30,53,0.92);
+      
+      border-bottom: 1px solid var(--divider);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .logo {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      margin-left: 1.6rem;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--gold); }
+
+    /* ── 히어로 ── */
+    .hero {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 5rem 2rem 3.5rem;
+    }
+    .category-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--divider);
+      padding: 0.3rem 0.8rem;
+      border-radius: 2px;
+      margin-bottom: 1.8rem;
+    }
+    .hero h1 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: clamp(1.7rem, 4vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.45;
+      color: var(--white);
+      margin-bottom: 1.2rem;
+      word-break: keep-all;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+    .subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 2.4rem;
+      word-break: keep-all;
+    }
+    .meta {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+    .meta-author {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .meta-dot { color: var(--text-dim); }
+
+    /* ── 구분선 ── */
+    .divider {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .divider hr {
+      border: none;
+      border-top: 1px solid var(--divider);
+      margin: 0.5rem 0 3rem;
+    }
+
+    /* ── 본문 ── */
+    article {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+    }
+
+    article p {
+      font-size: 1.02rem;
+      line-height: 2;
+      color: var(--text);
+      margin-bottom: 1.8rem;
+      word-break: keep-all;
+    }
+
+    article p.lead {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.15rem;
+      color: var(--text);
+      line-height: 1.95;
+      margin-bottom: 2.4rem;
+    }
+
+    /* 소제목 */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 3.5rem 0 1.4rem;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 3px;
+      height: 1.3em;
+      background: var(--gold);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .section-label h2 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+
+    /* 강조 블록 */
+    .highlight-box {
+      background: var(--navy-card);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 6px 6px 0;
+      padding: 1.4rem 1.6rem;
+      margin: 2rem 0 2.4rem;
+    }
+    .highlight-box p {
+      margin-bottom: 0;
+      font-size: 0.97rem;
+      color: var(--text-muted);
+      line-height: 1.85;
+    }
+    .highlight-box strong {
+      color: var(--gold-light);
+      font-weight: 500;
+    }
+
+    /* 구조 흐름 */
+    .flow {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin: 2rem 0 2.4rem;
+    }
+    .flow-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.9rem 1.2rem;
+      background: var(--navy-card);
+      border-radius: 4px;
+      margin-bottom: 2px;
+    }
+    .flow-arrow {
+      text-align: center;
+      color: var(--gold);
+      font-size: 0.9rem;
+      padding: 0.2rem 0;
+      opacity: 0.7;
+    }
+    .flow-num {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      background: var(--gold);
+      color: var(--navy);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      margin-top: 0.15rem;
+    }
+    .flow-text {
+      font-size: 0.93rem;
+      color: var(--text);
+      line-height: 1.75;
+    }
+    .flow-text strong {
+      color: var(--gold-light);
+      font-weight: 500;
+    }
+
+    /* 제안 카드 3개 */
+    .proposal-grid {
+      display: grid;
+      gap: 1rem;
+      margin: 2rem 0 2.4rem;
+    }
+    .proposal-card {
+      background: var(--navy-card);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 8px;
+      padding: 1.5rem 1.6rem;
+    }
+    .proposal-card .card-head {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+    .card-index {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      background: rgba(201,168,76,0.12);
+      padding: 0.2rem 0.55rem;
+      border-radius: 2px;
+    }
+    .card-title {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 0.97rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .proposal-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 0;
+    }
+
+    /* 마무리 인용 */
+    .closing-quote {
+      margin: 3rem 0 2rem;
+      padding: 2rem 2rem;
+      border-top: 1px solid var(--divider);
+      border-bottom: 1px solid var(--divider);
+      text-align: center;
+    }
+    .closing-quote p {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      line-height: 1.85;
+      margin-bottom: 0;
+      word-break: keep-all;
+    }
+    .closing-quote p em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    /* 저자 박스 */
+    .author-box {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      background: var(--navy-card);
+      border-radius: 8px;
+      padding: 1.4rem 1.6rem;
+      margin-top: 3rem;
+    }
+    .author-avatar {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--navy-mid) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .author-info p {
+      margin-bottom: 0;
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+    .author-info strong {
+      font-size: 0.92rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* 푸터 */
+    footer {
+      border-top: 1px solid var(--divider);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 0 1rem; }
+      .hero, .divider, article { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .hero { padding-top: 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="https://choijc79.github.io">최승환</a>
+  <nav>
+    <a href="/">← 홈으로</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/about.html">소개</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <span class="category-tag">행정혁신 · 제도설계</span>
+  <h1>"제안해도 달라지는 게 없다"는 말,<br><em>구조의 실패</em>다</h1>
+  <p class="subtitle">
+    공무원 제안제도가 현장에서 외면받는 이유는 제안자의 역량 부족이 아니다.<br>
+    제안을 심사, 검토하는 사람이 곧 제안으로 인해 직접 손해를 보는 당사자라는,<br>
+    설계 오류가 문제의 본질이다.
+  </p>
+  <div class="meta">
+    <span class="meta-author">최승환</span>
+    <span class="meta-dot">·</span>
+    <span>제천시청 팀장 · 지방행정 20년</span>
+    <span class="meta-dot">·</span>
+    <span>2026년 6월</span>
+  </div>
+</section>
+
+<div class="divider"><hr /></div>
+
+<article>
+
+  <p class="lead">
+    20년 가까이 지방행정 현장에서 일하면서 내부적인 제안을 여러 차례 해본 적이 있다.
+    좋은 아이디어라고 생각했던 것들이 담당부서 검토 단계에서
+    조용히 소멸되는 경험을 반복했다.
+    처음에는 제안의 질이 부족한가 싶었다.
+    그런데 시간이 지나면서 다른 결론에 이르렀다.
+    문제는 제안의 내용이 아니라, <strong>심사 구조 자체</strong>에 있었다.
+  </p>
+
+  <div class="section-label"><h2>제안을 심사하는 사람이 손해를 보는 구조</h2></div>
+
+  <p>
+    현행 공무원 제안제도에서 제안의 채택 여부는 사실상 담당부서의 검토 의견에 달려 있다.
+    그런데 담당부서 입장에서 제안이 채택된다는 것은 무엇을 의미하는가.
+    새로운 업무 절차의 도입, 기존 방식의 변경, 추가적인 행정 부담의 발생이다.
+  </p>
+
+  <div class="highlight-box">
+    <p>
+      제안의 종류에 따라 다르겠지만 담당부서는 제안을 검토하는 주체이면서,
+      동시에 그 제안이 채택될 경우 <strong>직접 그 업무를 추진해야 하는 당사자</strong>다.
+      이해충돌(conflict of interest) 구조가 제도 안에 내장되어 있는 셈이다.
+      이 구조에서 적극적 검토와 긍정적 의견을 기대하는 것은
+      개인의 선의와 적극성에 기대는 것이지, 제도의 설계가 아니다.
+    </p>
+  </div>
+
+  <p>
+    전국 지자체 평균 제안 채택률이 10% 내외에 머무는 현실은
+    이 구조적 모순의 결과물이다.
+    불채택 사유조차 제대로 전달되지 않아 제안자는 무엇이 부족했는지 알 방법이 없고,
+    결국 "제안해도 달라지는 게 없다"는 인식이 현장에 굳어진다.
+  </p>
+
+  <div class="section-label"><h2>세 가지 구조 개선이 필요하다</h2></div>
+
+  <p>
+    이 문제는 제안자를 독려하거나 담당부서를 설득하는 방식으로는 풀리지 않는다.
+    구조 자체를 바꿔야 한다. 세 가지 방향을 제안한다.
+  </p>
+
+  <div class="proposal-grid">
+    <div class="proposal-card">
+      <div class="card-head">
+        <span class="card-index">01</span>
+        <span class="card-title">시민·외부위원회 우선 검토</span>
+      </div>
+      <p>
+        제안의 1차 검토 권한을 담당부서에서 시민·외부전문가로 구성된
+        독립 심사위원회로 이관한다. 담당부서는 현장 실무 적합성에 한정한
+        의견서를 제출하되, 채택 여부 결정에는 관여하지 않는다.
+        이해충돌 구조를 근본적으로 차단하고 심사의 독립성을 확보하는 방안이다.
+      </p>
+    </div>
+    <div class="proposal-card">
+      <div class="card-head">
+        <span class="card-index">02</span>
+        <span class="card-title">채택 시 인센티브 및 인력 지원 연계</span>
+      </div>
+      <p>
+        추가 업무가 수반되는 제안이 채택될 경우, 추진에 필요한 인력을 담당부서에 지원한다.
+        제안 채택이 업무 부담이 아닌 인력 확보의 기회가 되는 구조를 설계하면,
+        담당부서의 이해관계가 역전된다. 
+        담당부서가 제도적 강제 없이도 제안을 환영하게 만드는 설계다.
+        제안자에게는 가점 등 실질적 인센티브도 함께 강화한다.
+      </p>
+    </div>
+    <div class="proposal-card">
+      <div class="card-head">
+        <span class="card-index">03</span>
+        <span class="card-title">불채택 시 구체적 사유 제공 의무화</span>
+      </div>
+      <p>
+        불채택 시 구체적 사유, 보완 가능 여부, 재제안 안내를
+        서면으로 의무 통지하도록 한다.
+        제안자가 무엇이 부족했는지 알 수 없는 현행 구조를 개선하여
+        학습과 재도전을 제도적으로 지원한다.
+        채택률보다 제안의 질을 단계적으로 높여가는 장기 전략이기도 하다.
+      </p>
+    </div>
+  </div>
+
+  <div class="section-label"><h2>핵심은 이해관계의 역전</h2></div>
+
+  <p>
+    세 가지 방안 중 가장 근본적인 변화는 두 번째다.
+    담당부서를 설득하거나 강제하는 것이 아니라,
+    이해관계 구조 자체를 바꾸는 접근이기 때문이다.
+  </p>
+
+  <div class="flow">
+    <div class="flow-item">
+      <span class="flow-num">현</span>
+      <span class="flow-text">제안 채택 → <strong>담당부서 업무 증가</strong> → 소극적 검토 → 우수 제안 사장</span>
+    </div>
+    <div class="flow-arrow">↕</div>
+    <div class="flow-item">
+      <span class="flow-num">개</span>
+      <span class="flow-text">제안 채택 → <strong>행안부 인력 지원</strong> → 담당부서 인력 확보 → 자발적·적극적 검토</span>
+    </div>
+  </div>
+
+  <p>
+    채택 제안의 복잡도와 업무량에 따라
+    인력을 한시 파견하는 방식이다.
+    담당부서는 제안 덕분에 인력을 얻고 성과를 얻는 경험을 하게 된다.
+    이 경험이 반복되면 제안에 대한 태도가 달라진다.
+    제도가 사람을 바꾸는 것이 아니라, 구조가 행동을 바꾸는 것이다.
+  </p>
+
+  <div class="closing-quote">
+    <p>
+      제안제도의 실패는 제안자의 문제가 아니다.<br>
+      <em>검토하는 사람이 손해를 보는 구조</em>를 만들어놓고<br>
+      적극적 검토를 기대한 것이 문제다.<br>
+      구조가 바뀌어야 행동이 바뀐다.
+    </p>
+  </div>
+
+  <div class="author-box">
+    <div class="author-avatar">최</div>
+    <div class="author-info">
+      <strong>최승환</strong>
+      <p>충청북도 제천시청 팀장 · 지방행정 20년<br>
+      지방세·지방행정 연구자 · 세명대학교 박사과정</p>
+    </div>
+  </div>
+
+</article>
+
+<footer>
+  © 2026 최승환 · <a href="mailto:7979@korea.kr" style="color:var(--gold);text-decoration:none;">7979@korea.kr</a>
+</footer>
+
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'light';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'☀ 라이트':'☾ 다크';
+})();
+function toggleTheme(){
+  var html=document.documentElement;
+  var now=html.getAttribute('data-theme');
+  var next=now==='dark'?'light':'dark';
+  html.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'☀ 라이트':'☾ 다크';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1966 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>타이페이 3박4일 | 최승환·딸 여행 플랜</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #c0392b;
+    --red-light: #e74c3c;
+    --gold: #d4a843;
+    --gold-light: #f0c060;
+    --ink: #1a1a1a;
+    --ink-mid: #3d3d3d;
+    --ink-soft: #6b6b6b;
+    --paper: #faf7f2;
+    --paper-warm: #f5f0e8;
+    --paper-card: #fffdf9;
+    --border: #e8dfd0;
+    --plan-a: #1e6b4a;
+    --plan-b: #8b3a62;
+    --plan-a-light: #e8f5ee;
+    --plan-b-light: #f5e8ef;
+    --shadow: 0 4px 24px rgba(0,0,0,0.08);
+    --shadow-card: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--ink);
+    color: #fff;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .header-pattern {
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(
+      45deg, rgba(212,168,67,0.08) 0px, rgba(212,168,67,0.08) 1px,
+      transparent 1px, transparent 12px
+    );
+  }
+  .header-inner {
+    position: relative;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 24px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+    color: #fff;
+  }
+  .header-sub {
+    font-size: 13px;
+    color: var(--gold-light);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .header-meta {
+    text-align: right;
+    color: rgba(255,255,255,0.7);
+    font-size: 13px;
+    line-height: 1.9;
+  }
+  .flight-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--ink);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+
+  /* ── FLIGHT BAR ── */
+  .flight-bar {
+    background: var(--ink-mid);
+    color: #fff;
+    border-bottom: 3px solid var(--gold);
+  }
+  .flight-bar-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    font-size: 13px;
+  }
+  .flight-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .flight-arrow { color: var(--gold); font-size: 16px; }
+  .f-label { color: rgba(255,255,255,0.5); font-size: 11px; letter-spacing: 1px; }
+  .f-val { font-weight: 500; }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 24px 80px;
+  }
+
+  /* ── HOTEL CARD ── */
+  .hotel-card {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--gold);
+    border-radius: 4px;
+    padding: 20px 24px;
+    margin-bottom: 32px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .hotel-icon { font-size: 32px; }
+  .hotel-info h3 { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+  .hotel-info p { font-size: 13px; color: var(--ink-soft); line-height: 1.8; }
+  .hotel-info .map-link { font-size: 10px; vertical-align: middle; }
+  .hotel-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+  .tag {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+    color: var(--ink-soft);
+  }
+
+  /* ── PLAN TABS ── */
+  .plan-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 0;
+    border-bottom: 2px solid var(--border);
+  }
+  .plan-tab {
+    padding: 12px 28px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--ink-soft);
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  .plan-tab.active-a {
+    color: var(--plan-a);
+    border-bottom-color: var(--plan-a);
+    background: var(--plan-a-light);
+  }
+  .plan-tab.active-b {
+    color: var(--plan-b);
+    border-bottom-color: var(--plan-b);
+    background: var(--plan-b-light);
+  }
+  .plan-tab:hover { opacity: 0.8; }
+
+  .plan-panel { display: none; }
+  .plan-panel.active { display: block; }
+
+  /* ── PLAN DESCRIPTION ── */
+  .plan-desc {
+    padding: 16px 20px;
+    border-radius: 4px;
+    margin: 20px 0 28px;
+    font-size: 13px;
+    line-height: 1.9;
+  }
+  .plan-desc.a { background: var(--plan-a-light); border-left: 4px solid var(--plan-a); color: var(--plan-a); }
+  .plan-desc.b { background: var(--plan-b-light); border-left: 4px solid var(--plan-b); color: var(--plan-b); }
+  .plan-desc strong { font-weight: 700; }
+
+  /* ── DAY SECTION ── */
+  .day-section { margin-bottom: 40px; }
+  .day-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .day-num {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    flex-shrink: 0;
+    color: #fff;
+  }
+  .plan-a .day-num { background: var(--plan-a); }
+  .plan-b .day-num { background: var(--plan-b); }
+  .day-title { font-size: 18px; font-weight: 700; }
+  .day-date { font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
+
+  /* ── TIMELINE ── */
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+
+  .tl-item {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .tl-dot {
+    position: absolute;
+    left: -24px;
+    top: 4px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px var(--border);
+  }
+  .plan-a .tl-dot { background: var(--plan-a); box-shadow: 0 0 0 2px var(--plan-a); }
+  .plan-b .tl-dot { background: var(--plan-b); box-shadow: 0 0 0 2px var(--plan-b); }
+
+  .tl-card {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 16px;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .tl-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+
+  .tl-time {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 4px;
+  }
+  .plan-a .tl-time { color: var(--plan-a); }
+  .plan-b .tl-time { color: var(--plan-b); }
+
+  .tl-name {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .tl-desc {
+    font-size: 13px;
+    color: var(--ink-mid);
+    line-height: 1.75;
+    margin-bottom: 6px;
+  }
+  .tl-tip {
+    font-size: 12px;
+    color: var(--ink-soft);
+    background: var(--paper-warm);
+    padding: 6px 10px;
+    border-radius: 4px;
+    border-left: 3px solid var(--gold);
+    margin-top: 6px;
+  }
+  .tl-tip::before { content: '💡 '; }
+
+  .tl-addr {
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .tl-addr a { color: var(--ink-soft); text-decoration: none; }
+  .tl-addr a:hover { color: var(--red); }
+  .map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 3px;
+    background: #4285f4;
+    color: #fff !important;
+    text-decoration: none !important;
+    white-space: nowrap;
+    transition: background 0.15s;
+    flex-shrink: 0;
+  }
+  .map-link:hover {
+    background: #2563eb !important;
+    color: #fff !important;
+  }
+
+  /* BADGES */
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 2px;
+    letter-spacing: 0.5px;
+    vertical-align: middle;
+  }
+  .badge-food { background: #fff3cd; color: #856404; }
+  .badge-snack { background: #ffe0d6; color: #b84020; }
+  .badge-sight { background: #d6f0e8; color: #1a6b45; }
+  .badge-move { background: #e8e8f0; color: #4a4a7a; }
+  .badge-museum { background: #dde8ff; color: #2a4a9a; }
+  .badge-wait { background: #f0f0f0; color: #555; }
+
+  /* ── MAP PLACEHOLDER ── */
+  .map-section {
+    margin: 32px 0;
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .map-header {
+    padding: 12px 18px;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .plan-a .map-header { background: var(--plan-a-light); color: var(--plan-a); }
+  .plan-b .map-header { background: var(--plan-b-light); color: var(--plan-b); }
+
+  .location-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1px;
+    background: var(--border);
+  }
+  .loc-item {
+    background: var(--paper-card);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+  }
+  .loc-num {
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 2px;
+  }
+  .plan-a .loc-num { color: var(--plan-a); }
+  .plan-b .loc-num { color: var(--plan-b); }
+  .loc-name { font-size: 13px; font-weight: 600; }
+  .loc-sub { font-size: 11px; color: var(--ink-soft); }
+
+  /* ── TIPS BOX ── */
+  .tips-box {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 24px;
+    margin-top: 32px;
+  }
+  .tips-box h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    color: var(--ink);
+  }
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  .tip-item {
+    padding: 12px 14px;
+    background: var(--paper-warm);
+    border-radius: 4px;
+    font-size: 12px;
+    line-height: 1.8;
+    color: var(--ink-mid);
+  }
+  .tip-item strong { font-weight: 700; display: block; margin-bottom: 2px; font-size: 12px; color: var(--ink); }
+
+  /* ── COMPARE BOX ── */
+  .compare-box {
+    margin-top: 40px;
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .compare-header {
+    padding: 14px 20px;
+    background: var(--ink);
+    color: var(--gold-light);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .compare-table th {
+    padding: 10px 16px;
+    font-weight: 700;
+    font-size: 12px;
+    text-align: left;
+    background: var(--paper-warm);
+    border-bottom: 1px solid var(--border);
+  }
+  .compare-table th:nth-child(2) { color: var(--plan-a); }
+  .compare-table th:nth-child(3) { color: var(--plan-b); }
+  .compare-table td {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.7;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table td:first-child { color: var(--ink-soft); font-weight: 500; width: 120px; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .header-inner { padding: 32px 18px 28px; }
+    main { padding: 20px 16px 60px; }
+    .plan-tab { padding: 10px 16px; font-size: 13px; }
+    .flight-bar-inner { gap: 16px; font-size: 12px; }
+  }
+
+  /* ── WEATHER BAR ── */
+  .weather-bar {
+    background: linear-gradient(135deg, #1a6b8a 0%, #0e4d6b 100%);
+    border-bottom: 3px solid var(--gold);
+    color: #fff;
+  }
+  .weather-bar-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+  .weather-label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,.55);
+    font-weight: 700;
+    margin-right: 16px;
+    white-space: nowrap;
+  }
+  .weather-days {
+    display: flex;
+    gap: 0;
+    flex: 1;
+    flex-wrap: wrap;
+  }
+  .weather-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6px 14px;
+    border-right: 1px solid rgba(255,255,255,.12);
+    min-width: 80px;
+  }
+  .weather-day:last-child { border-right: none; }
+  .wd-date { font-size: 10px; color: rgba(255,255,255,.6); margin-bottom: 3px; }
+  .wd-icon { font-size: 20px; margin-bottom: 2px; }
+  .wd-temp { font-size: 14px; font-weight: 700; }
+  .wd-rain { font-size: 10px; color: #7ec8e3; margin-top: 2px; }
+  .wd-note { font-size: 9px; color: rgba(255,255,255,.5); margin-top: 1px; text-align:center; }
+  .weather-notice {
+    font-size: 11px;
+    color: #ffd580;
+    padding: 6px 14px;
+    background: rgba(255,255,255,.08);
+    border-radius: 4px;
+    margin-left: 12px;
+    line-height: 1.6;
+    flex-shrink: 0;
+  }
+
+  /* ── MRT BADGE ── */
+  .mrt-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 5px;
+    margin-bottom: 4px;
+  }
+  .mrt-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 3px;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .mrt-line .mrt-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.4);
+    flex-shrink: 0;
+  }
+  .mrt-exit {
+    font-size: 10px;
+    padding: 2px 7px;
+    background: #f0f0f0;
+    color: #333;
+    border-radius: 3px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .mrt-walk {
+    font-size: 10px;
+    padding: 2px 7px;
+    background: #e8f5ee;
+    color: #1e6b4a;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+  .mrt-duration {
+    font-size: 10px;
+    padding: 2px 7px;
+    background: #fff3cd;
+    color: #856404;
+    border-radius: 3px;
+    font-weight: 700;
+  }
+
+  /* ── MENU BOX ── */
+  .menu-box {
+    margin-top: 8px;
+    background: linear-gradient(135deg, #fffdf6 0%, #fff8e8 100%);
+    border: 1px solid #e8d8a0;
+    border-left: 3px solid var(--gold);
+    border-radius: 4px;
+    padding: 8px 12px;
+  }
+  .menu-box-title {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 12px;
+    gap: 8px;
+  }
+  .menu-name { color: var(--ink-mid); font-weight: 500; }
+  .menu-price {
+    font-size: 11px;
+    font-weight: 700;
+    color: #8b5e00;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .menu-price .krw {
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--ink-soft);
+    margin-left: 3px;
+  }
+
+
+  /* ── 중국어 회화 카드 ── */
+  .chinese-box {
+    margin: 28px 0 8px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  .chinese-box-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: rgba(212,168,67,0.15);
+    border-bottom: 1px solid rgba(212,168,67,0.25);
+  }
+  .chinese-box-header .ch-icon { font-size: 16px; }
+  .chinese-box-header .ch-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold-light);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .chinese-box-header .ch-sub {
+    font-size: 10px;
+    color: rgba(255,255,255,0.4);
+    margin-left: auto;
+  }
+  .chinese-phrases {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .ch-phrase {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    cursor: pointer;
+    transition: background 0.15s;
+    position: relative;
+  }
+  .ch-phrase:last-child { border-bottom: none; }
+  .ch-phrase:hover { background: rgba(255,255,255,0.04); }
+  .ch-phrase.revealed .ch-hidden { display: flex !important; }
+  .ch-phrase.revealed .ch-reveal-btn { opacity: 0.4; font-size: 9px; }
+
+  .ch-left {
+    padding: 10px 14px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .ch-situation {
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 1px;
+  }
+  .ch-korean {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.4;
+  }
+  .ch-pronunciation {
+    font-size: 11px;
+    color: #7ec8e3;
+    font-style: italic;
+    margin-top: 1px;
+  }
+  .ch-meaning {
+    font-size: 10px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 1px;
+  }
+  .ch-right {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    flex-shrink: 0;
+    min-width: 80px;
+    justify-content: center;
+  }
+  .ch-reveal-btn {
+    font-size: 10px;
+    color: rgba(255,255,255,0.35);
+    text-align: center;
+    line-height: 1.4;
+    transition: all 0.2s;
+  }
+  .ch-hidden {
+    display: none !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .ch-chinese {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gold-light);
+    text-align: center;
+    line-height: 1.3;
+  }
+  .ch-pinyin {
+    font-size: 10px;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+  }
+
+
+/* ── UPGRADE FEATURES ── */
+.top-tools{
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: rgba(26,26,26,0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.top-tools-inner{
+  max-width:960px;
+  margin:0 auto;
+  padding:10px 24px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.tool-btn{
+  border:none;
+  border-radius:6px;
+  padding:8px 12px;
+  font-size:12px;
+  font-weight:700;
+  cursor:pointer;
+  background:#2c2c2c;
+  color:#fff;
+}
+.tool-btn:hover{ opacity:.9; }
+
+.rate-box{
+  margin-left:auto;
+  font-size:12px;
+  color:#fff;
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+
+.live-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#2ecc71;
+  display:inline-block;
+}
+
+.check-item{
+  position:absolute;
+  right:12px;
+  top:12px;
+  transform:scale(1.2);
+}
+
+.collapsible .timeline{
+  display:none;
+}
+
+.day-header{
+  cursor:pointer;
+}
+
+.translate-floating{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:999;
+}
+.translate-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  background:#4285f4;
+  color:#fff;
+  font-size:26px;
+  text-decoration:none;
+  box-shadow:0 4px 16px rgba(0,0,0,.25);
+}
+
+</style>
+</head>
+<body>
+
+<div class="top-tools">
+  <div class="top-tools-inner">
+    <button class="tool-btn" onclick="expandAll()">📂 전체 펼치기</button>
+    <button class="tool-btn" onclick="collapseAll()">📁 전체 접기</button>
+    <button class="tool-btn" onclick="showLocation()">📍 현재 위치</button>
+    <button class="tool-btn" onclick="openTranslator()">🌐 번역기</button>
+
+    <div class="rate-box">
+      <span class="live-dot"></span>
+      <span id="exchange-rate">환율 불러오는 중...</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- HEADER -->
+<header>
+  <div class="header-pattern"></div>
+  <div class="header-inner">
+    <div>
+      <div class="header-sub">Family Travel · 2026</div>
+      <div class="header-title">臺北 타이페이<br>3박 4일</div>
+    </div>
+    <div class="header-meta">
+      <div>최승환 &amp; 딸 | 부녀 동반</div>
+      <div>2026. 5. 24(일) → 5. 27(수)</div>
+      <div style="margin-top:6px">
+        <span class="flight-badge">AeroK RF511</span>&nbsp;
+        <span class="flight-badge">AeroK RF512</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- FLIGHT BAR -->
+<div class="flight-bar">
+  <div class="flight-bar-inner">
+    <div class="flight-item">
+      <span class="f-label">출발</span>
+      <span class="f-val">5/24(일) 청주 10:55</span>
+      <span class="flight-arrow">→</span>
+      <span class="f-val">타이페이(타오위안) 12:20</span>
+      <span class="f-label">RF511</span>
+    </div>
+    <div class="flight-item">
+      <span class="f-label">귀국</span>
+      <span class="f-val">5/27(수) 타이페이 13:10</span>
+      <span class="flight-arrow">→</span>
+      <span class="f-val">청주 16:45</span>
+      <span class="f-label">RF512</span>
+    </div>
+  </div>
+</div>
+
+<!-- WEATHER BAR -->
+<div class="weather-bar">
+  <div class="weather-bar-inner">
+    <div class="weather-label">🌤 여행기간 날씨 · 2026년 5월 말</div>
+    <div class="weather-days">
+      <div class="weather-day">
+        <div class="wd-date">5/24(일)<br>도착일</div>
+        <div class="wd-icon">🌦</div>
+        <div class="wd-temp">27°C</div>
+        <div class="wd-rain">🌧 강수 55%</div>
+        <div class="wd-note">소나기 가능</div>
+      </div>
+      <div class="weather-day">
+        <div class="wd-date">5/25(월)<br>고궁일</div>
+        <div class="wd-icon">⛅</div>
+        <div class="wd-temp">28°C</div>
+        <div class="wd-rain">🌧 강수 48%</div>
+        <div class="wd-note">오전 맑음 기대</div>
+      </div>
+      <div class="weather-day">
+        <div class="wd-date">5/26(화)<br>101일</div>
+        <div class="wd-icon">🌤</div>
+        <div class="wd-temp">30°C</div>
+        <div class="wd-rain">🌧 강수 45%</div>
+        <div class="wd-note">오후 소나기</div>
+      </div>
+      <div class="weather-day">
+        <div class="wd-date">5/27(수)<br>귀국일</div>
+        <div class="wd-icon">⛅</div>
+        <div class="wd-temp">27°C</div>
+        <div class="wd-rain">🌧 강수 50%</div>
+        <div class="wd-note">오후 소나기 주의</div>
+      </div>
+    </div>
+    <div class="weather-notice">
+      ☂ 5월 말 타이페이 습도 83% · 우기 시작<br>
+      얇은 우비(판초) 필수 · 자외선 강함 · 선크림 必
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <!-- HOTEL -->
+  <div class="hotel-card">
+    <div class="hotel-icon">🏨</div>
+    <div class="hotel-info">
+      <h3>Click Hotel – Taipei Main Station Branch</h3>
+      <p>
+        5F., No.72, Sec. 1, Zhongxiao W. Rd., Zhongzheng Dist., Taipei · 타이베이역 도보 3~5분 &nbsp;<a href="https://maps.google.com/?q=Click+Hotel+Taipei+Main+Station+No.72+Zhongxiao+West+Road" target="_blank" class="map-link">🗺 구글맵</a><br>
+        공항쾌속(MRT 타오위안) 직결 · 시먼딩 도보 10분 · Z8 출구 연결<br>
+        무료 음료·스낵·커피 제공 · 어린이 플레이존 완비 · 24h 프런트
+      </p>
+      <div class="hotel-tags">
+        <span class="tag">체크인 15:00</span>
+        <span class="tag">체크아웃 12:00</span>
+        <span class="tag">WiFi 무료</span>
+        <span class="tag">MRT 직결</span>
+        <span class="tag">가족친화</span>
+      </div>
+    </div>
+  </div>
+
+<div class="chinese-box">
+  <div class="chinese-box-header"><span class="ch-icon">🀄</span><span class="ch-title">어디서나 쓰는 기본 표현</span><span class="ch-sub">감사·부탁·만능 — 탭하면 중국어 표시</span></div>
+  <div class="chinese-phrases">
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">기본</div><div class="ch-korean">감사합니다.</div><div class="ch-pronunciation">씨에씨에</div><div class="ch-meaning">가장 많이 쓰는 표현</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">謝謝。</div><div class="ch-pinyin">Xièxiè.</div></div></div></div>
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">기본</div><div class="ch-korean">괜찮아요. / 됐어요.</div><div class="ch-pronunciation">메이꽌시 / 부융러</div><div class="ch-meaning">거절·위로할 때</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">沒關係。</div><div class="ch-pinyin">Méiguānxi.</div></div></div></div>
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">기본</div><div class="ch-korean">맛있어요!</div><div class="ch-pronunciation">헌 하오츠!</div><div class="ch-meaning">식당·야시장 칭찬</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">很好吃！</div><div class="ch-pinyin">Hěn hǎochī!</div></div></div></div>
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">기본</div><div class="ch-korean">화장실이 어디예요?</div><div class="ch-pronunciation">처수이지엔 짜이 나리?</div><div class="ch-meaning">긴급 만능 표현</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">廁所在哪裡？</div><div class="ch-pinyin">Cèsuǒ zài nǎlǐ?</div></div></div></div>
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">기본</div><div class="ch-korean">잠깐만요.</div><div class="ch-pronunciation">덩 이씨아</div><div class="ch-meaning">잠시 기다려 달라고 할 때</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">等一下。</div><div class="ch-pinyin">Děng yīxià.</div></div></div></div>
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">기본</div><div class="ch-korean">못 알아들어요.</div><div class="ch-pronunciation">워 팅부동</div><div class="ch-meaning">말을 이해 못 할 때</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">我聽不懂。</div><div class="ch-pinyin">Wǒ tīng bù dǒng.</div></div></div></div>
+  </div>
+</div>
+
+  <!-- PLAN TABS -->
+  <div class="plan-tabs">
+    <button class="plan-tab active-a" onclick="switchPlan('a')">✦ Plan A — 도심·문화 집중형</button>
+    <button class="plan-tab" onclick="switchPlan('b')">✦ Plan B — 근교·자연 혼합형</button>
+  </div>
+
+  <!-- ════════════════════ PLAN A ════════════════════ -->
+  <div id="plan-a" class="plan-panel active plan-a">
+
+    <div class="plan-desc a">
+      <strong>Plan A — 도심·문화 집중형</strong><br>
+      타이페이 시내 중심부를 축으로 이동 거리를 최소화하고, 고궁박물원·시먼딩·베이터우 온천·장개석기념당을 유기적으로 연결합니다.
+      2일차 오후에 MRT로 30분이면 닿는 베이터우 온천 마을을 묶어 역사·자연·힐링을 한 번에 경험합니다.
+      MRT 이용 기준 이동 시간 합계 하루 45분 이내.
+    </div>
+
+    <!-- DAY 1 -->
+    <div class="day-section">
+      <div class="day-header">
+        <div class="day-num">1</div>
+        <div>
+          <div class="day-title">도착 · 시먼딩 입성</div>
+          <div class="day-date">5월 24일(일) · 타오위안 도착 12:20</div>
+        </div>
+      </div>
+      <div class="timeline">
+
+<div class="chinese-box">
+  <div class="chinese-box-header"><span class="ch-icon">🀄</span><span class="ch-title">생활 중국어 | Day 1</span><span class="ch-sub">공항·교통·시먼딩 — 탭하면 중국어 표시</span></div>
+  <div class="chinese-phrases">
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">공항·이동</div><div class="ch-korean">MRT는 어디서 타요?</div><div class="ch-pronunciation">어날 나 커이 쭤 지에톄?</div><div class="ch-meaning">지하철 탑승 위치 물어볼 때</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">在哪裡可以坐捷運？</div><div class="ch-pinyin">Zài nǎlǐ kěyǐ zuò jiéyùn?</div></div></div></div>
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">교통카드</div><div class="ch-korean">이지카드 한 장 주세요.</div><div class="ch-pronunciation">워 야오 이 장 여우요우카</div><div class="ch-meaning">悠遊卡 구입 시 필수</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">我要一張悠遊卡。</div><div class="ch-pinyin">Wǒ yào yī zhāng Yōuyóukǎ.</div></div></div></div>
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">길 묻기</div><div class="ch-korean">시먼딩은 어떻게 가요?</div><div class="ch-pronunciation">칭원 시먼딩 전머 조우?</div><div class="ch-meaning">목적지 가는 길 물어볼 때</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">請問西門町怎麼走？</div><div class="ch-pinyin">Qǐngwèn Xīménding zěnme zǒu?</div></div></div></div>
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">쇼핑</div><div class="ch-korean">이거 얼마예요?</div><div class="ch-pronunciation">쪄거 뚜어샤오 치엔?</div><div class="ch-meaning">가격 물어볼 때 (만능 표현)</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">這個多少錢？</div><div class="ch-pinyin">Zhège duōshǎo qián?</div></div></div></div>
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">쇼핑</div><div class="ch-korean">조금 깎아줄 수 있어요?</div><div class="ch-pronunciation">커이 피엔이 이디엔 마?</div><div class="ch-meaning">야시장·기념품점 흥정</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">可以便宜一點嗎？</div><div class="ch-pinyin">Kěyǐ piányí yīdiǎn ma?</div></div></div></div>
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">포장</div><div class="ch-korean">포장해 주세요.</div><div class="ch-pronunciation">워 야오 따이저우</div><div class="ch-meaning">야시장·길거리 음식 포장 시</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">我要帶走。</div><div class="ch-pinyin">Wǒ yào dàizǒu.</div></div></div></div>
+  </div>
+</div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">12:20 – 13:30</div>
+            <div class="tl-name">타오위안국제공항 도착 <span class="badge badge-move">이동</span></div>
+            <div class="tl-desc">입국심사 → 수하물 수취 → 1층 MRT 타오위안공항쾌속(桃園機場捷運) 승차.<br>직통(紫) 직행 탑승 → 台北站 하차. 약 35~40분 소요, 요금 약 160 TWD/인.</div>
+            <div class="tl-tip">EasyCard(悠遊卡) 공항 내 편의점에서 바로 구입. 교통·편의점·야시장 모두 사용 가능. 1,000 TWD 충전 권장.</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">13:30 – 14:30</div>
+            <div class="tl-name">Click Hotel 체크인 &amp; 짐 보관 <span class="badge badge-move">숙소</span></div>
+            <div class="mrt-info"><span class="mrt-line" style="background:#8b6bb1"><span class="mrt-dot"></span>공항쾌속 급행(紫)</span> <span class="mrt-exit">台北역 Z8출구</span> <span class="mrt-walk">도보 3분</span> <span class="mrt-duration">공항→台北 35분 · 160 TWD</span></div>
+            <div class="tl-desc">타이베이역 Z8 출구 → 도보 3분. 체크인(15시 이전은 짐 보관 후 출발). 무료 음료·스낵 챙기기.</div>
+            <div class="tl-addr">📍 No.72, Sec.1, Zhongxiao W. Rd. &nbsp;<a href="https://maps.google.com/?q=Click+Hotel+Taipei+Main+Station+No.72+Zhongxiao+West+Road" target="_blank" class="map-link">🗺 구글맵</a></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">14:30 – 15:30</div>
+            <div class="tl-name">점심 · 푸항또우장 (阜杭豆漿) <span class="badge badge-food">식사</span> <span class="badge badge-wait">평일 오후 10~20분 · 주말 30분+</span></div>
+            <div class="mrt-info"><span class="mrt-line" style="background:#0070bd"><span class="mrt-dot"></span>블루선(BL) 板南線</span> <span class="mrt-exit">善導寺 5번출구</span> <span class="mrt-walk">도보 3분</span></div><div class="menu-box">
+      <div class="menu-box-title">🍽 추천 메뉴 &amp; 가격 (1TWD≈43원)</div>
+      <div class="menu-items"><div class="menu-item"><span class="menu-name">✦ 소금파전 (鹹燒餅)</span><span class="menu-price">30 TWD<span class="krw">≈ 1,290원</span></span></div>
+<div class="menu-item"><span class="menu-name">✦ 단빙 蛋餅 (계란크레페)</span><span class="menu-price">25 TWD<span class="krw">≈ 1,075원</span></span></div>
+<div class="menu-item"><span class="menu-name">✦ 甜豆漿 달콤 두유</span><span class="menu-price">20 TWD<span class="krw">≈ 860원</span></span></div>
+<div class="menu-item"><span class="menu-name">✦ 鹹豆漿 짭짤 두유</span><span class="menu-price">20 TWD<span class="krw">≈ 860원</span></span></div>
+</div>
+    </div>
+            <div class="tl-desc">대만 아침식사 문화의 상징. 겹겹이 바삭한 소금파전·사탕 또우장(두유)·단빙(蛋餅). 평일 오후 1~2시대가 그나마 대기 짧음. 주말은 30분 이상 예상.</div>
+            <div class="tl-tip">메뉴판 사진 보여주기로 주문 가능. 또우장 단(甜·달콤)/셴(鹹·짭짤) 선택 확인.</div>
+            <div class="tl-addr">📍 忠孝東路一段108號2樓 · MRT 善導寺站 5번출구 도보 3분 &nbsp;<a href="https://maps.google.com/?q=阜杭豆漿+台北市+忠孝東路一段108號" target="_blank" class="map-link">🗺 구글맵</a></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">15:30 – 18:30</div>
+            <div class="tl-name">시먼딩 (西門町) 탐방 <span class="badge badge-sight">관광</span></div>
+            <div class="mrt-info"><span class="mrt-line" style="background:#0070bd"><span class="mrt-dot"></span>블루선(BL)</span> <span class="mrt-exit">西門 6번출구</span> <span class="mrt-walk">도보 2분</span></div>
+            <div class="tl-desc">타이페이의 홍대. 보행자 전용구역, 젊은 패션·문화·영화 포스터 벽화. 딸과 함께 트렌드 쇼핑·카페 탐방 최적.</div>
+            <div class="tl-tip">시먼역 6번 출구 도보 3분. 호텔에서 도보 10~12분 거리.</div>
+            <div class="tl-addr">📍 萬華區 西門町 · MRT 西門站 &nbsp;<a href="https://maps.google.com/?q=Ximending+Taipei+Taiwan" target="_blank" class="map-link">🗺 구글맵</a></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">16:30 간식</div>
+            <div class="tl-name">아종면선 (阿宗麵線) <span class="badge badge-snack">간식</span> <span class="badge badge-wait">평일 5~10분 · 주말 15~20분</span></div>
+            <div class="mrt-info"><span class="mrt-line" style="background:#0070bd"><span class="mrt-dot"></span>블루선(BL)</span> <span class="mrt-exit">西門역 도보 5분</span></div><div class="menu-box">
+      <div class="menu-box-title">🍽 추천 메뉴 &amp; 가격 (1TWD≈43원)</div>
+      <div class="menu-items"><div class="menu-item"><span class="menu-name">✦ 대 (大) 면선</span><span class="menu-price">55 TWD<span class="krw">≈ 2,365원</span></span></div>
+<div class="menu-item"><span class="menu-name">✦ 소 (小) 면선</span><span class="menu-price">45 TWD<span class="krw">≈ 1,935원</span></span></div>
+</div>
+    </div>
+            <div class="tl-desc">일본 관광객이 뽑은 대만 길거리 음식 1위. 돼지내장·굴 들어간 걸쭉한 국수를 선채로 먹는 스탠딩 문화. 1인분 45 TWD.</div>
+            <div class="tl-addr">📍 萬華區 峨眉街 8-1號 · 시먼딩 內 &nbsp;<a href="https://maps.google.com/?q=阿宗麵線+台北市+萬華區+峨眉街8-1號" target="_blank" class="map-link">🗺 구글맵</a></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">18:30 – 19:30</div>
+            <div class="tl-name">저녁 · 하오지쉐이자오 (豪季水餃專賣店) 타이베이역점 <span class="badge badge-food">식사</span> <span class="badge badge-wait">평일 10분 · 주말 20~30분</span></div>
+            <div class="mrt-info"><span class="mrt-line" style="background:#8b6bb1"><span class="mrt-dot"></span>공항쾌속선(紫)</span> <span class="mrt-exit">台北역 Z10출구</span> <span class="mrt-walk">도보 5분</span></div>
+            <div class="menu-box">
+              <div class="menu-box-title">🍽 추천 메뉴 &amp; 가격 (1TWD≈43원)</div>
+              <div class="menu-items">
+                <div class="menu-item"><span class="menu-name">✦ 새우만두 鮮蝦水餃 (10개)</span><span class="menu-price">100 TWD<span class="krw">≈ 4,300원</span></span></div>
+                <div class="menu-item"><span class="menu-name">✦ 돼지고기만두 豬肉水餃 (10개)</span><span class="menu-price">75 TWD<span class="krw">≈ 3,225원</span></span></div>
+                <div class="menu-item"><span class="menu-name">✦ 부추고기만두 韭菜水餃 (10개)</span><span class="menu-price">75 TWD<span class="krw">≈ 3,225원</span></span></div>
+                <div class="menu-item"><span class="menu-name">✦ 자장면 炸醬麵</span><span class="menu-price">65 TWD<span class="krw">≈ 2,795원</span></span></div>
+                <div class="menu-item"><span class="menu-name">✦ 배추탕 · 두부탕 (선택)</span><span class="menu-price">30~50 TWD<span class="krw">≈ 1,290~2,150원</span></span></div>
+              </div>
+            </div>
+            <div class="tl-desc">호텔에서 도보 5분 — 첫날 저녁 동선 완벽. 타이베이역 바로 앞 위치. 새우만두·돼지고기만두 두 종류 시그니처. 입구 셀프소스바에 마늘·고추간장·흑초·참기름 구비 — 소스 조합이 핵심. 에어컨 빵빵한 넓은 실내, 5월 더위에 최적.</div>
+            <div class="tl-tip">만두는 10개 단위 주문. 새우만두 + 자장면 조합이 현지 인기 세트. 소스는 흑초 + 마늘 + 고추간장 믹스가 현지 스타일. 딸과 처음 대만 만두 경험하기 딱 좋은 가성비 맛집.</div>
+            <div class="tl-addr">📍 中正區 北平西路 3號 · MRT 台北역 Z10출구 도보 5분 &nbsp;<a href="https://maps.google.com/?q=豪季水餃專賣店+台北車站+北平西路" target="_blank" class="map-link">🗺 구글맵</a></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">20:00 – 21:30</div>
+            <div class="tl-name">야경 산책 · 베이먼 (北門) + 화시제 구경 <span class="badge badge-sight">관광</span></div>
+            <div class="mrt-info"><span class="mrt-line" style="background:#8b6bb1"><span class="mrt-dot"></span>공항쾌속선</span> <span class="mrt-exit">北門 3번출구</span> <span class="mrt-walk">도보 3분</span></div>
+            <div class="tl-desc">저녁 식사 후 도보 5분 — 야간 조명 켜진 베이먼(청나라 1884년 성문) 야경 감상. 화시제야시장은 간식·구경 위주로 가볍게 산책 후 귀숙.</div>
+            <div class="tl-tip">식사는 하오지쉐이자오에서 해결했으니 화시제는 탕후루·군고구마 등 간식만. 첫날 너무 무리하지 말고 컨디션 관리.</div>
+            <div class="tl-addr">📍 忠孝西路一段 (베이먼) &nbsp;<a href="https://maps.google.com/?q=North+Gate+Beimen+Taipei" target="_blank" class="map-link">🗺 베이먼</a> &nbsp;/&nbsp; <a href="https://maps.google.com/?q=Huaxi+Street+Night+Market+Taipei" target="_blank" class="map-link">🗺 화시제</a></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DAY 2 -->
+    <div class="day-section">
+      <div class="day-header">
+        <div class="day-num">2</div>
+        <div>
+          <div class="day-title">고궁박물원 + 베이터우 온천 마을</div>
+          <div class="day-date">5월 25일(월)</div>
+        </div>
+      </div>
+      <div class="timeline">
+
+<div class="chinese-box">
+  <div class="chinese-box-header"><span class="ch-icon">🀄</span><span class="ch-title">생활 중국어 | Day 2</span><span class="ch-sub">고궁·온천·야시장 — 탭하면 중국어 표시</span></div>
+  <div class="chinese-phrases">
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">박물관</div><div class="ch-korean">한국어 오디오 가이드 있나요?</div><div class="ch-pronunciation">여우 한위 뚜오란지 마?</div><div class="ch-meaning">고궁박물원 입장 시</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">有韓語導覽機嗎？</div><div class="ch-pinyin">Yǒu Hányǔ dǎolǎnjī ma?</div></div></div></div>
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">박물관</div><div class="ch-korean">사진 찍어도 되나요?</div><div class="ch-pronunciation">커이 파이짜오 마?</div><div class="ch-meaning">촬영 가능 여부 확인</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">可以拍照嗎？</div><div class="ch-pinyin">Kěyǐ pāizhào ma?</div></div></div></div>
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">온천</div><div class="ch-korean">프라이빗 온천탕 있어요?</div><div class="ch-pronunciation">여우 쓰런 탕츠 마?</div><div class="ch-meaning">베이터우 온천 예약 시</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">有私人湯池嗎？</div><div class="ch-pinyin">Yǒu sīrén tángchí ma?</div></div></div></div>
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">온천</div><div class="ch-korean">수건 빌릴 수 있어요?</div><div class="ch-pronunciation">커이 지에 마오진 마?</div><div class="ch-meaning">온천 이용 중 필요 시</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">可以借毛巾嗎？</div><div class="ch-pinyin">Kěyǐ jiè máojīn ma?</div></div></div></div>
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">야시장</div><div class="ch-korean">이거 하나 주세요.</div><div class="ch-pronunciation">워 야오 이 거 쪄거</div><div class="ch-meaning">야시장 음식 주문 만능 표현</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">我要一個這個。</div><div class="ch-pinyin">Wǒ yào yī gè zhège.</div></div></div></div>
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">야시장</div><div class="ch-korean">맵지 않게 해주세요.</div><div class="ch-pronunciation">부 야오 라 더</div><div class="ch-meaning">향신료·매운맛 조절</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">不要辣的。</div><div class="ch-pinyin">Bú yào là de.</div></div></div></div>
+  </div>
+</div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">08:00 – 09:00</div>
+            <div class="tl-name">아침 · 젠팡토스트 (真芳碳烤吐司) <span class="badge badge-food">식사</span> <span class="badge badge-wait">평일 5~10분 · 주말 오전 20분</span></div>
+            <div class="mrt-info"><span class="mrt-line" style="background:#0070bd"><span class="mrt-dot"></span>블루선(BL)</span> <span class="mrt-exit">台北역 도보 5분</span></div><div class="menu-box">
+      <div class="menu-box-title">🍽 추천 메뉴 &amp; 가격 (1TWD≈43원)</div>
+      <div class="menu-items"><div class="menu-item"><span class="menu-name">✦ 계란·치즈 토스트 (蛋餅+起司)</span><span class="menu-price">65 TWD<span class="krw">≈ 2,795원</span></span></div>
+<div class="menu-item"><span class="menu-name">✦ 땅콩버터 탄불토스트</span><span class="menu-price">55 TWD<span class="krw">≈ 2,365원</span></span></div>
+<div class="menu-item"><span class="menu-name">✦ 미에판 米飯(쌀죽)</span><span class="menu-price">35 TWD<span class="krw">≈ 1,505원</span></span></div>
+</div>
+    </div>
+            <div class="tl-desc">대만식 탄불토스트 전문점. 돼지고기·계란·치즈 토스트가 시그니처. 버터·땅콩버터 바른 토스트와 미에판(米飯·쌀죽) 조합. 45~65 TWD.</div>
+            <div class="tl-addr">📍 中正區 시내 여러 지점 운영 &nbsp;<a href="https://maps.google.com/?q=真芳碳烤吐司+台北" target="_blank" class="map-link">🗺 구글맵</a></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">09:00 – 13:00</div>
+            <div class="tl-name">국립고궁박물원 (國立故宮博物院) <span class="badge badge-museum">박물관 필수</span></div>
+            <div class="mrt-info"><span class="mrt-line" style="background:#e3001b"><span class="mrt-dot"></span>레드선(R) 淡水信義線</span> <span class="mrt-exit">士林역</span> <span class="mrt-walk">버스 紅30·304</span> <span class="mrt-duration">士林역→15분</span></div>
+            <div class="tl-desc">
+              세계 4대 박물관 중 하나. 70만 점 이상의 중화 문명 유물 소장.<br>
+              <strong>핵심 3대 소장품:</strong> 취옥백채(翠玉白菜·비취 배추조각) · 육형석(肉形石·삼겹살 모양 석류석) · 모공정(毛公鼎·청동 솥).<br>
+              권장 관람 시간: 3~4시간. 한국어 오디오 가이드 대여 가능.
+            </div>
+            <div class="tl-tip">오전 9시 오픈 직후 입장 시 대기 10분 이내. 주말 오전 10시 이후 단체 관광객 집중 — 30분+ 예상. 사전 온라인 예약 강력 권장 (입장료 350 TWD).</div>
+            <div class="tl-addr">📍 士林區 至善路二段 221號 · MRT 士林站 → 버스 紅30·304 15분 &nbsp;<a href="https://maps.google.com/?q=National+Palace+Museum+Taipei+Taiwan" target="_blank" class="map-link">🗺 구글맵</a></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">13:00 – 14:00</div>
+            <div class="tl-name">점심 · 士林 현지 우육면 (牛肉麵) <span class="badge badge-food">식사</span> <span class="badge badge-wait">평일 10분 이내</span></div>
+            <div class="mrt-info"><span class="mrt-line" style="background:#e3001b"><span class="mrt-dot"></span>레드선(R)</span> <span class="mrt-exit">士林역 도보 5분</span> <span class="mrt-walk">고궁→士林 버스 15분</span></div>
+            <div class="menu-box">
+              <div class="menu-box-title">🍽 추천 메뉴 &amp; 가격 (1TWD≈43원)</div>
+              <div class="menu-items">
+                <div class="menu-item"><span class="menu-name">✦ 홍소 우육면 紅燒牛肉麵</span><span class="menu-price">180 TWD<span class="krw">≈ 7,740원</span></span></div>
+                <div class="menu-item"><span class="menu-name">✦ 청둔 우육면 清燉牛肉麵</span><span class="menu-price">180 TWD<span class="krw">≈ 7,740원</span></span></div>
+                <div class="menu-item"><span class="menu-name">✦ 우육 수교자 牛肉水餃 (10개)</span><span class="menu-price">80 TWD<span class="krw">≈ 3,440원</span></span></div>
+              </div>
+            </div>
+            <div class="tl-desc">고궁박물원에서 버스로 士林역 15분, 내리자마자 바로 점심 해결. 士林역 주변은 현지 우육면 골목이 밀집해 있어 대기 없이 진한 소고기 국물을 즐길 수 있음. 관광객보다 현지인 비율이 높아 진짜 대만 점심 경험.</div>
+            <div class="tl-tip">홍소(진하고 얼큰)·청둔(맑고 담백) 중 취향껏 선택. 고궁 → 베이터우 이동 전 士林에서 점심 해결이 동선상 가장 효율적.</div>
+            <div class="tl-addr">📍 士林區 大東路 일대 · MRT 士林站 도보 5분 &nbsp;<a href="https://maps.google.com/?q=士林+牛肉麵+大東路+台北" target="_blank" class="map-link">🗺 구글맵</a></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">14:30 이동</div>
+            <div class="tl-name">고궁 → 베이터우 이동 <span class="badge badge-move">이동</span></div>
+            <div class="mrt-info">
+              <span class="mrt-line" style="background:#e3001b"><span class="mrt-dot"></span>레드선(R)</span>
+              <span class="mrt-exit">士林 → 北投역</span>
+              <span class="mrt-line" style="background:#e8a0c8"><span class="mrt-dot"></span>신베이터우선(분홍)</span>
+              <span class="mrt-exit">新北投역 하차</span>
+              <span class="mrt-duration">총 12분</span>
+            </div>
+            <div class="tl-desc">士林역 탑승 → 北投역 환승 → 온천 테마 알록달록 분홍 지선 탑승 → 新北投역 하차. 역에 내리는 순간 유황 향기와 함께 온천 마을 시작.</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">15:00 – 15:45</div>
+            <div class="tl-name">베이터우 시립도서관 + 온천박물관 <span class="badge badge-sight">관광</span></div>
+            <div class="mrt-info">
+              <span class="mrt-exit">新北投역 도보 3분</span>
+              <span class="mrt-walk">입장 무료</span>
+            </div>
+            <div class="tl-desc"><b>시립도서관</b>: 세계 아름다운 도서관 TOP 선정. 친환경 목조 건축물이 숲과 하나된 포토스팟.<br><b>온천박물관</b>: 일제강점기 공중목욕탕 원형 보존. 붉은 벽돌·스테인드글라스·다다미방 레트로 분위기. 대만 온천 역사 전시.</div>
+            <div class="tl-tip">두 곳 모두 입장 무료. 도서관→온천박물관 도보 5분. 신발 벗고 입장(온천박물관).</div>
+            <div class="tl-addr">📍 北投區 中山路 2號 &nbsp;<a href="https://maps.google.com/?q=Beitou+Public+Library+Taipei" target="_blank" class="map-link">🗺 도서관</a>&nbsp;<a href="https://maps.google.com/?q=Beitou+Hot+Spring+Museum+Taipei" target="_blank" class="map-link">🗺 온천박물관</a></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">15:45 – 16:15</div>
+            <div class="tl-name">지열곡 (地熱谷) <span class="badge badge-sight">관광</span></div>
+            <div class="mrt-info">
+              <span class="mrt-exit">온천박물관 도보 10분</span>
+              <span class="mrt-walk">입장 무료</span>
+            </div>
+            <div class="tl-desc">1년 내내 80~100℃ 온천수가 끓어오르는 지옥 계곡. 수면 위 하얀 수증기가 몽환적. 에메랄드빛 온천수 인생샷 명소. 산책로 잘 정비.</div>
+            <div class="tl-tip">바람 불 때 수증기 걷히는 순간 에메랄드빛 원천수 포착. 더운 날은 입구 음료 필수.</div>
+            <div class="tl-addr">📍 北投區 中山路 30號 &nbsp;<a href="https://maps.google.com/?q=Hell+Valley+Beitou+Taipei+地熱谷" target="_blank" class="map-link">🗺 구글맵</a></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">16:30 – 18:30</div>
+            <div class="tl-name">🛁 베이터우 온천 체험 <span class="badge badge-sight">체험</span></div>
+            <div class="mrt-info">
+              <span class="mrt-exit">新北投역 도보 2~5분</span>
+            </div>
+            <div class="tl-desc">
+              <b>추천 ①</b> <b>친수이공원 노천탕</b> — 수영복 착용 남녀공용. 온도별 탕 구분. 현지인 분위기. 입장 40 TWD(≈1,720원) 가성비 최고.<br>
+              <b>추천 ②</b> <b>베이터우 핫스프링 리조트</b> — 부녀 프라이빗룸 90분 대실. 오붓하고 위생적. KKday 사전예약 권장.
+            </div>
+            <div class="tl-tip">은 장신구는 산성 유황수에 변색되므로 꼭 빼고 입장. 수영복·수건 지참. 온천 전후 수분 충분히 보충.</div>
+            <div class="tl-addr">📍 北投區 中山路 3號 (핫스프링리조트) &nbsp;<a href="https://maps.google.com/?q=Beitou+Hot+Spring+Resort+Taipei" target="_blank" class="map-link">🗺 구글맵</a></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">19:00 – 21:00</div>
+            <div class="tl-name">저녁 · 스린야시장 (士林夜市) <span class="badge badge-food">식사</span> <span class="badge badge-sight">관광</span></div>
+            <div class="mrt-info">
+              <span class="mrt-line" style="background:#e8a0c8"><span class="mrt-dot"></span>신베이터우선</span>
+              <span class="mrt-exit">→ 北投 환승</span>
+              <span class="mrt-line" style="background:#e3001b"><span class="mrt-dot"></span>레드선(R)</span>
+              <span class="mrt-exit">士林 1번출구</span>
+              <span class="mrt-duration">환승 포함 15분</span>
+            </div>
+            <div class="menu-box">
+              <div class="menu-box-title">🍽 추천 메뉴 &amp; 가격 (1TWD≈43원)</div>
+              <div class="menu-items">
+                <div class="menu-item"><span class="menu-name">✦ 굴전 蚵仔煎</span><span class="menu-price">80 TWD<span class="krw">≈ 3,440원</span></span></div>
+                <div class="menu-item"><span class="menu-name">✦ 닭고기찜밥 雞肉飯</span><span class="menu-price">60 TWD<span class="krw">≈ 2,580원</span></span></div>
+                <div class="menu-item"><span class="menu-name">✦ 大왕오징어튀김</span><span class="menu-price">100 TWD<span class="krw">≈ 4,300원</span></span></div>
+                <div class="menu-item"><span class="menu-name">✦ 망고빙수 芒果冰</span><span class="menu-price">120 TWD<span class="krw">≈ 5,160원</span></span></div>
+              </div>
+            </div>
+            <div class="tl-desc">온천으로 풀린 몸에 야시장 에너지 충전. 지하 미식관 굴전·닭고기찜밥·망고빙수 순환 공략.</div>
+            <div class="tl-tip">오후 7시 이후 활기 최고조. 베이터우→스린 MRT 환승 포함 15분.</div>
+            <div class="tl-addr">📍 士林區 基河路 · MRT 士林站 1번출구 &nbsp;<a href="https://maps.google.com/?q=Shilin+Night+Market+Taipei+Taiwan" target="_blank" class="map-link">🗺 구글맵</a></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DAY 3 -->
+    <div class="day-section">
+      <div class="day-header">
+        <div class="day-num">3</div>
+        <div>
+          <div class="day-title">장개석기념당 + 중산 + 타이페이101</div>
+          <div class="day-date">5월 26일(화)</div>
+        </div>
+      </div>
+      <div class="timeline">
+
+<div class="chinese-box">
+  <div class="chinese-box-header"><span class="ch-icon">🀄</span><span class="ch-title">생활 중국어 | Day 3</span><span class="ch-sub">기념당·카페·전망대 — 탭하면 중국어 표시</span></div>
+  <div class="chinese-phrases">
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">기념당</div><div class="ch-korean">위병 교대는 몇 시예요?</div><div class="ch-pronunciation">환강 지 디엔 카이스?</div><div class="ch-meaning">중정기념당 교대식 시간 확인</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">衛兵換崗幾點開始？</div><div class="ch-pinyin">Wèibīng huàngǎng jǐ diǎn kāishǐ?</div></div></div></div>
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">카페</div><div class="ch-korean">딸기 버블티 주세요.</div><div class="ch-pronunciation">워 야오 차오메이 전쥬 나이차</div><div class="ch-meaning">카페·버블티 주문</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">我要草莓珍珠奶茶。</div><div class="ch-pinyin">Wǒ yào cǎoméi zhēnzhū nǎichá.</div></div></div></div>
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">카페</div><div class="ch-korean">얼음 적게 해주세요.</div><div class="ch-pronunciation">샤오삥 / 부 야오 삥</div><div class="ch-meaning">少冰(얼음 적게) / 不要冰(얼음 없이)</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">少冰。
+(不要冰。)</div><div class="ch-pinyin">Shǎo bīng. / Bú yào bīng.</div></div></div></div>
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">전망대</div><div class="ch-korean">전망대 입장권 두 장이요.</div><div class="ch-pronunciation">량 장 관징타이 먼피아오</div><div class="ch-meaning">2인 입장권 구입</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">兩張觀景台門票。</div><div class="ch-pinyin">Liǎng zhāng guānjǐngtái ménpiào.</div></div></div></div>
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">사진</div><div class="ch-korean">사진 찍어 주실 수 있어요?</div><div class="ch-pronunciation">커이 방워 파이 이 장 짜오 마?</div><div class="ch-meaning">관광지 사진 부탁</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">可以幫我拍一張照嗎？</div><div class="ch-pinyin">Kěyǐ bāng wǒ pāi yī zhāng zhào ma?</div></div></div></div>
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">식당</div><div class="ch-korean">추천 메뉴가 뭐예요?</div><div class="ch-pronunciation">니먼 더 투이지엔 차이 스 선머?</div><div class="ch-meaning">식당 추천 요청</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">你們的推薦菜是什麼？</div><div class="ch-pinyin">Nǐmen de tuījiàn cài shì shénme?</div></div></div></div>
+  </div>
+</div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">08:30 – 09:30</div>
+            <div class="tl-name">중정기념당 위병교대식 <span class="badge badge-sight">관광</span></div>
+            <div class="mrt-info"><span class="mrt-line" style="background:#008b41"><span class="mrt-dot"></span>그린선(G)</span> <span class="mrt-exit">中正紀念堂 5번출구</span></div>
+            <div class="tl-desc">매 정각 실시하는 위병 교대식(10분). 대형 광장·자유광장 패루 조망. 장개석(蔣介石) 동상 관람. 아침 일찍 방문하면 조용하고 사진 찍기 좋음.</div>
+            <div class="tl-tip">교대식은 09:00, 10:00, 11:00… 매 정각. 입장 무료.</div>
+            <div class="tl-addr">📍 中正區 中山南路 21號 · MRT 中正紀念堂站 5번출구 &nbsp;<a href="https://maps.google.com/?q=Chiang+Kai-shek+Memorial+Hall+Taipei" target="_blank" class="map-link">🗺 구글맵</a></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">10:00 – 12:00</div>
+            <div class="tl-name">중산 쇼핑거리 &amp; 적봉가 (赤峰街) <span class="badge badge-sight">관광</span></div>
+            <div class="mrt-info"><span class="mrt-line" style="background:#e3001b"><span class="mrt-dot"></span>레드선(R)</span> <span class="mrt-exit">中山 4번출구</span> <span class="mrt-walk">도보 5분</span></div>
+            <div class="tl-desc">미슐랭 가이드 추천 타이페이 산책로. 빈티지 편집샵·독립카페·핸드드립 커피숍 밀집. 딸이 좋아할 감성 소품가게 다수. 트렌디한 인스타 스팟.</div>
+            <div class="tl-addr">📍 大同區 赤峰街 · MRT 中山站 4번출구 도보 5분 &nbsp;<a href="https://maps.google.com/?q=Chifeng+Street+Zhongshan+Taipei" target="_blank" class="map-link">🗺 구글맵</a></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">12:00 – 13:00</div>
+            <div class="tl-name">점심 · 수염장 루러우판 (鬍鬚張魯肉飯) — 中山점 <span class="badge badge-food">식사</span> <span class="badge badge-wait">평일 5~10분</span></div>
+            <div class="mrt-info"><span class="mrt-line" style="background:#e3001b"><span class="mrt-dot"></span>레드선(R)</span> <span class="mrt-exit">中山역 도보 3분</span> <span class="mrt-walk">적봉가에서 도보 5분</span></div>
+            <div class="menu-box">
+              <div class="menu-box-title">🍽 추천 메뉴 &amp; 가격 (1TWD≈43원)</div>
+              <div class="menu-items">
+                <div class="menu-item"><span class="menu-name">✦ 루러우판 魯肉飯 (대만식 돼지덮밥)</span><span class="menu-price">55 TWD<span class="krw">≈ 2,365원</span></span></div>
+                <div class="menu-item"><span class="menu-name">✦ 돼지족발 豬腳飯</span><span class="menu-price">90 TWD<span class="krw">≈ 3,870원</span></span></div>
+                <div class="menu-item"><span class="menu-name">✦ 관동조림 탕 (굴·두부)</span><span class="menu-price">30~50 TWD<span class="krw">≈ 1,290~2,150원</span></span></div>
+              </div>
+            </div>
+            <div class="tl-desc">대만 국민 루러우판 체인 중 가장 믿을 수 있는 브랜드. 中山역 3번출구 도보 3분 — 적봉가 산책 후 그대로 걸어오면 됨. 저렴하고 빠르고 정통 대만 밥상.</div>
+            <div class="tl-tip">루러우판은 소자리 많아 대기 거의 없음. 101 이동 전 가볍게 점심 해결하기 최적.</div>
+            <div class="tl-addr">📍 中山區 中山北路二段 · MRT 中山站 3번출구 도보 3분 &nbsp;<a href="https://maps.google.com/?q=鬍鬚張魯肉飯+中山+台北" target="_blank" class="map-link">🗺 구글맵</a></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">14:00 – 17:00</div>
+            <div class="tl-name">타이페이101 전망대 <span class="badge badge-sight">관광</span></div>
+            <div class="mrt-info"><span class="mrt-line" style="background:#e3001b"><span class="mrt-dot"></span>레드선(R)</span> <span class="mrt-exit">台北101/世貿 4번출구</span> <span class="mrt-walk">도보 3분</span></div><div class="menu-box">
+      <div class="menu-box-title">🍽 추천 메뉴 &amp; 가격 (1TWD≈43원)</div>
+      <div class="menu-items"><div class="menu-item"><span class="menu-name">✦ 전망대 입장권 (사전예약)</span><span class="menu-price">600 TWD<span class="krw">≈ 25,800원</span></span></div>
+<div class="menu-item"><span class="menu-name">✦ 현장 구매</span><span class="menu-price">700 TWD<span class="krw">≈ 30,100원</span></span></div>
+</div>
+    </div>
+            <div class="tl-desc">지상 89층 실내·91층 야외 전망대. 엘리베이터 속도 세계 최고 수준(37초 89층). 맑은 날 타오위안·지우펀 방향까지 조망. 5층 명품몰, B1·B2 푸드코트도 인기.</div>
+            <div class="tl-tip">전망대 입장권 사전 온라인 구매 시 약 10% 할인 (약 600 TWD). 오후 4~5시대 황금시간대 조망 추천.</div>
+            <div class="tl-addr">📍 信義區 市府路 45號 · MRT 台北101/世貿站 4번출구 &nbsp;<a href="https://maps.google.com/?q=Taipei+101+Tower" target="_blank" class="map-link">🗺 구글맵</a></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">17:30 간식</div>
+            <div class="tl-name">망고빙수 · 아이스몬스터 (ICE MONSTER) <span class="badge badge-snack">간식</span> <span class="badge badge-wait">평일 10분 · 주말 20~30분</span></div>
+            <div class="mrt-info"><span class="mrt-exit">101/世貿역 도보 5분</span><span class="mrt-walk">5~6월 애플망고 제철</span></div>
+            <div class="menu-box">
+              <div class="menu-box-title">🍽 추천 메뉴 &amp; 가격 (1TWD≈43원)</div>
+              <div class="menu-items">
+                <div class="menu-item"><span class="menu-name">✦ 망고빙수 芒果冰 (대표메뉴)</span><span class="menu-price">230 TWD<span class="krw">≈ 9,890원</span></span></div>
+                <div class="menu-item"><span class="menu-name">✦ 딸기빙수 草莓冰</span><span class="menu-price">220 TWD<span class="krw">≈ 9,460원</span></span></div>
+              </div>
+            </div>
+            <div class="tl-desc">101에서 도보 5분 거리. 5~6월 애플망고 제철이라 가장 맛있는 시기. 눈꽃 같은 빙수 위에 생망고·망고아이스크림 듬뿍. 딸과 함께 인생샷 명소.</div>
+            <div class="tl-addr">📍 信義區 忠孝東路五段 · 101/世貿역 도보 5분 &nbsp;<a href="https://maps.google.com/?q=ICE+MONSTER+Taipei+Xinyi" target="_blank" class="map-link">🗺 구글맵</a></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">18:30 – 20:00</div>
+            <div class="tl-name">저녁 · 딘타이펑 신이점 (鼎泰豐 信義) <span class="badge badge-food">식사</span> <span class="badge badge-wait">현장 60~100분 · 클룩사전예약 30~40분</span></div>
+            <div class="mrt-info"><span class="mrt-line" style="background:#e3001b"><span class="mrt-dot"></span>레드선(R)</span> <span class="mrt-exit">台北101/世貿 도보 5분</span></div>
+            <div class="menu-box">
+              <div class="menu-box-title">🍽 추천 메뉴 &amp; 가격 (1TWD≈43원)</div>
+              <div class="menu-items">
+                <div class="menu-item"><span class="menu-name">✦ 샤오롱바오 小籠包 (10개)</span><span class="menu-price">230 TWD<span class="krw">≈ 9,890원</span></span></div>
+                <div class="menu-item"><span class="menu-name">✦ 새우볶음밥 蝦仁炒飯</span><span class="menu-price">260 TWD<span class="krw">≈ 11,180원</span></span></div>
+                <div class="menu-item"><span class="menu-name">✦ 통삼겹살찜 東坡肉</span><span class="menu-price">380 TWD<span class="krw">≈ 16,340원</span></span></div>
+              </div>
+            </div>
+            <div class="tl-desc">101 전망대 관람 후 바로 도보 5분 — 동선 완벽 일치. 미슐랭 레스토랑. 번호표 뽑은 후 신이 쇼핑몰 구경 가능. 클룩 사전예약 필수.</div>
+            <div class="tl-tip">신이점은 101 인근 松壽路 소재. 클룩 사전구매 시 대기 30~40분으로 단축. 101 전망대 내려오면서 예약 번호 확인 권장.</div>
+            <div class="tl-addr">📍 信義區 松壽路 12號 · MRT 台北101/世貿역 도보 5분 &nbsp;<a href="https://maps.google.com/?q=Din+Tai+Fung+Songzhi+Road+Xinyi+Taipei" target="_blank" class="map-link">🗺 구글맵</a></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">20:30 – 22:00 (선택)</div>
+            <div class="tl-name">야식 · 라오허제야시장 (饒河街觀光夜市) <span class="badge badge-food">식사</span></div>
+            <div class="mrt-info"><span class="mrt-line" style="background:#f57920"><span class="mrt-dot"></span>오렌지선(O) 中和新蘆線</span> <span class="mrt-exit">松山 1번출구</span> <span class="mrt-walk">도보 3분</span></div><div class="menu-box">
+      <div class="menu-box-title">🍽 추천 메뉴 &amp; 가격 (1TWD≈43원)</div>
+      <div class="menu-items"><div class="menu-item"><span class="menu-name">✦ 화덕 후추빵 胡椒餅</span><span class="menu-price">55 TWD<span class="krw">≈ 2,365원</span></span></div>
+<div class="menu-item"><span class="menu-name">✦ 약선배골탕 藥燉排骨</span><span class="menu-price">120 TWD<span class="krw">≈ 5,160원</span></span></div>
+<div class="menu-item"><span class="menu-name">✦ 굴전 蚵仔煎</span><span class="menu-price">70 TWD<span class="krw">≈ 3,010원</span></span></div>
+</div>
+    </div>
+            <div class="tl-desc">스린보다 규모 작고 아늑한 야시장. 福州世祖胡椒餅(후추빵) · 약선배골탕(藥燉排骨) 유명. 한 줄기 거리를 끝에서 끝까지 걸으며 먹는 재미. 사진 찍기 좋음.</div>
+            <div class="tl-tip">후추빵은 화덕에서 막 구워내 대기 10~20분. 줄 서는 동안 약선배골탕 먼저 주문해두면 효율적.</div>
+            <div class="tl-addr">📍 松山區 饒河街 · MRT 松山站 1번출구 도보 3분 &nbsp;<a href="https://maps.google.com/?q=Raohe+Street+Tourist+Night+Market+Taipei" target="_blank" class="map-link">🗺 구글맵</a></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DAY 4 -->
+    <div class="day-section">
+      <div class="day-header">
+        <div class="day-num">4</div>
+        <div>
+          <div class="day-title">귀국일 · 아침 산책 후 출발</div>
+          <div class="day-date">5월 27일(수) · 공항 출발 13:10</div>
+        </div>
+      </div>
+      <div class="timeline">
+
+<div class="chinese-box">
+  <div class="chinese-box-header"><span class="ch-icon">🀄</span><span class="ch-title">생활 중국어 | Day 4</span><span class="ch-sub">귀국·쇼핑·비상 — 탭하면 중국어 표시</span></div>
+  <div class="chinese-phrases">
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">쇼핑</div><div class="ch-korean">선물용 포장해 주세요.</div><div class="ch-pronunciation">칭 방워 빠오쫭 이씨아</div><div class="ch-meaning">귀국 선물 포장 요청</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">請幫我包裝一下。</div><div class="ch-pinyin">Qǐng bāng wǒ bāozhuāng yīxià.</div></div></div></div>
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">쇼핑</div><div class="ch-korean">영수증 주세요.</div><div class="ch-pronunciation">칭 게이 워 파피아오</div><div class="ch-meaning">VAT 환급 영수증 필수</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">請給我發票。</div><div class="ch-pinyin">Qǐng gěi wǒ fāpiào.</div></div></div></div>
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">공항</div><div class="ch-korean">탑승 게이트가 어디예요?</div><div class="ch-pronunciation">덩지 머우커우 짜이 나리?</div><div class="ch-meaning">게이트 찾을 때</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">登機門口在哪裡？</div><div class="ch-pinyin">Dēngjī ménkǒu zài nǎlǐ?</div></div></div></div>
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">비상</div><div class="ch-korean">병원이 어디예요?</div><div class="ch-pronunciation">이위엔 짜이 나리?</div><div class="ch-meaning">응급상황 병원 위치</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">醫院在哪裡？</div><div class="ch-pinyin">Yīyuàn zài nǎlǐ?</div></div></div></div>
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">비상</div><div class="ch-korean">경찰 불러 주세요!</div><div class="ch-pronunciation">칭 쟈오 징차!</div><div class="ch-meaning">긴급상황</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">請叫警察！</div><div class="ch-pinyin">Qǐng jiào jǐngchá!</div></div></div></div>
+    <div class="ch-phrase"><div class="ch-left"><div class="ch-situation">만능</div><div class="ch-korean">영어 할 줄 아세요?</div><div class="ch-pronunciation">니 후이 수어 잉위 마?</div><div class="ch-meaning">소통 안 될 때 탈출구</div></div><div class="ch-right"><div class="ch-reveal-btn">탭하면<br>중국어<br>표시</div><div class="ch-hidden"><div class="ch-chinese">你會說英語嗎？</div><div class="ch-pinyin">Nǐ huì shuō Yīngyǔ ma?</div></div></div></div>
+  </div>
+</div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">07:30 – 09:00</div>
+            <div class="tl-name">아침 · 이등일 (一等一早午餐) or 편의점 조식 <span class="badge badge-food">식사</span></div>
+            <div class="tl-desc">대만 세븐일레븐(7-11)·하이라이프 편의점 아침 문화 체험. 따뜻한 연어오니기리·루러우판 편의점 도시락·미역국(海帶芽湯)으로 간편하게.</div>
+            <div class="tl-tip">대만 편의점은 한국보다 음식 퀄리티 높음. 편의점에서 여행 마지막 간식 쇼핑도 가능.</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">09:00 – 10:30</div>
+            <div class="tl-name">2/28 평화공원 &amp; 기념관 <span class="badge badge-sight">관광</span></div>
+            <div class="mrt-info"><span class="mrt-line" style="background:#008b41"><span class="mrt-dot"></span>그린선(G) 松山新店線</span> <span class="mrt-exit">台大醫院 2번출구</span> <span class="mrt-walk">도보 5분</span></div>
+            <div class="tl-desc">호텔에서 도보 15분. 1947년 2·28 사건 역사 기념관 + 아름다운 연못 공원. 출국 전 여유로운 산책. 입장 무료.</div>
+            <div class="tl-addr">📍 中正區 凱達格蘭大道 3號 · MRT 台大醫院站 &nbsp;<a href="https://maps.google.com/?q=228+Peace+Memorial+Park+Taipei" target="_blank" class="map-link">🗺 구글맵</a></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">10:30 – 11:00</div>
+            <div class="tl-name">체크아웃 &amp; 공항 이동 <span class="badge badge-move">이동</span></div>
+            <div class="tl-desc">12:00 체크아웃 후 타이베이역 MRT 공항쾌속 탑승. 공항 도착 약 11:40. 출발 13:10 기준 체크인 마감은 12:10 (최소 90분 전 권장).</div>
+            <div class="tl-tip">직행(紫線) 탑승 시 수하물 사전 탑승수속(市區預辦登機) 가능 → 타이베이역 지하 B1 카운터 이용 강력 추천 (2시간 전까지).</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">13:10 출발</div>
+            <div class="tl-name">RF512 타오위안 → 청주 <span class="badge badge-move">귀국</span></div>
+            <div class="tl-desc">탑승 → 청주 도착 16:45. 3박4일 부녀 타이페이 여행 완료.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MAP OVERVIEW -->
+    <div class="map-section plan-a">
+      <div class="map-header">📍 Plan A 주요 위치 개요</div>
+      <div class="location-grid">
+        <div class="loc-item"><div class="loc-num">①</div><div class="loc-name">Click Hotel</div><div class="loc-sub">타이베이역 도보 3분</div><a href="https://maps.google.com/?q=Click+Hotel+Taipei+Main+Station" target="_blank" class="map-link" style="margin-top:6px">🗺 구글맵</a></div>
+        <div class="loc-item"><div class="loc-num">②</div><div class="loc-name">시먼딩</div><div class="loc-sub">도보 10분 / MRT 西門</div><a href="https://maps.google.com/?q=Ximending+Taipei+Taiwan" target="_blank" class="map-link" style="margin-top:6px">🗺 구글맵</a></div>
+        <div class="loc-item"><div class="loc-num">③</div><div class="loc-name">고궁박물원</div><div class="loc-sub">MRT+버스 30분</div><a href="https://maps.google.com/?q=National+Palace+Museum+Taipei+Taiwan" target="_blank" class="map-link" style="margin-top:6px">🗺 구글맵</a></div>
+        <div class="loc-item"><div class="loc-num">④</div><div class="loc-name">베이터우 온천</div><div class="loc-sub">레드선(R)+분홍선 30분</div><a href="https://maps.google.com/?q=Beitou+Hot+Spring+Museum+Taipei" target="_blank" class="map-link" style="margin-top:6px">🗺 구글맵</a></div>
+        <div class="loc-item"><div class="loc-num">⑤</div><div class="loc-name">중정기념당</div><div class="loc-sub">MRT 中正紀念堂</div><a href="https://maps.google.com/?q=Chiang+Kai-shek+Memorial+Hall+Taipei" target="_blank" class="map-link" style="margin-top:6px">🗺 구글맵</a></div>
+        <div class="loc-item"><div class="loc-num">⑥</div><div class="loc-name">타이페이101</div><div class="loc-sub">MRT 101/世貿站</div><a href="https://maps.google.com/?q=Taipei+101+Tower" target="_blank" class="map-link" style="margin-top:6px">🗺 구글맵</a></div>
+        <div class="loc-item"><div class="loc-num">⑦</div><div class="loc-name">스린야시장</div><div class="loc-sub">MRT 士林站</div><a href="https://maps.google.com/?q=Shilin+Night+Market+Taipei+Taiwan" target="_blank" class="map-link" style="margin-top:6px">🗺 구글맵</a></div>
+        <div class="loc-item"><div class="loc-num">⑧</div><div class="loc-name">라오허제야시장</div><div class="loc-sub">MRT 松山站</div><a href="https://maps.google.com/?q=Raohe+Street+Tourist+Night+Market+Taipei" target="_blank" class="map-link" style="margin-top:6px">🗺 구글맵</a></div>
+      </div>
+    </div>
+
+  </div><!-- /plan-a -->
+
+
+  <!-- ════════════════════ PLAN B ════════════════════ -->
+  <div id="plan-b" class="plan-panel plan-b">
+
+    <div class="plan-desc b">
+      <strong>Plan B — 근교·자연 혼합형</strong><br>
+      고궁박물원 + 시먼딩은 유지하되, 둘째 날에 지우펀·스펀 당일 근교 투어를 배치합니다.
+      자연 속 절경과 복고풍 거리를 딸과 함께 경험하는 것이 핵심. 이동거리가 Plan A보다 다소 길지만(편도 1~1.5시간),
+      타이페이에서만 볼 수 없는 감동이 있는 일정입니다.
+    </div>
+
+    <!-- DAY 1 -->
+    <div class="day-section">
+      <div class="day-header">
+        <div class="day-num">1</div>
+        <div>
+          <div class="day-title">도착 · 시먼딩 + 베이먼</div>
+          <div class="day-date">5월 24일(일) · 타오위안 도착 12:20</div>
+        </div>
+      </div>
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">12:20 – 13:30</div>
+            <div class="tl-name">공항 → 호텔 <span class="badge badge-move">이동</span></div>
+            <div class="tl-desc">MRT 타오위안공항쾌속 직행 → 台北站 하차. EasyCard 구입 후 충전. 호텔 체크인(짐 보관).</div>
+            <div class="tl-tip">Plan B 2일차에 지우펀·스펀 근교 투어 예정이므로 숙소에서 출발 전날 밤 버스 시간 미리 확인.</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">14:00 – 15:00</div>
+            <div class="tl-name">점심 · 가오지 (高記) 생선완자탕 <span class="badge badge-food">식사</span> <span class="badge badge-wait">평일 10분 · 주말 15~20분</span></div>
+            <div class="tl-desc">타이페이역 근처 현지인 맛집. 시원한 어묵탕 베이스에 어묵·두부·채소. 한국인 입맛에도 잘 맞는 깔끔한 국물. 1인 130~180 TWD.</div>
+            <div class="tl-addr">📍 중정구 시내 / 타이베이역 인근</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">15:00 – 18:30</div>
+            <div class="tl-name">시먼딩 탐방 + 적루 (紅樓) <span class="badge badge-sight">관광</span></div>
+            <div class="mrt-info"><span class="mrt-line" style="background:#0070bd"><span class="mrt-dot"></span>블루선(BL)</span> <span class="mrt-exit">西門 6번출구</span> <span class="mrt-walk">도보 2분</span></div>
+            <div class="tl-desc">시먼딩 쇼핑 후 1908년 건립 붉은 벽돌 팔각극장 '시먼홍로(西門紅樓)' 방문. 현재는 예술·공예 판매 마켓으로 운영. 독창적인 대만 굿즈 쇼핑 최적.</div>
+            <div class="tl-addr">📍 萬華區 成都路 10號 · MRT 西門站 1번출구 도보 2분</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">16:00 간식</div>
+            <div class="tl-name">파인애플케이크 · 이사베르 (伊莎貝爾) <span class="badge badge-snack">간식</span> <span class="badge badge-wait">대기 無 (즉시 구매)</span></div>
+            <div class="menu-box">
+      <div class="menu-box-title">🍽 추천 메뉴 &amp; 가격 (1TWD≈43원)</div>
+      <div class="menu-items"><div class="menu-item"><span class="menu-name">✦ 평리수 鳳梨酥 1개</span><span class="menu-price">35 TWD<span class="krw">≈ 1,505원</span></span></div>
+<div class="menu-item"><span class="menu-name">✦ 6개 선물박스</span><span class="menu-price">210 TWD<span class="krw">≈ 9,030원</span></span></div>
+<div class="menu-item"><span class="menu-name">✦ 12개 선물박스</span><span class="menu-price">420 TWD<span class="krw">≈ 18,060원</span></span></div>
+</div>
+    </div>
+            <div class="tl-desc">대만 국민 선물 평리수(鳳梨酥·파인애플케이크) 전문 매장. 버터 반죽에 파인애플잼 속. 박스로 구매 시 한국 귀국 선물용으로도 제격.</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">19:00 – 21:00</div>
+            <div class="tl-name">저녁 · 녕하야시장 (寧夏夜市) <span class="badge badge-food">식사</span></div>
+            <div class="mrt-info"><span class="mrt-line" style="background:#e3001b"><span class="mrt-dot"></span>레드선(R)</span> <span class="mrt-exit">中山역 도보 10분</span></div><div class="menu-box">
+      <div class="menu-box-title">🍽 추천 메뉴 &amp; 가격 (1TWD≈43원)</div>
+      <div class="menu-items"><div class="menu-item"><span class="menu-name">✦ 루러우판 滷肉飯</span><span class="menu-price">40 TWD<span class="krw">≈ 1,720원</span></span></div>
+<div class="menu-item"><span class="menu-name">✦ 굴전 蚵仔煎</span><span class="menu-price">70 TWD<span class="krw">≈ 3,010원</span></span></div>
+<div class="menu-item"><span class="menu-name">✦ 탕후루 草莓糖葫蘆</span><span class="menu-price">50 TWD<span class="krw">≈ 2,150원</span></span></div>
+</div>
+    </div>
+            <div class="tl-desc">현지인 비율이 높은 야시장. 루러우판 발상지로 알려진 '천원루러우판'이 이 근처. 훈툰(완탕)·대만 굴전·오징어볶음 저렴하게 즐기기. 600m 규모. MRT 中山站 도보 10분.</div>
+            <div class="tl-addr">📍 大同區 寧夏路 · MRT 中山站</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DAY 2 -->
+    <div class="day-section">
+      <div class="day-header">
+        <div class="day-num">2</div>
+        <div>
+          <div class="day-title">지우펀 + 스펀 근교 당일투어</div>
+          <div class="day-date">5월 25일(월) · 조기 출발 필수</div>
+        </div>
+      </div>
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">07:30 – 08:30</div>
+            <div class="tl-name">아침 · 편의점 간편식 후 출발 준비 <span class="badge badge-food">식사</span></div>
+            <div class="tl-desc">지우펀·스펀 당일 투어는 이동시간이 길므로 일찍 출발이 핵심. 7-11 편의점 오니기리·온장 음료로 간편 조식.</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">08:30 – 10:30</div>
+            <div class="tl-name">스펀 (十分) — 천등 날리기 <span class="badge badge-sight">관광</span></div>
+            <div class="tl-desc">기차선로 위에서 소원 쓴 천등(天燈) 날리는 체험. 딸과 함께 소원 적고 함께 날리는 특별한 기억. 4인 천등 약 200~250 TWD. 30분~1시간 체험.</div>
+            <div class="tl-tip">타이페이역 → 瑞芳 기차 환승 → 스펀(十分) 지역 기차. 또는 호텔에서 1일 근교 투어 프로그램 예약 시 편하게 이동 가능 (1인 약 1,000 TWD).</div>
+            <div class="tl-addr">📍 新北市 平溪區 十分 · 타이베이역 기준 약 1.5시간 &nbsp;<a href="https://maps.google.com/?q=Shifen+Sky+Lantern+Pingxi+New+Taipei" target="_blank" class="map-link">🗺 구글맵</a></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">11:00 – 12:00</div>
+            <div class="tl-name">스펀 간식 · 생선완자 꼬치 <span class="badge badge-snack">간식</span></div>
+            <div class="tl-desc">스펀 기차역 앞 거리 음식 탐방. 생선완자 꼬치·두부튀김·닭발 조림 등 현지 길거리 스낵. 1개 25~40 TWD.</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">13:00 – 16:30</div>
+            <div class="tl-name">지우펀 (九份) — 영화 속 계단 마을 <span class="badge badge-sight">관광</span></div>
+            <div class="tl-desc">일본 미야자키 하야오 감독 영화 '센과 치히로'의 배경으로 유명한 산악 마을. 붉은 홍등·좁은 돌계단·바다 조망 카페. 비 오는 날도 운치 있음.<br>
+            지우펀 전망 카페 A메이(阿妹茶樓)에서 타로 밀크티·땅콩 오믈렛·타로볼 디저트 체험.</div>
+            <div class="tl-tip">오후 3시 이후 일몰 전까지가 가장 아름다운 시간대. 주말 오후 4~5시는 혼잡 최고조이므로 3시 이전 도착 권장.</div>
+            <div class="tl-addr">📍 新北市 瑞芳區 九份 · 스펀에서 버스 이동 약 30분 &nbsp;<a href="https://maps.google.com/?q=Jiufen+Old+Street+Ruifang+New+Taipei" target="_blank" class="map-link">🗺 구글맵</a></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">17:00 – 19:30</div>
+            <div class="tl-name">타이페이 귀환 + 저녁 · 광저우가 (廣州街) 야시장 <span class="badge badge-food">식사</span></div>
+            <div class="tl-desc">지우펀 → 버스 → 瑞芳역 → 타이베이역 귀환. 용산사(龍山寺) 인근 광저우가 야시장. 완화 지역 현지 분위기에서 마지막 야식.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DAY 3 -->
+    <div class="day-section">
+      <div class="day-header">
+        <div class="day-num">3</div>
+        <div>
+          <div class="day-title">고궁박물원 + 용산사 + 타이페이101</div>
+          <div class="day-date">5월 26일(화)</div>
+        </div>
+      </div>
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">08:30 – 09:30</div>
+            <div class="tl-name">아침 · 대만식 아침밥집 <span class="badge badge-food">식사</span></div>
+            <div class="tl-desc">타이베이역 주변 현지 아침식사집. 단빙(蛋餅·계란 지짐 크레페)·샤오룽탕바오 소룡포 조합. 70~100 TWD.</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">09:00 – 13:00</div>
+            <div class="tl-name">국립고궁박물원 <span class="badge badge-museum">박물관 필수</span></div>
+            <div class="tl-desc">Plan B의 고궁박물원 일정. 월요일은 관광객이 상대적으로 적어 쾌적. 취옥백채·육형석·모공정 3대 명보 필수 관람. 한국어 오디오 가이드 이용.</div>
+            <div class="tl-tip">월요일 오전 오픈 직후 가장 쾌적. 주말 스펀·지우펀 이후라 몸이 피로할 수 있으므로 관람 페이스 조절 필요.</div>
+            <div class="tl-addr">📍 士林區 至善路二段 221號 · MRT 士林站 → 버스 15분 &nbsp;<a href="https://maps.google.com/?q=National+Palace+Museum+Taipei+Taiwan" target="_blank" class="map-link">🗺 구글맵</a></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">13:30 – 14:30</div>
+            <div class="tl-name">점심 · 딘타이펑 신이점 <span class="badge badge-food">식사</span> <span class="badge badge-wait">현장 60~100분 · 클룩사전예약 30~40분</span></div>
+            <div class="mrt-info"><span class="mrt-line" style="background:#e3001b"><span class="mrt-dot"></span>레드선(R)</span> <span class="mrt-exit">台北101/世貿 도보 5분</span></div><div class="menu-box">
+      <div class="menu-box-title">🍽 추천 메뉴 &amp; 가격 (1TWD≈43원)</div>
+      <div class="menu-items"><div class="menu-item"><span class="menu-name">✦ 샤오롱바오 小籠包 (10개)</span><span class="menu-price">230 TWD<span class="krw">≈ 9,890원</span></span></div>
+<div class="menu-item"><span class="menu-name">✦ 새우볶음밥 蝦仁炒飯</span><span class="menu-price">260 TWD<span class="krw">≈ 11,180원</span></span></div>
+<div class="menu-item"><span class="menu-name">✦ 통삼겹살찜 東坡肉</span><span class="menu-price">380 TWD<span class="krw">≈ 16,340원</span></span></div>
+</div>
+    </div>
+            <div class="tl-desc">샤오롱바오·새우볶음밥·통삼겹살찜. 101 근처 신이점 이용. 번호표 뽑은 후 근처 산책 가능.</div>
+            <div class="tl-addr">📍 信義區 松壽路 12號 (신이점) &nbsp;<a href="https://maps.google.com/?q=Din+Tai+Fung+Songzhi+Road+Xinyi+Taipei" target="_blank" class="map-link">🗺 구글맵</a></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">15:00 – 17:30</div>
+            <div class="tl-name">타이페이101 전망대 <span class="badge badge-sight">관광</span></div>
+            <div class="mrt-info"><span class="mrt-line" style="background:#e3001b"><span class="mrt-dot"></span>레드선(R)</span> <span class="mrt-exit">台北101/世貿 4번출구</span> <span class="mrt-walk">도보 3분</span></div><div class="menu-box">
+      <div class="menu-box-title">🍽 추천 메뉴 &amp; 가격 (1TWD≈43원)</div>
+      <div class="menu-items"><div class="menu-item"><span class="menu-name">✦ 전망대 입장권 (사전예약)</span><span class="menu-price">600 TWD<span class="krw">≈ 25,800원</span></span></div>
+<div class="menu-item"><span class="menu-name">✦ 현장 구매</span><span class="menu-price">700 TWD<span class="krw">≈ 30,100원</span></span></div>
+</div>
+    </div>
+            <div class="tl-desc">89층 실내전망대(Observation Deck). 오후 5시 전후 황금빛 도시 조망. 91층 야외데크에서 도시 360도 파노라마.</div>
+            <div class="tl-addr">📍 信義區 市府路 45號 · MRT 101/世貿站 &nbsp;<a href="https://maps.google.com/?q=Taipei+101+Tower" target="_blank" class="map-link">🗺 구글맵</a></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">18:00 – 20:00</div>
+            <div class="tl-name">용산사 야경 &amp; 저녁 · 완화 먹거리 <span class="badge badge-sight">관광</span> <span class="badge badge-food">식사</span></div>
+            <div class="mrt-info"><span class="mrt-line" style="background:#0070bd"><span class="mrt-dot"></span>블루선(BL)</span> <span class="mrt-exit">龍山寺 1번출구</span> <span class="mrt-walk">도보 2분</span></div>
+            <div class="tl-desc">야간 조명이 켜진 용산사(龍山寺) 야경 관람 무료. 인근 완화 구역 길거리 먹거리 탐방 후 귀숙. 마지막 밤 산책.</div>
+            <div class="tl-addr">📍 萬華區 廣州街 211號 · MRT 龍山寺站 &nbsp;<a href="https://maps.google.com/?q=Longshan+Temple+Taipei+Taiwan" target="_blank" class="map-link">🗺 구글맵</a></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DAY 4 -->
+    <div class="day-section">
+      <div class="day-header">
+        <div class="day-num">4</div>
+        <div>
+          <div class="day-title">귀국일 · 마지막 쇼핑 후 출발</div>
+          <div class="day-date">5월 27일(수) · 공항 출발 13:10</div>
+        </div>
+      </div>
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">08:00 – 10:30</div>
+            <div class="tl-name">아침 + 마지막 기념품 쇼핑 <span class="badge badge-sight">관광</span></div>
+            <div class="tl-desc">타이베이역 지하 쇼핑몰 탐방. 평리수(파인애플케이크)·누가크래커·말린 망고·버블티 파우더 등 귀국 선물 구입 최적 장소.</div>
+            <div class="tl-tip">타이베이역 지하 Z 구역 편의점과 기념품 숍이 밀집. 면세 영수증은 공항에서 VAT 환급 가능.</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">10:30 – 11:00</div>
+            <div class="tl-name">체크아웃 &amp; 공항 이동 <span class="badge badge-move">이동</span></div>
+            <div class="tl-desc">타이베이역 B1 시내 체크인 카운터 활용 → 수하물 위탁 후 몸만 공항이동 가능. MRT 직행 35~40분.</div>
+            <div class="tl-tip">RF512 출발 13:10 기준 공항 도착은 11:30~40 목표. 시내 체크인은 11:00까지.</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-card"><input type="checkbox" class="check-item">
+            <div class="tl-time">13:10 출발</div>
+            <div class="tl-name">RF512 타오위안 → 청주 귀국 <span class="badge badge-move">귀국</span></div>
+            <div class="tl-desc">청주 도착 16:45. 딸과의 3박4일 근교 자연+문화 타이페이 여행 완료.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MAP OVERVIEW B -->
+    <div class="map-section plan-b">
+      <div class="map-header">📍 Plan B 주요 위치 개요</div>
+      <div class="location-grid">
+        <div class="loc-item"><div class="loc-num">①</div><div class="loc-name">Click Hotel</div><div class="loc-sub">타이베이역 도보 3분</div><a href="https://maps.google.com/?q=Click+Hotel+Taipei+Main+Station" target="_blank" class="map-link" style="margin-top:6px">🗺 구글맵</a></div>
+        <div class="loc-item"><div class="loc-num">②</div><div class="loc-name">시먼딩·홍로</div><div class="loc-sub">도보 10분</div><a href="https://maps.google.com/?q=Ximending+Red+House+Theater+Taipei" target="_blank" class="map-link" style="margin-top:6px">🗺 구글맵</a></div>
+        <div class="loc-item"><div class="loc-num">③</div><div class="loc-name">스펀(十分)</div><div class="loc-sub">기차 1.5시간</div><a href="https://maps.google.com/?q=Shifen+Sky+Lantern+Pingxi+New+Taipei" target="_blank" class="map-link" style="margin-top:6px">🗺 구글맵</a></div>
+        <div class="loc-item"><div class="loc-num">④</div><div class="loc-name">지우펀(九份)</div><div class="loc-sub">스펀→버스 30분</div><a href="https://maps.google.com/?q=Jiufen+Old+Street+Ruifang+New+Taipei" target="_blank" class="map-link" style="margin-top:6px">🗺 구글맵</a></div>
+        <div class="loc-item"><div class="loc-num">⑤</div><div class="loc-name">고궁박물원</div><div class="loc-sub">MRT+버스 30분</div><a href="https://maps.google.com/?q=National+Palace+Museum+Taipei+Taiwan" target="_blank" class="map-link" style="margin-top:6px">🗺 구글맵</a></div>
+        <div class="loc-item"><div class="loc-num">⑥</div><div class="loc-name">타이페이101</div><div class="loc-sub">MRT 101/世貿站</div><a href="https://maps.google.com/?q=Taipei+101+Tower" target="_blank" class="map-link" style="margin-top:6px">🗺 구글맵</a></div>
+        <div class="loc-item"><div class="loc-num">⑦</div><div class="loc-name">용산사</div><div class="loc-sub">MRT 龍山寺站</div><a href="https://maps.google.com/?q=Longshan+Temple+Taipei+Taiwan" target="_blank" class="map-link" style="margin-top:6px">🗺 구글맵</a></div>
+        <div class="loc-item"><div class="loc-num">⑧</div><div class="loc-name">녕하야시장</div><div class="loc-sub">MRT 中山站 도보</div><a href="https://maps.google.com/?q=Ningxia+Night+Market+Taipei" target="_blank" class="map-link" style="margin-top:6px">🗺 구글맵</a></div>
+      </div>
+    </div>
+
+  </div><!-- /plan-b -->
+
+  <!-- ══ COMPARE ══ -->
+  <div class="compare-box">
+    <div class="compare-header">▶ Plan A vs Plan B 비교표</div>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>항목</th>
+          <th>Plan A (도심 집중)</th>
+          <th>Plan B (근교 혼합)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>콘셉트</td>
+          <td>타이페이 시내 핵심 압축</td>
+          <td>스펀·지우펀 근교 자연 추가</td>
+        </tr>
+        <tr>
+          <td>이동 강도</td>
+          <td>낮음 (MRT 중심)</td>
+          <td>중간 (기차·버스 포함)</td>
+        </tr>
+        <tr>
+          <td>고궁박물원</td>
+          <td>2일차 오전</td>
+          <td>3일차 오전(화요일, 월요일보다 한산)</td>
+        </tr>
+        <tr>
+          <td>하이라이트</td>
+          <td>베이터우 온천·중정기념당·적봉가</td>
+          <td>지우펀 홍등·스펀 천등날리기</td>
+        </tr>
+        <tr>
+          <td>딸 취향</td>
+          <td>쇼핑·카페·야시장</td>
+          <td>자연·포토스팟·체험 활동</td>
+        </tr>
+        <tr>
+          <td>체력 소모</td>
+          <td>보통</td>
+          <td>높음 (근교 이동·계단)</td>
+        </tr>
+        <tr>
+          <td>날씨 리스크</td>
+          <td>낮음</td>
+          <td>중간 (지우펀 비 오면 취소 불가)</td>
+        </tr>
+        <tr>
+          <td>예산 차이</td>
+          <td>기준</td>
+          <td>+1일 교통비 약 400~600 TWD</td>
+        </tr>
+        <tr>
+          <td>추천 상황</td>
+          <td>체력 보존·쇼핑·문화 우선</td>
+          <td>자연·추억·인생샷 우선</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TIPS -->
+  <div class="tips-box">
+    <h3>✦ 여행 필수 정보 &amp; 팁</h3>
+    <div class="tips-grid">
+      <div class="tip-item">
+        <strong>입국 주의</strong>
+        2026년 현재 온라인 입국신고서(TWAC) 전면 시행 중. 입국 72시간 전부터 사전 등록 필수 (종이 입국신고서 폐지).
+      </div>
+      <div class="tip-item">
+        <strong>교통카드</strong>
+        EasyCard(悠遊卡) 공항 내 편의점 구입. MRT·버스·편의점·일부 식당 사용 가능. 1,000 TWD 충전 권장.
+      </div>
+      <div class="tip-item">
+        <strong>환전</strong>
+        공항 환전보다 시내 사설 환전소 환율이 유리. 타이베이역 지하 MRT 환전소 활용. 카드 병행 사용.
+      </div>
+      <div class="tip-item">
+        <strong>날씨 (5월 말)</strong>
+        평균 26~31℃. 습도 높고 소나기 잦음. 얇은 우비(판초형) 필수 지참. 자외선 차단제 필수.
+      </div>
+      <div class="tip-item">
+        <strong>고궁박물원</strong>
+        사전 온라인 예약 강력 권장. 주말 오전은 단체 관광객 집중. 한국어 오디오 가이드 대여 가능.
+      </div>
+      <div class="tip-item">
+        <strong>공항쾌속 시내 체크인</strong>
+        타이베이역 B1 탑승수속 카운터에서 수하물 위탁 가능(출발 3시간 전~70분 전). 공항 이동 후 수하물 없이 편하게 이동.
+      </div>
+      <div class="tip-item">
+        <strong>맛집 대기</strong>
+        딘타이펑 현장 웨이팅은 평일 60분, 주말 피크 120분 이상. 클룩 사전구매(세트권) 시 30~40분으로 단축 가능. 아종면선·춘수이탕·야시장 간식류는 현장 즉시 이용 가능.
+      </div>
+      <div class="tip-item">
+        <strong>귀국 선물</strong>
+        평리수(파인애플케이크)·누가크래커·말린 망고·흑당버블티 파우더. 타이베이역 지하 편의점·City Super.
+      </div>
+      <div class="tip-item">
+        <strong>베이터우 온천 준비물</strong>
+        수영복(노천탕 필수)·수건·세면도구. 은 장신구는 산성 유황수에 변색되므로 제거. KKday 사전예약 시 프라이빗룸 할인.
+      </div>
+    </div>
+  </div>
+
+
+<div class="translate-floating">
+  <a class="translate-btn" href="https://translate.google.com/?sl=auto&tl=ko&op=translate" target="_blank">🌐</a>
+</div>
+
+</main>
+
+<script>
+  function switchPlan(plan) {
+    document.getElementById('plan-a').classList.remove('active');
+    document.getElementById('plan-b').classList.remove('active');
+    document.getElementById('plan-' + plan).classList.add('active');
+
+    const tabs = document.querySelectorAll('.plan-tab');
+    tabs[0].className = 'plan-tab' + (plan === 'a' ? ' active-a' : '');
+    tabs[1].className = 'plan-tab' + (plan === 'b' ? ' active-b' : '');
+  }
+
+// 중국어 카드 클릭 토글
+document.querySelectorAll('.ch-phrase').forEach(function(el) {
+  el.addEventListener('click', function() {
+    this.classList.toggle('revealed');
+  });
+});
+
+</script>
+
+<script>
+// 일정 접기/펼치기
+document.querySelectorAll('.day-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const section = header.parentElement;
+    section.classList.toggle('collapsible');
+  });
+});
+
+function collapseAll(){
+  document.querySelectorAll('.day-section').forEach(sec=>{
+    sec.classList.add('collapsible');
+  });
+}
+
+function expandAll(){
+  document.querySelectorAll('.day-section').forEach(sec=>{
+    sec.classList.remove('collapsible');
+  });
+}
+
+// 현재 위치
+function showLocation(){
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition((pos)=>{
+      const lat = pos.coords.latitude.toFixed(5);
+      const lng = pos.coords.longitude.toFixed(5);
+      alert(`현재 위치\n위도: ${lat}\n경도: ${lng}`);
+      window.open(`https://maps.google.com/?q=${lat},${lng}`,'_blank');
+    });
+  }else{
+    alert('위치 정보를 지원하지 않는 브라우저입니다.');
+  }
+}
+
+// 번역기
+function openTranslator(){
+  window.open('https://translate.google.com/?sl=auto&tl=ko&op=translate','_blank');
+}
+
+// 실시간 환율
+async function loadExchangeRate(){
+  try{
+    const res = await fetch('https://open.er-api.com/v6/latest/TWD');
+    const data = await res.json();
+    const krw = data.rates.KRW.toFixed(2);
+    document.getElementById('exchange-rate').innerHTML =
+      `1 TWD ≈ ${krw} KRW · 실시간 환율`;
+  }catch(e){
+    document.getElementById('exchange-rate').innerHTML =
+      '환율 정보를 불러오지 못했습니다';
+  }
+}
+loadExchangeRate();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>청풍호 관광·레저시설 종합정비계획 | 최승환</title>
+<meta name="description" content="청풍호 관광·레저시설 종합정비계획(안) — 총 1,190백만원, 15개 세부사업. 만남의광장·청풍랜드, 자드락길·수경분수, 번지점프장·모노레일">
+<meta property="og:title" content="청풍호 관광·레저시설 종합정비계획 | 최승환">
+<meta property="og:description" content="총 1,190백만원 · 15개 세부사업 · 제천시 시설관리사업소 관광레저팀">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://choijc79.github.io/tourism-plan.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #F4F0E8;
+  --surface: #ECE8DE;
+  --border:  #D4CEBC;
+  --text:    #1A1410;
+  --ink:     #2A2018;
+  --muted:   #7A6A56;
+  --accent:  #E07828;
+  --red:     #D96820;
+  --light:   #FDFAF4;
+  --amber:   #E07828;
+  --green:   #5A7A3A;
+  --lake:    #E07828;
+  --purple:  #7A4AB0;
+}
+[data-theme="dark"] {
+  --bg:      #0d1117;
+  --surface: #161b22;
+  --border:  #2c3240;
+  --text:    #E8E0D0;
+  --ink:     #F0E8D8;
+  --muted:   #8b8070;
+  --accent:  #F08840;
+  --red:     #E07830;
+  --light:   #161b22;
+  --amber:   #F08840;
+  --green:   #3fb950;
+  --lake:    #F08840;
+  --purple:  #bc8cff;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.8;}
+a{color:var(--accent);text-decoration:none;}
+
+/* ── 헤더 ── */
+.site-header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px;transition:background 0.3s,border-color 0.3s;}
+.logo{font-family:'Noto Serif KR',serif;font-size:15px;color:var(--accent);letter-spacing:0.04em;}
+.nav-links{display:flex;gap:1.5rem;font-size:12px;}
+.nav-links a{color:var(--muted);text-decoration:none;transition:color 0.15s;}
+.nav-links a:hover{color:var(--accent);}
+#theme-toggle{background:none;border:1px solid var(--border);color:var(--muted);font-size:11px;padding:3px 11px;border-radius:20px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;letter-spacing:0.05em;transition:all 0.2s;margin-left:1rem;}
+#theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
+
+/* ── 히어로 ── */
+.hero{max-width:780px;margin:0 auto;padding:4rem 2rem 2.5rem;border-bottom:1px solid var(--border);}
+.hero-series{font-size:11px;letter-spacing:0.14em;color:var(--accent);text-transform:uppercase;margin-bottom:0.5rem;}
+.hero h1{font-family:'Noto Serif KR',serif;font-size:clamp(20px,3.5vw,30px);font-weight:700;line-height:1.4;margin-bottom:0.8rem;}
+.hero-sub{font-size:13px;color:var(--muted);line-height:1.8;}
+.meta-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.2rem;}
+.meta-chip{display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.9rem;border:1px solid var(--border);border-radius:20px;font-size:11px;color:var(--muted);}
+.meta-chip strong{color:var(--text);font-weight:500;}
+
+/* ── 탭 ── */
+.tab-bar{max-width:780px;margin:0 auto;padding:1.4rem 2rem 0;display:flex;gap:0.6rem;flex-wrap:wrap;}
+.tab-btn{padding:0.45rem 1.2rem;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:12px;font-family:'Noto Sans KR',sans-serif;cursor:pointer;transition:all 0.18s;letter-spacing:0.02em;}
+.tab-btn:hover{color:var(--text);border-color:var(--accent);}
+.tab-btn.active{background:rgba(224,120,40,0.12);border-color:var(--accent);color:var(--accent);font-weight:500;}
+
+/* ── 패널 ── */
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+
+/* ── 세션 공통 ── */
+.section{max-width:780px;margin:0 auto;padding:2.8rem 2rem;}
+.section+.section{border-top:1px solid var(--border);}
+.sec-label{font-size:11px;letter-spacing:0.14em;color:var(--accent);text-transform:uppercase;margin-bottom:1.4rem;}
+.roman{font-family:'Noto Serif KR',serif;font-size:1rem;font-weight:700;color:var(--accent);margin-right:0.5rem;}
+
+p{font-size:13.5px;color:var(--muted);line-height:1.9;margin-bottom:1em;}
+p:last-child{margin-bottom:0;}
+
+.block-title{font-size:0.85rem;font-weight:500;color:var(--text);border-left:3px solid var(--accent);padding-left:0.7rem;margin:1.8rem 0 1rem;}
+
+ul.policy-list{list-style:none;display:flex;flex-direction:column;gap:0.55rem;margin-bottom:1.2rem;}
+ul.policy-list li{font-size:13px;color:var(--muted);padding-left:1.2rem;position:relative;line-height:1.8;}
+ul.policy-list li::before{content:'—';position:absolute;left:0;color:var(--accent);}
+
+/* ── 패널 내부 히어로 ── */
+.panel-hero{max-width:780px;margin:0 auto;padding:2rem 2rem 1.5rem;border-bottom:1px solid var(--border);}
+.panel-series{font-size:11px;letter-spacing:0.14em;color:var(--accent);text-transform:uppercase;margin-bottom:0.4rem;}
+.panel-hero h2{font-family:'Noto Serif KR',serif;font-size:clamp(16px,2.5vw,22px);font-weight:700;line-height:1.4;margin-bottom:0.6rem;}
+.panel-sub{font-size:13px;color:var(--muted);line-height:1.8;}
+
+/* ── 현황/개선 테이블 ── */
+.compare-table{width:100%;border-collapse:collapse;font-size:12px;margin:1rem 0 1.4rem;}
+.compare-table th{background:rgba(224,120,40,0.12);color:var(--accent);font-weight:500;padding:0.6rem 0.9rem;text-align:left;border:1px solid var(--border);font-size:11px;letter-spacing:0.06em;}
+.compare-table td{padding:0.65rem 0.9rem;border:1px solid var(--border);vertical-align:top;line-height:1.7;color:var(--muted);}
+.compare-table tr:hover td{background:rgba(255,255,255,0.02);}
+
+/* ── 예산 테이블 ── */
+.budget-table{width:100%;border-collapse:collapse;font-size:12px;margin:1rem 0;}
+.budget-table th{background:rgba(224,120,40,0.12);color:var(--accent);font-weight:500;padding:0.55rem 0.8rem;text-align:left;border:1px solid var(--border);font-size:11px;}
+.budget-table td{padding:0.55rem 0.8rem;border:1px solid var(--border);color:var(--muted);}
+.budget-table .total td{color:var(--text);font-weight:500;background:rgba(255,255,255,0.03);}
+.budget-table .grand-total td{color:var(--accent);font-weight:700;background:rgba(224,120,40,0.08);}
+.budget-table .num{text-align:right;}
+
+/* ── 위탁 현황 테이블 ── */
+.status-table{width:100%;border-collapse:collapse;font-size:12px;margin:1rem 0;}
+.status-table th{background:rgba(188,140,255,0.1);color:var(--purple);font-weight:500;padding:0.55rem 0.8rem;border:1px solid var(--border);font-size:11px;}
+.status-table td{padding:0.55rem 0.8rem;border:1px solid var(--border);color:var(--muted);vertical-align:top;}
+
+/* ── note ── */
+.note{background:rgba(255,255,255,0.025);border-left:3px solid var(--border);border-radius:0 6px 6px 0;padding:0.8rem 1rem;font-size:11.5px;color:var(--muted);margin:1rem 0;line-height:1.7;}
+.note-green{border-left-color:var(--green);background:rgba(63,185,80,0.05);}
+.note-amber{border-left-color:var(--accent);background:rgba(224,120,40,0.05);}
+
+/* ── 요약 탭 ── */
+.summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.6rem 0;}
+.sum-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.4rem 1.2rem;}
+.sum-card-series{font-size:10px;letter-spacing:0.12em;color:var(--accent);text-transform:uppercase;margin-bottom:0.5rem;}
+.sum-card-title{font-family:'Noto Serif KR',serif;font-size:13px;font-weight:600;color:var(--text);margin-bottom:0.8rem;line-height:1.5;}
+.sum-card-meta{font-size:11px;color:var(--muted);display:flex;flex-direction:column;gap:0.3rem;}
+.sum-card-meta span strong{color:var(--accent);}
+.sum-card-btn{display:inline-block;margin-top:1rem;font-size:11px;color:var(--accent);cursor:pointer;background:none;border:none;font-family:'Noto Sans KR',sans-serif;padding:0;}
+.sum-card-btn:hover{color:var(--text);}
+
+/* ── 관련 링크 ── */
+.related-links{display:flex;gap:0.8rem;flex-wrap:wrap;}
+.related-link{display:inline-flex;align-items:center;gap:0.4rem;padding:0.5rem 1rem;background:var(--surface);border:1px solid var(--border);border-radius:4px;font-size:12px;color:var(--muted);transition:all 0.2s;}
+.related-link:hover{border-color:var(--accent);color:var(--text);}
+
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:11px;color:var(--muted);letter-spacing:0.04em;margin-top:2rem;}
+
+/* ── 테마 토글 ── */
+
+#theme-toggle:hover{transform:translateY(-2px);}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media(max-width:700px){
+  .summary-grid{grid-template-columns:1fr;}
+  .tab-bar{gap:0.4rem;}
+  .tab-btn{font-size:11px;padding:0.4rem 0.9rem;}
+  .compare-table,.budget-table,.status-table{display:block;overflow-x:auto;}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 업무자료</div>
+  <nav class="nav-links">
+    <a href="/index.html">홈</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/about.html">소개</a>
+  </nav>
+</header>
+
+<!-- 전체 히어로 -->
+<div class="hero">
+  <div class="hero-series">제천시 시설관리사업소 관광레저팀 · 정책연구</div>
+  <h1>청풍호 관광·레저시설<br>종합정비계획(안)</h1>
+  <p class="hero-sub">청풍호 관광권역 전체를 대상으로, 핵심 거점시설 정비·자연체험 인프라 책임관리·위탁시설 계약개선의 세 축으로 구성한 통합 정비계획. 2027년 대관람차 개관에 맞춰 권역 집객력이 고루 확산되도록 하는 것이 목적이다.</p>
+  <div class="meta-row">
+    <span class="meta-chip">총사업비 <strong>1,190백만원</strong></span>
+    <span class="meta-chip">세부사업 <strong>15건</strong></span>
+    <span class="meta-chip">대상시설 <strong>3개 축</strong></span>
+    <span class="meta-chip">기준시점 <strong>2024년 7월</strong></span>
+  </div>
+</div>
+
+<!-- 탭 바 -->
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('overview',this)">📋 전체 요약</button>
+  <button class="tab-btn" onclick="switchTab('plan01',this)">Ⅰ 만남의광장·청풍랜드</button>
+  <button class="tab-btn" onclick="switchTab('plan02',this)">Ⅱ 자드락길·수경분수</button>
+  <button class="tab-btn" onclick="switchTab('plan03',this)">Ⅲ 번지점프장·모노레일</button>
+</div>
+
+<!-- ══════════════════ TAB: 전체 요약 ══════════════════ -->
+<div id="tab-overview" class="tab-panel active">
+
+  <div class="section">
+    <div class="sec-label">계획 구성</div>
+    <div class="summary-grid">
+      <div class="sum-card">
+        <div class="sum-card-series">청풍호 종합정비 Ⅰ</div>
+        <div class="sum-card-title">만남의광장·청풍랜드<br>핵심 거점시설 정비계획</div>
+        <div class="sum-card-meta">
+          <span>사업비 <strong>935백만원</strong></span>
+          <span>세부사업 <strong>8건</strong></span>
+          <span>대관람차 연계 핵심 투자축</span>
+        </div>
+        <button class="sum-card-btn" onclick="switchTab('plan01', document.querySelector('[onclick*=plan01]'))">세부내용 보기 →</button>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-series">청풍호 종합정비 Ⅱ</div>
+        <div class="sum-card-title">자드락길·소공원·수경분수<br>자연체험형 인프라 정비계획</div>
+        <div class="sum-card-meta">
+          <span>사업비 <strong>245백만원</strong></span>
+          <span>세부사업 <strong>5건</strong></span>
+          <span>인력 기반 책임관리 체계</span>
+        </div>
+        <button class="sum-card-btn" onclick="switchTab('plan02', document.querySelector('[onclick*=plan02]'))">세부내용 보기 →</button>
+      </div>
+      <div class="sum-card">
+        <div class="sum-card-series">청풍호 종합정비 Ⅲ</div>
+        <div class="sum-card-title">번지점프장·모노레일 등<br>위탁운영시설 관리개선계획</div>
+        <div class="sum-card-meta">
+          <span>사업비 <strong>10백만원</strong></span>
+          <span>세부사업 <strong>2건</strong></span>
+          <span>17개소 계약 통합관리</span>
+        </div>
+        <button class="sum-card-btn" onclick="switchTab('plan03', document.querySelector('[onclick*=plan03]'))">세부내용 보기 →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">총괄 예산</div>
+    <table class="budget-table">
+      <thead><tr><th>구분</th><th>계획명</th><th>핵심 과제</th><th class="num">소요액(백만)</th></tr></thead>
+      <tbody>
+        <tr><td>Ⅰ</td><td>만남의광장·청풍랜드 정비</td><td>청풍랜드 리모델링, 입장료 체계, 한방카페</td><td class="num">935</td></tr>
+        <tr><td>Ⅱ</td><td>자드락길·수경분수 정비</td><td>자드락길 지키미, 수경분수 용역</td><td class="num">245</td></tr>
+        <tr><td>Ⅲ</td><td>위탁시설 관리개선</td><td>번지점프장·모노레일 재계약·용역</td><td class="num">10</td></tr>
+        <tr class="grand-total"><td colspan="3">합 계</td><td class="num">1,190</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">추진 배경</div>
+    <p>청풍호 관광권역은 연간 100만명 이상의 방문객이 집계되는 제천의 핵심 관광자원이나, 대부분의 시설이 1995~2004년 사이에 조성된 이후 체계적인 리모델링 없이 20년 이상 운영되어 왔다. 특히 2027년 대관람차 개관을 앞두고, 인접한 만남의 광장·청풍랜드·번지점프장 등이 정비되지 않은 채 방치될 경우 대관람차의 집객효과가 권역 전체로 확산되지 못하고 고립될 우려가 있다.</p>
+    <p>이 계획은 세 가지 과제를 동시에 다룬다. 첫째, 대관람차와 연계되는 핵심 거점시설(만남의광장·청풍랜드)을 선제적으로 정비한다. 둘째, 별도 투자 없이 인력 기반 책임관리 체계만으로 유지가능한 시설(자드락길·소공원)은 관리 구조를 먼저 잡는다. 셋째, 계약만료가 임박하거나 수익이 줄어드는 위탁시설(번지점프장·모노레일)은 계약 협상 및 활성화 용역을 통해 방향을 결정한다.</p>
+    <ul class="policy-list" style="margin-top:1rem;">
+      <li>만남의 광장: 명칭 변경(가칭 청풍호 수변공원), 차량 입장료 도입, 청풍랜드 한방카페 조성</li>
+      <li>자드락길: 전담 관리인력 없는 운영 공백 해소 → 자드락길 지키미·소공원 책임관리제 도입</li>
+      <li>수경분수: 비용 대비 효과 최저 시설 → 존치·폐기 여부 용역으로 적극 결정</li>
+      <li>번지점프장: 2026.2.28. 계약만료 전 활성화방안 용역 선행, 철거 포함 검토</li>
+      <li>모노레일: 위탁수익 38% 감소 → 케이블카 사업자 시설투자비 절반 이상 분담 조건으로 재계약</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- ══════════════════ TAB: PLAN 01 ══════════════════ -->
+<div id="tab-plan01" class="tab-panel">
+
+  <div class="panel-hero">
+    <div class="panel-series">청풍호 관광·레저시설 종합정비 Ⅰ</div>
+    <h2>만남의광장·청풍랜드<br>핵심 거점시설 정비계획(안)</h2>
+    <p class="panel-sub">시설관리사업소 관광레저팀 — 2027년 대관람차 개관을 앞두고 인접 만남의 광장·청풍랜드를 동반 정비하여 집객 효과가 권역 전체로 확산될 수 있도록 하는 핵심 투자축 계획.</p>
+    <div class="meta-row">
+      <span class="meta-chip">총사업비 <strong>935백만원</strong></span>
+      <span class="meta-chip">세부사업 <strong>8건</strong></span>
+      <span class="meta-chip">완료목표 <strong>~'25.12</strong></span>
+      <span class="meta-chip">핵심 <strong>대관람차 연계</strong></span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">추진배경</div>
+    <p><span class="roman">Ⅰ</span>만남의 광장과 청풍랜드는 1995~2004년 사이 조성된 이후 본격적인 리모델링 없이 20년 이상 운영되어 왔다. 시설 노후화가 누적된 결과, 특히 청풍랜드 화장실은 악취·협소 문제로 이용객 불편이 상시적으로 제기되는 상태다.</p>
+    <p>2027년 개관 예정인 대관람차는 청풍호 관광권역 전체의 집객력을 끌어올릴 핵심 시설이다. 그러나 대관람차 단독 정비만으로는 집객효과가 인접한 만남의 광장·청풍랜드로 확산되지 못하고 고립될 우려가 있다. 두 시설을 대관람차 개관 시점에 맞춰 동반 정비해야 하는 이유가 여기에 있다.</p>
+    <p>한편 만남의 광장은 전국 다수 지자체가 동일하게 사용하는 흔한 명칭으로 인해 시민들조차 정확한 위치를 인지하지 못하고 있으며, 관리 공백 속에서 통과형 휴게공간(도시락 취식·흡연·쓰레기 투기)으로 전락한 상태다. 이는 단순한 시설 노후화 문제가 아니라 공간의 정체성과 운영방식 자체를 재설계해야 하는 과제다.</p>
+    <p>이에 본 계획은 만남의 광장‑조각공원‑청풍랜드를 하나의 정비축으로 묶어 동선과 콘텐츠를 재구성하고, 대관람차 개관 이전까지 단계적으로 완료하는 것을 목표로 한다.</p>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">추진방향</div>
+    <ul class="policy-list">
+      <li>만남의 광장 명칭을 <strong>"가칭 청풍호 수변공원"</strong>으로 변경하여 식별력 있는 관광 브랜드로 전환</li>
+      <li>차량 입장료 부과로 통과형 이용을 억제하고 시설 관리재원 자체 확보(내부시설 이용은 무료 유지)</li>
+      <li>포토존(프러포즈 존)과 행사용 무대시설 신설 — 청풍대교·청풍호·비봉산 조망 동선에 배치</li>
+      <li>청풍랜드 건축물 리모델링을 통해 <strong>청풍호뷰 한방(빵)카페</strong> 등 체류형 콘텐츠로 전환</li>
+      <li>1.5km 맨발 산책로로 만남의광장~조각공원~청풍랜드 동선 연계</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">세부 추진내용</div>
+
+    <div class="block-title">□ 만남의 광장</div>
+    <p style="font-size:12px;margin-bottom:0.8rem;">주요시설: 관광홍보센터(2개층), 음악영화제 조형물, 소공원, 휴게쉼터(정자), 화장실, 수변데크길, 근로자 쉼터</p>
+    <table class="compare-table">
+      <thead><tr><th style="width:48%">현황 및 문제점</th><th>개선대책(안)</th></tr></thead>
+      <tbody>
+        <tr><td>"만남의 광장"이라는 흔한 명칭으로 시민들도 정확한 위치를 인지하지 못함</td><td>명칭을 "가칭 청풍호 수변공원"으로 변경하고 전국 단위로 재홍보</td></tr>
+        <tr><td>관광정보센터 및 주변시설 관리 부실로 통과 관광객의 도시락 취식·흡연 공간, 쓰레기 투기 장소로 전락</td><td>공원 진입 차량에 입장료 부과(대형버스 1만원, 중형 5천원, 승용 2천원, 지역민 무료) — 내부시설 이용은 무료 유지</td></tr>
+        <tr><td>정자·수변데크길 등에서 청풍대교·청풍호를 조망할 공간이 부족하고 행사용 무대시설 부재</td><td>수변데크길 보수정비, 인근 유휴공간에 "프러포즈 존" 무대 설치(대관람차·청풍대교·비봉산 조망 동선으로 배치)</td></tr>
+        <tr><td>대관람차 개관에 대비한 주변 산책로·노후시설 정비 미흡</td><td>조각공원 방향으로 스토리형 맨발 산책길 조성, 휴게쉼터(조망시설) 명명 및 좌우측 안전(투명)펜스 설치, 대관람차 상업공간 및 관광안내센터 내 농수산물판매장 활성화</td></tr>
+      </tbody>
+    </table>
+    <div class="note note-amber">※ 관광안내센터 2층 커피숍은 외부계단 이용에 따른 접근성이 떨어지고, 대관람차 내부 커피숍 및 인근 호텔·교리마을·물태리마을의 유사 상업시설과 경쟁력이 낮을 것으로 판단되어 별도 활성화 대상에서 제외함.</div>
+
+    <div class="block-title">□ 청풍랜드 주변 정비</div>
+    <p style="font-size:12px;margin-bottom:0.8rem;">주요시설: 수상아트홀, 수경분수, 행정선, 청풍호 유람선 선착장, 조각공원, 위탁시설(하강시설·매점), 공원 등</p>
+    <table class="compare-table">
+      <thead><tr><th style="width:48%">현황 및 문제점</th><th>개선대책(안)</th></tr></thead>
+      <tbody>
+        <tr><td>2002년 건축된 노후 건물로 그간 리모델링 사례가 없었으며, 특히 화장실의 악취·협소 문제가 심각함</td><td>건축물 리모델링을 통해 청풍호뷰 한방(빵)카페로 용도 전환</td></tr>
+        <tr><td>청풍호·비봉산의 경관, 수경분수·수상아트홀을 여유 있게 감상할 휴게공간이 부족하여 체류시간이 짧음</td><td>수상아트홀과 비봉산·청풍호를 조망할 수 있는 수변데크 쉼터 조성</td></tr>
+        <tr><td>청풍호 유람선 이용객 등이 사용할 수 있는 공중화장실이 부족함</td><td>유람선 선착장 부근에 공중화장실 신설</td></tr>
+        <tr><td>조각공원 진입로 정비가 미흡하고 활용도가 낮음</td><td>조각공원 보수정비 및 맨발걷기 산책로로 조성(개수대 포함, 만남의광장~조각공원~한방카페~수변데크쉼터 1.5km 동선)</td></tr>
+      </tbody>
+    </table>
+    <ul class="policy-list" style="margin-top:0.5rem;">
+      <li>청풍랜드 활성화 및 관광객 유치를 위한 연구용역을 발주하여 시설 전체를 명소화하는 근거를 마련</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">추진일정 및 소요예산</div>
+    <table class="budget-table">
+      <thead><tr><th style="width:3rem">No.</th><th>세부사업</th><th>추진일정</th><th class="num">소요액(백만)</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>청풍호 수변공원으로 명칭 변경, 전국 홍보</td><td>~'25.12.31</td><td class="num">5</td></tr>
+        <tr><td>2</td><td>차량 입장료 부과 체계 도입(주차장 조례 개정 병행)</td><td>~'25.6.30</td><td class="num">20</td></tr>
+        <tr><td>3</td><td>수변데크길 보수정비, 프러포즈 존 설치</td><td>~'24.12.31</td><td class="num">70</td></tr>
+        <tr><td>4</td><td>휴게쉼터 명명, 좌우측 안전(투명)펜스 설치</td><td>~'24.12.31</td><td class="num">30</td></tr>
+        <tr><td>5</td><td>청풍랜드 건물 리모델링, 한방(빵)카페 조성</td><td>~'25.12.31</td><td class="num">500</td></tr>
+        <tr><td>6</td><td>수상아트홀 주변 수변쉼터(데크) 조성</td><td>~'25.12.31</td><td class="num">100</td></tr>
+        <tr><td>7</td><td>유람선 선착장 부근 공중화장실 신설</td><td>~'25.12.31</td><td class="num">200</td></tr>
+        <tr><td>8</td><td>청풍랜드 활성화를 위한 연구용역</td><td>~'25.6.30</td><td class="num">10</td></tr>
+        <tr class="total"><td colspan="3">소계 (Ⅰ)</td><td class="num">935</td></tr>
+      </tbody>
+    </table>
+    <div class="note">※ 관광·레저시설 종합정비 전체 예산(1,190백만원)의 약 78.6%를 차지하는 핵심 투자축</div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">행정사항</div>
+    <div class="block-title">조례개정</div>
+    <p>만남의 광장 차량 입장료 부과의 법적 근거 마련을 위해 「제천시 주차장 조례」 개정 추진(교통과 협의). "내부시설 이용 시 무료" 원칙을 명확히 안내하여 주민 반발 및 통과 관광객의 민원 소지를 최소화한다.</p>
+    <div class="block-title">예산 및 보고</div>
+    <p>시의회 보고 후 관련 예산을 추경 및 당초예산에 순차 반영. 총 8개 세부사업, 소요예산 935백만원.</p>
+    <div class="block-title">추진 시 유의사항</div>
+    <ul class="policy-list">
+      <li>"내부시설 이용 시 무료" 원칙을 명확히 안내하여 주민 반발 및 통과 관광객의 민원 소지를 최소화</li>
+      <li>리모델링·신축 공사 추진 시 인근 마을 주민 의견을 사전 수렴하여 사업추진에 반영</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- ══════════════════ TAB: PLAN 02 ══════════════════ -->
+<div id="tab-plan02" class="tab-panel">
+
+  <div class="panel-hero">
+    <div class="panel-series">청풍호 관광·레저시설 종합정비 Ⅱ</div>
+    <h2>자드락길·소공원·수경분수<br>자연체험형 인프라 정비계획(안)</h2>
+    <p class="panel-sub">시설관리사업소 관광레저팀 — 신규투자보다 지속가능한 운영 체계 구축에 방점을 둔 계획. 자드락길 지키미·소공원 책임관리제 도입, 수경분수 활용방안 연구용역을 통해 비효율 시설을 정리한다.</p>
+    <div class="meta-row">
+      <span class="meta-chip">총사업비 <strong>245백만원</strong></span>
+      <span class="meta-chip">세부사업 <strong>5건</strong></span>
+      <span class="meta-chip">신규인력 <strong>7~8명</strong></span>
+      <span class="meta-chip">핵심 <strong>책임관리 체계</strong></span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">추진배경</div>
+    <p>자드락길(7개 코스, 58km)과 청풍호반 소공원(16개소)은 2011년 국·도비 12억 4천만원을 들여 조성되었다. 산길·등산로·임도 위주의 노출형 시설이라는 특성상 예초·시설보수 등 상시적 유지관리 수요가 크나, 전담 관리인력이 없어 정비 공백이 누적되고 있다.</p>
+    <p>수경분수는 2000년 개장 당시 국내 최대 높이(150m, 최고 162m) 분수라는 상징성을 내세웠으나, 이후 서울 등 대도시에 더 큰 규모의 분수가 잇따라 조성되면서 상징성이 희석되었다. 노후 디젤엔진·발전기 조합으로 가동시간이 짧고 소음·진동이 크며, 연간 2억원 이상의 유지관리비가 소요되는 반면 실제 이용객은 거의 없는 상태로, <strong>비용 대비 효과가 가장 낮은 시설</strong>로 평가된다.</p>
+    <p>자드락길·소공원군과 수경분수·수상아트홀군은 공통적으로 "신규 조성"이 아니라 "지속가능한 운영 체계 구축"이 과제다. 정비 방향 역시 신규투자보다 인력 기반 책임관리와 비효율 시설의 정리에 무게를 두어야 한다.</p>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">추진방향</div>
+    <ul class="policy-list">
+      <li><strong>자드락길 지키미 제도</strong> 도입 — 각 코스를 인근 마을주민이 책임 관리</li>
+      <li><strong>소공원 책임관리제</strong> 도입 — 마을 고유의 지명·역사를 담은 이름을 부여하고 담당주민 지정</li>
+      <li>노후 안내판 전체 재정비 및 산림공원 부서와 협조한 위험수목 제거로 안전한 코스 관리</li>
+      <li>수경분수는 존치보다 <strong>폐기 또는 재활용 대안을 용역을 통해 검토</strong>하여 적극적으로 정리</li>
+      <li>수상아트홀은 비행장 점용허가 문제를 관광투자유치팀과 협업하여 운영자 제안평가 후 활성화 지원</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">세부 추진내용</div>
+
+    <div class="block-title">□ 자드락길 및 소공원 유지보수</div>
+    <p style="font-size:12px;margin-bottom:0.8rem;">대상: 자드락길 7개 코스 58km (작은동산길·정방사길·얼음골생태길·녹색마을길·옥순봉길·괴곡성벽길·약초길), 청풍호반 관광도로변 소공원 16개소</p>
+    <table class="compare-table">
+      <thead><tr><th style="width:48%">현황 및 문제점</th><th>개선대책(안)</th></tr></thead>
+      <tbody>
+        <tr><td>7개 코스가 주로 산길·등산로·임도로 조성되어 예초·시설 개보수 등 전반적 유지보수에 어려움</td><td>자드락길 지키미 운영 — 각 코스별 인근 마을 거주자로 5명 내외 구성하여 상시 책임관리 체계 도입</td></tr>
+        <tr><td>자연재해(눈·비)에 취약하여 장마철마다 반복적인 보수가 필요함</td><td>산림공원 부서와 협조하여 위험수목 제거 등 안전 점검을 정례화</td></tr>
+        <tr><td>등산객 등이 쓰레기만 버리고 가는 사례가 많아 주변 상권과 연계할 방안이 부족함</td><td>각 소공원에 주변 마을의 역사를 담은 고유 이름을 부여하고 담당주민을 선정하여 책임관리, 지역상권과의 연계 모색</td></tr>
+        <tr><td>일부 소공원은 도보 접근이 어려운 원거리에 위치하여 이용객이 매우 적음</td><td>노후 안내판을 전체 재정비하여 접근성·인지도 제고</td></tr>
+      </tbody>
+    </table>
+
+    <div class="block-title">□ 수경분수 및 수상아트홀 활성화</div>
+    <p style="font-size:12px;margin-bottom:0.8rem;">주요시설: 수경분수(2000년 개장), 행정선(10인승), 수상아트홀(클럽하우스), 계류장, 선착장 등</p>
+    <table class="compare-table">
+      <thead><tr><th style="width:48%">현황 및 문제점</th><th>개선대책(안)</th></tr></thead>
+      <tbody>
+        <tr><td>각종 기계설비의 내구연한이 경과하여 안전성이 낮고, 구형 디젤엔진·발전기 조합으로 가동시간이 짧으며 소음·진동이 큼. 유지관리비용이 해마다 2억원 이상 소요</td><td>수경분수는 폐기 또는 재활용 방안을 모색하여 사용을 중지하는 것이 바람직하며, 적극적 대안 마련을 위한 연구용역 발주 — 대관람차·수상아트홀·음악분수·수변데크쉼터를 연계한 활용방안을 함께 검토</td></tr>
+        <tr><td>2000년 당시 국내 최대 높이 분수로 조성되었으나, 이후 서울 등에서 더 높은 분수가 조성되며 상징성이 퇴색됨</td><td>존치·폐기 여부를 용역 결과를 토대로 결정</td></tr>
+        <tr><td>실제로 수경분수를 찾는 시민·외지 관광객이 거의 없는 실정</td><td>주민의견 수렴 절차를 선행하여 이해관계자 갈등을 최소화</td></tr>
+        <tr><td>수상아트홀이 (구)수상비행장과 함께 묶여 활용이 어렵고, 진출입 시설 또한 관리 부실</td><td>관광투자유치팀과 협업하여 비행장 점용허가 문제를 해소하고, 수상아트홀 운영자 제안평가 후 활성화를 위한 별도 지원을 검토. 진출입 시설은 도색 등 보수정비 후 사용</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">추진일정 및 소요예산</div>
+    <table class="budget-table">
+      <thead><tr><th style="width:3rem">No.</th><th>세부사업</th><th>추진일정</th><th class="num">소요액(백만)</th></tr></thead>
+      <tbody>
+        <tr><td>9</td><td>자드락길 지키미 운영(마을주민 5명)</td><td>~'25.12.31</td><td class="num">100</td></tr>
+        <tr><td>10</td><td>소공원 명명, 공원담당 주민 임명(2~3명)</td><td>~'25.12.31</td><td class="num">100</td></tr>
+        <tr><td>11</td><td>자드락길 각 구간 및 안내판 재정비</td><td>~'25.12.31</td><td class="num">30</td></tr>
+        <tr><td>12</td><td>수경분수 폐기·재활용 대안마련 주민의견 수렴 및 용역 발주</td><td>~'25.12.31</td><td class="num">10</td></tr>
+        <tr><td>13</td><td>수상아트홀 진출입 시설 도색 등 정비</td><td>~'25.6.30</td><td class="num">5</td></tr>
+        <tr class="total"><td colspan="3">소계 (Ⅱ)</td><td class="num">245</td></tr>
+      </tbody>
+    </table>
+    <div class="note note-green">예산의 약 82%(202백만원)가 신규투자가 아닌 인력 기반 책임관리 체계 구축에 배분됨</div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">행정사항</div>
+    <div class="block-title">인력확보</div>
+    <ul class="policy-list">
+      <li>자드락길 지키미: 코스별 인근 마을 거주자 중심 5명 위촉</li>
+      <li>소공원 담당주민: 2~3명 위촉(소공원별 책임관리 체계)</li>
+    </ul>
+    <div class="block-title">부서 협조</div>
+    <ul class="policy-list">
+      <li>위험수목 제거 등 안전관리를 위한 산림공원 부서 협조체계 구축</li>
+      <li>수상아트홀 활성화를 위한 관광투자유치팀 협업(비행장 점용허가, 운영자 제안평가)</li>
+    </ul>
+    <div class="block-title">유의사항</div>
+    <p>수경분수 존치·폐기 여부는 비용 대비 효과, 대관람차 연계 가능성을 함께 검토한 용역 결과를 토대로 결정하고, 결정 전 주민의견 수렴 절차를 선행한다.</p>
+  </div>
+
+</div>
+
+<!-- ══════════════════ TAB: PLAN 03 ══════════════════ -->
+<div id="tab-plan03" class="tab-panel">
+
+  <div class="panel-hero">
+    <div class="panel-series">청풍호 관광·레저시설 종합정비 Ⅲ</div>
+    <h2>번지점프장·모노레일 등<br>위탁운영시설 관리개선계획(안)</h2>
+    <p class="panel-sub">시설관리사업소 관광레저팀 — 계약만료가 임박한 번지점프장·모노레일의 재계약 협상 및 활성화방안 수립, 위탁·사용허가 17개소의 통합 계약관리 체계 마련. 부시장 주재 간부회의 토론사항(모노레일) 포함.</p>
+    <div class="meta-row">
+      <span class="meta-chip">총사업비 <strong>10백만원</strong></span>
+      <span class="meta-chip">세부사업 <strong>2건</strong></span>
+      <span class="meta-chip">계약시설 <strong>17개소</strong></span>
+      <span class="meta-chip">핵심 <strong>계약 협상</strong></span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">추진배경</div>
+    <p>청풍호 관광권역 내 위탁·사용허가 시설은 관리위탁 8개소, 사용허가 9개소 등 총 17개소로, 민간 사업자·마을회 등에 운영을 맡기는 구조다. 이 가운데 번지점프장과 청풍호 모노레일은 사업 규모와 계약만료 임박성에서 가장 시급한 정비·협상 대상이다.</p>
+    <p>번지점프장(2002년 조성, 현 수탁사 ㈜조이, 2021.3.1.~2026.2.28.)은 익스트림 시설 특성상 이용객이 점차 감소하는 추세이며, 핵심설비인 이젝션시트의 노후화로 수억원 규모의 교체비용이 예상되는 반면, 국내 최대 높이(62m)라는 기존 상징성도 이미 상실된 상태다.</p>
+    <p>청풍호 모노레일(2012.8. 개통, 누적 투자비 65억원 이상)은 위탁수익이 2021년 233.7백만원에서 2024년 144.9백만원으로 약 38% 감소했으며, 운영을 포기하기도 재투자하기도 어려운 구조에 놓여 있다. 특히 모노레일 상부정차장 부지를 케이블카(로프웨이) 사업자가 소유하고 있어 협상이 난항을 겪는 사안으로, 부시장 주재 간부회의에서 별도 토론된 현안이다.</p>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">추진방향</div>
+    <ul class="policy-list">
+      <li>번지점프장: 계약만료(2026.2.28.) 이전에 <strong>철거를 포함한 활성화방안 연구용역</strong>을 선행하고, 청풍랜드 리모델링과 연계하여 존치 여부 결정</li>
+      <li>모노레일: 요금 현실화를 전제로 <strong>시설투자비의 절반 이상을 케이블카 사업자가 분담</strong>하는 조건으로 재계약 협상 추진</li>
+      <li>기타 위탁·사용허가 시설: 17개소의 계약만료 일정을 통합 관리하여 공백 없는 재공고·재계약 체계 마련</li>
+      <li>농산물판매장 4개소: 시설 성격에 맞는 유통축산과로의 소관 이관을 검토하여 전문성 있는 운영지원 체계 마련</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">세부 추진내용</div>
+
+    <div class="block-title">□ 번지점프장 [위탁시설]</div>
+    <p style="font-size:12px;margin-bottom:0.5rem;">주요시설: 번지점프대, 자이언트스윙, 이젝션시트, 짚라인, 매점, 사무실, 번지점프 착륙 풀장, 인접공원 등</p>
+    <p style="font-size:12px;margin-bottom:0.8rem;">운영현황: ㈜조이 박동걸, 2021.3.1.~2026.2.28., 연간 82,069,500원(VAT포함)</p>
+    <table class="compare-table">
+      <thead><tr><th style="width:48%">현황 및 문제점</th><th>개선대책(안)</th></tr></thead>
+      <tbody>
+        <tr><td>익스트림 시설로 이용객이 점차 감소하고 있으며, 초기 투자비용과 유지보수비용 대비 관광객 유발효과가 매우 적음</td><td>청풍랜드 건물 내외부 리모델링과 연계한 활성화방안 연구용역을 발주(철거 포함 검토) 후 존치 여부 결정</td></tr>
+        <tr><td>이젝션시트 등 핵심설비가 노후되어 교체 시 수억원의 비용이 발생할 수 있으며, 여타 시설도 지속적인 보수정비 비용이 소요됨</td><td>용역 결과에 따라 부분 교체·전면 철거 여부를 결정</td></tr>
+        <tr><td>국내 최대 높이(62m)라는 상징성이 상실되었고, 매점·사무실·화장실 노후로 관광지 이미지가 저하되고 있음</td><td>활성화방안 용역 시 안전관리 기준 및 이미지 개선 방안을 함께 검토</td></tr>
+      </tbody>
+    </table>
+    <div class="note note-amber">※ 번지점프용 엘리베이터는 안전진단 제외 대상(법외시설)으로, 활성화방안 용역 시 별도의 안전관리 기준 검토가 필요함.</div>
+
+    <div class="block-title">□ 청풍호 모노레일 [위탁시설] — 부시장 주재 간부회의 토론사항</div>
+    <p style="font-size:12px;margin-bottom:0.5rem;">주요시설: 승용대차 12대(전기식), 모노레일(전기 2.91km, 기계 1.5km), 승강장, 매표소, 주차장, 특산물판매장 등</p>
+    <p style="font-size:12px;margin-bottom:0.8rem;">운영현황: 청풍로프웨이㈜, 2024.2.19.~2025.12.31., 위탁수익 연간 144,939,550원 (2021년 233,715,000원 대비 약 38% 감소)</p>
+    <table class="compare-table">
+      <thead><tr><th style="width:48%">현황 및 문제점</th><th>개선대책(안)</th></tr></thead>
+      <tbody>
+        <tr><td>운영을 포기하기도 재투자하기도 어려운 상황이며, 모노레일 상부정차장 부지를 로프웨이(케이블카) 측이 소유하고 있어 협상이 난항을 겪고 있음. 로프웨이 측은 요금 인상과 지속적인 시설투자를 요구 중이며, 현재까지 조성비·교체정비비 등 65억원 이상이 투입된 사업으로 운영 중단 시 인근 주민들의 집단민원이 우려됨</td><td>케이블카 조성 당시 시의 노력·협조 및 주민동의 과정을 재확인하며 케이블카 측과 지속적으로 협상하고, 일부 요금 현실화(케이블카 대비)를 조건으로 시설투자 비용의 절반 이상을 케이블카 측이 부담하도록 강조한 뒤 재계약을 추진</td></tr>
+      </tbody>
+    </table>
+
+    <div class="block-title">□ 기타 위탁·사용허가 시설</div>
+    <p>산악체험장, 청풍호카약카누장, 능강솟대문화공간, 금수산힐링체험센터, 청풍전통문화체험장 등 관리위탁 5개소와 청풍호오토캠핑장, 농산물판매장 4개소, 옥순봉쉼터, 청풍호유람선 등 사용허가 9개소는 대체로 정상 운영되고 있으나, 계약기간이 시설별로 분산되어 있어 통합된 일정관리 없이는 만료 직전에야 재공고 여부를 검토하게 되는 구조적 한계가 있다.</p>
+
+    <div class="block-title">□ 농산물판매장 소관 이관 검토</div>
+    <p>도곡리·상천리·억수·물태리 4개 농산물판매장은 연간 사용료 합산 약 1,290만원(12,889,820원) 수준의 소규모 시설이나, 운영 마을회에 실질적으로 필요한 것은 시설 사용허가 행정이 아니라 품질관리·판로개척·직거래 마케팅 등 유통 전문성이다.</p>
+    <div class="note note-green">유통축산과는 농산물 유통·로컬푸드·직거래장터를 전담하는 부서로, 운영 마을회에 대한 실질적인 유통·마케팅 지원이 가능함. 이관 이후에도 4개소 모두 청풍호 관광동선 내에 위치하므로, 관광객 동선 안내·홍보물 제작 등은 관광레저팀과의 협조 체계를 유지할 필요.</div>
+    <div class="note note-amber">※ 이관 추진 시 사용허가 행정(허가권자 변경, 기존 계약 승계 여부)에 대해 회계·법무 부서와 사전 협의가 선행되어야 함.</div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">추진일정 및 소요예산</div>
+    <table class="budget-table">
+      <thead><tr><th style="width:3rem">No.</th><th>세부사업</th><th>추진일정</th><th class="num">소요액(백만)</th></tr></thead>
+      <tbody>
+        <tr><td>14</td><td>번지점프장 폐지 또는 대안마련 활성화방안 주민의견 수렴 및 용역 발주</td><td>~'25.12.31</td><td class="num">10</td></tr>
+        <tr><td>15</td><td>모노레일 재계약 및 일부 시설투자</td><td>~'25.12.31</td><td class="num">0①</td></tr>
+        <tr class="total"><td colspan="3">소계 (Ⅲ)</td><td class="num">10</td></tr>
+      </tbody>
+    </table>
+    <div class="note note-amber">※ ① 모노레일 시설투자 분담분은 케이블카 측과의 협상 결과에 따라 최종 확정 필요 — 협상 진행 전까지는 미확정(0)으로 표기.</div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">위탁·사용허가 시설 계약현황 (붙임)</div>
+
+    <p style="font-size:12px;color:var(--muted);margin-bottom:0.8rem;font-weight:500;">▸ 관리위탁 (8개소)</p>
+    <table class="status-table">
+      <thead><tr><th>시설명</th><th>수탁자(대표자)</th><th>계약기간</th><th>연간 수탁료</th></tr></thead>
+      <tbody>
+        <tr><td>청풍호 관광모노레일</td><td>청풍로프웨이㈜ 오영록</td><td>2024.02.19.~2025.12.31.</td><td>144,939,550원</td></tr>
+        <tr><td>청풍호 수상비행장</td><td>—</td><td>2021.12.19. 협약만료해지</td><td>(미운영)</td></tr>
+        <tr><td>산악체험장</td><td>(사)대한서바이벌게임협회 양대환</td><td>2024.03.05.~2027.03.04.</td><td>30,500,000원</td></tr>
+        <tr><td>청풍호 카약·카누장</td><td>수산나드리영농조합법인 박재철</td><td>2021.01.01.~2025.12.31.</td><td>8,486,480원</td></tr>
+        <tr><td>능강솟대문화공간</td><td>윤영호</td><td>2022.01.01.~2024.12.31.</td><td>21,000천원+홍보물비(무상위탁)</td></tr>
+        <tr><td>금수산 힐링체험센터</td><td>화홍산업㈜ 김병찬</td><td>2024.08.01.~2027.07.31.</td><td>17,715,000원</td></tr>
+        <tr><td>청풍 전통문화체험장</td><td>본정초콜릿㈜ 이종태</td><td>2022.06.02.~2027.06.01.</td><td>14,035,100원</td></tr>
+        <tr><td>번지점프장(하강체험시설)</td><td>㈜조이 박동걸</td><td>2021.03.01.~2026.02.28.</td><td>82,069,500원(VAT포함)</td></tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:12px;color:var(--muted);margin-top:1.5rem;margin-bottom:0.8rem;font-weight:500;">▸ 사용허가 (9개소)</p>
+    <table class="status-table">
+      <thead><tr><th>시설명</th><th>사용자(대표자)</th><th>계약기간</th><th>사용료</th></tr></thead>
+      <tbody>
+        <tr><td>청풍호 오토캠핑장</td><td>무암협동조합 양대환</td><td>2020.05.26.~2025.05.25.</td><td>17,477,800원</td></tr>
+        <tr><td>(구)수상비행장 클럽하우스</td><td>박세란</td><td>2020.12.14.~2025.12.13.</td><td>8,548,680원</td></tr>
+        <tr><td>도곡리 농산물판매장 ★</td><td>도곡리마을회 성기조</td><td>2024.03.01.~2026.02.28.</td><td>1,107,480원</td></tr>
+        <tr><td>상천리 농산물판매장 ★</td><td>상천리마을회</td><td>2024.01.01.~2025.12.31.</td><td>4,622,140원</td></tr>
+        <tr><td>억수 농산물판매장 ★</td><td>월악산국립공원사무소</td><td>2022.01.01.~2024.12.31.</td><td>7,059,250원(대부료)</td></tr>
+        <tr><td>옥순봉 쉼터</td><td>이혁재</td><td>2023.03.25.~2026.03.24.</td><td>무상(도로기부채납)</td></tr>
+      </tbody>
+    </table>
+    <div class="note" style="margin-top:0.8rem;">★ 유통축산과 이관 검토 대상 4개소(말미마을 농산물판매장 포함) / ※ 본 현황은 2024.7월 작성 당시 기준이며, 상당수 시설이 이미 계약만료 시점을 경과하였으므로 현행화 점검이 선행되어야 함.</div>
+  </div>
+
+  <div class="section">
+    <div class="sec-label">행정사항</div>
+    <div class="block-title">법적 근거 — 사용수익허가와 민간위탁의 구분</div>
+    <ul class="policy-list">
+      <li><strong>사용수익허가</strong>: 허가를 받은 자가 수익을 낼 것을 기대하여 행정재산 사용료를 납부하고 수익활동을 수행하는 것(「공유재산 및 물품관리법」) — 민간이 사적재를 공급</li>
+      <li><strong>민간위탁</strong>: 법률에 규정된 행정기관 사무의 일부를 법인·단체 또는 개인에게 맡겨 그 명의와 책임 아래 행사하도록 하는 것(「행정권한의 위임 및 위탁에 관한 규정」 제2조제3호) — 공공서비스를 공급</li>
+    </ul>
+    <div class="block-title">위수탁 계약 만료 일정 관리</div>
+    <ul class="policy-list">
+      <li>번지점프장 2026.2.28. — 활성화방안 용역 결과에 따라 재공고 또는 폐지</li>
+      <li>청풍호 모노레일 2025.12.31. — 케이블카 측과의 협상 결과에 따라 재계약</li>
+      <li>청풍호 카약카누장 2025.12.31. — 사전 재공고 절차 착수 필요</li>
+    </ul>
+    <div class="block-title">유의사항</div>
+    <p>운영 중단을 결정할 경우 인근 주민의 집단민원 가능성을 사전에 검토하고 의견수렴 절차를 선행. 부시장 주재 간부회의 토론사항(모노레일)에 대한 후속 협상 진행상황을 정기 보고한다.</p>
+  </div>
+
+</div>
+
+<!-- 관련 링크 (공통) -->
+<div class="section" style="padding-top:1.5rem;padding-bottom:1.5rem;border-top:1px solid var(--border);">
+  <div class="sec-label">Related</div>
+  <div class="related-links">
+    <a href="/research.html" class="related-link">🔬 연구 포트폴리오</a>
+    <a href="/jecheon_9th_policy_whitepaper.html" class="related-link">📋 민선9기 공약백서</a>
+    <a href="/column.html" class="related-link">💬 칼럼</a>
+    <a href="/about.html" class="related-link">👤 소개</a>
+  </div>
+</div>
+
+<footer>제천시 시설관리사업소 관광레저팀 · 청풍호 관광·레저시설 종합정비계획(안) · 2024.07</footer>
+
+<button id="theme-toggle" onclick="toggleTheme()">&#9790; 다크</button>
+
+<script>
+// 테마 초기화
+(function(){
+  var t=localStorage.getItem('theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn)btn.textContent=t==='beige'?'☾ 다크':'☀ 라이트';
+})();
+
+// 탭 전환
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(function(p){p.classList.remove('active');});
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+  document.getElementById('tab-'+id).classList.add('active');
+  if(btn) btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>

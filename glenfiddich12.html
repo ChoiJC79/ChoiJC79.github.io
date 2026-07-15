@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>글렌피딕 12년산 — 완전 가이드</title>
+<meta name="description" content="세계에서 가장 많이 팔리는 싱글 몰트. 배·사과 과일향과 부드러운 오크 스페이사이드 위스키의 교과서.">
+<meta property="og:title" content="글렌피딕 12년산 완전 가이드 | 최승환">
+<meta property="og:description" content="세계에서 가장 많이 팔리는 싱글 몰트. 배·사과 과일향과 부드러운 오크 스페이사이드 위스키의 교과서.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://choijc79.github.io/glenfiddich12.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<meta name="twitter:card" content="summary">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+KR:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #F4F0E8;
+  --surface: #ECE8DE;
+  --border:  #D4CEBC;
+  --text:    #1A1410;
+  --ink:     #2A2018;
+  --muted:   #7A6A56;
+  --accent:  #E07828;
+  --red:     #D96820;
+  --light:   #FDFAF4;
+  --amber:   #E07828;
+  --green:   #5A7A3A;
+  --lake:    #E07828;
+  --purple:  #7A4AB0;
+}
+[data-theme="dark"] {
+  --bg:      #0d1117;
+  --surface: #161b22;
+  --border:  #2c3240;
+  --text:    #E8E0D0;
+  --ink:     #F0E8D8;
+  --muted:   #8b8070;
+  --accent:  #F08840;
+  --red:     #E07830;
+  --light:   #161b22;
+  --amber:   #F08840;
+  --green:   #3fb950;
+  --lake:    #F08840;
+  --purple:  #bc8cff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--deep);color:var(--cream);font-family:"Noto Serif KR",serif;font-weight:300;line-height:1.8;overflow-x:hidden;}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:radial-gradient(ellipse 80% 60% at 50% 40%, #2A3A0D 0%, #131B06 60%, #080D03 100%);}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(201,168,76,0.08) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(139,74,14,0.12) 0%,transparent 50%);pointer-events:none;}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:1000;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:150px 150px;}
+.hero-badge{font-family:"Cormorant Garamond",serif;font-size:0.8rem;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:2rem;opacity:0;animation:fadeUp 1s 0.3s ease forwards;}
+.hero-title{font-family:"Cormorant Garamond",serif;font-size:clamp(3.5rem,8vw,7rem);font-weight:300;line-height:1.05;letter-spacing:-0.01em;color:var(--gold-light);opacity:0;animation:fadeUp 1s 0.5s ease forwards;}
+.hero-title em{font-style:italic;color:var(--gold);}
+.hero-sub{margin-top:1.5rem;font-family:"Cormorant Garamond",serif;font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;font-style:italic;color:rgba(232,201,122,0.6);letter-spacing:0.05em;opacity:0;animation:fadeUp 1s 0.7s ease forwards;}
+.hero-divider{width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:2.5rem auto;opacity:0;animation:fadeIn 1s 0.9s ease forwards;}
+.hero-desc{max-width:520px;font-size:0.9rem;color:rgba(245,232,192,0.65);letter-spacing:0.02em;opacity:0;animation:fadeUp 1s 1.1s ease forwards;}
+.scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;opacity:0;animation:fadeIn 1s 1.5s ease forwards;}
+.scroll-hint span{font-family:"Cormorant Garamond",serif;font-size:0.7rem;letter-spacing:0.3em;color:rgba(201,168,76,0.5);text-transform:uppercase;}
+.scroll-line{width:1px;height:50px;background:linear-gradient(180deg,var(--gold) 0%,transparent 100%);animation:scrollPulse 2s ease-in-out infinite;}
+.section{max-width:860px;margin:0 auto;padding:6rem 2rem;}
+.section-label{font-family:"Cormorant Garamond",serif;font-size:0.75rem;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;}
+.section-title{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:400;color:var(--gold-light);line-height:1.2;margin-bottom:2.5rem;}
+.section-title em{font-style:italic;color:var(--gold);}
+.divider-thin{width:60px;height:1px;background:var(--gold);margin-bottom:2.5rem;opacity:0.5;}
+p{color:rgba(245,232,192,0.82);font-size:0.95rem;line-height:1.9;margin-bottom:1.4rem;}
+.sep{width:100%;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,168,76,0.2) 20%,rgba(201,168,76,0.4) 50%,rgba(201,168,76,0.2) 80%,transparent 100%);margin:0;}
+.timeline{position:relative;padding-left:2rem;margin-top:2rem;}
+.timeline::before{content:"";position:absolute;left:0;top:0.5rem;bottom:0.5rem;width:1px;background:linear-gradient(180deg,transparent,var(--gold) 10%,var(--gold) 90%,transparent);opacity:0.4;}
+.tl-item{position:relative;margin-bottom:2.5rem;}
+.tl-item::before{content:"";position:absolute;left:-2.3rem;top:0.6rem;width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px rgba(201,168,76,0.6);}
+.tl-year{font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-weight:600;color:var(--gold);margin-bottom:0.3rem;}
+.tl-text{color:rgba(245,232,192,0.78);font-size:0.92rem;margin-bottom:0;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:2rem;}
+.card{background:linear-gradient(135deg,rgba(45,30,10,0.9) 0%,rgba(26,18,8,0.95) 100%);border:1px solid rgba(201,168,76,0.2);border-radius:2px;padding:2rem 1.8rem;transition:border-color 0.3s,transform 0.3s;}
+.card:hover{border-color:var(--gold);transform:translateY(-4px);}
+.card-type{font-size:0.72rem;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem;}
+.card-name{font-family:"Cormorant Garamond",serif;font-size:1.6rem;color:var(--gold-light);line-height:1.2;margin-bottom:0.8rem;}
+.card-spec{display:flex;gap:1.5rem;margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid rgba(201,168,76,0.15);}
+.spec-item{display:flex;flex-direction:column;gap:0.2rem;}
+.spec-label{font-size:0.65rem;letter-spacing:0.15em;color:rgba(201,168,76,0.5);text-transform:uppercase;}
+.spec-val{font-family:"Cormorant Garamond",serif;font-size:1rem;color:var(--gold-light);}
+.step-list{margin-top:2rem;counter-reset:steps;}
+.step{counter-increment:steps;display:grid;grid-template-columns:50px 1fr;gap:1.5rem;margin-bottom:2rem;align-items:start;}
+.step::before{content:counter(steps,decimal-leading-zero);font-family:"Cormorant Garamond",serif;font-size:1.8rem;color:rgba(201,168,76,0.3);line-height:1;text-align:right;}
+.step-title{font-family:"Cormorant Garamond",serif;font-size:1.2rem;color:var(--gold-light);margin-bottom:0.4rem;}
+.step-body{font-size:0.88rem;color:rgba(245,232,192,0.72);margin-bottom:0;}
+.tasting-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;margin:2.5rem 0;}
+.taste-card{background:rgba(45,30,10,0.5);border:1px solid rgba(201,168,76,0.15);padding:2rem;text-align:center;}
+.taste-icon{font-size:2rem;display:block;margin-bottom:1rem;}
+.taste-label{font-family:"Cormorant Garamond",serif;font-size:1.1rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.8rem;}
+.taste-notes{font-size:0.88rem;color:rgba(245,232,192,0.75);line-height:1.8;}
+.blockquote{border-left:2px solid var(--gold);padding:1.5rem 2rem;margin:3rem 0;background:rgba(201,168,76,0.05);}
+.blockquote p{font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-style:italic;color:rgba(232,201,122,0.8);margin-bottom:0.8rem;}
+.blockquote cite{font-size:0.78rem;color:rgba(201,168,76,0.5);letter-spacing:0.2em;text-transform:uppercase;}
+.spec-box{background:rgba(45,30,10,0.6);border:1px solid rgba(201,168,76,0.2);padding:2rem;margin-top:2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1.5rem;}
+.spec-box-item{text-align:center;}
+.spec-box-label{font-size:0.65rem;letter-spacing:0.2em;color:rgba(201,168,76,0.5);text-transform:uppercase;margin-bottom:0.4rem;}
+.spec-box-val{font-family:"Cormorant Garamond",serif;font-size:1.5rem;color:var(--gold-light);}
+.pair-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-top:2rem;}
+.pair-item{padding:1.2rem;background:rgba(45,30,10,0.4);border:1px solid rgba(201,168,76,0.12);text-align:center;}
+.pair-emoji{font-size:1.8rem;display:block;margin-bottom:0.6rem;}
+.pair-name{font-family:"Cormorant Garamond",serif;font-size:1rem;color:var(--gold-light);margin-bottom:0.3rem;}
+.pair-note{font-size:0.78rem;color:rgba(245,232,192,0.5);}
+.bg-alt{background:rgba(25,15,5,0.8);}
+.bg-section{padding:6rem 2rem;}
+.nav-bar{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(26,18,8,0.92);border-bottom:1px solid rgba(201,168,76,0.12);padding:0 2rem;height:52px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:"Cormorant Garamond",serif;font-size:1rem;color:var(--gold);letter-spacing:0.1em;}
+.nav-links{display:flex;gap:1.5rem;font-size:11px;color:rgba(201,168,76,0.5);letter-spacing:0.1em;}
+.nav-links a{color:rgba(201,168,76,0.5);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+footer{text-align:center;padding:4rem 2rem;border-top:1px solid rgba(201,168,76,0.1);}
+footer p{font-family:"Cormorant Garamond",serif;font-size:0.8rem;color:rgba(201,168,76,0.3);letter-spacing:0.2em;margin-bottom:0;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes scrollPulse{0%,100%{opacity:0.3;}50%{opacity:1;}}
+@media(max-width:600px){.hero-title{font-size:3rem;}.cards{grid-template-columns:1fr;}.tasting-grid{grid-template-columns:1fr;}.spec-box{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<nav class="nav-bar">
+  <div class="nav-logo">글렌피딕 12년산</div>
+  <div class="nav-links">
+    <a href="/whisky.html">← 위스키 목록</a>
+    <a href="/">홈</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">Speyside, Scotland · Single Malt Scotch Whisky</div>
+  <h1 class="hero-title">글렌피딕<br><em>12년산</em></h1>
+  <p class="hero-sub">The World's Most Awarded Single Malt</p>
+  <div class="hero-divider"></div>
+  <p class="hero-desc">세계에서 가장 많이 팔리는 싱글 몰트. 스페이사이드의 순수한 풍미를<br>처음 만나기에 이보다 좋은 시작점은 없습니다.</p>
+  <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<div class="sep"></div>
+<section class="bg-alt">
+  <div class="section">
+    <div class="section-label">Overview · 개요</div>
+    <h2 class="section-title">Glenfiddich 12<br><em>한 병에 담긴 이야기</em></h2>
+    <div class="divider-thin"></div>
+    <p>글렌피딕(Glenfiddich)은 '사슴의 골짜기(Valley of the Deer)'를 뜻하는 게일어로, 스코틀랜드 스페이사이드 더프타운(Dufftown)에 자리한 증류소입니다. 1887년 윌리엄 그랜트(William Grant)가 설립한 이후 지금도 그랜트 가문이 독립 소유·운영하는 가족 기업으로, 세계에서 가장 많이 팔리는 싱글 몰트 위스키라는 기록을 수십 년째 유지하고 있습니다.</p>
+<p>12년산은 글렌피딕의 입문 라인이자 브랜드의 얼굴입니다. 아메리칸 오크 버번 캐스크와 올로로소 셰리 오크 캐스크에서 각각 숙성한 원액을 블렌딩하여, 배와 사과를 중심으로 한 과일향과 부드러운 오크 풍미가 조화를 이룹니다. 싱글 몰트 위스키를 처음 접하는 분들에게 세계적으로 가장 많이 권장되는 표준이기도 합니다.</p>
+    <div class="spec-box">
+      <div class="spec-box-item"><div class="spec-box-label">숙성 연수</div><div class="spec-box-val">12년</div></div>
+      <div class="spec-box-item"><div class="spec-box-label">도수</div><div class="spec-box-val">40%</div></div>
+      <div class="spec-box-item"><div class="spec-box-label">원산지</div><div class="spec-box-val">Speyside</div></div>
+      <div class="spec-box-item"><div class="spec-box-label">스타일</div><div class="spec-box-val">Single Malt</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+<section>
+  <div class="section">
+    <div class="section-label">History · 역사</div>
+    <h2 class="section-title">Glenfiddich 12의<br><em>역사</em></h2>
+    <div class="divider-thin"></div>
+    <div class="timeline"><div class="tl-item"><div class="tl-year">1887년</div><div class="tl-text">윌리엄 그랜트가 가족과 함께 직접 증류소를 건설했습니다. 당시 경쟁사 글렌리벳(Glenlivet)에서 20년간 일한 그랜트는 자신만의 위스키를 만들겠다는 꿈을 품고, 크리스마스 이브에 첫 번째 증류를 성공시킵니다.</div></div>
+<div class="tl-item"><div class="tl-year">1963년</div><div class="tl-text">싱글 몰트라는 개념이 시장에 거의 없던 시절, 글렌피딕은 과감하게 유럽과 미국에 싱글 몰트를 수출하기 시작했습니다. 이 결정이 오늘날 글로벌 싱글 몰트 문화의 씨앗이 됩니다.</div></div>
+<div class="tl-item"><div class="tl-year">1974년</div><div class="tl-text">삼각형 병(Triangular Bottle)을 도입합니다. 세 면은 물·보리·구리 포트 스틸을 상징하며, 이후 글렌피딕의 상징적인 디자인 아이콘이 됩니다.</div></div>
+<div class="tl-item"><div class="tl-year">현재</div><div class="tl-text">세계 180개국 이상에 수출되며, 글로벌 싱글 몰트 시장 점유율 1위를 유지하고 있습니다. 더프타운 증류소는 연간 방문객 10만 명 이상이 찾는 위스키 투어의 명소가 되었습니다.</div></div></div>
+  </div>
+</section>
+
+<div class="sep"></div>
+<section class="bg-alt">
+  <div class="section">
+    <div class="section-label">Product Line · 제품 라인업</div>
+    <h2 class="section-title">Glenfiddich 12<br><em>주요 제품군</em></h2>
+    <div class="divider-thin"></div>
+    <div class="cards"><div class="card">
+  <div class="card-type">주력</div>
+  <div class="card-name">12년 오리지널</div>
+  <p style="font-size:0.83rem;color:rgba(245,232,192,0.65);margin-bottom:0">아메리칸 오크 + 셰리 오크</p>
+  <div class="card-spec">
+    <div class="spec-item"><span class="spec-label">도수</span><span class="spec-val">40%</span></div>
+    <div class="spec-item"><span class="spec-label">용량</span><span class="spec-val">700ml</span></div>
+    <div class="spec-item"><span class="spec-label">원산지</span><span class="spec-val">Speyside</span></div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-type">상위</div>
+  <div class="card-name">18년 스몰 배치 리저브</div>
+  <p style="font-size:0.83rem;color:rgba(245,232,192,0.65);margin-bottom:0">버번 + 셰리 오크 세 가지 배치</p>
+  <div class="card-spec">
+    <div class="spec-item"><span class="spec-label">도수</span><span class="spec-val">40%</span></div>
+    <div class="spec-item"><span class="spec-label">용량</span><span class="spec-val">700ml</span></div>
+    <div class="spec-item"><span class="spec-label">원산지</span><span class="spec-val">Speyside</span></div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-type">프리미엄</div>
+  <div class="card-name">21년 그랜 리저바</div>
+  <p style="font-size:0.83rem;color:rgba(245,232,192,0.65);margin-bottom:0">럼 캐스크 피니시</p>
+  <div class="card-spec">
+    <div class="spec-item"><span class="spec-label">도수</span><span class="spec-val">40%</span></div>
+    <div class="spec-item"><span class="spec-label">용량</span><span class="spec-val">700ml</span></div>
+    <div class="spec-item"><span class="spec-label">원산지</span><span class="spec-val">Speyside</span></div>
+  </div>
+</div></div>
+  </div>
+</section>
+
+<div class="sep"></div>
+<section>
+  <div class="section">
+    <div class="section-label">Production · 제조 방법</div>
+    <h2 class="section-title">한 방울의 위스키가<br><em>태어나기까지</em></h2>
+    <div class="divider-thin"></div>
+    <div class="step-list"><div class="step"><div><div class="step-title">로컬 보리와 리벳 물</div><p class="step-body">피트를 최소화한 스코틀랜드산 대맥 보리와, 증류소 바로 옆을 흐르는 리벳(Robbie Dhu)의 청정 연수를 사용합니다.</p></div></div>
+<div class="step"><div><div class="step-title">당화와 발효</div><p class="step-body">전통 오픈 탑 더글라스 퍼(Douglas Fir) 발효조를 사용해 풍부한 에스터 생성을 유도합니다.</p></div></div>
+<div class="step"><div><div class="step-title">포트 스틸 증류</div><p class="step-body">독특한 배 모양(pear-shaped)의 구리 포트 스틸이 특유의 가볍고 과일향 풍부한 스피릿을 만들어냅니다.</p></div></div>
+<div class="step"><div><div class="step-title">캐스크 숙성</div><p class="step-body">아메리칸 오크 버번 캐스크와 유러피안 올로로소 셰리 오크 캐스크 두 종류에서 12년 숙성 후 배팅합니다.</p></div></div>
+<div class="step"><div><div class="step-title">마스터 블렌딩</div><p class="step-body">마스터 몰트맨이 일관된 프로파일 유지를 위해 각 배치를 수작업으로 선별·배팅합니다.</p></div></div></div>
+  </div>
+</section>
+
+<div class="sep"></div>
+<section class="bg-alt">
+  <div class="section">
+    <div class="section-label">Tasting Notes · 테이스팅 노트</div>
+    <h2 class="section-title">감각으로 만나는<br><em>Glenfiddich 12</em></h2>
+    <div class="divider-thin"></div>
+    <div class="tasting-grid">
+      <div class="taste-card"><span class="taste-icon">👃</span><div class="taste-label">Nose · 향</div><div class="taste-notes">신선한 배와 사과의 달콤한 과일향이 선명합니다. 가볍게 떠오르는 꿀, 바닐라, 크림의 부드러운 뉘앙스.</div></div>
+      <div class="taste-card"><span class="taste-icon">👅</span><div class="taste-label">Palate · 팔레트</div><div class="taste-notes">과일향이 그대로 이어지며, 오크의 순한 스파이스와 시나몬의 힌트. 바디감은 미디엄 라이트로 접근하기 쉬운 프로파일.</div></div>
+      <div class="taste-card"><span class="taste-icon">✨</span><div class="taste-label">Finish · 피니시</div><div class="taste-notes">적당히 길고 깨끗한 마무리. 달콤한 과일과 오크 향이 부드럽게 사라집니다.</div></div>
+    </div>
+    <div class="blockquote"><p>"The most accessible and balanced single malt. A benchmark for the category."</p><cite>— Whisky Advocate, 91점</cite></div>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold-light);margin-top:3.5rem;margin-bottom:1rem;">푸드 페어링</h3>
+    <div class="divider-thin"></div>
+    <div class="pair-grid"><div class="pair-item"><span class="pair-emoji">🍏</span><div class="pair-name">사과·배</div><div class="pair-note">신선 과일과 배음 공명</div></div>
+<div class="pair-item"><span class="pair-emoji">🧀</span><div class="pair-name">브리 치즈</div><div class="pair-note">크리미함이 배향과 조화</div></div>
+<div class="pair-item"><span class="pair-emoji">🍋</span><div class="pair-name">레몬 케이크</div><div class="pair-note">시트러스 밝기 강조</div></div>
+<div class="pair-item"><span class="pair-emoji">🐟</span><div class="pair-name">연어 카르파초</div><div class="pair-note">가벼운 해산물과 균형</div></div>
+<div class="pair-item"><span class="pair-emoji">🍯</span><div class="pair-name">꿀 마카롱</div><div class="pair-note">바닐라-꿀 노트 배가</div></div>
+<div class="pair-item"><span class="pair-emoji">🥜</span><div class="pair-name">아몬드·헤이즐넛</div><div class="pair-note">견과류 뒷맛 연장</div></div></div>
+  </div>
+</section>
+
+<footer><p>© 2026 최승환 · choijc79.github.io · 위스키 가이드</p></footer>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'light';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'☀ 라이트':'☾ 다크';
+})();
+function toggleTheme(){
+  var html=document.documentElement;
+  var now=html.getAttribute('data-theme');
+  var next=now==='dark'?'light':'dark';
+  html.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'☀ 라이트':'☾ 다크';
+}
+</script>
+</body>
+</html>

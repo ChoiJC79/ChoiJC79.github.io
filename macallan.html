@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>맥켈란 15년산 — 완전 가이드</title>
+<meta name="description" content="셰리 오크 캐스크 15년. 황금빛 호박색, 건과일과 스파이스, 부드럽고 긴 여운의 맥켈란 완전 가이드.">
+<meta property="og:title" content="맥켈란 15년산 완전 가이드 | 최승환">
+<meta property="og:description" content="셰리 오크 캐스크 15년. 황금빛 호박색, 건과일과 스파이스, 부드럽고 긴 여운의 맥켈란 완전 가이드.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://choijc79.github.io/macallan.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="맥켈란 15년산 완전 가이드 | 최승환">
+<meta name="twitter:description" content="셰리 오크 캐스크 15년. 황금빛 호박색, 건과일과 스파이스, 부드럽고 긴 여운의 맥켈란 완전 가이드.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+KR:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+  --bg:      #F4F0E8;
+  --surface: #ECE8DE;
+  --border:  #D4CEBC;
+  --text:    #1A1410;
+  --ink:     #2A2018;
+  --muted:   #7A6A56;
+  --accent:  #E07828;
+  --red:     #D96820;
+  --light:   #FDFAF4;
+  --amber:   #E07828;
+  --green:   #5A7A3A;
+  --lake:    #E07828;
+  --purple:  #7A4AB0;
+}
+[data-theme="dark"] {
+  --bg:      #0d1117;
+  --surface: #161b22;
+  --border:  #2c3240;
+  --text:    #E8E0D0;
+  --ink:     #F0E8D8;
+  --muted:   #8b8070;
+  --accent:  #F08840;
+  --red:     #E07830;
+  --light:   #161b22;
+  --amber:   #F08840;
+  --green:   #3fb950;
+  --lake:    #F08840;
+  --purple:  #bc8cff;
+}
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--deep);
+    color: var(--cream);
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 300;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, #3D1F05 0%, #1A0C02 60%, #0A0501 100%);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(201,168,76,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(139,74,14,0.12) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .grain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 150px 150px;
+  }
+
+  .hero-badge {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 1s 0.3s ease forwards;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--gold-light);
+    opacity: 0;
+    animation: fadeUp 1s 0.5s ease forwards;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    margin-top: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(232,201,122,0.6);
+    letter-spacing: 0.05em;
+    opacity: 0;
+    animation: fadeUp 1s 0.7s ease forwards;
+  }
+
+  .hero-divider {
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 2.5rem auto;
+    opacity: 0;
+    animation: fadeIn 1s 0.9s ease forwards;
+  }
+
+  .hero-desc {
+    max-width: 520px;
+    font-size: 0.9rem;
+    color: rgba(245,232,192,0.65);
+    letter-spacing: 0.02em;
+    opacity: 0;
+    animation: fadeUp 1s 1.1s ease forwards;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    animation: fadeIn 1s 1.5s ease forwards;
+  }
+
+  .scroll-hint span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: rgba(201,168,76,0.5);
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(180deg, var(--gold) 0%, transparent 100%);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+
+  .section-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 400;
+    color: var(--gold-light);
+    line-height: 1.2;
+    margin-bottom: 2.5rem;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .divider-thin {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 2.5rem;
+    opacity: 0.5;
+  }
+
+  p {
+    color: rgba(245,232,192,0.82);
+    font-size: 0.95rem;
+    line-height: 1.9;
+    margin-bottom: 1.4rem;
+  }
+
+  /* ── SEPARATOR ── */
+  .sep {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.2) 20%, rgba(201,168,76,0.4) 50%, rgba(201,168,76,0.2) 80%, transparent 100%);
+    margin: 0;
+  }
+
+  /* ── HISTORY TIMELINE ── */
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+    margin-top: 2rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, var(--gold) 10%, var(--gold) 90%, transparent);
+    opacity: 0.4;
+  }
+
+  .tl-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+  }
+
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -2.3rem;
+    top: 0.6rem;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 8px rgba(201,168,76,0.6);
+  }
+
+  .tl-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+
+  .tl-text {
+    color: rgba(245,232,192,0.78);
+    font-size: 0.92rem;
+    margin-bottom: 0;
+  }
+
+  /* ── PRODUCT CARDS ── */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .card {
+    background: linear-gradient(135deg, rgba(45,30,10,0.9) 0%, rgba(26,18,8,0.95) 100%);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 2px;
+    padding: 2rem 1.8rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.6;
+  }
+
+  .card:hover {
+    border-color: rgba(201,168,76,0.5);
+    transform: translateY(-3px);
+  }
+
+  .card-type {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+
+  .card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--gold-light);
+    margin-bottom: 1.2rem;
+    line-height: 1.2;
+  }
+
+  .card-spec {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(201,168,76,0.15);
+    padding-top: 1rem;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+  }
+
+  .spec-item {
+    text-align: center;
+  }
+
+  .spec-label {
+    color: rgba(245,232,192,0.4);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .spec-val {
+    color: var(--gold-light);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+  }
+
+  /* ── TASTING NOTES ── */
+  .tasting-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  @media(max-width: 600px) {
+    .tasting-grid { grid-template-columns: 1fr; }
+    .cards { grid-template-columns: 1fr; }
+  }
+
+  .taste-card {
+    background: rgba(45,30,10,0.5);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 2px;
+    padding: 1.8rem 1.5rem;
+    text-align: center;
+  }
+
+  .taste-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .taste-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+
+  .taste-notes {
+    font-size: 0.88rem;
+    color: rgba(245,232,192,0.72);
+    line-height: 1.7;
+  }
+
+  /* ── HOW TO DRINK ── */
+  .drink-methods {
+    margin-top: 2rem;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .method {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    padding: 1.8rem;
+    background: rgba(45,30,10,0.4);
+    border-left: 2px solid var(--gold);
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .method-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: rgba(201,168,76,0.25);
+    line-height: 1;
+    text-align: center;
+  }
+
+  .method-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .method-en {
+    font-style: italic;
+    font-size: 0.85rem;
+    color: rgba(201,168,76,0.5);
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .method-desc {
+    font-size: 0.88rem;
+    color: rgba(245,232,192,0.72);
+    margin-bottom: 0;
+  }
+
+  /* ── PRICE TABLE ── */
+  .price-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    font-size: 0.88rem;
+  }
+
+  .price-table thead tr {
+    border-bottom: 1px solid rgba(201,168,76,0.4);
+  }
+
+  .price-table th {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    padding: 0.8rem 1rem;
+    text-align: left;
+    font-weight: 400;
+  }
+
+  .price-table td {
+    padding: 1rem 1rem;
+    color: rgba(245,232,192,0.78);
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+  }
+
+  .price-table tr:hover td {
+    background: rgba(201,168,76,0.05);
+  }
+
+  .highlight-row td {
+    color: var(--gold-light);
+  }
+
+  .price-note {
+    margin-top: 1.2rem;
+    font-size: 0.8rem;
+    color: rgba(245,232,192,0.4);
+    font-style: italic;
+  }
+
+  /* ── PRODUCTION ── */
+  .step-list {
+    margin-top: 2rem;
+    counter-reset: steps;
+  }
+
+  .step {
+    counter-increment: steps;
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    align-items: start;
+  }
+
+  .step::before {
+    content: counter(steps, decimal-leading-zero);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    color: rgba(201,168,76,0.3);
+    line-height: 1;
+    text-align: right;
+  }
+
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--gold-light);
+    margin-bottom: 0.4rem;
+  }
+
+  .step-body {
+    font-size: 0.88rem;
+    color: rgba(245,232,192,0.72);
+    margin-bottom: 0;
+  }
+
+  /* ── FOOD PAIRING ── */
+  .pair-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .pair-item {
+    padding: 1.2rem;
+    background: rgba(45,30,10,0.4);
+    border: 1px solid rgba(201,168,76,0.12);
+    text-align: center;
+  }
+
+  .pair-emoji { font-size: 1.8rem; display: block; margin-bottom: 0.6rem; }
+
+  .pair-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--gold-light);
+    margin-bottom: 0.3rem;
+  }
+
+  .pair-note {
+    font-size: 0.78rem;
+    color: rgba(245,232,192,0.5);
+  }
+
+  /* ── QUOTE ── */
+  .blockquote {
+    border-left: 2px solid var(--gold);
+    padding: 1.5rem 2rem;
+    margin: 3rem 0;
+    background: rgba(201,168,76,0.05);
+  }
+
+  .blockquote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: rgba(232,201,122,0.8);
+    margin-bottom: 0.8rem;
+  }
+
+  .blockquote cite {
+    font-size: 0.78rem;
+    color: rgba(201,168,76,0.5);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 4rem 2rem;
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+
+  footer p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.8rem;
+    color: rgba(201,168,76,0.3);
+    letter-spacing: 0.2em;
+    margin-bottom: 0;
+  }
+
+  /* ── BG SECTIONS ── */
+  .bg-alt {
+    background: rgba(25,15,5,0.8);
+  }
+
+  .bg-section {
+    padding: 6rem 2rem;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+</style>
+</head>
+<body>
+
+<nav style="position:sticky;top:0;z-index:500;background:rgba(26,18,8,0.95);border-bottom:1px solid rgba(201,168,76,0.12);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:50px;">
+  <a href="/" style="font-family:'Cormorant Garamond',serif;font-size:14px;color:rgba(201,168,76,0.7);letter-spacing:0.08em;text-decoration:none;">← choijc79.github.io</a>
+  <div style="display:flex;gap:1.5rem;font-size:12px;">
+    <a href="/column.html" style="color:rgba(201,168,76,0.5);text-decoration:none;letter-spacing:0.06em;">칼럼</a>
+    <a href="/memo.html" style="color:rgba(201,168,76,0.5);text-decoration:none;letter-spacing:0.06em;">정리노트</a>
+  </div>
+</nav>
+
+<div class="grain"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">The Macallan · Single Malt Scotch Whisky</div>
+  <h1 class="hero-title">맥켈란<br><em>15년산</em></h1>
+  <p class="hero-sub">The Complete Guide — 완전 가이드</p>
+  <div class="hero-divider"></div>
+  <p class="hero-desc">위스키 세계의 롤스로이스. 스코틀랜드 스페이사이드의 걸작,<br>맥켈란 15년산의 역사·제조·음용법·가격을 총망라합니다.</p>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<div class="sep"></div>
+<section class="bg-alt">
+  <div class="section">
+    <div class="section-label">Overview · 개요</div>
+    <h2 class="section-title">위스키계의<br><em>절대적 기준</em></h2>
+    <div class="divider-thin"></div>
+    <p>맥켈란(The Macallan)은 스코틀랜드 스페이사이드(Speyside) 지방에 위치한 싱글 몰트 스카치 위스키 증류소로, 고든 브라운 전 영국 총리가 '모든 싱글 몰트의 절대적 평가 기준'이라 칭한 브랜드입니다. 그중에서도 15년산은 오랜 숙성이 만들어내는 깊이와 복합적인 풍미가 조화를 이루는 대표적인 숙성 구간으로, 입문자와 전문가 모두에게 추천되는 라인업입니다.</p>
+    <p>현재 맥켈란 15년산의 주력 제품은 <strong>더블 캐스크(Double Cask)</strong>로, 아메리칸 오크와 유러피안 오크 두 가지 셰리 시즈닝 캐스크에서 최소 15년 이상 숙성됩니다. 과거에는 파인 오크(Fine Oak) 및 트리플 캐스크(Triple Cask) 라인도 존재했으나, 현재 공식 라인업의 중심은 더블 캐스크입니다.</p>
+  </div>
+</section>
+
+<!-- HISTORY -->
+<div class="sep"></div>
+<section>
+  <div class="section">
+    <div class="section-label">History · 역사</div>
+    <h2 class="section-title">1820년부터<br><em>이어진 전통</em></h2>
+    <div class="divider-thin"></div>
+    <p>맥켈란의 역사는 스코틀랜드 크레이겔라키(Craigellachie) 인근의 이스터 엘치스(Easter Elchies) 저택에서 시작됩니다. 이 저택은 300년 넘게 맥켈란의 정신적 본거지로 자리해 왔습니다.</p>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">1820년</div>
+        <div class="tl-text">농부이자 교사였던 알렉산더 리드(Alexander Reid)가 루이스 그랜트 경으로부터 이스터 엘치스 저택을 임대하고, 주변 농지에 보리를 심기 시작합니다. 농한기마다 잉여 곡물을 발효·증류하여 위스키를 생산했으며, 이것이 맥켈란의 기원입니다.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1824년</div>
+        <div class="tl-text">영국 정부가 위스키 면허세를 낮추는 소비세법(Excise Act)을 개정하자, 리드는 스코틀랜드 최초의 합법 증류소 중 하나로 맥켈란을 정식 등록합니다. 증류소명 '맥켈란'은 15세기 화재로 소실된 고대 교회 이름에서 유래했습니다.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1892년</div>
+        <div class="tl-text">로버트 켐프(Robert Kemp)가 증류소를 인수하고 대규모 확장에 착수합니다. 현대적 맥켈란의 생산 기반이 이 시기에 형성됩니다.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1980년대</div>
+        <div class="tl-text">블렌디드 위스키 시장이 침체하는 '위스키 호수(Whisky Loch)' 현상 속에서, 맥켈란은 오히려 싱글 몰트 시장에 선제적으로 집중하며 프리미엄 브랜드로의 입지를 굳힙니다. 셰리 오크 캐스크 숙성 철학을 브랜드 정체성으로 확립합니다.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2018년</div>
+        <div class="tl-text">140억 원 규모를 투자한 신 증류소가 완공됩니다. 36기의 구리 포트 스틸(Pot Still)을 갖추고 연간 1,500만 리터 생산 역량을 확보했으나, 소형 스틸 전통은 그대로 계승합니다.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">현재</div>
+        <div class="tl-text">맥켈란 에스테이트는 370에이커(약 150만㎡)에 달하며, 이 중 95에이커에서 '민스트럴(Minstrel)' 품종 보리를 자체 재배합니다. 1에이커의 보리밭이 연간 약 1,800병 분량의 위스키를 생산합니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT LINEUP -->
+<div class="sep"></div>
+<section class="bg-alt">
+  <div class="section">
+    <div class="section-label">Product Line · 제품 라인업</div>
+    <h2 class="section-title">맥켈란 15년산<br><em>세 가지 버전</em></h2>
+    <div class="divider-thin"></div>
+    <p>맥켈란 15년산은 숙성 캐스크의 조합에 따라 서로 다른 풍미 프로파일을 가진 여러 버전으로 출시되어 왔습니다.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="card-type">주력 현행 제품</div>
+        <div class="card-name">더블 캐스크<br>Double Cask</div>
+        <p style="font-size:0.83rem; color:rgba(245,232,192,0.65); margin-bottom:0">아메리칸 오크 + 유러피안 오크<br>두 종류의 셰리 시즈닝 캐스크 숙성.<br>바닐라와 시트러스 뉘앙스가 강점.</p>
+        <div class="card-spec">
+          <div class="spec-item">
+            <span class="spec-label">용량</span>
+            <span class="spec-val">700ml</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">도수</span>
+            <span class="spec-val">43%</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">원산지</span>
+            <span class="spec-val">Speyside</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-type">단종 · 빈티지 인기</div>
+        <div class="card-name">파인 오크<br>Fine Oak</div>
+        <p style="font-size:0.83rem; color:rgba(245,232,192,0.65); margin-bottom:0">아메리칸 버번 오크 + 유러피안/아메리칸 셰리 오크<br>세 가지 캐스크의 트리플 숙성.<br>가볍고 화사한 스타일.</p>
+        <div class="card-spec">
+          <div class="spec-item">
+            <span class="spec-label">용량</span>
+            <span class="spec-val">700ml</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">도수</span>
+            <span class="spec-val">43%</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">상태</span>
+            <span class="spec-val">단종</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-type">이전 세대 라인</div>
+        <div class="card-name">트리플 캐스크<br>Triple Cask</div>
+        <p style="font-size:0.83rem; color:rgba(245,232,192,0.65); margin-bottom:0">파인 오크 시리즈의 계승작.<br>셰리 오크 + 버번 아메리칸 오크 조합.<br>복합적 풍미가 파인 오크의 정점.</p>
+        <div class="card-spec">
+          <div class="spec-item">
+            <span class="spec-label">용량</span>
+            <span class="spec-val">700ml</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">도수</span>
+            <span class="spec-val">43%</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">상태</span>
+            <span class="spec-val">단종</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTION -->
+<div class="sep"></div>
+<section>
+  <div class="section">
+    <div class="section-label">Production · 제조 방법</div>
+    <h2 class="section-title">한 방울의 위스키가<br><em>태어나기까지</em></h2>
+    <div class="divider-thin"></div>
+    <p>맥켈란은 원료 선별부터 캐스크 관리까지 철저히 통제된 공정을 통해 위스키를 생산합니다. 특히 캐스크(오크통)에 대한 집착은 업계 최고 수준으로, 에스파냐에 자체 산림을 소유하고 원하는 품질의 오크를 직접 수급합니다.</p>
+
+    <div class="step-list">
+      <div class="step">
+        <div>
+          <div class="step-title">원료 — 보리와 물</div>
+          <p class="step-body">맥켈란 에스테이트에서 재배한 '민스트럴' 품종 보리를 주원료로 사용합니다. 스페이강(River Spey) 인근의 청정한 연수(軟水)를 사용하며, 이 물이 맥켈란 특유의 부드러운 맛의 기초가 됩니다.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div>
+          <div class="step-title">당화(Mashing)와 발효(Fermentation)</div>
+          <p class="step-body">보리를 발아·건조시킨 몰트를 분쇄하고 온수에 혼합하여 맥아즙(wort)을 추출합니다. 이후 효모를 첨가하여 발효시키면 알코올 도수 약 8%의 워시(wash)가 만들어집니다.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div>
+          <div class="step-title">증류(Distillation) — 소형 포트 스틸</div>
+          <p class="step-body">맥켈란의 가장 큰 특징 중 하나는 스카치 위스키 업계에서 가장 작은 구리 포트 스틸을 사용한다는 점입니다. 소형 스틸은 오일리하고 풍부한 바디감의 원액을 만들어냅니다. 두 번의 증류를 거친 후, 증류 원액의 약 16%만을 선택적으로 컷(cut)하여 캐스크에 채웁니다. 이는 업계 최고 수준의 엄격한 선별 비율로, 이것이 맥켈란 특유의 농밀한 풍미의 원천입니다.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div>
+          <div class="step-title">캐스크 시즈닝(Cask Seasoning)</div>
+          <p class="step-body">맥켈란은 직접 에스파냐 헤레스(Jerez) 지방의 와이너리 및 쿠퍼리지(협력사)와 장기 협력 관계를 맺고 있습니다. 올로로소(Oloroso) 셰리를 담았던 아메리칸 오크통과 유러피안 오크통을 구입하여, 각각의 캐릭터가 충분히 배어든 최상급 캐스크를 선별합니다.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div>
+          <div class="step-title">숙성(Maturation) — 최소 15년</div>
+          <p class="step-body">선별된 캐스크에 스피릿을 채우고 이스터 엘치스 저장고에서 최소 15년 이상 숙성합니다. 더블 캐스크의 경우, 두 종류의 셰리 캐스크(아메리칸 오크 + 유러피안 오크)에서 각각 숙성한 원액을 최적의 비율로 혼합합니다. 이 과정에서 구리와 오크가 만나 달콤한 에스터가 형성되고 황 성분 등 불순물이 제거됩니다.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div>
+          <div class="step-title">바틀링(Bottling)</div>
+          <p class="step-body">마스터 위스키 메이커가 각 배치의 풍미 일관성을 최종 확인한 후, 알코올 도수 43%로 병입합니다. 냉각 여과(Chill-filtration)를 최소화하여 자연스러운 질감과 풍미를 최대한 보존합니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TASTING NOTES -->
+<div class="sep"></div>
+<section class="bg-alt">
+  <div class="section">
+    <div class="section-label">Tasting Notes · 테이스팅 노트</div>
+    <h2 class="section-title">감각으로 만나는<br><em>맥켈란 15년</em></h2>
+    <div class="divider-thin"></div>
+    <p>더블 캐스크 15년산은 복합적이면서도 접근하기 쉬운 균형 잡힌 프로파일로 비평가들의 높은 평가를 받습니다. Whisky Advocate 94점, Jim Murray's Whisky Bible 95점을 기록하였습니다.</p>
+
+    <div class="tasting-grid">
+      <div class="taste-card">
+        <span class="taste-icon">👃</span>
+        <div class="taste-label">Nose · 향</div>
+        <div class="taste-notes">건포도와 말린 과일의 풍부한 향이 먼저 열립니다. 버터스카치, 구운 사과, 꿀, 바닐라 파드, 부드러운 시나몬 스파이스가 층을 이루며 올라옵니다.</div>
+      </div>
+      <div class="taste-card">
+        <span class="taste-icon">👅</span>
+        <div class="taste-label">Palate · 팔레트</div>
+        <div class="taste-notes">실키하고 풀바디한 질감. 무화과·건포도 등 짙은 과일, 크리미한 토피와 바닐라 빈, 따뜻한 오크 스파이스가 전개됩니다. 흰 후추와 넛맥의 힌트.</div>
+      </div>
+      <div class="taste-card">
+        <span class="taste-icon">✨</span>
+        <div class="taste-label">Finish · 피니시</div>
+        <div class="taste-notes">길고 따뜻한 여운. 건과일과 꿀의 달콤함이 오래 지속되며, 부드러운 오크 스파이스가 마지막을 정리합니다. 균형감이 탁월합니다.</div>
+      </div>
+    </div>
+
+    <div class="blockquote">
+      <p>"Impeccable balance of Sherry sweetness and oak spice with remarkable length."</p>
+      <cite>— Whisky Advocate, 94점 평가</cite>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO DRINK -->
+<div class="sep"></div>
+<section>
+  <div class="section">
+    <div class="section-label">How to Drink · 음용법</div>
+    <h2 class="section-title">맥켈란 15년을<br><em>제대로 즐기는 법</em></h2>
+    <div class="divider-thin"></div>
+    <p>맥켈란 15년산은 음용 방식에 따라 서로 다른 매력을 드러냅니다. 첫 잔은 반드시 니트(Neat)로 시작하여 원래의 풍미를 먼저 경험한 후, 취향에 맞게 변주해 보시기 바랍니다.</p>
+
+    <div class="drink-methods">
+      <div class="method">
+        <div class="method-num">01</div>
+        <div>
+          <div class="method-name">니트 <span class="method-en">Neat — 원액 그대로</span></div>
+          <p class="method-desc">얼음이나 물 없이 그대로 마시는 방법입니다. 튤립형 글라스(글렌캐언 글라스)에 30~45ml를 따르고, 1~2분간 잔을 돌려 공기와 접촉시킨 후 음용합니다. 맥켈란의 풍미를 가장 순수하게 느낄 수 있으며, 처음 접하는 분께 권장하는 방법입니다. 실온(18~22℃)이 이상적입니다.</p>
+        </div>
+      </div>
+
+      <div class="method">
+        <div class="method-num">02</div>
+        <div>
+          <div class="method-name">위드 워터 <span class="method-en">With Water — 물 한 방울</span></div>
+          <p class="method-desc">소량의 물(5~10ml)을 추가하면 알코올이 억제되고 숨어 있던 향이 더욱 활짝 열립니다. 증류수나 미네랄 워터를 추천하며, 탄산수나 수돗물은 피하시기 바랍니다. 특히 셰리 계열의 과일향과 바닐라 노트가 더 선명하게 부각됩니다. 스포이트를 사용하면 정밀하게 조절할 수 있습니다.</p>
+        </div>
+      </div>
+
+      <div class="method">
+        <div class="method-num">03</div>
+        <div>
+          <div class="method-name">온더록스 <span class="method-en">On the Rocks — 얼음과 함께</span></div>
+          <p class="method-desc">큰 구형 또는 각 얼음 하나를 넣어 마십니다. 낮은 온도가 향의 일부를 닫아버릴 수 있으므로, 처음부터 권장하지는 않습니다. 단, 식후 가볍게 즐기거나 무더운 여름철에는 적합합니다. 얼음이 녹으면서 점차 풍미가 변화하는 과정을 즐기는 방법이기도 합니다.</p>
+        </div>
+      </div>
+
+      <div class="method">
+        <div class="method-num">04</div>
+        <div>
+          <div class="method-name">하이볼 <span class="method-en">Highball — 탄산으로 가볍게</span></div>
+          <p class="method-desc">위스키 1 : 탄산수 3~4의 비율로 희석합니다. 길고 큰 잔(하이볼 글라스)에 큰 얼음을 가득 채우고, 위스키를 먼저 부은 뒤 탄산수를 따릅니다. 섞을 때는 세 번 이상 젓지 않아 탄산이 보존되게 합니다. 식사와 함께, 혹은 캐주얼하게 즐기기에 적합하며 맥켈란의 과일향이 청량감과 어우러져 새로운 매력을 발휘합니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOD PAIRING -->
+    <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.5rem; color:var(--gold-light); margin-top:3.5rem; margin-bottom:1rem;">푸드 페어링</h3>
+    <div class="divider-thin"></div>
+    <p>맥켈란 15년산의 셰리 풍미와 오크 스파이스는 다음 음식들과 특히 잘 어울립니다.</p>
+    <div class="pair-grid">
+      <div class="pair-item">
+        <span class="pair-emoji">🧀</span>
+        <div class="pair-name">숙성 치즈</div>
+        <div class="pair-note">체다, 고다, 파르미지아노</div>
+      </div>
+      <div class="pair-item">
+        <span class="pair-emoji">🍫</span>
+        <div class="pair-name">다크 초콜릿</div>
+        <div class="pair-note">카카오 70% 이상 권장</div>
+      </div>
+      <div class="pair-item">
+        <span class="pair-emoji">🥩</span>
+        <div class="pair-name">로스트 미트</div>
+        <div class="pair-note">구운 소고기, 양갈비</div>
+      </div>
+      <div class="pair-item">
+        <span class="pair-emoji">🐟</span>
+        <div class="pair-name">훈제 연어</div>
+        <div class="pair-note">오크 스모크와 공명</div>
+      </div>
+      <div class="pair-item">
+        <span class="pair-emoji">🍎</span>
+        <div class="pair-name">건과일·견과류</div>
+        <div class="pair-note">무화과, 호두, 헤이즐넛</div>
+      </div>
+      <div class="pair-item">
+        <span class="pair-emoji">🍮</span>
+        <div class="pair-name">크렘브륄레</div>
+        <div class="pair-note">캐러멜 노트와 조화</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE -->
+<div class="sep"></div>
+<section class="bg-alt">
+  <div class="section">
+    <div class="section-label">Price · 가격 정보</div>
+    <h2 class="section-title">구입 가이드 &<br><em>가격 범위</em></h2>
+    <div class="divider-thin"></div>
+    <p>맥켈란 15년산의 가격은 구매 채널, 국가, 시기에 따라 상이합니다. 아래는 2025~2026년 기준 참고 가격입니다.</p>
+
+    <table class="price-table">
+      <thead>
+        <tr>
+          <th>제품</th>
+          <th>구매 채널</th>
+          <th>가격 (한국)</th>
+          <th>가격 (미국)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="highlight-row">
+          <td>더블 캐스크 15년</td>
+          <td>백화점 / 리쿼샵</td>
+          <td>약 12~16만원</td>
+          <td>약 $150~190</td>
+        </tr>
+        <tr>
+          <td>더블 캐스크 15년</td>
+          <td>면세점</td>
+          <td>약 10~13만원</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>더블 캐스크 15년</td>
+          <td>스마트오더 (데일리샷 등)</td>
+          <td>약 11~14만원</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>파인 오크 15년 (단종)</td>
+          <td>중고 / 경매</td>
+          <td>약 20~35만원+</td>
+          <td>$200~350+</td>
+        </tr>
+        <tr>
+          <td>트리플 캐스크 15년 (단종)</td>
+          <td>중고 / 리쿼샵</td>
+          <td>약 18~28만원</td>
+          <td>$180~280</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="price-note">※ 위 가격은 참고용이며, 시장 상황에 따라 변동될 수 있습니다. 백화점 입고 초기와 리쿼샵 행사 시즌에 상대적으로 구입이 용이합니다. 2025년 11월 기준 더블 캐스크 15년산이 국내 백화점 및 리쿼샵에 정식 입고 시작된 바 있습니다.</p>
+
+    <div style="margin-top: 2.5rem; padding: 1.5rem 2rem; background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.2);">
+      <div style="font-family:'Cormorant Garamond',serif; font-size:0.75rem; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase; margin-bottom:0.8rem;">구매 팁</div>
+      <p style="margin-bottom:0.8rem; font-size:0.87rem; color:rgba(245,232,192,0.75);">① <strong style="color:var(--gold-light)">면세점</strong>을 이용하면 국내 소매가 대비 15~25% 저렴하게 구입할 수 있습니다. 출국 전 사전 예약 주문을 활용하세요.</p>
+      <p style="margin-bottom:0.8rem; font-size:0.87rem; color:rgba(245,232,192,0.75);">② <strong style="color:var(--gold-light)">스마트오더 앱(데일리샷, 키햐 등)</strong>에서 전국 리쿼샵 가격을 실시간 비교하면 최저가를 확인할 수 있습니다.</p>
+      <p style="font-size:0.87rem; color:rgba(245,232,192,0.75); margin-bottom:0">③ 단종된 파인 오크·트리플 캐스크는 프리미엄이 붙어 거래됩니다. 빈티지 라인에 관심 있다면 위스키 경매 플랫폼(Whisky Auctioneer 등)을 활용하시기 바랍니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SCORE -->
+<div class="sep"></div>
+<section>
+  <div class="section">
+    <div class="section-label">Summary · 총평</div>
+    <h2 class="section-title">맥켈란 15년산을<br><em>한마디로</em></h2>
+    <div class="divider-thin"></div>
+    <p>맥켈란 15년산 더블 캐스크는 '균형'의 위스키입니다. 12년산보다 깊고 18년산보다 가볍지만, 그 사이에서 자신만의 고유한 영역을 구축한 제품입니다. 셰리 캐스크 숙성에서 오는 달콤한 과일향과 오크 스파이스, 크리미한 질감이 43%의 도수 안에 완벽하게 담겨 있습니다.</p>
+    <p>위스키 입문자에게는 '이것이 싱글 몰트'라는 기준점을 제시해 주고, 애호가에게는 맥켈란 셰리 오크 철학의 정수를 보여줍니다. 선물용, 자기 위로용, 특별한 저녁을 위한 위스키로 어느 맥락에서도 실망을 주지 않는 선택입니다.</p>
+
+    <div class="blockquote">
+      <p>"위스키의 롤스로이스가 15년의 시간을 담았다. 한 잔에 역사가, 기술이, 그리고 에스파냐 오크숲이 들어 있다."</p>
+      <cite>— 맥켈란 15년산에 대한 평가</cite>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div style="width:40px; height:1px; background:var(--gold); margin:0 auto 1.5rem; opacity:0.4;"></div>
+  <p>THE MACALLAN · 15 YEARS OLD · COMPLETE GUIDE</p>
+  <p style="margin-top:0.5rem; font-size:0.72rem; opacity:0.5">Speyside, Scotland · Est. 1824 · Drink Responsibly</p>
+  <p style="margin-top:2rem; font-size:0.72rem; opacity:0.35"><a href="/" style="color:inherit;text-decoration:none;">← choijc79.github.io 홈으로</a></p>
+</footer>
+
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'light';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'☀ 라이트':'☾ 다크';
+})();
+function toggleTheme(){
+  var html=document.documentElement;
+  var now=html.getAttribute('data-theme');
+  var next=now==='dark'?'light':'dark';
+  html.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'☀ 라이트':'☾ 다크';
+}
+</script>
+</body>
+</html>

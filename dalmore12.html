@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>달모어 12년산 — 완전 가이드</title>
+<meta name="description" content="다크 초콜릿, 오렌지 마멀레이드, 블랙커런트. 달모어 12년 완전 가이드.">
+<meta property="og:title" content="달모어 12년산 완전 가이드 | 최승환">
+<meta property="og:description" content="다크 초콜릿, 오렌지 마멀레이드, 블랙커런트. 달모어 12년 완전 가이드.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://choijc79.github.io/dalmore12.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<meta name="twitter:card" content="summary">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+KR:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:      #F4F0E8;
+  --surface: #ECE8DE;
+  --border:  #D4CEBC;
+  --text:    #1A1410;
+  --ink:     #2A2018;
+  --muted:   #7A6A56;
+  --accent:  #E07828;
+  --red:     #D96820;
+  --light:   #FDFAF4;
+  --amber:   #E07828;
+  --green:   #5A7A3A;
+  --lake:    #E07828;
+  --purple:  #7A4AB0;
+}
+[data-theme="dark"] {
+  --bg:      #0d1117;
+  --surface: #161b22;
+  --border:  #2c3240;
+  --text:    #E8E0D0;
+  --ink:     #F0E8D8;
+  --muted:   #8b8070;
+  --accent:  #F08840;
+  --red:     #E07830;
+  --light:   #161b22;
+  --amber:   #F08840;
+  --green:   #3fb950;
+  --lake:    #F08840;
+  --purple:  #bc8cff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--deep);color:var(--cream);font-family:"Noto Serif KR",serif;font-weight:300;line-height:1.8;overflow-x:hidden;}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:radial-gradient(ellipse 80% 60% at 50% 40%, #2A1008 0%, #180804 60%, #0A0302 100%);}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(201,168,76,0.08) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(139,74,14,0.12) 0%,transparent 50%);pointer-events:none;}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:1000;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:150px 150px;}
+.hero-badge{font-family:"Cormorant Garamond",serif;font-size:0.8rem;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:2rem;opacity:0;animation:fadeUp 1s 0.3s ease forwards;}
+.hero-title{font-family:"Cormorant Garamond",serif;font-size:clamp(3.5rem,8vw,7rem);font-weight:300;line-height:1.05;letter-spacing:-0.01em;color:var(--gold-light);opacity:0;animation:fadeUp 1s 0.5s ease forwards;}
+.hero-title em{font-style:italic;color:var(--gold);}
+.hero-sub{margin-top:1.5rem;font-family:"Cormorant Garamond",serif;font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;font-style:italic;color:rgba(232,201,122,0.6);letter-spacing:0.05em;opacity:0;animation:fadeUp 1s 0.7s ease forwards;}
+.hero-divider{width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:2.5rem auto;opacity:0;animation:fadeIn 1s 0.9s ease forwards;}
+.hero-desc{max-width:520px;font-size:0.9rem;color:rgba(245,232,192,0.65);letter-spacing:0.02em;opacity:0;animation:fadeUp 1s 1.1s ease forwards;}
+.scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;opacity:0;animation:fadeIn 1s 1.5s ease forwards;}
+.scroll-hint span{font-family:"Cormorant Garamond",serif;font-size:0.7rem;letter-spacing:0.3em;color:rgba(201,168,76,0.5);text-transform:uppercase;}
+.scroll-line{width:1px;height:50px;background:linear-gradient(180deg,var(--gold) 0%,transparent 100%);animation:scrollPulse 2s ease-in-out infinite;}
+.section{max-width:860px;margin:0 auto;padding:6rem 2rem;}
+.section-label{font-family:"Cormorant Garamond",serif;font-size:0.75rem;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;}
+.section-title{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:400;color:var(--gold-light);line-height:1.2;margin-bottom:2.5rem;}
+.section-title em{font-style:italic;color:var(--gold);}
+.divider-thin{width:60px;height:1px;background:var(--gold);margin-bottom:2.5rem;opacity:0.5;}
+p{color:rgba(245,232,192,0.82);font-size:0.95rem;line-height:1.9;margin-bottom:1.4rem;}
+.sep{width:100%;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(201,168,76,0.2) 20%,rgba(201,168,76,0.4) 50%,rgba(201,168,76,0.2) 80%,transparent 100%);margin:0;}
+.timeline{position:relative;padding-left:2rem;margin-top:2rem;}
+.timeline::before{content:"";position:absolute;left:0;top:0.5rem;bottom:0.5rem;width:1px;background:linear-gradient(180deg,transparent,var(--gold) 10%,var(--gold) 90%,transparent);opacity:0.4;}
+.tl-item{position:relative;margin-bottom:2.5rem;}
+.tl-item::before{content:"";position:absolute;left:-2.3rem;top:0.6rem;width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px rgba(201,168,76,0.6);}
+.tl-year{font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-weight:600;color:var(--gold);margin-bottom:0.3rem;}
+.tl-text{color:rgba(245,232,192,0.78);font-size:0.92rem;margin-bottom:0;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:2rem;}
+.card{background:linear-gradient(135deg,rgba(45,30,10,0.9) 0%,rgba(26,18,8,0.95) 100%);border:1px solid rgba(201,168,76,0.2);border-radius:2px;padding:2rem 1.8rem;transition:border-color 0.3s,transform 0.3s;}
+.card:hover{border-color:var(--gold);transform:translateY(-4px);}
+.card-type{font-size:0.72rem;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:0.8rem;}
+.card-name{font-family:"Cormorant Garamond",serif;font-size:1.6rem;color:var(--gold-light);line-height:1.2;margin-bottom:0.8rem;}
+.card-spec{display:flex;gap:1.5rem;margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid rgba(201,168,76,0.15);}
+.spec-item{display:flex;flex-direction:column;gap:0.2rem;}
+.spec-label{font-size:0.65rem;letter-spacing:0.15em;color:rgba(201,168,76,0.5);text-transform:uppercase;}
+.spec-val{font-family:"Cormorant Garamond",serif;font-size:1rem;color:var(--gold-light);}
+.step-list{margin-top:2rem;counter-reset:steps;}
+.step{counter-increment:steps;display:grid;grid-template-columns:50px 1fr;gap:1.5rem;margin-bottom:2rem;align-items:start;}
+.step::before{content:counter(steps,decimal-leading-zero);font-family:"Cormorant Garamond",serif;font-size:1.8rem;color:rgba(201,168,76,0.3);line-height:1;text-align:right;}
+.step-title{font-family:"Cormorant Garamond",serif;font-size:1.2rem;color:var(--gold-light);margin-bottom:0.4rem;}
+.step-body{font-size:0.88rem;color:rgba(245,232,192,0.72);margin-bottom:0;}
+.tasting-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;margin:2.5rem 0;}
+.taste-card{background:rgba(45,30,10,0.5);border:1px solid rgba(201,168,76,0.15);padding:2rem;text-align:center;}
+.taste-icon{font-size:2rem;display:block;margin-bottom:1rem;}
+.taste-label{font-family:"Cormorant Garamond",serif;font-size:1.1rem;color:var(--gold);letter-spacing:0.1em;margin-bottom:0.8rem;}
+.taste-notes{font-size:0.88rem;color:rgba(245,232,192,0.75);line-height:1.8;}
+.blockquote{border-left:2px solid var(--gold);padding:1.5rem 2rem;margin:3rem 0;background:rgba(201,168,76,0.05);}
+.blockquote p{font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-style:italic;color:rgba(232,201,122,0.8);margin-bottom:0.8rem;}
+.blockquote cite{font-size:0.78rem;color:rgba(201,168,76,0.5);letter-spacing:0.2em;text-transform:uppercase;}
+.spec-box{background:rgba(45,30,10,0.6);border:1px solid rgba(201,168,76,0.2);padding:2rem;margin-top:2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1.5rem;}
+.spec-box-item{text-align:center;}
+.spec-box-label{font-size:0.65rem;letter-spacing:0.2em;color:rgba(201,168,76,0.5);text-transform:uppercase;margin-bottom:0.4rem;}
+.spec-box-val{font-family:"Cormorant Garamond",serif;font-size:1.5rem;color:var(--gold-light);}
+.pair-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-top:2rem;}
+.pair-item{padding:1.2rem;background:rgba(45,30,10,0.4);border:1px solid rgba(201,168,76,0.12);text-align:center;}
+.pair-emoji{font-size:1.8rem;display:block;margin-bottom:0.6rem;}
+.pair-name{font-family:"Cormorant Garamond",serif;font-size:1rem;color:var(--gold-light);margin-bottom:0.3rem;}
+.pair-note{font-size:0.78rem;color:rgba(245,232,192,0.5);}
+.bg-alt{background:rgba(25,15,5,0.8);}
+.bg-section{padding:6rem 2rem;}
+.nav-bar{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(26,18,8,0.92);border-bottom:1px solid rgba(201,168,76,0.12);padding:0 2rem;height:52px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:"Cormorant Garamond",serif;font-size:1rem;color:var(--gold);letter-spacing:0.1em;}
+.nav-links{display:flex;gap:1.5rem;font-size:11px;color:rgba(201,168,76,0.5);letter-spacing:0.1em;}
+.nav-links a{color:rgba(201,168,76,0.5);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--gold-light);}
+footer{text-align:center;padding:4rem 2rem;border-top:1px solid rgba(201,168,76,0.1);}
+footer p{font-family:"Cormorant Garamond",serif;font-size:0.8rem;color:rgba(201,168,76,0.3);letter-spacing:0.2em;margin-bottom:0;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes scrollPulse{0%,100%{opacity:0.3;}50%{opacity:1;}}
+@media(max-width:600px){.hero-title{font-size:3rem;}.cards{grid-template-columns:1fr;}.tasting-grid{grid-template-columns:1fr;}.spec-box{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<nav class="nav-bar">
+  <div class="nav-logo">달모어 12년산</div>
+  <div class="nav-links">
+    <a href="/whisky.html">← 위스키 목록</a>
+    <a href="/">홈</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">Northern Highlands, Scotland · Single Malt Scotch Whisky</div>
+  <h1 class="hero-title">달모어<br><em>12년산</em></h1>
+  <p class="hero-sub">Rich, Fruity, Sophisticated</p>
+  <div class="hero-divider"></div>
+  <p class="hero-desc">다크 초콜릿, 오렌지 마멀레이드, 검은 과일의 풍요로움. 황금 수사슴 엠블럼의 하이랜드 위스키,<br>달모어 12년의 깊고 화려한 세계.</p>
+  <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<div class="sep"></div>
+<section class="bg-alt">
+  <div class="section">
+    <div class="section-label">Overview · 개요</div>
+    <h2 class="section-title">Dalmore 12<br><em>한 병에 담긴 이야기</em></h2>
+    <div class="divider-thin"></div>
+    <p>달모어(Dalmore)는 스코틀랜드 북부 하이랜드 이스터 로스(Easter Ross)에 위치하며, 인버고든(Invergordon) 타운 바로 옆 크로마티 퍼스(Cromarty Firth) 해안에 자리합니다. 브랜드의 상징인 황금 수사슴 엠블럼은 1263년 알렉산더 2세의 사냥 이야기에서 유래했으며, 이후 맥켄지(Mackenzie) 가문의 문장(紋章)이 되었습니다.</p>
+<p>달모어 12년산은 아메리칸 화이트 오크 버번 캐스크에서 9년, 이후 올로로소·마투살렘·아몬티야도 세 종류의 셰리 캐스크에서 각각 3년 추가 숙성하는 복합적인 공정으로 만들어집니다. 다크 초콜릿, 오렌지 마멀레이드, 블랙커런트의 짙고 화려한 풍미 프로파일이 특징입니다.</p>
+    <div class="spec-box">
+      <div class="spec-box-item"><div class="spec-box-label">숙성 연수</div><div class="spec-box-val">12년</div></div>
+      <div class="spec-box-item"><div class="spec-box-label">도수</div><div class="spec-box-val">40%</div></div>
+      <div class="spec-box-item"><div class="spec-box-label">원산지</div><div class="spec-box-val">Northern Highlands</div></div>
+      <div class="spec-box-item"><div class="spec-box-label">스타일</div><div class="spec-box-val">Single Malt</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+<section>
+  <div class="section">
+    <div class="section-label">History · 역사</div>
+    <h2 class="section-title">Dalmore 12의<br><em>역사</em></h2>
+    <div class="divider-thin"></div>
+    <div class="timeline"><div class="tl-item"><div class="tl-year">1839년</div><div class="tl-text">알렉산더 매더슨(Alexander Matheson)이 크로마티 퍼스 해안에 증류소를 설립합니다.</div></div>
+<div class="tl-item"><div class="tl-year">1867년</div><div class="tl-text">앤드루 찰스 맥켄지(Andrew Charles Mackenzie)가 달모어를 인수하고, 황금 수사슴 엠블럼을 브랜드에 도입합니다.</div></div>
+<div class="tl-item"><div class="tl-year">2007년</div><div class="tl-text">화이트앤드맥케이(Whyte and Mackay) 소속으로, 리처드 패터슨(Richard Paterson) 마스터 블렌더가 60년을 넘는 달모어 브랜드 가이드역을 맡습니다.</div></div>
+<div class="tl-item"><div class="tl-year">현재</div><div class="tl-text">12년산 외에 15년, 18년, 25년 등 다양한 연산의 라인업과, 한 병당 수천만 원에 달하는 희귀 싱글 빈티지 컬렉션으로도 유명합니다.</div></div></div>
+  </div>
+</section>
+
+<div class="sep"></div>
+<section class="bg-alt">
+  <div class="section">
+    <div class="section-label">Product Line · 제품 라인업</div>
+    <h2 class="section-title">Dalmore 12<br><em>주요 제품군</em></h2>
+    <div class="divider-thin"></div>
+    <div class="cards"><div class="card">
+  <div class="card-type">주력</div>
+  <div class="card-name">12년</div>
+  <p style="font-size:0.83rem;color:rgba(245,232,192,0.65);margin-bottom:0">버번→셰리 3종 피니시</p>
+  <div class="card-spec">
+    <div class="spec-item"><span class="spec-label">도수</span><span class="spec-val">40%</span></div>
+    <div class="spec-item"><span class="spec-label">용량</span><span class="spec-val">700ml</span></div>
+    <div class="spec-item"><span class="spec-label">원산지</span><span class="spec-val">Northern Highlands</span></div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-type">상위</div>
+  <div class="card-name">15년</div>
+  <p style="font-size:0.83rem;color:rgba(245,232,192,0.65);margin-bottom:0">버번→시러스 셰리 피니시</p>
+  <div class="card-spec">
+    <div class="spec-item"><span class="spec-label">도수</span><span class="spec-val">40%</span></div>
+    <div class="spec-item"><span class="spec-label">용량</span><span class="spec-val">700ml</span></div>
+    <div class="spec-item"><span class="spec-label">원산지</span><span class="spec-val">Northern Highlands</span></div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-type">럭셔리</div>
+  <div class="card-name">25년 킹 알렉산더 III</div>
+  <p style="font-size:0.83rem;color:rgba(245,232,192,0.65);margin-bottom:0">6종 캐스크 피니시</p>
+  <div class="card-spec">
+    <div class="spec-item"><span class="spec-label">도수</span><span class="spec-val">40%</span></div>
+    <div class="spec-item"><span class="spec-label">용량</span><span class="spec-val">700ml</span></div>
+    <div class="spec-item"><span class="spec-label">원산지</span><span class="spec-val">Northern Highlands</span></div>
+  </div>
+</div></div>
+  </div>
+</section>
+
+<div class="sep"></div>
+<section>
+  <div class="section">
+    <div class="section-label">Production · 제조 방법</div>
+    <h2 class="section-title">한 방울의 위스키가<br><em>태어나기까지</em></h2>
+    <div class="divider-thin"></div>
+    <div class="step-list"><div class="step"><div><div class="step-title">보리 선별</div><p class="step-body">북부 하이랜드 산 골든 프로미스(Golden Promise) 계열 보리를 선별합니다.</p></div></div>
+<div class="step"><div><div class="step-title">평평한 스완넥 스틸</div><p class="step-body">스완 넥(Swan Neck)이 일자에 가까운 독특한 포트 스틸로 묵직하고 오일리한 스피릿을 생산합니다.</p></div></div>
+<div class="step"><div><div class="step-title">버번 캐스크 1차 숙성</div><p class="step-body">아메리칸 화이트 오크 버번 캐스크에서 9년 숙성. 바닐라·코코넛의 기초 풍미 형성.</p></div></div>
+<div class="step"><div><div class="step-title">세 종류 셰리 캐스크 피니시</div><p class="step-body">올로로소, 마투살렘, 아몬티야도 세 종류의 셰리 캐스크로 나누어 각각 3년 마무리 숙성합니다.</p></div></div>
+<div class="step"><div><div class="step-title">리처드 패터슨 배팅</div><p class="step-body">마스터 블렌더가 세 가지 셰리 피니시 원액을 최적 비율로 배팅합니다.</p></div></div></div>
+  </div>
+</section>
+
+<div class="sep"></div>
+<section class="bg-alt">
+  <div class="section">
+    <div class="section-label">Tasting Notes · 테이스팅 노트</div>
+    <h2 class="section-title">감각으로 만나는<br><em>Dalmore 12</em></h2>
+    <div class="divider-thin"></div>
+    <div class="tasting-grid">
+      <div class="taste-card"><span class="taste-icon">👃</span><div class="taste-label">Nose · 향</div><div class="taste-notes">진한 오렌지 마멀레이드와 다크 초콜릿이 강렬하게 열립니다. 블랙커런트, 말린 과일, 달콤한 가죽 향.</div></div>
+      <div class="taste-card"><span class="taste-icon">👅</span><div class="taste-label">Palate · 팔레트</div><div class="taste-notes">풀바디하고 짙습니다. 오렌지·베리 과일, 다크 초콜릿, 커피. 캐스크가 주는 스파이스와 따뜻한 오크.</div></div>
+      <div class="taste-card"><span class="taste-icon">✨</span><div class="taste-label">Finish · 피니시</div><div class="taste-notes">길고 따뜻한 피니시. 말린 과일과 초콜릿 비터니스가 오래 남습니다.</div></div>
+    </div>
+    <div class="blockquote"><p>"Richness and complexity beyond its years. A Highland marvel."</p><cite>— Whisky Advocate, 92점</cite></div>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold-light);margin-top:3.5rem;margin-bottom:1rem;">푸드 페어링</h3>
+    <div class="divider-thin"></div>
+    <div class="pair-grid"><div class="pair-item"><span class="pair-emoji">🍫</span><div class="pair-name">다크 초콜릿 80%</div><div class="pair-note">초콜릿 풍미 배가</div></div>
+<div class="pair-item"><span class="pair-emoji">🍊</span><div class="pair-name">오렌지 마멀레이드 토스트</div><div class="pair-note">시트러스 공명</div></div>
+<div class="pair-item"><span class="pair-emoji">🫐</span><div class="pair-name">블루베리 치즈케이크</div><div class="pair-note">베리 과일향 레이어</div></div>
+<div class="pair-item"><span class="pair-emoji">🥩</span><div class="pair-name">갈비찜</div><div class="pair-note">짙은 과일 소스와 조화</div></div>
+<div class="pair-item"><span class="pair-emoji">☕</span><div class="pair-name">에스프레소</div><div class="pair-note">커피 비터니스 공명</div></div>
+<div class="pair-item"><span class="pair-emoji">🧀</span><div class="pair-name">고르곤졸라</div><div class="pair-note">강한 풍미 대결</div></div></div>
+  </div>
+</section>
+
+<footer><p>© 2026 최승환 · choijc79.github.io · 위스키 가이드</p></footer>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'light';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'☀ 라이트':'☾ 다크';
+})();
+function toggleTheme(){
+  var html=document.documentElement;
+  var now=html.getAttribute('data-theme');
+  var next=now==='dark'?'light':'dark';
+  html.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'☀ 라이트':'☾ 다크';
+}
+</script>
+</body>
+</html>

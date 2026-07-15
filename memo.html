@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>정리노트 | 최승환</title>
+<style>
+  :root {
+  --bg:      #F4F0E8;
+  --surface: #ECE8DE;
+  --border:  #D4CEBC;
+  --text:    #1A1410;
+  --ink:     #2A2018;
+  --muted:   #7A6A56;
+  --accent:  #E07828;
+  --red:     #D96820;
+  --light:   #FDFAF4;
+  --amber:   #E07828;
+  --green:   #5A7A3A;
+  --lake:    #E07828;
+  --purple:  #7A4AB0;
+}
+[data-theme="dark"] {
+  --bg:      #0d1117;
+  --surface: #161b22;
+  --border:  #2c3240;
+  --text:    #E8E0D0;
+  --ink:     #F0E8D8;
+  --muted:   #8b8070;
+  --accent:  #F08840;
+  --red:     #D84030;
+  --light:   #161b22;
+  --amber:   #F08840;
+  --green:   #3fb950;
+  --lake:    #F08840;
+  --purple:  #bc8cff;
+}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif;
+         line-height: 1.7; padding: 2rem 1rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border); }
+  header h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.4rem; }
+  header p  { color: var(--muted); font-size: 0.9rem; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+  /* 모바일 하단 바 */
+  #mqb{display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;
+    background:rgba(13,17,23,0.97);border-top:1px solid #30363d;
+    padding:0.45rem 0.6rem;gap:0.4rem;justify-content:space-around;
+    padding-bottom:max(0.45rem,env(safe-area-inset-bottom));}
+  #mqb a{flex:1;text-align:center;color:var(--text);text-decoration:none;
+    font-size:11px;font-family:sans-serif;padding:0.45rem 0.2rem;
+    border-radius:7px;background:var(--surface);border:1px solid #30363d;
+    line-height:1.4;transition:border-color 0.15s;}
+  #mqb a:hover,#mqb a:active{border-color:var(--accent);color:var(--accent);}
+  @media(max-width:768px){#mqb{display:flex;} body{padding-bottom:4rem;}}
+  .card { background: var(--surface); border: 1px solid var(--border);
+           border-radius: 12px; padding: 1.5rem; }
+  .card-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem;
+                 display: flex; align-items: center; gap: 0.5rem; }
+  .card.ideas   .card-title { color: var(--orange); }
+  .card.goals   .card-title { color: var(--green); }
+  .card.diary   .card-title { color: var(--purple); }
+  .card.work    .card-title { color: var(--accent); }
+  .memo-item { border-bottom: 1px solid var(--border); }
+  .memo-item:last-child { border-bottom: none; }
+  .acc-header { display: flex; align-items: center; gap: 0.5rem; padding: 0.65rem 0;
+                 cursor: pointer; user-select: none; }
+  .acc-header:hover .acc-tag { color: var(--accent); }
+  .date { font-size: 0.72rem; color: var(--muted); background: rgba(139,148,158,0.1);
+           padding: 0.1rem 0.45rem; border-radius: 20px; flex-shrink: 0; }
+  .acc-tag { font-size: 0.88rem; color: var(--text); font-weight: 500; flex: 1; }
+  .acc-arrow { font-size: 0.7rem; color: var(--muted); margin-left: auto; transition: transform 0.2s; flex-shrink: 0; }
+  .acc-header.open .acc-arrow { transform: rotate(90deg); }
+  .acc-body { display: none; font-size: 0.9rem; color: var(--muted); line-height: 1.75;
+               padding: 0 0 0.75rem 0.2rem; }
+  .empty { color: var(--muted); font-size: 0.9rem; font-style: italic; }
+  footer { text-align: center; margin-top: 3rem; padding-top: 2rem;
+            border-top: 1px solid var(--border); color: var(--muted); font-size: 0.82rem; }
+  a { color: var(--accent); text-decoration: none; }
+</style>
+
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>📋 나를 정리하는 프로젝트</h1>
+    <p>최승환 · 지방행정 연구자 · 제천시청 팀장 &nbsp;|&nbsp; 마지막 업데이트: 2026년 06월 11일 02:08</p>
+    <p style="margin-top:0.5rem"><a href="/">← 홈으로</a></p>
+  </header>
+
+  <div class="grid">
+    <div class="card ideas">
+      <div class="card-title">💡 아이디어 · 기획</div>
+      
+        <div class="memo-item accordion-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class='date'>2024-07-03</span>
+            <span class="acc-tag">[도시재생·숙박·빈집활용]</span>
+            <span class="acc-arrow">▸</span>
+          </div>
+          <div class="acc-body">제천형 숙박 체인 사업 — 도심 빈집·농어촌 유휴주택·별장을 리모델링해 체인 브랜드로 묶는 숙박 프랜차이즈 모델. 가맹점 개소당 1천만원(브랜딩·프로그램), 직영점 개소당 5천만원(시설비 포함). 1~2년차 가맹점 10개소, 2~3년차 직영점 5개소 목표. 수익구조: 보증금 300만원 + 월 가맹유지비 10만원/개소 + 이용요금의 3% 차감. 핵심 차별점은 기존 보조금·인증 방식이 아니라 '전문가가 직접 브랜딩·운영·사후관리'를 맡는 프랜차이즈 구조. 법적 걸림돌: 도시민박업이 외국인 전용으로 한정되어 있어 내국인 숙박 특례 필요. 경주 황촌마을호텔·정선 18번가 등 타 지자체 선행 사례 있음. 연간 체육대회 100여개 개최·관광객 1천만명 수요 대비 제천 숙박시설이 절대 부족한 현실에 맞닿는 기획.</div>
+        </div>
+        <div class="memo-item accordion-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class='date'>2021-02-01</span>
+            <span class="acc-tag">[아동문화·기록·공모전]</span>
+            <span class="acc-arrow">▸</span>
+          </div>
+          <div class="acc-body">제1회 제천시 초등학생 폰토그래퍼 사진 공모전 — 코로나19 시대를 살아가는 초등학생들이 스마트폰으로 일상을 기록하는 공모전 기획. 2021년 2~3월, 온라인 접수(구글폼), 총예산 940만원. 주제는 세 가지: ①코로나로 달라진 생활("나 2.5단계때는 말이야~"), ②집에서 발견하는 것들("집콕하면 비로소 보이는 것들"), ③극복을 위한 희망("내가 준비한 것들"). 1~2학년·3~4학년·5~6학년 3개 그룹, 45명 시상. 시장상·국회의원상·교육장상 등 상훈 다양화. 참가자 전원 기념품(마스크) 지급. 핵심은 비대면 시대에 아이들에게 '기록하는 눈'을 길러주고, 집이라는 한정된 공간에서 가족과 함께하는 놀이를 찾아내도록 한 발상. 행정과 민간이 함께 기획한 저예산 고효율 문화사업 사례.</div>
+        </div>
+        <div class="memo-item accordion-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class='date'>2021-05-01</span>
+            <span class="acc-tag">[도심캠핑·공간재활용]</span>
+            <span class="acc-arrow">▸</span>
+          </div>
+          <div class="acc-body">감성제천 도심캠핑 — 여름광장(구동명초 부지) 유휴공간을 활용한 무료 도심 캠핑장 운영 구상. 2021년 5월 한 달간 매주 금토일 운영, 예산 5천만원, 사회적 기업 위탁 방식. 캠핑 메카 제천 이미지 구축 + 도심 유입 + 로컬푸드 판매 + 국제음악영화제 연계 상영 등 복합 콘텐츠 기획. 코로나 비대면 거리두기 방식과 결합. 핵심 아이디어는 "없는 것을 새로 짓지 말고, 이미 비어 있는 광장을 한 달만 다르게 쓰자"는 것. 제천이 전국 캠핑족의 경유지가 아닌 목적지가 되는 출발점으로 삼을 수 있는 행사.</div>
+        </div>
+        <div class="memo-item accordion-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class='date'>2026-06-05</span>
+            <span class="acc-tag">[마을기업·기획]</span>
+            <span class="acc-arrow">▸</span>
+          </div>
+          <div class="acc-body">아세아시멘트×입석마을 시멘트 업사이클링 마을기업 구상. 핵심은 수십 년간 혐오시설(초대형 시멘트공장)과 공생해온 입석마을 주민들이, 공장의 부산물인 시멘트를 활용해 화분·캔들홀더·인테리어소품 등 업사이클링 제품을 직접 만들고 판매하는 것. 단순 제조판매에 더해 '시멘트화분 만들기' 체험프로그램으로 외부 방문객 유입도 노린다. 아세아시멘트와의 협력을 통해 기업-마을 갈등 해소 + 초고령 주민 소득창출이라는 두 가지 효과를 동시에 겨냥. 행안부 마을기업 지정 시 3년간 최대 1억원 지원 가능(예비마을기업 단계 1천만원 선지원). 가장 큰 과제는 금형 제작비와 양산체계 구축.</div>
+        </div>
+    </div>
+    <div class="card goals">
+      <div class="card-title">🎯 목표 · 계획 · 다짐</div>
+      
+        <div class="memo-item accordion-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class='date'>2026-06-05</span>
+            <span class="acc-tag">[육아 철학·다짐]</span>
+            <span class="acc-arrow">▸</span>
+          </div>
+          <div class="acc-body">"어디서든 잘 살 수 있게 준비시키는 것" — 이것이 아버지로서 아이들에게 줄 수 있는 가장 긴 선물이다. 좋은 직장, 좋은 학교가 목표가 아니다. 변화하는 세상 어디에 놓여도 흔들리지 않고 자기 삶을 꾸려갈 수 있는 힘을 키워주는 것. 그 힘의 뿌리는 지식이 아니라 태도이고, 태도보다 먼저인 것은 자존감이다. 스스로를 믿는 사람은 환경이 바뀌어도 길을 찾는다. 내가 20년 공직 생활과 박사과정을 병행하며 배운 것도 결국 이것이다 — 완벽한 조건보다 버티는 사람이 결국 살아남는다. 아이들에게 그 버팀의 근육을 길러주는 것, 그게 내 육아의 방향이다.</div>
+        </div>
+    </div>
+    <div class="card diary">
+      <div class="card-title">📖 일상 · 감정 · 회고</div>
+      
+        <div class="memo-item accordion-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class='date'>2026-06-07</span>
+            <span class="acc-tag">[가족·회고]</span>
+            <span class="acc-arrow">▸</span>
+          </div>
+          <div class="acc-body">장락동 집 매입 — 아버지께 쓴 편지. 투자 목적으로 시작했지만 실제 동기는 달랐다. 모두가 머물 수 있는 집을 만들고 싶었다. 이자를 감당하며 매달 납부해온 것도, 장락동 지가 상승을 분석하며 3안(상가주택 신축 후 거주)까지 그린 것도 혼자만의 이익이 아니었다. 그런데 그 노력들이 핀잔과 다그침으로 돌아올 때마다 너무 힘들었다. 잘 해주기를 바라는 게 아니라, 언성만은 낮춰달라고 부탁했다. 가족이니까. 살아온 날보다 얼마 남지 않은 시간, 서로 인정하고 칭찬하는 가족이 되었으면 한다</div>
+        </div>
+        <div class="memo-item accordion-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class='date'>2026-04-28</span>
+            <span class="acc-tag">[라이딩·일상]</span>
+            <span class="acc-arrow">▸</span>
+          </div>
+          <div class="acc-body">청풍호 라이딩 루트 봄 시즌 — 청풍대교에서 출발해 능강교를 지나 청풍문화재단지까지 이어지는 약 32km 구간. 이 계절 벚꽃과 연두빛 산이 함께 어우러지는 시기에 달리면 제천이 이렇게 아름다운 곳이었나 새삼 느끼게 된다. 단양 쪽으로 이어지는 길도 좋지만, 청풍호 물빛이 금빛으로 물드는 저녁 무렵 귀로가 최고다.</div>
+        </div>
+        <div class="memo-item accordion-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class='date'>2026-05-20</span>
+            <span class="acc-tag">[주식·단상]</span>
+            <span class="acc-arrow">▸</span>
+          </div>
+          <div class="acc-body">지난주 내내 미친듯이 오르던 주식이 이번주 들어 꺾였다. 지난주엔 안 해서 아쉬웠는데, 이번주엔 안 하길 잘했다 싶다. 결국 타이밍은 알 수 없고, 안 하는 것도 하나의 선택이라는 걸 다시 확인한 한 주.</div>
+        </div>
+        <div class="memo-item accordion-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class='date'>2026-05-20</span>
+            <span class="acc-tag">[단상]</span>
+            <span class="acc-arrow">▸</span>
+          </div>
+          <div class="acc-body">절제하는 고통보다 후회하는 고통이 크다. — 참는 건 일시적이지만, 안 참았을 때의 후회는 오래 간다. 선택의 기준이 되는 문장.</div>
+        </div>
+        <div class="memo-item accordion-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class='date'>2026-05-22</span>
+            <span class="acc-tag">[라이딩]</span>
+            <span class="acc-arrow">▸</span>
+          </div>
+          <div class="acc-body">오늘은 오토바이 타고 출근. 청풍 → 수산 → 장회 → 단양 → 제천 코스로 달렸는데 시원하고 좋았다. 청풍호 물빛이랑 산 능선 따라 달리는 길은 언제 와도 기분이 확 트인다.</div>
+        </div>
+        <div class="memo-item accordion-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class='date'>2026-05-22</span>
+            <span class="acc-tag">[선거·관전]</span>
+            <span class="acc-arrow">▸</span>
+          </div>
+          <div class="acc-body">6월 3일 제천시장 선거 — 전·현직 리턴매치에 무소속 세대교체론까지 3파전. <strong>김창규(국민의힘·현직)</strong> : K뷰티 힐링타워(40층) 건립, GRDP 6,000만원, 관광객 2,000만명, 10조원 투자유치, 노인 시내버스 무료화 등 대규모 수치 공약 중심. 현직 프리미엄과 연속성 강조. <strong>이상천(더불어민주당·전직)</strong> : 청년자치예산제(4년간 88억), 청년 안심주택 100호, 100만평 미래산단 조성, 읍면 숙원사업(봉양 목욕탕, 금성 악취저감 등) 270건 반영한 생활밀착 공약. 현 시장 투자유치 성과 '부풀리기' 비판 중. <strong>송수연(무소속·시의원)</strong> : 생애주기 자산형성 정책(0세~노후) + 행정 구조 개혁 중심. 새 시설보다 기존 행정 체계 정비와 시민 서비스 효율화 강조. 분위기는 박빙 재대결에 세대교체론이 변수. 인구감소·지역경제 침체가 최대 쟁점.</div>
+        </div>
+        <div class="memo-item accordion-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class='date'>2026-06-04</span>
+            <span class="acc-tag">[선거·분석]</span>
+            <span class="acc-arrow">▸</span>
+          </div>
+          <div class="acc-body">이상천 민선9기, 어떤 제천을 그리는가. 당선인의 공약과 발언들을 살펴보면 키워드는 세 가지로 압축된다. 청년·경제·생활밀착. 우선 눈길을 끄는 것은 '88한 청년자치예산제'다. 4년간 총 88억 원의 예산을 청년들이 직접 제안·결정·집행하도록 맡기겠다는 구상이다. 단순히 청년을 '지원 대상'으로 보는 시각에서 벗어나, 청년을 '정책의 주체'로 세우겠다는 철학이 담겨 있다. 청년 안심주택 100호 공급, 남부 시니어청춘학교 설립, 천원택시 바우처, 심야 어린이병원 운영 같은 공약들도 모두 '생활에서 체감되는 변화'를 겨냥하고 있다. 산업 측면에서는 100만평 규모의 미래산업단지 조성과 제5산업단지 추진, 2차 공공기관 유치가 핵심이다. 인구감소와 청년 이탈이라는 구조적 문제를 일자리 기반 확충으로 돌파하겠다는 접근인데, 방향 자체는 맞다. 문제는 속도와 실행력이다. 당선인은 "지역 발전에 모든 역량을 쏟겠다"고 밝혔다. 민선7기를 거쳐 시정의 속살을 이미 경험한 사람으로서, 공약 이행 과정에서 실무진과의 협력이 얼마나 중요한지를 누구보다 잘 알고 있을 것이다. 이 점이 오히려 기대가 되는 부분이기도 하다.</div>
+        </div>
+        <div class="memo-item accordion-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class='date'>2026-06-05</span>
+            <span class="acc-tag">[육아·단상]</span>
+            <span class="acc-arrow">▸</span>
+          </div>
+          <div class="acc-body">"어디서든 잘 살 수 있게 준비시키는 것"을 목표로 아이들을 키워야 한다. 특정 직업이나 환경에 맞춰 키우는 게 아니라, 변화하는 세상 어디에 놓여도 스스로 적응하고 버텨낼 수 있는 사람으로. 그러려면 지식보다 태도가 먼저고, 태도보다 자존감이 먼저다. 어디서든 잘 산다는 건 결국 자기 자신을 믿는 사람이 하는 일이다.</div>
+        </div>
+    </div>
+    <div class="card work">
+      <div class="card-title">📚 업무 · 논문 · 공부</div>
+      
+        <div class="memo-item accordion-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class='date'>2026-06-06</span>
+            <span class="acc-tag">[업무·기획]</span>
+            <span class="acc-arrow">▸</span>
+          </div>
+          <div class="acc-body">입석마을기업 사업계획 수립 — 직접 기획. 제천시 아세아시멘트 인근 입석마을 주민들이 주체가 되는 마을기업 설립 구상. 출발점은 단순했다. 수십 년간 초대형 시멘트 공장과 공생해온 마을 주민들이, 그 공장의 부산물을 역으로 활용해 소득을 만들 수 없겠느냐는 질문이었다.</div>
+        </div>
+        <div class="memo-item accordion-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class='date'>2025-01-01</span>
+            <span class="acc-tag">[교육·연수]</span>
+            <span class="acc-arrow">▸</span>
+          </div>
+          <div class="acc-body">2025년 충청북도 자치연수원 중견간부양성과정 교육 신청 — 행정6급, 시설관리사업소 관광레저팀장. 리더십·정책 개발·네트워킹 역량 강화 목적으로 신청했으나, 징계 이력으로 인해 선발 불가 처리됨. / 주요 성과: 산업통상자원부장관상(투자유치 2,000억, 2014), 보건복지부장관상(긴급복지 충북1위, 2016), 정보지식인대회 최우수상(2007~2012), 스포츠마케팅 종합계획·스마트팜 운영계획·만남의광장 출렁다리 정상화 등 다수. 향후 징계 기간 종료 후 재신청 예정.</div>
+        </div>
+        <div class="memo-item accordion-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class='date'>2026-05-20</span>
+            <span class="acc-tag">[현장 민원]</span>
+            <span class="acc-arrow">▸</span>
+          </div>
+          <div class="acc-body">봉양읍 학산리 광암마을 — 소규모수도시설 탁도 문제로 주민 불만 고조. 강우 시 탁수 유입 추정. 비가 오는 상황에서도 민원이 집중될 만큼 체감 불편이 상당한 수준. 소규모수도 관리 실태 및 개선 필요성 재확인.</div>
+        </div>
+        <div class="memo-item accordion-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class='date'>2026-05-22</span>
+            <span class="acc-tag">[민원해결]</span>
+            <span class="acc-arrow">▸</span>
+          </div>
+          <div class="acc-body">고암동 태양철강 뒷쪽 부지의 숙원사업 해결.</div>
+        </div>
+        <div class="memo-item accordion-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class='date'>2026-05-22</span>
+            <span class="acc-tag">[메모]</span>
+            <span class="acc-arrow">▸</span>
+          </div>
+          <div class="acc-body">2025</div>
+        </div>
+        <div class="memo-item accordion-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class='date'>2026-05-22</span>
+            <span class="acc-tag">[업무·구상]</span>
+            <span class="acc-arrow">▸</span>
+          </div>
+          <div class="acc-body">제천시 차원의 통합 안전관리 검토 보고서를 구상 중. 현재 안전관리 업무는 재난·시설·교통·생활안전 등 부서별로 분산 운영되어 있어 위기 상황 시 통합 대응이 느리고 사각지대가 생긴다는 문제의식이 출발점. 검토 방향은 ① 현행 분산 구조의 실태 진단, ② 타 시·군 통합 안전관리 운영 사례 비교, ③ 제천시 특성(관광지·소규모 읍면 다수)을 반영한 통합 체계 설계안, ④ 조례·예산 연계 방안으로 잡고 있음. 우선 내부 검토 단계이며, 향후 정책 보고서 또는 논문 소재로 확장 가능성 있음.</div>
+        </div>
+        <div class="memo-item accordion-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class='date'>2026-05-10</span>
+            <span class="acc-tag">[지방행정·재정]</span>
+            <span class="acc-arrow">▸</span>
+          </div>
+          <div class="acc-body">제천시 인구 감소와 지방재정 위기 — 인구 감소 속에서도 행정서비스 수요는 줄지 않는 역설적 상황이 제천시에서도 나타나고 있다. 출생아 수 감소와 청년 유출이 병행되면서 세입 기반은 좁아지는데, 노인 돌봄·의료·교통 등 복지 수요는 오히려 증가하는 구조다. 지방소멸 대응을 위한 재정 확충 방안으로는 자체 세수 확대, 이전재원 구조 개편, 조세 감면 축소 세 방향이 논의되고 있으나 실질적 자구책은 여전히 부족하다. 중앙정부 의존도를 낮추는 방향의 재정분권 입법 필요성을 함께 검토해야 한다.</div>
+        </div>
+        <div class="memo-item accordion-item">
+          <div class="acc-header" onclick="toggleAcc(this)">
+            <span class='date'>2026-05-20</span>
+            <span class="acc-tag">[연구·논문]</span>
+            <span class="acc-arrow">▸</span>
+          </div>
+          <div class="acc-body">등록면허세 납세지 불일치 문제 소고 — 등록면허세는 법인의 본점 소재지를 납세지로 하는 구조로 인해, 실제 영업 활동이 이루어지는 지자체가 아닌 본점 소재 지자체에 세수가 귀속되는 구조적 불균형을 낳고 있다. 실제 면허 행위가 발생하는 물건지(영업소 소재 지자체)와 납세지(본점 소재 지자체)의 불일치가 제천처럼 대기업 본사가 없는 지방 소도시의 세수 기반을 취약하게 만드는 핵심 기제 중 하나다. 이 문제의 현황 분석과 납세지 개편 방향을 논문 소재로 구체화할 예정.</div>
+        </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Claude와 함께 정리하는 나의 기록 &nbsp;·&nbsp; <a href="https://choijc79.github.io">choijc79.github.io</a></p>
+  </footer>
+</div>
+<script>
+function toggleAcc(hdr){
+  hdr.classList.toggle('open');
+  var body=hdr.nextElementSibling;
+  body.style.display=body.style.display==='block'?'none':'block';
+}
+</script>
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/memo.html">📋<br>정리노트</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/jecheon_moto_guide.html">🏍<br>투어</a>
+</div>
+
+<button id="theme-toggle" onclick="toggleTheme()" aria-label="테마 전환"><span id="theme-icon">☀</span><span id="theme-lbl"> 베이지</span></button>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'light';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'☀ 라이트':'☾ 다크';
+})();
+function toggleTheme(){
+  var html=document.documentElement;
+  var now=html.getAttribute('data-theme');
+  var next=now==='dark'?'light':'dark';
+  html.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'☀ 라이트':'☾ 다크';
+}
+</script>
+</body>
+</html>

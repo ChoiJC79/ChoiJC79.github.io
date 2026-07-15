@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>최승환 | 제천시청 행정공무원</title>
+<meta name="description" content="충청북도 제천시청 팀장, 도시경영학 박사과정, 지방행정 연구자.">
+<meta property="og:title" content="최승환 | 제천시청 행정공무원">
+<meta property="og:description" content="충청북도 제천시청 팀장, 도시경영학 박사과정, 지방행정 연구자.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://choijc79.github.io/">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Batang:wght@400;700&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">최승환 · Jecheon</a>
+  <ul class="nav-links">
+    <li><a href="/about.html">소개</a></li><li><a href="/research.html">연구</a></li>
+    <li><a href="/column.html">칼럼</a></li>
+    <li><a href="/memo.html">정리노트</a></li><li><a href="/local.html">제천 소개</a></li>
+    <li><a href="/whisky.html" style="opacity:0.5">위스키</a></li>
+    <li><a href="/tour.html" style="opacity:0.5">투어</a></li>
+    <li><a href="/letter_wonwoo.html">원우에게</a></li>
+  </ul>
+  <button id="theme-btn" onclick="toggleTheme()">&#9790; 다크</button>
+</nav>
+
+<section id="hero">
+  <canvas id="globe-canvas"></canvas>
+  <div class="hero-mask"></div>
+  <div class="hero-content">
+    <div class="hero-greeting" id="hero-greeting"></div>
+    <div class="hero-eyebrow">충청북도 제천시 · 지방행정 공무원</div>
+    <h1 class="hero-name">최승환</h1>
+    <span class="hero-name-en">CHOI SEUNG-HWAN.</span>
+    <div class="hero-rule"></div>
+    <p class="hero-subtitle">제천시청 행정공무원 · 도시경영학 박사과정</p>
+    <p class="hero-desc">현장에서 쌓은 지방행정 경험과 개인적인 호기심들이 연구의 토대입니다. 지방세 행정에서 잘 보이지 않던 구조를 들여다보고 있으며, 도시와 사람과 제도가 맞물리는 방식에 대해 꾸준히 정리하고 있습니다.</p>
+    <div><a href="/about.html" class="btn btn-primary">소개 &rarr;</a><a href="/research.html" class="btn btn-outline">연구 보기</a></div>
+  </div>
+  <div class="scroll-hint"><div class="scroll-line"></div><span>SCROLL</span></div>
+  <div id="hero-stats">
+    <div class="hs-block"><span class="hs-label">연금 D-day</span><span class="hs-value" id="pension-dday">—</span></div>
+    <div class="hs-block"><span class="hs-label">최근 수정</span><span class="hs-value" id="last-modified">—</span></div>
+  </div>
+</section>
+
+<!-- ── 제천 주간 날씨 ── -->
+<section id="weather-strip">
+  <div class="wx-inner">
+    <div class="wx-label">제천 주간 날씨 <span id="wx-updated"></span></div>
+    <div class="wx-days" id="wx-days">
+      <div class="wx-err">날씨 불러오는 중...</div>
+    </div>
+  </div>
+</section>
+
+<div class="cat-section">
+  <div class="cat-section-label">Pages</div>
+  <div class="cat-grid">
+    <a href="/about.html" class="cat-card"><div class="cat-icon">👤</div><div class="cat-title">소개</div><div class="cat-desc">프로필 · 공직 경력</div><div class="cat-arrow">&rarr;</div></a>
+    <a href="/research.html" class="cat-card"><div class="cat-icon">🔬</div><div class="cat-title">연구 · 분석</div><div class="cat-desc">지방세 · 정책연구 · 행정 성과</div><div class="cat-arrow">&rarr;</div></a>
+    <a href="/column.html" class="cat-card"><div class="cat-icon">💬</div><div class="cat-title">칼럼</div><div class="cat-desc">제도 개선 및 행정 에세이</div><div class="cat-arrow">&rarr;</div></a>
+    <a href="/memo.html" class="cat-card"><div class="cat-icon">📋</div><div class="cat-title">정리노트</div><div class="cat-desc">업무 · 학습 정리</div><div class="cat-arrow">&rarr;</div></a>
+    <a href="/local.html" class="cat-card photo-card">
+      <div class="photo-strip">
+        <img src="/img/col_cheongpung.jpg" alt="청풍호">
+        <img src="/img/col_uirimji.jpg" alt="의림지">
+        <img src="/img/col_woraksan.jpg" alt="월악산">
+      </div>
+      <div class="card-inner">
+        <div class="cat-title">제천 소개</div>
+        <div class="cat-desc">청풍호 · 월악산 · 의림지</div>
+        <div class="cat-arrow">&rarr;</div>
+      </div>
+    </a>
+    <a href="/whisky.html" class="cat-card"><div class="cat-icon">🥃</div><div class="cat-title">위스키</div><div class="cat-desc">싱글몰트 가이드</div><div class="cat-arrow">&rarr;</div></a>
+    <a href="/tour.html" class="cat-card"><div class="cat-icon">🏍</div><div class="cat-title">투어</div><div class="cat-desc">라이딩 기록</div><div class="cat-arrow">&rarr;</div></a>
+    <a href="/guestbook.html" class="cat-card wide"><div class="cat-icon">✉</div><div><div class="cat-title">방명록</div><div class="cat-desc">자유롭게 인사 남겨주세요 — 짧은 메모도 환영합니다</div></div><div class="cat-arrow">&rarr;</div></a>
+  </div>
+</div>
+
+<section id="links">
+  <div class="lk-eyebrow">Quick Links</div><div class="lk-h">즐겨찾기</div>
+  <div class="lk-search-wrap">
+    <form class="lk-search-form" onsubmit="searchNaver(event)">
+      <img src="https://www.naver.com/favicon.ico" class="lk-search-icon" onerror="this.style.display='none'">
+      <input class="lk-search-input" id="naver-q" type="text" placeholder="네이버 검색">
+      <button class="lk-search-btn naver-btn" type="submit">검색</button>
+    </form>
+    <form class="lk-search-form" onsubmit="searchGoogle(event)">
+      <img src="https://www.google.com/favicon.ico" class="lk-search-icon" onerror="this.style.display='none'">
+      <input class="lk-search-input" id="google-q" type="text" placeholder="구글 검색">
+      <button class="lk-search-btn google-btn" type="submit">검색</button>
+    </form>
+  </div>
+  <div class="lk-group"><button class="lk-btn" onclick="lkToggle(this)"><span><span class="lk-icon">📰</span>뉴스</span><span class="lk-arrow">&#9658;</span></button><div class="lk-body"><a class="lk-a" href="https://news.naver.com" target="_blank">네이버뉴스</a><a class="lk-a" href="https://news.kbs.co.kr" target="_blank">KBS뉴스</a><a class="lk-a" href="https://www.yna.co.kr" target="_blank">연합뉴스</a><a class="lk-a" href="https://www.ytn.co.kr" target="_blank">YTN</a><a class="lk-a" href="https://www.inews365.com" target="_blank">충북일보</a><a class="lk-a" href="http://www.jcinews.co.kr/" target="_blank">제천인터넷뉴스</a><a class="lk-a" href="http://www.jnjl.kr/" target="_blank">제천뉴스저널</a></div></div>
+  <div class="lk-group"><button class="lk-btn" onclick="lkToggle(this)"><span><span class="lk-icon">🛒</span>쇼핑</span><span class="lk-arrow">&#9658;</span></button><div class="lk-body"><a class="lk-a" href="https://www.coupang.com" target="_blank">쿠팡</a><a class="lk-a" href="https://shopping.naver.com" target="_blank">네이버쇼핑</a><a class="lk-a" href="https://www.gmarket.co.kr" target="_blank">G마켓</a><a class="lk-a" href="https://www.11st.co.kr" target="_blank">11번가</a><a class="lk-a" href="https://www.danawa.com" target="_blank">다나와</a><a class="lk-a" href="https://okjc.ezwel.com" target="_blank">제천시 복지몰</a></div></div>
+  <div class="lk-group"><button class="lk-btn" onclick="lkToggle(this)"><span><span class="lk-icon">🏍</span>취미</span><span class="lk-arrow">&#9658;</span></button><div class="lk-body"><a class="lk-a" href="https://www.ex.co.kr/user/kor/road/cctv/realtimeCctv.do" target="_blank">고속도로 CCTV</a><a class="lk-a" href="https://www.weather.go.kr/w/index.do" target="_blank">기상청 날씨</a><a class="lk-a" href="https://www.windy.com" target="_blank">Windy</a><a class="lk-a" href="https://www.whiskybase.com" target="_blank">WhiskyBase</a></div></div>
+  <div class="lk-group"><button class="lk-btn" onclick="lkToggle(this)"><span><span class="lk-icon">🏛</span>기타</span><span class="lk-arrow">&#9658;</span></button><div class="lk-body"><a class="lk-a" href="https://www.gov.kr" target="_blank">정부24</a><a class="lk-a" href="https://www.wetax.go.kr" target="_blank">위택스</a><a class="lk-a" href="https://www.data.go.kr" target="_blank">공공데이터포털</a><a class="lk-a" href="https://www.jecheon.go.kr" target="_blank">제천시청</a><a class="lk-a" href="https://www.dhlottery.co.kr/main" target="_blank">동행복권</a></div></div>
+</section>
+
+<footer>
+  <div><span class="footer-name">최승환</span><span class="footer-sub">충청북도 제천시청 행정공무원 · 도시경영학 박사과정</span></div>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <a href="/guestbook.html" style="font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:0.04em;">✉ 방명록</a><a href="/letter_wonwoo.html" style="font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:0.04em;opacity:0.7;">♡ 원우에게</a>
+    <span class="footer-right">&copy; 2026 choijc79.github.io</span>
+  </div>
+</footer>
+<div id="mqb">
+  <a href="/about.html">👤<br>소개</a><a href="/research.html">🔬<br>연구</a>
+  <a href="/column.html">💬<br>칼럼</a><a href="/memo.html">📋<br>노트</a><a href="/guestbook.html">✉<br>방명록</a>
+</div>
+
+<!-- ── 제천 맛집 랜덤 추천 (구석 위젯) ── -->
+<div id="jc-corner">
+  <div id="jc-corner-panel">
+    <button id="jc-corner-close" aria-label="닫기">✕</button>
+    <link rel="stylesheet" href="/css/jc-picker.css">
+
+<div id="jc-picker">
+  <svg width="0" height="0" style="position:absolute;">
+    <filter id="jc-ink">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="3"/>
+    </filter>
+  </svg>
+
+  <div class="jc-nails"><span class="n2"></span><span class="n3"></span></div>
+
+  <div class="jc-head">
+    <span class="jc-eyebrow">JECHEON · 오늘의 한 끼</span>
+    <h2>오늘 뭐 먹지?</h2>
+    <p class="jc-sub">제비뽑기로 정하는 제천 맛집</p>
+  </div>
+
+  <div class="jc-select-wrap">
+    <span class="jc-select-tag">메뉴판</span>
+    <select id="jc-catSelect">
+      <option value="__all__">전체 메뉴 중 랜덤</option>
+    </select>
+  </div>
+
+  <div id="jc-ticket" class="jc-ticket">
+    <div id="jc-stamp" class="jc-stamp">당첨</div>
+    <div id="jc-progress" class="jc-progress"></div>
+    <div id="jc-result">
+      <p class="jc-placeholder">도장을 찍어 오늘의 메뉴를 정해보세요</p>
+    </div>
+  </div>
+
+  <button id="jc-pickBtn" class="jc-btn">뽑기 도장 찍기</button>
+  <button id="jc-excludeBtn" class="jc-exclude">방금 나온 곳 빼고 다시 뽑기</button>
+</div>
+
+<script src="/js/jc-picker.js"></script>
+  </div>
+  <button id="jc-corner-toggle" aria-label="제천 맛집 랜덤 뽑기 열기">
+    <span class="jc-corner-icon">🍜</span>
+    <span class="jc-corner-label">오늘 뭐 먹지?</span>
+  </button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="/js/globe.js"></script>
+<script src="/js/site.js"></script>
+</body>
+</html>

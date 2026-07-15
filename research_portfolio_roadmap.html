@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>연구 포트폴리오 로드맵 | 최승환</title>
+<style>
+:root{
+  --font-sans:'Noto Sans KR',-apple-system,sans-serif;
+  --color-background-primary:#F4F0E8;
+  --color-background-secondary:#ECE8DE;
+  --color-border-primary:#D4CEBC;
+  --color-border-secondary:#D4CEBC;
+  --color-border-tertiary:#E2DCCB;
+  --color-text-primary:#1A1410;
+  --color-text-secondary:#7A6A56;
+  --border-radius-md:8px;
+  --border-radius-lg:12px;
+}
+body{background:var(--color-background-primary);margin:0;padding:1rem 1.5rem;max-width:900px;margin:0 auto;}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans)}
+.root{padding:1.5rem 0}
+.top-bar{display:flex;gap:12px;margin-bottom:1.5rem;flex-wrap:wrap}
+.stat{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.75rem 1rem;flex:1;min-width:120px}
+.stat-label{font-size:12px;color:var(--color-text-secondary);margin-bottom:4px}
+.stat-val{font-size:20px;font-weight:500;color:var(--color-text-primary)}
+.section-title{font-size:13px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.75rem}
+.timeline{border-left:2px solid var(--color-border-secondary);padding-left:1.25rem;margin-bottom:2rem}
+.tl-row{display:grid;grid-template-columns:90px 1fr;gap:12px;margin-bottom:1rem;position:relative}
+.tl-row::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--color-border-primary);position:absolute;left:-1.6rem;top:4px}
+.tl-row.active::before{background:#185FA5}
+.tl-year{font-size:13px;font-weight:500;color:var(--color-text-secondary);padding-top:2px}
+.tl-content{font-size:14px;color:var(--color-text-primary);line-height:1.55}
+.tl-content .main{font-weight:500;margin-bottom:2px}
+.tl-content .sub{font-size:13px;color:var(--color-text-secondary)}
+.badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:var(--border-radius-md);margin-right:4px;margin-bottom:2px;font-weight:500}
+.b-blue{background:#E6F1FB;color:#0C447C}
+.b-teal{background:#E1F5EE;color:#085041}
+.b-amber{background:#FAEEDA;color:#633806}
+.b-coral{background:#FAECE7;color:#712B13}
+.b-gray{background:#F1EFE8;color:#444441}
+@media(prefers-color-scheme:dark){
+.b-blue{background:#0C447C;color:#B5D4F4}
+.b-teal{background:#085041;color:#9FE1CB}
+.b-amber{background:#633806;color:#FAC775}
+.b-coral{background:#712B13;color:#F5C4B3}
+.b-gray{background:#444441;color:#D3D1C7}
+}
+.papers{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:2rem}
+.paper-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem;position:relative;cursor:pointer;transition:border-color .15s}
+.paper-card:hover{border-color:var(--color-border-secondary)}
+.paper-card.featured{border:1.5px solid #378ADD}
+.paper-num{font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:.5rem}
+.paper-title{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:.4rem;line-height:1.4}
+.paper-meta{font-size:12px;color:var(--color-text-secondary);line-height:1.5}
+.paper-year{position:absolute;top:1rem;right:1rem;font-size:11px;font-weight:500;color:var(--color-text-secondary)}
+.track-label{font-size:11px;padding:2px 8px;border-radius:var(--border-radius-md);margin-bottom:.5rem;display:inline-block;font-weight:500}
+.track-main{background:#E6F1FB;color:#0C447C}
+.track-sub{background:#FAEEDA;color:#633806}
+@media(prefers-color-scheme:dark){
+.track-main{background:#0C447C;color:#B5D4F4}
+.track-sub{background:#633806;color:#FAC775}
+}
+.infra{background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin-bottom:2rem}
+.infra-title{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:.75rem}
+.infra-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.infra-item{font-size:12px;color:var(--color-text-secondary);display:flex;align-items:flex-start;gap:6px;line-height:1.45}
+.infra-item i{color:#185FA5;font-size:14px;margin-top:1px;flex-shrink:0}
+.outcome{background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem}
+.outcome-title{font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:.75rem}
+.outcome-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px}
+.outcome-item{font-size:13px;color:var(--color-text-secondary);display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+.outcome-item i{color:#1D9E75;font-size:15px;margin-top:1px;flex-shrink:0}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">최승환 박사 후 연구 포트폴리오 통합 로드맵 2026~2031, 행정수요 3부작과 세외수입 트랙 4편 구성</h2>
+
+<div class="root">
+
+<div class="top-bar">
+  <div class="stat"><div class="stat-label">포트폴리오 기간</div><div class="stat-val">2026 – 2031</div></div>
+  <div class="stat"><div class="stat-label">목표 KCI 게재편수</div><div class="stat-val">4편</div></div>
+  <div class="stat"><div class="stat-label">핵심 분석 인프라</div><div class="stat-val">텍스트마이닝 · GIS</div></div>
+  <div class="stat"><div class="stat-label">도달 포지션</div><div class="stat-val">행정수요 × 지방재정</div></div>
+</div>
+
+<div class="section-title">연도별 마스터 일정</div>
+<div class="timeline">
+
+  <div class="tl-row active">
+    <div class="tl-year">2026 하반기</div>
+    <div class="tl-content">
+      <div class="main">박사논문 최종심사 · 학위 취득</div>
+      <div class="sub">병행: 1편 자료제공 승인 기안 · IRB 신청</div>
+      <div style="margin-top:6px"><span class="badge b-gray">박사학위</span></div>
+    </div>
+  </div>
+
+  <div class="tl-row">
+    <div class="tl-year">2027 상반기</div>
+    <div class="tl-content">
+      <div class="main">1편 자료수집 · 전처리 · 분석</div>
+      <div class="sub">병행: 2편 정보공개대장 보존실태 확인</div>
+      <div style="margin-top:6px"><span class="badge b-blue">분석 파이프라인 v1 구축</span></div>
+    </div>
+  </div>
+
+  <div class="tl-row">
+    <div class="tl-year">2027 하반기</div>
+    <div class="tl-content">
+      <div class="main">1편 초고 집필 · 내부검토</div>
+      <div class="sub">병행: 3편 단속자료 부서 협의 착수</div>
+    </div>
+  </div>
+
+  <div class="tl-row">
+    <div class="tl-year">2028 상반기</div>
+    <div class="tl-content">
+      <div class="main">1편 투고 · 심사대응</div>
+      <div class="sub">병행: 2편 자료수집 착수</div>
+      <div style="margin-top:6px"><span class="badge b-blue">★ 1편 게재 목표</span></div>
+    </div>
+  </div>
+
+  <div class="tl-row">
+    <div class="tl-year">2028 하반기</div>
+    <div class="tl-content">
+      <div class="main">2편 분석 · 집필 (파이프라인 재활용)</div>
+      <div class="sub">병행: 3편 자료수집</div>
+    </div>
+  </div>
+
+  <div class="tl-row">
+    <div class="tl-year">2029 상반기</div>
+    <div class="tl-content">
+      <div class="main">2편 투고 · 심사대응</div>
+      <div class="sub">병행: 3편 GIS 분석 착수</div>
+      <div style="margin-top:6px"><span class="badge b-teal">★ 2편 게재 목표</span></div>
+    </div>
+  </div>
+
+  <div class="tl-row">
+    <div class="tl-year">2029 하반기</div>
+    <div class="tl-content">
+      <div class="main">3편 집필 (GIS 파이프라인 재활용)</div>
+      <div class="sub">병행: 4편 세외수입 자료 범위 설계</div>
+    </div>
+  </div>
+
+  <div class="tl-row">
+    <div class="tl-year">2030 상반기</div>
+    <div class="tl-content">
+      <div class="main">3편 투고 · 심사대응</div>
+      <div class="sub">병행: 4편 자료수집</div>
+      <div style="margin-top:6px"><span class="badge b-teal">★ 3편 게재 목표</span></div>
+    </div>
+  </div>
+
+  <div class="tl-row">
+    <div class="tl-year">2030 하반기</div>
+    <div class="tl-content">
+      <div class="main">4편 분석 · 집필</div>
+      <div class="sub">병행: 자문 · 심의위원 공모 본격 지원</div>
+    </div>
+  </div>
+
+  <div class="tl-row">
+    <div class="tl-year">2031</div>
+    <div class="tl-content">
+      <div class="main">4편 투고 · 게재</div>
+      <div class="sub">포트폴리오 기반 강연 · 자문 확장</div>
+      <div style="margin-top:6px"><span class="badge b-amber">★ 4편 게재 · 포트폴리오 완성</span></div>
+    </div>
+  </div>
+
+</div>
+
+<div class="section-title">4편 구조</div>
+<div class="papers">
+
+  <div class="paper-card featured">
+    <div class="track-label track-main">주축 · 1편</div>
+    <div class="paper-year">2028</div>
+    <div class="paper-title">민원 빅데이터 기반 행정수요 구조적 진단</div>
+    <div class="paper-meta">
+      토픽모델링 + 공간분석<br>
+      자료: 2023~2025 민원접수<br>
+      투고: 지방행정연구 · 한국지방자치학회보
+    </div>
+  </div>
+
+  <div class="paper-card">
+    <div class="track-label track-main">주축 · 2편</div>
+    <div class="paper-year">2029</div>
+    <div class="paper-title">정보공개청구 패턴 분석</div>
+    <div class="paper-meta">
+      텍스트마이닝(재활용)<br>
+      자료: 청구 · 처리대장<br>
+      투고: 한국지방자치학회보 · 한국행정논집
+    </div>
+  </div>
+
+  <div class="paper-card">
+    <div class="track-label track-main">주축 · 3편</div>
+    <div class="paper-year">2030</div>
+    <div class="paper-title">단속행정 공간분포 분석</div>
+    <div class="paper-meta">
+      GIS 핫스팟(재활용)<br>
+      자료: 불법주정차 · 생활단속<br>
+      투고: 지방행정연구 · 지역개발학회지
+    </div>
+  </div>
+
+  <div class="paper-card">
+    <div class="track-label track-sub">지방재정 · 4편</div>
+    <div class="paper-year">2031</div>
+    <div class="paper-title">세외수입 구조 · 징수율 분석</div>
+    <div class="paper-meta">
+      시계열 · 결손처분 패턴<br>
+      자료: 부과 · 징수 자료<br>
+      투고: 한국지방재정논집
+    </div>
+  </div>
+
+</div>
+
+<div class="infra">
+  <div class="infra-title"><i class="ti ti-building-factory-2" aria-hidden="true" style="font-size:15px;vertical-align:-2px;margin-right:6px;color:#185FA5"></i>공통 분석 인프라 재활용 구조</div>
+  <div class="infra-grid">
+    <div class="infra-item"><i class="ti ti-check" aria-hidden="true"></i>한국어 텍스트 전처리 파이프라인 → 1·2·3편 공유</div>
+    <div class="infra-item"><i class="ti ti-check" aria-hidden="true"></i>LDA 토픽모델링 코드 → 1·2편 공유</div>
+    <div class="infra-item"><i class="ti ti-check" aria-hidden="true"></i>읍면동 GIS 베이스맵 · 핫스팟 분석 → 1·3편 공유</div>
+    <div class="infra-item"><i class="ti ti-check" aria-hidden="true"></i>인구 · 사업체 표준화 데이터셋 → 1·2·3편 공유</div>
+    <div class="infra-item"><i class="ti ti-check" aria-hidden="true"></i>비식별화 처리 프로토콜 → 전편 공유</div>
+    <div class="infra-item"><i class="ti ti-check" aria-hidden="true"></i>자료제공 승인 · IRB 포괄설계 → 절차 단축</div>
+  </div>
+</div>
+
+<div class="outcome">
+  <div class="outcome-title"><i class="ti ti-flag" aria-hidden="true" style="font-size:15px;vertical-align:-2px;margin-right:6px;color:#1D9E75"></i>2031 포트폴리오 완성 시 가능해지는 것</div>
+  <div class="outcome-grid">
+    <div class="outcome-item"><i class="ti ti-circle-check" aria-hidden="true"></i>행정안전부 · 충북도 심의위원회 진입 근거 4편 확보</div>
+    <div class="outcome-item"><i class="ti ti-circle-check" aria-hidden="true"></i>"데이터로 보는 지방행정" 강의 상품화 가능</div>
+    <div class="outcome-item"><i class="ti ti-circle-check" aria-hidden="true"></i>행정수요 분석 × 지방재정 교집합 연구자 포지션 완성</div>
+    <div class="outcome-item"><i class="ti ti-circle-check" aria-hidden="true"></i>4편 + 박사논문 묶어 단행본 검토 가능</div>
+  </div>
+</div>
+
+</div>
+
+</body>
+</html>

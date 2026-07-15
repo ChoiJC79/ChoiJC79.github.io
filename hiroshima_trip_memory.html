@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>아들과 함께 — 히로시마·미야지마·오노미치</title>
+<meta name="description" content="아들과 함께한 히로시마·미야지마·오노미치 여행 기록.">
+<meta property="og:title" content="아들과 함께 — 히로시마·미야지마·오노미치 | 최승환">
+<meta property="og:description" content="아들과 함께한 히로시마·미야지마·오노미치 여행 기록.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://choijc79.github.io/hiroshima_trip_memory.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<meta name="twitter:card" content="summary">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;900&family=Noto+Sans+KR:wght@300;400;500&family=Shippori+Mincho:wght@400;700&display=swap');
+
+  :root {
+  --bg:      #F4F0E8;
+  --surface: #ECE8DE;
+  --border:  #D4CEBC;
+  --text:    #1A1410;
+  --ink:     #2A2018;
+  --muted:   #7A6A56;
+  --accent:  #E07828;
+  --red:     #D96820;
+  --light:   #FDFAF4;
+  --amber:   #E07828;
+  --green:   #5A7A3A;
+  --lake:    #E07828;
+  --purple:  #7A4AB0;
+}
+[data-theme="dark"] {
+  --bg:      #0d1117;
+  --surface: #161b22;
+  --border:  #2c3240;
+  --text:    #E8E0D0;
+  --ink:     #F0E8D8;
+  --muted:   #8b8070;
+  --accent:  #F08840;
+  --red:     #E07830;
+  --light:   #161b22;
+  --amber:   #F08840;
+  --green:   #3fb950;
+  --lake:    #F08840;
+  --purple:  #bc8cff;
+}
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ── 도장 효과 ── */
+  .hanko {
+    display: inline-block;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 0.7rem;
+    color: var(--vermillion);
+    border: 2px solid var(--vermillion);
+    border-radius: 50%;
+    width: 48px; height: 48px;
+    line-height: 1.1;
+    text-align: center;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    opacity: 0.85;
+    transform: rotate(-8deg);
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+    background:
+      radial-gradient(ellipse at 20% 80%, rgba(90,127,166,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(192,57,43,0.08) 0%, transparent 55%),
+      var(--paper);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '廣島';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(8rem, 25vw, 22rem);
+    color: rgba(26,23,20,0.04);
+    pointer-events: none;
+    white-space: nowrap;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.35em;
+    color: var(--vermillion);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 900;
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title span {
+    color: var(--vermillion);
+  }
+
+  .hero-sub {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: var(--caption);
+    letter-spacing: 0.15em;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-date {
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    color: var(--moss);
+    border-left: 2px solid var(--moss);
+    padding-left: 0.8rem;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--mist);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    animation: nudge 2s ease-in-out infinite;
+  }
+  .scroll-hint::after {
+    content: '';
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--mist), transparent);
+    display: block;
+  }
+
+  @keyframes nudge {
+    0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); }
+    50% { opacity: 0.9; transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ── TIMELINE ── */
+  .section-label {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.4em;
+    color: var(--vermillion);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .timeline-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .timeline-header h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 600;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    letter-spacing: -0.01em;
+  }
+
+  /* 세로선 */
+  .tl-wrap {
+    position: relative;
+  }
+  .tl-wrap::before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--mist) 10%, var(--mist) 90%, transparent);
+  }
+
+  .tl-item {
+    display: flex;
+    gap: 1.8rem;
+    margin-bottom: 3.5rem;
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .tl-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .tl-dot {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    border: 1.5px solid var(--mist);
+    background: var(--paper);
+    z-index: 1;
+  }
+
+  .tl-body {
+    padding-top: 0.5rem;
+    flex: 1;
+  }
+
+  .tl-time {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    color: var(--caption);
+    margin-bottom: 0.3rem;
+  }
+
+  .tl-place-jp {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 0.8rem;
+    color: var(--caption);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.2rem;
+  }
+
+  .tl-place-kr {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.6rem;
+  }
+
+  .tl-desc {
+    font-size: 0.88rem;
+    line-height: 1.9;
+    color: #3a3530;
+  }
+
+  .tl-tags {
+    margin-top: 0.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    padding: 0.2rem 0.65rem;
+    border-radius: 2px;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  .tag-tram { background: rgba(91,127,166,0.12); color: var(--water); }
+  .tag-train { background: rgba(74,82,64,0.12); color: var(--moss); }
+  .tag-cycle { background: rgba(184,134,11,0.12); color: var(--gold); }
+  .tag-food { background: rgba(192,57,43,0.1); color: var(--vermillion); }
+  .tag-history { background: rgba(26,23,20,0.07); color: var(--ink); }
+  .tag-nature { background: rgba(74,82,64,0.18); color: var(--moss); }
+
+  /* ── MEMORY CARDS ── */
+  .memories {
+    background:
+      linear-gradient(160deg, rgba(74,82,64,0.05) 0%, transparent 50%),
+      #ede8df;
+    padding: 5rem 2rem;
+  }
+
+  .memories-inner {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .memories-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .memories-header h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 600;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.4rem;
+  }
+
+  .card {
+    background: var(--paper);
+    border: 1px solid rgba(26,23,20,0.08);
+    padding: 1.6rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: default;
+  }
+
+  .card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent, var(--mist));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(26,23,20,0.1);
+  }
+
+  .card:hover::after {
+    transform: scaleX(1);
+  }
+
+  .card-icon {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .card-title {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-body {
+    font-size: 0.83rem;
+    line-height: 1.85;
+    color: #4a4540;
+  }
+
+  /* ── ROUTE STRIP ── */
+  .route-strip {
+    padding: 4rem 2rem;
+    max-width: 820px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .route-strip h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 600;
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    margin-bottom: 2.5rem;
+  }
+
+  .route-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .route-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .route-bubble {
+    width: 70px; height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    border: 2px solid var(--mist);
+    background: var(--paper);
+    box-shadow: 0 2px 8px rgba(26,23,20,0.06);
+  }
+
+  .route-kr {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .route-jp {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 0.62rem;
+    color: var(--caption);
+    letter-spacing: 0.05em;
+  }
+
+  .route-arrow {
+    font-size: 0.75rem;
+    color: var(--mist);
+    padding: 0 0.5rem;
+    margin-bottom: 1.8rem;
+    white-space: nowrap;
+  }
+
+  .route-transport {
+    font-size: 0.6rem;
+    color: var(--caption);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── LETTER ── */
+  .letter-section {
+    background: #ede8df;
+    padding: 5rem 2rem;
+  }
+
+  .letter-inner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .letter-inner h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 600;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .letter-body {
+    background: var(--paper);
+    padding: 2.5rem 3rem;
+    border-left: 3px solid var(--vermillion);
+    position: relative;
+  }
+
+  .letter-body::before {
+    content: '아들에게';
+    position: absolute;
+    top: -0.75rem;
+    left: 2rem;
+    background: var(--paper);
+    padding: 0 0.5rem;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 0.75rem;
+    color: var(--vermillion);
+    letter-spacing: 0.15em;
+  }
+
+  .letter-text {
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 300;
+    font-size: 0.95rem;
+    line-height: 2.2;
+    color: #2a2520;
+  }
+
+  .letter-text p + p {
+    margin-top: 1.2rem;
+  }
+
+  .letter-sign {
+    margin-top: 2rem;
+    text-align: right;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 0.88rem;
+    color: var(--caption);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 3rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--mist);
+  }
+
+  .footer-jp {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.3em;
+    color: var(--caption);
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-kr {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--mist);
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    text-align: center;
+    padding: 2rem 0;
+    color: var(--mist);
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.2rem;
+    letter-spacing: 1em;
+  }
+
+  @media (max-width: 600px) {
+    .tl-wrap::before { left: 22px; }
+    .tl-dot { width: 44px; height: 44px; font-size: 1.1rem; }
+    .tl-wrap { gap: 1.2rem; }
+    .letter-body { padding: 1.8rem 1.5rem; }
+    .route-bubble { width: 56px; height: 56px; font-size: 1.2rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <p class="hero-eyebrow">2025년 4월 · 아빠와 아들의 여행</p>
+  <h1 class="hero-title">
+    히로시마<span>에서</span><br>오노미치<span>까지</span>
+  </h1>
+  <p class="hero-sub">廣島 ・ 宮島 ・ 尾道</p>
+  <div class="hero-meta">
+    <div class="hanko">父<br>子</div>
+    <div class="hero-date">
+      기차와 트램, 자전거로<br>달린 3박 4일
+    </div>
+  </div>
+  <div class="scroll-hint">scroll</div>
+</section>
+
+<!-- ── ROUTE ── -->
+<section style="padding: 4rem 2rem; max-width: 820px; margin: 0 auto; text-align: center;">
+  <p class="section-label" style="text-align:center;">이동 경로</p>
+  <h2 class="timeline-header" style="font-family:'Noto Serif KR',serif; font-weight:600; font-size:clamp(1.5rem,3.5vw,2.2rem); margin-bottom:2.5rem;">세 도시를 잇는 여정</h2>
+
+  <div class="route-flow">
+    <div class="route-node">
+      <div class="route-bubble">✈️</div>
+      <span class="route-kr">히로시마</span>
+      <span class="route-jp">廣島</span>
+      <span class="route-transport">공항 도착</span>
+    </div>
+    <div class="route-arrow">
+      ——🚃——<br>
+      <span style="font-size:0.55rem; color:var(--caption);">히로시마 전철</span>
+    </div>
+    <div class="route-node">
+      <div class="route-bubble">🏯</div>
+      <span class="route-kr">히로시마 시내</span>
+      <span class="route-jp">廣島市内</span>
+      <span class="route-transport">트램 이동</span>
+    </div>
+    <div class="route-arrow">
+      ——⛴️——<br>
+      <span style="font-size:0.55rem; color:var(--caption);">페리</span>
+    </div>
+    <div class="route-node">
+      <div class="route-bubble">🦌</div>
+      <span class="route-kr">미야지마</span>
+      <span class="route-jp">宮島</span>
+      <span class="route-transport">사슴의 섬</span>
+    </div>
+    <div class="route-arrow">
+      ——🚂——<br>
+      <span style="font-size:0.55rem; color:var(--caption);">산요 본선</span>
+    </div>
+    <div class="route-node">
+      <div class="route-bubble">🚴</div>
+      <span class="route-kr">오노미치</span>
+      <span class="route-jp">尾道</span>
+      <span class="route-transport">자전거 투어</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider">· · ·</div>
+
+<!-- ── TIMELINE ── -->
+<section class="timeline">
+  <div class="timeline-header">
+    <p class="section-label">날짜별 기록</p>
+    <h2>하루하루의 발자국</h2>
+  </div>
+
+  <div class="tl-wrap">
+
+    <!-- DAY 1 -->
+    <div class="tl-item">
+      <div class="tl-dot">🌅</div>
+      <div class="tl-body">
+        <p class="tl-time">DAY 1 · 오전</p>
+        <p class="tl-place-jp">廣島駅 → 原爆ドーム前</p>
+        <p class="tl-place-kr">히로시마역 도착 · 원폭 돔</p>
+        <p class="tl-desc">
+          히로시마에 내리자마자 트램에 올랐다. 노면전차가 천천히 시내를 가로지르는 동안 아들 녀석은 차창 밖을 내다보며 눈을 떼지 못했다. 원폭 돔 앞에서는 오래 침묵했다. 설명을 굳이 하지 않아도 됐다 — 그 공간이 알아서 말하고 있었다.
+        </p>
+        <div class="tl-tags">
+          <span class="tag tag-tram">🚃 히로시마 전철</span>
+          <span class="tag tag-history">원폭 돔</span>
+          <span class="tag tag-history">평화기념공원</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 1 오후 -->
+    <div class="tl-item">
+      <div class="tl-dot">🍜</div>
+      <div class="tl-body">
+        <p class="tl-time">DAY 1 · 오후</p>
+        <p class="tl-place-jp">お好み村 · 本通り</p>
+        <p class="tl-place-kr">오코노미야키 골목 · 혼도리 상점가</p>
+        <p class="tl-desc">
+          오코노미무라(お好み村)의 작은 철판 앞에서 현지 아주머니가 눈앞에서 굽는 히로시마식 오코노미야키. 면이 들어간 히로시마 스타일은 오사카 것과 전혀 다르다. 아들은 두 판을 비웠다. 오후엔 혼도리 상점가를 걸으며 아케이드 오락실 한 시간.
+        </p>
+        <div class="tl-tags">
+          <span class="tag tag-food">🍳 오코노미야키</span>
+          <span class="tag tag-tram">트램 이동</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 2 -->
+    <div class="tl-item">
+      <div class="tl-dot">🦌</div>
+      <div class="tl-body">
+        <p class="tl-time">DAY 2 · 종일</p>
+        <p class="tl-place-jp">宮島 · 厳島神社</p>
+        <p class="tl-place-kr">미야지마 · 이쓰쿠시마 신사 · 사슴</p>
+        <p class="tl-desc">
+          미야지노구치역(宮島口駅)에서 페리를 탔다. 바다 위로 떠있는 붉은 도리이(鳥居)가 시야에 들어오는 순간 — 아들이 처음으로 "와" 소리를 냈다. 섬 안에서 아무도 모셔다 주지 않아도 제발로 걸어다니는 사슴들. 아들 손에 들린 과자 봉지를 당기던 그 녀석의 표정이 아직도 생생하다. 모미지만주(もみじ饅頭)를 한 봉지 사서 벤치에 앉아 나눠먹었다.
+        </p>
+        <div class="tl-tags">
+          <span class="tag tag-train">⛴️ 페리</span>
+          <span class="tag tag-nature">🦌 사슴</span>
+          <span class="tag tag-history">이쓰쿠시마 신사</span>
+          <span class="tag tag-food">모미지만주</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 3 -->
+    <div class="tl-item">
+      <div class="tl-dot">🚴</div>
+      <div class="tl-body">
+        <p class="tl-time">DAY 3 · 종일</p>
+        <p class="tl-place-jp">尾道 · 坂の街 · レンタサイクル</p>
+        <p class="tl-place-kr">오노미치 · 언덕의 도시 · 자전거 투어</p>
+        <p class="tl-desc">
+          산요 본선 기차를 타고 오노미치로 이동했다. 렌터사이클 가게에서 자전거 두 대를 빌렸고, 바다 따라 난 좁은 길을 함께 달렸다. 고양이가 많기로 유명한 골목(猫の細道)을 오르내리고, 절과 절 사이를 자전거로 잇는 오노미치 7복신 코스의 절반쯤. 언덕 꼭대기 카페에서 바라본 시마나미 해도 방향의 바다는 오래 머물고 싶은 풍경이었다.
+        </p>
+        <div class="tl-tags">
+          <span class="tag tag-train">🚂 산요 본선</span>
+          <span class="tag tag-cycle">🚴 렌터사이클</span>
+          <span class="tag tag-nature">고양이 골목</span>
+          <span class="tag tag-history">절 투어</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 4 -->
+    <div class="tl-item">
+      <div class="tl-dot">✈️</div>
+      <div class="tl-body">
+        <p class="tl-time">DAY 4 · 귀국</p>
+        <p class="tl-place-jp">廣島駅 → 廣島空港</p>
+        <p class="tl-place-kr">히로시마로 귀환 · 귀국</p>
+        <p class="tl-desc">
+          돌아오는 기차 안에서 아들이 조용히 잠들었다. 그 얼굴을 보며 생각했다 — 이 여행은 꽤 오래갈 기억이 되겠구나. 히로시마 공항 편의점에서 사 먹은 마지막 주먹밥까지.
+        </p>
+        <div class="tl-tags">
+          <span class="tag tag-train">🚂 기차</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider">· · ·</div>
+
+<!-- ── MEMORY CARDS ── -->
+<section class="memories">
+  <div class="memories-inner">
+    <div class="memories-header">
+      <p class="section-label" style="text-align:center;">기억의 조각들</p>
+      <h2 style="font-family:'Noto Serif KR',serif; font-weight:600; font-size:clamp(1.6rem,4vw,2.4rem);">잊히지 않을 장면들</h2>
+    </div>
+
+    <div class="card-grid">
+      <div class="card" style="--accent: var(--vermillion);">
+        <span class="card-icon">🚃</span>
+        <p class="card-title">히로시마 노면전차</p>
+        <p class="card-body">1945년 이후 도시와 함께 재건된 전철. 원폭 이후에도 살아남은 차량이 지금도 달린다는 사실을 역 앞 안내판에서 읽었다. 그걸 타고 달린다는 게 단순한 이동이 아니었다.</p>
+      </div>
+
+      <div class="card" style="--accent: var(--water);">
+        <span class="card-icon">⛩️</span>
+        <p class="card-title">바다 위 도리이</p>
+        <p class="card-body">만조 때 물 위에 떠있는 붉은 도리이(鳥居). 사진으로 수백 번 봤지만 직접 배에서 바라보는 건 차원이 다른 경험이었다. 아들은 "저게 진짜야?" 라고 물었다.</p>
+      </div>
+
+      <div class="card" style="--accent: var(--moss);">
+        <span class="card-icon">🦌</span>
+        <p class="card-title">겁 없는 사슴들</p>
+        <p class="card-body">미야지마의 사슴은 관광객을 전혀 두려워하지 않는다. 아들 손에서 과자를 빼앗고, 지도를 씹으려 했고, 셔츠 소매를 당겼다. 30분 만에 아들은 완전히 그 녀석들의 팬이 됐다.</p>
+      </div>
+
+      <div class="card" style="--accent: var(--gold);">
+        <span class="card-icon">🚴</span>
+        <p class="card-title">오노미치 자전거 길</p>
+        <p class="card-body">바다와 언덕이 공존하는 도시를 자전거로 달리는 건 오노미치만의 방식이다. 좁은 골목에서 고양이와 눈이 마주쳤고, 언덕 위에서 내려다본 시마나미 해도 방향의 풍경은 지금도 눈에 선하다.</p>
+      </div>
+
+      <div class="card" style="--accent: var(--vermillion);">
+        <span class="card-icon">🍳</span>
+        <p class="card-title">히로시마식 오코노미야키</p>
+        <p class="card-body">오사카 것과 달리 면을 층층이 쌓아 굽는 히로시마 스타일. 오코노미무라(お好み村) 3층 좁은 가게, 철판 앞에서 먹는 그 맛은 여행의 맛이기도 했다.</p>
+      </div>
+
+      <div class="card" style="--accent: var(--water);">
+        <span class="card-icon">🍡</span>
+        <p class="card-title">모미지만주와 벤치</p>
+        <p class="card-body">미야지마 기념품 1순위, 단풍잎 모양 만주. 두 개 사서 벤치에 나란히 앉아 먹었다. 사슴 한 마리가 슬쩍 다가왔고 우리는 같이 웃었다. 별것 아닌데 선명하게 남은 장면.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider">· · ·</div>
+
+<!-- ── LETTER ── -->
+<section class="letter-section">
+  <div class="letter-inner">
+    <div class="timeline-header">
+      <p class="section-label" style="text-align:center;">아빠의 기록</p>
+      <h2 style="font-family:'Noto Serif KR',serif; font-weight:600; font-size:clamp(1.5rem,4vw,2.2rem); margin-bottom:2rem;">언젠가 네가 읽을 때를 위해</h2>
+    </div>
+
+    <div class="letter-body">
+      <div class="letter-text">
+        <p>
+          히로시마 트램을 처음 탔을 때, 네가 창문에 이마를 붙이고 바깥을 바라보던 모습이 기억난다. 낯선 도시의 전차 안에서 뭘 그렇게 열심히 보고 있었냐고 물으니까 — "다 신기해서요"라고 했지.
+        </p>
+        <p>
+          원폭 돔 앞에서는 오래 말이 없었다. 아빠도 그랬다. 그냥 같이 서 있었던 것 같다. 그걸로 충분했다.
+        </p>
+        <p>
+          미야지마에서 사슴한테 지도 빼앗겼을 때 네가 그렇게 크게 웃는 걸 오랜만에 봤다. 오노미치 언덕을 자전거로 오를 때는 나한테 "아빠 많이 힘들어요?" 라고 물었지. 조금 힘들었다. 근데 안 힘든 척 했다.
+        </p>
+        <p>
+          이 여행은 크게 대단한 것 없이 기차 타고 트램 타고 자전거 타고 다닌 3박 4일이었지만, 나한테는 꽤 긴 시간으로 남아있다. 네가 나중에 이 페이지를 보게 된다면 — 그때의 우리가 잘 담겨있으면 좋겠다.
+        </p>
+      </div>
+      <div class="letter-sign">
+        2025년 4월 · 아빠가
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p class="footer-jp">廣島 · 宮島 · 尾道</p>
+  <p class="footer-kr">2025년 4월 · 아빠와 아들의 기록</p>
+</footer>
+
+<script>
+  // 타임라인 스크롤 등장
+  const items = document.querySelectorAll('.tl-item');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  items.forEach(el => observer.observe(el));
+</script>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'light';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'☀ 라이트':'☾ 다크';
+})();
+function toggleTheme(){
+  var html=document.documentElement;
+  var now=html.getAttribute('data-theme');
+  var next=now==='dark'?'light':'dark';
+  html.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'☀ 라이트':'☾ 다크';
+}
+</script>
+</body>
+</html>
