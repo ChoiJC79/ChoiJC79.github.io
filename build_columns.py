@@ -115,6 +115,7 @@ def md_to_html(text):
     def inline(s):
         s = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', s)
         s = re.sub(r'\*(.+?)\*', r'<em>\1</em>', s)
+        s = re.sub(r'\[(.+?)\]\((.+?)\)', r'<a href="\2">\1</a>', s)
         return s
     paras = re.split(r'\n{2,}', text.strip())
     result = []
@@ -225,6 +226,7 @@ header{{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px
 .a-body ul{{margin:0 0 1.6em 1.5em;}}
 .a-body li{{margin-bottom:0.5em;}}
 .a-body strong{{font-weight:500;color:var(--text);}}
+.a-body a{{color:var(--accent);text-decoration:underline;text-underline-offset:2px;}}
 .art-nav{{max-width:720px;margin:0 auto;padding:2rem 2rem 4rem;display:flex;gap:1rem;border-top:1px solid var(--border);}}
 .nav-prev,.nav-next{{font-size:12px;color:var(--muted);transition:color 0.15s;max-width:45%;}}
 .nav-prev:hover,.nav-next:hover{{color:var(--accent);}}
