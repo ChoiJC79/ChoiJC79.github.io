@@ -2,100 +2,81 @@
 <html lang="ko" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>정리노트 | 최승환</title>
+<meta name="description" content="최승환의 아이디어·목표·일상·논문 정리노트.">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-  --bg:      #F4F0E8;
-  --surface: #ECE8DE;
-  --border:  #D4CEBC;
-  --text:    #1A1410;
-  --ink:     #2A2018;
-  --muted:   #7A6A56;
-  --accent:  #E07828;
-  --red:     #D96820;
-  --light:   #FDFAF4;
-  --amber:   #E07828;
-  --green:   #5A7A3A;
-  --lake:    #E07828;
-  --purple:  #7A4AB0;
+:root {
+  --bg:#F4F0E8; --surface:#ECE8DE; --border:#D4CEBC;
+  --text:#1A1410; --muted:#7A6A56; --accent:#E07828;
+  --green:#5A7A3A; --purple:#7A4AB0; --amber:#E07828;
 }
 [data-theme="dark"] {
-  --bg:      #0d1117;
-  --surface: #161b22;
-  --border:  #2c3240;
-  --text:    #E8E0D0;
-  --ink:     #F0E8D8;
-  --muted:   #8b8070;
-  --accent:  #F08840;
-  --red:     #D84030;
-  --light:   #161b22;
-  --amber:   #F08840;
-  --green:   #3fb950;
-  --lake:    #F08840;
-  --purple:  #bc8cff;
+  --bg:#0d1117; --surface:#161b22; --border:#2c3240;
+  --text:#E8E0D0; --muted:#8b8070; --accent:#F08840;
+  --green:#3fb950; --purple:#bc8cff; --amber:#F08840;
 }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif;
-         line-height: 1.7; padding: 2rem 1rem; }
-  .container { max-width: 900px; margin: 0 auto; }
-  header { text-align: center; margin-bottom: 3rem; padding-bottom: 2rem;
-            border-bottom: 1px solid var(--border); }
-  header h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.4rem; }
-  header p  { color: var(--muted); font-size: 0.9rem; }
-  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
-  /* 모바일 하단 바 */
-  #mqb{display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;
-    background:rgba(13,17,23,0.97);border-top:1px solid #30363d;
-    padding:0.45rem 0.6rem;gap:0.4rem;justify-content:space-around;
-    padding-bottom:max(0.45rem,env(safe-area-inset-bottom));}
-  #mqb a{flex:1;text-align:center;color:var(--text);text-decoration:none;
-    font-size:11px;font-family:sans-serif;padding:0.45rem 0.2rem;
-    border-radius:7px;background:var(--surface);border:1px solid #30363d;
-    line-height:1.4;transition:border-color 0.15s;}
-  #mqb a:hover,#mqb a:active{border-color:var(--accent);color:var(--accent);}
-  @media(max-width:768px){#mqb{display:flex;} body{padding-bottom:4rem;}}
-  .card { background: var(--surface); border: 1px solid var(--border);
-           border-radius: 12px; padding: 1.5rem; }
-  .card-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem;
-                 display: flex; align-items: center; gap: 0.5rem; }
-  .card.ideas   .card-title { color: var(--orange); }
-  .card.goals   .card-title { color: var(--green); }
-  .card.diary   .card-title { color: var(--purple); }
-  .card.work    .card-title { color: var(--accent); }
-  .memo-item { border-bottom: 1px solid var(--border); }
-  .memo-item:last-child { border-bottom: none; }
-  .acc-header { display: flex; align-items: center; gap: 0.5rem; padding: 0.65rem 0;
-                 cursor: pointer; user-select: none; }
-  .acc-header:hover .acc-tag { color: var(--accent); }
-  .date { font-size: 0.72rem; color: var(--muted); background: rgba(139,148,158,0.1);
-           padding: 0.1rem 0.45rem; border-radius: 20px; flex-shrink: 0; }
-  .acc-tag { font-size: 0.88rem; color: var(--text); font-weight: 500; flex: 1; }
-  .acc-arrow { font-size: 0.7rem; color: var(--muted); margin-left: auto; transition: transform 0.2s; flex-shrink: 0; }
-  .acc-header.open .acc-arrow { transform: rotate(90deg); }
-  .acc-body { display: none; font-size: 0.9rem; color: var(--muted); line-height: 1.75;
-               padding: 0 0 0.75rem 0.2rem; }
-  .empty { color: var(--muted); font-size: 0.9rem; font-style: italic; }
-  footer { text-align: center; margin-top: 3rem; padding-top: 2rem;
-            border-top: 1px solid var(--border); color: var(--muted); font-size: 0.82rem; }
-  a { color: var(--accent); text-decoration: none; }
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.8;}
+a{color:var(--accent);text-decoration:none;}
+.site-header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px;transition:background 0.3s,border-color 0.3s;}
+.logo{font-family:'Noto Serif KR',serif;font-size:15px;color:var(--accent);letter-spacing:0.04em;}
+.nav-links{display:flex;gap:1.5rem;font-size:12px;}
+.nav-links a{color:var(--muted);transition:color 0.15s;}
+.nav-links a:hover{color:var(--accent);}
+#theme-toggle{background:none;border:1px solid var(--border);color:var(--muted);font-size:11px;padding:3px 11px;border-radius:20px;cursor:pointer;font-family:'Noto Sans KR',sans-serif;letter-spacing:0.05em;transition:all 0.2s;margin-left:1rem;}
+#theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
+.hero{max-width:900px;margin:0 auto;padding:3rem 2rem 1.5rem;border-bottom:1px solid var(--border);}
+.hero-label{font-size:11px;letter-spacing:0.12em;color:var(--green);text-transform:uppercase;margin-bottom:0.6rem;}
+.hero h1{font-family:'Noto Serif KR',serif;font-size:clamp(20px,3vw,28px);font-weight:700;line-height:1.3;margin-bottom:0.5rem;}
+.hero p{color:var(--muted);font-size:13px;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:900px;margin:2rem auto;padding:0 2rem 3rem;}
+@media(max-width:640px){.grid{grid-template-columns:1fr;}}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.5rem;}
+.card-title{font-family:'Noto Serif KR',serif;font-size:1rem;font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;}
+.card.ideas .card-title{color:var(--amber);}
+.card.goals .card-title{color:var(--green);}
+.card.diary .card-title{color:var(--purple);}
+.card.work  .card-title{color:var(--accent);}
+.memo-item{border-bottom:1px solid var(--border);}
+.memo-item:last-child{border-bottom:none;}
+.acc-header{display:flex;align-items:center;gap:0.5rem;padding:0.65rem 0;cursor:pointer;user-select:none;}
+.acc-header:hover .acc-tag{color:var(--accent);}
+.date{font-size:0.72rem;color:var(--muted);background:rgba(122,106,86,0.1);padding:0.1rem 0.45rem;border-radius:20px;flex-shrink:0;}
+.acc-tag{font-size:0.88rem;color:var(--text);font-weight:400;flex:1;}
+.acc-arrow{font-size:0.7rem;color:var(--muted);margin-left:auto;transition:transform 0.2s;flex-shrink:0;}
+.acc-header.open .acc-arrow{transform:rotate(90deg);}
+.acc-body{display:none;font-size:0.9rem;color:var(--muted);line-height:1.75;padding:0 0 0.75rem 0.2rem;}
+.empty{color:var(--muted);font-size:0.9rem;font-style:italic;}
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:11px;color:var(--muted);letter-spacing:0.04em;}
+#mqb{display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--bg);border-top:1px solid var(--border);padding:0.45rem 0.6rem;gap:0.4rem;justify-content:space-around;padding-bottom:max(0.45rem,env(safe-area-inset-bottom));}
+#mqb a{flex:1;text-align:center;color:var(--text);font-size:11px;font-family:sans-serif;padding:0.45rem 0.2rem;border-radius:7px;background:var(--surface);border:1px solid var(--border);line-height:1.4;transition:border-color 0.15s;}
+#mqb a:hover,#mqb a:active{border-color:var(--accent);color:var(--accent);}
+@media(max-width:768px){#mqb{display:flex;} body{padding-bottom:4rem;}}
 </style>
-
 </head>
 <body>
-<div class="container">
-  <header>
-    <h1>📋 나를 정리하는 프로젝트</h1>
-    <p>최승환 · 지방행정 연구자 · 제천시청 팀장 &nbsp;|&nbsp; 마지막 업데이트: 2026년 06월 11일 02:08</p>
-    <p style="margin-top:0.5rem"><a href="/">← 홈으로</a></p>
-  </header>
+<header class="site-header">
+  <div class="logo">최승환 · 정리노트</div>
+  <nav class="nav-links">
+    <a href="/">← 홈으로</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/research.html">연구</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">☾ 다크</button>
+</header>
 
-  <div class="grid">
-    <div class="card ideas">
-      <div class="card-title">💡 아이디어 · 기획</div>
-      
+<div class="hero">
+  <div class="hero-label">Memo · Note</div>
+  <h1>나를 정리하는 기록들</h1>
+  <p>마지막 업데이트 · 2026년 08월 01일 11:06</p>
+</div>
+
+<div class="grid">
+  <div class="card ideas">
+    <div class="card-title">💡 아이디어 · 기획</div>
+    
         <div class="memo-item accordion-item">
           <div class="acc-header" onclick="toggleAcc(this)">
             <span class='date'>2024-07-03</span>
@@ -128,10 +109,10 @@
           </div>
           <div class="acc-body">아세아시멘트×입석마을 시멘트 업사이클링 마을기업 구상. 핵심은 수십 년간 혐오시설(초대형 시멘트공장)과 공생해온 입석마을 주민들이, 공장의 부산물인 시멘트를 활용해 화분·캔들홀더·인테리어소품 등 업사이클링 제품을 직접 만들고 판매하는 것. 단순 제조판매에 더해 '시멘트화분 만들기' 체험프로그램으로 외부 방문객 유입도 노린다. 아세아시멘트와의 협력을 통해 기업-마을 갈등 해소 + 초고령 주민 소득창출이라는 두 가지 효과를 동시에 겨냥. 행안부 마을기업 지정 시 3년간 최대 1억원 지원 가능(예비마을기업 단계 1천만원 선지원). 가장 큰 과제는 금형 제작비와 양산체계 구축.</div>
         </div>
-    </div>
-    <div class="card goals">
-      <div class="card-title">🎯 목표 · 계획 · 다짐</div>
-      
+  </div>
+  <div class="card goals">
+    <div class="card-title">🎯 목표 · 계획 · 다짐</div>
+    
         <div class="memo-item accordion-item">
           <div class="acc-header" onclick="toggleAcc(this)">
             <span class='date'>2026-06-05</span>
@@ -140,10 +121,10 @@
           </div>
           <div class="acc-body">"어디서든 잘 살 수 있게 준비시키는 것" — 이것이 아버지로서 아이들에게 줄 수 있는 가장 긴 선물이다. 좋은 직장, 좋은 학교가 목표가 아니다. 변화하는 세상 어디에 놓여도 흔들리지 않고 자기 삶을 꾸려갈 수 있는 힘을 키워주는 것. 그 힘의 뿌리는 지식이 아니라 태도이고, 태도보다 먼저인 것은 자존감이다. 스스로를 믿는 사람은 환경이 바뀌어도 길을 찾는다. 내가 20년 공직 생활과 박사과정을 병행하며 배운 것도 결국 이것이다 — 완벽한 조건보다 버티는 사람이 결국 살아남는다. 아이들에게 그 버팀의 근육을 길러주는 것, 그게 내 육아의 방향이다.</div>
         </div>
-    </div>
-    <div class="card diary">
-      <div class="card-title">📖 일상 · 감정 · 회고</div>
-      
+  </div>
+  <div class="card diary">
+    <div class="card-title">📖 일상 · 감정 · 회고</div>
+    
         <div class="memo-item accordion-item">
           <div class="acc-header" onclick="toggleAcc(this)">
             <span class='date'>2026-06-07</span>
@@ -208,10 +189,10 @@
           </div>
           <div class="acc-body">"어디서든 잘 살 수 있게 준비시키는 것"을 목표로 아이들을 키워야 한다. 특정 직업이나 환경에 맞춰 키우는 게 아니라, 변화하는 세상 어디에 놓여도 스스로 적응하고 버텨낼 수 있는 사람으로. 그러려면 지식보다 태도가 먼저고, 태도보다 자존감이 먼저다. 어디서든 잘 산다는 건 결국 자기 자신을 믿는 사람이 하는 일이다.</div>
         </div>
-    </div>
-    <div class="card work">
-      <div class="card-title">📚 업무 · 논문 · 공부</div>
-      
+  </div>
+  <div class="card work">
+    <div class="card-title">📚 업무 · 논문 · 공부</div>
+    
         <div class="memo-item accordion-item">
           <div class="acc-header" onclick="toggleAcc(this)">
             <span class='date'>2026-06-06</span>
@@ -276,28 +257,16 @@
           </div>
           <div class="acc-body">등록면허세 납세지 불일치 문제 소고 — 등록면허세는 법인의 본점 소재지를 납세지로 하는 구조로 인해, 실제 영업 활동이 이루어지는 지자체가 아닌 본점 소재 지자체에 세수가 귀속되는 구조적 불균형을 낳고 있다. 실제 면허 행위가 발생하는 물건지(영업소 소재 지자체)와 납세지(본점 소재 지자체)의 불일치가 제천처럼 대기업 본사가 없는 지방 소도시의 세수 기반을 취약하게 만드는 핵심 기제 중 하나다. 이 문제의 현황 분석과 납세지 개편 방향을 논문 소재로 구체화할 예정.</div>
         </div>
-    </div>
   </div>
-
-  <footer>
-    <p>Claude와 함께 정리하는 나의 기록 &nbsp;·&nbsp; <a href="https://choijc79.github.io">choijc79.github.io</a></p>
-  </footer>
 </div>
-<script>
-function toggleAcc(hdr){
-  hdr.classList.toggle('open');
-  var body=hdr.nextElementSibling;
-  body.style.display=body.style.display==='block'?'none':'block';
-}
-</script>
+
+<footer>© 2026 최승환 · choijc79.github.io</footer>
 <div id="mqb">
   <a href="/">🏠<br>홈</a>
   <a href="/memo.html">📋<br>정리노트</a>
   <a href="/column.html">💬<br>칼럼</a>
-  <a href="/jecheon_moto_guide.html">🏍<br>투어</a>
+  <a href="/research.html">🔬<br>연구</a>
 </div>
-
-<button id="theme-toggle" onclick="toggleTheme()" aria-label="테마 전환"><span id="theme-icon">☀</span><span id="theme-lbl"> 베이지</span></button>
 <script>
 (function(){
   var t=localStorage.getItem('choijc-theme')||'light';
@@ -306,13 +275,16 @@ function toggleAcc(hdr){
   if(btn) btn.textContent=t==='dark'?'☀ 라이트':'☾ 다크';
 })();
 function toggleTheme(){
-  var html=document.documentElement;
-  var now=html.getAttribute('data-theme');
-  var next=now==='dark'?'light':'dark';
-  html.setAttribute('data-theme',next);
+  var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
   localStorage.setItem('choijc-theme',next);
   var btn=document.getElementById('theme-toggle');
   if(btn) btn.textContent=next==='dark'?'☀ 라이트':'☾ 다크';
+}
+function toggleAcc(hdr){
+  hdr.classList.toggle('open');
+  var body=hdr.nextElementSibling;
+  body.style.display=body.style.display==='block'?'none':'block';
 }
 </script>
 </body>
