@@ -21,8 +21,8 @@ BASE_DIR     = os.path.dirname(os.path.abspath(__file__))
 
 if not GITHUB_TOKEN:
     print("오류: GITHUB_TOKEN 환경변수가 설정되어 있지 않습니다.")
-    print("PowerShell에서 아래 명령으로 한 번만 설정하세요 (이후 영구 적용):")
-    print('  setx GITHUB_TOKEN "본인의 GitHub Personal Access Token"')
+    print("macOS에서는 🔐 GitHub 토큰 저장.command를 먼저 실행하세요.")
+    print("다른 환경에서는 GITHUB_TOKEN 환경변수를 설정한 뒤 다시 실행하세요.")
     raise SystemExit(1)
 
 HEADERS = {
@@ -848,6 +848,7 @@ def main():
     push_local("jobs_in_jecheon.html",               "add Jobs in Jecheon page")
     push_local("jecheon_investment_plan.html",       "add investment plan page")
     push_local("letter_wonwoo.html",                   "add letter to wonwoo")
+    push_local("leaflet.html",                         "add leaflet maker")
     push_local("research.html",                      "update research")
     push_local("index.html",                         "update index")
 
@@ -864,7 +865,7 @@ def main():
     base_url = "https://choijc79.github.io/"
     for p in ["", "memo.html", "column.html", "about.html", "research.html",
               "jecheon_dashboard.html", "jecheon_budget_5yr_dashboard.html",
-              "jobs_in_jecheon.html", "jecheon_investment_plan.html"]:
+              "jobs_in_jecheon.html", "jecheon_investment_plan.html", "leaflet.html"]:
         print(f"  {base_url}{p}")
     print()
 

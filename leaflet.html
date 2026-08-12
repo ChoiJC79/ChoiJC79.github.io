@@ -1,0 +1,898 @@
+<!-- 지자체 리플릿을 편집하고 A4 양면 인쇄로 출력하는 웹 제작기 -->
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>단양군 리플릿 제작기 | 최승환</title>
+<meta name="description" content="사진과 문구를 배치해 지자체 리플릿을 제작하고 A4 양면으로 인쇄하는 웹 도구입니다.">
+<meta property="og:title" content="단양군 리플릿 제작기 | 최승환">
+<meta property="og:description" content="사진과 문구를 배치해 지자체 리플릿을 제작하고 A4 양면으로 인쇄하는 웹 도구입니다.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://choijc79.github.io/leaflet.html">
+<link rel="canonical" href="https://choijc79.github.io/leaflet.html">
+<style>
+:root{
+  --navy:#155a76;--accent:#249f9b;--pale:#e6f3f0;--gold:#edba58;
+  --ink:#142739;--line:#d8e0e6;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#eef2f4;color:var(--ink);font-family:"Apple SD Gothic Neo","Noto Sans KR",sans-serif}
+button,input,textarea,select{font:inherit}
+
+header{position:relative;padding:26px max(24px,calc((100% - 1400px)/2));color:#fff;background:linear-gradient(115deg,var(--navy),#16364f)}
+.credit{position:absolute;top:16px;right:max(24px,calc((100% - 1400px)/2));margin:0;font-size:11px;font-weight:700;color:#c9d8e2;opacity:.85}
+.eyebrow{margin:0 0 7px;font-size:11px;font-weight:800;letter-spacing:.14em}
+h1{margin:0;font-size:30px;letter-spacing:-.06em}
+header p:last-child{margin:8px 0 0;color:#d8e7ef;font-size:14px}
+
+main{display:grid;grid-template-columns:350px minmax(0,1fr);gap:28px;max-width:1400px;padding:28px 24px 52px;margin:auto}
+.editor{align-self:start;padding:20px;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:0 10px 26px #40506012}
+h2{margin:0 0 15px;font-size:18px}
+.label{display:block;margin:15px 0 6px;font-size:12px;font-weight:800}
+input[type=text],textarea,select{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:8px;color:var(--ink);background:#fff;outline:none;font-size:12px;font-weight:600}
+textarea{min-height:70px;resize:vertical;line-height:1.55}
+input:focus,textarea:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px #249f9b20}
+input[type=color]{width:100%;height:38px;padding:2px;border:1px solid var(--line);border-radius:8px;background:#fff}
+
+.choices{display:grid;gap:7px}
+.two{grid-template-columns:repeat(2,1fr)}
+.three{grid-template-columns:repeat(3,1fr)}
+.choice{padding:9px 6px;border:1px solid var(--line);border-radius:8px;color:var(--ink);background:#fff;cursor:pointer;font-size:12px;font-weight:800}
+.choice.active{border-color:var(--accent);color:var(--accent);background:var(--pale)}
+
+.upload{display:flex;min-height:44px;align-items:center;justify-content:center;padding:5px;border:1px dashed #a9bac6;border-radius:8px;color:#637489;background:#fafcfd;text-align:center;cursor:pointer;font-size:12px;font-weight:700}
+.upload input{display:none}
+
+.range-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px}
+.range-row label{font-size:11px;font-weight:800;color:#4d5c6c}
+.checkbox-row{display:flex;align-items:center;gap:7px;margin-top:10px;font-size:12px;font-weight:700}
+.checkbox-row input{width:auto}
+.sep{border:0;border-top:1px solid var(--line);margin:20px 0}
+
+.buttons{display:grid;gap:8px;margin-top:21px}
+.primary,.secondary{min-height:44px;border-radius:8px;cursor:pointer;font-weight:800;font-size:13px}
+.primary{border:0;color:#fff;background:var(--navy)}
+.secondary{border:1px solid var(--line);background:#fff;color:var(--ink)}
+.secondary.danger{color:#c0392b;border-color:#f1c4bd}
+
+.element-editor{margin-top:10px;padding-top:12px;border-top:1px dashed var(--line)}
+
+.template-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.template-swatch{position:relative;aspect-ratio:1;border-radius:8px;border:2px solid var(--line);cursor:pointer;overflow:hidden;padding:0}
+.template-swatch.active{border-color:var(--accent);box-shadow:0 0 0 2px #249f9b33}
+.template-swatch span{position:absolute;inset:auto 0 0 0;padding:2px 3px;font-size:7px;font-weight:800;color:#fff;text-shadow:0 1px 2px #0008;background:linear-gradient(transparent,#0007);text-align:center;line-height:1.2}
+
+.icon-row{display:flex;flex-wrap:wrap;gap:5px}
+.icon-row button{width:30px;height:30px;padding:0;border:1px solid var(--line);border-radius:6px;background:#fff;cursor:pointer;font-size:14px;line-height:1}
+.icon-row button:hover{border-color:var(--accent);background:var(--pale)}
+
+#versionStatus{min-height:16px}
+
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.top h2{margin:0}
+.switch{display:flex;padding:3px;border-radius:8px;background:#dfe7eb}
+.switch button{border:0;border-radius:6px;padding:7px 12px;color:#607185;background:transparent;cursor:pointer;font-size:12px;font-weight:800}
+.switch .active{color:var(--ink);background:#fff;box-shadow:0 1px 4px #14273922}
+.hint,.notice{color:#657386;font-size:12px;line-height:1.55}
+.hint{margin:0 0 12px}
+.notice{margin:14px 0 0;padding:10px 12px;border-left:3px solid var(--accent);background:#fff}
+
+.leaflet{position:relative;display:grid;grid-template-columns:repeat(3,1fr);aspect-ratio:297/210;overflow:hidden;border:1px solid #cfd8dd;background:#fffefa;box-shadow:0 16px 32px #14273922}
+.leaflet.cols-2{grid-template-columns:repeat(2,1fr)}
+.guide-layer{position:absolute;inset:0;z-index:9;pointer-events:none;background:linear-gradient(90deg,transparent 33.25%,#42546622 33.3%,transparent 33.35%,transparent 66.55%,#42546622 66.6%,transparent 66.65%)}
+.leaflet.cols-2 .guide-layer{background:linear-gradient(90deg,transparent 49.75%,#42546622 49.8%,transparent 49.85%)}
+
+.panel{position:relative;min-width:0;overflow:hidden;cursor:default}
+.panel-selected{outline:2px solid var(--accent);outline-offset:-2px}
+.panel-guide{position:absolute;top:8px;right:9px;z-index:9;color:#24394a55;font-size:clamp(7px,.7vw,10px);font-weight:900;letter-spacing:.06em;pointer-events:none}
+.panel-empty-hint{position:absolute;inset:16px;display:grid;place-items:center;border:1px dashed #a9bac655;border-radius:10px;color:#8a97a6;font-size:clamp(9px,1vw,13px);font-weight:700;text-align:center;padding:10px;pointer-events:none}
+.panel-accent:before{content:"";position:absolute;right:-23%;bottom:-20%;width:80%;aspect-ratio:1;border:clamp(8px,1.4vw,20px) solid var(--accent);border-radius:50%;opacity:.55;pointer-events:none;z-index:1}
+
+.item{position:absolute;z-index:6;touch-action:none;cursor:grab}
+.item.dragging{cursor:grabbing;z-index:20}
+.item.selected{outline:2px solid var(--accent);outline-offset:3px}
+.item-remove{position:absolute;top:-9px;right:-9px;width:20px;height:20px;padding:0;border:0;border-radius:50%;background:#c0392b;color:#fff;font-size:12px;line-height:20px;text-align:center;cursor:pointer;opacity:0;transition:opacity .15s;z-index:3}
+.item:hover .item-remove,.item.selected .item-remove{opacity:1}
+.item-resize-handle{position:absolute;right:-6px;bottom:-6px;width:16px;height:16px;border-radius:4px;background:#fff;border:2px solid var(--accent);cursor:nwse-resize;opacity:0;transition:opacity .15s;z-index:3}
+.item:hover .item-resize-handle,.item.selected .item-resize-handle{opacity:1}
+
+.item-text{position:relative;padding:clamp(8px,1.1vw,14px);max-width:88%;line-height:1.42;white-space:pre-line;word-break:keep-all;z-index:8}
+.item-text.size-bold{font-size:clamp(17px,2.5vw,36px);font-weight:900;letter-spacing:-.03em}
+.item-text.size-medium{font-size:clamp(12px,1.5vw,20px);font-weight:800;letter-spacing:-.01em}
+.item-text.size-small{font-size:clamp(10px,1.05vw,14px);font-weight:600}
+.item-text.line{border-left:4px solid var(--accent);background:#ffffffcc}
+.item-text.fill{border-radius:8px;background:var(--item-bg,#ffffff);box-shadow:0 3px 10px #14273922}
+
+.item-image{border:2px solid #fff;box-shadow:0 4px 12px #14273933;background:#c9dcde;z-index:5}
+.item-image img{width:100%;height:100%;display:block;pointer-events:none}
+
+.ci-overlay{position:absolute;z-index:15;max-width:56%;height:clamp(28px,4.6vw,64px);object-fit:contain;pointer-events:none}
+
+.hidden{display:none!important}
+
+@media(max-width:860px){
+  main{grid-template-columns:1fr}
+  .preview{overflow-x:auto;padding-bottom:7px}
+  .leaflet{min-width:660px}
+}
+@media print{
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
+  @page{size:A4 landscape;margin:0}
+  header,.editor,.top,.hint,.notice{display:none!important}
+  main{display:block;padding:0;max-width:none}
+  .preview{overflow:visible}
+  .leaflet{width:297mm;height:208mm;min-width:0;border:0;box-shadow:none}
+  .leaflet.hidden{display:grid!important}
+  #outer{break-after:page}
+  .panel-guide,.item-remove,.item-resize-handle{display:none!important}
+  .panel-selected,.item.selected{outline:0!important}
+  .guide-layer{opacity:.25}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <p class="credit">이상조 기획/최승환 제작 2026</p>
+  <p class="eyebrow">LOCAL GOVERNMENT COMMUNICATION KIT</p>
+  <h1>단양군 리플렛 제작기</h1>
+  <p>사진과 텍스트를 자유롭게 배치해 바로 인쇄할 수 있습니다.</p>
+</header>
+
+<main>
+<aside class="editor">
+  <h2>내용 입력</h2>
+
+  <span class="label">리플렛 형식</span>
+  <div class="choices two">
+    <button class="choice" data-layout="2col">2단 리플렛 (4면)</button>
+    <button class="choice active" data-layout="3col">3단 리플렛 (6면)</button>
+  </div>
+
+  <span class="label">리플렛 유형</span>
+  <div class="choices three">
+    <button class="choice active" data-preset="tour">관광안내</button>
+    <button class="choice" data-preset="event">행사안내</button>
+    <button class="choice" data-preset="facility">시설안내</button>
+  </div>
+
+  <span class="label">컬러 테마</span>
+  <div class="choices three">
+    <button class="choice active" data-theme="river">단양 블루</button>
+    <button class="choice" data-theme="festival">축제 코랄</button>
+    <button class="choice" data-theme="forest">숲 그린</button>
+  </div>
+
+  <span class="label">기관 로고</span>
+  <label class="upload">공식 CI 또는 로고 선택<input id="logoUpload" type="file" accept="image/*"></label>
+  <div class="range-row">
+    <label>로고 가로 위치<input id="logoX" type="range" min="0" max="100" value="8"></label>
+    <label>로고 세로 위치<input id="logoY" type="range" min="0" max="100" value="80"></label>
+  </div>
+
+  <hr class="sep">
+
+  <label class="label" for="panelSelect">편집할 면 선택</label>
+  <select id="panelSelect"></select>
+
+  <span class="label">배경 템플릿</span>
+  <div class="template-grid" id="templateGrid"></div>
+
+  <label class="checkbox-row"><input id="panelAccent" type="checkbox"> 장식 원 표시</label>
+  <label class="checkbox-row"><input id="panelLogo" type="checkbox"> 이 면에 로고 표시</label>
+
+  <span class="label">사진 추가</span>
+  <label class="upload">클릭해서 사진 선택<input id="addImageInput" type="file" accept="image/*"></label>
+
+  <span class="label">텍스트 추가</span>
+  <div class="choices three">
+    <button type="button" class="choice" data-add-text="bold">굵은 제목</button>
+    <button type="button" class="choice" data-add-text="medium">중간 글씨</button>
+    <button type="button" class="choice" data-add-text="small">작은 본문</button>
+  </div>
+
+  <label class="label" for="elementSelect">이 면의 구성 요소</label>
+  <select id="elementSelect"></select>
+
+  <div id="elementEditor" class="element-editor hidden">
+    <label class="label text-only" for="elementText">텍스트 내용</label>
+    <textarea class="text-only" id="elementText"></textarea>
+    <span class="label text-only">아이콘 삽입</span>
+    <div class="icon-row text-only">
+      <button type="button" data-icon="📍">📍</button>
+      <button type="button" data-icon="☎">☎</button>
+      <button type="button" data-icon="🕐">🕐</button>
+      <button type="button" data-icon="📅">📅</button>
+      <button type="button" data-icon="🌐">🌐</button>
+      <button type="button" data-icon="✉">✉</button>
+      <button type="button" data-icon="🚗">🚗</button>
+      <button type="button" data-icon="🚻">🚻</button>
+      <button type="button" data-icon="♿">♿</button>
+      <button type="button" data-icon="⭐">⭐</button>
+      <button type="button" data-icon="✅">✅</button>
+      <button type="button" data-icon="🔔">🔔</button>
+    </div>
+    <div class="range-row text-only">
+      <label>크기
+        <select id="elementSize">
+          <option value="bold">굵은 제목</option>
+          <option value="medium">중간 글씨</option>
+          <option value="small">작은 본문</option>
+        </select>
+      </label>
+      <label>상자 스타일
+        <select id="elementBox">
+          <option value="plain">기본</option>
+          <option value="line">강조선</option>
+          <option value="fill">색상 상자</option>
+        </select>
+      </label>
+    </div>
+    <div class="range-row text-only">
+      <label>글자색<input id="elementFg" type="color"></label>
+      <label>상자색<input id="elementBg" type="color"></label>
+    </div>
+
+    <label class="label image-only" for="elementMode">이미지 배치</label>
+    <select id="elementMode" class="image-only">
+      <option value="cover">자유 크기 · 채워서 배치</option>
+      <option value="contain">자유 크기 · 원본 비율 유지</option>
+      <option value="panel">면 전체에 맞춤</option>
+    </select>
+    <p class="hint image-only">우하단 모서리를 끌면 크기를, 몸통을 끌면 위치를 조정할 수 있습니다.</p>
+
+    <button type="button" class="secondary danger" id="removeElement" style="margin-top:10px;width:100%">이 요소 삭제</button>
+  </div>
+
+  <hr class="sep">
+  <span class="label">저장 및 버전 관리</span>
+  <div class="buttons" style="margin-top:0">
+    <button type="button" class="secondary" id="saveVersionBtn">현재 상태 저장 (새 버전)</button>
+  </div>
+  <label class="label" for="versionSelect">저장된 버전</label>
+  <select id="versionSelect"></select>
+  <div class="range-row">
+    <button type="button" class="secondary" id="loadVersionBtn">불러오기</button>
+    <button type="button" class="secondary danger" id="deleteVersionBtn">버전 삭제</button>
+  </div>
+  <p class="hint" id="versionStatus"></p>
+
+  <div class="buttons">
+    <button type="button" class="primary" id="printBtn">인쇄 또는 PDF 저장</button>
+    <button type="button" class="secondary" id="resetBtn">현재 예시로 되돌리기</button>
+  </div>
+</aside>
+
+<section class="preview">
+  <div class="top">
+    <h2>인쇄 미리보기</h2>
+    <div class="switch">
+      <button class="active" data-side="outer">외면</button>
+      <button data-side="inner">내면</button>
+    </div>
+  </div>
+  <p class="hint">면을 클릭해 선택하고, 사진·텍스트는 마우스로 끌어서 위치를 옮길 수 있습니다. 점선은 접는 위치입니다. A4 가로, 배율 100%로 인쇄하세요.</p>
+
+  <div class="leaflet print" id="outer"></div>
+  <div class="leaflet hidden print" id="inner"></div>
+
+  <p class="notice">기본 단양군청 로고는 제공받은 파일로 적용했습니다. 다른 기관은 공식 CI 파일을 선택해 교체할 수 있습니다. 인쇄 시 좁은 면을 기준으로 양면을 선택하여 양면 인쇄합니다.</p>
+</section>
+</main>
+
+<script>
+const $ = id => document.getElementById(id);
+const panelLabel = id => (id.startsWith('outer') ? '외면 ' : '내면 ') + id.slice(-1) + '면';
+function activePanelIds(){
+  return layoutMode === '2col'
+    ? ['outer1','outer2','inner1','inner2']
+    : ['outer1','outer2','outer3','inner1','inner2','inner3'];
+}
+const clamp = (v,min,max) => Math.min(max, Math.max(min, v));
+const escapeHtml = text => String(text).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+
+const presets = {
+  tour:{
+    org:'단양군청', title:'단양, 자연을 걷다', emphasis:'남한강과 소백산이 빚은 하루 여행',
+    support:'단양의 대표 명소와 계절의 풍경을 따라 걸어보세요.\n추천 동선과 쉼터, 주변 관광지를 한눈에 안내합니다.',
+    info:'충북 단양군 일원\n09:00–18:00 · 연중 운영\n문의 043-420-3114\ndanyang.go.kr'
+  },
+  event:{
+    org:'단양군 문화예술과', title:'여름밤, 광장에서 만나요', emphasis:'2026 단양 여름문화제',
+    support:'음악과 공연, 지역 먹거리가 어우러지는 여름밤 축제입니다.\n프로그램별 시작 시간과 참여 방법을 확인하세요.',
+    info:'2026. 8. 14. 금 – 8. 16. 일\n단양 수변무대\n문의 043-420-3114\ndanyang.go.kr'
+  },
+  facility:{
+    org:'단양군 시설관리공단', title:'시민의 일상에\n가까운 공간', emphasis:'단양 국민체육센터 이용안내',
+    support:'수영장, 헬스장, 다목적체육관을 안전하고 쾌적하게 이용하세요.\n운영 시간과 이용 수칙을 안내합니다.',
+    info:'화–일 06:00–21:00\n단양군 단양읍 중앙로 24\n문의 043-420-3114\ndanyang.go.kr'
+  }
+};
+const themeColors = {
+  river:['#155a76','#249f9b','#e6f3f0','#edba58'],
+  festival:['#542d63','#e05a67','#fff0e9','#f1bd4d'],
+  forest:['#285a4b','#418d67','#e7f1e8','#d9ae56']
+};
+const bgTemplates = [
+  { id:'white',    name:'화이트',          bg:'#fffefa' },
+  { id:'pale',     name:'페일 톤',         bg:'var(--pale)' },
+  { id:'navy',     name:'브랜드 네이비',   bg:'var(--navy)' },
+  { id:'gold',     name:'골드 라이트',     bg:'linear-gradient(135deg, var(--pale), #fff7e6)' },
+  { id:'navyGrad', name:'네이비 그라데이션', bg:'linear-gradient(135deg, var(--navy), #0d2233)' },
+  { id:'accent',   name:'포인트 그라데이션', bg:'linear-gradient(135deg, var(--pale), var(--accent))' },
+  { id:'ink',      name:'다크 잉크',       bg:'linear-gradient(160deg, #1b2b3a, #0d1620)' },
+  { id:'gray',     name:'소프트 그레이',   bg:'#f2f4f6' },
+  { id:'goldDeep', name:'골드 딥',         bg:'linear-gradient(135deg, var(--navy), var(--gold))' },
+  { id:'spot',     name:'라운드 포인트',   bg:'radial-gradient(circle at 30% 20%, var(--pale), #ffffff)' }
+];
+const STORAGE_KEY = 'leaflet-maker-versions-v1';
+
+function svgDataUri(svg){ return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg); }
+const decorativePhotos = {
+  tour: svgDataUri(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+    <rect width="400" height="300" fill="#bfe3e6"/>
+    <rect width="400" height="220" fill="#a9d8e6"/>
+    <polygon points="0,220 90,120 150,190 230,90 320,190 400,150 400,300 0,300" fill="#5f9ea0" opacity="0.55"/>
+    <polygon points="0,260 120,180 210,230 300,160 400,220 400,300 0,300" fill="#2f7a6d" opacity="0.9"/>
+    <rect y="272" width="400" height="28" fill="#8fc7d2"/>
+  </svg>`),
+  event: svgDataUri(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+    <rect width="400" height="300" fill="#241b3a"/>
+    <circle cx="60" cy="55" r="3" fill="#ffd977"/><circle cx="120" cy="35" r="2" fill="#ffe9b0"/>
+    <circle cx="200" cy="60" r="3" fill="#ff9d6c"/><circle cx="260" cy="30" r="2" fill="#ffd977"/>
+    <circle cx="320" cy="65" r="3" fill="#ffe9b0"/><circle cx="350" cy="30" r="2" fill="#ff9d6c"/>
+    <circle cx="40" cy="100" r="2" fill="#ffd977"/><circle cx="180" cy="110" r="2" fill="#ffe9b0"/>
+    <polygon points="0,260 100,200 200,240 300,190 400,250 400,300 0,300" fill="#3a2a55"/>
+    <polygon points="0,290 400,290 400,300 0,300" fill="#1a1330"/>
+  </svg>`),
+  facility: svgDataUri(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+    <rect width="400" height="300" fill="#dce7ea"/>
+    <rect x="55" y="95" width="90" height="175" fill="#5b7c88"/>
+    <rect x="170" y="55" width="70" height="215" fill="#6f97a3"/>
+    <rect x="255" y="120" width="85" height="150" fill="#496673"/>
+    <g fill="#dce7ea">
+      <rect x="70" y="115" width="16" height="16"/><rect x="100" y="115" width="16" height="16"/>
+      <rect x="70" y="150" width="16" height="16"/><rect x="100" y="150" width="16" height="16"/>
+      <rect x="185" y="80" width="14" height="14"/><rect x="212" y="80" width="14" height="14"/>
+      <rect x="185" y="115" width="14" height="14"/><rect x="212" y="115" width="14" height="14"/>
+      <rect x="270" y="145" width="14" height="14"/><rect x="300" y="145" width="14" height="14"/>
+    </g>
+    <rect y="270" width="400" height="30" fill="#b7c9cd"/>
+  </svg>`)
+};
+
+let uid = 0;
+let layoutMode = '3col';
+let activeTheme = 'river';
+let activePreset = 'tour';
+let selectedPanel = 'outer1';
+let selectedItemId = null;
+
+const state = {
+  logo:'assets/danyang-gun-mark.png',
+  logoX:8, logoY:80,
+  panels:{}
+};
+
+function findTemplate(id){ return bgTemplates.find(t => t.id === id) || bgTemplates[0]; }
+
+function addTextItem(panelId, size, text, opts={}){
+  const item = { id:'i'+(++uid), kind:'text', size, box:opts.box||'plain', text, fg:opts.fg||'#142739', bg:opts.bg||'#ffffff', x:opts.x ?? 10, y:opts.y ?? 12 };
+  state.panels[panelId].items.push(item);
+  return item;
+}
+function addImageItem(panelId, src, opts={}){
+  const item = { id:'i'+(++uid), kind:'image', src, x:opts.x ?? 8, y:opts.y ?? 8, w:opts.w ?? 40, h:opts.h ?? 30, mode:opts.mode || 'cover' };
+  state.panels[panelId].items.push(item);
+  return item;
+}
+function findItem(panelId, itemId){
+  return state.panels[panelId] ? state.panels[panelId].items.find(it => it.id === itemId) : undefined;
+}
+function removeItem(panelId, itemId){
+  const panel = state.panels[panelId];
+  panel.items = panel.items.filter(it => it.id !== itemId);
+  if(selectedItemId === itemId) selectedItemId = panel.items.length ? panel.items[0].id : null;
+  draw();
+}
+
+function iconizeInfo(text){
+  const phoneRe = /\d{2,3}-\d{3,4}-\d{4}/;
+  const urlRe = /^[a-z0-9.-]+\.(go\.kr|kr|com|co\.kr|net|org)$/i;
+  const timeRe = /\d{1,2}:\d{2}/;
+  const addressRe = /군|읍|면|로|길|동|일원/;
+  return text.split('\n').map(line => {
+    const t = line.trim();
+    if(phoneRe.test(t)) return '☎ ' + line;
+    if(urlRe.test(t)) return '🌐 ' + line;
+    if(timeRe.test(t)) return '🕐 ' + line;
+    if(addressRe.test(t)) return '📍 ' + line;
+    if(/\d/.test(t)) return '📅 ' + line;
+    return '📍 ' + line;
+  }).join('\n');
+}
+
+function applyPreset(name){
+  activePreset = name;
+  const p = presets[name];
+  const ids = activePanelIds();
+  const outers = ids.filter(id => id.startsWith('outer'));
+  const inners = ids.filter(id => id.startsWith('inner'));
+  const coverId = outers[outers.length - 1];
+  const lastInnerId = inners[inners.length - 1];
+  const accentInnerId = layoutMode === '2col' ? null : inners[1];
+
+  const midOuterId = outers.length === 3 ? outers[1] : null;
+
+  ids.forEach(id => {
+    let templateId;
+    if(id === coverId) templateId = 'navy';
+    else if(id === lastInnerId) templateId = 'gold';
+    else if(id === accentInnerId) templateId = 'accent';
+    else if(id === midOuterId) templateId = 'spot';
+    else if(id === outers[0]) templateId = 'pale';
+    else templateId = 'white';
+    const t = findTemplate(templateId);
+    state.panels[id] = { bg:t.bg, template:t.id, accent: id === coverId || id === lastInnerId, showLogo: false, items: [] };
+  });
+
+  const photo = decorativePhotos[name] || decorativePhotos.tour;
+
+  addTextItem(coverId, 'bold', p.org + '\n' + p.title, { fg:'#ffffff', x:10, y:14 });
+  addTextItem(coverId, 'small', p.emphasis, { fg:'#ffffff', x:10, y:70 });
+  addTextItem(inners[0], 'medium', p.title, { x:10, y:10 });
+  addTextItem(inners[0], 'small', p.support, { x:10, y:32 });
+
+  if(layoutMode === '2col'){
+    addTextItem(outers[0], 'small', iconizeInfo(p.info), { x:10, y:14 });
+    addTextItem(lastInnerId, 'bold', p.emphasis, { x:10, y:12 });
+    addImageItem(inners[0], photo, { x:52, y:58, w:42, h:36, mode:'cover' });
+  } else {
+    addTextItem(outers[0], 'small', iconizeInfo(p.info), { x:10, y:14 });
+    addImageItem(midOuterId, photo, { mode:'panel' });
+    addTextItem(midOuterId, 'medium', p.title, { fg:'#ffffff', x:10, y:14, box:'fill', bg:'#14273988' });
+    addTextItem(midOuterId, 'small', p.emphasis, { fg:'#ffffff', x:10, y:60, box:'fill', bg:'#14273988' });
+    addTextItem(accentInnerId, 'bold', p.emphasis, { fg:'#ffffff', x:10, y:12 });
+    addTextItem(lastInnerId, 'small', iconizeInfo(p.info), { x:10, y:14 });
+  }
+
+  document.querySelectorAll('[data-preset]').forEach(b => b.classList.toggle('active', b.dataset.preset === name));
+  if(!ids.includes(selectedPanel)) selectedPanel = ids[0];
+  selectedItemId = defaultItemFor(selectedPanel);
+  draw();
+}
+
+function applyTheme(name){
+  activeTheme = name;
+  const [navy, accent, pale, gold] = themeColors[name];
+  document.documentElement.style.setProperty('--navy', navy);
+  document.documentElement.style.setProperty('--accent', accent);
+  document.documentElement.style.setProperty('--pale', pale);
+  document.documentElement.style.setProperty('--gold', gold);
+  document.querySelectorAll('[data-theme]').forEach(b => b.classList.toggle('active', b.dataset.theme === name));
+}
+
+function renderPanel(id){
+  const panel = state.panels[id];
+  const el = document.createElement('article');
+  el.className = 'panel' + (panel.accent ? ' panel-accent' : '') + (id === selectedPanel ? ' panel-selected' : '');
+  el.dataset.panel = id;
+  el.style.background = panel.bg;
+  el.innerHTML = `<span class="panel-guide">${panelLabel(id)}</span>` +
+    (panel.items.length ? '' : '<div class="panel-empty-hint">사진 또는 텍스트를 추가해 보세요</div>');
+
+  panel.items.forEach(item => {
+    const itemEl = document.createElement('div');
+    itemEl.className = 'item' + (item.id === selectedItemId ? ' selected' : '');
+    itemEl.dataset.item = item.id;
+    itemEl.style.left = item.x + '%';
+    itemEl.style.top = item.y + '%';
+
+    if(item.kind === 'image'){
+      itemEl.classList.add('item-image');
+      if(item.mode === 'panel'){
+        itemEl.style.left = '0%';
+        itemEl.style.top = '0%';
+        itemEl.style.width = '100%';
+        itemEl.style.height = '100%';
+      } else {
+        itemEl.style.width = item.w + '%';
+        itemEl.style.height = item.h + '%';
+      }
+      const fit = item.mode === 'contain' ? 'contain' : 'cover';
+      itemEl.style.background = fit === 'contain' ? '#ffffff' : '';
+      itemEl.innerHTML = `<img src="${item.src}" alt="추가한 사진" style="object-fit:${fit}">` +
+        `<button type="button" class="item-remove" aria-label="사진 삭제">×</button>` +
+        (item.mode === 'panel' ? '' : '<span class="item-resize-handle" aria-label="크기 조절"></span>');
+    } else {
+      itemEl.classList.add('item-text', 'size-' + item.size, item.box);
+      itemEl.style.color = item.fg;
+      if(item.box === 'fill') itemEl.style.setProperty('--item-bg', item.bg);
+      itemEl.innerHTML = `${escapeHtml(item.text)}<button type="button" class="item-remove" aria-label="텍스트 삭제">×</button>`;
+    }
+    el.appendChild(itemEl);
+  });
+
+  if(panel.showLogo){
+    const logo = document.createElement('img');
+    logo.className = 'ci-overlay';
+    logo.src = state.logo;
+    logo.alt = '기관 로고';
+    logo.style.left = state.logoX + '%';
+    logo.style.top = state.logoY + '%';
+    el.appendChild(logo);
+  }
+  return el;
+}
+
+function makeDraggable(itemEl, panelEl, onDrop, onClick){
+  itemEl.addEventListener('pointerdown', e => {
+    if(e.target.closest('.item-remove') || e.target.closest('.item-resize-handle')) return;
+    e.stopPropagation();
+    itemEl.setPointerCapture(e.pointerId);
+    const rect = panelEl.getBoundingClientRect();
+    const startX = e.clientX, startY = e.clientY;
+    const origX = parseFloat(itemEl.style.left), origY = parseFloat(itemEl.style.top);
+    let moved = false;
+    itemEl.classList.add('dragging');
+
+    function move(ev){
+      const dx = (ev.clientX - startX) / rect.width * 100;
+      const dy = (ev.clientY - startY) / rect.height * 100;
+      if(Math.abs(dx) > 0.3 || Math.abs(dy) > 0.3) moved = true;
+      const nx = clamp(origX + dx, -10, 105), ny = clamp(origY + dy, -10, 105);
+      itemEl.style.left = nx + '%';
+      itemEl.style.top = ny + '%';
+    }
+    function up(){
+      itemEl.removeEventListener('pointermove', move);
+      itemEl.removeEventListener('pointerup', up);
+      itemEl.classList.remove('dragging');
+      if(moved) onDrop(parseFloat(itemEl.style.left), parseFloat(itemEl.style.top));
+      else onClick();
+    }
+    itemEl.addEventListener('pointermove', move);
+    itemEl.addEventListener('pointerup', up);
+  });
+  itemEl.addEventListener('click', e => e.stopPropagation());
+}
+
+function makeResizable(handleEl, itemEl, panelEl, onResize){
+  handleEl.addEventListener('pointerdown', e => {
+    e.stopPropagation();
+    handleEl.setPointerCapture(e.pointerId);
+    const rect = panelEl.getBoundingClientRect();
+    const startX = e.clientX, startY = e.clientY;
+    const origW = parseFloat(itemEl.style.width), origH = parseFloat(itemEl.style.height);
+
+    function move(ev){
+      const dw = (ev.clientX - startX) / rect.width * 100;
+      const dh = (ev.clientY - startY) / rect.height * 100;
+      const nw = clamp(origW + dw, 8, 112), nh = clamp(origH + dh, 8, 112);
+      itemEl.style.width = nw + '%';
+      itemEl.style.height = nh + '%';
+    }
+    function up(){
+      handleEl.removeEventListener('pointermove', move);
+      handleEl.removeEventListener('pointerup', up);
+      onResize(parseFloat(itemEl.style.width), parseFloat(itemEl.style.height));
+    }
+    handleEl.addEventListener('pointermove', move);
+    handleEl.addEventListener('pointerup', up);
+  });
+  handleEl.addEventListener('click', e => e.stopPropagation());
+}
+
+function defaultItemFor(panelId){
+  const items = state.panels[panelId] ? state.panels[panelId].items : [];
+  return items.length ? items[0].id : null;
+}
+function selectPanel(id){
+  selectedPanel = id;
+  selectedItemId = defaultItemFor(id);
+  draw();
+}
+function selectItem(panelId, itemId){
+  selectedPanel = panelId;
+  selectedItemId = itemId;
+  draw();
+}
+
+function draw(){
+  const ids = activePanelIds();
+  ['outer','inner'].forEach(side => {
+    const container = $(side);
+    container.classList.toggle('cols-2', layoutMode === '2col');
+    container.innerHTML = '';
+    ids.filter(id => id.startsWith(side)).forEach(id => container.appendChild(renderPanel(id)));
+    const guide = document.createElement('div');
+    guide.className = 'guide-layer';
+    container.appendChild(guide);
+  });
+
+  document.querySelectorAll('.panel').forEach(panelEl => {
+    const panelId = panelEl.dataset.panel;
+    panelEl.addEventListener('click', () => selectPanel(panelId));
+    panelEl.querySelectorAll('.item').forEach(itemEl => {
+      const itemId = itemEl.dataset.item;
+      const item = findItem(panelId, itemId);
+      const removeBtn = itemEl.querySelector('.item-remove');
+      if(removeBtn) removeBtn.addEventListener('click', e => { e.stopPropagation(); removeItem(panelId, itemId); });
+
+      if(item && item.kind === 'image' && item.mode === 'panel'){
+        itemEl.addEventListener('click', e => { e.stopPropagation(); selectItem(panelId, itemId); });
+      } else {
+        makeDraggable(itemEl, panelEl,
+          (x, y) => { const it = findItem(panelId, itemId); if(it){ it.x = x; it.y = y; } },
+          () => selectItem(panelId, itemId)
+        );
+      }
+      const handle = itemEl.querySelector('.item-resize-handle');
+      if(handle && item) makeResizable(handle, itemEl, panelEl, (w, h) => { item.w = w; item.h = h; });
+    });
+  });
+
+  syncSidebar();
+}
+function syncLogoPositions(){
+  document.querySelectorAll('.ci-overlay').forEach(img => {
+    img.style.left = state.logoX + '%';
+    img.style.top = state.logoY + '%';
+  });
+}
+
+function renderPanelSelectOptions(){
+  const ids = activePanelIds();
+  const outers = ids.filter(id => id.startsWith('outer'));
+  const coverId = outers[outers.length - 1];
+  $('panelSelect').innerHTML = ids.map(id =>
+    `<option value="${id}">${panelLabel(id)}${id === coverId ? ' (표지)' : ''}</option>`
+  ).join('');
+}
+
+function setLayoutMode(mode){
+  if(mode === layoutMode) return;
+  layoutMode = mode;
+  document.querySelectorAll('[data-layout]').forEach(b => b.classList.toggle('active', b.dataset.layout === mode));
+  renderPanelSelectOptions();
+  applyPreset(activePreset);
+}
+
+function renderTemplateGrid(){
+  $('templateGrid').innerHTML = bgTemplates.map(t =>
+    `<button type="button" class="template-swatch" data-template="${t.id}" style="background:${t.bg}"><span>${t.name}</span></button>`
+  ).join('');
+  document.querySelectorAll('.template-swatch').forEach(btn => btn.addEventListener('click', () => {
+    const t = findTemplate(btn.dataset.template);
+    state.panels[selectedPanel].template = t.id;
+    state.panels[selectedPanel].bg = t.bg;
+    draw();
+  }));
+}
+
+function syncSidebar(){
+  $('panelSelect').value = selectedPanel;
+  const panel = state.panels[selectedPanel];
+  $('panelAccent').checked = panel.accent;
+  $('panelLogo').checked = panel.showLogo;
+  document.querySelectorAll('.template-swatch').forEach(btn => btn.classList.toggle('active', btn.dataset.template === panel.template));
+
+  const items = panel.items;
+  $('elementSelect').innerHTML = items.length
+    ? items.map((it, i) => `<option value="${it.id}">${it.kind === 'image' ? '사진' : '텍스트'} ${i+1}</option>`).join('')
+    : '<option value="">추가된 요소 없음</option>';
+
+  const item = selectedItemId ? findItem(selectedPanel, selectedItemId) : undefined;
+  if(item){
+    $('elementSelect').value = item.id;
+    $('elementEditor').classList.remove('hidden');
+    const isText = item.kind === 'text';
+    document.querySelectorAll('.text-only').forEach(el => el.classList.toggle('hidden', !isText));
+    document.querySelectorAll('.image-only').forEach(el => el.classList.toggle('hidden', isText));
+    if(isText){
+      $('elementText').value = item.text;
+      $('elementSize').value = item.size;
+      $('elementBox').value = item.box;
+      $('elementFg').value = item.fg;
+      $('elementBg').value = item.bg;
+    } else {
+      $('elementMode').value = item.mode;
+    }
+  } else {
+    $('elementEditor').classList.add('hidden');
+  }
+}
+
+function transparentLogo(src){
+  const img = new Image();
+  img.onload = () => {
+    try{
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d', { willReadFrequently:true });
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+      ctx.drawImage(img, 0, 0);
+      const data = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      for(let i = 0; i < data.data.length; i += 4){
+        const r = data.data[i], g = data.data[i+1], b = data.data[i+2];
+        if(r > 238 && g > 238 && b > 238 && Math.max(r,g,b) - Math.min(r,g,b) < 12) data.data[i+3] = 0;
+      }
+      ctx.putImageData(data, 0, 0);
+      state.logo = canvas.toDataURL('image/png');
+    }catch(e){
+      state.logo = src;
+    }
+    draw();
+  };
+  img.onerror = () => { draw(); };
+  img.src = src;
+}
+
+// ---- 저장/버전 관리 ----
+function loadVersionStore(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw) return { counter:0, versions:[] };
+    const parsed = JSON.parse(raw);
+    return { counter: parsed.counter || 0, versions: parsed.versions || [] };
+  }catch(e){ return { counter:0, versions:[] }; }
+}
+let versionStore = loadVersionStore();
+
+function formatTime(iso){
+  const d = new Date(iso);
+  return (d.getMonth()+1) + '/' + d.getDate() + ' ' + String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+}
+function buildSnapshot(){
+  return JSON.parse(JSON.stringify({
+    theme: activeTheme, preset: activePreset, layout: layoutMode,
+    logo: state.logo, logoX: state.logoX, logoY: state.logoY,
+    panels: state.panels
+  }));
+}
+function renderVersionList(){
+  const sel = $('versionSelect');
+  sel.innerHTML = versionStore.versions.length
+    ? versionStore.versions.slice().reverse().map(v => `<option value="${v.id}">${v.label} · ${formatTime(v.savedAt)}</option>`).join('')
+    : '<option value="">저장된 버전 없음</option>';
+}
+function saveVersion(){
+  versionStore.counter += 1;
+  const entry = {
+    id: 'v' + versionStore.counter,
+    version: versionStore.counter,
+    label: '버전 ' + versionStore.counter,
+    savedAt: new Date().toISOString(),
+    snapshot: buildSnapshot()
+  };
+  versionStore.versions.push(entry);
+  while(versionStore.versions.length > 10) versionStore.versions.shift();
+
+  for(let attempt = 0; attempt < 5; attempt++){
+    try{
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(versionStore));
+      $('versionStatus').textContent = entry.label + ' 저장됨 (' + formatTime(entry.savedAt) + ')';
+      renderVersionList();
+      return;
+    }catch(e){
+      if(versionStore.versions.length > 1) versionStore.versions.shift();
+      else break;
+    }
+  }
+  $('versionStatus').textContent = '저장 공간이 부족합니다. 오래된 버전을 삭제해 주세요.';
+}
+function restoreVersion(id){
+  const entry = versionStore.versions.find(v => v.id === id);
+  if(!entry) return;
+  const snap = entry.snapshot;
+  layoutMode = snap.layout || '3col';
+  document.querySelectorAll('[data-layout]').forEach(b => b.classList.toggle('active', b.dataset.layout === layoutMode));
+  renderPanelSelectOptions();
+  state.panels = JSON.parse(JSON.stringify(snap.panels));
+  state.logo = snap.logo;
+  state.logoX = snap.logoX;
+  state.logoY = snap.logoY;
+  $('logoX').value = state.logoX;
+  $('logoY').value = state.logoY;
+  applyTheme(snap.theme);
+  activePreset = snap.preset;
+  document.querySelectorAll('[data-preset]').forEach(b => b.classList.toggle('active', b.dataset.preset === activePreset));
+  selectedPanel = 'outer1';
+  selectedItemId = defaultItemFor(selectedPanel);
+  draw();
+  $('versionStatus').textContent = entry.label + ' 불러옴';
+}
+function deleteVersion(id){
+  versionStore.versions = versionStore.versions.filter(v => v.id !== id);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(versionStore));
+  renderVersionList();
+  $('versionStatus').textContent = '버전을 삭제했습니다.';
+}
+
+document.querySelectorAll('[data-layout]').forEach(b => b.addEventListener('click', () => setLayoutMode(b.dataset.layout)));
+document.querySelectorAll('[data-preset]').forEach(b => b.addEventListener('click', () => applyPreset(b.dataset.preset)));
+document.querySelectorAll('[data-theme]').forEach(b => b.addEventListener('click', () => applyTheme(b.dataset.theme)));
+
+$('logoUpload').addEventListener('change', e => {
+  const file = e.target.files[0];
+  if(!file) return;
+  state.panels[selectedPanel].showLogo = true;
+  transparentLogo(URL.createObjectURL(file));
+});
+$('logoX').addEventListener('input', e => { state.logoX = Number(e.target.value); syncLogoPositions(); });
+$('logoY').addEventListener('input', e => { state.logoY = Number(e.target.value); syncLogoPositions(); });
+
+$('panelSelect').addEventListener('change', e => selectPanel(e.target.value));
+$('panelAccent').addEventListener('change', e => { state.panels[selectedPanel].accent = e.target.checked; draw(); });
+$('panelLogo').addEventListener('change', e => { state.panels[selectedPanel].showLogo = e.target.checked; draw(); });
+
+$('addImageInput').addEventListener('change', e => {
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    const item = addImageItem(selectedPanel, reader.result);
+    selectedItemId = item.id;
+    draw();
+  };
+  reader.readAsDataURL(file);
+  e.target.value = '';
+});
+
+document.querySelectorAll('[data-add-text]').forEach(b => b.addEventListener('click', () => {
+  const size = b.dataset.addText;
+  const placeholder = size === 'bold' ? '새 제목' : size === 'medium' ? '새 문구를 입력하세요' : '새 본문 내용을 입력하세요';
+  const n = state.panels[selectedPanel].items.length;
+  const item = addTextItem(selectedPanel, size, placeholder, { x: 10 + (n * 6) % 50, y: 10 + (n * 8) % 60 });
+  selectedItemId = item.id;
+  draw();
+  $('elementText').focus();
+}));
+
+$('elementSelect').addEventListener('change', e => { selectedItemId = e.target.value || null; draw(); });
+$('elementText').addEventListener('input', e => { const it = findItem(selectedPanel, selectedItemId); if(it){ it.text = e.target.value; draw(); } });
+$('elementSize').addEventListener('change', e => { const it = findItem(selectedPanel, selectedItemId); if(it){ it.size = e.target.value; draw(); } });
+$('elementBox').addEventListener('change', e => { const it = findItem(selectedPanel, selectedItemId); if(it){ it.box = e.target.value; draw(); } });
+$('elementFg').addEventListener('input', e => { const it = findItem(selectedPanel, selectedItemId); if(it){ it.fg = e.target.value; draw(); } });
+$('elementBg').addEventListener('input', e => { const it = findItem(selectedPanel, selectedItemId); if(it){ it.bg = e.target.value; draw(); } });
+$('elementMode').addEventListener('change', e => { const it = findItem(selectedPanel, selectedItemId); if(it){ it.mode = e.target.value; draw(); } });
+$('removeElement').addEventListener('click', () => { if(selectedItemId) removeItem(selectedPanel, selectedItemId); });
+
+document.querySelectorAll('.icon-row button').forEach(btn => btn.addEventListener('click', () => {
+  const it = findItem(selectedPanel, selectedItemId);
+  if(!it || it.kind !== 'text') return;
+  const ta = $('elementText');
+  const start = ta.selectionStart ?? ta.value.length;
+  const end = ta.selectionEnd ?? start;
+  const emoji = btn.dataset.icon;
+  it.text = ta.value.slice(0, start) + emoji + ta.value.slice(end);
+  draw();
+  ta.focus();
+  const pos = start + emoji.length;
+  ta.setSelectionRange(pos, pos);
+}));
+
+document.querySelectorAll('.switch button').forEach(b => b.addEventListener('click', () => {
+  const outer = b.dataset.side === 'outer';
+  $('outer').classList.toggle('hidden', !outer);
+  $('inner').classList.toggle('hidden', outer);
+  document.querySelectorAll('.switch button').forEach(x => x.classList.toggle('active', x === b));
+}));
+
+$('saveVersionBtn').addEventListener('click', saveVersion);
+$('loadVersionBtn').addEventListener('click', () => { const id = $('versionSelect').value; if(id) restoreVersion(id); });
+$('deleteVersionBtn').addEventListener('click', () => { const id = $('versionSelect').value; if(id) deleteVersion(id); });
+
+$('printBtn').addEventListener('click', () => window.print());
+$('resetBtn').addEventListener('click', () => applyPreset(activePreset));
+
+renderPanelSelectOptions();
+renderTemplateGrid();
+renderVersionList();
+applyTheme('river');
+applyPreset('tour');
+transparentLogo(state.logo);
+</script>
+</body>
+</html>

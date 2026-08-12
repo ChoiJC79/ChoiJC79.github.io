@@ -19,6 +19,7 @@ check_columns_sync.py — 칼럼 3개 소스(md 원본 / column.html / columns/*
 
 import re
 import sys
+import unicodedata
 from pathlib import Path
 
 if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
@@ -28,6 +29,11 @@ BASE_DIR = Path(__file__).parent.parent
 MD_PATH = BASE_DIR / '💬 칼럼·기고.md'
 COLUMN_HTML = BASE_DIR / 'column.html'
 COLUMNS_DIR = BASE_DIR / 'columns'
+
+
+def normalize_unicode(value):
+    """macOS 파일명과 HTML 값을 같은 유니코드 형식으로 비교한다."""
+    return unicodedata.normalize('NFC', value)
 
 
 def load_md_count():
@@ -72,6 +78,23 @@ def load_columns_dir_slugs():
     return sorted(p.stem for p in COLUMNS_DIR.glob('*.html'))
 
 
+def load_local_card_images():
+    """카드에서 참조하는 로컬 img 파일 경로 목록"""
+    html = COLUMN_HTML.read_text(encoding='utf-8')
+    m = re.search(r'<!--AUTO:CARDS-->(.*?)<!--/AUTO:CARDS-->', html, re.DOTALL)
+    block = m.group(1) if m else ''
+    return [src[1:] for src in re.findall(r'<img src="([^"]+)"', block)
+            if src.startswith('/img/')]
+
+
+def load_local_image_paths():
+    image_dir = BASE_DIR / 'img'
+    if not image_dir.exists():
+        return set()
+    return {normalize_unicode(str(path.relative_to(BASE_DIR)))
+            for path in image_dir.rglob('*') if path.is_file()}
+
+
 def load_col_num_badges():
     """col-item 카드 등장 순서대로 col-num / col-visual-num 값 목록 (개수는 맞는데 번호가 밀리지 않은 경우를 잡기 위함)"""
     html = COLUMN_HTML.read_text(encoding='utf-8')
@@ -94,6 +117,8 @@ def main():
     col_items = load_col_items()
     idx_label = load_idx_count_label()
     dir_slugs = load_columns_dir_slugs()
+    card_images = load_local_card_images()
+    local_images = load_local_image_paths()
 
     counts = {
         'md 원본 칼럼 수 (💬 칼럼·기고.md)': md_count,
@@ -114,9 +139,9 @@ def main():
         print('  → 개수가 서로 다릅니다. 위 항목 중 누락되거나 중복 추가된 곳을 확인하세요.')
 
     print('\n=== 슬러그 집합 비교 ===')
-    set_idx = set(idx_rows)
-    set_cards = set(col_items)
-    set_dir = set(dir_slugs)
+    set_idx = {normalize_unicode(slug) for slug in idx_rows}
+    set_cards = {normalize_unicode(slug) for slug in col_items}
+    set_dir = {normalize_unicode(slug) for slug in dir_slugs}
 
     if set_idx == set_cards == set_dir:
         print(f'  ✅ 세 곳의 슬러그 집합이 모두 일치합니다 ({len(set_idx)}개)')
@@ -137,6 +162,14 @@ def main():
         if missing_in_dir - only_idx - only_cards:
             print(f'  ❌ column.html에는 있는데 columns/*.html이 없음: {sorted(missing_in_dir - only_idx - only_cards)}')
 
+    print('\n=== 카드 이미지 경로 검증 ===')
+    missing_images = [path for path in card_images if normalize_unicode(path) not in local_images]
+    if missing_images:
+        ok = False
+        print(f'  ❌ 카드에서 참조하지만 img/에 없는 파일: {missing_images}')
+    else:
+        print(f'  ✅ 로컬 카드 이미지 {len(card_images)}개가 모두 존재합니다.')
+
     print('\n=== 카드 번호(col-num) 순서 검증 ===')
     badges = load_col_num_badges()
     expected = [f'{i:02d}' for i in range(1, len(badges) + 1)]
@@ -152,7 +185,7 @@ def main():
 
     print()
     if ok:
-        print('✅ 전체 동기화 정상. 배포(🚀 사이트에 올리기.bat) 진행 가능.')
+        print('✅ 전체 동기화 정상. 발행 실행 파일 진행 가능.')
         return 0
     else:
         print('❌ 동기화 깨짐. 배포 전에 위 불일치를 먼저 해결하세요.')

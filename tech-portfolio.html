@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="최승환의 지방행정 연구와 디지털 실험을 소개하는 포트폴리오입니다.">
+  <meta property="og:title" content="최승환 | Public Systems & Digital Practice">
+  <meta property="og:description" content="지방행정 현장과 데이터, 디지털 도구를 연결하는 포트폴리오입니다.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://choijc79.github.io/">
+  <title>CHOI SEUNG-HWAN | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* 디자인 토큰. 색상을 한 곳에서 조정할 수 있습니다. */
+    :root {
+      --bg: #0a0e17;
+      --bg-deep: #000000;
+      --surface: rgba(18, 24, 38, 0.72);
+      --surface-solid: #121826;
+      --line: rgba(184, 198, 220, 0.18);
+      --text: #edf2ff;
+      --muted: #98a3b8;
+      --green: #00ffa3;
+      --purple: #9d4eff;
+      --silver: linear-gradient(120deg, #707b90 0%, #f2f5fa 43%, #8993a7 58%, #eef2f7 100%);
+      --display: "Space Grotesk", "Inter", sans-serif;
+      --body: "Inter", sans-serif;
+      --shadow-green: 0 0 13px rgba(0, 255, 163, 0.54);
+      --shadow-purple: 0 0 16px rgba(157, 78, 255, 0.57);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--bg-deep); }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--text);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.6;
+      background: radial-gradient(circle at 75% 0%, rgba(71, 30, 119, 0.24), transparent 31rem), linear-gradient(135deg, var(--bg) 0%, var(--bg-deep) 83%);
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    :focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
+
+    /* 고정 네비게이션. 작은 화면에서는 메뉴 버튼으로 전환됩니다. */
+    .nav {
+      position: fixed; z-index: 30; top: 0; left: 0; right: 0;
+      height: 76px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(1.25rem, 5vw, 5rem); border-bottom: 1px solid transparent;
+      transition: background .25s ease, border-color .25s ease, backdrop-filter .25s ease;
+    }
+    .nav.is-scrolled { background: rgba(5, 8, 15, .78); border-color: var(--line); backdrop-filter: blur(16px); }
+    .logo { position: relative; font: 700 1.6rem/1 var(--display); letter-spacing: -.11em; color: var(--purple); text-shadow: var(--shadow-purple); }
+    .logo::before, .logo::after { content: "JC"; position: absolute; inset: 0; pointer-events: none; opacity: .5; }
+    .logo::before { color: var(--green); transform: translate(-1px, 1px); clip-path: inset(43% 0 44% 0); animation: glitch .8s infinite steps(2, end); }
+    .logo::after { color: #fff; transform: translate(1px, -1px); clip-path: inset(78% 0 8% 0); animation: glitch 1.3s infinite reverse steps(2, end); }
+    .nav-links { display: flex; gap: clamp(1rem, 2.5vw, 2.5rem); margin: 0; padding: 0; list-style: none; }
+    .nav-links a { position: relative; padding: .55rem 0; color: #c9d1e0; font-size: .83rem; font-weight: 600; letter-spacing: .08em; }
+    .nav-links a::after { content: ""; position: absolute; right: 0; bottom: 0; left: 0; height: 1px; transform: scaleX(0); background: var(--green); box-shadow: var(--shadow-green); transition: transform .2s ease; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: #fff; }
+    .nav-links a:hover::after, .nav-links a:focus-visible::after { transform: scaleX(1); }
+    .menu-button { display: none; border: 0; background: transparent; color: var(--text); font-size: 1.35rem; cursor: pointer; }
+
+    /* 히어로. Canvas가 전면 배경으로, 본문은 그 위의 관측 인터페이스처럼 배치됩니다. */
+    .hero { position: relative; min-height: 100svh; display: grid; place-items: center; overflow: hidden; contain: paint; isolation: isolate; }
+    #particle-canvas { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; }
+    .hero::before { content: ""; position: absolute; z-index: -1; inset: 0; background: radial-gradient(ellipse at center, transparent 5%, rgba(0,0,0,.23) 58%, rgba(0,0,0,.73) 100%); }
+    .hero-grid { position: absolute; z-index: -1; inset: auto 0 0; height: 34%; opacity: .22; background-image: linear-gradient(rgba(151,174,204,.25) 1px, transparent 1px), linear-gradient(90deg, rgba(151,174,204,.25) 1px, transparent 1px); background-size: 48px 48px; mask-image: linear-gradient(transparent, #000 42%); transform: perspective(350px) rotateX(56deg); transform-origin: bottom; }
+    .hero-content { width: min(100% - 2.5rem, 1050px); padding: 6rem 0 5rem; text-align: center; }
+    .eyebrow { margin-bottom: 1.15rem; color: var(--green); font-size: .72rem; font-weight: 700; letter-spacing: .19em; text-transform: uppercase; text-shadow: var(--shadow-green); }
+    .hero h1 { max-width: 1000px; margin: 0 auto; font: 700 clamp(3rem, 9vw, 8rem)/.91 var(--display); letter-spacing: -.075em; color: #edfff8; text-shadow: 0 0 11px rgba(0,255,163,.4), 0 0 35px rgba(0,255,163,.18); }
+    .glitch-title { position: relative; display: inline-block; }
+    .glitch-title::before, .glitch-title::after { content: attr(data-text); position: absolute; inset: 0; overflow: hidden; opacity: .62; pointer-events: none; }
+    .glitch-title::before { color: var(--purple); transform: translate(-2px, 0); clip-path: inset(17% 0 64% 0); animation: title-glitch 3.8s infinite steps(2, end); }
+    .glitch-title::after { color: var(--green); transform: translate(2px, 0); clip-path: inset(69% 0 8% 0); animation: title-glitch 2.8s infinite reverse steps(2, end); }
+    .type-line { min-height: 2rem; margin: 1.8rem 0 2.25rem; color: #caaaff; font: 500 clamp(1rem, 2vw, 1.3rem)/1.5 var(--display); letter-spacing: .035em; text-shadow: var(--shadow-purple); }
+    .cursor { display: inline-block; width: .57em; height: 1.1em; margin-left: .18em; vertical-align: -.18em; background: var(--purple); box-shadow: var(--shadow-purple); animation: blink .8s infinite; }
+    .hero-copy { max-width: 610px; margin: 0 auto 2rem; color: #b4bfd0; font-size: clamp(.92rem, 1.5vw, 1.05rem); }
+    .cta { display: inline-flex; align-items: center; gap: .7rem; min-height: 48px; padding: .78rem 1.35rem; border: 1px solid var(--green); color: var(--green); background: transparent; box-shadow: inset 0 0 0 0 var(--green), var(--shadow-green); font-weight: 700; font-size: .84rem; letter-spacing: .06em; transition: color .25s ease, box-shadow .25s ease, transform .25s ease; }
+    .cta:hover { color: #03120d; box-shadow: inset 0 -4rem 0 0 var(--green), 0 0 24px rgba(0,255,163,.7); transform: translateY(-3px); }
+    .cta span { font-size: 1.15em; }
+    .hero-meta { position: absolute; bottom: 2rem; left: clamp(1.25rem, 5vw, 5rem); right: clamp(1.25rem, 5vw, 5rem); display: flex; justify-content: space-between; color: #8490a5; font: 500 .64rem var(--display); letter-spacing: .13em; }
+
+    /* 공통 섹션. reveal 클래스는 JavaScript의 IntersectionObserver가 활성화합니다. */
+    .section { width: min(100% - 2.5rem, 1160px); margin: 0 auto; padding: clamp(5.5rem, 10vw, 8.5rem) 0; }
+    .section-heading { margin: 0 0 clamp(2.2rem, 5vw, 4rem); }
+    .section-kicker { display: flex; align-items: center; gap: .8rem; margin-bottom: .6rem; color: var(--green); font: 700 .68rem var(--display); letter-spacing: .18em; }
+    .section-kicker::before { content: ""; width: 26px; height: 1px; background: var(--green); box-shadow: var(--shadow-green); }
+    .section h2 { margin: 0; font: 700 clamp(2rem, 5vw, 4.2rem)/1 var(--display); letter-spacing: -.065em; text-shadow: 0 0 17px rgba(228,238,255,.14); }
+    .section h2 .metal { display: inline-block; background: var(--silver); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    /* About. 프로필 이미지 파일 경로는 현재 저장소의 profile.jpg를 사용합니다. */
+    .about-layout { display: grid; grid-template-columns: minmax(220px, .8fr) minmax(0, 1.5fr); align-items: center; gap: clamp(2.5rem, 8vw, 7rem); }
+    .profile-frame { position: relative; width: min(100%, 292px); aspect-ratio: 1; margin: auto; padding: 9px; border-radius: 50%; background: conic-gradient(from 210deg, var(--purple), #eff0ff, var(--purple), var(--green), var(--purple)); box-shadow: 0 0 0 1px rgba(157,78,255,.75), 0 0 30px rgba(157,78,255,.4), 0 0 60px rgba(0,255,163,.12); }
+    .profile-frame::after { content: ""; position: absolute; inset: -15px; border: 1px solid rgba(157,78,255,.3); border-radius: 50%; animation: orbit 6s linear infinite; }
+    .profile-frame img { display: block; width: 100%; height: 100%; border: 6px solid #0b101a; border-radius: 50%; object-fit: cover; filter: grayscale(.3) contrast(1.08); }
+    .about-copy { max-width: 670px; color: #b4bfd0; }
+    .about-copy p { margin: 0 0 1.15rem; }
+    mark { padding: .02em .22em; color: var(--green); background: rgba(0,255,163,.1); border-bottom: 1px solid rgba(0,255,163,.55); text-shadow: var(--shadow-green); }
+    .about-signal { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.6rem; }
+    .about-signal span { padding: .36rem .62rem; border: 1px solid var(--line); color: #bcc5d3; font: 600 .68rem var(--display); letter-spacing: .08em; }
+
+    /* Work. 카드의 이미지와 링크는 실제 사이트의 공개 콘텐츠로 연결합니다. */
+    .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+    .work-card { position: relative; display: flex; min-height: 355px; overflow: hidden; flex-direction: column; border: 1px solid var(--line); background: var(--surface); transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease; }
+    .work-card:hover { z-index: 1; transform: translateY(-8px); border-color: rgba(0,255,163,.78); box-shadow: 0 13px 38px rgba(0,0,0,.36), 0 0 24px rgba(0,255,163,.24); }
+    .work-image { position: relative; height: 180px; overflow: hidden; background: #111827; }
+    .work-image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 34%, rgba(8,13,23,.65)); }
+    .work-image img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.72) contrast(1.1); transition: transform .5s ease, filter .5s ease; }
+    .work-card:hover img { transform: scale(1.07); filter: saturate(1) contrast(1.05); }
+    .work-info { display: flex; flex: 1; flex-direction: column; padding: 1.35rem; }
+    .work-index { color: var(--purple); font: 700 .68rem var(--display); letter-spacing: .16em; text-shadow: var(--shadow-purple); }
+    .work-info h3 { margin: .5rem 0 .65rem; font: 600 1.24rem/1.2 var(--display); letter-spacing: -.035em; }
+    .work-info p { margin: 0; color: var(--muted); font-size: .88rem; }
+    .work-link { margin-top: auto; padding-top: 1.35rem; color: var(--green); font: 700 .7rem var(--display); letter-spacing: .1em; }
+
+    /* Skills. 아이콘을 외부 이미지에 의존하지 않도록 기술 약어를 그래픽 버튼으로 표현합니다. */
+    .skill-cloud { display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(.75rem, 2vw, 1.3rem); padding: clamp(1.1rem, 5vw, 2.5rem) 0; }
+    .skill { display: grid; width: clamp(92px, 12vw, 120px); aspect-ratio: 1; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: #cad3e1; background: radial-gradient(circle at 35% 25%, rgba(157,78,255,.13), transparent 50%), var(--surface); transition: color .3s ease, border-color .3s ease, box-shadow .3s ease, transform .3s ease; }
+    .skill b { display: block; font: 700 1rem var(--display); letter-spacing: -.06em; }
+    .skill small { display: block; margin-top: .05rem; color: var(--muted); font-size: .57rem; letter-spacing: .08em; }
+    .skill:hover { color: #e5d7ff; border-color: var(--purple); box-shadow: var(--shadow-purple), inset 0 0 22px rgba(157,78,255,.2); transform: translateY(-5px) rotate(9deg); }
+    .skill:hover b { animation: spin .5s ease; }
+
+    /* Contact. 메일 주소 클릭 시 클립보드 복사와 상태 알림이 실행됩니다. */
+    .contact-panel { position: relative; overflow: hidden; padding: clamp(2rem, 7vw, 5rem); border: 1px solid var(--line); background: linear-gradient(120deg, rgba(157,78,255,.09), transparent 45%), var(--surface); text-align: center; }
+    .contact-panel::before { content: ""; position: absolute; top: -40%; left: 50%; width: 440px; height: 440px; border: 1px solid rgba(0,255,163,.12); border-radius: 50%; transform: translateX(-50%); }
+    .contact-panel > * { position: relative; }
+    .contact-copy { max-width: 480px; margin: 1.2rem auto 1.7rem; color: var(--muted); }
+    .email-copy { display: inline-flex; align-items: center; gap: .7rem; padding: .8rem 1.05rem; border: 1px solid rgba(0,255,163,.5); color: var(--green); background: rgba(0,255,163,.05); box-shadow: var(--shadow-green); cursor: pointer; font: 600 clamp(.87rem, 2.2vw, 1.1rem) var(--display); }
+    .copy-status { min-height: 1.5em; margin: .7rem 0 0; color: #c8b2ff; font-size: .76rem; }
+    .socials { display: flex; justify-content: center; gap: .7rem; margin-top: 1.4rem; }
+    .social { display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: #bac4d3; transition: color .2s, border-color .2s, box-shadow .2s, transform .2s; }
+    .social:hover { color: var(--green); border-color: var(--green); box-shadow: var(--shadow-green); transform: translateY(-3px); }
+    .social svg { width: 18px; height: 18px; fill: currentColor; }
+    footer { display: flex; justify-content: space-between; gap: 1rem; width: min(100% - 2.5rem, 1160px); margin: 0 auto; padding: 1.5rem 0 2rem; color: #68748a; font: 500 .62rem var(--display); letter-spacing: .12em; }
+
+    @keyframes glitch { 0%, 92%, 100% { transform: translate(0); } 94% { transform: translate(-2px, 1px); } 96% { transform: translate(2px, -1px); } }
+    @keyframes title-glitch { 0%, 89%, 100% { transform: translate(0); } 90% { transform: translate(-4px, 1px); } 93% { transform: translate(3px, -1px); } 96% { transform: translate(1px, 0); } }
+    @keyframes blink { 50% { opacity: 0; } }
+    @keyframes orbit { to { transform: rotate(360deg); } }
+    @keyframes spin { 50% { transform: rotate(180deg) scale(1.15); } }
+    @media (max-width: 760px) {
+      .nav { height: 64px; } .menu-button { display: block; }
+      .nav-links { position: absolute; top: 64px; right: 1rem; display: none; width: min(260px, calc(100vw - 2rem)); padding: .65rem 1.2rem; border: 1px solid var(--line); background: rgba(8, 12, 22, .96); box-shadow: 0 15px 32px rgba(0,0,0,.35); }
+      .nav-links.open { display: grid; } .nav-links a { display: block; }
+      .hero-meta { bottom: 1.15rem; font-size: .53rem; } .about-layout { grid-template-columns: 1fr; text-align: center; }
+      .work-grid { grid-template-columns: 1fr; } .work-card { min-height: 325px; }
+      footer { align-items: center; flex-direction: column; text-align: center; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <!-- 1. 고정 네비게이션. 메뉴 주소는 한 페이지 내부 섹션을 가리킵니다. -->
+  <nav class="nav" aria-label="주요 메뉴">
+    <a class="logo" href="#top" aria-label="페이지 처음으로">JC</a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="메뉴 열기">☰</button>
+    <ul id="nav-links" class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- 2. 히어로. particle-canvas에는 아래 JavaScript가 직접 생성한 입자 네트워크가 그려집니다. -->
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <canvas id="particle-canvas" aria-hidden="true"></canvas>
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-content">
+        <div class="eyebrow">Public Systems · Digital Practice</div>
+        <h1 id="hero-title"><span class="glitch-title" data-text="CHOI SEUNG-HWAN">CHOI SEUNG-HWAN</span></h1>
+        <p class="type-line"><span id="typed-text"></span><span class="cursor" aria-hidden="true"></span></p>
+        <p class="hero-copy">현장의 행정 경험과 연구의 언어, 그리고 디지털 도구를 연결해 더 선명한 공공의 선택을 탐색합니다.</p>
+        <a class="cta" href="#work">View My Work <span aria-hidden="true">↘</span></a>
+      </div>
+      <div class="hero-meta"><span>JECHEON · KOREA</span><span>SCROLL TO EXPLORE ↓</span></div>
+    </section>
+
+    <!-- 3. About. profile.jpg를 다른 사진으로 바꾸려면 아래 img의 src만 수정하면 됩니다. -->
+    <section id="about" class="section reveal" aria-labelledby="about-title">
+      <header class="section-heading"><div class="section-kicker">01 / ABOUT</div><h2 id="about-title">현장에서 읽고,<br><span class="metal">연구로 연결합니다.</span></h2></header>
+      <div class="about-layout">
+        <div class="profile-frame"><img src="/profile.jpg" alt="최승환 프로필 사진"></div>
+        <div class="about-copy">
+          <p>제천시청에서 지방행정의 현장을 경험하며, 제도와 데이터가 시민의 일상에 닿는 방식을 살피고 있습니다. 도시경영학 박사과정에서는 등록면허세 납세지 불일치와 지방세 세원 문제를 연구합니다.</p>
+          <p>익숙한 업무의 흐름도 <mark>데이터 분석</mark>과 <mark>공간적 관점</mark>으로 다시 읽으면 다른 선택지가 보일 수 있다고 생각합니다. <mark>JavaScript</mark>, <mark>Canvas</mark>, <mark>GIS</mark>는 그 생각을 작동하는 도구로 옮기는 매개입니다.</p>
+          <div class="about-signal" aria-label="핵심 관심 분야"><span>LOCAL GOVERNMENT</span><span>URBAN MANAGEMENT</span><span>DATA & GIS</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Work. 새 프로젝트는 article.work-card 하나를 복제해 이미지·링크·설명만 교체하면 됩니다. -->
+    <section id="work" class="section reveal" aria-labelledby="work-title">
+      <header class="section-heading"><div class="section-kicker">02 / SELECTED WORK</div><h2 id="work-title">생각을 <span class="metal">작동하는 형태</span>로.</h2></header>
+      <div class="work-grid">
+        <a class="work-card" href="/research.html"><div class="work-image"><img src="/img/col_study.jpg" alt="연구와 분석"></div><div class="work-info"><span class="work-index">RESEARCH / 01</span><h3>지방세 세원 분석</h3><p>등록면허세 납세지와 세원 귀속의 관계를 현장 자료와 제도 맥락에서 살펴봅니다.</p><span class="work-link">EXPLORE PROJECT ↗</span></div></a>
+        <a class="work-card" href="/column.html"><div class="work-image"><img src="/img/col_proposal.jpg" alt="정책 칼럼과 제안"></div><div class="work-info"><span class="work-index">WRITING / 02</span><h3>정책과 행정의 기록</h3><p>업무에서 발견한 질문을 칼럼과 제안의 언어로 정리하며, 실행의 단서를 남깁니다.</p><span class="work-link">READ COLUMNS ↗</span></div></a>
+        <a class="work-card" href="/leaflet.html"><div class="work-image"><img src="/img/col_vibecoding.jpg" alt="디지털 도구 실험"></div><div class="work-info"><span class="work-index">BUILD / 03</span><h3>업무 도구 실험</h3><p>정보를 더 명확하게 전달하고 반복 업무를 줄이기 위한 작은 웹 도구를 만듭니다.</p><span class="work-link">OPEN TOOL ↗</span></div></a>
+      </div>
+    </section>
+
+    <!-- 5. Skills. 기술 버튼은 외부 아이콘 없이 약어로 구현돼 이미지 로딩 없이 표시됩니다. -->
+    <section id="skills" class="section reveal" aria-labelledby="skills-title">
+      <header class="section-heading"><div class="section-kicker">03 / TOOLKIT</div><h2 id="skills-title">도구는 생각을<br><span class="metal">더 멀리 보냅니다.</span></h2></header>
+      <div class="skill-cloud" aria-label="활용 기술">
+        <div class="skill"><div><b>HTML</b><small>STRUCTURE</small></div></div><div class="skill"><div><b>CSS</b><small>INTERFACE</small></div></div><div class="skill"><div><b>JS</b><small>LOGIC</small></div></div><div class="skill"><div><b>GIS</b><small>SPATIAL DATA</small></div></div><div class="skill"><div><b>SQL</b><small>DATA</small></div></div><div class="skill"><div><b>PY</b><small>AUTOMATION</small></div></div><div class="skill"><div><b>FIG</b><small>DESIGN</small></div></div><div class="skill"><div><b>CAN</b><small>CANVAS</small></div></div>
+      </div>
+    </section>
+
+    <!-- 6. Contact와 푸터. 이메일 주소와 외부 소셜 URL은 운영자 계정에 맞게 아래에서 교체할 수 있습니다. -->
+    <section id="contact" class="section reveal" aria-labelledby="contact-title">
+      <div class="contact-panel"><div class="section-kicker" style="justify-content:center">04 / CONTACT</div><h2 id="contact-title">같이 생각할<br><span class="metal">연결을 기다립니다.</span></h2><p class="contact-copy">연구, 정책, 도시와 디지털 도구에 관한 대화라면 편하게 연락해 주세요.</p><button id="email-copy" class="email-copy" type="button" data-email="7979@korea.kr" aria-describedby="copy-status">7979@korea.kr <span aria-hidden="true">⧉</span></button><p id="copy-status" class="copy-status" aria-live="polite"></p><div class="socials" aria-label="소셜 링크">
+        <!-- href는 실제 계정 주소 확인 후 교체합니다. -->
+        <a class="social" href="https://github.com/choijc79" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .7a11.3 11.3 0 0 0-3.57 22c.57.1.77-.25.77-.55v-2.16c-3.14.68-3.8-1.33-3.8-1.33-.52-1.31-1.26-1.66-1.26-1.66-1.03-.7.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.73 2.66 1.23 3.31.94.1-.73.4-1.23.72-1.51-2.51-.29-5.15-1.26-5.15-5.59 0-1.24.44-2.25 1.17-3.05-.12-.29-.51-1.45.11-3.02 0 0 .95-.3 3.11 1.17a10.7 10.7 0 0 1 5.66 0c2.16-1.47 3.1-1.17 3.1-1.17.63 1.57.24 2.73.12 3.02.73.8 1.16 1.81 1.16 3.05 0 4.34-2.64 5.29-5.16 5.58.41.35.77 1.02.77 2.05v3.04c0 .3.2.66.78.55A11.3 11.3 0 0 0 12 .7Z"/></svg></a>
+        <a class="social" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.4 2h9.2A5.4 5.4 0 0 1 22 7.4v9.2a5.4 5.4 0 0 1-5.4 5.4H7.4A5.4 5.4 0 0 1 2 16.6V7.4A5.4 5.4 0 0 1 7.4 2Zm-.2 2A3.2 3.2 0 0 0 4 7.2v9.6A3.2 3.2 0 0 0 7.2 20h9.6a3.2 3.2 0 0 0 3.2-3.2V7.2A3.2 3.2 0 0 0 16.8 4H7.2Zm9.95 1.5a1.35 1.35 0 1 1 0 2.7 1.35 1.35 0 0 1 0-2.7ZM12 6.7a5.3 5.3 0 1 1 0 10.6 5.3 5.3 0 0 1 0-10.6Zm0 2a3.3 3.3 0 1 0 0 6.6 3.3 3.3 0 0 0 0-6.6Z"/></svg></a>
+        <a class="social" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V8.98h3.42v1.57h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.29ZM5.32 7.41a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14Zm-1.78 13.04h3.57V8.98H3.54v11.47Z"/></svg></a>
+      </div></div>
+    </section>
+  </main>
+  <footer><span>© 2026 CHOI SEUNG-HWAN</span><span>PUBLIC SYSTEMS · DIGITAL PRACTICE</span></footer>
+
+  <script>
+    /* 모바일 메뉴. 링크를 누르면 메뉴를 다시 닫아 화면 전환을 자연스럽게 합니다. */
+    const nav = document.querySelector('.nav');
+    const menuButton = document.querySelector('.menu-button');
+    const navLinks = document.querySelector('.nav-links');
+    menuButton.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+      menuButton.textContent = isOpen ? '×' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+      navLinks.classList.remove('open'); menuButton.setAttribute('aria-expanded', 'false'); menuButton.textContent = '☰';
+    }));
+    addEventListener('scroll', () => nav.classList.toggle('is-scrolled', scrollY > 16), { passive: true });
+
+    /* 타이핑 효과. 문구는 이 한 줄만 바꾸면 됩니다. */
+    const typingTarget = document.getElementById('typed-text');
+    const typingText = 'Public Administrator · Researcher · Digital Maker';
+    let characterIndex = 0;
+    function typeCharacter() { if (characterIndex <= typingText.length) { typingTarget.textContent = typingText.slice(0, characterIndex++); setTimeout(typeCharacter, characterIndex < typingText.length ? 48 : 0); } }
+    setTimeout(typeCharacter, 550);
+
+    /* 스크롤 진입 애니메이션. 화면에 들어온 요소만 한 번 표시합니다. */
+    const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } }), { threshold: .14 });
+    document.querySelectorAll('.reveal').forEach((section) => observer.observe(section));
+
+    /* 이메일 복사. 보안 문맥이 아닌 경우에도 동작하도록 선택 영역 방식의 대체 경로를 둡니다. */
+    const emailButton = document.getElementById('email-copy');
+    const copyStatus = document.getElementById('copy-status');
+    emailButton.addEventListener('click', async () => {
+      const email = emailButton.dataset.email;
+      try { await navigator.clipboard.writeText(email); }
+      catch { const area = document.createElement('textarea'); area.value = email; document.body.append(area); area.select(); document.execCommand('copy'); area.remove(); }
+      copyStatus.textContent = '이메일 주소를 복사했습니다.';
+      setTimeout(() => { copyStatus.textContent = ''; }, 2600);
+    });
+
+    /* Canvas 입자 필드. 마우스와 가까운 입자는 천천히 밀려나고, 인접 입자는 얇은 선으로 연결됩니다. */
+    (() => {
+      const canvas = document.getElementById('particle-canvas');
+      const context = canvas.getContext('2d');
+      const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let width = 0; let height = 0; let particles = []; const pointer = { x: -9999, y: -9999 };
+      const count = () => Math.min(115, Math.max(42, Math.round((width * height) / 12500)));
+      class Particle {
+        constructor() { this.reset(true); }
+        reset(initial) { this.x = Math.random() * width; this.y = initial ? Math.random() * height : height + 10; this.baseX = this.x; this.baseY = this.y; this.radius = Math.random() * 1.55 + .35; this.vx = (Math.random() - .5) * .16; this.vy = (Math.random() - .5) * .16 - .05; this.hue = Math.random() > .78 ? 273 : 158; }
+        update() { const dx = this.x - pointer.x; const dy = this.y - pointer.y; const distance = Math.hypot(dx, dy); if (distance < 125) { const force = (125 - distance) / 125; this.x += (dx / (distance || 1)) * force * .9; this.y += (dy / (distance || 1)) * force * .9; } this.x += this.vx; this.y += this.vy; if (this.x < -12 || this.x > width + 12 || this.y < -12 || this.y > height + 12) this.reset(false); }
+        draw() { context.beginPath(); context.fillStyle = `hsla(${this.hue}, 100%, 73%, .78)`; context.shadowBlur = 9; context.shadowColor = this.hue === 273 ? '#9d4eff' : '#00ffa3'; context.arc(this.x, this.y, this.radius, 0, Math.PI * 2); context.fill(); context.shadowBlur = 0; }
+      }
+      function resize() { const ratio = Math.min(devicePixelRatio || 1, 2); width = innerWidth; height = innerHeight; canvas.width = width * ratio; canvas.height = height * ratio; canvas.style.width = `${width}px`; canvas.style.height = `${height}px`; context.setTransform(ratio, 0, 0, ratio, 0, 0); particles = Array.from({ length: count() }, () => new Particle()); }
+      function connect() { for (let i = 0; i < particles.length; i += 1) { for (let j = i + 1; j < particles.length; j += 1) { const a = particles[i]; const b = particles[j]; const dx = a.x - b.x; const dy = a.y - b.y; const distanceSq = dx * dx + dy * dy; if (distanceSq < 17500) { const opacity = .18 * (1 - distanceSq / 17500); context.beginPath(); context.strokeStyle = `rgba(120, 227, 205, ${opacity})`; context.lineWidth = .55; context.moveTo(a.x, a.y); context.lineTo(b.x, b.y); context.stroke(); } } } }
+      function render() { context.clearRect(0, 0, width, height); if (!reducedMotion) particles.forEach((particle) => particle.update()); connect(); particles.forEach((particle) => particle.draw()); if (!reducedMotion) requestAnimationFrame(render); }
+      addEventListener('resize', resize); addEventListener('pointermove', (event) => { pointer.x = event.clientX; pointer.y = event.clientY; }, { passive: true }); addEventListener('pointerleave', () => { pointer.x = -9999; pointer.y = -9999; });
+      resize(); render();
+    })();
+  </script>
+</body>
+</html>
