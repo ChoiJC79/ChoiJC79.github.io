@@ -1,0 +1,68 @@
+<!-- 휴대폰에서 수입과 지출을 매일 기록하는 독립형 개인 가계부 -->
+<!doctype html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#173b66">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="manifest" href="/daily-ledger.webmanifest">
+  <title>매일 가계부</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<style>
+    :root { --navy:#173b66; --blue:#287bc0; --teal:#0d7b72; --orange:#b8670e; --ink:#1c2636; --muted:#6c788b; --line:#dfe6ee; --paper:#fff; --canvas:#f5f7fb; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--canvas); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Noto Sans KR","Apple SD Gothic Neo",sans-serif; line-height:1.5; }
+    .app { max-width:680px; min-height:100vh; margin:auto; padding:max(18px,env(safe-area-inset-top)) 16px calc(34px + env(safe-area-inset-bottom)); }
+    header { padding:20px 20px 22px; border-radius:20px; color:#fff; background:linear-gradient(135deg,#15365c,#24727e); box-shadow:0 14px 36px rgba(23,59,102,.2); }
+    .kicker { margin:0 0 3px; color:#c9e9ee; font-size:.73rem; font-weight:800; letter-spacing:.12em; }
+    h1 { margin:0; font-size:1.85rem; letter-spacing:-.05em; }
+    header p { margin:7px 0 0; color:#e1f3f4; font-size:.88rem; }
+    .status { margin:14px 0; padding:10px 12px; border:1px solid #cae6dd; border-radius:11px; background:#eefaf5; color:#1f665a; font-size:.8rem; }
+    section { margin-top:14px; padding:18px; border:1px solid var(--line); border-radius:16px; background:var(--paper); box-shadow:0 5px 18px rgba(26,51,81,.04); }
+    h2 { margin:0; font-size:1.05rem; letter-spacing:-.03em; }
+    .sub { margin:4px 0 14px; color:var(--muted); font-size:.82rem; }
+    .month-row { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+    input,select,button { min-height:44px; border-radius:10px; font:inherit; }
+    input,select { width:100%; padding:9px 10px; border:1px solid #ccd7e3; background:#fff; color:var(--ink); }
+    input:focus,select:focus { outline:2px solid #a6d1ee; border-color:#4c9bd0; }
+    button { border:0; padding:0 13px; cursor:pointer; background:var(--navy); color:#fff; font-weight:800; }
+    button.secondary { background:#eaf1f8; color:var(--navy); } button.danger { color:#a8352e; background:#fff0ee; }
+    .metrics { display:grid; grid-template-columns:repeat(2,1fr); gap:9px; margin-top:14px; }
+    .metric { min-height:90px; padding:14px; border:1px solid #e1eaf1; border-radius:13px; background:#f8fafc; }
+    .metric span { display:block; color:var(--muted); font-size:.75rem; font-weight:700; }.metric strong { display:block; margin-top:5px; font-size:1.12rem; letter-spacing:-.04em; }.metric.income strong { color:var(--teal); }.metric.expense strong { color:var(--orange); }
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }.form-grid .full { grid-column:1/-1; }
+    label { display:block; color:#4d5d70; font-size:.76rem; font-weight:800; }
+    label input,label select { margin-top:4px; }
+    .form-actions { display:flex; gap:8px; margin-top:12px; }.form-actions button { flex:1; }
+    .category-list { margin:2px 0 0; padding:0; list-style:none; }.category-list li { display:grid; grid-template-columns:minmax(62px,1fr) 1.7fr auto; gap:8px; align-items:center; padding:9px 0; border-bottom:1px solid #edf1f5; font-size:.85rem; }.category-list li:last-child { border-bottom:0; }.bar { height:7px; overflow:hidden; border-radius:999px; background:#e8eef3; }.bar i { display:block; height:100%; background:linear-gradient(90deg,#327ebc,#49a9af); border-radius:inherit; }
+    .entry-list { margin:0; padding:0; list-style:none; }.entry { display:grid; grid-template-columns:auto 1fr auto; gap:10px; align-items:center; padding:13px 0; border-bottom:1px solid #edf1f5; }.entry:last-child { border-bottom:0; }.badge { min-width:42px; padding:4px 6px; border-radius:7px; background:#eef4fb; color:#37648a; text-align:center; font-size:.7rem; font-weight:800; }.badge.income { background:#eaf8f4; color:#197266; }.entry-title { font-size:.88rem; font-weight:800; }.entry-note { display:block; color:var(--muted); font-size:.75rem; }.entry-amount { font-size:.87rem; font-weight:800; }.entry-amount.income { color:var(--teal); }.entry button { min-height:34px; padding:0 9px; font-size:.75rem; text-align:left; }
+    .empty { margin:0; padding:17px 0 5px; color:var(--muted); text-align:center; font-size:.84rem; }.backup { display:grid; grid-template-columns:1fr 1fr; gap:9px; }.backup button { font-size:.81rem; }.hidden { display:none; }
+    @media (min-width:540px) { .metrics { grid-template-columns:repeat(4,1fr); }.metric { min-height:98px; }.form-grid { grid-template-columns:1fr 1fr 1fr; }.form-grid .full { grid-column:auto; }.app { padding-left:24px; padding-right:24px; } }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header><p class="kicker">PERSONAL DAILY LEDGER</p><h1>매일 가계부</h1><p>기록은 이 휴대폰 브라우저에 저장됩니다.</p></header>
+    <p class="status" id="storageStatus">이 기기 저장소에 기록을 보관합니다. 다른 기기로 옮길 때는 백업 파일을 사용하십시오.</p>
+    <section><div class="month-row"><div><h2>이번 달 흐름</h2><p class="sub">수입과 지출을 입력한 즉시 다시 계산합니다.</p></div><input type="month" id="monthPicker" aria-label="조회 월"></div><div class="metrics"><article class="metric income"><span>수입</span><strong id="incomeTotal">0원</strong></article><article class="metric expense"><span>지출</span><strong id="expenseTotal">0원</strong></article><article class="metric"><span>월 수지</span><strong id="balanceTotal">0원</strong></article><article class="metric"><span>저축률</span><strong id="savingRate">-</strong></article></div></section>
+    <section><h2 id="formTitle">수입·지출 기록</h2><p class="sub">금액만 입력해도 되며, 메모는 필요한 경우에만 남기십시오.</p><form id="entryForm"><div class="form-grid"><label>날짜<input type="date" id="entryDate" required></label><label>구분<select id="entryType"><option value="expense">지출</option><option value="income">수입</option></select></label><label>분류<input id="entryCategory" list="categories" placeholder="예. 식비" required></label><label>금액<input type="number" id="entryAmount" min="1" step="1" inputmode="numeric" placeholder="0" required></label><label class="full">메모<input id="entryMemo" maxlength="80" placeholder="예. 점심 식사"></label></div><div class="form-actions"><button type="submit" id="submitBtn">기록 추가</button><button type="button" class="secondary hidden" id="cancelEdit">수정 취소</button></div></form><datalist id="categories"><option value="급여"><option value="기타수입"><option value="식비"><option value="주거·관리"><option value="교통"><option value="통신"><option value="보험"><option value="건강"><option value="교육"><option value="문화·여가"><option value="쇼핑"><option value="경조사"><option value="기타"></datalist></section>
+    <section><h2>지출 분류</h2><p class="sub">선택한 달의 지출만 집계합니다.</p><ul class="category-list" id="categoryList"></ul></section>
+    <section><h2>이번 달 기록</h2><p class="sub">항목을 눌러 수정할 수 있습니다.</p><ul class="entry-list" id="entryList"></ul></section>
+    <section><h2>백업과 복원</h2><p class="sub">휴대폰 교체 전에는 백업 파일을 내려받아 안전한 곳에 보관하십시오.</p><div class="backup"><button type="button" class="secondary" id="exportBtn">백업 파일 저장</button><button type="button" class="secondary" id="importBtn">백업 파일 불러오기</button></div><input type="file" id="importFile" class="hidden" accept="application/json,.json"><div class="form-actions"><button type="button" class="danger" id="clearBtn">모든 기록 삭제</button></div></section>
+  </main>
+  <script>
+    const STORAGE_KEY='daily-ledger-v1'; let entries=JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]'); let editingId=null;
+    const $=selector=>document.querySelector(selector); const won=value=>new Intl.NumberFormat('ko-KR').format(Math.round(value))+'원';
+    const today=()=>{const now=new Date();now.setMinutes(now.getMinutes()-now.getTimezoneOffset());return now.toISOString().slice(0,10);}; const selectedMonth=()=>$('#monthPicker').value; const save=()=>localStorage.setItem(STORAGE_KEY,JSON.stringify(entries)); const escapeHtml=value=>String(value||'').replace(/[&<>'"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
+    function resetForm(){editingId=null;$('#entryForm').reset();$('#entryDate').value=today();$('#entryType').value='expense';$('#formTitle').textContent='수입·지출 기록';$('#submitBtn').textContent='기록 추가';$('#cancelEdit').classList.add('hidden');}
+    function render(){const monthly=entries.filter(entry=>entry.date.slice(0,7)===selectedMonth()).sort((a,b)=>b.date.localeCompare(a.date));const income=monthly.filter(entry=>entry.type==='income').reduce((sum,entry)=>sum+entry.amount,0);const expense=monthly.filter(entry=>entry.type==='expense').reduce((sum,entry)=>sum+entry.amount,0);const balance=income-expense;$('#incomeTotal').textContent=won(income);$('#expenseTotal').textContent=won(expense);$('#balanceTotal').textContent=won(balance);$('#savingRate').textContent=income?((balance/income)*100).toFixed(1)+'%':'-';const totals={};monthly.filter(entry=>entry.type==='expense').forEach(entry=>totals[entry.category]=(totals[entry.category]||0)+entry.amount);const categories=Object.entries(totals).sort((a,b)=>b[1]-a[1]);$('#categoryList').innerHTML=categories.length?categories.map(([name,amount])=>`<li><strong>${escapeHtml(name)}</strong><span class="bar"><i style="width:${expense?(amount/expense)*100:0}%"></i></span><span>${won(amount)}</span></li>`).join(''):'<li class="empty">아직 입력한 지출이 없습니다.</li>';$('#entryList').innerHTML=monthly.length?monthly.map(entry=>`<li class="entry"><span class="badge ${entry.type}">${entry.type==='income'?'수입':'지출'}</span><button type="button" class="secondary" data-edit="${entry.id}"><span class="entry-title">${escapeHtml(entry.category)}</span><span class="entry-note">${entry.date}${entry.memo?' · '+escapeHtml(entry.memo):''}</span></button><span class="entry-amount ${entry.type}">${entry.type==='income'?'+':'-'}${won(entry.amount)}</span></li>`).join(''):'<li class="empty">이 달의 기록이 없습니다.</li>';document.querySelectorAll('[data-edit]').forEach(button=>button.addEventListener('click',()=>startEdit(button.dataset.edit)));}
+    function startEdit(id){const entry=entries.find(item=>item.id===id);if(!entry)return;editingId=id;$('#entryDate').value=entry.date;$('#entryType').value=entry.type;$('#entryCategory').value=entry.category;$('#entryAmount').value=entry.amount;$('#entryMemo').value=entry.memo||'';$('#formTitle').textContent='기록 수정';$('#submitBtn').textContent='수정 저장';$('#cancelEdit').classList.remove('hidden');window.scrollTo({top:0,behavior:'smooth'});}
+    $('#entryForm').addEventListener('submit',event=>{event.preventDefault();const data={date:$('#entryDate').value,type:$('#entryType').value,category:$('#entryCategory').value.trim(),amount:Number($('#entryAmount').value),memo:$('#entryMemo').value.trim()};if(!data.date||!data.category||data.amount<=0)return;if(editingId)entries=entries.map(entry=>entry.id===editingId?{...entry,...data}:entry);else entries.push({id:crypto.randomUUID?crypto.randomUUID():Date.now().toString(),...data});save();$('#monthPicker').value=data.date.slice(0,7);resetForm();render();});
+    $('#cancelEdit').addEventListener('click',resetForm);$('#monthPicker').addEventListener('input',render);$('#exportBtn').addEventListener('click',()=>{const blob=new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),entries},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download=`daily-ledger-${today()}.json`;link.click();URL.revokeObjectURL(url);});$('#importBtn').addEventListener('click',()=>$('#importFile').click());$('#importFile').addEventListener('change',async event=>{const file=event.target.files[0];if(!file)return;try{const backup=JSON.parse(await file.text());if(!Array.isArray(backup.entries))throw new Error('invalid');const records=backup.entries.filter(entry=>entry.id&&entry.date&&entry.type&&entry.category&&Number(entry.amount)>0);const map=new Map(entries.map(entry=>[entry.id,entry]));records.forEach(entry=>map.set(entry.id,{...entry,amount:Number(entry.amount)}));entries=[...map.values()];save();render();alert(`${records.length}건을 불러왔습니다.`);}catch{alert('가계부 백업 파일 형식이 아닙니다.');}finally{event.target.value='';}});$('#clearBtn').addEventListener('click',()=>{if(confirm('이 기기의 가계부 기록을 모두 삭제할까요? 백업하지 않은 기록은 복구할 수 없습니다.')){entries=[];save();resetForm();render();}});if('serviceWorker'in navigator)navigator.serviceWorker.register('/daily-ledger-sw.js').catch(()=>{$('#storageStatus').textContent='기록은 이 기기 브라우저에 저장됩니다. 오프라인 기능은 연결 후 다시 확인하십시오.';});$('#monthPicker').value=today().slice(0,7);resetForm();render();
+  </script>
+</body>
+</html>
