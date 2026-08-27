@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" data-theme="light">
+<html lang="ko" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,9 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://choijc79.github.io/letter_wonwoo.html">
 <meta property="og:site_name" content="최승환 · Jecheon">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
 <style>
 :root {
   --bg:      #F5F1E8;
@@ -23,21 +25,10 @@
   --stamp:   #A04818;
   --soft:    #F7F3EA;
 }
-[data-theme="dark"] {
-  --bg:      #0d1117;
-  --surface: #161b22;
-  --border:  #2c3240;
-  --text:    #EAE2D2;
-  --muted:   #8b8070;
-  --accent:  #F08840;
-  --rule:    #1e242e;
-  --stamp:   #F08840;
-  --soft:    #1a1f2a;
-}
 * { margin:0; padding:0; box-sizing:border-box; }
 body {
   background:var(--bg); color:var(--text);
-  font-family:'Noto Sans KR',sans-serif; font-weight:300;
+  font-family:var(--font-body); font-weight:300;
   line-height:1.9; transition:background .3s,color .3s;
 }
 
@@ -49,7 +40,7 @@ nav {
   border-bottom:1px solid var(--border); transition:background .3s;
 }
 .nav-logo {
-  font-family:'Noto Serif KR',serif; font-size:.9rem; font-weight:700;
+  font-family:var(--font-display); font-size:.9rem; font-weight:700;
   color:var(--accent); text-decoration:none; letter-spacing:.04em;
 }
 .nav-links { display:flex; gap:1.5rem; list-style:none; margin-left:auto; }
@@ -70,7 +61,7 @@ nav {
   color:var(--muted); margin-bottom:.9rem;
 }
 .hero-title {
-  font-family:'Noto Serif KR',serif;
+  font-family:var(--font-display);
   font-size:clamp(2.4rem,5vw,3.4rem); font-weight:700;
   color:var(--text); line-height:1.2; margin-bottom:.7rem;
 }
@@ -135,7 +126,7 @@ nav {
 
 /* 편지 본문 */
 .letter-body {
-  font-family:'Noto Serif KR',serif;
+  font-family:var(--font-display);
   font-size:.97rem; line-height:2.25; color:var(--text);
   white-space:pre-line;
 }
@@ -149,7 +140,7 @@ nav {
   margin:1.4rem 0; padding:.95rem 1.3rem;
   background:var(--soft); border-left:3px solid var(--accent);
   border-radius:0 4px 4px 0;
-  font-family:'Noto Serif KR',serif;
+  font-family:var(--font-display);
   font-size:.94rem; color:var(--accent); line-height:1.9;
 }
 
@@ -161,7 +152,7 @@ nav {
 .sport-chip {
   background:var(--bg); border:1px solid var(--border);
   border-radius:20px; padding:3px 12px;
-  font-size:.8rem; color:var(--muted); font-family:'Noto Sans KR',sans-serif;
+  font-size:.8rem; color:var(--muted); font-family:var(--font-body);
 }
 
 /* 서명 */
@@ -172,7 +163,7 @@ nav {
 }
 .sig-from { font-size:.83rem; color:var(--muted); margin-bottom:.3rem; }
 .sig-name {
-  font-family:'Noto Serif KR',serif;
+  font-family:var(--font-display);
   font-size:1.05rem; font-weight:700; color:var(--accent);
 }
 
