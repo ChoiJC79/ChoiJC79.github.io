@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" data-theme="light">
+<html lang="ko" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,54 +14,10 @@
 
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
 <style>
-  :root {
-  --bg:      #F4F0E8;
-  --surface: #ECE8DE;
-  --border:  #D4CEBC;
-  --text:    #1A1410;
-  --ink:     #2A2018;
-  --muted:   #7A6A56;
-  --accent:  #E07828;
-  --red:     #D96820;
-  --light:   #FDFAF4;
-  --amber:   #E07828;
-  --green:   #5A7A3A;
-  --lake:    #5B9BD5;
-  --purple:  #7A4AB0;
-  /* chronicle 전용 */
-  --paper:   #F4F0E8;
-  --card:    #FDFAF4;
-  --line:    #D4CEBC;
-  --ink-soft:#7A6A56;
-  --shadow:  0 2px 12px rgba(0,0,0,0.08);
-  --nation:  #C85A10;
-  --jc:      #4A7230;
-}
-[data-theme="dark"] {
-  --bg:      #0d1117;
-  --surface: #161b22;
-  --border:  #2c3240;
-  --text:    #E8E0D0;
-  --ink:     #F0E8D8;
-  --muted:   #8b8070;
-  --accent:  #F08840;
-  --red:     #E07830;
-  --light:   #161b22;
-  --amber:   #F08840;
-  --green:   #3fb950;
-  --lake:    #5cbcd4;
-  --purple:  #bc8cff;
-  /* chronicle 전용 */
-  --paper:   #0d1117;
-  --card:    #161b22;
-  --line:    #30363d;
-  --ink-soft:#8b8070;
-  --shadow:  0 2px 16px rgba(0,0,0,0.45);
-  --nation:  #F08840;
-  --jc:      #3fb950;
-}
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{background:var(--paper);color:var(--ink);font-family:"Pretendard",-apple-system,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
@@ -69,7 +25,7 @@
 
   header{padding:80px 0 42px;border-bottom:1px solid var(--line)}
   .eyebrow{font-size:13px;letter-spacing:.32em;color:var(--ink-soft);margin-bottom:20px}
-  h1{font-family:"Noto Serif KR",serif;font-weight:700;font-size:clamp(28px,5.2vw,44px);line-height:1.35;letter-spacing:-.01em}
+  h1{font-family:var(--font-display);font-weight:700;font-size:clamp(28px,5.2vw,44px);line-height:1.35;letter-spacing:-.01em}
   h1 .n-c{color:var(--nation)} h1 .j-c{color:var(--jc)}
   .lede{margin-top:16px;max-width:640px;color:var(--ink-soft);font-size:15px}
   .legend{display:flex;gap:22px;margin-top:26px;font-size:13.5px;color:var(--ink-soft)}
@@ -97,21 +53,21 @@
 
   .decnav{display:flex;gap:6px;flex-wrap:wrap;padding:14px 0 4px;border-bottom:1px solid var(--line)}
   .decnav a{
-    font-family:"Noto Serif KR",serif;font-size:14px;font-weight:600;color:var(--ink-soft);
+    font-family:var(--font-display);font-size:14px;font-weight:600;color:var(--ink-soft);
     text-decoration:none;padding:4px 12px;border-radius:4px;
   }
   .decnav a:hover{color:var(--ink);background:var(--card)}
 
   .decade{position:relative;padding:52px 0 6px;scroll-margin-top:90px}
   .decade-label{
-    font-family:"Noto Serif KR",serif;font-weight:600;font-size:clamp(54px,10vw,96px);line-height:1;
+    font-family:var(--font-display);font-weight:600;font-size:clamp(54px,10vw,96px);line-height:1;
     color:transparent;-webkit-text-stroke:1px var(--line);user-select:none;margin-bottom:-12px;
   }
   .decade-sub{font-size:13px;letter-spacing:.2em;color:var(--ink-soft);margin:6px 0 24px;padding-left:3px}
 
   .year-group{margin-bottom:8px}
   .year-head{
-    font-family:"Noto Serif KR",serif;font-weight:600;font-size:17px;color:var(--ink);
+    font-family:var(--font-display);font-weight:600;font-size:17px;color:var(--ink);
     padding:14px 0 10px 30px;letter-spacing:.04em;
   }
   .items{position:relative;padding-left:30px}
@@ -131,7 +87,7 @@
   }
   .item-head:hover{border-color:var(--mark);box-shadow:var(--shadow)}
   .item.open .item-head{border-color:var(--mark);border-bottom-left-radius:0;border-bottom-right-radius:0}
-  .item-date{font-family:"Noto Serif KR",serif;font-weight:600;font-size:13.5px;color:var(--mark);min-width:62px;letter-spacing:.02em}
+  .item-date{font-family:var(--font-display);font-weight:600;font-size:13.5px;color:var(--mark);min-width:62px;letter-spacing:.02em}
   .item-title{font-weight:600;font-size:15.5px;flex:1;letter-spacing:-.01em}
   .tag{
     font-size:10.5px;font-weight:600;letter-spacing:.07em;padding:2px 9px;border-radius:999px;
@@ -167,7 +123,7 @@
   .site-header{position:sticky;top:0;z-index:200;background:var(--paper);border-bottom:1px solid var(--line);
     padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px;
     transition:background 0.3s,border-color 0.3s;}
-  .site-logo{font-family:'Noto Serif KR',serif;font-size:15px;color:var(--accent);letter-spacing:0.04em;
+  .site-logo{font-family:var(--font-display);font-size:15px;color:var(--accent);letter-spacing:0.04em;
     text-decoration:none;}
   .site-nav{display:flex;gap:1.5rem;font-size:12px;}
   .site-nav a{color:var(--ink-soft);text-decoration:none;transition:color 0.15s;}
@@ -641,7 +597,7 @@ apply();
 </script>
 <script>
 (function(){
-  var t=localStorage.getItem('choijc-theme')||'light';
+  var t=localStorage.getItem('choijc-theme')||'dark';
   document.documentElement.setAttribute('data-theme',t);
   var btn=document.getElementById('theme-toggle');
   if(btn) btn.textContent=t==='dark'?'☀ 라이트':'☾ 다크';
