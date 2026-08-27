@@ -25,7 +25,9 @@
   };
 
   const root = document.getElementById('jc-picker');
+  if (!root) return;
   const catSelect = root.querySelector('#jc-catSelect');
+  if (!catSelect) return;
   const pickBtn = root.querySelector('#jc-pickBtn');
   const excludeBtn = root.querySelector('#jc-excludeBtn');
   const resultDiv = root.querySelector('#jc-result');
