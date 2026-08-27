@@ -1,7 +1,7 @@
-(function(){var t=localStorage.getItem('choijc-theme')||'light';document.documentElement.setAttribute('data-theme',t);document.getElementById('theme-btn').textContent=t==='dark'?'☀ 라이트':'☾ 다크';})();
-function toggleTheme(){var h=document.documentElement;var n=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('choijc-theme',n);document.getElementById('theme-btn').textContent=n==='dark'?'☀ 라이트':'☾ 다크';}
+(function(){var t=localStorage.getItem('choijc-theme')||'dark';document.documentElement.setAttribute('data-theme',t);var tb=document.getElementById('theme-btn');if(tb)tb.textContent=t==='dark'?'☀ 라이트':'☾ 다크';})();
+function toggleTheme(){var h=document.documentElement;var n=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('choijc-theme',n);var tb=document.getElementById('theme-btn');if(tb)tb.textContent=n==='dark'?'☀ 라이트':'☾ 다크';}
 var navbar=document.getElementById('navbar');var heroEl=document.getElementById('hero');
-window.addEventListener('scroll',function(){if(window.scrollY>(heroEl?heroEl.offsetHeight:600)-80)navbar.classList.add('light-nav');else navbar.classList.remove('light-nav');});
+if(navbar&&heroEl){window.addEventListener('scroll',function(){if(window.scrollY>heroEl.offsetHeight-80)navbar.classList.add('light-nav');else navbar.classList.remove('light-nav');});}
 function lkToggle(btn){btn.classList.toggle('lk-open');btn.nextElementSibling.classList.toggle('lk-open');}
 function searchNaver(e){e.preventDefault();var q=document.getElementById('naver-q').value.trim();if(q)window.open('https://search.naver.com/search.naver?query='+encodeURIComponent(q),'_blank');}
 function searchGoogle(e){e.preventDefault();var q=document.getElementById('google-q').value.trim();if(q)window.open('https://www.google.com/search?q='+encodeURIComponent(q),'_blank');}
@@ -12,6 +12,7 @@ function searchGoogle(e){e.preventDefault();var q=document.getElementById('googl
   var panel=document.getElementById('jc-corner-panel');
   var toggle=document.getElementById('jc-corner-toggle');
   var closeBtn=document.getElementById('jc-corner-close');
+  if(!corner||!panel||!toggle||!closeBtn)return;
   function openPanel(){ panel.classList.add('open'); }
   function closePanel(){ panel.classList.remove('open'); }
   toggle.addEventListener('click', function(){
