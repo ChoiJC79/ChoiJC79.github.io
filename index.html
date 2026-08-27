@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" data-theme="light">
+<html lang="ko" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +9,11 @@
 <meta property="og:description" content="충청북도 제천시청 팀장, 도시경영학 박사과정, 지방행정 연구자.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://choijc79.github.io/">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Batang:wght@400;700&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Noto+Sans+KR:wght@300;400;500;700&family=Do+Hyeon&family=Gowun+Batang:wght@400;700&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
 <link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/jc-picker.css">
 </head>
 <body>
 <nav id="navbar">
@@ -24,7 +26,7 @@
     <li><a href="/tour.html" style="opacity:0.5">투어</a></li>
     <li><a href="/letter_wonwoo.html">원우에게</a></li>
   </ul>
-  <button id="theme-btn" onclick="toggleTheme()">&#9790; 다크</button>
+  <button id="theme-btn" onclick="toggleTheme()">&#9728; 라이트</button>
 </nav>
 
 <section id="hero">
@@ -37,7 +39,7 @@
     <span class="hero-name-en">CHOI SEUNG-HWAN.</span>
     <div class="hero-rule"></div>
     <p class="hero-subtitle">제천시청 행정공무원 · 도시경영학 박사과정</p>
-    <p class="hero-desc">현장에서 쌓은 지방행정 경험과 개인적인 호기심들이 연구의 토대입니다. 지방행정에서 잘 보이지 않던 내면의 구조를 분석하고 있으며, Ai와 자동화 에이전트에 대해 꾸준히 연구, 개발하고 있습니다.</p>
+    <p class="hero-desc">현장에서 쌓은 지방행정 경험과 개인적인 호기심들이 연구의 토대입니다. 지방세 행정에서 잘 보이지 않던 구조를 들여다보고 있으며, 도시와 사람과 제도가 맞물리는 방식에 대해 꾸준히 정리하고 있습니다.</p>
     <div><a href="/about.html" class="btn btn-primary">소개 &rarr;</a><a href="/research.html" class="btn btn-outline">연구 보기</a></div>
   </div>
   <div class="scroll-hint"><div class="scroll-line"></div><span>SCROLL</span></div>
@@ -119,9 +121,7 @@
 <div id="jc-corner">
   <div id="jc-corner-panel">
     <button id="jc-corner-close" aria-label="닫기">✕</button>
-    <link rel="stylesheet" href="/css/jc-picker.css">
-
-<div id="jc-picker">
+    <div id="jc-picker">
   <svg width="0" height="0" style="position:absolute;">
     <filter id="jc-ink">
       <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="noise"/>
@@ -154,9 +154,7 @@
 
   <button id="jc-pickBtn" class="jc-btn">뽑기 도장 찍기</button>
   <button id="jc-excludeBtn" class="jc-exclude">방금 나온 곳 빼고 다시 뽑기</button>
-</div>
-
-<script src="/js/jc-picker.js"></script>
+    </div>
   </div>
   <button id="jc-corner-toggle" aria-label="제천 맛집 랜덤 뽑기 열기">
     <span class="jc-corner-icon">🍜</span>
@@ -166,6 +164,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="/js/globe.js"></script>
+<script src="/js/jc-picker.js"></script>
 <script src="/js/site.js"></script>
 </body>
 </html>
