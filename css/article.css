@@ -1,0 +1,45 @@
+/* 칼럼·기고 상세 페이지 */
+.a-type {
+  font-family: var(--font-display);
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  font-weight: 600; margin-bottom: 1rem;
+}
+.a-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 700;
+  line-height: 1.35; color: var(--ink); margin-bottom: 1.2rem;
+  letter-spacing: 0.04em; text-shadow: 0 0 20px rgba(5, 217, 232, 0.2);
+}
+.a-meta {
+  display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap;
+  margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border);
+}
+.a-date { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+.a-tag { font-size: 11px; padding: 2px 10px; border: 1px solid; border-radius: 2px; }
+.a-body { font-size: 15px; line-height: 2; color: var(--ink); }
+.a-body p { margin-bottom: 1.6em; }
+.a-body h2, .a-body h3 {
+  font-family: var(--font-display); font-weight: 600;
+  margin: 2em 0 0.8em; color: var(--text); letter-spacing: 0.06em;
+}
+.a-body h2 { font-size: 1.15rem; color: var(--accent); }
+.a-body h3 { font-size: 1rem; color: var(--accent2); }
+.a-body ul { margin: 0 0 1.6em 1.5em; }
+.a-body li { margin-bottom: 0.5em; }
+.a-body strong { font-weight: 600; color: var(--text); }
+.a-body a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+.a-body a:hover { color: var(--accent2); text-shadow: var(--glow-pink); }
+.article-wrap { max-width: 720px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+.art-nav {
+  max-width: 720px; margin: 0 auto; padding: 2rem 2rem 4rem;
+  display: flex; gap: 1rem; border-top: 1px solid var(--border);
+}
+.nav-prev, .nav-next { font-size: 12px; color: var(--muted); transition: color 0.15s; max-width: 45%; letter-spacing: 0.04em; }
+.nav-prev:hover, .nav-next:hover { color: var(--accent2); text-shadow: var(--glow-pink); }
+.nav-next { text-align: right; margin-left: auto; }
+@media (max-width: 600px) {
+  .article-wrap { padding: 2rem 1.2rem 4rem; }
+  .a-title { font-size: 1.35rem; }
+  .a-body { font-size: 14px; }
+  .art-nav { padding: 1.5rem 1.2rem 3rem; }
+}
