@@ -73,9 +73,11 @@ a:hover { color: var(--accent2); text-shadow: var(--glow-pink); }
   letter-spacing: 0.12em; text-transform: uppercase;
   text-shadow: var(--glow-cyan);
 }
-.nav-links, .hd-nav { display: flex; gap: 1.2rem; list-style: none; font-size: 12px; }
-.nav-links a, .hd-nav a { color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; }
-.nav-links a:hover, .hd-nav a:hover { color: var(--accent2); }
+.nav-links, .hd-nav { display: flex; align-items: center; gap: 1.2rem; list-style: none; font-size: 12px; }
+.nav-links li { display: flex; align-items: center; position: relative; }
+.nav-links a, .hd-nav a { color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; display: inline-block; white-space: nowrap; transform-origin: center center; will-change: transform; transition: color 0.15s, transform 0.08s cubic-bezier(0.16, 1, 0.3, 1); }
+.nav-links a:hover, .nav-links a.is-near, .hd-nav a:hover { color: var(--accent2); }
+@media (prefers-reduced-motion: reduce) { .nav-links a, .hd-nav a { transition: color 0.15s; transform: none !important; } }
 #theme-toggle, #theme-btn, .theme-btn {
   background: transparent; border: 1px solid var(--border); color: var(--muted);
   font-size: 11px; font-family: var(--font-body); padding: 4px 12px; cursor: pointer;
