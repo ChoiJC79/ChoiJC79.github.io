@@ -782,6 +782,16 @@ def main():
             if os.path.isfile(colpath) and colfile.endswith(".html"):
                 push_local(f"columns/{colfile}", f"update column page {colfile}")
 
+    print("[guides] AI 가이드 ...")
+    push_local("guides.html", "update ai guides list")
+    push_local("css/guides.css", "update guides css")
+    guides_dir = os.path.join(BASE_DIR, "guides")
+    if os.path.exists(guides_dir):
+        for gfile in sorted(os.listdir(guides_dir)):
+            gpath = os.path.join(guides_dir, gfile)
+            if os.path.isfile(gpath) and gfile.endswith(".html"):
+                push_local(f"guides/{gfile}", f"update guide page {gfile}")
+
     print("[4/4] jecheon_moto_guide.html ...")
     ok3 = push_local("jecheon_moto_guide.html", "update jecheon guide")
 
@@ -862,7 +872,7 @@ def main():
     print("  Done!")
     print("=" * 50)
     base_url = "https://choijc79.github.io/"
-    for p in ["", "memo.html", "column.html", "about.html", "research.html",
+    for p in ["", "memo.html", "column.html", "guides.html", "about.html", "research.html",
               "jecheon_dashboard.html", "jecheon_budget_5yr_dashboard.html",
               "jobs_in_jecheon.html", "jecheon_investment_plan.html"]:
         print(f"  {base_url}{p}")
