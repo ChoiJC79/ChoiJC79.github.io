@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>커서에 실무 스킬 세 개만 넣는 5단계 | 최승환</title>
+<meta name="description" content="에이전트는 명세 없이 파일부터 고칩니다. Addy Osmani의 agent-skills에서 이 사이트에 필요한 세 개만 커서에 넣는 다섯 단계입니다.">
+<meta property="og:title" content="커서에 실무 스킬 세 개만 넣는 5단계">
+<meta property="og:description" content="에이전트는 명세 없이 파일부터 고칩니다. Addy Osmani의 agent-skills에서 이 사이트에 필요한 세 개만 커서에 넣는 다섯 단계입니다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/guides/claude-and-agent-skills.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono:wght@400&family=Noto+Sans+KR:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="/css/guides.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 가이드</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/column.html">칼럼</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9728; 라이트</button>
+</header>
+
+<article class="article-wrap g-article">
+  <div class="a-type">AI 가이드</div>
+  <h1 class="a-title">커서에 실무 스킬 세 개만 넣는 5단계</h1>
+  <div class="g-meta"><span>읽는 데 16분</span><span>스텝 5개</span><span>섹션 9개</span><span>2026-09-20 공개</span></div>
+  <p class="g-repo">이번 주 트렌드 · <a href="https://github.com/addyosmani/agent-skills" target="_blank" rel="noopener">addyosmani/agent-skills</a></p>
+  <div class="a-body">
+    <p>개인 사이트도 파일이 늘면, 커서가 칼럼 HTML과 배포 스크립트를 한 번에 만집니다. 이 자료는 주간 트렌드의 addyosmani/agent-skills에서 스킬 25개를 다 넣지 않고, 명세·기록·리뷰 세 개만 이 프로젝트에 붙이는 다섯 단계를 담았습니다. 구글 규모 제품의 TDD·CI 전부를 이 저장소에 옮기려는 글이 아닙니다.</p>
+<p>복사해서 바로 시작하는 프롬프트. 세 스킬 설치와 목록 확인까지 AI에게 맡기기.</p>
+<div class="g-prompt"><div class="g-code-bar"><span>복사해서 바로 시작하는 프롬프트</span><button type="button" class="g-copy" onclick="copyBlock(this)">복사</button></div><pre><code>역할: 이 프로젝트의 커서에 addyosmani/agent-skills 가운데 세 개만 설치하는 담당
+맥락: 이 저장소는 GitHub Pages 개인 사이트입니다. 칼럼·가이드 HTML과 publish.py가 핵심입니다. 스킬 25개 전체는 넣지 마세요. CI/CD·관측·출시 스킬은 설치하지 마세요.
+입력: 설치할 스킬 = spec-driven-development, documentation-and-adrs, code-review-and-quality. 운영체제·셸·Node는 직접 확인하세요.
+작업: ① Node와 npx를 확인하세요. ② `npx skills add addyosmani/agent-skills --list` 로 목록이 보이는지 확인하세요. ③ 위 세 스킬만 `--skill` 옵션으로 이 워크스페이스에 설치하세요. `--global` 과 전체 25개 설치는 하지 마세요. ④ `.cursor/skills/` 아래 세 폴더와 각 `SKILL.md` 를 확인하세요. ⑤ 사용자에게 새 채팅에서 `/spec` `/review` 를 어떻게 쓰는지, 그리고 단건 설치 때 `references/` 가 빠질 수 있다는 점(업스트림 이슈 #361)을 안내하세요.
+제약: `.cursor/rules/` 에 SKILL.md 본문을 붙여 넣지 마세요. git config를 바꾸지 마세요. 이 저장소의 칼럼 HTML 본문을 수정하지 마세요.
+출력: 실행한 명령, 설치된 경로, 각 SKILL.md 존재 여부, 호출 예, #361 한계 한 줄
+검증: `.cursor/skills/spec-driven-development/SKILL.md`, `.cursor/skills/documentation-and-adrs/SKILL.md`, `.cursor/skills/code-review-and-quality/SKILL.md` 세 파일이 있어야 합니다. 다른 22개 스킬 폴더가 생겼으면 완료가 아닙니다. 그 폴더를 나열하고 지우기 전에 물어보세요.</code></pre></div>
+<h2 id="quick-start">Quick Start</h2>
+<ul><li>공식 저장소: <a href="https://github.com/addyosmani/agent-skills" target="_blank" rel="noopener">addyosmani/agent-skills</a></li><li>커서 설치: <a href="https://github.com/addyosmani/agent-skills/blob/main/docs/cursor-setup.md" target="_blank" rel="noopener">docs/cursor-setup.md</a></li><li>한 줄 정의: 코딩 에이전트가 명세·구현·검증·리뷰를 건너뛰지 않게, 단계와 증빙을 적어 둔 스킬 묶음입니다. 이 자료는 그중 세 개만 씁니다.</li><li>인기·만든 곳: 2026년 9월 20일 GitHub API 기준 스타 97,217개. 같은 날 주간 트렌드 스냅샷에서는 한 주 동안 3,445개가 늘었습니다. 만든 곳은 Addy Osmani입니다.</li><li>라이선스: MIT.</li><li>필요한 환경: Node.js와 npx, 이 프로젝트를 연 커서.</li><li>비용: 설치는 무료입니다. 스킬이 켜지면 읽어야 할 마크다운이 늘고, 그만큼 대화 토큰이 늘 수 있습니다.</li></ul>
+<p>25개를 한 번에 넣으라는 공식 한 줄은 아래입니다. 이 자료에서는 쓰지 않습니다.</p>
+<div class="g-code"><div class="g-code-bar"><span>터미널에서 실행</span><button type="button" class="g-copy" onclick="copyBlock(this)">복사</button></div><pre><code>npx skills add addyosmani/agent-skills</code></pre></div>
+<p>대신 목록을 본 뒤 세 개만 고릅니다.</p>
+<p>터미널에서 실행:</p>
+<div class="g-code"><div class="g-code-bar"><span>터미널에서 실행</span><button type="button" class="g-copy" onclick="copyBlock(this)">복사</button></div><pre><code>npx skills add addyosmani/agent-skills --list</code></pre></div>
+<blockquote class="g-callout g-verify">검증: 2026-09-20 기준 (README Quick Start, cursor-setup.md, MIT, 이슈 #361)</blockquote>
+<h2 id="step-1-왜-세-개만인지-보기-2분">STEP 1. 왜 세 개만인지 보기: 2분</h2>
+<p>이 단계에서는 전체 팩이 이 저장소와 안 맞는 지점을 먼저 봅니다.</p>
+<p>README는 수명 주기를 <code>/spec</code> <code>/plan</code> <code>/build</code> <code>/test</code> <code>/review</code> <code>/ship</code> 으로 나눕니다. 그 아래 스킬은 25개입니다. 프론트엔드 WCAG, OWASP, OpenTelemetry, 트렁크 기반 배포까지 들어 있습니다.</p>
+<p>이 사이트는 정적 HTML과 GitHub API 배포입니다. 테스트 러너가 없고, 프로덕션 관측도 없습니다. 25개를 넣으면 커서가 없는 파이프라인까지 만들려고 할 수 있습니다.</p>
+<p>그래서 이 자료가 고르는 세 개는 이렇습니다.</p>
+<ol><li><code>spec-driven-development</code> — 새 가이드 섹션이나 페이지를 열기 전에 범위부터 적게</li><li><code>documentation-and-adrs</code> — <code>context-notes.md</code> 처럼 “왜 그렇게 했는지”를 남기게</li><li><code>code-review-and-quality</code> — <code>build_guides.py</code> 같은 스크립트를 합치기 전에 다섯 축으로 보게</li></ol>
+<p>나머지는 나중에 필요할 때 <code>--skill</code> 로 추가하면 됩니다.</p>
+<h2 id="step-2-세-스킬만-설치하기-4분">STEP 2. 세 스킬만 설치하기: 4분</h2>
+<p>프로젝트 루트(이 저장소)에서 실행합니다. <code>--global</code> 은 붙이지 않습니다.</p>
+<p>터미널에서 실행:</p>
+<div class="g-code"><div class="g-code-bar"><span>터미널에서 실행</span><button type="button" class="g-copy" onclick="copyBlock(this)">복사</button></div><pre><code>npx skills add addyosmani/agent-skills --skill spec-driven-development
+npx skills add addyosmani/agent-skills --skill documentation-and-adrs
+npx skills add addyosmani/agent-skills --skill code-review-and-quality</code></pre></div>
+<p>커서만 지정하려면 각 줄 끝에 <code>-a cursor -y</code> 를 붙여도 됩니다.</p>
+<p>확인:</p>
+<div class="g-code"><div class="g-code-bar"><span>터미널에서 실행</span><button type="button" class="g-copy" onclick="copyBlock(this)">복사</button></div><pre><code>ls .cursor/skills/spec-driven-development/SKILL.md
+ls .cursor/skills/documentation-and-adrs/SKILL.md
+ls .cursor/skills/code-review-and-quality/SKILL.md</code></pre></div>
+<p>세 줄 모두 경로가 나오면 성공입니다.</p>
+<p>공식 README가 적는 주의가 있습니다. 스킬을 하나씩 설치하면 <code>skills/&lt;이름&gt;/</code> 만 복사되고, 저장소 루트의 <code>references/</code> 체크리스트는 안 따라옵니다. 스킬 본문은 동작하지만, 공유 체크리스트 경로는 비어 있을 수 있습니다. 추적 이슈는 <a href="https://github.com/addyosmani/agent-skills/issues/361" target="_blank" rel="noopener">#361</a> 입니다. 체크리스트까지 필요하면 저장소를 클론한 뒤 <code>rsync -a agent-skills/skills/ .cursor/skills/</code> 를 쓰는 쪽이 맞습니다. 그 경우에도 이 자료는 세 폴더만 남기고 나머지는 지우라고 권합니다.</p>
+<h2 id="step-3-규칙-창에-붙이지-않기-3분">STEP 3. 규칙 창에 붙이지 않기: 3분</h2>
+<p>이 단계에서는 커서가 스킬을 찾는 위치만 맞춥니다.</p>
+<p>공식 커서 문서는 역할을 나눕니다. 짧은 정책은 <code>.cursor/rules/*.mdc</code>. 긴 절차는 <code>.cursor/skills/&lt;이름&gt;/SKILL.md</code>. SKILL.md 전문을 규칙에 복사하지 말라고 적습니다.</p>
+<p>필요할 때만 아래처럼 짧은 포인터를 둘 수 있습니다. 없어도 세 스킬은 폴더만으로 동작하는 경우가 많습니다.</p>
+<div class="g-code"><div class="g-code-bar"><span>붙여넣을 글</span><button type="button" class="g-copy" onclick="copyBlock(this)">복사</button></div><pre><code></code></pre></div>
+  </div>
+</article>
+
+<nav class="art-nav"><a class="nav-next" href="/guides/claude-and-i-have-adhd.html">답이 맨 앞에 나오게 하는 4단계 →</a></nav>
+<footer>&copy; 2026 최승환 · choijc79.github.io</footer>
+<div id="mqb">
+  <a href="/">홈</a>
+  <a href="/guides.html">가이드</a>
+  <a href="/column.html">칼럼</a>
+  <a href="/about.html">소개</a>
+</div>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'\u2600 라이트':'\u263e 다크';
+})();
+function toggleTheme(){
+  var html=document.documentElement;
+  var next=html.getAttribute('data-theme')==='dark'?'light':'dark';
+  html.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'\u2600 라이트':'\u263e 다크';
+}
+function copyBlock(btn){
+  var box=btn.closest('.g-code,.g-prompt');
+  if(!box) return;
+  var code=box.querySelector('code');
+  var text=code?code.textContent:'';
+  function done(){
+    var old=btn.textContent;
+    btn.textContent='복사됨';
+    setTimeout(function(){btn.textContent=old;},1400);
+  }
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(done).catch(function(){});
+  }
+}
+</script>
+</body>
+</html>
