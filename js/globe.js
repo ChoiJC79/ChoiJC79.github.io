@@ -7,7 +7,7 @@ var W=canvas.offsetWidth,H=canvas.offsetHeight;
 var renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:true,alpha:true});
 renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
 renderer.setSize(W,H);
-renderer.setClearColor(0x07011a,1);
+renderer.setClearColor(0x000000,0);
 
 var scene=new THREE.Scene();
 var camera=new THREE.PerspectiveCamera(40,W/H,0.1,500);
@@ -26,7 +26,7 @@ for(var i=0;i<N_STARS;i++){
 }
 var sG=new THREE.BufferGeometry();sG.setAttribute('position',new THREE.BufferAttribute(sP,3));
 /* 작은 별들 */
-scene.add(new THREE.Points(sG,new THREE.PointsMaterial({color:0xff2a6d,size:0.048,transparent:true,opacity:0.70})));
+scene.add(new THREE.Points(sG,new THREE.PointsMaterial({color:0xc9d1d9,size:0.048,transparent:true,opacity:0.70})));
 /* 밝은 별 소수 */
 var sP2=new Float32Array(120*3);
 for(var i=0;i<120;i++){
@@ -34,7 +34,7 @@ for(var i=0;i<120;i++){
   sP2[i*3]=r*Math.sin(th)*Math.cos(ph);sP2[i*3+1]=r*Math.cos(th);sP2[i*3+2]=r*Math.sin(th)*Math.sin(ph);
 }
 var sG2=new THREE.BufferGeometry();sG2.setAttribute('position',new THREE.BufferAttribute(sP2,3));
-scene.add(new THREE.Points(sG2,new THREE.PointsMaterial({color:0x05d9e8,size:0.10,transparent:true,opacity:0.90})));
+scene.add(new THREE.Points(sG2,new THREE.PointsMaterial({color:0x79c0ff,size:0.10,transparent:true,opacity:0.90})));
 
 /* ── EARTH TEXTURE: real photo first, canvas fallback ── */
 function buildCanvasEarth(){
@@ -274,7 +274,7 @@ var wp=new THREE.Vector3();
       c._dot.getWorldPosition(wp);
       var pr=wp.clone().project(camera);
       var camDot=wp.dot(camera.position); /* 양수 = 카메라 방향, 음수 = 뒷면 */
-      if(camDot>0&&Math.abs(pr.x)<0.96&&Math.abs(pr.y)<0.94){
+      if(camDot>0&&Math.abs(pr.x)<0.96&&Math.abs(pr.y)<0.94&&(-pr.y*0.5+0.5)*H+rect.top>96){ /* 상단 메뉴와 겹치는 핀은 숨김 */
         c._sx=(pr.x*0.5+0.5)*W;c._sy=(-pr.y*0.5+0.5)*H;c._vis=true;
         c._el.style.left=(c._sx+rect.left)+'px';
         c._el.style.top=(c._sy+rect.top)+'px';

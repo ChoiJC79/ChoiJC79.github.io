@@ -57,6 +57,9 @@ HEAD_FONTS = (
     '<link rel="stylesheet" href="/css/synthwave.css">\n'
     '<link rel="stylesheet" href="/css/pages.css">\n'
     '<link rel="stylesheet" href="/css/guides.css">\n'
+    '<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">\n'
+    '<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">\n'
+    '<link rel="stylesheet" href="/css/theme.css">\n'
 )
 
 
@@ -231,8 +234,11 @@ def page_shell(title, desc, url, body_html, extra_nav=""):
   <div class="logo">최승환 · 가이드</div>
   <nav class="nav-links">
     <a href="/">← 홈</a>
-    <a href="/guides.html">가이드</a>
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
     <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
   </nav>
   <button id="theme-toggle" onclick="toggleTheme()">&#9728; 라이트</button>
 </header>
@@ -240,10 +246,11 @@ def page_shell(title, desc, url, body_html, extra_nav=""):
 {extra_nav}
 <footer>&copy; 2026 최승환 · choijc79.github.io</footer>
 <div id="mqb">
-  <a href="/">홈</a>
-  <a href="/guides.html">가이드</a>
-  <a href="/column.html">칼럼</a>
-  <a href="/about.html">소개</a>
+  <a href="/">🏠<br>홈</a>
+  <a href="/about.html">👤<br>소개</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/guides.html" aria-current="page">⚙️<br>가이드</a>
+  <a href="/memo.html">📋<br>노트</a>
 </div>
 <script>{THEME_JS}</script>
 </body>
