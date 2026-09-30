@@ -810,3 +810,427 @@ npx skills remove code-review-and-quality
 - 스킬 CLI: [npx skills add addyosmani/agent-skills](https://github.com/addyosmani/agent-skills#quick-start)
 - 단건 설치와 references 공백: [이슈 #361](https://github.com/addyosmani/agent-skills/issues/361)
 - 라이선스: [MIT](https://github.com/addyosmani/agent-skills/blob/main/LICENSE)
+
+
+---
+
+## 클로드 코드 설정을 한 줄로 점검하는 4단계 | 2026-09-30 | AI·클로드코드·템플릿
+slug: claude-and-code-templates
+repo: davila7/claude-code-templates
+minutes: 12
+steps: 4
+sections: 8
+excerpt: 클로드 코드는 에이전트·명령·MCP를 잔뜩 넣을 수 있습니다. 카탈로그 전부를 받지 않고, 건강 점검 한 줄과 리뷰어 하나만요.
+
+클로드 코드에 템플릿을 넣으면 에이전트와 훅이 한 번에 늘어납니다. 이 자료는 2026년 9월 30일 주간 트렌드의 davila7/claude-code-templates에서, 카탈로그 전체가 아니라 `--health-check` 와 코드 리뷰어 하나만 받는 네 단계를 담았습니다. 프론트엔드 스택이나 외부 MCP 묶음은 설치하지 않습니다.
+
+복사해서 바로 시작하는 프롬프트. 점검과 리뷰어 하나 설치까지 AI에게 맡기기.
+
+터미널을 쓸 수 있는 AI(클로드 코드·커서 등)의 첫 메시지로 붙여넣으세요.
+
+```prompt
+역할: 이 컴퓨터의 클로드 코드 설정을 claude-code-templates로 점검하고, 리뷰어 하나만 설치하는 담당
+맥락: 이 저장소는 GitHub Pages 개인 사이트입니다. 에이전트 카탈로그 전체, Bright Data, 프론트엔드 스택은 설치하지 마세요.
+입력: 운영체제·Node·npx는 직접 확인하세요.
+작업: ① Node와 npx가 있는지 확인하세요. 없으면 초보자 눈높이로 안내한 뒤 멈추세요. ② `npx claude-code-templates@latest --health-check` 를 실행하세요. ③ 결과에서 실패한 항목만 한국어로 짧게 설명하세요. 설정을 고치기 전에 물어보세요. ④ 사용자가 동의하면 `npx claude-code-templates@latest --agent development-tools/code-reviewer --yes` 만 실행하세요. 다른 --agent·--mcp·--skill 은 넣지 마세요.
+제약: git config를 바꾸지 마세요. API 키를 화면에 출력하지 마세요. --analytics 와 --chats --tunnel 은 켜지 마세요.
+출력: 실행한 명령, health-check 요약, 리뷰어 설치 여부
+검증: health-check가 끝났고, 설치를 했다면 code-reviewer 한 개만 추가됐어야 합니다. 다른 에이전트가 생겼으면 완료가 아닙니다.
+```
+
+## Quick Start
+
+- 공식 저장소: [davila7/claude-code-templates](https://github.com/davila7/claude-code-templates)
+- 문서: [docs.aitmpl.com](https://docs.aitmpl.com/)
+- 한 줄 정의: 클로드 코드에 에이전트·명령·훅·MCP를 골라 넣는 CLI입니다. 이 자료는 점검과 리뷰어 하나만 씁니다.
+- 인기·만든 곳: 2026년 9월 30일 GitHub 트렌드(This week) 기준 스타 32,178개, 한 주 동안 1,218개가 늘었습니다. 만든 곳은 davila7입니다.
+- 라이선스: MIT.
+- 필요한 환경: Node.js와 npx, 클로드 코드.
+- 비용: CLI 설치는 무료입니다. 클로드 구독 요금은 따로 있습니다.
+
+터미널에서 실행:
+
+```bash
+npx claude-code-templates@latest --health-check
+```
+
+> 검증: 2026-09-30 기준 (README Quick Installation, Additional Tools, MIT)
+
+## STEP 1. 왜 전부 받지 않는지 보기: 2분
+
+README의 첫 예는 프론트엔드 개발자 에이전트와 테스트 명령, GitHub MCP를 한 줄에 넣습니다. 개인 사이트에는 그 묶음이 과합니다. 먼저 지금 설치가 건강한지만 봅니다.
+
+## STEP 2. 건강 점검 돌리기: 3분
+
+```bash
+npx claude-code-templates@latest --health-check
+```
+
+실패한 줄이 있으면 적어 두고, 고치기 전에 한 번 더 묻습니다. 통과만 해도 다음으로 가도 됩니다.
+
+## STEP 3. 리뷰어 하나만 넣기: 4분
+
+```bash
+npx claude-code-templates@latest --agent development-tools/code-reviewer --yes
+```
+
+클로드 코드에서 코드 리뷰를 맡길 때 이 에이전트를 부릅니다. 다른 에이전트 이름은 넣지 않습니다.
+
+## STEP 4. 이 사이트에 쓰기: 3분
+
+새 채팅에서 칼럼 HTML이나 `publish.py` 한 파일을 열어 두고, 리뷰어에게 보안이 아니라 깨진 링크·한글 잘림만 보라고 말합니다. 전체 저장소 감사는 시키지 않습니다.
+
+## 자주 막히는 곳
+
+- `npx` 가 없으면 Node를 먼저 설치합니다. 시스템 파이썬과는 별개입니다.
+- README 상단의 Bright Data 한 줄은 광고성 설치입니다. 이 자료에서는 쓰지 않습니다.
+- `--chats --tunnel` 은 대화를 밖으로 엽니다. 공직 계정과 겹치면 위험합니다.
+
+## 솔직히 한계
+
+- 템플릿이 클로드 코드를 대신 켜 주지는 않습니다. 클로드 코드가 이미 깔려 있어야 합니다.
+- 카탈로그는 수백 개입니다. 많이 넣을수록 토큰과 권한이 늘고, 무엇이 켜졌는지 잊어버립니다.
+- 분석 대시보드(`--analytics`)는 이 자료 밖입니다.
+
+되돌리기. 방금 넣은 에이전트만 지우려면 클로드 코드 플러그인 목록에서 `code-reviewer` 를 제거합니다. health-check는 읽기만 하므로 되돌릴 것이 없습니다.
+
+## 공식 자료
+
+- 저장소: [davila7/claude-code-templates](https://github.com/davila7/claude-code-templates)
+- 둘러보기: [aitmpl.com](https://aitmpl.com)
+- 문서: [docs.aitmpl.com](https://docs.aitmpl.com/)
+- 라이선스: [MIT](https://github.com/davila7/claude-code-templates/blob/main/LICENSE)
+
+---
+
+## 커서에 Superpowers만 켜는 4단계 | 2026-09-30 | AI·커서·Superpowers
+slug: claude-and-superpowers
+repo: obra/superpowers
+minutes: 13
+steps: 4
+sections: 8
+excerpt: 에이전트는 코드부터 고칩니다. Superpowers는 브레인스토밍부터 시작하게 합니다. 이 사이트에는 플러그인만 켜고, TDD로 전체를 다시 짜지 않습니다.
+
+코딩 에이전트는 질문이 끝나기 전에 파일을 만집니다. 이 자료는 2026년 9월 30일 주간 트렌드의 obra/superpowers에서, 커서에 플러그인만 켜고 한 턴으로 브레인스토밍이 도는지 보는 네 단계를 담았습니다. 워크트리와 서브에이전트 함대는 쓰지 않습니다.
+
+복사해서 바로 시작하는 프롬프트. 플러그인 설치와 한 턴 확인까지 AI에게 맡기기.
+
+```prompt
+역할: 이 프로젝트의 커서에 Superpowers 플러그인을 켜고, 브레인스토밍이 도는지 확인하는 담당
+맥락: 이 저장소는 GitHub Pages 개인 사이트입니다. 칼럼과 가이드 HTML을 다시 짜지 마세요. TDD로 사이트를 재작성하지 마세요.
+입력: 운영체제·커서는 직접 확인하세요.
+작업: ① 커서가 이 폴더를 열고 있는지 확인하세요. ② README Cursor 절대로 `/add-plugin superpowers` 설치를 안내하거나, 이미 있으면 건너뛰세요. ③ 새 채팅을 열라고 안내한 뒤, 사용자에게 보낼 한 줄 시험을 적어 주세요. 시험 문장은 "칼럼 목록 위에 작은 안내 문구를 넣을지 함께 생각해 보자. 코드는 아직 쓰지 말 것." 입니다. ④ 브레인스토밍이 먼저 오면 성공으로 보고하세요. 파일이 바로 바뀌면 실패로 보고하고, 새 채팅을 다시 열라고 하세요.
+제약: git config를 바꾸지 마세요. 칼럼·가이드 HTML을 수정하지 마세요. 텔레메트리를 강제하지 마세요.
+출력: 설치 안내, 시험 문장, 성공/실패 기준
+검증: 플러그인이 켜진 뒤에도 이 저장소의 HTML이 그대로여야 합니다.
+```
+
+## Quick Start
+
+- 공식 저장소: [obra/superpowers](https://github.com/obra/superpowers)
+- 한 줄 정의: 코딩 에이전트가 설계를 물어본 뒤에야 코드를 쓰게 하는 스킬 묶음입니다.
+- 인기·만든 곳: 2026년 9월 30일 GitHub 페이지 기준 스타 292,973개. 만든 곳은 Jesse Vincent / Prime Radiant입니다.
+- 라이선스: MIT.
+- 필요한 환경: 커서. 클로드 코드는 `/plugin install superpowers@claude-plugins-official` 경로가 따로 있습니다.
+- 비용: 설치는 무료입니다. 브레인스토밍이 늘면 대화 토큰이 늘 수 있습니다.
+
+커서 에이전트 창에서:
+
+```text
+/add-plugin superpowers
+```
+
+> 검증: 2026-09-30 기준 (README Cursor 절, The Basic Workflow, MIT)
+
+## STEP 1. 무엇을 켜는지 보기: 2분
+
+핵심은 brainstorming입니다. 아이디어를 짧게 물어보고, 설계를 나눠 보여 준 뒤에야 계획을 씁니다. 이 사이트의 칼럼 발행 흐름과 잘 맞습니다.
+
+## STEP 2. 커서에 플러그인 넣기: 3분
+
+에이전트 채팅에 `/add-plugin superpowers` 를 치거나, 플러그인 마켓에서 Superpowers를 찾습니다. 클로드 코드를 쓰신다면 README의 official marketplace 한 줄이 맞습니다.
+
+## STEP 3. 새 채팅에서 한 턴 보기: 4분
+
+같은 창에 이어 치면 예전 습관이 남습니다. 새 채팅을 연 뒤, 코드 없이 기획만 물어봅니다. 파일이 바로 바뀌면 실패한 것입니다.
+
+## STEP 4. 이 사이트에 쓰기: 4분
+
+새 가이드 한 편을 열기 전에 "범위부터 물어보게" 하면 됩니다. `using-git-worktrees` 와 `subagent-driven-development` 는 이 저장소에서 켜지 않아도 됩니다. 배포는 여전히 로컬 파일을 올리는 쪽에 가깝습니다.
+
+## 자주 막히는 곳
+
+- 설치 후 같은 세션에서는 훅이 안 먹을 수 있습니다. 새 채팅을 엽니다.
+- TDD 스킬이 테스트를 먼저 쓰라고 할 수 있습니다. 정적 HTML 사이트에는 그 순환이 어색합니다. 그때는 "이 작업은 테스트 없이 파일 하나만"이라고 말합니다.
+- README의 로고 텔레메트리는 선택입니다. 끄려면 `SUPERPOWERS_DISABLE_TELEMETRY` 를 두면 됩니다.
+
+## 솔직히 한계
+
+- Superpowers는 방법론입니다. 칼럼 문장을 대신 써 주지 않습니다.
+- 스킬이 자동으로 켜지면, 짧은 수정에도 질문이 길어질 수 있습니다.
+- 엔터프라이즈 지원은 별도 메일입니다. 개인 사이트에는 필요 없습니다.
+
+되돌리기. 커서 플러그인 목록에서 Superpowers를 끄면 됩니다. 저장소 파일은 건드리지 않았다면 그대로입니다.
+
+## 공식 자료
+
+- 저장소: [obra/superpowers](https://github.com/obra/superpowers)
+- 발표문: [blog.fsck.com 2025-10-09](https://blog.fsck.com/2025/10/09/superpowers/)
+- 라이선스: [MIT](https://github.com/obra/superpowers/blob/main/LICENSE)
+
+---
+
+## 홈 화면을 Impeccable로 다듬는 5단계 | 2026-09-30 | AI·디자인·Impeccable
+slug: claude-and-impeccable
+repo: pbakaus/impeccable
+minutes: 15
+steps: 5
+sections: 8
+excerpt: 에이전트는 같은 그라데이션과 카드 더미를 반복합니다. Impeccable은 이 사이트의 톤을 PRODUCT.md에 남긴 뒤, 한 화면만 다듬게 합니다.
+
+AI가 홈을 고치면 자주 보라 그라데이션과 둥근 아이콘이 생깁니다. 이 자료는 2026년 9월 30일 확인한 pbakaus/impeccable으로, 설치와 초기화만 하고 히어로 아래 노을 패널 같은 한 면만 보게 하는 다섯 단계를 담았습니다. 사이트 전체를 다시 디자인하지 않습니다.
+
+복사해서 바로 시작하는 프롬프트. 설치와 init까지 AI에게 맡기기.
+
+```prompt
+역할: 이 프로젝트에 Impeccable을 설치하고, 홈의 한 면만 점검하는 담당
+맥락: 이 사이트는 신스웨이브 청록·분홍과, 날씨 아래 주황 노을 패널이 있습니다. 테마를 부수지 마세요. PRODUCT.md가 없으면 init만 하고, 기존 HTML을 크게 쓰지 마세요.
+입력: 프로젝트 루트는 지금 연 폴더입니다. Node·npx는 직접 확인하세요.
+작업: ① `npx impeccable install` 을 프로젝트 루트에서 실행하세요. ② 사용자에게 커서에서 `/impeccable init` 를 치라고 안내하세요. ③ init이 만든 PRODUCT.md 가 있으면 앞 40줄을 보여 주세요. ④ 이어서 `/impeccable critique dusk-strip` 또는 노을 패널을 가리키는 한 줄만 제안하세요. 홈 전체를 craft 하지 마세요.
+제약: index.html의 내비·카드 격자·지구본을 리팩터하지 마세요. 폰트를 Inter로 바꾸지 마세요. API 키를 요구하지 마세요.
+출력: 설치 로그, PRODUCT.md 존재 여부, 다음에 칠 명령 한 줄
+검증: `npx impeccable` 이 동작하고, 사이트 테마 CSS가 그대로여야 합니다.
+```
+
+## Quick Start
+
+- 공식 저장소: [pbakaus/impeccable](https://github.com/pbakaus/impeccable)
+- 문서: [impeccable.style](https://impeccable.style)
+- 한 줄 정의: 코딩 에이전트에게 디자인 명령과 탐지 규칙을 주는 도구입니다. 포토샵이 아닙니다.
+- 인기·만든 곳: 2026년 9월 30일 GitHub 페이지 기준 스타 72,563개. 만든 곳은 Paul Bakaus입니다.
+- 라이선스: 저장소 LICENSE 파일을 따릅니다. 설치 전에 한 번 열어 보세요.
+- 필요한 환경: Node.js와 npx, 이 프로젝트를 연 커서.
+- 비용: 설치와 결정론적 검사는 무료입니다. `/impeccable critique` 는 모델 요금이 나갑니다.
+
+프로젝트 루트에서:
+
+```bash
+npx impeccable install
+```
+
+그다음 커서에서 `/impeccable init` 를 칩니다.
+
+> 검증: 2026-09-30 기준 (README Quick start, 24 commands)
+
+## STEP 1. 왜 이 사이트에 맞는지 보기: 2분
+
+이 홈은 이미 테마가 있습니다. Impeccable은 그 톤을 PRODUCT.md에 적게 해서, 다음 수정이 네온 노랑과 주황 노을을 섞지 않게 합니다.
+
+## STEP 2. 설치하기: 3분
+
+```bash
+npx impeccable install
+```
+
+루트가 아니면 명령이 다른 폴더를 만집니다. 지금 연 프로젝트인지 먼저 봅니다.
+
+## STEP 3. init로 사실만 남기기: 4분
+
+`/impeccable init` 은 누구를 위한 사이트인지, 무엇을 안 바꾸는지 묻습니다. 시각 방향은 나중 명령입니다. 운영자 소개와 제천, 칼럼·가이드가 본체라는 점만 남기면 됩니다.
+
+## STEP 4. 한 면만 보기: 4분
+
+노을 패널이나 날씨 줄처럼 최근에 만진 곳만 `/impeccable critique` 합니다. `/impeccable craft` 로 홈 전체를 다시 빚지 않습니다.
+
+## STEP 5. 쓰지 말 것: 2분
+
+`overdrive` 와 `delight` 는 장식을 늘립니다. 이 사이트의 신스웨이브는 이미 장식이 있습니다. 조용히 맞추는 쪽이 맞습니다.
+
+## 자주 막히는 곳
+
+- init 없이 polish를 치면 다른 제품의 말투가 들어옵니다.
+- 탐지 규칙 61개는 LLM 없이 돕니다. 브라우저 확장은 이 자료에서 필수 아닙니다.
+
+## 솔직히 한계
+
+- Impeccable은 취향을 대신 정하지 않습니다. 제천 주황과 청록이 같이 있어도 되는지는 사람이 봅니다.
+- 정적 GitHub Pages에는 라이브 브라우저 반복이 약합니다.
+
+되돌리기. 설치가 만든 설정 파일만 지우면 됩니다. PRODUCT.md를 남길지는 운영자가 정합니다.
+
+## 공식 자료
+
+- 저장소: [pbakaus/impeccable](https://github.com/pbakaus/impeccable)
+- 문서: [impeccable.style](https://impeccable.style)
+- 출발점: Anthropic frontend-design 스킬을 이어서 만든다고 README가 적습니다.
+
+---
+
+## CLI-Hub에서 도구 하나만 찾아 쓰는 4단계 | 2026-09-30 | AI·CLI·CLI-Anything
+slug: claude-and-cli-anything
+repo: HKUDS/CLI-Anything
+minutes: 14
+steps: 4
+sections: 8
+excerpt: 에이전트는 GUI 프로그램을 잘 못 누릅니다. CLI-Hub는 이미 만들어진 명령줄만 찾아 쓰게 합니다. GIMP용 CLI를 새로 만들지는 않습니다.
+
+전문 프로그램은 창을 눌러야 해서 클로드가 헤맵니다. 이 자료는 2026년 9월 30일 주간 트렌드의 HKUDS/CLI-Anything에서, 허브만 설치하고 목록을 본 뒤 도구 하나의 정보만 확인하는 네 단계를 담았습니다. `/cli-anything ./gimp` 7단계는 하지 않습니다.
+
+복사해서 바로 시작하는 프롬프트. 허브 설치와 목록 확인까지 AI에게 맡기기.
+
+```prompt
+역할: 이 컴퓨터에 CLI-Hub만 설치하고, 레지스트리에서 도구 하나를 찾아 보여 주는 담당
+맥락: 운영자는 제천 개인 사이트와 문서를 다룹니다. GIMP·Blender·Zoom CLI를 생성하거나 설치하지 마세요. 7단계 하니스 생성은 금지입니다.
+입력: 파이썬은 직접 확인하세요.
+작업: ① Python 3.10 이상인지 확인하세요. ② `pip install cli-anything-hub` 를 사용자 권한으로 실행하세요. sudo는 먼저 물어보세요. ③ `cli-hub list` 와 `cli-hub search office` 를 실행하세요. ④ `cli-hub info libreoffice` 가 되면 설명만 보여 주고, install 은 하지 마세요. 사용자가 원할 때만 다음을 물어보세요.
+제약: git clone 으로 플러그인을 복사하지 마세요. 대상 소프트웨어를 설치하지 마세요.
+출력: Python 버전, 설치 여부, list/search 앞부분, info 요약
+검증: `cli-hub --help` 또는 `cli-hub list` 가 동작해야 합니다. 새 하니스 폴더가 생기면 완료가 아닙니다.
+```
+
+## Quick Start
+
+- 공식 저장소: [HKUDS/CLI-Anything](https://github.com/HKUDS/CLI-Anything)
+- 허브: [CLI-Hub](https://hkuds.github.io/CLI-Anything/)
+- 한 줄 정의: 사람이 쓰는 프로그램을 에이전트가 치는 명령줄로 감싸는 프로젝트입니다. 이 자료는 허브 검색만 합니다.
+- 인기·만든 곳: 2026년 9월 30일 GitHub 트렌드(This week) 기준 스타 51,015개, 한 주 동안 1,327개가 늘었습니다. 만든 곳은 HKUDS입니다.
+- 라이선스: Apache 2.0.
+- 필요한 환경: Python 3.10 이상. 허브만 쓰면 데스크톱 앱은 필요 없습니다.
+- 비용: 허브 패키지는 무료입니다. 감싼 프로그램(리브레오피스 등)은 따로 설치해야 실제로 돌아갑니다.
+
+```bash
+pip install cli-anything-hub
+cli-hub list
+```
+
+> 검증: 2026-09-30 기준 (README Phase 1 Empower yourself, Apache 2.0)
+
+## STEP 1. 허브와 생성기를 가르기: 2분
+
+README는 두 길을 엽니다. 하나는 이미 있는 CLI를 설치하는 허브이고, 다른 하나는 소스에서 CLI를 새로 만드는 생성기입니다. 이 자료는 허브만 갑니다.
+
+## STEP 2. 패키지 넣기: 3분
+
+```bash
+pip install cli-anything-hub
+```
+
+가상환경을 쓰는 편이 안전합니다. 전역에 넣어야 하면 먼저 묻습니다.
+
+## STEP 3. 목록과 검색: 4분
+
+```bash
+cli-hub list
+cli-hub search office
+cli-hub info libreoffice
+```
+
+이름과 설명만 보고 멈춥니다. `cli-hub install` 은 그 프로그램이 이 맥에 있을 때 의미가 있습니다.
+
+## STEP 4. 클로드에게 맡길 때: 3분
+
+커서에는 `npx skills add HKUDS/CLI-Anything --skill cli-hub-meta-skill -g -y` 가 README에 있습니다. 넣으면 에이전트가 허브를 뒤집니다. 생성기 플러그인(`cursor-plugin`)은 이 단계에 필요 없습니다.
+
+## 자주 막히는 곳
+
+- `cli-hub` 명령이 안 나오면 pip 스크립트 경로가 PATH에 없는 경우입니다.
+- 허브에 있는 이름과 실제 앱 설치는 다릅니다. GIMP CLI를 받아도 GIMP가 없으면 렌더가 실패합니다.
+
+## 솔직히 한계
+
+- 생성기 7단계는 프론티어급 모델을 전제로 한다고 README가 적습니다. 개인 사이트 작업에는 과합니다.
+- Apache 2.0이라 쓰는 것은 자유롭지만, 감싼 프로그램의 라이선스는 각각 다릅니다.
+
+되돌리기:
+
+```bash
+pip uninstall cli-anything-hub
+```
+
+## 공식 자료
+
+- 저장소: [HKUDS/CLI-Anything](https://github.com/HKUDS/CLI-Anything)
+- 허브: [hkuds.github.io/CLI-Anything](https://hkuds.github.io/CLI-Anything/)
+- 라이선스: Apache 2.0
+- 논문: arXiv 2606.03854
+
+---
+
+## 에이전트 기억 문서만 커서에 넣는 4단계 | 2026-09-30 | AI·기억·Hindsight
+slug: claude-and-hindsight
+repo: vectorize-io/hindsight
+minutes: 12
+steps: 4
+sections: 8
+excerpt: Hindsight는 에이전트가 대화만 외우지 않고 배우게 하는 기억 시스템입니다. 이 자료는 문서 스킬만 넣고, 서버와 API 키는 켜지 않습니다.
+
+에이전트 기억 제품은 서버와 키가 먼저 나옵니다. 이 자료는 2026년 9월 30일 주간 트렌드의 vectorize-io/hindsight에서, `hindsight-docs` 스킬만 커서에 넣어 용어를 읽게 하는 네 단계를 담았습니다. Docker와 OpenAI 키는 쓰지 않습니다.
+
+복사해서 바로 시작하는 프롬프트. 문서 스킬 설치와 한 질문까지 AI에게 맡기기.
+
+```prompt
+역할: 이 프로젝트의 커서에 Hindsight 문서 스킬만 설치하는 담당
+맥락: 개인 사이트입니다. Docker 서버, Cloud, API 키, 기억 은행은 만들지 마세요.
+입력: Node·npx는 직접 확인하세요.
+작업: ① `npx skills add https://github.com/vectorize-io/hindsight --skill hindsight-docs` 를 실행하세요. `--global` 은 사용자가 원할 때만. ② 설치된 SKILL.md 경로를 보여 주세요. ③ 사용자에게 새 채팅에서 물을 문장 하나를 주세요. 문장은 "Hindsight의 retain·recall·reflect가 각각 무엇을 하는지, 이 사이트 칼럼 발행에 비유해서 설명해 줘. 서버는 켜지 말 것." 입니다. ④ Docker run 예시는 출력하지 마세요.
+제약: OPENAI_API_KEY 를 묻거나 환경변수에 넣지 마세요. 컨테이너를 실행하지 마세요.
+출력: 설치 경로, 시험 문장
+검증: hindsight-docs 의 SKILL.md 가 있어야 합니다. 8888 포트 서버가 떠 있으면 완료가 아닙니다.
+```
+
+## Quick Start
+
+- 공식 저장소: [vectorize-io/hindsight](https://github.com/vectorize-io/hindsight)
+- 문서: [hindsight.vectorize.io](https://hindsight.vectorize.io)
+- 한 줄 정의: 에이전트가 장기 기억으로 배우게 하는 시스템입니다. 이 자료는 문서 스킬만 씁니다.
+- 인기·만든 곳: 2026년 9월 30일 GitHub 트렌드(This week) 기준 스타 42,844개, 한 주 동안 17,365개가 늘었습니다. 만든 곳은 Vectorize입니다.
+- 라이선스: MIT.
+- 필요한 환경: Node.js와 npx, 커서. 서버를 켜려면 Docker와 LLM 키가 따로 필요합니다.
+- 비용: 문서 스킬은 무료입니다. 서버·Cloud는 모델 키나 사용량 요금이 붙습니다.
+
+```bash
+npx skills add https://github.com/vectorize-io/hindsight --skill hindsight-docs
+```
+
+> 검증: 2026-09-30 기준 (README "Using a coding agent?", License MIT)
+
+## STEP 1. 왜 서버를 안 켜는지 보기: 2분
+
+README Quick Start의 Docker 예는 API 키를 넣습니다. 공직·개인 글이 오가는 맥에서 기억 서버를 먼저 올리는 일은 이 자료의 범위가 아닙니다.
+
+## STEP 2. 문서 스킬만 넣기: 3분
+
+```bash
+npx skills add https://github.com/vectorize-io/hindsight --skill hindsight-docs
+```
+
+클로드 코드와 커서에서 문서 검색용으로 켜집니다.
+
+## STEP 3. 용어만 물어보기: 4분
+
+retain은 남기기, recall은 꺼내기, reflect는 정리하기입니다. 칼럼을 쓰고 목록에 올리고 나중에 다시 찾는 일과 겹쳐 이해하면 됩니다. 실제 은행을 만들지는 않습니다.
+
+## STEP 4. 나중에 서버를 켤 때: 3분
+
+그때는 공식 설치 가이드를 따릅니다. 로컬 모델(Ollama 등) 옵션이 README에 있습니다. 키가 필요 없는 경로를 고르는 편이 안전합니다.
+
+## 자주 막히는 곳
+
+- `hindsight-api` pip 설치는 서버입니다. 문서 스킬과 이름이 닮아 헷갈립니다.
+- Cloud 가입은 이 자료에 없습니다.
+
+## 솔직히 한계
+
+- 문서 스킬만으로는 에이전트가 지난 대화를 기억하지 않습니다. 용어를 읽을 뿐입니다.
+- 벤치마크 숫자는 논문·리더보드 쪽입니다. 이 홈페이지의 체감과는 거리가 있습니다.
+
+되돌리기. `npx skills remove hindsight-docs` 또는 `.cursor/skills/` 아래 해당 폴더만 지웁니다.
+
+## 공식 자료
+
+- 저장소: [vectorize-io/hindsight](https://github.com/vectorize-io/hindsight)
+- 문서: [hindsight.vectorize.io](https://hindsight.vectorize.io)
+- 논문: [arXiv 2512.12818](https://arxiv.org/abs/2512.12818)
+- 라이선스: [MIT](https://github.com/vectorize-io/hindsight/blob/main/LICENSE)
+
+---
