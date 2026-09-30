@@ -9,4 +9,4 @@
 - [x] `build_guides.py` 템플릿에 테마 추가 후 가이드 재생성
 - [x] `publish.py` 업로드 목록에 `css/theme.css` 추가
 - [x] 브라우저로 데스크톱·모바일(390px)·라이트 모드 확인
-- [ ] 커밋 후 main에 푸시
+- [x] 커밋 후 main에 푸시
