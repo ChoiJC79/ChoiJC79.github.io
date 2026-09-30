@@ -395,16 +395,15 @@
         container.innerHTML = '<div class="empty-state"><div class="emoji">📭</div><p>일기가 없습니다.<br/>첫 번째 일기를 작성해보세요!</p></div>'; return;
       }
       container.innerHTML = filtered.map(function(e) {
-        var preview = e.content.replace(/
-/g,' ').slice(0,80) + (e.content.length > 80 ? '…' : '');
-        return '<div class="entry-card" onclick="showDetail(''+e.id+'')">'+
+        var preview = e.content.replace(/\n/g,' ').slice(0,80) + (e.content.length > 80 ? '…' : '');
+        return '<div class="entry-card" onclick="showDetail(\''+e.id+'\')">'+
           '<div class="entry-header"><div class="entry-title">'+escHtml(e.title)+'</div>'+
           '<div class="entry-meta"><span class="mood-badge">'+e.mood+'</span><span class="category-tag">'+escHtml(e.category)+'</span></div></div>'+
           '<div class="entry-date">📅 '+formatDate(e.date)+'</div>'+
           '<div class="entry-preview">'+escHtml(preview)+'</div>'+
           '<div class="entry-actions" onclick="event.stopPropagation()">'+
-          '<button class="btn btn-secondary" style="padding:5px 14px;font-size:.82rem;" onclick="editEntry(''+e.id+'')">✏️ 수정</button>'+
-          '<button class="btn btn-danger" style="padding:5px 14px;font-size:.82rem;" onclick="openDeleteModal(''+e.id+'')">🗑️ 삭제</button>'+
+          '<button class="btn btn-secondary" style="padding:5px 14px;font-size:.82rem;" onclick="editEntry(\''+e.id+'\')">✏️ 수정</button>'+
+          '<button class="btn btn-danger" style="padding:5px 14px;font-size:.82rem;" onclick="openDeleteModal(\''+e.id+'\')">🗑️ 삭제</button>'+
           '</div></div>';
       }).join('');
     }
@@ -422,9 +421,9 @@
           '</div></div>'+
         '<div class="detail-body">'+escHtml(e.content)+'</div>'+
         '<div class="detail-actions">'+
-          '<button class="btn btn-secondary" onclick="switchTab('list')">← 목록으로</button>'+
-          '<button class="btn btn-secondary" onclick="editEntry(''+e.id+'')">✏️ 수정</button>'+
-          '<button class="btn btn-danger" onclick="openDeleteModal(''+e.id+'')">🗑️ 삭제</button>'+
+          '<button class="btn btn-secondary" onclick="switchTab(\'list\')">← 목록으로</button>'+
+          '<button class="btn btn-secondary" onclick="editEntry(\''+e.id+'\')">✏️ 수정</button>'+
+          '<button class="btn btn-danger" onclick="openDeleteModal(\''+e.id+'\')">🗑️ 삭제</button>'+
         '</div>';
       document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
       document.getElementById('panel-detail').classList.add('active');
