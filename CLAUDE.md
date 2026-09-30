@@ -116,6 +116,9 @@ GitHub Pages 기반 개인 사이트 (`choijc79.github.io`) 관리 및 콘텐츠
 | `tour.html` | 투어 기사 목록 |
 | `whisky.html` | 위스키 가이드 목록 |
 | `memo.html` | 정리노트 (publish.py가 자동 생성) |
+| `ai_guides.json` | AI 가이드 원본 데이터 (편당 slug·date·cat·title·summary·when·steps·prompt·cautions·takeaway). 날짜·슬러그 중복 불가 |
+| `build_ai_guides.py` | `ai_guides.json` → `ai-guide.html`(목록, 분류 탭) + `ai/{슬러그}.html` 생성. 데이터 수정 후 수동 실행 (`--check`로 검증만 가능) |
+| `ai-guide.html`, `ai/` | AI 가이드 목록·개별 페이지 (생성물 — 직접 수정하지 말고 JSON 수정 후 재생성) |
 | `templates/` | 반복되는 발행 흐름(위스키 리뷰, 칼럼, 신규 페이지)의 재사용 템플릿 + 체크리스트. 새 항목 추가 시 `templates/README.md`부터 확인 |
 
 배포는 항상 `🚀 사이트에 올리기.bat` 실행으로만 가능 (샌드박스에서 GitHub API 직접 호출 불가).

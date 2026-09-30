@@ -782,6 +782,14 @@ def main():
             if os.path.isfile(colpath) and colfile.endswith(".html"):
                 push_local(f"columns/{colfile}", f"update column page {colfile}")
 
+    print("[ai] ai-guide.html + ai/ (AI 가이드, build_ai_guides.py 생성) ...")
+    push_local("ai-guide.html", "update ai guide list")
+    ai_dir = os.path.join(BASE_DIR, "ai")
+    if os.path.exists(ai_dir):
+        for aifile in sorted(os.listdir(ai_dir)):
+            if aifile.endswith(".html"):
+                push_local(f"ai/{aifile}", f"update ai guide {aifile}")
+
     print("[4/4] jecheon_moto_guide.html ...")
     ok3 = push_local("jecheon_moto_guide.html", "update jecheon guide")
 
