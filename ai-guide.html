@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 가이드 | 최승환</title>
+<meta name="description" content="지방행정 실무자가 정리한 생성형 AI 활용 가이드. 업무·연구·바이브코딩·자동화까지 바로 쓰는 절차와 프롬프트.">
+<meta property="og:title" content="AI 가이드 | 최승환">
+<meta property="og:description" content="지방행정 실무자가 정리한 생성형 AI 활용 가이드. 업무·연구·바이브코딩·자동화까지 바로 쓰는 절차와 프롬프트.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://choijc79.github.io/ai-guide.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<meta name="twitter:card" content="summary">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-body);font-weight:400;background:var(--bg);color:var(--text);word-break:keep-all;overflow-wrap:anywhere;}
+a{color:var(--accent);text-decoration:none;}
+.site-header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px;}
+.logo{font-family:var(--font-display);font-size:15px;color:var(--accent);letter-spacing:0.04em;}
+.nav-links{display:flex;gap:1.5rem;font-size:12px;}
+.nav-links a{color:var(--muted);transition:color 0.15s;}
+.nav-links a:hover{color:var(--accent);}
+#theme-toggle{background:none;border:1px solid var(--border);color:var(--muted);font-size:11px;padding:3px 11px;border-radius:20px;cursor:pointer;font-family:var(--font-body);margin-left:1rem;}
+#theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
+.hero{max-width:760px;margin:0 auto;padding:4rem 2rem 2rem;border-bottom:1px solid var(--border);}
+.hero-label{font-size:11px;letter-spacing:0.12em;color:var(--accent);text-transform:uppercase;margin-bottom:0.8rem;}
+.hero h1{font-family:var(--font-display);font-size:clamp(22px,3.6vw,32px);font-weight:700;line-height:1.35;margin-bottom:0.9rem;text-transform:none;letter-spacing:0.01em;}
+.hero p{color:var(--muted);font-size:14px;line-height:1.8;}
+.hero-meta{font-size:11px;color:var(--muted);margin-top:0.8rem;letter-spacing:0.04em;opacity:0.8;}
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:11px;color:var(--muted);letter-spacing:0.04em;margin-top:2rem;}
+@media(max-width:600px){.site-header{padding:0 1rem;gap:0.6rem;}.logo{font-size:12px;white-space:nowrap;}.nav-links{gap:0.8rem;font-size:11px;}.nav-links a{white-space:nowrap;letter-spacing:0;}.nav-links a:nth-child(3){display:none;}#theme-toggle{margin-left:0.3rem;white-space:nowrap;}}
+.tab-nav{max-width:760px;margin:0 auto;padding:1.4rem 2rem 0;display:flex;flex-wrap:wrap;gap:0.5rem;}
+.tab-btn{background:none;border:1px solid var(--border);color:var(--muted);font-size:12px;padding:5px 14px;border-radius:20px;cursor:pointer;font-family:var(--font-body);}
+.tab-btn .cnt{opacity:0.6;margin-left:4px;font-size:11px;}
+.tab-btn:hover{color:var(--accent);border-color:var(--accent);}
+.tab-btn.active{background:var(--accent);border-color:var(--accent);color:var(--bg);}
+.col-list{max-width:760px;margin:0 auto;padding:1.4rem 2rem 2rem;display:flex;flex-direction:column;gap:1.2rem;}
+.col-card{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:1.5rem 1.8rem;color:inherit;display:flex;gap:1.2rem;align-items:flex-start;transition:border-color 0.2s,transform 0.15s;}
+.col-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+.col-icon{font-size:1.8rem;line-height:1;flex-shrink:0;width:2.4rem;text-align:center;}
+.col-meta{display:flex;gap:0.8rem;align-items:center;margin-bottom:0.5rem;}
+.col-date{font-size:11px;color:var(--muted);letter-spacing:0.04em;}
+.col-tag{font-size:10px;color:var(--accent);border:1px solid var(--border);padding:1px 8px;border-radius:10px;}
+.col-title{font-family:var(--font-display);font-size:1.05rem;font-weight:600;margin-bottom:0.45rem;line-height:1.45;}
+.col-excerpt{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:0.6rem;}
+.col-more{font-size:11px;color:var(--accent);letter-spacing:0.04em;}
+.col-card[hidden]{display:none;}
+@media(max-width:600px){.tab-nav{padding:1rem 1rem 0;}.col-list{padding:1rem;}.col-card{padding:1.1rem 1.1rem;gap:0.8rem;}.col-icon{font-size:1.4rem;width:1.8rem;}}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · AI 가이드</div>
+  <nav class="nav-links">
+    <a href="/">← 홈으로</a>
+    <a href="/ai-guide.html">가이드 목록</a>
+    <a href="/column.html">칼럼</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9790; 다크</button>
+</header>
+
+<section class="hero">
+  <div class="hero-label">AI Practice Guide</div>
+  <h1>일하는 방식에 AI를 더하는<br>실무 가이드</h1>
+  <p>보고서·민원·논문·코딩·자동화까지, 행정 현장과 연구실에서 직접 써 본 방식을 절차와 프롬프트로 정리합니다. 입력해도 되는 자료와 안 되는 자료의 경계부터 함께 봅니다.</p>
+  <div class="hero-meta">총 20편 · 마지막 업데이트 2026-09-24</div>
+</section>
+
+<nav class="tab-nav" role="tablist">
+  <button class="tab-btn active" data-cat="전체" role="tab" aria-selected="true">전체<span class="cnt">20</span></button>
+  <button class="tab-btn" data-cat="기초" role="tab" aria-selected="false">기초<span class="cnt">4</span></button>
+  <button class="tab-btn" data-cat="업무" role="tab" aria-selected="false">업무<span class="cnt">5</span></button>
+  <button class="tab-btn" data-cat="연구" role="tab" aria-selected="false">연구<span class="cnt">4</span></button>
+  <button class="tab-btn" data-cat="코딩" role="tab" aria-selected="false">코딩<span class="cnt">4</span></button>
+  <button class="tab-btn" data-cat="자동화" role="tab" aria-selected="false">자동화<span class="cnt">3</span></button>
+</nav>
+
+<section class="col-list">
+  <a class="col-card" href="/ai/ai-limits-verification.html" data-cat="기초">
+    <div class="col-icon">🧪</div>
+    <div>
+      <div class="col-meta"><span class="col-date">2026-09-24</span><span class="col-tag">기초</span></div>
+      <h2 class="col-title">AI 활용의 한계와 검증 습관 — 그럴듯한 오답을 다루는 법</h2>
+      <p class="col-excerpt">생성형 AI는 사실이 아닌 내용을 자신 있게 말하는 경우가 있습니다. 이를 흔히 환각(hallucination)이라고 부릅니다. AI를 오래 잘 쓰는 사람의 공통점은 성능을 믿는 것이 아니라 검증 습관을 갖추고 있다는 점입니다.</p>
+      <span class="col-more">가이드 읽기 →</span>
+    </div>
+  </a>
+  <a class="col-card" href="/ai/task-templates.html" data-cat="자동화">
+    <div class="col-icon">🧩</div>
+    <div>
+      <div class="col-meta"><span class="col-date">2026-09-18</span><span class="col-tag">자동화</span></div>
+      <h2 class="col-title">반복 작업 템플릿화 — 한 번 설계하고 주제만 갈아 끼우기</h2>
+      <p class="col-excerpt">자주 반복하는 작업은 매번 처음부터 만들지 말고, 구조는 템플릿으로 고정하고 바뀌는 부분만 데이터로 분리하는 것이 효율적입니다. 이 AI 가이드 20편도 하나의 템플릿과 데이터 파일로 생성했습니다.</p>
+      <span class="col-more">가이드 읽기 →</span>
+    </div>
+  </a>
+  <a class="col-card" href="/ai/mcp-connectors.html" data-cat="자동화">
+    <div class="col-icon">🔌</div>
+    <div>
+      <div class="col-meta"><span class="col-date">2026-09-13</span><span class="col-tag">자동화</span></div>
+      <h2 class="col-title">MCP 커넥터 — AI를 노션·드라이브·캘린더와 연결하기</h2>
+      <p class="col-excerpt">MCP(Model Context Protocol)는 AI가 외부 서비스의 데이터와 기능을 표준 방식으로 사용할 수 있게 해 주는 연결 규격입니다. 커넥터를 연결하면 AI가 문서를 직접 찾아 읽고, 일정을 확인하고, 노트에 결과를 저장하는 흐름을 한 번의 대화 안에서 처리할 수 있습니다.</p>
+      <span class="col-more">가이드 읽기 →</span>
+    </div>
+  </a>
+  <a class="col-card" href="/ai/claude-md-and-skills.html" data-cat="자동화">
+    <div class="col-icon">📐</div>
+    <div>
+      <div class="col-meta"><span class="col-date">2026-09-09</span><span class="col-tag">자동화</span></div>
+      <h2 class="col-title">CLAUDE.md와 스킬 — AI에게 나의 작업 규칙 가르치기</h2>
+      <p class="col-excerpt">매번 같은 설명을 반복하는 대신, 프로젝트의 규칙과 선호를 문서로 적어 두면 AI가 작업을 시작할 때마다 읽고 따릅니다. Claude Code에서는 CLAUDE.md 파일과 스킬(Skill)이 그 역할을 합니다.</p>
+      <span class="col-more">가이드 읽기 →</span>
+    </div>
+  </a>
+  <a class="col-card" href="/ai/python-excel-automation.html" data-cat="코딩">
+    <div class="col-icon">🐍</div>
+    <div>
+      <div class="col-meta"><span class="col-date">2026-09-05</span><span class="col-tag">코딩</span></div>
+      <h2 class="col-title">파이썬 업무 스크립트 — 반복되는 엑셀 취합을 자동화하기</h2>
+      <p class="col-excerpt">읍면동별·부서별로 받은 엑셀 파일을 하나로 합치는 작업은 매달 반복되지만 실수가 잦습니다. 파이썬 스크립트 하나로 폴더 안 파일을 자동 취합하면, 사람은 결과 검증에만 시간을 쓰면 됩니다. AI에게 요구사항을 설명하면 스크립트 초안을 받을 수 있습니다.</p>
+      <span class="col-more">가이드 읽기 →</span>
+    </div>
+  </a>
+  <a class="col-card" href="/ai/github-pages-with-ai.html" data-cat="코딩">
+    <div class="col-icon">🌐</div>
+    <div>
+      <div class="col-meta"><span class="col-date">2026-09-01</span><span class="col-tag">코딩</span></div>
+      <h2 class="col-title">정적 홈페이지 만들기 — GitHub Pages와 AI로 나만의 사이트 운영</h2>
+      <p class="col-excerpt">GitHub Pages는 저장소에 올린 HTML 파일을 그대로 웹사이트로 공개해 주는 무료 호스팅 서비스입니다. 서버 관리 없이 글·연구 포트폴리오를 운영할 수 있고, AI와 함께라면 디자인과 페이지 추가도 어렵지 않습니다. 이 사이트도 같은 방식으로 운영하고 있습니다.</p>
+      <span class="col-more">가이드 읽기 →</span>
+    </div>
+  </a>
+  <a class="col-card" href="/ai/claude-code-intro.html" data-cat="코딩">
+    <div class="col-icon">🤖</div>
+    <div>
+      <div class="col-meta"><span class="col-date">2026-08-28</span><span class="col-tag">코딩</span></div>
+      <h2 class="col-title">Claude Code 입문 — 저장소와 대화하며 개발하기</h2>
+      <p class="col-excerpt">Claude Code는 터미널·데스크톱·웹 등에서 코드 저장소를 직접 읽고 파일을 수정하며 명령을 실행하는 Anthropic의 AI 코딩 도구입니다. 채팅창에 코드를 복사해 붙이는 방식과 달리, 프로젝트 전체 맥락을 보고 작업한다는 점이 가장 큰 차이입니다.</p>
+      <span class="col-more">가이드 읽기 →</span>
+    </div>
+  </a>
+  <a class="col-card" href="/ai/vibe-coding-intro.html" data-cat="코딩">
+    <div class="col-icon">🎧</div>
+    <div>
+      <div class="col-meta"><span class="col-date">2026-08-24</span><span class="col-tag">코딩</span></div>
+      <h2 class="col-title">바이브코딩이란 — 말로 만드는 프로그램</h2>
+      <p class="col-excerpt">바이브코딩은 코드를 한 줄씩 직접 쓰는 대신, 원하는 결과를 자연어로 설명하고 AI가 만든 코드를 실행·수정하며 프로그램을 완성해 가는 방식입니다. 개발자가 아니어도 업무용 작은 도구를 직접 만들 수 있는 길이 열렸습니다.</p>
+      <span class="col-more">가이드 읽기 →</span>
+    </div>
+  </a>
+  <a class="col-card" href="/ai/regression-interpretation.html" data-cat="연구">
+    <div class="col-icon">📈</div>
+    <div>
+      <div class="col-meta"><span class="col-date">2026-08-20</span><span class="col-tag">연구</span></div>
+      <h2 class="col-title">통계 분석 보조 — 회귀분석 결과를 해석하는 대화</h2>
+      <p class="col-excerpt">통계 프로그램이 내놓은 결과표를 논문 문장으로 옮기는 과정에서 많은 연구자가 막힙니다. AI에게 결과표를 보여주고 계수의 의미, 유의성, 해석상 주의점을 묻는 방식으로 이해를 넓힐 수 있습니다.</p>
+      <span class="col-more">가이드 읽기 →</span>
+    </div>
+  </a>
+  <a class="col-card" href="/ai/academic-writing.html" data-cat="연구">
+    <div class="col-icon">🎓</div>
+    <div>
+      <div class="col-meta"><span class="col-date">2026-08-16</span><span class="col-tag">연구</span></div>
+      <h2 class="col-title">논문 문장 다듬기 — 학술체 교정과 연구윤리의 경계</h2>
+      <p class="col-excerpt">AI는 초고의 문장을 학술적으로 다듬고 논리 연결을 점검하는 데 유용합니다. 다만 논문은 연구윤리의 영역이므로, 어디까지를 AI 도움으로 허용할지 스스로 선을 긋고 기록하는 것이 중요합니다.</p>
+      <span class="col-more">가이드 읽기 →</span>
+    </div>
+  </a>
+  <a class="col-card" href="/ai/notebooklm-reading.html" data-cat="연구">
+    <div class="col-icon">📓</div>
+    <div>
+      <div class="col-meta"><span class="col-date">2026-08-12</span><span class="col-tag">연구</span></div>
+      <h2 class="col-title">NotebookLM으로 자료 묶음 읽기 — 내가 올린 문서 안에서만 답하는 AI</h2>
+      <p class="col-excerpt">NotebookLM은 사용자가 올린 문서를 근거로 답변하고, 답변마다 출처 위치를 표시해 주는 Google의 AI 노트 도구입니다. 정책 보고서·논문·법령 자료를 한 노트에 묶어 두고 질문하면 자료 간 비교와 요약이 빨라집니다.</p>
+      <span class="col-more">가이드 읽기 →</span>
+    </div>
+  </a>
+  <a class="col-card" href="/ai/literature-review.html" data-cat="연구">
+    <div class="col-icon">📚</div>
+    <div>
+      <div class="col-meta"><span class="col-date">2026-08-08</span><span class="col-tag">연구</span></div>
+      <h2 class="col-title">선행연구 정리 — 논문 요약과 비교표 만들기</h2>
+      <p class="col-excerpt">선행연구 검토의 목표는 나열이 아니라 &#x27;기존 연구가 어디까지 왔고 무엇이 비어 있는가&#x27;를 보여주는 것입니다. AI는 여러 논문의 연구대상·방법·결과를 같은 틀로 정리해 차이와 공백을 드러내는 데 도움이 됩니다.</p>
+      <span class="col-more">가이드 읽기 →</span>
+    </div>
+  </a>
+  <a class="col-card" href="/ai/civil-complaint-reply.html" data-cat="업무">
+    <div class="col-icon">💬</div>
+    <div>
+      <div class="col-meta"><span class="col-date">2026-08-04</span><span class="col-tag">업무</span></div>
+      <h2 class="col-title">민원 답변 초안 — 친절함과 정확성 사이의 균형</h2>
+      <p class="col-excerpt">민원 답변은 법적 정확성과 공감 표현을 함께 갖춰야 하는 까다로운 글입니다. AI로 답변 구조와 어조를 잡고, 법령 근거와 사실관계는 담당자가 채우는 분업 방식이 효율적입니다.</p>
+      <span class="col-more">가이드 읽기 →</span>
+    </div>
+  </a>
+  <a class="col-card" href="/ai/excel-with-ai.html" data-cat="업무">
+    <div class="col-icon">📊</div>
+    <div>
+      <div class="col-meta"><span class="col-date">2026-07-31</span><span class="col-tag">업무</span></div>
+      <h2 class="col-title">엑셀 수식·피벗을 AI에게 묻기 — 함수 이름을 몰라도 되는 방법</h2>
+      <p class="col-excerpt">엑셀 작업에서 막히는 지점은 대개 &#x27;원하는 결과는 아는데 함수를 모르는&#x27; 경우입니다. 원하는 결과를 말로 설명하면 AI가 수식과 적용 방법을 알려 줍니다. 표 구조만 정확히 전달하면 됩니다.</p>
+      <span class="col-more">가이드 읽기 →</span>
+    </div>
+  </a>
+  <a class="col-card" href="/ai/meeting-minutes.html" data-cat="업무">
+    <div class="col-icon">🗂️</div>
+    <div>
+      <div class="col-meta"><span class="col-date">2026-07-27</span><span class="col-tag">업무</span></div>
+      <h2 class="col-title">회의록 정리 — 녹취 메모에서 결정사항과 할 일까지</h2>
+      <p class="col-excerpt">회의가 끝난 뒤 가장 중요한 산출물은 &#x27;누가 언제까지 무엇을 하기로 했는가&#x27;입니다. AI는 두서없는 회의 메모에서 결정사항과 후속 조치를 분리해 내는 데 효과적입니다.</p>
+      <span class="col-more">가이드 읽기 →</span>
+    </div>
+  </a>
+  <a class="col-card" href="/ai/official-letter-polish.html" data-cat="업무">
+    <div class="col-icon">📮</div>
+    <div>
+      <div class="col-meta"><span class="col-date">2026-07-23</span><span class="col-tag">업무</span></div>
+      <h2 class="col-title">공문·안내문 다듬기 — 딱딱한 문장을 읽히는 문장으로</h2>
+      <p class="col-excerpt">주민에게 보내는 안내문은 정확해야 하지만 동시에 읽혀야 합니다. AI는 법령 용어가 가득한 문장을 쉬운 말로 풀어내는 데 유용합니다. 정확성을 해치지 않으면서 가독성을 높이는 요청 방법을 정리했습니다.</p>
+      <span class="col-more">가이드 읽기 →</span>
+    </div>
+  </a>
+  <a class="col-card" href="/ai/report-drafting.html" data-cat="업무">
+    <div class="col-icon">📄</div>
+    <div>
+      <div class="col-meta"><span class="col-date">2026-07-18</span><span class="col-tag">업무</span></div>
+      <h2 class="col-title">개조식 보고서 초안 — 1쪽 보고서를 AI와 함께 쓰기</h2>
+      <p class="col-excerpt">행정 보고서의 핵심은 짧은 분량 안에 판단에 필요한 정보를 빠짐없이 담는 것입니다. AI는 흩어진 메모를 보고서 뼈대로 정리하는 데 특히 강합니다. 초안 작성 시간을 줄이고, 사람은 판단과 표현 검토에 집중하는 방식입니다.</p>
+      <span class="col-more">가이드 읽기 →</span>
+    </div>
+  </a>
+  <a class="col-card" href="/ai/ai-security-for-public.html" data-cat="기초">
+    <div class="col-icon">🔒</div>
+    <div>
+      <div class="col-meta"><span class="col-date">2026-07-14</span><span class="col-tag">기초</span></div>
+      <h2 class="col-title">공무원을 위한 AI 보안 수칙 — 넣어도 되는 것과 안 되는 것</h2>
+      <p class="col-excerpt">생성형 AI 활용에서 가장 먼저 세워야 할 원칙은 입력 정보의 경계입니다. 편리함보다 먼저, 어떤 자료가 외부 서비스로 나가도 되는지 판단하는 기준을 갖추는 것이 안전한 활용의 출발점입니다.</p>
+      <span class="col-more">가이드 읽기 →</span>
+    </div>
+  </a>
+  <a class="col-card" href="/ai/prompt-basics.html" data-cat="기초">
+    <div class="col-icon">✍️</div>
+    <div>
+      <div class="col-meta"><span class="col-date">2026-07-10</span><span class="col-tag">기초</span></div>
+      <h2 class="col-title">프롬프트 설계 기본 — 역할·맥락·형식 세 가지만 기억하기</h2>
+      <p class="col-excerpt">프롬프트 작성법은 복잡한 기술이 아닙니다. 누가(역할), 어떤 상황에서(맥락), 어떤 모양으로(형식) 원하는지를 밝히는 것만으로도 결과 품질이 눈에 띄게 달라집니다.</p>
+      <span class="col-more">가이드 읽기 →</span>
+    </div>
+  </a>
+  <a class="col-card" href="/ai/ai-first-step.html" data-cat="기초">
+    <div class="col-icon">🧭</div>
+    <div>
+      <div class="col-meta"><span class="col-date">2026-07-06</span><span class="col-tag">기초</span></div>
+      <h2 class="col-title">생성형 AI 첫걸음 — 대화형 AI를 업무 도구로 쓰기</h2>
+      <p class="col-excerpt">대화형 AI는 검색창이 아니라 일을 함께 하는 동료에 가깝습니다. 질문 한 줄로 끝내지 않고, 초안을 받고 고치고 다시 요청하는 왕복 과정에서 가치가 나옵니다. 처음 쓰는 사람이 가장 빨리 효과를 보는 사용 순서를 정리했습니다.</p>
+      <span class="col-more">가이드 읽기 →</span>
+    </div>
+  </a>
+</section>
+
+<footer>
+  © 2026 최승환 · choijc79.github.io
+</footer>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'☀ 라이트':'☾ 다크';
+})();
+function toggleTheme(){
+  var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'☀ 라이트':'☾ 다크';
+}
+document.querySelectorAll('.tab-btn').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.tab-btn').forEach(function(x){x.classList.remove('active');x.setAttribute('aria-selected','false');});
+    b.classList.add('active');b.setAttribute('aria-selected','true');
+    var c=b.getAttribute('data-cat');
+    document.querySelectorAll('.col-card').forEach(function(card){
+      card.hidden=!(c==='전체'||card.getAttribute('data-cat')===c);
+    });
+  });
+});
+</script>
+</body>
+</html>
