@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="/css/pages.css">
 <link rel="stylesheet" href="/css/index.css">
 <link rel="stylesheet" href="/css/jc-picker.css">
+<link rel="stylesheet" href="/css/dusk.css">
 </head>
 <body>
 <nav id="navbar">
@@ -57,6 +58,35 @@
     <div class="wx-days" id="wx-days">
       <div class="wx-err">날씨 불러오는 중...</div>
     </div>
+  </div>
+</section>
+
+<section id="dusk-strip" aria-label="제천 노을 지수와 일출 일몰">
+  <div class="dusk-inner">
+    <div class="dusk-kicker">제천 · 해 질 녘 <span id="dusk-updated"></span></div>
+    <div class="dusk-main">
+      <div class="dusk-times">
+        <div class="dusk-time">
+          <span class="dusk-time-label">일출</span>
+          <span class="dusk-time-val" id="dusk-sunrise">—</span>
+        </div>
+        <div class="dusk-sunarc" aria-hidden="true"></div>
+        <div class="dusk-time dusk-time-set">
+          <span class="dusk-time-label">일몰</span>
+          <span class="dusk-time-val" id="dusk-sunset">—</span>
+        </div>
+      </div>
+      <div class="dusk-score">
+        <div class="dusk-score-num" id="dusk-score">—</div>
+        <div class="dusk-score-meta">
+          <span class="dusk-grade" id="dusk-grade"></span>
+          <span class="dusk-score-label">노을지수</span>
+        </div>
+      </div>
+    </div>
+    <p class="dusk-note" id="dusk-note">제천 하늘을 불러오는 중.</p>
+    <div class="dusk-facts" id="dusk-facts"></div>
+    <div class="dusk-week" id="dusk-week" aria-label="이번 주 노을 전망"></div>
   </div>
 </section>
 
@@ -167,6 +197,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="/js/globe.js"></script>
 <script src="/js/jc-picker.js"></script>
+<script src="/js/dusk.js"></script>
 <script src="/js/site.js"></script>
 </body>
 </html>
