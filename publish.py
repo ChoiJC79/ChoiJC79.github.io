@@ -872,6 +872,7 @@ def main():
     push_local("css/dusk.css",                        "update dusk css")
     push_local("css/theme.css",                       "update theme css")
     push_local("js/site.js",                          "update site js")
+    push_local("js/theme-toggle.js",                  "update theme toggle js")
     push_local("js/dusk.js",                          "update dusk js")
     push_local("js/globe.js",                         "update globe js")
     push_local("js/jc-picker.js",                      "update jc-picker js")
