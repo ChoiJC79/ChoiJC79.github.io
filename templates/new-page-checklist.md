@@ -10,6 +10,7 @@
 - [ ] 참고 파일을 복사해 내용 교체 (디자인 토큰은 CLAUDE.md의 `--bg`, `--surface`, `--accent` 등 유지)
 - [ ] OG 메타태그 포함 확인 — `og:title`, `og:description`, `og:type`, `og:url`
 - [ ] 가능하면 `css/synthwave.css` + `css/pages.css` 링크 방식 사용 (인라인 `<style>` 전체 복제는 지양)
+- [ ] `</body>` 바로 앞에 공통 모션 스크립트 두 줄 추가 (CLAUDE.md `js/motion.js` 항목 참고)
 
 ## 목록/내비게이션 연결
 - [ ] 관련 목록 페이지(있다면)에 카드·링크 추가

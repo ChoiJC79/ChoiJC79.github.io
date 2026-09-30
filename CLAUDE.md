@@ -110,6 +110,7 @@ GitHub Pages 기반 개인 사이트 (`choijc79.github.io`) 관리 및 콘텐츠
 | `js/site.js` | index.html 공통 스크립트: 테마 토글·내비 스크롤·검색창·위젯 열기닫기·날씨·홈 통계 |
 | `js/globe.js` | index.html 3D 지구본 렌더링 (Three.js) |
 | `js/jc-picker.js` | index.html 맛집 뽑기 로직 |
+| `js/motion.js` | 사이트 공통 스크롤 등장 모션 (Motion 13.4.6, Motion AI Kit 규칙 기준). 모든 페이지 `</body>` 앞에 `<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>` + `<script src="/js/motion.js" defer></script>` 두 줄 필요. '동작 줄이기' 설정·CDN 실패 시 자동으로 꺼짐 |
 | `about.html` | 소개 페이지 |
 | `research.html` | 연구·논문 포트폴리오 |
 | `column.html` | 칼럼 목록. 카드마다 `/columns/{슬러그}.html`로 링크. 직접 수정하는 정본 파일 (더 이상 자동 생성 안 됨) |
