@@ -1,0 +1,135 @@
+/* 홈 히어로 아래, 제천 노을지수·일출일몰 주황톤 패널 */
+#dusk-strip{
+  --dusk-ink:#2a1408;
+  --dusk-paper:#f6e6cf;
+  --dusk-copper:#c46a2d;
+  --dusk-amber:#e08a3a;
+  --dusk-ember:#ffb065;
+  --dusk-mute:rgba(246,230,207,0.62);
+  position:relative;
+  overflow:hidden;
+  color:var(--dusk-paper);
+  background:
+    radial-gradient(120% 90% at 78% 120%, rgba(255,140,64,0.38) 0%, transparent 52%),
+    radial-gradient(70% 80% at 8% 0%, rgba(255,176,96,0.16) 0%, transparent 46%),
+    linear-gradient(180deg,#1c0c06 0%,#3a160a 48%,#5a2410 100%);
+  border-bottom:1px solid rgba(255,176,96,0.22);
+}
+#dusk-strip::before{
+  content:'';
+  position:absolute;
+  inset:auto 0 0 0;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--dusk-ember),var(--dusk-copper),transparent);
+  opacity:0.85;
+}
+.dusk-inner{position:relative;z-index:1;max-width:1160px;margin:0 auto;padding:1.55rem 2.5rem 1.35rem;}
+.dusk-kicker{
+  display:flex;align-items:center;gap:0.7rem;
+  font-size:10px;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--dusk-mute);margin-bottom:1rem;
+}
+.dusk-kicker::before{content:'';width:18px;height:1px;background:var(--dusk-amber);}
+#dusk-updated{margin-left:auto;letter-spacing:0.08em;font-size:9px;opacity:0.7;}
+.dusk-main{
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(220px,0.7fr);
+  gap:1.6rem 2.2rem;
+  align-items:end;
+}
+.dusk-times{display:flex;align-items:flex-end;gap:1.4rem;}
+.dusk-time{display:flex;flex-direction:column;gap:0.28rem;min-width:0;}
+.dusk-time-label{
+  font-size:10px;letter-spacing:0.16em;text-transform:uppercase;
+  color:rgba(246,230,207,0.58);
+}
+.dusk-time-val{
+  font-family:'Gowun Batang','Noto Serif KR',serif;
+  font-size:clamp(2.1rem,4vw,3.15rem);
+  line-height:0.95;
+  font-weight:700;
+  color:#fff4e4;
+  text-shadow:0 0 28px rgba(255,160,80,0.28);
+}
+.dusk-time-set .dusk-time-val{color:#ffc27a;}
+.dusk-sunarc{
+  flex:1;height:52px;margin:0 0.2rem 0.35rem;
+  border:1px solid rgba(255,176,96,0.35);
+  border-bottom:none;border-radius:80px 80px 0 0;
+  background:linear-gradient(180deg,rgba(255,176,80,0.16),transparent 70%);
+  position:relative;
+}
+.dusk-sunarc::after{
+  content:'';position:absolute;left:50%;bottom:-7px;width:14px;height:14px;
+  margin-left:-7px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#ffe7b8,#ff8a3c 58%,#c24a12);
+  box-shadow:0 0 18px rgba(255,140,60,0.7);
+}
+.dusk-score{text-align:right;padding-bottom:0.1rem;}
+.dusk-score-num{
+  font-family:'Gowun Batang','Noto Serif KR',serif;
+  font-size:clamp(3.4rem,6vw,4.6rem);
+  line-height:0.85;
+  color:#ffd7a1;
+  text-shadow:0 8px 36px rgba(255,120,40,0.28);
+}
+.dusk-score-unit{font-size:0.95rem;letter-spacing:0.08em;color:rgba(246,230,207,0.5);margin-left:0.15rem;}
+.dusk-score-meta{margin-top:0.45rem;display:flex;justify-content:flex-end;align-items:baseline;gap:0.55rem;}
+.dusk-grade{
+  font-size:13px;letter-spacing:0.08em;color:#ffb065;font-weight:500;
+}
+.dusk-score-label{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--dusk-mute);}
+.dusk-note{
+  margin:1.05rem 0 0;
+  font-family:'Gowun Batang','Noto Serif KR',serif;
+  font-size:1rem;line-height:1.7;color:rgba(255,244,228,0.88);
+  max-width:40rem;
+}
+.dusk-facts{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0.7rem;
+  margin-top:1.15rem;
+}
+.dusk-fact{
+  padding:0.7rem 0.8rem 0.75rem;
+  background:rgba(20,8,4,0.28);
+  border:1px solid rgba(255,176,96,0.16);
+}
+.dusk-fact-k{display:block;font-size:9.5px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(246,230,207,0.5);margin-bottom:0.28rem;}
+.dusk-fact-v{font-family:'Gowun Batang',serif;font-size:1.12rem;color:#fff1dc;}
+.dusk-fact-s{display:block;margin-top:0.12rem;font-size:10px;color:rgba(246,230,207,0.48);}
+.dusk-week{display:flex;gap:0.45rem;margin-top:1.15rem;align-items:flex-end;}
+.dusk-wday{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:0.35rem;
+  min-width:0;
+}
+.dusk-bar{
+  width:100%;height:52px;display:flex;align-items:flex-end;
+  background:rgba(20,8,4,0.22);border:1px solid rgba(255,176,96,0.12);
+}
+.dusk-bar>i{
+  display:block;width:100%;
+  background:linear-gradient(180deg,var(--dusk-ember),var(--dusk-copper));
+  opacity:0.82;
+}
+.dusk-wday.is-today .dusk-bar{border-color:rgba(255,176,96,0.45);}
+.dusk-wday.is-today .dusk-bar>i{box-shadow:0 0 12px rgba(255,140,60,0.35);}
+.dusk-wd{font-size:10px;color:rgba(246,230,207,0.5);}
+.dusk-wday.is-today .dusk-wd{color:#ffc27a;}
+.dusk-ws{font-size:11px;color:#f6e6cf;font-variant-numeric:tabular-nums;}
+.dusk-err{font-size:13px;color:var(--dusk-mute);padding:0.4rem 0;}
+@media(max-width:900px){
+  .dusk-inner{padding:1.3rem 1.5rem 1.2rem;}
+  .dusk-main{grid-template-columns:1fr;gap:1.1rem;}
+  .dusk-score{text-align:left;}
+  .dusk-score-meta{justify-content:flex-start;}
+  .dusk-facts{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:600px){
+  .dusk-inner{padding:1.15rem 1.1rem 1.1rem;}
+  .dusk-times{gap:0.7rem;}
+  .dusk-time-val{font-size:1.85rem;}
+  .dusk-sunarc{height:36px;margin-bottom:0.2rem;}
+  .dusk-score-num{font-size:3rem;}
+  .dusk-note{font-size:0.92rem;}
+  .dusk-fact{padding:0.6rem 0.65rem;}
+}

@@ -80,18 +80,18 @@ input[type=color]{width:100%;height:38px;padding:2px;border:1px solid var(--line
 .hint{margin:0 0 12px}
 .notice{margin:14px 0 0;padding:10px 12px;border-left:3px solid var(--accent);background:#fff}
 
-.leaflet{position:relative;display:grid;grid-template-columns:repeat(3,1fr);aspect-ratio:297/210;overflow:hidden;border:1px solid #cfd8dd;background:#fffefa;box-shadow:0 16px 32px #14273922}
+.leaflet{position:relative;container-type:inline-size;display:grid;grid-template-columns:repeat(3,1fr);aspect-ratio:297/210;overflow:hidden;border:1px solid #cfd8dd;background:#fffefa;box-shadow:0 16px 32px #14273922}
 .leaflet.cols-2{grid-template-columns:repeat(2,1fr)}
 .guide-layer{position:absolute;inset:0;z-index:9;pointer-events:none;background:linear-gradient(90deg,transparent 33.25%,#42546622 33.3%,transparent 33.35%,transparent 66.55%,#42546622 66.6%,transparent 66.65%)}
 .leaflet.cols-2 .guide-layer{background:linear-gradient(90deg,transparent 49.75%,#42546622 49.8%,transparent 49.85%)}
 
 .panel{position:relative;min-width:0;overflow:hidden;cursor:default}
 .panel-selected{outline:2px solid var(--accent);outline-offset:-2px}
-.panel-guide{position:absolute;top:8px;right:9px;z-index:9;color:#24394a55;font-size:clamp(7px,.7vw,10px);font-weight:900;letter-spacing:.06em;pointer-events:none}
-.panel-empty-hint{position:absolute;inset:16px;display:grid;place-items:center;border:1px dashed #a9bac655;border-radius:10px;color:#8a97a6;font-size:clamp(9px,1vw,13px);font-weight:700;text-align:center;padding:10px;pointer-events:none}
-.panel-accent:before{content:"";position:absolute;right:-23%;bottom:-20%;width:80%;aspect-ratio:1;border:clamp(8px,1.4vw,20px) solid var(--accent);border-radius:50%;opacity:.55;pointer-events:none;z-index:1}
+.panel-guide{position:absolute;top:8px;right:9px;z-index:9;color:#24394a55;font-size:.75cqw;font-weight:900;letter-spacing:.06em;pointer-events:none}
+.panel-empty-hint{position:absolute;inset:16px;display:grid;place-items:center;border:1px dashed #a9bac655;border-radius:10px;color:#8a97a6;font-size:1.1cqw;font-weight:700;text-align:center;padding:10px;pointer-events:none}
+.panel-accent:before{content:"";position:absolute;right:-23%;bottom:-20%;width:80%;aspect-ratio:1;border:1.6cqw solid var(--accent);border-radius:50%;opacity:.55;pointer-events:none;z-index:1}
 
-.item{position:absolute;z-index:6;touch-action:none;cursor:grab}
+.item{position:absolute;z-index:6;touch-action:none;cursor:grab;user-select:none}
 .item.dragging{cursor:grabbing;z-index:20}
 .item.selected{outline:2px solid var(--accent);outline-offset:3px}
 .item-remove{position:absolute;top:-9px;right:-9px;width:20px;height:20px;padding:0;border:0;border-radius:50%;background:#c0392b;color:#fff;font-size:12px;line-height:20px;text-align:center;cursor:pointer;opacity:0;transition:opacity .15s;z-index:3}
@@ -99,17 +99,17 @@ input[type=color]{width:100%;height:38px;padding:2px;border:1px solid var(--line
 .item-resize-handle{position:absolute;right:-6px;bottom:-6px;width:16px;height:16px;border-radius:4px;background:#fff;border:2px solid var(--accent);cursor:nwse-resize;opacity:0;transition:opacity .15s;z-index:3}
 .item:hover .item-resize-handle,.item.selected .item-resize-handle{opacity:1}
 
-.item-text{position:relative;padding:clamp(8px,1.1vw,14px);max-width:88%;line-height:1.42;white-space:pre-line;word-break:keep-all;z-index:8}
-.item-text.size-bold{font-size:clamp(17px,2.5vw,36px);font-weight:900;letter-spacing:-.03em}
-.item-text.size-medium{font-size:clamp(12px,1.5vw,20px);font-weight:800;letter-spacing:-.01em}
-.item-text.size-small{font-size:clamp(10px,1.05vw,14px);font-weight:600}
+.item-text{position:relative;padding:1.2cqw;max-width:88%;line-height:1.42;white-space:pre-line;word-break:keep-all;z-index:8}
+.item-text.size-bold{font-size:3.3cqw;font-weight:900;letter-spacing:-.03em}
+.item-text.size-medium{font-size:1.9cqw;font-weight:800;letter-spacing:-.01em}
+.item-text.size-small{font-size:1.3cqw;font-weight:600}
 .item-text.line{border-left:4px solid var(--accent);background:#ffffffcc}
 .item-text.fill{border-radius:8px;background:var(--item-bg,#ffffff);box-shadow:0 3px 10px #14273922}
 
 .item-image{border:2px solid #fff;box-shadow:0 4px 12px #14273933;background:#c9dcde;z-index:5}
 .item-image img{width:100%;height:100%;display:block;pointer-events:none}
 
-.ci-overlay{position:absolute;z-index:15;max-width:56%;height:clamp(28px,4.6vw,64px);object-fit:contain;pointer-events:none}
+.ci-overlay{position:absolute;z-index:15;max-width:56%;height:5.5cqw;object-fit:contain;cursor:grab;touch-action:none;user-select:none}
 
 .hidden{display:none!important}
 
@@ -121,7 +121,8 @@ input[type=color]{width:100%;height:38px;padding:2px;border:1px solid var(--line
 @media print{
   *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
   @page{size:A4 landscape;margin:0}
-  header,.editor,.top,.hint,.notice{display:none!important}
+  body{background:#fff}
+  header,.editor,.top,.hint,.notice,.panel-empty-hint{display:none!important}
   main{display:block;padding:0;max-width:none}
   .preview{overflow:visible}
   .leaflet{width:297mm;height:208mm;min-width:0;border:0;box-shadow:none}
@@ -129,6 +130,7 @@ input[type=color]{width:100%;height:38px;padding:2px;border:1px solid var(--line
   #outer{break-after:page}
   .panel-guide,.item-remove,.item-resize-handle{display:none!important}
   .panel-selected,.item.selected{outline:0!important}
+  .item-image,.item-text.fill{box-shadow:none}
   .guide-layer{opacity:.25}
 }
 </style>
@@ -372,7 +374,7 @@ let selectedPanel = 'outer1';
 let selectedItemId = null;
 
 const state = {
-  logo:'assets/danyang-gun-mark.png',
+  logo:'/img/danyang-gun-mark.png',
   logoX:8, logoY:80,
   panels:{}
 };
@@ -462,7 +464,15 @@ function applyPreset(name){
   document.querySelectorAll('[data-preset]').forEach(b => b.classList.toggle('active', b.dataset.preset === name));
   if(!ids.includes(selectedPanel)) selectedPanel = ids[0];
   selectedItemId = defaultItemFor(selectedPanel);
+  markPristine();
   draw();
+}
+
+// 편집 내용을 덮어쓰기 전에 확인 (저장·예시 적용 직후 상태와 같으면 묻지 않음)
+let pristine = '';
+function markPristine(){ pristine = JSON.stringify(state.panels); }
+function confirmDiscard(){
+  return JSON.stringify(state.panels) === pristine || confirm('편집한 내용이 예시로 바뀝니다. 저장하지 않은 내용은 사라집니다. 계속할까요?');
 }
 
 function applyTheme(name){
@@ -523,6 +533,7 @@ function renderPanel(id){
     logo.alt = '기관 로고';
     logo.style.left = state.logoX + '%';
     logo.style.top = state.logoY + '%';
+    logo.draggable = false;
     el.appendChild(logo);
   }
   return el;
@@ -550,12 +561,14 @@ function makeDraggable(itemEl, panelEl, onDrop, onClick){
     function up(){
       itemEl.removeEventListener('pointermove', move);
       itemEl.removeEventListener('pointerup', up);
+      itemEl.removeEventListener('pointercancel', up);
       itemEl.classList.remove('dragging');
       if(moved) onDrop(parseFloat(itemEl.style.left), parseFloat(itemEl.style.top));
       else onClick();
     }
     itemEl.addEventListener('pointermove', move);
     itemEl.addEventListener('pointerup', up);
+    itemEl.addEventListener('pointercancel', up);
   });
   itemEl.addEventListener('click', e => e.stopPropagation());
 }
@@ -578,10 +591,12 @@ function makeResizable(handleEl, itemEl, panelEl, onResize){
     function up(){
       handleEl.removeEventListener('pointermove', move);
       handleEl.removeEventListener('pointerup', up);
+      handleEl.removeEventListener('pointercancel', up);
       onResize(parseFloat(itemEl.style.width), parseFloat(itemEl.style.height));
     }
     handleEl.addEventListener('pointermove', move);
     handleEl.addEventListener('pointerup', up);
+    handleEl.addEventListener('pointercancel', up);
   });
   handleEl.addEventListener('click', e => e.stopPropagation());
 }
@@ -626,13 +641,19 @@ function draw(){
         itemEl.addEventListener('click', e => { e.stopPropagation(); selectItem(panelId, itemId); });
       } else {
         makeDraggable(itemEl, panelEl,
-          (x, y) => { const it = findItem(panelId, itemId); if(it){ it.x = x; it.y = y; } },
+          (x, y) => { const it = findItem(panelId, itemId); if(it){ it.x = x; it.y = y; } selectItem(panelId, itemId); },
           () => selectItem(panelId, itemId)
         );
       }
       const handle = itemEl.querySelector('.item-resize-handle');
-      if(handle && item) makeResizable(handle, itemEl, panelEl, (w, h) => { item.w = w; item.h = h; });
+      if(handle && item) makeResizable(handle, itemEl, panelEl, (w, h) => { item.w = w; item.h = h; selectItem(panelId, itemId); });
     });
+    const logoEl = panelEl.querySelector('.ci-overlay');
+    if(logoEl) makeDraggable(logoEl, panelEl, (x, y) => {
+      state.logoX = x; state.logoY = y;
+      $('logoX').value = x; $('logoY').value = y;
+      syncLogoPositions();
+    }, () => selectPanel(panelId));
   });
 
   syncSidebar();
@@ -654,7 +675,7 @@ function renderPanelSelectOptions(){
 }
 
 function setLayoutMode(mode){
-  if(mode === layoutMode) return;
+  if(mode === layoutMode || !confirmDiscard()) return;
   layoutMode = mode;
   document.querySelectorAll('[data-layout]').forEach(b => b.classList.toggle('active', b.dataset.layout === mode));
   renderPanelSelectOptions();
@@ -692,14 +713,16 @@ function syncSidebar(){
     const isText = item.kind === 'text';
     document.querySelectorAll('.text-only').forEach(el => el.classList.toggle('hidden', !isText));
     document.querySelectorAll('.image-only').forEach(el => el.classList.toggle('hidden', isText));
+    // 값이 같을 때 다시 쓰면 입력 중인 커서·한글 조합이 깨지므로 다를 때만 반영
+    const setVal = (id, v) => { if($(id).value !== v) $(id).value = v; };
     if(isText){
-      $('elementText').value = item.text;
-      $('elementSize').value = item.size;
-      $('elementBox').value = item.box;
-      $('elementFg').value = item.fg;
-      $('elementBg').value = item.bg;
+      setVal('elementText', item.text);
+      setVal('elementSize', item.size);
+      setVal('elementBox', item.box);
+      setVal('elementFg', item.fg);
+      setVal('elementBg', item.bg);
     } else {
-      $('elementMode').value = item.mode;
+      setVal('elementMode', item.mode);
     }
   } else {
     $('elementEditor').classList.add('hidden');
@@ -729,6 +752,28 @@ function transparentLogo(src){
   };
   img.onerror = () => { draw(); };
   img.src = src;
+}
+
+// 큰 사진은 줄여서 data URL로 변환 (저장 용량·편집 속도 확보, 인쇄용으로 충분한 해상도 유지)
+function readImageFile(file, maxSide, done){
+  const fail = () => alert('이미지를 불러올 수 없습니다. JPG 또는 PNG 파일을 선택해 주세요.');
+  const reader = new FileReader();
+  reader.onerror = fail;
+  reader.onload = () => {
+    const img = new Image();
+    img.onerror = fail;
+    img.onload = () => {
+      const scale = Math.min(1, maxSide / Math.max(img.naturalWidth, img.naturalHeight));
+      if(scale === 1 && file.size < 1.5e6) return done(reader.result);
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.round(img.naturalWidth * scale);
+      canvas.height = Math.round(img.naturalHeight * scale);
+      canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+      done(/jpe?g/i.test(file.type) ? canvas.toDataURL('image/jpeg', 0.88) : canvas.toDataURL('image/png'));
+    };
+    img.src = reader.result;
+  };
+  reader.readAsDataURL(file);
 }
 
 // ---- 저장/버전 관리 ----
@@ -776,13 +821,17 @@ function saveVersion(){
       localStorage.setItem(STORAGE_KEY, JSON.stringify(versionStore));
       $('versionStatus').textContent = entry.label + ' 저장됨 (' + formatTime(entry.savedAt) + ')';
       renderVersionList();
+      markPristine();
       return;
     }catch(e){
       if(versionStore.versions.length > 1) versionStore.versions.shift();
       else break;
     }
   }
-  $('versionStatus').textContent = '저장 공간이 부족합니다. 오래된 버전을 삭제해 주세요.';
+  // 실패 시 메모리에서 지운 기존 버전이 사라지지 않도록 저장소 기준으로 되돌림
+  versionStore = loadVersionStore();
+  renderVersionList();
+  $('versionStatus').textContent = '저장 공간이 부족합니다. 사진 수를 줄이거나 오래된 버전을 삭제해 주세요.';
 }
 function restoreVersion(id){
   const entry = versionStore.versions.find(v => v.id === id);
@@ -792,6 +841,8 @@ function restoreVersion(id){
   document.querySelectorAll('[data-layout]').forEach(b => b.classList.toggle('active', b.dataset.layout === layoutMode));
   renderPanelSelectOptions();
   state.panels = JSON.parse(JSON.stringify(snap.panels));
+  // 새로 추가할 요소의 id가 불러온 요소와 겹치지 않게 맞춤
+  Object.values(state.panels).forEach(p => p.items.forEach(it => { uid = Math.max(uid, parseInt(it.id.slice(1), 10) || 0); }));
   state.logo = snap.logo;
   state.logoX = snap.logoX;
   state.logoY = snap.logoY;
@@ -802,6 +853,7 @@ function restoreVersion(id){
   document.querySelectorAll('[data-preset]').forEach(b => b.classList.toggle('active', b.dataset.preset === activePreset));
   selectedPanel = 'outer1';
   selectedItemId = defaultItemFor(selectedPanel);
+  markPristine();
   draw();
   $('versionStatus').textContent = entry.label + ' 불러옴';
 }
@@ -813,14 +865,21 @@ function deleteVersion(id){
 }
 
 document.querySelectorAll('[data-layout]').forEach(b => b.addEventListener('click', () => setLayoutMode(b.dataset.layout)));
-document.querySelectorAll('[data-preset]').forEach(b => b.addEventListener('click', () => applyPreset(b.dataset.preset)));
+document.querySelectorAll('[data-preset]').forEach(b => b.addEventListener('click', () => { if(confirmDiscard()) applyPreset(b.dataset.preset); }));
 document.querySelectorAll('[data-theme]').forEach(b => b.addEventListener('click', () => applyTheme(b.dataset.theme)));
+
+// 파일을 창에 끌어다 놓으면 페이지가 그 파일로 바뀌어 작업이 사라지는 것을 방지
+['dragover','drop'].forEach(type => window.addEventListener(type, e => e.preventDefault()));
 
 $('logoUpload').addEventListener('change', e => {
   const file = e.target.files[0];
+  e.target.value = '';
   if(!file) return;
-  state.panels[selectedPanel].showLogo = true;
-  transparentLogo(URL.createObjectURL(file));
+  const panelId = selectedPanel;
+  readImageFile(file, 1200, src => {
+    state.panels[panelId].showLogo = true;
+    transparentLogo(src);
+  });
 });
 $('logoX').addEventListener('input', e => { state.logoX = Number(e.target.value); syncLogoPositions(); });
 $('logoY').addEventListener('input', e => { state.logoY = Number(e.target.value); syncLogoPositions(); });
@@ -831,15 +890,15 @@ $('panelLogo').addEventListener('change', e => { state.panels[selectedPanel].sho
 
 $('addImageInput').addEventListener('change', e => {
   const file = e.target.files[0];
+  e.target.value = '';
   if(!file) return;
-  const reader = new FileReader();
-  reader.onload = () => {
-    const item = addImageItem(selectedPanel, reader.result);
+  const panelId = selectedPanel;
+  readImageFile(file, 2400, src => {
+    const item = addImageItem(panelId, src);
+    selectedPanel = panelId;
     selectedItemId = item.id;
     draw();
-  };
-  reader.readAsDataURL(file);
-  e.target.value = '';
+  });
 });
 
 document.querySelectorAll('[data-add-text]').forEach(b => b.addEventListener('click', () => {
@@ -849,7 +908,7 @@ document.querySelectorAll('[data-add-text]').forEach(b => b.addEventListener('cl
   const item = addTextItem(selectedPanel, size, placeholder, { x: 10 + (n * 6) % 50, y: 10 + (n * 8) % 60 });
   selectedItemId = item.id;
   draw();
-  $('elementText').focus();
+  $('elementText').select();
 }));
 
 $('elementSelect').addEventListener('change', e => { selectedItemId = e.target.value || null; draw(); });
@@ -887,7 +946,7 @@ $('loadVersionBtn').addEventListener('click', () => { const id = $('versionSelec
 $('deleteVersionBtn').addEventListener('click', () => { const id = $('versionSelect').value; if(id) deleteVersion(id); });
 
 $('printBtn').addEventListener('click', () => window.print());
-$('resetBtn').addEventListener('click', () => applyPreset(activePreset));
+$('resetBtn').addEventListener('click', () => { if(confirmDiscard()) applyPreset(activePreset); });
 
 renderPanelSelectOptions();
 renderTemplateGrid();

@@ -113,12 +113,14 @@ GitHub Pages 기반 개인 사이트 (`choijc79.github.io`) 관리 및 콘텐츠
 | `about.html` | 소개 페이지 |
 | `research.html` | 연구·논문 포트폴리오 |
 | `column.html` | 칼럼 목록. 카드마다 `/columns/{슬러그}.html`로 링크. 직접 수정하는 정본 파일 (더 이상 자동 생성 안 됨) |
+| `💬 AI가이드.md` | AI 가이드 원본. `---` 구분자, `## 제목 \| YYYY-MM-DD \| 태그` 헤더 + `slug`/`repo`/`minutes`/`steps`/`sections`/`excerpt` 필드 |
+| `build_guides.py` | `guides.html`과 `guides/*.html` 생성. 코드블록·표·복사 프롬프트를 지원. 가이드 추가 후 수동 실행 |
+| `guides.html` | AI 가이드 목록 |
+| `guides/` | 개별 가이드 페이지 (`/guides/claude-and-markitdown.html` 형식) |
+| `css/guides.css` | 가이드 목록·상세 스타일 |
 | `tour.html` | 투어 기사 목록 |
 | `whisky.html` | 위스키 가이드 목록 |
 | `memo.html` | 정리노트 (publish.py가 자동 생성) |
-| `ai_guides.json` | AI 가이드 원본 데이터 (편당 slug·date·cat·title·summary·when·steps·prompt·cautions·takeaway). 날짜·슬러그 중복 불가 |
-| `build_ai_guides.py` | `ai_guides.json` → `ai-guide.html`(목록, 분류 탭) + `ai/{슬러그}.html` 생성. 데이터 수정 후 수동 실행 (`--check`로 검증만 가능) |
-| `ai-guide.html`, `ai/` | AI 가이드 목록·개별 페이지 (생성물 — 직접 수정하지 말고 JSON 수정 후 재생성) |
 | `templates/` | 반복되는 발행 흐름(위스키 리뷰, 칼럼, 신규 페이지)의 재사용 템플릿 + 체크리스트. 새 항목 추가 시 `templates/README.md`부터 확인 |
 
 배포는 항상 `🚀 사이트에 올리기.bat` 실행으로만 가능 (샌드박스에서 GitHub API 직접 호출 불가).
@@ -188,6 +190,35 @@ GitHub Pages 기반 개인 사이트 (`choijc79.github.io`) 관리 및 콘텐츠
 4. `🚀 사이트에 올리기.bat` 실행 → `column.html` + `columns/*.html` + `img/` 사진이 함께 업로드됨
 
 태그는 `·`로 구분. 예: `지방세·행정연구`, `건축·여행·에스파냐`
+
+---
+
+## AI 가이드 추가 방법 (매주 1편)
+
+형식은 [lazyowen 가이드](https://lazyowen.com/guides/claude-and-n8n)를 따른다. 행정 칼럼(`column.html`)과 섞지 않는다.
+
+1. [GitHub Trending this week](https://github.com/trending?since=weekly)에서 도구 하나를 고른다. `💬 AI가이드.md`에 이미 있는 `repo:`는 건너뛴다. 클로드와 짝지을 수 있고, 초보가 따라 할 명령이 있는 것을 고른다.
+2. 초안을 채팅창에 먼저 보여 운영자 확인을 받는다. 본문에는 복사 프롬프트, Quick Start(저장소·한 줄 정의·스타 수·라이선스·환경·비용), STEP, 자주 막히는 곳, 솔직히 한계, 공식 자료가 들어가야 한다. 숫자는 README·PyPI·트렌드 페이지에서 확인한 날짜를 밝힌다.
+3. 승인 후 `💬 AI가이드.md` 끝에 아래 형식으로 추가한다.
+
+```markdown
+## 제목 | YYYY-MM-DD | 태그1·태그2
+slug: claude-and-도구이름
+repo: owner/repo
+minutes: 14
+steps: 5
+sections: 8
+excerpt: 한 줄 요약
+
+본문...
+
+---
+```
+
+4. `python3 build_guides.py` 실행 (`--check`로 파싱만 확인 가능)
+5. `🚀 사이트에 올리기.bat` 실행
+
+트리거 문구는 "이번 주 AI 가이드"이다. 로컬 세션이 일주일 동안 열려 있지 않으므로 타이머 루프는 쓰지 않는다.
 
 ---
 

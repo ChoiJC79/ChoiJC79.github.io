@@ -105,3 +105,50 @@ function searchGoogle(e){e.preventDefault();var q=document.getElementById('googl
 
 
 })();
+
+/* 네비: 마우스에 가까울수록 커지는 독 확대 */
+(function(){
+  var nav = document.querySelector('#navbar .nav-links, nav .nav-links, ul.nav-links');
+  if (!nav) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var mobile = window.matchMedia('(max-width: 900px)');
+  var links = Array.prototype.slice.call(nav.querySelectorAll('a'));
+  if (!links.length) return;
+  var MAX = 1.55;
+  var RANGE = 90;
+  var raf = 0;
+  var px = 0;
+
+  function apply(){
+    raf = 0;
+    if (reduce.matches || mobile.matches) return;
+    links.forEach(function(a){
+      var r = a.getBoundingClientRect();
+      var d = Math.abs(px - (r.left + r.width / 2));
+      var t = Math.max(0, 1 - d / RANGE);
+      t = t * t * (3 - 2 * t);
+      a.style.transform = 'scale(' + (1 + (MAX - 1) * t).toFixed(3) + ')';
+      a.style.zIndex = String(Math.round(t * 12));
+      if (t > 0.28) a.classList.add('is-near');
+      else a.classList.remove('is-near');
+    });
+  }
+
+  function onMove(e){
+    px = e.clientX;
+    if (!raf) raf = requestAnimationFrame(apply);
+  }
+
+  function reset(){
+    if (raf) { cancelAnimationFrame(raf); raf = 0; }
+    links.forEach(function(a){
+      a.style.transform = '';
+      a.style.zIndex = '';
+      a.classList.remove('is-near');
+    });
+  }
+
+  var host = nav.closest('nav') || nav;
+  host.addEventListener('mousemove', onMove);
+  host.addEventListener('mouseleave', reset);
+})();

@@ -83,15 +83,21 @@ a{color:var(--accent);text-decoration:none;}
 footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:11px;color:var(--muted);letter-spacing:0.04em;margin-top:3rem;}
 @media(max-width:600px){.main{padding:1rem;}.write-box{padding:1.2rem;}.form-row{flex-direction:column;}}
 </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
 </head>
 <body>
 
 <header class="site-header">
   <div class="logo">최승환 · 방명록</div>
   <nav class="nav-links">
-    <a href="/">← 홈으로</a>
-    <a href="/column.html">칼럼</a>
+    <a href="/">← 홈</a>
     <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
   </nav>
   <button id="theme-toggle" onclick="toggleTheme()">&#9790; 다크</button>
 </header>
@@ -175,7 +181,7 @@ async function loadEntries() {
     const data = await res.json();
     renderEntries(data);
   } catch (e) {
-    document.getElementById('entryList').innerHTML = '<div class="empty">불러오기 실패: ' + e.message + '</div>';
+    document.getElementById('entryList').innerHTML = '<div class="empty">방명록 서버를 점검하고 있습니다. 잠시 뒤에 다시 들러 주세요.</div>';
   }
 }
 
@@ -225,7 +231,7 @@ async function submitEntry() {
     showMsg('등록되었습니다 :)', 'ok');
     await loadEntries();
   } catch (e) {
-    showMsg('등록 실패: ' + e.message, 'err');
+    showMsg('지금은 글을 남길 수 없습니다. 방명록 서버를 점검하고 있습니다.', 'err');
   } finally {
     btn.disabled = false;
     btn.textContent = '등록';
@@ -241,5 +247,13 @@ function showMsg(text, type) {
 }
 </script>
 
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/about.html">👤<br>소개</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/guides.html">⚙️<br>가이드</a>
+  <a href="/guestbook.html" aria-current="page">✉<br>방명록</a>
+</div>
+<script src="/js/theme-toggle.js"></script>
 </body>
 </html>
