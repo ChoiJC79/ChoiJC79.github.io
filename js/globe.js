@@ -119,6 +119,11 @@ function buildCanvasEarth(){
   land([[174,-36],[177,-38],[175,-42],[173,-40],[174,-36]],G);
   /* Madagascar */
   land([[44,-13],[50,-16],[50,-25],[44,-25],[44,-13]],G);
+  /* Hawaii — 지구본 스케일에서 보이도록 살짝 키움 */
+  land([[-155.2,19.0],[-154.7,19.3],[-154.9,19.8],[-155.6,20.3],[-156.1,19.7],[-155.8,19.1],[-155.2,19.0]],G);
+  land([[-156.7,20.6],[-156.3,20.6],[-156.2,20.9],[-156.7,21.0],[-156.7,20.6]],G);
+  land([[-158.3,21.2],[-157.6,21.3],[-157.7,21.7],[-158.3,21.6],[-158.3,21.2]],G);
+  land([[-159.8,21.8],[-159.3,21.9],[-159.3,22.3],[-159.8,22.2],[-159.8,21.8]],G);
 
   /* POLAR ICE CAPS */
   var arcG=ctx.createLinearGradient(0,0,0,TH*0.14);
@@ -207,6 +212,7 @@ var CITIES=[
   {k:'로마',e:'Rome, Italy',lat:41.90,lon:12.50,url:'https://www.google.com/maps/search/Rome'},
   {k:'뉴욕',e:'New York, USA',lat:40.71,lon:-74.01,url:'https://www.google.com/maps/search/New+York'},
   {k:'로스앤젤레스',e:'Los Angeles, USA',lat:34.05,lon:-118.24,url:'https://www.google.com/maps/search/Los+Angeles'},
+  {k:'하와이',e:'Honolulu, Hawaii',lat:21.31,lon:-157.86,url:'https://www.google.com/maps/search/Honolulu+Hawaii'},
   {k:'상파울루',e:'Sao Paulo, Brazil',lat:-23.55,lon:-46.63,url:'https://www.google.com/maps/search/Sao+Paulo'},
   {k:'시드니',e:'Sydney, Australia',lat:-33.87,lon:151.21,url:'https://www.google.com/maps/search/Sydney'},
   {k:'요하네스버그',e:'Johannesburg, S. Africa',lat:-26.20,lon:28.04,url:'https://www.google.com/maps/search/Johannesburg'}
