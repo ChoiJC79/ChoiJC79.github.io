@@ -1,14 +1,9 @@
-# AI 가이드 섹션 — 체크리스트
+# 칼럼 AI 티 제거 후 재업로드
 
-- [x] `context-notes.md`에 결정 사항 기록
-- [x] `💬 AI가이드.md`에 첫 가이드(MarkItDown) 원문 작성
-- [x] `build_guides.py` 작성 (코드블록·표·프롬프트 박스 지원)
-- [x] `css/guides.css` 작성
-- [x] `python3 build_guides.py`로 `guides.html` + `guides/*.html` 생성
-- [x] `index.html` 내비·카드에 가이드 링크 추가
-- [x] `publish.py`에 guides 업로드 추가
-- [x] `CLAUDE.md`에 주간 발행 절차 추가
-- [x] 생성 HTML이 코드블록·복사 버튼·Quick Start를 포함하는지 확인
-- [x] 배포는 `🚀 사이트에 올리기.bat`로만 가능함을 안내
-- [x] 같은 주 트렌드에서 운영자 실용 3편 추가 (humanizer, i-have-adhd, agent-skills)
-- [x] `python3 build_guides.py`로 가이드 4편 HTML 재생성
+- [x] `context-notes.md`에 고치는 범위와 사진 교체 기준 적기
+- [x] `💬 칼럼·기고.md` 본문 다듬기 (도시경영학 관점 박스, 세 가지 나열, 상투 맺음)
+- [x] 목록에만 있는 7월 두 편도 같은 톤으로 손보기
+- [x] 안 맞는 카드 사진 교체
+- [x] `column.html` 카드 멘트·사진 경로 맞추기
+- [x] `columns/*.html` 본문만 갈아끼우기 (전체 재생성 안 함)
+- [x] gh로 올리기
