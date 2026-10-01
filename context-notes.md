@@ -1,3 +1,9 @@
+# 2026-10-01 홈 '최근 글' 섹션
+
+홈이 열릴 때 `js/site.js`가 `/column.html`과 `/guides.html`을 fetch해 맨 앞 카드(칼럼 3편, 가이드 1편)를 그린다. 두 목록 모두 최신순이라 정렬은 하지 않는다. 새 글을 올려도 `index.html`을 고칠 필요가 없다. 두 요청이 모두 실패하면 섹션은 `hidden`으로 남는다. 모바일은 가로 스와이프 카드다.
+
+같은 날 버튼 점검으로 고친 것: `diary.html`·`jecheon_dashboard.html`의 문자열 속 줄바꿈과 따옴표 이스케이프, toggleTheme가 없던 6개 페이지(`js/theme-toggle.js`), 방명록 안내 문구, 투어의 없는 장가계 링크. 방명록 Supabase 프로젝트(rekgsoaaikqfeiychvvb)는 DNS가 없어 운영자가 복구하거나 새 키를 줘야 한다.
+
 # 2026-09-30 홈·주요 목록 페이지 개편
 
 ## 범위

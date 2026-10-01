@@ -152,3 +152,41 @@ function searchGoogle(e){e.preventDefault();var q=document.getElementById('googl
   host.addEventListener('mousemove', onMove);
   host.addEventListener('mouseleave', reset);
 })();
+
+/* 홈 최근 글: 칼럼 목록·가이드 목록 페이지에서 최신 글을 읽어 와 카드로 표시 */
+(function(){
+  var sec = document.getElementById('recent'), list = document.getElementById('recent-list');
+  if (!sec || !list || !window.fetch || !window.DOMParser) return;
+  function load(url){ return fetch(url).then(function(r){ if(!r.ok) throw r.status; return r.text(); }).then(function(t){ return new DOMParser().parseFromString(t, 'text/html'); }); }
+  function txt(root, sel){ var el = root.querySelector(sel); return el ? el.textContent.trim() : ''; }
+  function card(o){
+    var a = document.createElement('a'); a.className = 'recent-card' + (o.img ? '' : ' recent-card-text'); a.href = o.href;
+    if (o.img) { var im = document.createElement('img'); im.src = o.img; im.alt = ''; im.loading = 'lazy'; a.appendChild(im); }
+    var body = document.createElement('div'); body.className = 'recent-body';
+    var k = document.createElement('span'); k.className = 'recent-kind'; k.textContent = o.kind; body.appendChild(k);
+    var h = document.createElement('h3'); h.textContent = o.title; body.appendChild(h);
+    if (o.excerpt) { var p = document.createElement('p'); p.textContent = o.excerpt; body.appendChild(p); }
+    var d = document.createElement('span'); d.className = 'recent-date'; d.textContent = o.date; body.appendChild(d);
+    a.appendChild(body); return a;
+  }
+  Promise.all([
+    load('/column.html').then(function(doc){
+      return Array.prototype.slice.call(doc.querySelectorAll('article.col-item'), 0, 3).map(function(el){
+        var img = el.querySelector('.col-visual img'), more = el.querySelector('a.col-more');
+        return { kind: '칼럼' + txt(el, '.col-cat').replace(/^\/\s*/, ' · '), title: txt(el, '.col-title'),
+                 excerpt: txt(el, '.col-excerpt'), date: txt(el, '.col-date'),
+                 href: more ? more.getAttribute('href') : '/column.html', img: img ? img.getAttribute('src') : '' };
+      });
+    }).catch(function(){ return []; }),
+    load('/guides.html').then(function(doc){
+      var el = doc.querySelector('a.col-card');
+      return el ? [{ kind: 'AI 가이드', title: txt(el, '.col-title'), excerpt: txt(el, '.col-excerpt'),
+                     date: txt(el, '.col-date'), href: el.getAttribute('href'), img: '' }] : [];
+    }).catch(function(){ return []; })
+  ]).then(function(r){
+    var items = r[0].concat(r[1]);
+    if (!items.length) return;
+    items.forEach(function(o){ list.appendChild(card(o)); });
+    sec.hidden = false;
+  });
+})();
