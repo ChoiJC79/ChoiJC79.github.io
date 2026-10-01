@@ -225,6 +225,42 @@ footer { border-top: 1px solid var(--border); color: var(--muted); }
 @media (max-width: 900px) { #dusk-strip { margin: 12px 1.5rem 0; } }
 @media (max-width: 600px) { #dusk-strip { margin: 10px 1rem 0; border-radius: 16px; } .dusk-inner { padding-left: 1.1rem; padding-right: 1.1rem; } }
 
+/* 최근 글 */
+#recent { max-width: 1160px; margin: 0 auto; padding: 3rem 2.5rem 0; }
+.recent-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; }
+.recent-head .cat-section-label { flex: 1; margin: 0; }
+.recent-all { font-size: 13px; color: var(--muted); white-space: nowrap; }
+.recent-all:hover { color: var(--accent); }
+.recent-list { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.recent-card {
+  display: flex; flex-direction: column; overflow: hidden; color: inherit;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  transition: transform 0.2s ease, border-color 0.2s, box-shadow 0.2s;
+}
+.recent-card:hover { color: inherit; transform: translateY(-3px); border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); box-shadow: var(--card-shadow); }
+.recent-card img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; background: var(--surface2); }
+.recent-card-text { background: linear-gradient(160deg, color-mix(in srgb, var(--accent3) 16%, var(--surface)), var(--surface) 65%); }
+.recent-body { padding: 1.1rem 1.2rem 1.2rem; display: flex; flex-direction: column; gap: 0.45rem; flex: 1; }
+.recent-kind { font-size: 12px; font-weight: 600; color: var(--accent); }
+.recent-card-text .recent-kind { color: var(--accent3); }
+.recent-body h3 { font-family: var(--font-display); font-size: 1.05rem; line-height: 1.45; color: var(--ink); }
+.recent-body p { font-size: 13px; line-height: 1.65; color: var(--muted); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.recent-date { margin-top: auto; font-family: var(--font-mono); font-size: 11.5px; color: var(--muted); }
+@media (max-width: 900px) {
+  #recent { padding: 2.5rem 1.8rem 0; }
+  .recent-list { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  #recent { padding: 2rem 0 0; }
+  .recent-head { padding: 0 1rem; }
+  .recent-list {
+    display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 10px;
+    padding: 0 1rem 4px; scroll-padding: 0 1rem; scrollbar-width: none;
+  }
+  .recent-list::-webkit-scrollbar { display: none; }
+  .recent-card { flex: 0 0 78%; scroll-snap-align: start; }
+}
+
 /* 벤토 그리드 */
 .cat-section { max-width: 1160px; }
 .cat-section-label { font-size: 13px; font-weight: 600; letter-spacing: 0.02em; text-transform: none; color: var(--muted); }
