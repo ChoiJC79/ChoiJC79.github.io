@@ -743,6 +743,8 @@ function toggleAcc(hdr){{
   body.style.display=body.style.display==='block'?'none':'block';
 }}
 </script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
 </body>
 </html>"""
 
@@ -876,6 +878,7 @@ def main():
     push_local("js/dusk.js",                          "update dusk js")
     push_local("js/globe.js",                         "update globe js")
     push_local("js/jc-picker.js",                      "update jc-picker js")
+    push_local("js/motion.js",                         "update motion js")
 
     print("=" * 50)
     print("  Done!")

@@ -253,6 +253,8 @@ def page_shell(title, desc, url, body_html, extra_nav=""):
   <a href="/memo.html">📋<br>노트</a>
 </div>
 <script>{THEME_JS}</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
 </body>
 </html>
 """
