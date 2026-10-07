@@ -122,7 +122,8 @@ GitHub Pages 기반 개인 사이트 (`choijc79.github.io`) 관리 및 콘텐츠
 | `whisky.html` | 위스키 가이드 목록 |
 | `memo.html` | 정리노트 (publish.py가 자동 생성) |
 
-배포는 항상 `🚀 사이트에 올리기.bat` 실행으로만 가능 (샌드박스에서 GitHub API 직접 호출 불가).
+이 폴더가 곧 `ChoiJC79/ChoiJC79.github.io` 저장소다. `main`에 `git push`하면 GitHub Pages에 그대로 배포된다. `🚀 사이트에 올리기.bat`(publish.py)은 git을 쓸 수 없는 Windows 환경용 대체 수단이다. 아래 절차의 "bat 실행" 단계는 git push로 대신해도 된다.
+새 공개 페이지·칼럼·가이드를 추가하면 `sitemap.xml`에도 `<url>` 항목을 넣는다.
 
 ---
 
