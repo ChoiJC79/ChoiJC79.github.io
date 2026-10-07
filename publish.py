@@ -629,6 +629,11 @@ def build_memo_html():
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>정리노트 | 최승환</title>
 <meta name="description" content="최승환의 아이디어·목표·일상·논문 정리노트.">
+<meta property="og:title" content="정리노트 | 최승환">
+<meta property="og:description" content="최승환의 아이디어·목표·일상·논문 정리노트.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://choijc79.github.io/memo.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {{
