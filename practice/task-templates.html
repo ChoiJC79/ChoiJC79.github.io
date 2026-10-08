@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>반복 작업 템플릿화 — 한 번 설계하고 주제만 갈아 끼우기 | AI 실무 가이드</title>
+<meta name="description" content="자주 반복하는 작업은 매번 처음부터 만들지 말고, 구조는 템플릿으로 고정하고 바뀌는 부분만 데이터로 분리하는 것이 효율적입니다. 이 AI 가이드 20편도 하나의 템플릿과 데이터 파일로 생성했습니다.">
+<meta property="og:title" content="반복 작업 템플릿화 — 한 번 설계하고 주제만 갈아 끼우기 | AI 실무 가이드">
+<meta property="og:description" content="자주 반복하는 작업은 매번 처음부터 만들지 말고, 구조는 템플릿으로 고정하고 바뀌는 부분만 데이터로 분리하는 것이 효율적입니다. 이 AI 가이드 20편도 하나의 템플릿과 데이터 파일로 생성했습니다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/practice/task-templates.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/practice.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 가이드</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9728; 라이트</button>
+</header>
+
+<section class="hero pr-hero">
+  <div class="hero-label"><a href="/practice.html">AI 실무 가이드</a> · 자동화</div>
+  <h1>🧩 반복 작업 템플릿화 — 한 번 설계하고 주제만 갈아 끼우기</h1>
+  <p>자주 반복하는 작업은 매번 처음부터 만들지 말고, 구조는 템플릿으로 고정하고 바뀌는 부분만 데이터로 분리하는 것이 효율적입니다. 이 AI 가이드 20편도 하나의 템플릿과 데이터 파일로 생성했습니다.</p>
+  <div class="hero-meta">2026-09-18 · 약 2분</div>
+</section>
+<main class="pr-wrap">
+  <div class="pr-glance">
+    <div class="pr-box"><h2>이럴 때</h2><ul><li>같은 모양의 문서·페이지를 주제만 바꿔 여러 번 만들 때</li><li>매번 절차 중 한두 단계를 빠뜨리는 실수가 생길 때</li><li>후임자에게 업무를 인계해야 할 때</li></ul></div>
+    <div class="pr-box key"><h2>핵심</h2><p>설계는 한 번, 재사용은 계속.</p></div>
+    <div class="pr-box"><h2>꼭 지킬 것</h2><p>템플릿이 너무 유연하면 다시 복잡해집니다. 처음엔 가장 자주 쓰는 형태 하나만 고정합니다.</p></div>
+  </div>
+
+  <section class="pr-sec">
+    <h2>따라 하기</h2>
+    <ol class="pr-steps">
+    <li><div><b>반복되는 작업을 찾는다</b><span>최근 한 달간 두 번 이상 같은 방식으로 한 작업을 적어 봅니다.</span></div></li>
+    <li><div><b>고정 부분과 변동 부분을 나눈다</b><span>서식·목차·절차는 고정 부분, 제목·날짜·수치·본문은 변동 부분입니다.</span></div></li>
+    <li><div><b>템플릿을 만든다</b><span>고정 부분을 파일로 만들고 변동 부분은 {{제목}}, {{날짜}} 같은 자리표시로 남깁니다.</span></div></li>
+    <li><div><b>체크리스트를 붙인다</b><span>작업 절차를 체크박스 목록으로 만들어 매번 빠짐없이 따라가게 합니다.</span></div></li>
+    <li><div><b>데이터만 바꿔 생성한다</b><span>가능하면 스크립트로 템플릿과 데이터를 합쳐 결과물을 자동 생성합니다.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="pr-sec">
+    <h2>바로 쓰는 프롬프트</h2>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>내가 매달 작성하는 아래 보고서를 템플릿으로 만들어줘.
+- 매달 바뀌지 않는 문장과 서식은 그대로 두고
+- 매달 바뀌는 값(기간, 수치, 주요 사항)은 {{자리표시}}로 바꿔줘
+- 마지막에 작성 절차 체크리스트 5줄을 붙여줘
+
+[지난달 보고서]
+(붙여 넣기)</pre></div>
+  </section>
+
+  <section class="pr-sec">
+    <h2>함께 챙길 것</h2>
+    <ul class="pr-checks">
+    <li>템플릿도 쓰면서 고쳐 나가는 문서입니다. 개선 사항을 메모해 둡니다.</li>
+    </ul>
+  </section>
+  <nav class="pr-pager"><a class="prev" href="/practice/mcp-connectors.html"><small>← 이전</small>MCP 커넥터 — AI를 노션·드라이브·캘린더와 연결하기</a><a class="next" href="/practice/ai-limits-verification.html"><small>다음 →</small>AI 활용의 한계와 검증 습관 — 그럴듯한 오답을 다루는 법</a></nav>
+</main>
+
+<footer>&copy; 2026 최승환 · choijc79.github.io</footer>
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/about.html">👤<br>소개</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/guides.html" aria-current="page">⚙️<br>가이드</a>
+  <a href="/memo.html">📋<br>노트</a>
+</div>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'\u2600 라이트':'\u263e 다크';
+})();
+function toggleTheme(){
+  var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'\u2600 라이트':'\u263e 다크';
+}
+document.querySelectorAll('.pr-copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.parentNode.querySelector('pre').textContent;
+    if(navigator.clipboard) navigator.clipboard.writeText(t).then(function(){b.textContent='복사됨';setTimeout(function(){b.textContent='복사';},1400);});
+  });
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+</body>
+</html>

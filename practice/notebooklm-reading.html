@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NotebookLM으로 자료 묶음 읽기 — 내가 올린 문서 안에서만 답하는 AI | AI 실무 가이드</title>
+<meta name="description" content="NotebookLM은 사용자가 올린 문서를 근거로 답변하고, 답변마다 출처 위치를 표시해 주는 Google의 AI 노트 도구입니다. 정책 보고서·논문·법령 자료를 한 노트에 묶어 두고 질문하면 자료 간 비교와 요약이 빨라집니다.">
+<meta property="og:title" content="NotebookLM으로 자료 묶음 읽기 — 내가 올린 문서 안에서만 답하는 AI | AI 실무 가이드">
+<meta property="og:description" content="NotebookLM은 사용자가 올린 문서를 근거로 답변하고, 답변마다 출처 위치를 표시해 주는 Google의 AI 노트 도구입니다. 정책 보고서·논문·법령 자료를 한 노트에 묶어 두고 질문하면 자료 간 비교와 요약이 빨라집니다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/practice/notebooklm-reading.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/practice.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 가이드</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9728; 라이트</button>
+</header>
+
+<section class="hero pr-hero">
+  <div class="hero-label"><a href="/practice.html">AI 실무 가이드</a> · 연구</div>
+  <h1>📓 NotebookLM으로 자료 묶음 읽기 — 내가 올린 문서 안에서만 답하는 AI</h1>
+  <p>NotebookLM은 사용자가 올린 문서를 근거로 답변하고, 답변마다 출처 위치를 표시해 주는 Google의 AI 노트 도구입니다. 정책 보고서·논문·법령 자료를 한 노트에 묶어 두고 질문하면 자료 간 비교와 요약이 빨라집니다.</p>
+  <div class="hero-meta">2026-08-12 · 약 2분</div>
+</section>
+<main class="pr-wrap">
+  <div class="pr-glance">
+    <div class="pr-box"><h2>이럴 때</h2><ul><li>연구용역 보고서·정책자료 여러 건을 교차 비교해야 할 때</li><li>특정 주장이 어느 자료 몇 쪽에 있었는지 다시 찾아야 할 때</li><li>공개 자료 묶음을 기반으로 질의응답형 학습을 하고 싶을 때</li></ul></div>
+    <div class="pr-box key"><h2>핵심</h2><p>근거가 표시되는 AI는 검증하기 쉬운 AI입니다.</p></div>
+    <div class="pr-box"><h2>꼭 지킬 것</h2><p>비공개 내부 문서는 업로드하지 않습니다. 기관 보안 지침을 우선합니다.</p></div>
+  </div>
+
+  <section class="pr-sec">
+    <h2>따라 하기</h2>
+    <ol class="pr-steps">
+    <li><div><b>주제별로 노트를 만든다</b><span>&#x27;등록면허세 선행연구&#x27;, &#x27;지방재정 불균형 정책자료&#x27;처럼 주제 하나에 노트 하나를 원칙으로 합니다.</span></div></li>
+    <li><div><b>공개 자료를 소스로 추가한다</b><span>PDF·웹페이지·문서 등 공개된 자료를 올립니다. 소스가 명확할수록 답변 근거도 명확해집니다.</span></div></li>
+    <li><div><b>출처 표시를 확인하며 질문한다</b><span>답변에 표시된 인용 번호를 눌러 원문 위치를 직접 확인하는 습관을 들입니다.</span></div></li>
+    <li><div><b>비교 질문을 던진다</b><span>&#x27;자료 A와 B가 세원 귀속 문제를 다르게 보는 지점은?&#x27;처럼 교차 질문에서 가장 큰 효과가 납니다.</span></div></li>
+    <li><div><b>요약은 메모로 저장한다</b><span>좋은 답변은 노트에 메모로 저장해 두고 이후 글쓰기 재료로 씁니다.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="pr-sec">
+    <h2>바로 쓰는 프롬프트</h2>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>업로드한 자료들 중에서 &#x27;납세지와 물건 소재지가 다를 때 발생하는 세수 귀속 문제&#x27;를 다룬 부분을 찾아
+자료별로 핵심 주장과 근거를 정리해줘.
+자료마다 입장이 다른 지점이 있으면 따로 표시해줘.</pre></div>
+  </section>
+
+  <section class="pr-sec">
+    <h2>함께 챙길 것</h2>
+    <ul class="pr-checks">
+    <li>자료에 근거해 답한다고 해도 해석 오류는 생길 수 있으므로 인용 위치를 반드시 확인합니다.</li>
+    <li>서비스 기능과 정책은 바뀔 수 있으니 최신 도움말을 확인합니다.</li>
+    </ul>
+  </section>
+  <nav class="pr-pager"><a class="prev" href="/practice/literature-review.html"><small>← 이전</small>선행연구 정리 — 논문 요약과 비교표 만들기</a><a class="next" href="/practice/academic-writing.html"><small>다음 →</small>논문 문장 다듬기 — 학술체 교정과 연구윤리의 경계</a></nav>
+</main>
+
+<footer>&copy; 2026 최승환 · choijc79.github.io</footer>
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/about.html">👤<br>소개</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/guides.html" aria-current="page">⚙️<br>가이드</a>
+  <a href="/memo.html">📋<br>노트</a>
+</div>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'\u2600 라이트':'\u263e 다크';
+})();
+function toggleTheme(){
+  var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'\u2600 라이트':'\u263e 다크';
+}
+document.querySelectorAll('.pr-copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.parentNode.querySelector('pre').textContent;
+    if(navigator.clipboard) navigator.clipboard.writeText(t).then(function(){b.textContent='복사됨';setTimeout(function(){b.textContent='복사';},1400);});
+  });
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+</body>
+</html>
