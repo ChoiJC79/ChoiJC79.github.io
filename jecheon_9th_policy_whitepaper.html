@@ -23,6 +23,14 @@
   --ink:#20241F; --muted:#6B6557; --border:#DDD6C5;
   --red:#9B3B3B; --red-pale:#F3E4E1;
 }
+html[data-theme="dark"] {
+  --navy:#e6edf3; --navy-soft:#c9d1d9; --navy-pale:#21262d;
+  --teal:#3fb950; --teal-pale:#12261a;
+  --gold:#d29922; --gold-pale:#2a2110;
+  --paper:#0d1117; --surface:#161b22;
+  --ink:#e6edf3; --muted:#8b949e; --border:#30363d;
+  --red:#f85149; --red-pale:#2d1214;
+}
 * { box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 body {
@@ -1091,7 +1099,5 @@ if ('IntersectionObserver' in window && sections.length) {
   sections.forEach(s => obs.observe(s));
 }
 </script>
-<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
-<script src="/js/motion.js" defer></script>
 </body>
 </html>
