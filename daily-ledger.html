@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="/css/pages.css">
 <style>
     :root { --navy:#173b66; --blue:#287bc0; --teal:#0d7b72; --orange:#b8670e; --ink:#1c2636; --muted:#6c788b; --line:#dfe6ee; --paper:#fff; --canvas:#f5f7fb; }
+    html[data-theme="dark"] { --ink:#e6edf3; --muted:#8b949e; --line:#30363d; --paper:#161b22; --canvas:#0d1117; }
     * { box-sizing:border-box; }
     body { margin:0; background:var(--canvas); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Noto Sans KR","Apple SD Gothic Neo",sans-serif; line-height:1.5; }
     .app { max-width:680px; min-height:100vh; margin:auto; padding:max(18px,env(safe-area-inset-top)) 16px calc(34px + env(safe-area-inset-bottom)); }
@@ -69,7 +70,5 @@
     $('#entryForm').addEventListener('submit',event=>{event.preventDefault();const data={date:$('#entryDate').value,type:$('#entryType').value,category:$('#entryCategory').value.trim(),amount:Number($('#entryAmount').value),memo:$('#entryMemo').value.trim()};if(!data.date||!data.category||data.amount<=0)return;if(editingId)entries=entries.map(entry=>entry.id===editingId?{...entry,...data}:entry);else entries.push({id:crypto.randomUUID?crypto.randomUUID():Date.now().toString(),...data});save();$('#monthPicker').value=data.date.slice(0,7);resetForm();render();});
     $('#cancelEdit').addEventListener('click',resetForm);$('#monthPicker').addEventListener('input',render);$('#exportBtn').addEventListener('click',()=>{const blob=new Blob([JSON.stringify({version:1,exportedAt:new Date().toISOString(),entries},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download=`daily-ledger-${today()}.json`;link.click();URL.revokeObjectURL(url);});$('#importBtn').addEventListener('click',()=>$('#importFile').click());$('#importFile').addEventListener('change',async event=>{const file=event.target.files[0];if(!file)return;try{const backup=JSON.parse(await file.text());if(!Array.isArray(backup.entries))throw new Error('invalid');const records=backup.entries.filter(entry=>entry.id&&entry.date&&entry.type&&entry.category&&Number(entry.amount)>0);const map=new Map(entries.map(entry=>[entry.id,entry]));records.forEach(entry=>map.set(entry.id,{...entry,amount:Number(entry.amount)}));entries=[...map.values()];save();render();alert(`${records.length}건을 불러왔습니다.`);}catch{alert('가계부 백업 파일 형식이 아닙니다.');}finally{event.target.value='';}});$('#clearBtn').addEventListener('click',()=>{if(confirm('이 기기의 가계부 기록을 모두 삭제할까요? 백업하지 않은 기록은 복구할 수 없습니다.')){entries=[];save();resetForm();render();}});if('serviceWorker'in navigator)navigator.serviceWorker.register('/daily-ledger-sw.js').catch(()=>{$('#storageStatus').textContent='기록은 이 기기 브라우저에 저장됩니다. 오프라인 기능은 연결 후 다시 확인하십시오.';});$('#monthPicker').value=today().slice(0,7);resetForm();render();
   </script>
-<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
-<script src="/js/motion.js" defer></script>
 </body>
 </html>
