@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code 입문 — 저장소와 대화하며 개발하기 | AI 실무 가이드</title>
+<meta name="description" content="Claude Code는 터미널·데스크톱·웹 등에서 코드 저장소를 직접 읽고 파일을 수정하며 명령을 실행하는 Anthropic의 AI 코딩 도구입니다. 채팅창에 코드를 복사해 붙이는 방식과 달리, 프로젝트 전체 맥락을 보고 작업한다는 점이 가장 큰 차이입니다.">
+<meta property="og:title" content="Claude Code 입문 — 저장소와 대화하며 개발하기 | AI 실무 가이드">
+<meta property="og:description" content="Claude Code는 터미널·데스크톱·웹 등에서 코드 저장소를 직접 읽고 파일을 수정하며 명령을 실행하는 Anthropic의 AI 코딩 도구입니다. 채팅창에 코드를 복사해 붙이는 방식과 달리, 프로젝트 전체 맥락을 보고 작업한다는 점이 가장 큰 차이입니다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/practice/claude-code-intro.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/practice.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 가이드</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9728; 라이트</button>
+</header>
+
+<section class="hero pr-hero">
+  <div class="hero-label"><a href="/practice.html">AI 실무 가이드</a> · 코딩</div>
+  <h1>🤖 Claude Code 입문 — 저장소와 대화하며 개발하기</h1>
+  <p>Claude Code는 터미널·데스크톱·웹 등에서 코드 저장소를 직접 읽고 파일을 수정하며 명령을 실행하는 Anthropic의 AI 코딩 도구입니다. 채팅창에 코드를 복사해 붙이는 방식과 달리, 프로젝트 전체 맥락을 보고 작업한다는 점이 가장 큰 차이입니다.</p>
+  <div class="hero-meta">2026-08-28 · 약 2분</div>
+</section>
+<main class="pr-wrap">
+  <div class="pr-glance">
+    <div class="pr-box"><h2>이럴 때</h2><ul><li>여러 파일에 걸친 수정을 한 번에 해야 할 때</li><li>기존 프로젝트 구조를 파악하고 설명을 듣고 싶을 때</li><li>반복되는 페이지 생성·배포 작업을 자동화하고 싶을 때</li></ul></div>
+    <div class="pr-box key"><h2>핵심</h2><p>코드를 붙여 넣는 AI에서, 프로젝트를 함께 보는 AI로.</p></div>
+    <div class="pr-box"><h2>꼭 지킬 것</h2><p>파일 삭제·강제 푸시 같은 되돌리기 어려운 작업은 실행 전에 반드시 확인합니다.</p></div>
+  </div>
+
+  <section class="pr-sec">
+    <h2>따라 하기</h2>
+    <ol class="pr-steps">
+    <li><div><b>작업할 저장소에서 시작한다</b><span>프로젝트 폴더를 열고 Claude Code를 실행하면 해당 저장소를 기준으로 작업합니다.</span></div></li>
+    <li><div><b>먼저 구조를 묻는다</b><span>&#x27;이 프로젝트의 파일 구조와 역할을 설명해줘&#x27;로 시작하면 AI와 내가 같은 그림을 보게 됩니다.</span></div></li>
+    <li><div><b>작업을 구체적으로 요청한다</b><span>&#x27;column.html에 새 칼럼 카드를 추가하고 목록 날짜순을 유지해줘&#x27;처럼 대상 파일과 조건을 밝힙니다.</span></div></li>
+    <li><div><b>변경 내용을 검토한다</b><span>수정된 파일의 차이(diff)를 확인하고, 의도와 다르면 바로 되돌리거나 재요청합니다.</span></div></li>
+    <li><div><b>커밋 단위로 마무리한다</b><span>의미 있는 작업 하나가 끝날 때마다 커밋해 두면 이력 관리가 쉬워집니다.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="pr-sec">
+    <h2>바로 쓰는 프롬프트</h2>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>이 저장소의 파일 구조와 각 파일의 역할을 표로 정리해줘.
+그다음, 새 페이지를 추가할 때 수정해야 하는 파일 목록과 순서를 알려줘.
+아직 파일은 수정하지 마.</pre></div>
+  </section>
+
+  <section class="pr-sec">
+    <h2>함께 챙길 것</h2>
+    <ul class="pr-checks">
+    <li>비밀번호·토큰이 담긴 파일이 커밋되지 않도록 .gitignore를 점검합니다.</li>
+    <li>도구의 기능과 요금 정책은 바뀔 수 있으니 공식 문서를 확인합니다.</li>
+    </ul>
+  </section>
+  <nav class="pr-pager"><a class="prev" href="/practice/vibe-coding-intro.html"><small>← 이전</small>바이브코딩이란 — 말로 만드는 프로그램</a><a class="next" href="/practice/github-pages-with-ai.html"><small>다음 →</small>정적 홈페이지 만들기 — GitHub Pages와 AI로 나만의 사이트 운영</a></nav>
+</main>
+
+<footer>&copy; 2026 최승환 · choijc79.github.io</footer>
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/about.html">👤<br>소개</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/guides.html" aria-current="page">⚙️<br>가이드</a>
+  <a href="/memo.html">📋<br>노트</a>
+</div>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'\u2600 라이트':'\u263e 다크';
+})();
+function toggleTheme(){
+  var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'\u2600 라이트':'\u263e 다크';
+}
+document.querySelectorAll('.pr-copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.parentNode.querySelector('pre').textContent;
+    if(navigator.clipboard) navigator.clipboard.writeText(t).then(function(){b.textContent='복사됨';setTimeout(function(){b.textContent='복사';},1400);});
+  });
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+</body>
+</html>

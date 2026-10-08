@@ -791,6 +791,13 @@ def main():
 
     print("[guides] AI 가이드 ...")
     push_local("guides.html", "update ai guides list")
+    push_local("practice.html", "update ai practice list")
+    push_local("css/practice.css", "update practice css")
+    pr_dir = os.path.join(BASE_DIR, "practice")
+    if os.path.exists(pr_dir):
+        for pfile in sorted(os.listdir(pr_dir)):
+            if pfile.endswith(".html"):
+                push_local(f"practice/{pfile}", f"update practice page {pfile}")
     push_local("css/guides.css", "update guides css")
     guides_dir = os.path.join(BASE_DIR, "guides")
     if os.path.exists(guides_dir):

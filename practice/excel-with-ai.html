@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>엑셀 수식·피벗을 AI에게 묻기 — 함수 이름을 몰라도 되는 방법 | AI 실무 가이드</title>
+<meta name="description" content="엑셀 작업에서 막히는 지점은 대개 &#x27;원하는 결과는 아는데 함수를 모르는&#x27; 경우입니다. 원하는 결과를 말로 설명하면 AI가 수식과 적용 방법을 알려 줍니다. 표 구조만 정확히 전달하면 됩니다.">
+<meta property="og:title" content="엑셀 수식·피벗을 AI에게 묻기 — 함수 이름을 몰라도 되는 방법 | AI 실무 가이드">
+<meta property="og:description" content="엑셀 작업에서 막히는 지점은 대개 &#x27;원하는 결과는 아는데 함수를 모르는&#x27; 경우입니다. 원하는 결과를 말로 설명하면 AI가 수식과 적용 방법을 알려 줍니다. 표 구조만 정확히 전달하면 됩니다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/practice/excel-with-ai.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/practice.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 가이드</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9728; 라이트</button>
+</header>
+
+<section class="hero pr-hero">
+  <div class="hero-label"><a href="/practice.html">AI 실무 가이드</a> · 업무</div>
+  <h1>📊 엑셀 수식·피벗을 AI에게 묻기 — 함수 이름을 몰라도 되는 방법</h1>
+  <p>엑셀 작업에서 막히는 지점은 대개 &#x27;원하는 결과는 아는데 함수를 모르는&#x27; 경우입니다. 원하는 결과를 말로 설명하면 AI가 수식과 적용 방법을 알려 줍니다. 표 구조만 정확히 전달하면 됩니다.</p>
+  <div class="hero-meta">2026-07-31 · 약 2분</div>
+</section>
+<main class="pr-wrap">
+  <div class="pr-glance">
+    <div class="pr-box"><h2>이럴 때</h2><ul><li>조건이 여러 개인 합계·개수 집계가 필요할 때</li><li>두 시트의 데이터를 기준값으로 맞춰 붙여야 할 때</li><li>오류 값(#N/A, #VALUE!)의 원인을 모를 때</li><li>월별·지역별 교차 집계표를 만들어야 할 때</li></ul></div>
+    <div class="pr-box key"><h2>핵심</h2><p>함수 이름 대신 원하는 결과를 설명하면 됩니다.</p></div>
+    <div class="pr-box"><h2>꼭 지킬 것</h2><p>실제 과세 데이터를 붙여 넣지 말고 구조가 같은 가짜 샘플로 질문합니다.</p></div>
+  </div>
+
+  <section class="pr-sec">
+    <h2>따라 하기</h2>
+    <ol class="pr-steps">
+    <li><div><b>표 구조를 설명한다</b><span>&#x27;A열 읍면동, B열 세목, C열 부과액, 2행부터 데이터&#x27;처럼 열 구성과 시작 행을 알려 줍니다. 실제 값 대신 가짜 샘플 몇 줄이면 충분합니다.</span></div></li>
+    <li><div><b>원하는 결과를 말로 적는다</b><span>&#x27;읍면동별로 등록면허세 부과액 합계를 E열에&#x27;처럼 결과 위치까지 지정합니다.</span></div></li>
+    <li><div><b>엑셀 버전을 밝힌다</b><span>사용하는 엑셀 버전에 따라 쓸 수 있는 함수가 다르므로 함께 적습니다.</span></div></li>
+    <li><div><b>수식의 의미를 설명받는다</b><span>수식만 복사하지 말고 각 인수의 의미를 물어 두면 다음에 스스로 고칠 수 있습니다.</span></div></li>
+    <li><div><b>작은 범위에서 먼저 검증한다</b><span>몇 행만 손으로 계산해 수식 결과와 맞는지 확인한 뒤 전체에 적용합니다.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="pr-sec">
+    <h2>바로 쓰는 프롬프트</h2>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>엑셀 표 구조:
+- A열 읍면동, B열 세목, C열 부과액(원), 2행부터 데이터
+원하는 결과:
+- G열에 읍면동 목록이 있을 때, H열에 해당 읍면동의 &#x27;등록면허세&#x27; 부과액 합계
+수식과 함께 각 인수의 의미를 설명해줘. 엑셀 버전은 (버전 입력).</pre></div>
+  </section>
+
+  <section class="pr-sec">
+    <h2>함께 챙길 것</h2>
+    <ul class="pr-checks">
+    <li>AI가 제시한 함수가 사용 중인 엑셀 버전에서 지원되지 않을 수 있습니다.</li>
+    </ul>
+  </section>
+  <nav class="pr-pager"><a class="prev" href="/practice/meeting-minutes.html"><small>← 이전</small>회의록 정리 — 녹취 메모에서 결정사항과 할 일까지</a><a class="next" href="/practice/civil-complaint-reply.html"><small>다음 →</small>민원 답변 초안 — 친절함과 정확성 사이의 균형</a></nav>
+</main>
+
+<footer>&copy; 2026 최승환 · choijc79.github.io</footer>
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/about.html">👤<br>소개</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/guides.html" aria-current="page">⚙️<br>가이드</a>
+  <a href="/memo.html">📋<br>노트</a>
+</div>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'\u2600 라이트':'\u263e 다크';
+})();
+function toggleTheme(){
+  var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'\u2600 라이트':'\u263e 다크';
+}
+document.querySelectorAll('.pr-copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.parentNode.querySelector('pre').textContent;
+    if(navigator.clipboard) navigator.clipboard.writeText(t).then(function(){b.textContent='복사됨';setTimeout(function(){b.textContent='복사';},1400);});
+  });
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+</body>
+</html>

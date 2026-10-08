@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>바이브코딩이란 — 말로 만드는 프로그램 | AI 실무 가이드</title>
+<meta name="description" content="바이브코딩은 코드를 한 줄씩 직접 쓰는 대신, 원하는 결과를 자연어로 설명하고 AI가 만든 코드를 실행·수정하며 프로그램을 완성해 가는 방식입니다. 개발자가 아니어도 업무용 작은 도구를 직접 만들 수 있는 길이 열렸습니다.">
+<meta property="og:title" content="바이브코딩이란 — 말로 만드는 프로그램 | AI 실무 가이드">
+<meta property="og:description" content="바이브코딩은 코드를 한 줄씩 직접 쓰는 대신, 원하는 결과를 자연어로 설명하고 AI가 만든 코드를 실행·수정하며 프로그램을 완성해 가는 방식입니다. 개발자가 아니어도 업무용 작은 도구를 직접 만들 수 있는 길이 열렸습니다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/practice/vibe-coding-intro.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/practice.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 가이드</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9728; 라이트</button>
+</header>
+
+<section class="hero pr-hero">
+  <div class="hero-label"><a href="/practice.html">AI 실무 가이드</a> · 코딩</div>
+  <h1>🎧 바이브코딩이란 — 말로 만드는 프로그램</h1>
+  <p>바이브코딩은 코드를 한 줄씩 직접 쓰는 대신, 원하는 결과를 자연어로 설명하고 AI가 만든 코드를 실행·수정하며 프로그램을 완성해 가는 방식입니다. 개발자가 아니어도 업무용 작은 도구를 직접 만들 수 있는 길이 열렸습니다.</p>
+  <div class="hero-meta">2026-08-24 · 약 2분</div>
+</section>
+<main class="pr-wrap">
+  <div class="pr-glance">
+    <div class="pr-box"><h2>이럴 때</h2><ul><li>반복 업무를 줄여 줄 작은 도구가 필요하지만 개발 의뢰까지는 과할 때</li><li>개인 홈페이지·대시보드를 직접 만들어 보고 싶을 때</li><li>아이디어를 빠르게 시제품으로 만들어 검증하고 싶을 때</li></ul></div>
+    <div class="pr-box key"><h2>핵심</h2><p>코드를 몰라도 되지만, 무엇을 만들지는 분명히 알아야 합니다.</p></div>
+    <div class="pr-box"><h2>꼭 지킬 것</h2><p>작동한다고 해서 안전한 것은 아닙니다. 개인정보를 다루는 도구는 반드시 전문가 검토를 거칩니다.</p></div>
+  </div>
+
+  <section class="pr-sec">
+    <h2>따라 하기</h2>
+    <ol class="pr-steps">
+    <li><div><b>완성된 모습을 말로 그린다</b><span>&#x27;엑셀 파일을 올리면 읍면동별 합계 그래프가 나오는 웹페이지&#x27;처럼 입력과 결과를 설명합니다.</span></div></li>
+    <li><div><b>작게 시작한다</b><span>처음부터 모든 기능을 요청하지 말고 핵심 기능 하나가 작동하는 버전부터 만듭니다.</span></div></li>
+    <li><div><b>실행하고 결과를 알려 준다</b><span>오류가 나면 오류 메시지를 그대로 복사해 전달합니다. 추측보다 실제 메시지가 빠른 해결로 이어집니다.</span></div></li>
+    <li><div><b>기능을 하나씩 붙인다</b><span>작동하는 버전을 저장해 두고, 기능을 하나 추가할 때마다 다시 확인합니다.</span></div></li>
+    <li><div><b>버전 관리를 익힌다</b><span>Git으로 단계별 저장을 해 두면 잘못된 수정을 언제든 되돌릴 수 있습니다.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="pr-sec">
+    <h2>바로 쓰는 프롬프트</h2>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>HTML 파일 하나로 동작하는 웹페이지를 만들어줘.
+- 기능: CSV 파일을 선택하면 첫 열(지역)별로 둘째 열(금액) 합계를 막대그래프로 표시
+- 외부 서버 없이 브라우저에서만 동작
+- 처음 버전은 그래프 표시까지만. 디자인은 단순하게.</pre></div>
+  </section>
+
+  <section class="pr-sec">
+    <h2>함께 챙길 것</h2>
+    <ul class="pr-checks">
+    <li>AI가 만든 코드라도 무엇을 하는지 한 번은 설명을 들어 두는 것이 유지보수에 도움이 됩니다.</li>
+    </ul>
+  </section>
+  <nav class="pr-pager"><a class="prev" href="/practice/regression-interpretation.html"><small>← 이전</small>통계 분석 보조 — 회귀분석 결과를 해석하는 대화</a><a class="next" href="/practice/claude-code-intro.html"><small>다음 →</small>Claude Code 입문 — 저장소와 대화하며 개발하기</a></nav>
+</main>
+
+<footer>&copy; 2026 최승환 · choijc79.github.io</footer>
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/about.html">👤<br>소개</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/guides.html" aria-current="page">⚙️<br>가이드</a>
+  <a href="/memo.html">📋<br>노트</a>
+</div>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'\u2600 라이트':'\u263e 다크';
+})();
+function toggleTheme(){
+  var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'\u2600 라이트':'\u263e 다크';
+}
+document.querySelectorAll('.pr-copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.parentNode.querySelector('pre').textContent;
+    if(navigator.clipboard) navigator.clipboard.writeText(t).then(function(){b.textContent='복사됨';setTimeout(function(){b.textContent='복사';},1400);});
+  });
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+</body>
+</html>
