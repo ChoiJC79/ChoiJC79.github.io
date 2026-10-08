@@ -15,6 +15,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/synthwave.css">
 <link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="/css/theme.css">
 <link rel="stylesheet" href="/css/article.css">
 <style>.a-type{color:#3fb950;}</style>
 </head>
@@ -67,7 +68,5 @@
 function toggleTheme(){var t=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',t);localStorage.setItem('choijc-theme',t);var b=document.getElementById('theme-toggle');if(b)b.textContent=t==='dark'?'☀ 라이트':'🌙 다크';}
 (function(){var t=localStorage.getItem('choijc-theme')||'dark';document.documentElement.setAttribute('data-theme',t);document.addEventListener('DOMContentLoaded',function(){var b=document.getElementById('theme-toggle');if(b)b.textContent=t==='dark'?'☀ 라이트':'🌙 다크';});}());
 </script>
-<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
-<script src="/js/motion.js" defer></script>
 </body>
 </html>
