@@ -277,7 +277,7 @@ def make_list_page(guides):
   <div class="hero-label">AI Guides</div>
   <h1>이번 주 GitHub 트렌드,<br>클로드로 직접 써 보기</h1>
   <p>매주 트렌드에서 도구 하나를 골라, 복사해서 따라 할 수 있는 단계로 정리합니다.</p>
-  <div class="hero-meta">마지막 업데이트 · {hl.escape(last)}</div>
+  <div class="hero-meta">마지막 업데이트 · {hl.escape(last)} · <a href="/practice.html">업무·연구에 바로 쓰는 AI 실무 가이드 20편 →</a></div>
 </section>
 <section class="col-list">
 {''.join(cards)}
