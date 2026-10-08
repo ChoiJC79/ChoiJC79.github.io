@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" data-theme="light">
+<html lang="ko" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -312,7 +312,7 @@ function filterProj(cat, btn) {
 <button id="theme-toggle" onclick="toggleTheme()" aria-label="테마 전환"><span id="theme-icon">☀</span><span id="theme-lbl"> 베이지</span></button>
 <script>
 (function(){
-  var t=localStorage.getItem('choijc-theme')||'light';
+  var t=localStorage.getItem('choijc-theme')||'dark';
   document.documentElement.setAttribute('data-theme',t);
   var btn=document.getElementById('theme-toggle');
   if(btn) btn.textContent=t==='dark'?'☀ 라이트':'☾ 다크';
@@ -327,7 +327,5 @@ function toggleTheme(){
   if(btn) btn.textContent=next==='dark'?'☀ 라이트':'☾ 다크';
 }
 </script>
-<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
-<script src="/js/motion.js" defer></script>
 </body>
 </html>
