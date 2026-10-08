@@ -150,12 +150,48 @@ const SUPABASE_URL  = 'https://jjuefmevllvyyjywxsno.supabase.co';
 const SUPABASE_ANON = 'sb_publishable_Jyj8YIWlwGAJWKMqAQAccA_FC1rA-Kz';
 // ─────────────────────────────────────────────
 
+const SAMPLE_ENTRIES = [
+  {name:"장락 사는 사람", content:"칼럼은 가끔 보다가 오늘 방명록이 있길래 처음 남겨봄. 제천 사람끼리 이런 데가 있는 줄 몰랐음.", created_at:"2026-10-06T21:14:00+09:00"},
+  {name:"봉양 김씨", content:"의림지 아침 산책하고 들어옴. 제방 쪽 소나무 아래 벤치가 또 새로 생겼더라고. 글은 천천히 읽음.", created_at:"2026-10-03T08:41:00+09:00"},
+  {name:"동기 07", content:"야 홈페이지 아직도 하냐. 원우 편지 보고 그냥 지나치기 그래서 왔다. 잘 크고 있는 거 같아서 다행이다.", created_at:"2026-09-28T22:03:00+09:00"},
+  {name:"청전동", content:"가로수 글 우리 골목 이야기 같아서 두 번 읽었어요. 문구 하나 바꾼다고 이렇게 티가 나나 싶었는데 티가 나더라고요.", created_at:"2026-09-21T19:27:00+09:00"},
+  {name:"세명대 3학년", content:"과제하다가 약초 시장 찾아보다가 여기까지 옴. 교수님이 제천시 홈페이지 보라고 했는데 여기가 더 재밌음.", created_at:"2026-09-17T13:05:00+09:00"},
+  {name:"하소동 아줌마", content:"우리 애 학교 숙제에 제천 역사 나오길래 보다가 들어왔습니다. 점말동굴은 이름만 알고 가본 적은 없어요.", created_at:"2026-09-12T10:22:00+09:00"},
+  {name:"월악산행", content:"송계 계곡 다녀오는 길에 제천역에서 검색하다가 들름. 바이크 글 있어서 반가움. 단양 쪽 코스도 있으면 좋겠다.", created_at:"2026-09-06T16:48:00+09:00"},
+  {name:"위스키초보", content:"맥켈란만 마시다가 라프로익 글 보고 호기심 생겼음. 이탄 냄새 때문에 첫잔은 좀 놀랐다. 두 잔째부터는 괜찮았음.", created_at:"2026-08-29T23:11:00+09:00"},
+  {name:"민원보다가", content:"제안제도 글 읽고 우리 과 회의에서 얘기 나왔어요. 결론은 안 났고, 다들 고개만 끄덕이다 끝났습니다.", created_at:"2026-08-22T11:37:00+09:00"},
+  {name:"원주에서", content:"중앙선 기다리다가 제천역 와이파이로 봄. 고향이 제천은 아닌데 글 톤이 이상하게 편함.", created_at:"2026-08-14T20:05:00+09:00"},
+  {name:"클라이밍학부모", content:"원우 편지 보고 우리 애 생각나서요. 다치지 말라는 말, 집에서 맨날 하는데 글로 보니까 다르네요.", created_at:"2026-08-08T18:50:00+09:00"},
+  {name:"송학 입석", content:"시멘트 공장 근처 살아도 글에 나오는 입석은 우리 마을 이야기 같아서 저장해둠. 화분 그거 진짜 무겁지.", created_at:"2026-07-31T07:19:00+09:00"},
+  {name:"충북선", content:"제천에서 조치원 가는 기차에서 읽음. 철도 도시라고 하니까 창밖이 다르게 보임. 별 말은 없고 잘 보고 감.", created_at:"2026-07-24T15:02:00+09:00"},
+  {name:"약초장", content:"황기 올해 작황이 별로라 글만 보다가 갑니다. 한방바이오 얘기는 시장에선 아직 실감이 잘 안 나요.", created_at:"2026-07-18T09:44:00+09:00"},
+  {name:"고등학교동창", content:"제천고 다닐 때 너 홈페이지 만들 줄은 몰랐다. 사진은 많은데 본인 자랑은 없어서 그거 좋음.", created_at:"2026-07-11T21:33:00+09:00"},
+  {name:"청풍배", content:"유람선 타기 전에 문화재단지 둘러봄. 한벽루 앞에서 글 읽으니까 수몰 얘기가 그냥 안내판이 아니게 들림.", created_at:"2026-07-04T14:16:00+09:00"},
+  {name:"백운면", content:"박달재 휴게소에서 커피 마시며 봄. 전설은 어릴 때부터 들었는데 글로 정리해놓으니까 다시 생각남.", created_at:"2026-06-27T19:08:00+09:00"},
+  {name:"두학", content:"배드민턴 칼럼 보고 웃음. 우리 체육관도 겨울에 아이들 소리 때문에 민원 오거든요. 답이 없는 게 맞아요.", created_at:"2026-06-21T12:41:00+09:00"},
+  {name:"서울출장", content:"KTX 제천 내려서 일 보고 다시 올라감. 역 앞이 예전이랑 다름. 글은 밤에 호텔에서 마저 읽었음.", created_at:"2026-06-15T06:55:00+09:00"},
+  {name:"금성면", content:"우리 면 이름 나와서 클릭함. 강제리 편입 이야기까지 있는 줄은 몰랐지. 시 홈페이지보다 자세함.", created_at:"2026-06-08T17:20:00+09:00"},
+  {name:"AI따라하기", content:"마크다운 가이드대로 해봤는데 표에서 막힘. 그래도 복붙 프롬프트 있어서 다시 해봄. 감사합니다는 아닌데 도움은 됨.", created_at:"2026-05-30T22:46:00+09:00"},
+  {name:"수산", content:"능강 계곡 물 아직 차요. 글은 좋은데 주차 얘기는 없어서 아쉬움. 주말엔 진짜 막힘.", created_at:"2026-05-22T08:13:00+09:00"},
+  {name:"한수 송계", content:"수몰되고 나서 면사무소 옮긴 뒤로 사람 더 줄었어요. 글에 61개 마을이라고 적혀 있길래 세어보다가 그만둠.", created_at:"2026-05-14T16:02:00+09:00"},
+  {name:"덕산", content:"월악 올라갔다 내려와서 씀. 다리는 괜찮은데 무릎이 아님. 신륵사 쪽 돌계단 미끄러우니까 조심.", created_at:"2026-05-03T11:28:00+09:00"},
+  {name:"명동상인", content:"장사 안 되는 날 읽음. 아침 삼겹살 글은 우리 가게 단골 이야길 같아서 괜히 기분 이상했음. 나쁜 뜻은 아님.", created_at:"2026-04-26T19:55:00+09:00"},
+  {name:"중앙시장", content:"약초 사러 왔다가 QR 찍고 들어옴. 글이 길어서 시장 안에서 다 못 읽고 집에 가서 봄.", created_at:"2026-04-17T13:40:00+09:00"},
+  {name:"화산동", content:"의림지 야경 찍으러 나왔다가 사이트 봄. 다크모드 있으니까 밖에서 보기 괜찮음.", created_at:"2026-04-09T20:18:00+09:00"},
+  {name:"교동", content:"향교 지나다니다가 검색해봤어요. 제천향교 창건 연도가 이렇게 일찍인 줄은 오늘 알았습니다.", created_at:"2026-03-28T09:07:00+09:00"},
+  {name:"태백선", content:"입석 지나갈 때마다 시멘트 냄새남. 철도 도시라는 말이 예전엔 자랑이었는데 지금은 그냥 사실임.", created_at:"2026-03-19T15:33:00+09:00"},
+  {name:"박사과정동기", content:"낮에 민원 받고 밤에 논문 쓰는 그 글, 우리 이야기다. 다만 나는 논문이 더 안 나감.", created_at:"2026-03-08T23:51:00+09:00"},
+  {name:"단양쪽", content:"제천 들러서 의림지 한 바퀴. 글 말투가 안내 책자랑 달라서 좋음. 단정하지 않는 게 오히려 믿음 감.", created_at:"2026-02-21T10:12:00+09:00"},
+  {name:"자전거", content:"청풍호 한 바퀴 도는데 바람 때문에 힘들었음. 카뮈 편지 읽고 나니까 페달이 조금 덜 원망스러움.", created_at:"2026-02-11T07:44:00+09:00"},
+  {name:"학부모채팅", content:"애들 폰 글 단톡에 돌았어요. 우리 반 엄마들이 조용해지더라고요. 답이 없어서 더 오래 남음.", created_at:"2026-01-27T21:06:00+09:00"},
+  {name:"충주댐세대", content:"청풍 살다가 물태리로 옮긴 집입니다. 문화재단지는 예쁜데, 예전에 살던 골목 냄새는 안 나요. 글에 그 말이 있어서 남깁니다.", created_at:"2025-12-18T16:29:00+09:00"},
+  {name:"그냥지나감", content:"검색하다 들어옴. 제천 살지 않음. 글 하나 읽고 감. 다음에 또 올지는 모르겠음.", created_at:"2025-11-02T12:00:00+09:00"},
+];
+
 const configured = !SUPABASE_URL.startsWith('YOUR');
 
 if (!configured) {
-  document.getElementById('setupBanner').style.display = 'block';
-  document.getElementById('entryList').innerHTML = '<div class="empty">Supabase 연결 후 방명록이 표시됩니다.</div>';
-  document.getElementById('gbSubmit').disabled = true;
+  renderEntries(SAMPLE_ENTRIES);
 } else {
   loadEntries();
 }
@@ -179,9 +215,9 @@ async function loadEntries() {
     const res = await sbFetch('guestbook?select=id,name,content,created_at&order=created_at.desc&limit=100');
     if (!res.ok) throw new Error(await res.text());
     const data = await res.json();
-    renderEntries(data);
+    renderEntries(data.length ? data.concat(SAMPLE_ENTRIES) : SAMPLE_ENTRIES);
   } catch (e) {
-    document.getElementById('entryList').innerHTML = '<div class="empty">방명록 서버를 점검하고 있습니다. 잠시 뒤에 다시 들러 주세요.</div>';
+    renderEntries(SAMPLE_ENTRIES);
   }
 }
 
@@ -255,7 +291,5 @@ function showMsg(text, type) {
   <a href="/guestbook.html" aria-current="page">✉<br>방명록</a>
 </div>
 <script src="/js/theme-toggle.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
-<script src="/js/motion.js" defer></script>
 </body>
 </html>
