@@ -71,7 +71,16 @@ a{color:var(--accent);text-decoration:none;}
 .entry-meta{display:flex;align-items:center;gap:0.7rem;margin-bottom:0.5rem;}
 .entry-name{font-size:13px;font-weight:500;color:var(--accent);}
 .entry-date{font-size:11px;color:var(--muted);}
+.entry-del{
+  margin-left:auto;background:none;border:0;color:var(--muted);
+  font-size:11px;cursor:pointer;font-family:inherit;padding:2px 6px;
+}
+.entry-del:hover{color:#f85149;}
 .entry-body{font-size:14px;color:var(--text);line-height:1.75;white-space:pre-wrap;word-break:keep-all;}
+.admin-link{background:none;border:0;color:var(--muted);font-size:11px;cursor:pointer;font-family:inherit;text-decoration:underline;text-underline-offset:3px;}
+.admin-link.on{color:var(--accent);}
+.pin-row{margin-top:0.6rem;}
+.pin-hint{font-size:11px;color:var(--muted);margin-top:0.45rem;line-height:1.6;}
 .loading{text-align:center;padding:3rem;color:var(--muted);font-size:13px;}
 .empty{text-align:center;padding:3rem;color:var(--muted);font-size:13px;}
 
@@ -122,6 +131,10 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
       <input class="form-input" id="gbName" type="text" placeholder="이름 (닉네임 가능)" maxlength="30">
     </div>
     <textarea class="form-textarea" id="gbContent" placeholder="자유롭게 인사 남겨주세요 :)" maxlength="500"></textarea>
+    <div class="form-row pin-row">
+      <input class="form-input" id="gbPin" type="password" placeholder="삭제 비밀번호 (나중에 글을 지울 때)" maxlength="30" autocomplete="new-password">
+    </div>
+    <p class="pin-hint">작성자 삭제는 이 비밀번호가 필요합니다. 적지 않으면 이 브라우저에서만 지울 수 있습니다.</p>
     <div class="form-bottom">
       <button class="btn-submit" id="gbSubmit" onclick="submitEntry()">등록</button>
     </div>
@@ -131,7 +144,10 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
   <!-- 목록 -->
   <div class="entries-head">
     <h2>📋 방명록 목록</h2>
-    <span class="entry-count" id="entryCount"></span>
+    <span>
+      <button type="button" class="admin-link" id="adminBtn" onclick="toggleAdmin()">관리</button>
+      <span class="entry-count" id="entryCount"></span>
+    </span>
   </div>
   <div class="entry-list" id="entryList">
     <div class="loading">불러오는 중...</div>
@@ -188,12 +204,70 @@ const SAMPLE_ENTRIES = [
   {name:"그냥지나감", content:"검색하다 들어옴. 제천 살지 않음. 글 하나 읽고 감. 다음에 또 올지는 모르겠음.", created_at:"2025-11-02T12:00:00+09:00"},
 ];
 
+const ADMIN_HASH = 'e387607a28afe4a26ef6c8a20638846dfa237542f31522113d94b63bc60bf82e';
+const MINE_KEY = 'choijc-gb-mine';
+const PIN_KEY = 'choijc-gb-pins';
+const HIDE_KEY = 'choijc-gb-hidden';
+const ADMIN_KEY = 'choijc-gb-admin';
+
 const configured = !SUPABASE_URL.startsWith('YOUR');
 
 if (!configured) {
-  renderEntries(SAMPLE_ENTRIES);
+  renderEntries(visibleSamples());
 } else {
   loadEntries();
+}
+
+function readJson(key, fallback) {
+  try { return JSON.parse(localStorage.getItem(key) || '') || fallback; }
+  catch (e) { return fallback; }
+}
+function writeJson(key, val) { localStorage.setItem(key, JSON.stringify(val)); }
+function isAdmin() { return sessionStorage.getItem(ADMIN_KEY) === '1'; }
+function sampleKey(e) { return 's:' + e.created_at + '|' + e.name; }
+function entryKey(e) { return e.id != null ? 'id:' + e.id : sampleKey(e); }
+function visibleSamples() {
+  const hidden = readJson(HIDE_KEY, []);
+  return SAMPLE_ENTRIES.filter(e => hidden.indexOf(sampleKey(e)) < 0);
+}
+async function sha256(text) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+function markMine(key) {
+  const mine = readJson(MINE_KEY, []);
+  if (mine.indexOf(key) < 0) { mine.push(key); writeJson(MINE_KEY, mine); }
+}
+function isMine(key) { return readJson(MINE_KEY, []).indexOf(key) >= 0; }
+async function savePin(key, pin) {
+  if (!pin) return;
+  const pins = readJson(PIN_KEY, {});
+  pins[key] = await sha256(pin);
+  writeJson(PIN_KEY, pins);
+}
+function syncAdminBtn() {
+  const btn = document.getElementById('adminBtn');
+  if (!btn) return;
+  btn.className = 'admin-link' + (isAdmin() ? ' on' : '');
+  btn.textContent = isAdmin() ? '관리 중' : '관리';
+}
+
+async function toggleAdmin() {
+  if (isAdmin()) {
+    sessionStorage.removeItem(ADMIN_KEY);
+    syncAdminBtn();
+    showMsg('관리 모드를 껐습니다.', 'ok');
+    return;
+  }
+  const pin = prompt('관리자 비밀번호를 입력하세요.');
+  if (pin == null) return;
+  if (await sha256(pin) !== ADMIN_HASH) {
+    showMsg('관리자 비밀번호가 맞지 않습니다.', 'err');
+    return;
+  }
+  sessionStorage.setItem(ADMIN_KEY, '1');
+  syncAdminBtn();
+  showMsg('관리 모드입니다. 글을 지울 수 있습니다.', 'ok');
 }
 
 async function sbFetch(path, opts = {}) {
@@ -215,15 +289,16 @@ async function loadEntries() {
     const res = await sbFetch('guestbook?select=id,name,content,created_at&order=created_at.desc&limit=100');
     if (!res.ok) throw new Error(await res.text());
     const data = await res.json();
-    renderEntries(data.length ? data.concat(SAMPLE_ENTRIES) : SAMPLE_ENTRIES);
+    renderEntries(data.length ? data.concat(visibleSamples()) : visibleSamples());
   } catch (e) {
-    renderEntries(SAMPLE_ENTRIES);
+    renderEntries(visibleSamples());
   }
 }
 
 function renderEntries(data) {
   const list = document.getElementById('entryList');
-  document.getElementById('entryCount').textContent = '총 ' + data.length + '개';
+  document.getElementById('entryCount').textContent = ' 총 ' + data.length + '개';
+  syncAdminBtn();
   if (!data.length) {
     list.innerHTML = '<div class="empty">아직 방명록이 비어있습니다. 첫 번째 글을 남겨보세요!</div>';
     return;
@@ -232,25 +307,68 @@ function renderEntries(data) {
     const d = new Date(e.created_at);
     const date = d.getFullYear() + '.' + String(d.getMonth()+1).padStart(2,'0') + '.' + String(d.getDate()).padStart(2,'0');
     const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const key = entryKey(e);
     return `<div class="entry-card">
       <div class="entry-meta">
         <span class="entry-name">${esc(e.name)}</span>
         <span class="entry-date">${date}</span>
+        <button type="button" class="entry-del" onclick="deleteEntry(${JSON.stringify(key)})">삭제</button>
       </div>
       <div class="entry-body">${esc(e.content)}</div>
     </div>`;
   }).join('');
 }
 
+async function mayDelete(key) {
+  if (isAdmin() || isMine(key)) return true;
+  const typed = prompt('삭제 비밀번호를 입력하세요.');
+  if (typed == null || !typed) return false;
+  const hashed = await sha256(typed);
+  if (hashed === ADMIN_HASH) {
+    sessionStorage.setItem(ADMIN_KEY, '1');
+    syncAdminBtn();
+    return true;
+  }
+  const pins = readJson(PIN_KEY, {});
+  if (pins[key] && pins[key] === hashed) return true;
+  showMsg('삭제 권한이 없습니다.', 'err');
+  return false;
+}
+
+async function deleteEntry(key) {
+  if (!(await mayDelete(key))) return;
+  if (!confirm('이 글을 삭제할까요?')) return;
+  if (key.indexOf('id:') === 0) {
+    const id = key.slice(3);
+    try {
+      const res = await sbFetch('guestbook?id=eq.' + encodeURIComponent(id), { method: 'DELETE', prefer: 'return=minimal' });
+      if (!res.ok) throw new Error(await res.text());
+    } catch (e) {
+      showMsg('서버 글을 지우지 못했습니다. 잠시 뒤 다시 시도해 주세요.', 'err');
+      return;
+    }
+    showMsg('삭제했습니다.', 'ok');
+    await loadEntries();
+    return;
+  }
+  const hidden = readJson(HIDE_KEY, []);
+  if (hidden.indexOf(key) < 0) hidden.push(key);
+  writeJson(HIDE_KEY, hidden);
+  showMsg('삭제했습니다.', 'ok');
+  if (configured) await loadEntries();
+  else renderEntries(visibleSamples());
+}
+
 async function submitEntry() {
   const name    = document.getElementById('gbName').value.trim();
   const content = document.getElementById('gbContent').value.trim();
-  const msg     = document.getElementById('gbMsg');
+  const pin     = document.getElementById('gbPin').value;
   const btn     = document.getElementById('gbSubmit');
 
   if (!name)    { showMsg('이름을 입력해주세요.', 'err'); return; }
   if (!content) { showMsg('내용을 입력해주세요.', 'err'); return; }
   if (content.length > 500) { showMsg('500자 이내로 작성해주세요.', 'err'); return; }
+  if (pin && pin.length < 4) { showMsg('삭제 비밀번호는 4자 이상으로 적어 주세요.', 'err'); return; }
 
   btn.disabled = true;
   btn.textContent = '등록 중...';
@@ -258,13 +376,23 @@ async function submitEntry() {
   try {
     const res = await sbFetch('guestbook', {
       method: 'POST',
-      prefer: 'return=minimal',
+      prefer: 'return=representation',
       body: JSON.stringify({ name, content })
     });
     if (!res.ok) throw new Error(await res.text());
+    let key = '';
+    try {
+      const rows = await res.json();
+      if (rows && rows[0] && rows[0].id != null) key = 'id:' + rows[0].id;
+    } catch (e) {}
+    if (key) {
+      markMine(key);
+      await savePin(key, pin);
+    }
     document.getElementById('gbName').value = '';
     document.getElementById('gbContent').value = '';
-    showMsg('등록되었습니다 :)', 'ok');
+    document.getElementById('gbPin').value = '';
+    showMsg('등록되었습니다.', 'ok');
     await loadEntries();
   } catch (e) {
     showMsg('지금은 글을 남길 수 없습니다. 방명록 서버를 점검하고 있습니다.', 'err');
