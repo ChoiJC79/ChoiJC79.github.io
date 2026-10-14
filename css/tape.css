@@ -9,9 +9,9 @@
 }
 
 /* ── 첫 화면 ── */
-#tape-hero { max-width: 1120px; margin: 0 auto; padding: 96px 28px 56px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 44px; align-items: start; }
+#tape-hero { max-width: 1160px; margin: 0 auto; padding: 96px 2.5rem 56px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 44px; align-items: start; }
 .tape-id h1 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem); color: var(--ink); margin: 0; letter-spacing: -0.02em; }
-.tape-id p { color: var(--muted); font-size: 14px; margin: 4px 0 22px; }
+.tape-id p { color: var(--muted); font-size: 16px; margin: 4px 0 22px; }
 .tape-greeting { font-family: var(--font-soft); font-size: 18px; color: var(--accent); margin-bottom: 2px; min-height: 1em; }
 
 /* ── 카세트테이프 ── */
@@ -35,11 +35,11 @@
 
 /* ── 데크 버튼 ── */
 .tape-deck { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 30px; }
-.tape-deck a { white-space: nowrap; text-decoration: none; color: #222; font: 15px sans-serif; padding: 8px 14px; border-radius: 4px; background: linear-gradient(#e2e2e5, #b0b0b5); box-shadow: 0 3px 0 #6c6c72; transition: transform .1s, box-shadow .1s; }
+.tape-deck a { white-space: nowrap; text-decoration: none; color: #222; font: 17px sans-serif; padding: 10px 16px; border-radius: 4px; background: linear-gradient(#e2e2e5, #b0b0b5); box-shadow: 0 3px 0 #6c6c72; transition: transform .1s, box-shadow .1s; }
 .tape-deck a:hover { background: linear-gradient(#f2cc4d, #d9a92a); }
 .tape-deck a:active { transform: translateY(2px); box-shadow: 0 1px 0 #6c6c72; }
 .tape-deck a.play { background: linear-gradient(#f2cc4d, #d9a92a); }
-.tape-deck a span { font-size: 12px; margin-left: 4px; }
+.tape-deck a span { font-size: 14px; margin-left: 5px; }
 .tape-counter { margin-left: auto; background: #111; color: #e8e2d0; font-family: 'DSEG7', var(--font-mono); font-size: 18px; padding: 6px 10px; border-radius: 3px; letter-spacing: 2px; }
 .tape-intro { font-family: var(--font-soft); font-size: 20px; line-height: 1.6; color: var(--text); margin-top: 18px; }
 
@@ -69,6 +69,33 @@
 .tape-tracks .no { font-family: var(--font-hand); font-size: 22px; color: var(--accent); min-width: 1.8em; }
 .tape-tracks .sub { margin-left: auto; font-size: 16px; color: var(--muted); text-align: right; }
 .tape-tracks .bonus { color: var(--muted); }
+
+/* ── 홈 아래 섹션: 카세트 첫 화면 비율에 맞춤 (제목은 트랙 목록 제목과 같은 손글씨, 본문 15~20px) ── */
+#tape-hero ~ * .wx-label, #recent .cat-section-label, #links .lk-h { font-family: var(--font-hand); font-size: 31px; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--accent2); }
+#tape-hero ~ * .wx-label::before { display: none; }
+#links .lk-eyebrow { display: none; }
+#tape-hero ~ * .wx-err, #tape-hero ~ * .dusk-err { font-size: 15px; }
+#tape-hero ~ * .wx-dow { font-size: 13px; }
+#tape-hero ~ * .wx-temps { font-size: 15px; }
+#tape-hero ~ * .wx-icon { font-size: 1.7rem; }
+#tape-hero ~ * #wx-updated { font-size: 12px; }
+#dusk-strip .dusk-kicker, #dusk-strip .dusk-time-label, #dusk-strip .dusk-score-label, #dusk-strip .dusk-fact-k { font-size: 13px; letter-spacing: 0.08em; }
+#dusk-strip .dusk-fact-s, #dusk-strip .dusk-wd, #dusk-strip .dusk-moon-meta { font-size: 13px; }
+#dusk-strip .dusk-ws { font-size: 14px; }
+#dusk-strip .dusk-note { font-size: 1.15rem; }
+#dusk-strip .dusk-moon-desc { font-size: 15px; }
+#recent .recent-all { font-size: 15px; }
+#recent .recent-kind { font-size: 14px; }
+#recent .recent-body { gap: 0.55rem; padding: 1.3rem 1.4rem 1.4rem; }
+#recent .recent-body h3 { font-size: 1.3rem; }
+#recent .recent-body p { font-size: 15px; line-height: 1.7; }
+#recent .recent-date { font-size: 13px; }
+#links .lk-search-input { font-size: 16px; }
+#links .lk-search-btn { font-size: 14px; padding: 8px 16px; }
+#links .lk-btn { font-size: 16px; padding: 1.05rem 1.3rem; }
+#links .lk-arrow { font-size: 12px; }
+#links .lk-a { font-size: 14.5px; padding: 6px 13px; }
+html[data-theme="light"] #tape-hero ~ * .wx-label, html[data-theme="light"] #recent .cat-section-label, html[data-theme="light"] #links .lk-h { color: var(--accent); }
 
 /* ── 낮(라이트) 모드 보정 ── */
 html[data-theme="light"] .tape-tracks h2 { color: var(--accent); }
