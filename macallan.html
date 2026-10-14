@@ -590,16 +590,22 @@
     0%, 100% { opacity: 0.4; transform: scaleY(1); }
     50% { opacity: 1; transform: scaleY(1.2); }
   }
+
+/* 공통 CSS(synthwave/pages)와 충돌하던 배경·첫 화면 폭을 위스키 페이지 기본값으로 복원 */
+:root{--gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#F5E8C0;--deep:#1A1208;--dark:#2D1E0A;--mid:#4A2F0D;--amber:#8B4A0E;--cream:#F8F2E4;}
+html,body{background:var(--deep);}
+body{font-family:"Noto Serif KR",serif;}
+.hero{max-width:none;margin:0;padding:0;border-bottom:none;}
 </style>
 <link rel="stylesheet" href="/css/motion.css">
 </head>
 <body>
 
 <nav style="position:sticky;top:0;z-index:500;background:rgba(26,18,8,0.95);border-bottom:1px solid rgba(201,168,76,0.12);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:50px;">
-  <a href="/" style="font-family:'Cormorant Garamond',serif;font-size:14px;color:rgba(201,168,76,0.7);letter-spacing:0.08em;text-decoration:none;">← choijc79.github.io</a>
+  <a href="/macallan.html" style="font-family:'Cormorant Garamond',serif;font-size:14px;color:rgba(201,168,76,0.7);letter-spacing:0.08em;text-decoration:none;">맥켈란 15년산</a>
   <div style="display:flex;gap:1.5rem;font-size:12px;">
-    <a href="/column.html" style="color:rgba(201,168,76,0.5);text-decoration:none;letter-spacing:0.06em;">칼럼</a>
-    <a href="/memo.html" style="color:rgba(201,168,76,0.5);text-decoration:none;letter-spacing:0.06em;">정리노트</a>
+    <a href="/whisky.html" style="color:rgba(201,168,76,0.5);text-decoration:none;letter-spacing:0.06em;">← 위스키 목록</a>
+    <a href="/" style="color:rgba(201,168,76,0.5);text-decoration:none;letter-spacing:0.06em;">홈</a>
   </div>
 </nav>
 
