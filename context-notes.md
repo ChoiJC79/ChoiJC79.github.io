@@ -83,3 +83,4 @@
 - 가이드 코드블록의 GitHub 남색 고정색을 테이프 톤(#1b1612 바탕, 주황·노랑 강조)으로 바꿨다.
 - 칼럼 목록 속지: 마크업은 그대로 두고(`article.col-item`·`.idx-row` — tape.js·필터가 의존) `.col-index`를 기본 펼침으로 바꿔 CSS로 속지를 입혔다. SIDE A/B 두 칸은 `grid-column`을 `data-type`으로 고정하고 `grid-auto-flow: dense`로 쌓는다. 곡 번호(A1·B1)는 CSS counter라 글이 늘어도 손댈 필요가 없다. 면 머리(`.idx-side`)는 filterType만 숨기며, 한쪽 면만 보일 때는 `:has()`로 한 칸으로 접는다.
 - 방명록: Supabase 스크립트가 쓰는 id(gbName·gbContent·gbPin·gbSubmit·gbMsg·entryList 등)와 `.write-box`·`.entry-card` 구조는 그대로 두고 감싸는 요소(`.booth`·`.payphone`)와 CSS만 더했다. 메시지 번호는 CSS counter. 전화카드는 about·research에 이미 공개된 7979@korea.kr로 mailto 연결.
+- 나머지 페이지: theme.css를 읽는 25쪽은 토큰 교체로 자동 반영. 칼럼 상세 29편·정리노트는 자체 색 블록이 있어 그 줄만 테이프 톤으로 바꿨다. `build_columns.py`로 재생성하면 기존 손질(설명 메타·motion.css 등)과 차이가 생겨 재생성 대신 색 두 줄만 치환했고, 템플릿도 같은 색으로 맞췄다. 위스키 개별 페이지는 고유 팔레트(금색)라 그대로 둔다.

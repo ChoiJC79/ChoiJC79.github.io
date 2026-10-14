@@ -7,6 +7,6 @@
 - [x] `column.html` 목록을 테이프 속지(SIDE A 행정·정책 / SIDE B 삶의 기록)로
 - [x] `guestbook.html`을 공중전화·음성사서함으로 (Supabase 입력·목록 기능 유지)
 - [x] 지구본 제거로 쓰지 않게 된 `js/globe.js`·`img/earth.jpg`·배포 목록 정리
-- [ ] CLAUDE.md 파일 구조·디자인 시스템 갱신, `publish.py`에 `css/tape.css`
-- [ ] 브라우저로 데스크톱·모바일·라이트 모드·동작 줄이기 확인
+- [x] CLAUDE.md 파일 구조·디자인 시스템 갱신, `publish.py`에 `css/tape.css`
+- [x] 브라우저로 데스크톱·모바일·라이트 모드·동작 줄이기 확인
 - [ ] 단계별 커밋, PR·병합·배포 확인
