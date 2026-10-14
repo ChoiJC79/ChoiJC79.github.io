@@ -4,7 +4,7 @@
 - [x] `css/tape.css` 작성 (카세트·데크·트랙 목록·모토로라 삐삐·속지·공중전화 부품, 레트로 글꼴)
 - [x] `index.html` 첫 화면: 지구본 → 카세트 + 트랙 목록(A면·B면) + 모토로라 삐삐, 페이지 카드 그리드 제거
 - [x] 삐삐 액정에 최신 글 자동 표시, 데크 버튼 연결(▶ 최신 칼럼 · ▶▶ 칼럼 목록 · ◀◀ 연대기 · ■ 소개)
-- [ ] `column.html` 목록을 테이프 속지(SIDE A 행정·정책 / SIDE B 삶의 기록)로
+- [x] `column.html` 목록을 테이프 속지(SIDE A 행정·정책 / SIDE B 삶의 기록)로
 - [ ] `guestbook.html`을 공중전화·음성사서함으로 (Supabase 입력·목록 기능 유지)
 - [x] 지구본 제거로 쓰지 않게 된 `js/globe.js`·`img/earth.jpg`·배포 목록 정리
 - [ ] CLAUDE.md 파일 구조·디자인 시스템 갱신, `publish.py`에 `css/tape.css`

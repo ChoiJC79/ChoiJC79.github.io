@@ -81,3 +81,4 @@
 - 홈 개편 후 옛 지구본 첫 화면 CSS(theme.css `#navbar:not(.light-nav)` 흰 글자 규칙 포함)가 라이트 모드 내비를 흰 글씨로 만들고 있어 걷어냈다. `.hero-eyebrow`·`.hero-desc`·`#hero-stats`는 다른 페이지(소개·바이크 안내 등)가 쓰므로 남겼다.
 - index.css의 데크를 `<nav>`로 짜면 `nav{position:fixed}` 규칙에 걸려 화면 위로 붙는다. 데크는 `div role="group"`.
 - 가이드 코드블록의 GitHub 남색 고정색을 테이프 톤(#1b1612 바탕, 주황·노랑 강조)으로 바꿨다.
+- 칼럼 목록 속지: 마크업은 그대로 두고(`article.col-item`·`.idx-row` — tape.js·필터가 의존) `.col-index`를 기본 펼침으로 바꿔 CSS로 속지를 입혔다. SIDE A/B 두 칸은 `grid-column`을 `data-type`으로 고정하고 `grid-auto-flow: dense`로 쌓는다. 곡 번호(A1·B1)는 CSS counter라 글이 늘어도 손댈 필요가 없다. 면 머리(`.idx-side`)는 filterType만 숨기며, 한쪽 면만 보일 때는 `:has()`로 한 칸으로 접는다.

@@ -17,6 +17,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/theme.css">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/tape.css">
 <link rel="stylesheet" href="/css/motion.css">
 </head>
 <body>
@@ -36,15 +38,17 @@
   <h1 class="page-header-title">칼럼<span class="page-header-dot"></span></h1>
   <p class="page-header-sub">지방행정 현장에서 건진 생각들 · 공직 경험을 바탕으로 쓴 칼럼과 에세이</p>
 </div>
-<div class="filter-section"><div class="cat-bar"><button class="cat-btn active" onclick="filterType(this,'')">전체</button><button class="cat-btn" onclick="filterType(this,'policy')">행정·정책</button><button class="cat-btn" onclick="filterType(this,'life')">삶의 기록</button></div><div class="detail-wrap" id="detail-wrap"><div class="detail-bar"><!--AUTO:TAGS-->
+<div class="filter-section"><div class="cat-bar"><button class="cat-btn active" onclick="filterType(this,'')">전체</button><button class="cat-btn" onclick="filterType(this,'policy')"><b>SIDE A</b>행정·정책</button><button class="cat-btn" onclick="filterType(this,'life')"><b>SIDE B</b>삶의 기록</button></div><div class="detail-wrap" id="detail-wrap"><div class="detail-bar"><!--AUTO:TAGS-->
 <button class="tag-btn" onclick="filterCol(this,'공직문화')">공직문화</button><button class="tag-btn" onclick="filterCol(this,'행정에세이')">행정에세이</button><button class="tag-btn" onclick="filterCol(this,'인구정책')">인구정책</button><button class="tag-btn" onclick="filterCol(this,'기업유치')">기업유치</button><button class="tag-btn" onclick="filterCol(this,'지역경제')">지역경제</button><button class="tag-btn" onclick="filterCol(this,'에세이')">에세이</button><button class="tag-btn" onclick="filterCol(this,'일상')">일상</button><button class="tag-btn" onclick="filterCol(this,'육아')">육아</button><button class="tag-btn" onclick="filterCol(this,'삼겹살')">삼겹살</button><button class="tag-btn" onclick="filterCol(this,'도시경관')">도시경관</button><button class="tag-btn" onclick="filterCol(this,'지방행정')">지방행정</button><button class="tag-btn" onclick="filterCol(this,'행정혁신')">행정혁신</button><button class="tag-btn" onclick="filterCol(this,'도시행정')">도시행정</button><button class="tag-btn" onclick="filterCol(this,'관광정책')">관광정책</button><button class="tag-btn" onclick="filterCol(this,'청풍호')">청풍호</button><button class="tag-btn" onclick="filterCol(this,'가족')">가족</button><button class="tag-btn" onclick="filterCol(this,'건축')">건축</button><button class="tag-btn" onclick="filterCol(this,'여행')">여행</button><button class="tag-btn" onclick="filterCol(this,'에스파냐')">에스파냐</button><button class="tag-btn" onclick="filterCol(this,'공직')">공직</button><button class="tag-btn" onclick="filterCol(this,'삶의기록')">삶의기록</button><button class="tag-btn" onclick="filterCol(this,'도시환경')">도시환경</button><button class="tag-btn" onclick="filterCol(this,'도시안전')">도시안전</button><button class="tag-btn" onclick="filterCol(this,'행정연구')">행정연구</button><button class="tag-btn" onclick="filterCol(this,'자기이해')">자기이해</button><button class="tag-btn" onclick="filterCol(this,'일상단상')">일상단상</button><button class="tag-btn" onclick="filterCol(this,'지역공동체')">지역공동체</button><button class="tag-btn" onclick="filterCol(this,'마을기업')">마을기업</button><button class="tag-btn" onclick="filterCol(this,'사회적경제')">사회적경제</button><button class="tag-btn" onclick="filterCol(this,'제도설계')">제도설계</button><button class="tag-btn" onclick="filterCol(this,'스포츠마케팅')">스포츠마케팅</button><button class="tag-btn" onclick="filterCol(this,'도시경영')">도시경영</button><button class="tag-btn" onclick="filterCol(this,'재산관리')">재산관리</button><button class="tag-btn" onclick="filterCol(this,'자원봉사')">자원봉사</button><button class="tag-btn" onclick="filterCol(this,'지역행정')">지역행정</button><button class="tag-btn" onclick="filterCol(this,'스마트행정')">스마트행정</button><button class="tag-btn" onclick="filterCol(this,'빈집활용')">빈집활용</button><button class="tag-btn" onclick="filterCol(this,'환경설계')">환경설계</button><button class="tag-btn" onclick="filterCol(this,'관광')">관광</button><button class="tag-btn" onclick="filterCol(this,'공간재활용')">공간재활용</button><button class="tag-btn" onclick="filterCol(this,'아동문화')">아동문화</button><button class="tag-btn" onclick="filterCol(this,'지역커뮤니티')">지역커뮤니티</button><button class="tag-btn" onclick="filterCol(this,'납세편의')">납세편의</button><button class="tag-btn" onclick="filterCol(this,'디지털행정')">디지털행정</button><button class="tag-btn" onclick="filterCol(this,'아동정책')">아동정책</button><button class="tag-btn" onclick="filterCol(this,'공공시설')">공공시설</button><button class="tag-btn" onclick="filterCol(this,'보안')">보안</button><button class="tag-btn" onclick="filterCol(this,'사회복지')">사회복지</button><button class="tag-btn" onclick="filterCol(this,'나눔문화')">나눔문화</button>
 <!--/AUTO:TAGS--></div></div><button class="tag-toggle" onclick="toggleTagBar()">▸ 태그 더보기</button></div>
 
 <!-- 칼럼 전체 목록 -->
-<section class="col-index">
+<section class="col-index open">
 <!--AUTO:INDEX-->
-<button class="idx-toggle" onclick="toggleIndex()" id="idx-toggle-btn">☰ 전체 칼럼 목록 <span class="idx-count">30편</span> <span class="idx-arrow" id="idx-arrow">▾</span></button>
+<button class="idx-toggle" onclick="toggleIndex()" id="idx-toggle-btn">제천 사랑방 — 칼럼 모음 <span class="idx-count">30</span> <span class="idx-arrow" id="idx-arrow">▾</span></button>
 <ol class="idx-list" id="idx-list">
+<li class="idx-side" data-type="policy">SIDE A · 행정·정책</li>
+<li class="idx-side" data-type="life">SIDE B · 삶의 기록</li>
 <li class="idx-row" data-type="life" onclick="location.href='/columns/20260923좋아서시작했던일.html'" data-tag="에세이·일상단상·자기이해"><span class="idx-date">2026-09-23</span><span class="idx-title">좋아서 시작했던 일</span><span class="idx-tags"><span class="idx-tag">에세이</span><span class="idx-tag">일상단상</span><span class="idx-tag">자기이해</span></span></li>
 <li class="idx-row" data-type="life" onclick="location.href='/columns/20260723정리하는프로젝트를정리하지못한한달.html'" data-tag="에세이·바이브코딩·자기이해"><span class="idx-date">2026-07-23</span><span class="idx-title">정리하는 프로젝트를 정리하지 못한 한 달</span><span class="idx-tags"><span class="idx-tag">에세이</span><span class="idx-tag">바이브코딩</span><span class="idx-tag">자기이해</span></span></li>
 <li class="idx-row" data-type="policy" onclick="location.href='/columns/20260718아무일도없었습니다.html'" data-tag="공무원·재난·행정"><span class="idx-date">2026-07-18</span><span class="idx-title">아무 일도 없었습니다</span><span class="idx-tags"><span class="idx-tag">공무원</span><span class="idx-tag">재난</span><span class="idx-tag">행정</span></span></li>
@@ -159,7 +163,7 @@ function toggleTheme(){
 function filterType(btn,type){
   document.querySelectorAll('.cat-btn,.tag-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll('.col-item,.idx-row').forEach(a=>{
+  document.querySelectorAll('.col-item,.idx-row,.idx-side').forEach(a=>{
     if(!type||a.dataset.type===type) a.classList.remove('col-hidden');
     else a.classList.add('col-hidden');
   });
