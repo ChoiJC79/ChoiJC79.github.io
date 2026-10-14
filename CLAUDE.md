@@ -105,10 +105,11 @@ GitHub Pages 기반 개인 사이트 (`choijc79.github.io`) 관리 및 콘텐츠
 | `build_columns.py` | `columns/*.html` (개별 칼럼 전문 페이지) 생성 스크립트. 칼럼 추가/수정 후 수동 실행 필요 |
 | `columns/` | 개별 칼럼 전문 페이지 (`build_columns.py`가 생성, publish.py가 그대로 업로드) |
 | `📝 정리노트.md` | 정리노트 원본 |
-| `index.html` | 홈페이지 (hero + cat-grid 6칸). CSS/JS는 외부 파일로 분리됨 — 아래 `css/`, `js/` 참고 |
+| `index.html` | 홈페이지 (카세트테이프 첫 화면 `#tape-hero`: 카세트·데크 버튼·모토로라 삐삐·A면/B면 트랙 목록). CSS/JS는 외부 파일로 분리됨 — 아래 `css/`, `js/` 참고 |
 | `css/index.css`, `css/jc-picker.css` | index.html 스타일 (전체 페이지 / 맛집 뽑기 위젯 전용) |
 | `js/site.js` | index.html 공통 스크립트: 테마 토글·내비 스크롤·검색창·위젯 열기닫기·날씨·홈 통계 |
-| `js/globe.js` | index.html 3D 지구본 렌더링 (Three.js) |
+| `css/tape.css` | 카세트테이프·모토로라 삐삐·공중전화 부품 (홈·칼럼 목록·방명록 전용). DSEG7·Galmuri11 글꼴 포함 |
+| `js/tape.js` | 홈 삐삐 액정·▶ 버튼·테이프 카운터를 `column.html` 첫 `article.col-item`(최신 칼럼)에 맞춤 |
 | `js/jc-picker.js` | index.html 맛집 뽑기 로직 |
 | `js/motion.js` | 사이트 공통 모션 (Motion 13.4.6): ① 첫 화면 아래 카드·섹션 스크롤 등장 ② 탭·필터·펼침으로 새로 나타난 요소 등장 ③ `columns/`·`guides/` 읽기 진행 막대. 모든 페이지 `</body>` 앞에 `<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>` + `<script src="/js/motion.js" defer></script>` 두 줄 필요. '동작 줄이기' 설정·CDN 실패 시 숨김 없음 |
 | `.claude/skills/motion/`, `.claude/agents/motion-reviewer.md`, `.mcp.json` | Motion AI Kit(`npx motion-ai`, 14.1.0) 프로젝트 설치본. 애니메이션 작업 시 `/motion` 스킬의 `best-practices/` 규칙을 따름 (transform·opacity만, easeOut, overshoot 없음, `transition: all` 금지) |
@@ -136,12 +137,15 @@ GitHub Pages 기반 개인 사이트 (`choijc79.github.io`) 관리 및 콘텐츠
 ## 디자인 시스템
 
 ```
---bg:#0d1117  --surface:#161b22  --border:#30363d
---text:#e6edf3  --muted:#8b949e  --accent:#58a6ff
---amber:#d29922  --green:#3fb950  --lake:#5cbcd4  --purple:#bc8cff
+카세트테이프·삐삐·공중전화 컨셉 (css/theme.css 토큰)
+밤의 방(다크): --bg:#231c17  --surface:#2f2620  --border:#4a3d32
+              --text:#efe4cf  --muted:#b3a28a  --accent:#f2a33a  --accent2:#f2cc4d  --accent3:#e2603f
+낮의 방(라이트): --bg:#f4ecd8  --surface:#fbf6ea  --border:#d8c9a8
+              --text:#2b2420  --muted:#7a6a56  --accent:#c4571f  --accent2:#9a6a12  --accent3:#2f5d8a
 ```
 
 폰트: Noto Serif KR (제목) + Noto Sans KR (본문, weight:300)
+손글씨 `--font-hand`(Nanum Pen Script)·`--font-soft`(Gaegu)는 테이프 부품(홈·칼럼 목록·방명록) 안에서만 쓴다. 삐삐 액정은 DSEG7·Galmuri11
 
 ---
 

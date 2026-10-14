@@ -1,0 +1,82 @@
+/* 카세트테이프·모토로라 삐삐·공중전화 컨셉 부품 (홈·칼럼 목록·방명록), 색은 theme.css 토큰을 따른다 */
+@font-face { font-family: 'DSEG7'; font-weight: 700; font-display: swap; src: url('https://cdn.jsdelivr.net/npm/dseg@0.46.0/fonts/DSEG7-Classic/DSEG7Classic-Bold.woff2') format('woff2'); }
+@font-face { font-family: 'Galmuri11'; font-display: swap; src: url('https://cdn.jsdelivr.net/npm/galmuri@2.40.3/dist/Galmuri11.woff2') format('woff2'); }
+
+:root {
+  --tape-shell: #2b2b2e; --tape-shell-d: #1d1d20; --tape-paper: #f4ecd8; --tape-ink: #1f3d75;
+  --tape-red: #d9472b; --tape-orange: #ee8a2f; --tape-yellow: #f2cc4d;
+  --lcd: #a7b394; --lcd-ink: #1c2416;
+}
+
+/* ── 첫 화면 ── */
+#tape-hero { max-width: 1120px; margin: 0 auto; padding: 96px 28px 56px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 44px; align-items: start; }
+.tape-id h1 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem); color: var(--ink); margin: 0; letter-spacing: -0.02em; }
+.tape-id p { color: var(--muted); font-size: 14px; margin: 4px 0 22px; }
+.tape-greeting { font-family: var(--font-soft); font-size: 18px; color: var(--accent); margin-bottom: 2px; min-height: 1em; }
+
+/* ── 카세트테이프 ── */
+.tape { container-type: inline-size; position: relative; aspect-ratio: 1.58; background: var(--tape-shell); border-radius: 16px; padding: 16px 18px 0; box-shadow: 0 10px 0 var(--tape-shell-d), 0 24px 34px rgba(0, 0, 0, .45); }
+.tape i.screw { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: #55555a; }
+.tape i.s1 { top: 10px; left: 10px; } .tape i.s2 { top: 10px; right: 10px; } .tape i.s3 { bottom: 10px; left: 10px; } .tape i.s4 { bottom: 10px; right: 10px; }
+.tape-label { position: relative; height: 68%; border-radius: 6px; overflow: hidden; background: var(--tape-paper); color: #2b2420; }
+.tape-stripe { height: 14%; background: linear-gradient(var(--tape-red) 0 33%, var(--tape-orange) 33% 66%, var(--tape-yellow) 66%); }
+.tape-side { position: absolute; left: 12px; top: 19%; width: 34px; height: 34px; border: 2px solid #2b2420; border-radius: 6px; font: 700 21px/30px sans-serif; text-align: center; }
+.tape-title { position: absolute; left: 60px; right: 14px; top: 16%; font-family: var(--font-hand); font-size: clamp(20px, 4.6cqw, 33px); line-height: 1.15; color: var(--tape-ink); transform: rotate(-1.5deg); }
+.tape-window { position: absolute; left: 22%; right: 22%; bottom: 10%; height: 34%; border-radius: 30px; background: #3a3634; display: flex; justify-content: space-between; align-items: center; padding: 0 6%; }
+.tape-reel { width: 24%; aspect-ratio: 1; border-radius: 50%; border: 4px solid var(--tape-paper); background: repeating-conic-gradient(var(--tape-paper) 0 12deg, #3a3634 12deg 60deg); }
+.tape-ribbon { flex: 1; height: 8%; margin: 0 4%; background: #5a3a22; border-radius: 2px; }
+.tape-bottom { position: absolute; left: 18%; right: 18%; bottom: 0; height: 20%; background: #232326; clip-path: polygon(8% 0, 92% 0, 100% 100%, 0 100%); display: flex; justify-content: space-evenly; align-items: center; }
+.tape-bottom b { width: 9px; height: 9px; border-radius: 50%; background: #111; }
+@media (prefers-reduced-motion: no-preference) {
+  .tape.playing .tape-reel { animation: tape-spin 3.2s linear infinite; }
+  .tape.playing .tape-reel + .tape-ribbon + .tape-reel { animation-duration: 2.4s; }
+}
+@keyframes tape-spin { to { transform: rotate(360deg); } }
+
+/* ── 데크 버튼 ── */
+.tape-deck { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 30px; }
+.tape-deck a { white-space: nowrap; text-decoration: none; color: #222; font: 15px sans-serif; padding: 8px 14px; border-radius: 4px; background: linear-gradient(#e2e2e5, #b0b0b5); box-shadow: 0 3px 0 #6c6c72; transition: transform .1s, box-shadow .1s; }
+.tape-deck a:hover { background: linear-gradient(#f2cc4d, #d9a92a); }
+.tape-deck a:active { transform: translateY(2px); box-shadow: 0 1px 0 #6c6c72; }
+.tape-deck a.play { background: linear-gradient(#f2cc4d, #d9a92a); }
+.tape-deck a span { font-size: 12px; margin-left: 4px; }
+.tape-counter { margin-left: auto; background: #111; color: #e8e2d0; font-family: 'DSEG7', var(--font-mono); font-size: 18px; padding: 6px 10px; border-radius: 3px; letter-spacing: 2px; }
+.tape-intro { font-family: var(--font-soft); font-size: 20px; line-height: 1.6; color: var(--text); margin-top: 18px; }
+
+/* ── 모토로라 삐삐 ── */
+.pager { width: 290px; max-width: 100%; margin: 0 0 22px auto; padding: 12px 14px 12px; border-radius: 14px 14px 20px 20px; background: linear-gradient(160deg, #3a3a3e 0%, #1b1b1e 55%, #111113 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 12px 24px rgba(0,0,0,.45); transform: rotate(3deg); position: relative; }
+.pager::before { content: ''; position: absolute; top: -9px; left: 22%; right: 22%; height: 12px; border-radius: 8px 8px 0 0; background: #2a2a2e; }
+.pager-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.pager-btn { width: 54px; height: 14px; border-radius: 7px; background: linear-gradient(#55555b, #2c2c30); box-shadow: inset 0 -1px 0 rgba(0,0,0,.6); }
+.pager-led { width: 8px; height: 8px; border-radius: 50%; background: #ff4d3a; box-shadow: 0 0 8px #ff4d3a; }
+@media (prefers-reduced-motion: no-preference) { .pager-led { animation: pager-led 1.4s steps(1) infinite; } }
+@keyframes pager-led { 50% { opacity: .2; } }
+.pager-lcd { display: block; text-decoration: none; background: var(--lcd); color: var(--lcd-ink); border-radius: 3px; padding: 6px 9px 7px; box-shadow: inset 0 2px 5px rgba(0,0,0,.4); }
+.pager-row { display: flex; justify-content: space-between; font-family: 'Galmuri11', var(--font-mono); font-size: 11px; opacity: .8; }
+.pager-num { display: block; font-family: 'DSEG7', var(--font-mono); font-size: 27px; letter-spacing: 3px; line-height: 1.25; }
+.pager-msg { display: block; font-family: 'Galmuri11', var(--font-mono); font-size: 12px; white-space: nowrap; overflow: hidden; }
+.pager-msg span { display: inline-block; }
+@media (prefers-reduced-motion: no-preference) { .pager-msg span { padding-left: 100%; animation: pager-scroll 12s linear infinite; } }
+@keyframes pager-scroll { to { transform: translateX(-100%); } }
+.pager-brand { margin-top: 8px; display: flex; justify-content: space-between; align-items: baseline; font: 700 11px/1 'Helvetica Neue', Arial, sans-serif; letter-spacing: 3px; color: #b9b9c0; }
+.pager-brand small { font: 10px var(--font-mono); letter-spacing: 1px; color: #85858c; }
+
+/* ── 트랙 목록 ── */
+.tape-tracks h2 { font-family: var(--font-hand); font-size: 31px; font-weight: 400; color: var(--accent2); margin: 0 0 2px; }
+.tape-tracks ol { list-style: none; margin: 0 0 16px; padding: 0; }
+.tape-tracks li a { display: flex; gap: 12px; align-items: baseline; padding: 4px 4px; color: var(--text); text-decoration: none; font-family: var(--font-soft); font-size: 21px; border-bottom: 1px dashed var(--border); transition: color .15s; }
+.tape-tracks li a:hover { color: var(--accent2); }
+.tape-tracks .no { font-family: var(--font-hand); font-size: 22px; color: var(--accent); min-width: 1.8em; }
+.tape-tracks .sub { margin-left: auto; font-size: 16px; color: var(--muted); text-align: right; }
+.tape-tracks .bonus { color: var(--muted); }
+
+/* ── 낮(라이트) 모드 보정 ── */
+html[data-theme="light"] .tape-tracks h2 { color: var(--accent); }
+html[data-theme="light"] .tape-tracks .no { color: var(--tape-red); }
+
+@media (max-width: 860px) {
+  #tape-hero { grid-template-columns: 1fr; padding: 84px 16px 40px; gap: 28px; }
+  .pager { transform: none; margin: 0 0 20px; width: auto; }
+  .tape-deck a { padding: 8px 11px; }
+  .tape-counter { font-size: 15px; }
+}
