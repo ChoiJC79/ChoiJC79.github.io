@@ -180,6 +180,10 @@ footer { border-top: 1px solid var(--border); color: var(--muted); }
   .site-header .nav-links { display: none; }
   #theme-btn, #theme-toggle, #navbar #theme-btn { margin-left: auto; }
   #navbar { padding: 0 1rem; }
+  /* 모바일 터치 영역 40px 이상, 입력칸은 16px(iOS 확대 방지) */
+  #theme-btn, #theme-toggle, .theme-btn { min-height: 40px; padding-left: 14px; padding-right: 14px; }
+  .recent-all { display: inline-block; padding: 10px 0; }
+  .lk-search-btn { min-height: 36px; }
 }
 
 /* ══════════ 사진 히어로 공용 (소개·여행·바이크 안내 등) ══════════ */
@@ -274,6 +278,7 @@ footer { border-top: 1px solid var(--border); color: var(--muted); }
   .wx-day { min-width: 64px; scroll-snap-align: start; }
   #links { padding: 1rem 1rem 1.5rem; }
   .lk-search-wrap { flex-direction: column; }
+  .lk-search-input { font-size: 16px; }
   .lk-groups { grid-template-columns: 1fr; }
   #jc-corner { bottom: calc(96px + env(safe-area-inset-bottom)); }
 }
