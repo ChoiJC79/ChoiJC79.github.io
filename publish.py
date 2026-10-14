@@ -148,8 +148,14 @@ def md_to_html_items(md_text):
     if not items:
         return "<p class='empty'>아직 기록이 없습니다.</p>"
 
+    # 선거·후보 관련 메모는 공무원 정치적 중립을 위해 공개 정리노트에서 제외한다 (원고는 그대로 둠)
+    items = [it for it in items if not re.match(r'\*\*\[선거', it[1])]
+    if not items:
+        return "<p class='empty'>아직 기록이 없습니다.</p>"
+    recent = sorted(items[-30:], key=lambda it: re.sub(r'[.\-/]', '-', it[0]), reverse=True)
+
     html = ""
-    for i, (date, text) in enumerate(reversed(items[-30:])):
+    for i, (date, text) in enumerate(recent):
         # **[태그]** 추출 → 제목으로 사용
         tag_m = re.match(r'\*\*\[(.+?)\]\*\*\s*(.*)', text, re.DOTALL)
         if tag_m:
@@ -615,7 +621,7 @@ window.addEventListener('popstate',()=>document.getElementById('overlay').classL
 
 
 def build_memo_html():
-    now = datetime.datetime.now().strftime("%Y년 %m월 %d일 %H:%M")
+    now = datetime.datetime.now().strftime("%Y년 %m월 %d일")
 
     ideas   = md_to_html_items(read_md("💡 아이디어·기획.md"))
     goals   = md_to_html_items(read_md("🎯 목표·계획·다짐.md"))
@@ -623,17 +629,17 @@ def build_memo_html():
     work    = md_to_html_items(read_md("📚 업무·논문·공부.md"))
 
     return f"""<!DOCTYPE html>
-<html lang="ko" data-theme="light">
+<html lang="ko" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>정리노트 | 최승환</title>
-<meta name="description" content="최승환의 아이디어·목표·일상·논문 정리노트.">
 <meta property="og:title" content="정리노트 | 최승환">
 <meta property="og:description" content="최승환의 아이디어·목표·일상·논문 정리노트.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://choijc79.github.io/memo.html">
 <meta property="og:site_name" content="최승환 · Jecheon">
+<meta name="description" content="최승환의 아이디어·목표·일상·논문 정리노트.">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {{
@@ -731,7 +737,7 @@ footer{{border-top:1px solid var(--border);padding:2rem;text-align:center;font-s
 </div>
 <script>
 (function(){{
-  var t=localStorage.getItem('choijc-theme')||'light';
+  var t=localStorage.getItem('choijc-theme')||'dark';
   document.documentElement.setAttribute('data-theme',t);
   var btn=document.getElementById('theme-toggle');
   if(btn) btn.textContent=t==='dark'?'☀ 라이트':'☾ 다크';
@@ -861,7 +867,6 @@ def main():
     push_local("uirim-final-notes.html",             "update uirim final notes")
     push_local("chronicle.html",                     "update chronicle")
     push_local("about.html",                         "update about")
-    push_local("jecheon_9th_policy_whitepaper.html", "update 9th term policy whitepaper")
     push_local("glenfiddich12.html",                 "update glenfiddich guide")
     push_local("balvenie12.html",                    "update balvenie guide")
     push_local("dalmore12.html",                     "update dalmore guide")
