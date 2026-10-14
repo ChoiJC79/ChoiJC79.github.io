@@ -105,7 +105,7 @@ GitHub Pages 기반 개인 사이트 (`choijc79.github.io`) 관리 및 콘텐츠
 | `build_columns.py` | `columns/*.html` (개별 칼럼 전문 페이지) 생성 스크립트. 칼럼 추가/수정 후 수동 실행 필요 |
 | `columns/` | 개별 칼럼 전문 페이지 (`build_columns.py`가 생성, publish.py가 그대로 업로드) |
 | `📝 정리노트.md` | 정리노트 원본 |
-| `index.html` | 홈페이지 (카세트테이프 첫 화면 `#tape-hero`: 카세트·데크 버튼·모토로라 삐삐·A면/B면 트랙 목록). CSS/JS는 외부 파일로 분리됨 — 아래 `css/`, `js/` 참고 |
+| `index.html` | 홈페이지 (카세트테이프 첫 화면 `#tape-hero`: 카세트 데크 `.deck`(VU 미터·카운터·테이프 칸·건반 키)·모토로라 삐삐·A면/B면 트랙 목록). CSS/JS는 외부 파일로 분리됨 — 아래 `css/`, `js/` 참고 |
 | `css/index.css`, `css/jc-picker.css` | index.html 스타일 (전체 페이지 / 맛집 뽑기 위젯 전용) |
 | `js/site.js` | index.html 공통 스크립트: 테마 토글·내비 스크롤·검색창·위젯 열기닫기·날씨·홈 통계 |
 | `css/tape.css` | 카세트테이프·모토로라 삐삐·공중전화 부품 (홈·칼럼 목록·방명록 전용). DSEG7·Galmuri11 글꼴 포함 |
