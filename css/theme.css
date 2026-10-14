@@ -303,6 +303,7 @@ footer { border-top: 1px solid var(--border); color: var(--muted); }
 .cat-card.photo-card .cat-desc { color: rgba(255, 255, 255, 0.8); }
 .cat-card.photo-card .cat-arrow { color: #fff; }
 .cat-card.wide { grid-column: span 2; align-items: center; }
+.cat-card.full { grid-column: 1 / -1; }
 .cat-card.wide .cat-icon { margin-bottom: 0; }
 
 /* 즐겨찾기 */

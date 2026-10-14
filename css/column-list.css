@@ -5,7 +5,7 @@
   padding: 0.4rem 1.2rem; background: rgba(18, 8, 46, 0.6);
   border: 1px solid var(--border); color: var(--muted);
   font-size: 12px; font-family: var(--font-body); cursor: pointer;
-  letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.15s;
+  letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.15s, background-color 0.15s, border-color 0.15s, box-shadow 0.15s, opacity 0.15s, transform 0.15s, filter 0.15s;
 }
 .cat-btn:hover { border-color: var(--accent); color: var(--accent); box-shadow: var(--glow-cyan); }
 .cat-btn.active { background: var(--accent2); border-color: var(--accent2); color: #fff; box-shadow: var(--glow-pink); }
@@ -13,7 +13,7 @@
 .detail-bar { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.5rem; }
 .tag-btn {
   padding: 2px 10px; border: 1px solid var(--border); background: transparent;
-  color: var(--muted); font-size: 11px; font-family: inherit; cursor: pointer; transition: all 0.15s;
+  color: var(--muted); font-size: 11px; font-family: inherit; cursor: pointer; transition: color 0.15s, background-color 0.15s, border-color 0.15s, box-shadow 0.15s, opacity 0.15s, transform 0.15s, filter 0.15s;
 }
 .tag-btn:hover, .tag-btn.active { border-color: var(--accent3); color: var(--accent3); }
 .tag-toggle {
@@ -79,7 +79,7 @@
 .col-more {
   align-self: flex-start; background: transparent; border: 1px solid var(--border);
   color: var(--text); font-size: 11px; font-family: inherit; letter-spacing: 0.1em;
-  text-transform: uppercase; padding: 0.5rem 1.2rem; cursor: pointer; transition: all 0.2s;
+  text-transform: uppercase; padding: 0.5rem 1.2rem; cursor: pointer; transition: color 0.2s, background-color 0.2s, border-color 0.2s, box-shadow 0.2s, opacity 0.2s, transform 0.2s, filter 0.2s;
 }
 .col-more:hover { border-color: var(--accent2); color: var(--accent2); box-shadow: var(--glow-pink); }
 .col-hidden { display: none !important; }

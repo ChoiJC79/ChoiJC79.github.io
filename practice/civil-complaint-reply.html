@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>민원 답변 초안 — 친절함과 정확성 사이의 균형 | AI 실무 가이드</title>
+<meta name="description" content="민원 답변은 법적 정확성과 공감 표현을 함께 갖춰야 하는 까다로운 글입니다. AI로 답변 구조와 어조를 잡고, 법령 근거와 사실관계는 담당자가 채우는 분업 방식이 효율적입니다.">
+<meta property="og:title" content="민원 답변 초안 — 친절함과 정확성 사이의 균형 | AI 실무 가이드">
+<meta property="og:description" content="민원 답변은 법적 정확성과 공감 표현을 함께 갖춰야 하는 까다로운 글입니다. AI로 답변 구조와 어조를 잡고, 법령 근거와 사실관계는 담당자가 채우는 분업 방식이 효율적입니다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/practice/civil-complaint-reply.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/practice.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 가이드</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9728; 라이트</button>
+</header>
+
+<section class="hero pr-hero">
+  <div class="hero-label"><a href="/practice.html">AI 실무 가이드</a> · 업무</div>
+  <h1>💬 민원 답변 초안 — 친절함과 정확성 사이의 균형</h1>
+  <p>민원 답변은 법적 정확성과 공감 표현을 함께 갖춰야 하는 까다로운 글입니다. AI로 답변 구조와 어조를 잡고, 법령 근거와 사실관계는 담당자가 채우는 분업 방식이 효율적입니다.</p>
+  <div class="hero-meta">2026-08-04 · 약 2분</div>
+</section>
+<main class="pr-wrap">
+  <div class="pr-glance">
+    <div class="pr-box"><h2>이럴 때</h2><ul><li>비슷한 유형의 민원 답변을 반복 작성할 때</li><li>감정이 격한 민원에 차분하고 정중한 어조로 답해야 할 때</li><li>거절·불가 답변을 덜 딱딱하게 전달하고 싶을 때</li></ul></div>
+    <div class="pr-box key"><h2>핵심</h2><p>어조는 AI에게, 근거와 책임은 담당자에게.</p></div>
+    <div class="pr-box"><h2>꼭 지킬 것</h2><p>민원인의 성명·주소·사연의 구체적 내용은 입력하지 않습니다.</p></div>
+  </div>
+
+  <section class="pr-sec">
+    <h2>따라 하기</h2>
+    <ol class="pr-steps">
+    <li><div><b>민원 요지만 일반화해 입력한다</b><span>민원인 정보는 모두 빼고 &#x27;감면 신청 기한을 넘겨 감면이 불가한 사례&#x27;처럼 유형으로 설명합니다.</span></div></li>
+    <li><div><b>답변 구조를 지정한다</b><span>공감·인사 → 검토 결과 → 근거 → 대안·안내 → 맺음의 순서로 요청합니다.</span></div></li>
+    <li><div><b>근거 법령은 빈칸으로 둔다</b><span>&#x27;근거 조항 자리는 [근거]로 비워 둬&#x27;라고 요청하고 담당자가 직접 채웁니다.</span></div></li>
+    <li><div><b>대안 안내를 포함한다</b><span>불가 답변이라도 다른 제도나 다음 신청 시기 등 할 수 있는 것을 함께 안내하면 민원 만족도가 달라집니다.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="pr-sec">
+    <h2>바로 쓰는 프롬프트</h2>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>다음 유형의 민원에 대한 답변 초안을 작성해줘.
+[유형] 신청 기한 경과로 감면 적용이 불가한 사례
+[구조] 공감 인사 → 검토 결과 → 근거 → 가능한 대안 안내 → 맺음
+[조건] 정중하되 결론은 명확하게, 근거 법령은 [근거]로 비워 둘 것, 400자 내외</pre></div>
+  </section>
+
+  <section class="pr-sec">
+    <h2>함께 챙길 것</h2>
+    <ul class="pr-checks">
+    <li>AI가 제시한 법령 조항은 그대로 쓰지 않고 담당자가 확인한 근거로 대체합니다.</li>
+    </ul>
+  </section>
+  <nav class="pr-pager"><a class="prev" href="/practice/excel-with-ai.html"><small>← 이전</small>엑셀 수식·피벗을 AI에게 묻기 — 함수 이름을 몰라도 되는 방법</a><a class="next" href="/practice/literature-review.html"><small>다음 →</small>선행연구 정리 — 논문 요약과 비교표 만들기</a></nav>
+</main>
+
+<footer>&copy; 2026 최승환 · choijc79.github.io</footer>
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/about.html">👤<br>소개</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/guides.html" aria-current="page">⚙️<br>가이드</a>
+  <a href="/memo.html">📋<br>노트</a>
+</div>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'\u2600 라이트':'\u263e 다크';
+})();
+function toggleTheme(){
+  var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'\u2600 라이트':'\u263e 다크';
+}
+document.querySelectorAll('.pr-copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.parentNode.querySelector('pre').textContent;
+    if(navigator.clipboard) navigator.clipboard.writeText(t).then(function(){b.textContent='복사됨';setTimeout(function(){b.textContent='복사';},1400);});
+  });
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+</body>
+</html>

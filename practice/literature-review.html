@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>선행연구 정리 — 논문 요약과 비교표 만들기 | AI 실무 가이드</title>
+<meta name="description" content="선행연구 검토의 목표는 나열이 아니라 &#x27;기존 연구가 어디까지 왔고 무엇이 비어 있는가&#x27;를 보여주는 것입니다. AI는 여러 논문의 연구대상·방법·결과를 같은 틀로 정리해 차이와 공백을 드러내는 데 도움이 됩니다.">
+<meta property="og:title" content="선행연구 정리 — 논문 요약과 비교표 만들기 | AI 실무 가이드">
+<meta property="og:description" content="선행연구 검토의 목표는 나열이 아니라 &#x27;기존 연구가 어디까지 왔고 무엇이 비어 있는가&#x27;를 보여주는 것입니다. AI는 여러 논문의 연구대상·방법·결과를 같은 틀로 정리해 차이와 공백을 드러내는 데 도움이 됩니다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/practice/literature-review.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/practice.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 가이드</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9728; 라이트</button>
+</header>
+
+<section class="hero pr-hero">
+  <div class="hero-label"><a href="/practice.html">AI 실무 가이드</a> · 연구</div>
+  <h1>📚 선행연구 정리 — 논문 요약과 비교표 만들기</h1>
+  <p>선행연구 검토의 목표는 나열이 아니라 &#x27;기존 연구가 어디까지 왔고 무엇이 비어 있는가&#x27;를 보여주는 것입니다. AI는 여러 논문의 연구대상·방법·결과를 같은 틀로 정리해 차이와 공백을 드러내는 데 도움이 됩니다.</p>
+  <div class="hero-meta">2026-08-08 · 약 2분</div>
+</section>
+<main class="pr-wrap">
+  <div class="pr-glance">
+    <div class="pr-box"><h2>이럴 때</h2><ul><li>읽어야 할 논문이 수십 편 쌓였을 때</li><li>선행연구를 연구자별 나열이 아닌 쟁점별로 재구성하고 싶을 때</li><li>본 연구의 차별성을 한 문단으로 정리해야 할 때</li></ul></div>
+    <div class="pr-box key"><h2>핵심</h2><p>나열은 AI가 도와주지만, 공백을 읽어 내는 눈은 연구자의 몫입니다.</p></div>
+    <div class="pr-box"><h2>꼭 지킬 것</h2><p>AI에게 선행연구 목록을 새로 만들게 하면 존재하지 않는 논문이 섞일 수 있습니다. 반드시 실재하는 자료만 입력합니다.</p></div>
+  </div>
+
+  <section class="pr-sec">
+    <h2>따라 하기</h2>
+    <ol class="pr-steps">
+    <li><div><b>논문 초록과 결론을 준비한다</b><span>직접 읽은 논문의 초록·결론 부분을 모읍니다. AI에게 논문을 &#x27;찾아 달라&#x27;고 하기보다 내가 가진 자료를 정리하게 하는 편이 정확합니다.</span></div></li>
+    <li><div><b>비교 틀을 정한다</b><span>연구대상 / 자료·기간 / 분석방법 / 주요 결과 / 한계 다섯 열로 표를 요청합니다.</span></div></li>
+    <li><div><b>쟁점별로 묶는다</b><span>표를 바탕으로 &#x27;세원 귀속&#x27;, &#x27;납세지 불일치&#x27;, &#x27;재정 불균형&#x27;처럼 쟁점 단위로 재분류를 요청합니다.</span></div></li>
+    <li><div><b>공백을 찾는다</b><span>&#x27;이 연구들이 공통적으로 다루지 않은 것&#x27;을 묻고, 그 답을 본 연구의 필요성 논리로 연결합니다.</span></div></li>
+    <li><div><b>인용은 원문으로 확인한다</b><span>모든 서지사항과 인용 문장은 원문 PDF에서 직접 대조합니다.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="pr-sec">
+    <h2>바로 쓰는 프롬프트</h2>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>아래는 내가 읽은 논문 5편의 초록과 결론이다.
+1) 연구대상 / 자료·기간 / 분석방법 / 주요 결과 / 한계 열로 비교표를 만들어줘.
+2) 이 연구들이 공통적으로 다루지 않은 공백을 3가지로 정리해줘.
+3) 표에 없는 정보는 추측하지 말고 &#x27;초록에 없음&#x27;으로 적어줘.
+
+[논문 자료]
+(붙여 넣기)</pre></div>
+  </section>
+
+  <section class="pr-sec">
+    <h2>함께 챙길 것</h2>
+    <ul class="pr-checks">
+    <li>AI가 작성한 요약 문장을 논문에 그대로 쓰지 않고, 본인의 문장으로 다시 씁니다.</li>
+    </ul>
+  </section>
+  <nav class="pr-pager"><a class="prev" href="/practice/civil-complaint-reply.html"><small>← 이전</small>민원 답변 초안 — 친절함과 정확성 사이의 균형</a><a class="next" href="/practice/notebooklm-reading.html"><small>다음 →</small>NotebookLM으로 자료 묶음 읽기 — 내가 올린 문서 안에서만 답하는 AI</a></nav>
+</main>
+
+<footer>&copy; 2026 최승환 · choijc79.github.io</footer>
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/about.html">👤<br>소개</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/guides.html" aria-current="page">⚙️<br>가이드</a>
+  <a href="/memo.html">📋<br>노트</a>
+</div>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'\u2600 라이트':'\u263e 다크';
+})();
+function toggleTheme(){
+  var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'\u2600 라이트':'\u263e 다크';
+}
+document.querySelectorAll('.pr-copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.parentNode.querySelector('pre').textContent;
+    if(navigator.clipboard) navigator.clipboard.writeText(t).then(function(){b.textContent='복사됨';setTimeout(function(){b.textContent='복사';},1400);});
+  });
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+</body>
+</html>

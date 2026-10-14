@@ -26,9 +26,15 @@
   </url>
   <url>
     <loc>https://choijc79.github.io/local.html</loc>
-    <lastmod>2026-07-07</lastmod>
+    <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://choijc79.github.io/jecheon_history.html</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://choijc79.github.io/tour.html</loc>
@@ -370,6 +376,12 @@
     <loc>https://choijc79.github.io/talisker10.html</loc>
     <lastmod>2026-10-07</lastmod>
     <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://choijc79.github.io/uirim-final-notes.html</loc>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
 </urlset>

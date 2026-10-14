@@ -81,7 +81,7 @@ a:hover { color: var(--accent2); text-shadow: var(--glow-pink); }
 #theme-toggle, #theme-btn, .theme-btn {
   background: transparent; border: 1px solid var(--border); color: var(--muted);
   font-size: 11px; font-family: var(--font-body); padding: 4px 12px; cursor: pointer;
-  letter-spacing: 0.06em; transition: all 0.2s;
+  letter-spacing: 0.06em; transition: color 0.2s, background-color 0.2s, border-color 0.2s, box-shadow 0.2s, opacity 0.2s, transform 0.2s, filter 0.2s;
 }
 #theme-toggle:hover, #theme-btn:hover, .theme-btn:hover {
   border-color: var(--accent2); color: var(--accent2); box-shadow: var(--glow-pink);

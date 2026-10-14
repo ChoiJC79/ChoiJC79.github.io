@@ -107,5 +107,7 @@ footer{border-top:1px solid var(--border);text-align:center;padding:1.5rem 1rem;
 function toggleTheme(){var t=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',t);localStorage.setItem('choijc-theme',t);var b=document.getElementById('theme-toggle');if(b)b.textContent=t==='dark'?'☀ 라이트':'🌙 다크';}
 (function(){var t=localStorage.getItem('choijc-theme')||'dark';document.documentElement.setAttribute('data-theme',t);document.addEventListener('DOMContentLoaded',function(){var b=document.getElementById('theme-toggle');if(b)b.textContent=t==='dark'?'☀ 라이트':'🌙 다크';});}());
 </script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
 </body>
 </html>

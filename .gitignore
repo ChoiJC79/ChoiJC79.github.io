@@ -10,8 +10,10 @@ scripts/__pycache__/
 *.pyc
 .~lock.*
 
-# Claude Code 로컬 설정
-.claude/
+# Claude Code 로컬 설정 (공유 스킬·에이전트는 저장소에 포함)
+.claude/*
+!.claude/skills/
+!.claude/agents/
 
 # 미사용 실험 페이지 / 초안 (publish.py가 배포하지 않음)
 \!DOCTYPE.html

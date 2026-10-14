@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>정적 홈페이지 만들기 — GitHub Pages와 AI로 나만의 사이트 운영 | AI 실무 가이드</title>
+<meta name="description" content="GitHub Pages는 저장소에 올린 HTML 파일을 그대로 웹사이트로 공개해 주는 무료 호스팅 서비스입니다. 서버 관리 없이 글·연구 포트폴리오를 운영할 수 있고, AI와 함께라면 디자인과 페이지 추가도 어렵지 않습니다. 이 사이트도 같은 방식으로 운영하고 있습니다.">
+<meta property="og:title" content="정적 홈페이지 만들기 — GitHub Pages와 AI로 나만의 사이트 운영 | AI 실무 가이드">
+<meta property="og:description" content="GitHub Pages는 저장소에 올린 HTML 파일을 그대로 웹사이트로 공개해 주는 무료 호스팅 서비스입니다. 서버 관리 없이 글·연구 포트폴리오를 운영할 수 있고, AI와 함께라면 디자인과 페이지 추가도 어렵지 않습니다. 이 사이트도 같은 방식으로 운영하고 있습니다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/practice/github-pages-with-ai.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/practice.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 가이드</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9728; 라이트</button>
+</header>
+
+<section class="hero pr-hero">
+  <div class="hero-label"><a href="/practice.html">AI 실무 가이드</a> · 코딩</div>
+  <h1>🌐 정적 홈페이지 만들기 — GitHub Pages와 AI로 나만의 사이트 운영</h1>
+  <p>GitHub Pages는 저장소에 올린 HTML 파일을 그대로 웹사이트로 공개해 주는 무료 호스팅 서비스입니다. 서버 관리 없이 글·연구 포트폴리오를 운영할 수 있고, AI와 함께라면 디자인과 페이지 추가도 어렵지 않습니다. 이 사이트도 같은 방식으로 운영하고 있습니다.</p>
+  <div class="hero-meta">2026-09-01 · 약 2분</div>
+</section>
+<main class="pr-wrap">
+  <div class="pr-glance">
+    <div class="pr-box"><h2>이럴 때</h2><ul><li>연구 성과·칼럼을 한곳에 모아 공개하고 싶을 때</li><li>블로그 플랫폼의 디자인 제약에서 벗어나고 싶을 때</li><li>서버 비용 없이 개인 사이트를 오래 유지하고 싶을 때</li></ul></div>
+    <div class="pr-box key"><h2>핵심</h2><p>HTML 파일 하나가 곧 하나의 페이지입니다. 시작은 생각보다 가볍습니다.</p></div>
+    <div class="pr-box"><h2>꼭 지킬 것</h2><p>공개 저장소에 올린 파일은 누구나 볼 수 있습니다. 개인 연락처·내부 자료를 올리지 않습니다.</p></div>
+  </div>
+
+  <section class="pr-sec">
+    <h2>따라 하기</h2>
+    <ol class="pr-steps">
+    <li><div><b>저장소를 만든다</b><span>&#x27;사용자명.github.io&#x27; 이름으로 저장소를 만들면 해당 주소로 사이트가 열립니다.</span></div></li>
+    <li><div><b>첫 페이지를 AI와 만든다</b><span>사이트 성격과 원하는 메뉴를 설명하고 index.html 한 파일부터 만듭니다.</span></div></li>
+    <li><div><b>공통 디자인을 분리한다</b><span>페이지가 늘어나면 색상·글꼴을 공통 CSS 파일로 분리해 일관성을 유지합니다.</span></div></li>
+    <li><div><b>반복 페이지는 템플릿으로 만든다</b><span>칼럼·가이드처럼 구조가 같은 페이지는 템플릿과 데이터로 나눠 생성하면 관리가 쉬워집니다.</span></div></li>
+    <li><div><b>검색 노출을 챙긴다</b><span>페이지마다 제목·설명·OG 메타태그를 넣고 sitemap.xml을 갱신합니다.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="pr-sec">
+    <h2>바로 쓰는 프롬프트</h2>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>GitHub Pages에 올릴 개인 연구 사이트의 index.html을 만들어줘.
+- 메뉴: 소개 / 연구 / 칼럼 / 가이드
+- 다크 톤, 본문 글꼴은 Noto Sans KR
+- 모바일에서도 깨지지 않게
+- 각 메뉴는 아직 빈 페이지로 연결만</pre></div>
+  </section>
+
+  <section class="pr-sec">
+    <h2>함께 챙길 것</h2>
+    <ul class="pr-checks">
+    <li>외부 이미지는 저작권을 확인하고 사용합니다.</li>
+    </ul>
+  </section>
+  <nav class="pr-pager"><a class="prev" href="/practice/claude-code-intro.html"><small>← 이전</small>Claude Code 입문 — 저장소와 대화하며 개발하기</a><a class="next" href="/practice/python-excel-automation.html"><small>다음 →</small>파이썬 업무 스크립트 — 반복되는 엑셀 취합을 자동화하기</a></nav>
+</main>
+
+<footer>&copy; 2026 최승환 · choijc79.github.io</footer>
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/about.html">👤<br>소개</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/guides.html" aria-current="page">⚙️<br>가이드</a>
+  <a href="/memo.html">📋<br>노트</a>
+</div>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'\u2600 라이트':'\u263e 다크';
+})();
+function toggleTheme(){
+  var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'\u2600 라이트':'\u263e 다크';
+}
+document.querySelectorAll('.pr-copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.parentNode.querySelector('pre').textContent;
+    if(navigator.clipboard) navigator.clipboard.writeText(t).then(function(){b.textContent='복사됨';setTimeout(function(){b.textContent='복사';},1400);});
+  });
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+</body>
+</html>

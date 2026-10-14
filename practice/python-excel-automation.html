@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>파이썬 업무 스크립트 — 반복되는 엑셀 취합을 자동화하기 | AI 실무 가이드</title>
+<meta name="description" content="읍면동별·부서별로 받은 엑셀 파일을 하나로 합치는 작업은 매달 반복되지만 실수가 잦습니다. 파이썬 스크립트 하나로 폴더 안 파일을 자동 취합하면, 사람은 결과 검증에만 시간을 쓰면 됩니다. AI에게 요구사항을 설명하면 스크립트 초안을 받을 수 있습니다.">
+<meta property="og:title" content="파이썬 업무 스크립트 — 반복되는 엑셀 취합을 자동화하기 | AI 실무 가이드">
+<meta property="og:description" content="읍면동별·부서별로 받은 엑셀 파일을 하나로 합치는 작업은 매달 반복되지만 실수가 잦습니다. 파이썬 스크립트 하나로 폴더 안 파일을 자동 취합하면, 사람은 결과 검증에만 시간을 쓰면 됩니다. AI에게 요구사항을 설명하면 스크립트 초안을 받을 수 있습니다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/practice/python-excel-automation.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/practice.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 가이드</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9728; 라이트</button>
+</header>
+
+<section class="hero pr-hero">
+  <div class="hero-label"><a href="/practice.html">AI 실무 가이드</a> · 코딩</div>
+  <h1>🐍 파이썬 업무 스크립트 — 반복되는 엑셀 취합을 자동화하기</h1>
+  <p>읍면동별·부서별로 받은 엑셀 파일을 하나로 합치는 작업은 매달 반복되지만 실수가 잦습니다. 파이썬 스크립트 하나로 폴더 안 파일을 자동 취합하면, 사람은 결과 검증에만 시간을 쓰면 됩니다. AI에게 요구사항을 설명하면 스크립트 초안을 받을 수 있습니다.</p>
+  <div class="hero-meta">2026-09-05 · 약 2분</div>
+</section>
+<main class="pr-wrap">
+  <div class="pr-glance">
+    <div class="pr-box"><h2>이럴 때</h2><ul><li>같은 양식의 엑셀 파일 수십 개를 매달 합쳐야 할 때</li><li>취합 과정에서 복사·붙여넣기 실수가 반복될 때</li><li>합친 결과로 요약표까지 자동으로 만들고 싶을 때</li></ul></div>
+    <div class="pr-box key"><h2>핵심</h2><p>매달 하는 일이라면, 한 번 만들어 두는 편이 이깁니다.</p></div>
+    <div class="pr-box"><h2>꼭 지킬 것</h2><p>실제 과세자료로 작업할 때는 기관 PC 안에서만 실행하고 외부로 전송하지 않습니다.</p></div>
+  </div>
+
+  <section class="pr-sec">
+    <h2>따라 하기</h2>
+    <ol class="pr-steps">
+    <li><div><b>양식을 설명한다</b><span>시트 이름, 머리글 행 위치, 열 구성을 정확히 알려 줍니다.</span></div></li>
+    <li><div><b>입력과 출력을 정한다</b><span>&#x27;input 폴더의 모든 xlsx를 읽어 output/취합.xlsx로 저장&#x27;처럼 경로를 지정합니다.</span></div></li>
+    <li><div><b>예외 처리를 요청한다</b><span>양식이 다른 파일이 섞였을 때 멈추지 말고 목록으로 알려 주도록 요청합니다.</span></div></li>
+    <li><div><b>작은 표본으로 시험한다</b><span>파일 2~3개로 먼저 돌려 결과를 손 계산과 대조합니다.</span></div></li>
+    <li><div><b>실행 방법을 문서로 남긴다</b><span>설치할 라이브러리와 실행 명령을 메모해 두면 후임자도 쓸 수 있습니다.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="pr-sec">
+    <h2>바로 쓰는 프롬프트</h2>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>파이썬 스크립트를 작성해줘.
+- input 폴더의 모든 .xlsx 파일을 읽는다
+- 각 파일의 첫 시트, 1행이 머리글, 열: 읍면동 / 세목 / 부과액
+- 전부 합쳐 output/취합.xlsx로 저장하고, 두 번째 시트에 읍면동×세목 합계 피벗표를 만든다
+- 열 구성이 다른 파일은 건너뛰고 파일명을 출력한다
+- pandas와 openpyxl 사용, 실행 방법도 함께 알려줘</pre></div>
+  </section>
+
+  <section class="pr-sec">
+    <h2>함께 챙길 것</h2>
+    <ul class="pr-checks">
+    <li>스크립트 결과는 첫 몇 달간 수작업 결과와 병행 비교해 신뢰성을 확인합니다.</li>
+    </ul>
+  </section>
+  <nav class="pr-pager"><a class="prev" href="/practice/github-pages-with-ai.html"><small>← 이전</small>정적 홈페이지 만들기 — GitHub Pages와 AI로 나만의 사이트 운영</a><a class="next" href="/practice/claude-md-and-skills.html"><small>다음 →</small>CLAUDE.md와 스킬 — AI에게 나의 작업 규칙 가르치기</a></nav>
+</main>
+
+<footer>&copy; 2026 최승환 · choijc79.github.io</footer>
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/about.html">👤<br>소개</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/guides.html" aria-current="page">⚙️<br>가이드</a>
+  <a href="/memo.html">📋<br>노트</a>
+</div>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'\u2600 라이트':'\u263e 다크';
+})();
+function toggleTheme(){
+  var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'\u2600 라이트':'\u263e 다크';
+}
+document.querySelectorAll('.pr-copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.parentNode.querySelector('pre').textContent;
+    if(navigator.clipboard) navigator.clipboard.writeText(t).then(function(){b.textContent='복사됨';setTimeout(function(){b.textContent='복사';},1400);});
+  });
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+</body>
+</html>

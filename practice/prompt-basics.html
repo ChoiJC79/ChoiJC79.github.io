@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>프롬프트 설계 기본 — 역할·맥락·형식 세 가지만 기억하기 | AI 실무 가이드</title>
+<meta name="description" content="프롬프트 작성법은 복잡한 기술이 아닙니다. 누가(역할), 어떤 상황에서(맥락), 어떤 모양으로(형식) 원하는지를 밝히는 것만으로도 결과 품질이 눈에 띄게 달라집니다.">
+<meta property="og:title" content="프롬프트 설계 기본 — 역할·맥락·형식 세 가지만 기억하기 | AI 실무 가이드">
+<meta property="og:description" content="프롬프트 작성법은 복잡한 기술이 아닙니다. 누가(역할), 어떤 상황에서(맥락), 어떤 모양으로(형식) 원하는지를 밝히는 것만으로도 결과 품질이 눈에 띄게 달라집니다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/practice/prompt-basics.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/practice.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 가이드</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9728; 라이트</button>
+</header>
+
+<section class="hero pr-hero">
+  <div class="hero-label"><a href="/practice.html">AI 실무 가이드</a> · 기초</div>
+  <h1>✍️ 프롬프트 설계 기본 — 역할·맥락·형식 세 가지만 기억하기</h1>
+  <p>프롬프트 작성법은 복잡한 기술이 아닙니다. 누가(역할), 어떤 상황에서(맥락), 어떤 모양으로(형식) 원하는지를 밝히는 것만으로도 결과 품질이 눈에 띄게 달라집니다.</p>
+  <div class="hero-meta">2026-07-10 · 약 2분</div>
+</section>
+<main class="pr-wrap">
+  <div class="pr-glance">
+    <div class="pr-box"><h2>이럴 때</h2><ul><li>같은 질문을 했는데 매번 결과가 들쭉날쭉할 때</li><li>답변이 지나치게 일반론으로 흐를 때</li><li>결과물을 매번 다시 편집하느라 시간이 더 들 때</li></ul></div>
+    <div class="pr-box key"><h2>핵심</h2><p>역할·맥락·형식, 이 세 줄이 프롬프트의 절반입니다.</p></div>
+    <div class="pr-box"><h2>꼭 지킬 것</h2><p>조건을 너무 많이 한꺼번에 넣으면 일부가 누락될 수 있으니 중요한 조건을 앞에 둡니다.</p></div>
+  </div>
+
+  <section class="pr-sec">
+    <h2>따라 하기</h2>
+    <ol class="pr-steps">
+    <li><div><b>역할을 부여한다</b><span>&#x27;지방세 실무 20년 차 검토자로서&#x27;, &#x27;학술지 심사위원 입장에서&#x27;처럼 관점을 지정하면 답변의 깊이와 어휘가 달라집니다.</span></div></li>
+    <li><div><b>맥락을 제공한다</b><span>독자가 누구인지, 어디에 쓸 글인지, 이미 알고 있는 것과 모르는 것이 무엇인지 적어 줍니다.</span></div></li>
+    <li><div><b>형식을 못 박는다</b><span>표의 열 구성, 항목 수, 분량, 문체를 구체적으로 지정합니다. &#x27;짧게&#x27;보다 &#x27;3줄 이내&#x27;가 정확합니다.</span></div></li>
+    <li><div><b>예시를 하나 보여준다</b><span>원하는 결과와 비슷한 샘플 한 단락을 주면 AI가 문체와 밀도를 그대로 따라옵니다.</span></div></li>
+    <li><div><b>잘 된 프롬프트는 저장한다</b><span>효과가 좋았던 프롬프트는 메모장에 모아 두고 주제만 바꿔 재사용합니다.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="pr-sec">
+    <h2>바로 쓰는 프롬프트</h2>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>[역할] 너는 지방재정 분야 정책연구원이다.
+[맥락] 시의회 업무보고에 들어갈 자료이며, 독자는 비전문가 의원이다.
+[과제] 아래 수치를 해석해 핵심 메시지 3개를 뽑아줘.
+[형식] 각 메시지는 제목 1줄 + 근거 2줄, 전문용어는 괄호로 풀이.
+
+[수치]
+(붙여 넣기)</pre></div>
+  </section>
+
+  <section class="pr-sec">
+    <h2>함께 챙길 것</h2>
+    <ul class="pr-checks">
+    <li>&#x27;최고의&#x27;, &#x27;완벽한&#x27; 같은 수식어는 품질을 높여주지 않습니다. 구체적 기준을 적는 편이 낫습니다.</li>
+    </ul>
+  </section>
+  <nav class="pr-pager"><a class="prev" href="/practice/ai-first-step.html"><small>← 이전</small>생성형 AI 첫걸음 — 대화형 AI를 업무 도구로 쓰기</a><a class="next" href="/practice/ai-security-for-public.html"><small>다음 →</small>공무원을 위한 AI 보안 수칙 — 넣어도 되는 것과 안 되는 것</a></nav>
+</main>
+
+<footer>&copy; 2026 최승환 · choijc79.github.io</footer>
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/about.html">👤<br>소개</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/guides.html" aria-current="page">⚙️<br>가이드</a>
+  <a href="/memo.html">📋<br>노트</a>
+</div>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'\u2600 라이트':'\u263e 다크';
+})();
+function toggleTheme(){
+  var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'\u2600 라이트':'\u263e 다크';
+}
+document.querySelectorAll('.pr-copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.parentNode.querySelector('pre').textContent;
+    if(navigator.clipboard) navigator.clipboard.writeText(t).then(function(){b.textContent='복사됨';setTimeout(function(){b.textContent='복사';},1400);});
+  });
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+</body>
+</html>

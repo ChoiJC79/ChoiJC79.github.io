@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 활용의 한계와 검증 습관 — 그럴듯한 오답을 다루는 법 | AI 실무 가이드</title>
+<meta name="description" content="생성형 AI는 사실이 아닌 내용을 자신 있게 말하는 경우가 있습니다. 이를 흔히 환각(hallucination)이라고 부릅니다. AI를 오래 잘 쓰는 사람의 공통점은 성능을 믿는 것이 아니라 검증 습관을 갖추고 있다는 점입니다.">
+<meta property="og:title" content="AI 활용의 한계와 검증 습관 — 그럴듯한 오답을 다루는 법 | AI 실무 가이드">
+<meta property="og:description" content="생성형 AI는 사실이 아닌 내용을 자신 있게 말하는 경우가 있습니다. 이를 흔히 환각(hallucination)이라고 부릅니다. AI를 오래 잘 쓰는 사람의 공통점은 성능을 믿는 것이 아니라 검증 습관을 갖추고 있다는 점입니다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/practice/ai-limits-verification.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/practice.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 가이드</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9728; 라이트</button>
+</header>
+
+<section class="hero pr-hero">
+  <div class="hero-label"><a href="/practice.html">AI 실무 가이드</a> · 기초</div>
+  <h1>🧪 AI 활용의 한계와 검증 습관 — 그럴듯한 오답을 다루는 법</h1>
+  <p>생성형 AI는 사실이 아닌 내용을 자신 있게 말하는 경우가 있습니다. 이를 흔히 환각(hallucination)이라고 부릅니다. AI를 오래 잘 쓰는 사람의 공통점은 성능을 믿는 것이 아니라 검증 습관을 갖추고 있다는 점입니다.</p>
+  <div class="hero-meta">2026-09-24 · 약 2분</div>
+</section>
+<main class="pr-wrap">
+  <div class="pr-glance">
+    <div class="pr-box"><h2>이럴 때</h2><ul><li>AI 답변을 보고서·논문·민원 답변에 옮기기 직전</li><li>법령·판례·통계 수치가 포함된 답변을 받았을 때</li><li>답변이 지나치게 매끄럽고 확신에 차 있을 때</li></ul></div>
+    <div class="pr-box key"><h2>핵심</h2><p>AI를 잘 쓰는 능력의 절반은 의심하는 능력입니다.</p></div>
+    <div class="pr-box"><h2>꼭 지킬 것</h2><p>AI가 제시한 출처 자체가 존재하지 않을 수 있습니다. 링크와 서지사항도 직접 열어 확인합니다.</p></div>
+  </div>
+
+  <section class="pr-sec">
+    <h2>따라 하기</h2>
+    <ol class="pr-steps">
+    <li><div><b>검증 대상을 표시한다</b><span>수치·날짜·고유명사·법령 조항·인용문은 무조건 확인 대상으로 표시합니다.</span></div></li>
+    <li><div><b>원자료로 대조한다</b><span>국가법령정보센터, 통계청, 원문 논문 등 1차 자료에서 직접 확인합니다.</span></div></li>
+    <li><div><b>출처를 요구한다</b><span>&#x27;이 내용의 근거 자료를 제시하고, 확실하지 않은 부분은 표시해줘&#x27;라고 요청합니다.</span></div></li>
+    <li><div><b>반대 질문을 던진다</b><span>&#x27;이 주장이 틀렸다면 어떤 근거 때문일까?&#x27;를 물어 답변의 약한 고리를 찾습니다.</span></div></li>
+    <li><div><b>최종 책임은 사람이 진다</b><span>AI 도움을 받은 결과물이라도 공문·논문의 책임은 작성자에게 있다는 점을 기억합니다.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="pr-sec">
+    <h2>바로 쓰는 프롬프트</h2>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>방금 답변에서 사실 확인이 필요한 항목(수치, 날짜, 법령, 고유명사)을 모두 뽑아
+| 항목 | 답변 내용 | 확인할 1차 자료 | 확신도(상/중/하) |
+표로 정리해줘. 확실하지 않은 내용은 확신도를 낮게 표시해줘.</pre></div>
+  </section>
+
+  <section class="pr-sec">
+    <h2>함께 챙길 것</h2>
+    <ul class="pr-checks">
+    <li>같은 질문을 다시 해서 같은 답이 나온다고 사실이 되는 것은 아닙니다.</li>
+    </ul>
+  </section>
+  <nav class="pr-pager"><a class="prev" href="/practice/task-templates.html"><small>← 이전</small>반복 작업 템플릿화 — 한 번 설계하고 주제만 갈아 끼우기</a></nav>
+</main>
+
+<footer>&copy; 2026 최승환 · choijc79.github.io</footer>
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/about.html">👤<br>소개</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/guides.html" aria-current="page">⚙️<br>가이드</a>
+  <a href="/memo.html">📋<br>노트</a>
+</div>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'\u2600 라이트':'\u263e 다크';
+})();
+function toggleTheme(){
+  var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'\u2600 라이트':'\u263e 다크';
+}
+document.querySelectorAll('.pr-copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.parentNode.querySelector('pre').textContent;
+    if(navigator.clipboard) navigator.clipboard.writeText(t).then(function(){b.textContent='복사됨';setTimeout(function(){b.textContent='복사';},1400);});
+  });
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+</body>
+</html>

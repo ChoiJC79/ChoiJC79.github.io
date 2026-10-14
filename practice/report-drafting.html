@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>개조식 보고서 초안 — 1쪽 보고서를 AI와 함께 쓰기 | AI 실무 가이드</title>
+<meta name="description" content="행정 보고서의 핵심은 짧은 분량 안에 판단에 필요한 정보를 빠짐없이 담는 것입니다. AI는 흩어진 메모를 보고서 뼈대로 정리하는 데 특히 강합니다. 초안 작성 시간을 줄이고, 사람은 판단과 표현 검토에 집중하는 방식입니다.">
+<meta property="og:title" content="개조식 보고서 초안 — 1쪽 보고서를 AI와 함께 쓰기 | AI 실무 가이드">
+<meta property="og:description" content="행정 보고서의 핵심은 짧은 분량 안에 판단에 필요한 정보를 빠짐없이 담는 것입니다. AI는 흩어진 메모를 보고서 뼈대로 정리하는 데 특히 강합니다. 초안 작성 시간을 줄이고, 사람은 판단과 표현 검토에 집중하는 방식입니다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/practice/report-drafting.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/practice.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 가이드</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9728; 라이트</button>
+</header>
+
+<section class="hero pr-hero">
+  <div class="hero-label"><a href="/practice.html">AI 실무 가이드</a> · 업무</div>
+  <h1>📄 개조식 보고서 초안 — 1쪽 보고서를 AI와 함께 쓰기</h1>
+  <p>행정 보고서의 핵심은 짧은 분량 안에 판단에 필요한 정보를 빠짐없이 담는 것입니다. AI는 흩어진 메모를 보고서 뼈대로 정리하는 데 특히 강합니다. 초안 작성 시간을 줄이고, 사람은 판단과 표현 검토에 집중하는 방식입니다.</p>
+  <div class="hero-meta">2026-07-18 · 약 2분</div>
+</section>
+<main class="pr-wrap">
+  <div class="pr-glance">
+    <div class="pr-box"><h2>이럴 때</h2><ul><li>회의 메모·자료 조각을 1쪽 보고서로 묶어야 할 때</li><li>같은 내용을 상급자용·의회용·언론용으로 버전을 나눠야 할 때</li><li>보고서의 논리 흐름이 어색한데 어디가 문제인지 모를 때</li></ul></div>
+    <div class="pr-box key"><h2>핵심</h2><p>뼈대는 AI가, 판단은 사람이 세웁니다.</p></div>
+    <div class="pr-box"><h2>꼭 지킬 것</h2><p>&#x27;수치는 메모에 있는 것만&#x27;이라는 조건을 빼면 그럴듯한 가짜 수치가 섞일 수 있습니다.</p></div>
+  </div>
+
+  <section class="pr-sec">
+    <h2>따라 하기</h2>
+    <ol class="pr-steps">
+    <li><div><b>메모를 그대로 던진다</b><span>정리되지 않은 메모라도 괜찮습니다. 공개 가능한 사실관계를 모두 붙여 넣습니다.</span></div></li>
+    <li><div><b>보고서 틀을 지정한다</b><span>&#x27;추진배경 – 현황 – 문제점 – 개선방안 – 향후계획&#x27;처럼 기관에서 쓰는 목차를 알려 줍니다.</span></div></li>
+    <li><div><b>개조식 기호 체계를 정한다</b><span>□ ○ - · 순의 위계를 지정하면 바로 한글 문서로 옮길 수 있습니다.</span></div></li>
+    <li><div><b>판단 문장은 직접 쓴다</b><span>&#x27;~할 필요가 있음&#x27;, &#x27;~검토 요망&#x27; 같은 결론부는 담당자가 최종 판단해 다듬습니다.</span></div></li>
+    <li><div><b>분량을 줄이는 요청을 한다</b><span>초안이 길면 &#x27;핵심만 남겨 70% 분량으로&#x27;라고 요청해 밀도를 높입니다.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="pr-sec">
+    <h2>바로 쓰는 프롬프트</h2>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>아래 메모로 1쪽 개조식 보고서 초안을 작성해줘.
+- 목차: 추진배경 / 현황 / 문제점 / 개선방안 / 향후계획
+- 기호 위계: □ → ○ → -
+- 각 항목 2~3줄, 명사형 종결(~함, ~임)
+- 수치는 메모에 있는 것만 사용하고 새로 만들지 말 것
+
+[메모]
+(붙여 넣기)</pre></div>
+  </section>
+
+  <section class="pr-sec">
+    <h2>함께 챙길 것</h2>
+    <ul class="pr-checks">
+    <li>최종 결론과 건의사항은 담당자의 판단 영역입니다. AI 문장을 그대로 결재에 올리지 않습니다.</li>
+    </ul>
+  </section>
+  <nav class="pr-pager"><a class="prev" href="/practice/ai-security-for-public.html"><small>← 이전</small>공무원을 위한 AI 보안 수칙 — 넣어도 되는 것과 안 되는 것</a><a class="next" href="/practice/official-letter-polish.html"><small>다음 →</small>공문·안내문 다듬기 — 딱딱한 문장을 읽히는 문장으로</a></nav>
+</main>
+
+<footer>&copy; 2026 최승환 · choijc79.github.io</footer>
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/about.html">👤<br>소개</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/guides.html" aria-current="page">⚙️<br>가이드</a>
+  <a href="/memo.html">📋<br>노트</a>
+</div>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'\u2600 라이트':'\u263e 다크';
+})();
+function toggleTheme(){
+  var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'\u2600 라이트':'\u263e 다크';
+}
+document.querySelectorAll('.pr-copy').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.parentNode.querySelector('pre').textContent;
+    if(navigator.clipboard) navigator.clipboard.writeText(t).then(function(){b.textContent='복사됨';setTimeout(function(){b.textContent='복사';},1400);});
+  });
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+</body>
+</html>

@@ -13,6 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/synthwave.css">
 <link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="/css/theme.css">
 <style>
 :root {
   --bg:      #F5F1E8;
@@ -25,6 +26,18 @@
   --stamp:   #A04818;
   --soft:    #F7F3EA;
 }
+html[data-theme="dark"] {
+  --bg:      #0d1117;
+  --surface: #161b22;
+  --border:  #30363d;
+  --text:    #e6edf3;
+  --muted:   #8b949e;
+  --accent:  #d29922;
+  --rule:    #30363d;
+  --stamp:   #d29922;
+  --soft:    #161b22;
+}
+html[data-theme="dark"] .hero::before { display:none !important; }
 * { margin:0; padding:0; box-sizing:border-box; }
 body {
   background:var(--bg); color:var(--text);
@@ -795,7 +808,7 @@ It's not bad to hide. But lying is a bad thing. It can come back as a boomerang,
 
 <script>
 (function(){
-  var t = localStorage.getItem('choijc-theme') || 'light';
+  var t = localStorage.getItem('choijc-theme') || 'dark';
   document.documentElement.setAttribute('data-theme', t);
   var btn = document.getElementById('theme-btn');
   if(btn) btn.textContent = t === 'dark' ? '☀ 라이트' : '☾ 다크';

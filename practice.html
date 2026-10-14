@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 실무 가이드 | 최승환</title>
+<meta name="description" content="보고서·민원·논문·코딩·자동화까지, 지방행정 실무자가 정리한 생성형 AI 활용 가이드 20편.">
+<meta property="og:title" content="AI 실무 가이드 | 최승환">
+<meta property="og:description" content="보고서·민원·논문·코딩·자동화까지, 지방행정 실무자가 정리한 생성형 AI 활용 가이드 20편.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://choijc79.github.io/practice.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/practice.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 가이드</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9728; 라이트</button>
+</header>
+
+<section class="hero">
+  <div class="hero-label">AI Practice</div>
+  <h1>일하는 방식에 AI를 더하는<br>실무 가이드</h1>
+  <p>보고서·민원·논문·코딩·자동화까지, 지방행정 실무자가 정리한 생성형 AI 활용 가이드 20편. 편마다 세 칸 요약, 단계, 복사용 프롬프트, 주의사항 순서로 한 화면에 정리했습니다.</p>
+  <div class="hero-meta">총 20편 · 마지막 업데이트 2026-09-24 · <a href="/guides.html">주간 GitHub 도구 가이드 보기 →</a></div>
+</section>
+<main class="pr-wrap">
+  <div class="pr-tabs" role="tablist">
+    <button class="pr-tab active" data-cat="전체">전체<small>20</small></button>
+    <button class="pr-tab" data-cat="기초">기초<small>4</small></button>
+    <button class="pr-tab" data-cat="업무">업무<small>5</small></button>
+    <button class="pr-tab" data-cat="연구">연구<small>4</small></button>
+    <button class="pr-tab" data-cat="코딩">코딩<small>4</small></button>
+    <button class="pr-tab" data-cat="자동화">자동화<small>3</small></button>
+  </div>
+  <ol class="pr-index">
+  <li class="pr-row" data-cat="기초"><a href="/practice/ai-first-step.html"><span class="pr-no">01</span><span class="pr-title">🧭 생성형 AI 첫걸음 — 대화형 AI를 업무 도구로 쓰기</span><span class="pr-side"><span class="pr-chip">기초</span>2026-07-06</span><span class="pr-sum">대화형 AI는 검색창이 아니라 일을 함께 하는 동료에 가깝습니다.</span></a></li>
+  <li class="pr-row" data-cat="기초"><a href="/practice/prompt-basics.html"><span class="pr-no">02</span><span class="pr-title">✍️ 프롬프트 설계 기본 — 역할·맥락·형식 세 가지만 기억하기</span><span class="pr-side"><span class="pr-chip">기초</span>2026-07-10</span><span class="pr-sum">프롬프트 작성법은 복잡한 기술이 아닙니다.</span></a></li>
+  <li class="pr-row" data-cat="기초"><a href="/practice/ai-security-for-public.html"><span class="pr-no">03</span><span class="pr-title">🔒 공무원을 위한 AI 보안 수칙 — 넣어도 되는 것과 안 되는 것</span><span class="pr-side"><span class="pr-chip">기초</span>2026-07-14</span><span class="pr-sum">생성형 AI 활용에서 가장 먼저 세워야 할 원칙은 입력 정보의 경계입니다.</span></a></li>
+  <li class="pr-row" data-cat="업무"><a href="/practice/report-drafting.html"><span class="pr-no">04</span><span class="pr-title">📄 개조식 보고서 초안 — 1쪽 보고서를 AI와 함께 쓰기</span><span class="pr-side"><span class="pr-chip">업무</span>2026-07-18</span><span class="pr-sum">행정 보고서의 핵심은 짧은 분량 안에 판단에 필요한 정보를 빠짐없이 담는 것입니다.</span></a></li>
+  <li class="pr-row" data-cat="업무"><a href="/practice/official-letter-polish.html"><span class="pr-no">05</span><span class="pr-title">📮 공문·안내문 다듬기 — 딱딱한 문장을 읽히는 문장으로</span><span class="pr-side"><span class="pr-chip">업무</span>2026-07-23</span><span class="pr-sum">주민에게 보내는 안내문은 정확해야 하지만 동시에 읽혀야 합니다.</span></a></li>
+  <li class="pr-row" data-cat="업무"><a href="/practice/meeting-minutes.html"><span class="pr-no">06</span><span class="pr-title">🗂️ 회의록 정리 — 녹취 메모에서 결정사항과 할 일까지</span><span class="pr-side"><span class="pr-chip">업무</span>2026-07-27</span><span class="pr-sum">회의가 끝난 뒤 가장 중요한 산출물은 &#x27;누가 언제까지 무엇을 하기로 했는가&#x27;입니다.</span></a></li>
+  <li class="pr-row" data-cat="업무"><a href="/practice/excel-with-ai.html"><span class="pr-no">07</span><span class="pr-title">📊 엑셀 수식·피벗을 AI에게 묻기 — 함수 이름을 몰라도 되는 방법</span><span class="pr-side"><span class="pr-chip">업무</span>2026-07-31</span><span class="pr-sum">엑셀 작업에서 막히는 지점은 대개 &#x27;원하는 결과는 아는데 함수를 모르는&#x27; 경우입니다.</span></a></li>
+  <li class="pr-row" data-cat="업무"><a href="/practice/civil-complaint-reply.html"><span class="pr-no">08</span><span class="pr-title">💬 민원 답변 초안 — 친절함과 정확성 사이의 균형</span><span class="pr-side"><span class="pr-chip">업무</span>2026-08-04</span><span class="pr-sum">민원 답변은 법적 정확성과 공감 표현을 함께 갖춰야 하는 까다로운 글입니다.</span></a></li>
+  <li class="pr-row" data-cat="연구"><a href="/practice/literature-review.html"><span class="pr-no">09</span><span class="pr-title">📚 선행연구 정리 — 논문 요약과 비교표 만들기</span><span class="pr-side"><span class="pr-chip">연구</span>2026-08-08</span><span class="pr-sum">선행연구 검토의 목표는 나열이 아니라 &#x27;기존 연구가 어디까지 왔고 무엇이 비어 있는가&#x27;를 보여주는 것입니다.</span></a></li>
+  <li class="pr-row" data-cat="연구"><a href="/practice/notebooklm-reading.html"><span class="pr-no">10</span><span class="pr-title">📓 NotebookLM으로 자료 묶음 읽기 — 내가 올린 문서 안에서만 답하는 AI</span><span class="pr-side"><span class="pr-chip">연구</span>2026-08-12</span><span class="pr-sum">NotebookLM은 사용자가 올린 문서를 근거로 답변하고, 답변마다 출처 위치를 표시해 주는 Google의 AI 노트 도구입니다.</span></a></li>
+  <li class="pr-row" data-cat="연구"><a href="/practice/academic-writing.html"><span class="pr-no">11</span><span class="pr-title">🎓 논문 문장 다듬기 — 학술체 교정과 연구윤리의 경계</span><span class="pr-side"><span class="pr-chip">연구</span>2026-08-16</span><span class="pr-sum">AI는 초고의 문장을 학술적으로 다듬고 논리 연결을 점검하는 데 유용합니다.</span></a></li>
+  <li class="pr-row" data-cat="연구"><a href="/practice/regression-interpretation.html"><span class="pr-no">12</span><span class="pr-title">📈 통계 분석 보조 — 회귀분석 결과를 해석하는 대화</span><span class="pr-side"><span class="pr-chip">연구</span>2026-08-20</span><span class="pr-sum">통계 프로그램이 내놓은 결과표를 논문 문장으로 옮기는 과정에서 많은 연구자가 막힙니다.</span></a></li>
+  <li class="pr-row" data-cat="코딩"><a href="/practice/vibe-coding-intro.html"><span class="pr-no">13</span><span class="pr-title">🎧 바이브코딩이란 — 말로 만드는 프로그램</span><span class="pr-side"><span class="pr-chip">코딩</span>2026-08-24</span><span class="pr-sum">바이브코딩은 코드를 한 줄씩 직접 쓰는 대신, 원하는 결과를 자연어로 설명하고 AI가 만든 코드를 실행·수정하며 프로그램을 완성해 가는 방식입니다.</span></a></li>
+  <li class="pr-row" data-cat="코딩"><a href="/practice/claude-code-intro.html"><span class="pr-no">14</span><span class="pr-title">🤖 Claude Code 입문 — 저장소와 대화하며 개발하기</span><span class="pr-side"><span class="pr-chip">코딩</span>2026-08-28</span><span class="pr-sum">Claude Code는 터미널·데스크톱·웹 등에서 코드 저장소를 직접 읽고 파일을 수정하며 명령을 실행하는 Anthropic의 AI 코딩 도구입니다.</span></a></li>
+  <li class="pr-row" data-cat="코딩"><a href="/practice/github-pages-with-ai.html"><span class="pr-no">15</span><span class="pr-title">🌐 정적 홈페이지 만들기 — GitHub Pages와 AI로 나만의 사이트 운영</span><span class="pr-side"><span class="pr-chip">코딩</span>2026-09-01</span><span class="pr-sum">GitHub Pages는 저장소에 올린 HTML 파일을 그대로 웹사이트로 공개해 주는 무료 호스팅 서비스입니다.</span></a></li>
+  <li class="pr-row" data-cat="코딩"><a href="/practice/python-excel-automation.html"><span class="pr-no">16</span><span class="pr-title">🐍 파이썬 업무 스크립트 — 반복되는 엑셀 취합을 자동화하기</span><span class="pr-side"><span class="pr-chip">코딩</span>2026-09-05</span><span class="pr-sum">읍면동별·부서별로 받은 엑셀 파일을 하나로 합치는 작업은 매달 반복되지만 실수가 잦습니다.</span></a></li>
+  <li class="pr-row" data-cat="자동화"><a href="/practice/claude-md-and-skills.html"><span class="pr-no">17</span><span class="pr-title">📐 CLAUDE.md와 스킬 — AI에게 나의 작업 규칙 가르치기</span><span class="pr-side"><span class="pr-chip">자동화</span>2026-09-09</span><span class="pr-sum">매번 같은 설명을 반복하는 대신, 프로젝트의 규칙과 선호를 문서로 적어 두면 AI가 작업을 시작할 때마다 읽고 따릅니다.</span></a></li>
+  <li class="pr-row" data-cat="자동화"><a href="/practice/mcp-connectors.html"><span class="pr-no">18</span><span class="pr-title">🔌 MCP 커넥터 — AI를 노션·드라이브·캘린더와 연결하기</span><span class="pr-side"><span class="pr-chip">자동화</span>2026-09-13</span><span class="pr-sum">MCP(Model Context Protocol)는 AI가 외부 서비스의 데이터와 기능을 표준 방식으로 사용할 수 있게 해 주는 연결 규격입니다.</span></a></li>
+  <li class="pr-row" data-cat="자동화"><a href="/practice/task-templates.html"><span class="pr-no">19</span><span class="pr-title">🧩 반복 작업 템플릿화 — 한 번 설계하고 주제만 갈아 끼우기</span><span class="pr-side"><span class="pr-chip">자동화</span>2026-09-18</span><span class="pr-sum">자주 반복하는 작업은 매번 처음부터 만들지 말고, 구조는 템플릿으로 고정하고 바뀌는 부분만 데이터로 분리하는 것이 효율적입니다.</span></a></li>
+  <li class="pr-row" data-cat="기초"><a href="/practice/ai-limits-verification.html"><span class="pr-no">20</span><span class="pr-title">🧪 AI 활용의 한계와 검증 습관 — 그럴듯한 오답을 다루는 법</span><span class="pr-side"><span class="pr-chip">기초</span>2026-09-24</span><span class="pr-sum">생성형 AI는 사실이 아닌 내용을 자신 있게 말하는 경우가 있습니다.</span></a></li>
+  </ol>
+</main>
+
+<footer>&copy; 2026 최승환 · choijc79.github.io</footer>
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/about.html">👤<br>소개</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/guides.html" aria-current="page">⚙️<br>가이드</a>
+  <a href="/memo.html">📋<br>노트</a>
+</div>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'\u2600 라이트':'\u263e 다크';
+})();
+function toggleTheme(){
+  var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'\u2600 라이트':'\u263e 다크';
+}
+document.querySelectorAll('.pr-tab').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.pr-tab').forEach(function(x){x.classList.toggle('active',x===b);});
+    var c=b.getAttribute('data-cat');
+    document.querySelectorAll('.pr-row').forEach(function(r){r.hidden=!(c==='전체'||r.getAttribute('data-cat')===c);});
+  });
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+</body>
+</html>

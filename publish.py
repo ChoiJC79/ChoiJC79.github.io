@@ -748,6 +748,8 @@ function toggleAcc(hdr){{
   body.style.display=body.style.display==='block'?'none':'block';
 }}
 </script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
 </body>
 </html>"""
 
@@ -789,6 +791,13 @@ def main():
 
     print("[guides] AI 가이드 ...")
     push_local("guides.html", "update ai guides list")
+    push_local("practice.html", "update ai practice list")
+    push_local("css/practice.css", "update practice css")
+    pr_dir = os.path.join(BASE_DIR, "practice")
+    if os.path.exists(pr_dir):
+        for pfile in sorted(os.listdir(pr_dir)):
+            if pfile.endswith(".html"):
+                push_local(f"practice/{pfile}", f"update practice page {pfile}")
     push_local("css/guides.css", "update guides css")
     guides_dir = os.path.join(BASE_DIR, "guides")
     if os.path.exists(guides_dir):
@@ -848,6 +857,7 @@ def main():
     push_local("hiroshima_trip_memory.html",          "update hiroshima trip")
     push_local("budget_dashboard.html",      "update budget dashboard")
     push_local("guestbook.html",                     "update guestbook")
+    push_local("uirim-final-notes.html",             "update uirim final notes")
     push_local("chronicle.html",                     "update chronicle")
     push_local("about.html",                         "update about")
     push_local("jecheon_9th_policy_whitepaper.html", "update 9th term policy whitepaper")
@@ -881,6 +891,7 @@ def main():
     push_local("js/dusk.js",                          "update dusk js")
     push_local("js/globe.js",                         "update globe js")
     push_local("js/jc-picker.js",                      "update jc-picker js")
+    push_local("js/motion.js",                         "update motion js")
 
     print("=" * 50)
     print("  Done!")
