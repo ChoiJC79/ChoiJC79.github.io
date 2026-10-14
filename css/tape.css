@@ -119,3 +119,46 @@ html[data-theme="light"] .cat-bar .cat-btn.active { background: var(--tape-shell
   .cat-bar .cat-btn { font-size: 15px; padding: 5px 9px 3px; }
   .cat-bar .cat-btn b { font-size: 10px; margin-right: 3px; letter-spacing: 0; }
 }
+
+/* ── 방명록: 공중전화·전화카드·음성사서함 ── */
+.booth { display: grid; grid-template-columns: minmax(0, 1fr) 230px; gap: 26px; align-items: start; margin-bottom: 2.5rem; }
+.payphone { background: linear-gradient(180deg, #c9ccd1, #9ea3aa); border-radius: 18px 18px 10px 10px; padding: 0 16px 18px; box-shadow: inset 0 2px 0 rgba(255,255,255,.5), 0 14px 28px rgba(0,0,0,.35); }
+.payphone-sign { margin: 0 -16px 16px; padding: 8px 0 7px; border-radius: 18px 18px 0 0; background: #1f4e9c; color: #fff; text-align: center; font: 700 17px/1.2 var(--font-body); letter-spacing: .5em; text-indent: .5em; }
+.payphone .write-box { background: #2b2b2e; border: none; border-radius: 8px; margin: 0; color: #efe4cf; box-shadow: inset 0 3px 8px rgba(0,0,0,.5); }
+.payphone .write-box h2 { font-family: 'Galmuri11', var(--font-mono); font-size: 13px; font-weight: 400; color: #a7b394; }
+.payphone .form-input, .payphone .form-textarea { background: var(--lcd); color: var(--lcd-ink); border: none; border-radius: 3px; font-family: 'Galmuri11', var(--font-mono); font-size: 13px; box-shadow: inset 0 2px 4px rgba(0,0,0,.35); }
+.payphone .form-input::placeholder, .payphone .form-textarea::placeholder { color: #55604a; }
+.payphone .form-input:focus, .payphone .form-textarea:focus { outline: 2px solid var(--tape-yellow); outline-offset: 1px; }
+.payphone .pin-hint { color: #b3a28a; }
+.payphone .btn-submit { background: linear-gradient(#f2cc4d, #d9a92a); color: #2b2420; border-radius: 4px; box-shadow: 0 3px 0 #8a6a12; font-weight: 700; }
+.payphone .btn-submit:active { transform: translateY(2px); box-shadow: 0 1px 0 #8a6a12; }
+.payphone-keys { display: grid; grid-template-columns: repeat(6, 1fr); gap: 7px; margin-top: 14px; }
+.payphone-keys i { font: 700 14px/30px var(--font-mono); font-style: normal; text-align: center; color: #2b2b2e; border-radius: 5px; background: linear-gradient(#f4f4f6, #cfd2d7); box-shadow: 0 2px 0 #7c8188; }
+
+.phonecard { display: block; position: relative; aspect-ratio: 1.58; padding: 12px 14px; border-radius: 10px; text-decoration: none; color: #fff; background: linear-gradient(135deg, #e2603f 0%, #f2a33a 55%, #f2cc4d 100%); box-shadow: 0 10px 22px rgba(0,0,0,.3); transform: rotate(-4deg); transition: transform .2s; }
+.phonecard:hover { transform: rotate(-1deg) translateY(-3px); }
+.phonecard span { display: block; }
+.phonecard-top { font-size: 10px; letter-spacing: .1em; opacity: .9; }
+.phonecard-name { font-family: var(--font-hand); font-size: 25px; line-height: 1.1; margin-top: 6px; color: #2b2420; }
+.phonecard-mail { font-family: var(--font-mono); font-size: 12px; color: #2b2420; margin-top: 2px; }
+.phonecard-units { position: absolute; right: 12px; top: 10px; font-size: 10px; }
+.phonecard-units b { font-family: 'DSEG7', var(--font-mono); font-size: 15px; margin-right: 2px; }
+.phonecard-holes { position: absolute; left: 14px; right: 14px; bottom: 10px; display: flex !important; gap: 6px; }
+.phonecard-holes i { flex: 1; height: 7px; border-radius: 4px; background: rgba(255,255,255,.55); }
+.phonecard-holes i.used { background: #2b2420; }
+
+.entries-head h2 { font-family: var(--font-hand); font-size: 28px; font-weight: 400; color: var(--accent2); }
+.entry-list { counter-reset: vm; }
+.entry-list .entry-card { counter-increment: vm; border-radius: 4px; border-left: 4px solid var(--accent); }
+.entry-list .entry-card .entry-meta::before { content: '메시지 ' counter(vm, decimal-leading-zero); font-family: 'Galmuri11', var(--font-mono); font-size: 11px; color: var(--muted); }
+.entry-list .entry-name { font-family: var(--font-soft); font-size: 18px; font-weight: 700; }
+.entry-list .entry-date { font-family: var(--font-mono); }
+.entry-list .entry-body { font-family: var(--font-soft); font-size: 18px; line-height: 1.6; }
+html[data-theme="light"] .entries-head h2 { color: var(--accent); }
+
+@media (max-width: 700px) {
+  .booth { grid-template-columns: 1fr; }
+  .phonecard { max-width: 290px; margin: 0 auto; }
+  .payphone { padding: 0 10px 14px; }
+  .payphone-sign { margin: 0 -10px 12px; }
+}
