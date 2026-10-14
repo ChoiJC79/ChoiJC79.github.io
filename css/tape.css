@@ -78,8 +78,13 @@ html[data-theme="light"] .cat-bar .cat-btn.active { background: var(--tape-shell
 @media (max-width: 860px) {
   #tape-hero { grid-template-columns: 1fr; padding: 84px 16px 40px; gap: 28px; }
   .pager { transform: none; margin: 0 0 20px; width: auto; }
-  .tape-deck a { padding: 8px 11px; }
-  .tape-counter { font-size: 15px; }
+  .tape-deck { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 24px; }
+  .tape-deck a { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 52px; padding: 6px 2px; font-size: 14px; line-height: 1.2; text-align: center; white-space: normal; }
+  .tape-deck a span { margin: 2px 0 0; font-size: 11.5px; }
+  .tape-counter { display: none; }
+  .tape-intro { font-size: 18px; }
+  .tape-tracks li a { padding: 8px 4px; font-size: 19px; }
+  .tape-tracks .sub { font-size: 14px; }
 }
 
 /* ── 칼럼 목록: 테이프 속지(J-card) ── */
@@ -138,7 +143,7 @@ html[data-theme="light"] .cat-bar .cat-btn.active { background: var(--tape-shell
 .phonecard { display: block; position: relative; aspect-ratio: 1.58; padding: 12px 14px; border-radius: 10px; text-decoration: none; color: #fff; background: linear-gradient(135deg, #e2603f 0%, #f2a33a 55%, #f2cc4d 100%); box-shadow: 0 10px 22px rgba(0,0,0,.3); transform: rotate(-4deg); transition: transform .2s; }
 .phonecard:hover { transform: rotate(-1deg) translateY(-3px); }
 .phonecard span { display: block; }
-.phonecard-top { font-size: 10px; letter-spacing: .1em; opacity: .9; }
+.phonecard-top { font-size: 10px; letter-spacing: .1em; opacity: .9; padding-right: 64px; }
 .phonecard-name { font-family: var(--font-hand); font-size: 25px; line-height: 1.1; margin-top: 6px; color: #2b2420; }
 .phonecard-mail { font-family: var(--font-mono); font-size: 12px; color: #2b2420; margin-top: 2px; }
 .phonecard-units { position: absolute; right: 12px; top: 10px; font-size: 10px; }
@@ -157,8 +162,34 @@ html[data-theme="light"] .cat-bar .cat-btn.active { background: var(--tape-shell
 html[data-theme="light"] .entries-head h2 { color: var(--accent); }
 
 @media (max-width: 700px) {
-  .booth { grid-template-columns: 1fr; }
+  .booth { grid-template-columns: minmax(0, 1fr); }
+  .payphone .form-input, .payphone .form-textarea { min-width: 0; width: 100%; }
   .phonecard { max-width: 290px; margin: 0 auto; }
   .payphone { padding: 0 10px 14px; }
   .payphone-sign { margin: 0 -10px 12px; }
+}
+
+/* ── 모바일 최적화: 칼럼 카드는 썸네일+제목 한 줄 카드로, 방명록은 입력칸·버튼을 손가락 크기로 ── */
+@media (max-width: 600px) {
+  .cat-bar .cat-btn { min-height: 40px; }
+  .tag-toggle { padding: 10px 0; }
+  .col-list { gap: 10px; padding-top: 1.2rem; }
+  .col-item { position: relative; display: grid; grid-template-columns: 92px minmax(0, 1fr); border-radius: 12px; }
+  .col-item .col-visual { order: 0; min-height: 0; height: 100%; }
+  .col-item .col-visual img { position: absolute; inset: 0; }
+  .col-item .col-visual-overlay, .col-item .col-num-row, .col-item .col-tag-chip { display: none; }
+  .col-item .col-text { padding: 10px 12px; }
+  .col-item .col-title { font-size: 15.5px; line-height: 1.4; margin: 0 0 4px; }
+  .col-item .col-excerpt { font-size: 12.5px; line-height: 1.6; margin: 0 0 6px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .col-item .col-meta-row { margin: 0; }
+  .col-item .col-date { font-size: 11px; }
+  .col-item .col-more { position: static; border: 0; padding: 0; font-size: 0; }
+  .col-item .col-more::after { content: ''; position: absolute; inset: 0; }
+
+  .payphone-keys { display: none; }
+  .payphone-sign { font-size: 15px; }
+  .payphone .form-input, .payphone .form-textarea { font-size: 16px; min-height: 46px; }
+  .payphone .btn-submit { min-height: 46px; padding-left: 1.8rem; padding-right: 1.8rem; }
+  .entry-list .entry-del { padding: 10px 12px; margin: -10px -12px -10px auto; }
+  .admin-link { display: inline-block; padding: 10px 6px; }
 }
