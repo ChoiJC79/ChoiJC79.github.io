@@ -14,33 +14,59 @@
 .tape-id p { color: var(--muted); font-size: 16px; margin: 4px 0 22px; }
 .tape-greeting { font-family: var(--font-soft); font-size: 18px; color: var(--accent); margin-bottom: 2px; min-height: 1em; }
 
+/* ── 카세트 데크 본체: 은색 패널 + VU 미터 + 테이프 칸 + 건반식 키 ── */
+.deck { position: relative; padding: 12px 14px 14px; border-radius: 10px; background: repeating-linear-gradient(90deg, rgba(255,255,255,.07) 0 1px, transparent 1px 3px), linear-gradient(180deg, #dcdcdf, #b4b5ba); box-shadow: inset 0 1px 0 rgba(255,255,255,.7), inset 0 -2px 0 rgba(0,0,0,.18), 0 14px 30px rgba(0,0,0,.45); }
+.deck-top { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.deck-brand { font: 700 11px/1.2 'Helvetica Neue', Arial, sans-serif; letter-spacing: .14em; color: #2b2b2e; }
+.deck-brand small { display: block; font-size: 9px; font-weight: 400; letter-spacing: .2em; color: #5c5d62; }
+.deck-vu { display: flex; gap: 6px; margin-left: auto; }
+.vu { position: relative; width: 66px; height: 38px; border-radius: 3px; overflow: hidden; background: radial-gradient(ellipse at 50% 110%, #ffe3a1, #e9b45a 75%); box-shadow: inset 0 0 0 2px #1d1d20, inset 0 3px 6px rgba(0,0,0,.35); }
+.vu::before { content: ''; position: absolute; left: 12%; right: 12%; top: 34%; height: 80%; border-radius: 50% 50% 0 0; border-top: 2px solid #3b2a17; }
+.vu::after { content: ''; position: absolute; right: 15%; top: 36%; width: 22%; height: 30%; border-top: 3px solid #c7372a; border-radius: 0 60% 0 0; }
+.vu i { position: absolute; left: 50%; bottom: -6px; width: 1.5px; height: 38px; margin-left: -1px; background: #1d1d20; transform-origin: 50% 100%; transform: rotate(-42deg); }
+.vu b { position: absolute; left: 5px; bottom: 2px; font: 700 8px/1 Arial, sans-serif; color: #3b2a17; }
+.deck-lamp { display: flex; align-items: center; gap: 5px; font: 700 9px/1 Arial, sans-serif; letter-spacing: .12em; color: #2b2b2e; }
+.deck-lamp::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #5ee36b; box-shadow: 0 0 8px #5ee36b; }
+.tape-counter { background: #111; color: #f2ecdd; font-family: var(--font-mono); font-size: 16px; padding: 5px 8px; border-radius: 3px; letter-spacing: 1px; background-image: linear-gradient(rgba(255,255,255,.18), transparent 35%, transparent 65%, rgba(0,0,0,.6)); box-shadow: inset 0 0 0 2px #2b2b2e; }
+.deck-door { position: relative; padding: 12px; border-radius: 8px; background: #17130f; box-shadow: inset 0 3px 10px rgba(0,0,0,.8), 0 1px 0 rgba(255,255,255,.6); }
+.deck-door::after { content: ''; position: absolute; inset: 0; border-radius: 8px; pointer-events: none; background: linear-gradient(115deg, rgba(255,255,255,.14) 0 18%, transparent 30% 100%), rgba(40,30,22,.12); }
+
 /* ── 카세트테이프 ── */
-.tape { container-type: inline-size; position: relative; aspect-ratio: 1.58; background: var(--tape-shell); border-radius: 16px; padding: 16px 18px 0; box-shadow: 0 10px 0 var(--tape-shell-d), 0 24px 34px rgba(0, 0, 0, .45); }
-.tape i.screw { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: #55555a; }
-.tape i.s1 { top: 10px; left: 10px; } .tape i.s2 { top: 10px; right: 10px; } .tape i.s3 { bottom: 10px; left: 10px; } .tape i.s4 { bottom: 10px; right: 10px; }
-.tape-label { position: relative; height: 68%; border-radius: 6px; overflow: hidden; background: var(--tape-paper); color: #2b2420; }
+.tape { container-type: inline-size; position: relative; aspect-ratio: 1.58; background: linear-gradient(180deg, #333336, var(--tape-shell) 40%); border-radius: 14px; padding: 4% 4.5% 0; box-shadow: 0 4px 0 var(--tape-shell-d), 0 10px 18px rgba(0, 0, 0, .55); }
+.tape i.screw { position: absolute; width: 2.2cqw; height: 2.2cqw; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #8a8a90, #4a4a4f); }
+.tape i.screw::before, .tape i.screw::after { content: ''; position: absolute; left: 20%; right: 20%; top: 45%; height: 10%; background: #2a2a2d; }
+.tape i.screw::after { transform: rotate(90deg); }
+.tape i.s1 { top: 2.4%; left: 2%; } .tape i.s2 { top: 2.4%; right: 2%; } .tape i.s3 { bottom: 3%; left: 2%; } .tape i.s4 { bottom: 3%; right: 2%; }
+.tape-label { position: relative; height: 68%; border-radius: 5px; overflow: hidden; background: repeating-linear-gradient(transparent 0 calc(5.4cqw - 1px), rgba(31, 61, 117, .14) calc(5.4cqw - 1px) 5.4cqw), var(--tape-paper); background-position: 0 1.2cqw; color: #2b2420; }
 .tape-stripe { height: 14%; background: linear-gradient(var(--tape-red) 0 33%, var(--tape-orange) 33% 66%, var(--tape-yellow) 66%); }
-.tape-side { position: absolute; left: 12px; top: 19%; width: 34px; height: 34px; border: 2px solid #2b2420; border-radius: 6px; font: 700 21px/30px sans-serif; text-align: center; }
-.tape-title { position: absolute; left: 60px; right: 14px; top: 16%; font-family: var(--font-hand); font-size: clamp(20px, 4.6cqw, 33px); line-height: 1.15; color: var(--tape-ink); transform: rotate(-1.5deg); }
-.tape-window { position: absolute; left: 22%; right: 22%; bottom: 10%; height: 34%; border-radius: 30px; background: #3a3634; display: flex; justify-content: space-between; align-items: center; padding: 0 6%; }
-.tape-reel { width: 24%; aspect-ratio: 1; border-radius: 50%; border: 4px solid var(--tape-paper); background: repeating-conic-gradient(var(--tape-paper) 0 12deg, #3a3634 12deg 60deg); }
-.tape-ribbon { flex: 1; height: 8%; margin: 0 4%; background: #5a3a22; border-radius: 2px; }
-.tape-bottom { position: absolute; left: 18%; right: 18%; bottom: 0; height: 20%; background: #232326; clip-path: polygon(8% 0, 92% 0, 100% 100%, 0 100%); display: flex; justify-content: space-evenly; align-items: center; }
-.tape-bottom b { width: 9px; height: 9px; border-radius: 50%; background: #111; }
+.tape-side { position: absolute; left: 2.5%; top: 19%; width: 6.5cqw; height: 6.5cqw; border: 2px solid #2b2420; border-radius: 6px; background: var(--tape-paper); font: 700 4cqw/6cqw sans-serif; text-align: center; }
+.tape-title { position: absolute; left: 12cqw; right: 3%; top: 16%; font-family: var(--font-hand); font-size: clamp(18px, 4.6cqw, 33px); line-height: 1.15; color: var(--tape-ink); transform: rotate(-1.5deg); }
+.tape-window { position: absolute; left: 21%; right: 21%; bottom: 9%; height: 36%; border-radius: 4cqw; overflow: hidden; display: flex; justify-content: space-between; align-items: center; padding: 0 7%; background: linear-gradient(180deg, rgba(255,255,255,.16), transparent 40%), #2b2420; box-shadow: inset 0 0 0 2px #1d1916, inset 0 3px 6px rgba(0,0,0,.6); }
+/* 릴: 흰 허브 + 감긴 테이프(왼쪽은 많이, 오른쪽은 조금 감김) */
+.tape-reel { position: relative; width: 9.5cqw; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, #2b2420 0 22%, transparent 23%), repeating-conic-gradient(var(--tape-paper) 0 14deg, #c9bfa9 14deg 60deg); box-shadow: 0 0 0 1.2cqw #f4ecd8, 0 0 0 5cqw #4a2c18, 0 0 0 5.2cqw #2e1b0f; }
+.tape-reel + .tape-ribbon + .tape-reel { box-shadow: 0 0 0 1.2cqw #f4ecd8, 0 0 0 2cqw #4a2c18, 0 0 0 2.2cqw #2e1b0f; }
+.tape-ribbon { display: none; }
+.tape-type { position: absolute; right: 7.5%; top: 5.6%; font: 700 1.6cqw/1 var(--font-mono); letter-spacing: .08em; color: rgba(255,255,255,.9); }
+.tape-bottom { position: absolute; left: 18%; right: 18%; bottom: 0; height: 20%; background: linear-gradient(#2a2a2d, #1f1f22); clip-path: polygon(8% 0, 92% 0, 100% 100%, 0 100%); display: flex; justify-content: space-evenly; align-items: center; }
+.tape-bottom b { width: 2.2cqw; height: 2.2cqw; border-radius: 50%; background: #0c0c0d; box-shadow: inset 0 1px 2px rgba(0,0,0,.9), 0 1px 0 rgba(255,255,255,.08); }
+.tape-bottom b:first-child, .tape-bottom b:last-child { border-radius: 2px; }
 @media (prefers-reduced-motion: no-preference) {
   .tape.playing .tape-reel { animation: tape-spin 3.2s linear infinite; }
-  .tape.playing .tape-reel + .tape-ribbon + .tape-reel { animation-duration: 2.4s; }
+  .tape.playing .tape-reel + .tape-ribbon + .tape-reel { animation-duration: 1.6s; }
+  .vu i { animation: vu-needle 1.9s ease-out infinite; }
+  .vu-r i { animation-duration: 1.45s; animation-delay: -.6s; }
+  .deck-lamp::before { animation: pager-led 2.4s steps(1) infinite; }
 }
 @keyframes tape-spin { to { transform: rotate(360deg); } }
+@keyframes vu-needle { 0% { transform: rotate(-40deg); } 12% { transform: rotate(-8deg); } 24% { transform: rotate(-22deg); } 38% { transform: rotate(4deg); } 52% { transform: rotate(-26deg); } 64% { transform: rotate(-12deg); } 80% { transform: rotate(-34deg); } 100% { transform: rotate(-40deg); } }
 
-/* ── 데크 버튼 ── */
-.tape-deck { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 30px; }
-.tape-deck a { white-space: nowrap; text-decoration: none; color: #222; font: 17px sans-serif; padding: 10px 16px; border-radius: 4px; background: linear-gradient(#e2e2e5, #b0b0b5); box-shadow: 0 3px 0 #6c6c72; transition: transform .1s, box-shadow .1s; }
-.tape-deck a:hover { background: linear-gradient(#f2cc4d, #d9a92a); }
-.tape-deck a:active { transform: translateY(2px); box-shadow: 0 1px 0 #6c6c72; }
-.tape-deck a.play { background: linear-gradient(#f2cc4d, #d9a92a); }
-.tape-deck a span { font-size: 14px; margin-left: 5px; }
-.tape-counter { margin-left: auto; background: #111; color: #e8e2d0; font-family: 'DSEG7', var(--font-mono); font-size: 18px; padding: 6px 10px; border-radius: 3px; letter-spacing: 2px; }
+/* ── 건반식 조작 키 (▶는 눌려 잠긴 상태) ── */
+.tape-deck { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 12px; padding: 5px; border-radius: 6px; background: #1d1d20; box-shadow: inset 0 2px 4px rgba(0,0,0,.6); }
+.tape-deck a { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 56px; padding: 6px 2px 8px; text-decoration: none; color: #1d1d20; font: 700 17px/1.1 sans-serif; text-align: center; border-radius: 3px 3px 5px 5px; background: linear-gradient(#f4f4f6, #c5c6cb 85%, #a9aaaf); box-shadow: 0 6px 0 #6c6d73, inset 0 1px 0 #fff; margin-bottom: 6px; transition: transform .08s, box-shadow .08s; }
+.tape-deck a span { margin-top: 4px; font: 400 13px/1.2 var(--font-body); color: #3a3a3e; }
+.tape-deck a:hover { background: linear-gradient(#fff, #d5d6db 85%, #b5b6bb); }
+.tape-deck a:active, .tape-deck a.play { transform: translateY(4px); box-shadow: 0 2px 0 #6c6d73, inset 0 1px 0 #fff; }
+.tape-deck a.play { background: linear-gradient(#f2cc4d, #d9a92a 85%, #b98d1c); }
 .tape-intro { font-family: var(--font-soft); font-size: 20px; line-height: 1.6; color: var(--text); margin-top: 18px; }
 
 /* ── 모토로라 삐삐 ── */
@@ -105,10 +131,15 @@ html[data-theme="light"] .cat-bar .cat-btn.active { background: var(--tape-shell
 @media (max-width: 860px) {
   #tape-hero { grid-template-columns: 1fr; padding: 84px 16px 40px; gap: 28px; }
   .pager { transform: none; margin: 0 0 20px; width: auto; }
-  .tape-deck { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 24px; }
-  .tape-deck a { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 52px; padding: 6px 2px; font-size: 14px; line-height: 1.2; text-align: center; white-space: normal; }
-  .tape-deck a span { margin: 2px 0 0; font-size: 11.5px; }
-  .tape-counter { display: none; }
+  .deck { padding: 10px 10px 10px; }
+  .deck-brand small, .deck-lamp { display: none; }
+  .deck-brand { font-size: 9px; letter-spacing: .08em; }
+  .vu { width: 48px; height: 30px; }
+  .vu i { height: 30px; }
+  .tape-counter { font-size: 13px; padding: 4px 6px; }
+  .deck-door { padding: 8px; }
+  .tape-deck a { min-height: 50px; font-size: 15px; }
+  .tape-deck a span { font-size: 12px; }
   .tape-intro { font-size: 18px; }
   .tape-tracks li a { padding: 8px 4px; font-size: 19px; }
   .tape-tracks .sub { font-size: 14px; }
