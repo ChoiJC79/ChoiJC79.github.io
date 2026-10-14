@@ -116,3 +116,57 @@
     }, 0);
   }, true);
 })();
+
+// 대시보드 숫자 카운트업 · 나중에 채워지는 목록(홈 최근 글·주간 날씨) 순차 등장
+(function () {
+  if (!window.Motion || !window.matchMedia) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var animate = Motion.animate, inView = Motion.inView;
+
+  // 숫자 하나만 든 요소: 앞뒤 글자(₩, %, 명 등)는 그대로 두고 숫자만 0에서 올린다
+  var NUM = /^(\D*?)(-?\d{1,3}(?:,\d{3})+|-?\d+)(\.\d+)?(\D*)$/;
+  var nums = document.querySelectorAll('.kpi-value,.metric-value,.stat-val,.stat-num,.ov-num,.dist-value');
+  for (var i = 0; i < nums.length; i++) {
+    var el = nums[i];
+    if (el.children.length) continue;
+    var m = NUM.exec(el.textContent.trim());
+    if (!m) continue;
+    inView(el, countUp.bind(null, el, el.textContent, m));
+  }
+  function countUp(el, original, m) {
+    var comma = m[2].indexOf(',') !== -1;
+    var dec = m[3] ? m[3].length - 1 : 0;
+    var to = parseFloat(m[2].replace(/,/g, '') + (m[3] || ''));
+    animate(0, to, {
+      duration: 1.1, ease: 'easeOut',
+      onUpdate: function (v) {
+        var s = dec ? v.toFixed(dec) : String(Math.round(v));
+        if (comma) s = s.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        el.textContent = m[1] + s + m[4];
+      }
+    }).then(function () { el.textContent = original; });
+    return false;
+  }
+
+  function stagger(list) {
+    new MutationObserver(function () {
+      var kids = list.children;
+      for (var k = 0; k < kids.length; k++) {
+        if (kids[k].__motionDone) continue;
+        kids[k].__motionDone = true;
+        kids[k].style.opacity = '0';
+        inView(kids[k], show.bind(null, kids[k], Math.min(k, 8) * 0.05));
+      }
+    }).observe(list, { childList: true });
+  }
+  function show(el, delay) {
+    animate(el, { opacity: [0, 1], transform: ['translateY(12px)', 'translateY(0px)'] },
+      { duration: 0.45, ease: 'easeOut', delay: delay })
+      .then(function () { requestAnimationFrame(function () { el.style.opacity = ''; el.style.transform = ''; }); });
+    return false;
+  }
+  ['recent-list', 'wx-days'].forEach(function (id) {
+    var list = document.getElementById(id);
+    if (list) stagger(list);
+  });
+})();
