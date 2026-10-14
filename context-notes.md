@@ -84,3 +84,8 @@
 - 칼럼 목록 속지: 마크업은 그대로 두고(`article.col-item`·`.idx-row` — tape.js·필터가 의존) `.col-index`를 기본 펼침으로 바꿔 CSS로 속지를 입혔다. SIDE A/B 두 칸은 `grid-column`을 `data-type`으로 고정하고 `grid-auto-flow: dense`로 쌓는다. 곡 번호(A1·B1)는 CSS counter라 글이 늘어도 손댈 필요가 없다. 면 머리(`.idx-side`)는 filterType만 숨기며, 한쪽 면만 보일 때는 `:has()`로 한 칸으로 접는다.
 - 방명록: Supabase 스크립트가 쓰는 id(gbName·gbContent·gbPin·gbSubmit·gbMsg·entryList 등)와 `.write-box`·`.entry-card` 구조는 그대로 두고 감싸는 요소(`.booth`·`.payphone`)와 CSS만 더했다. 메시지 번호는 CSS counter. 전화카드는 about·research에 이미 공개된 7979@korea.kr로 mailto 연결.
 - 나머지 페이지: theme.css를 읽는 25쪽은 토큰 교체로 자동 반영. 칼럼 상세 29편·정리노트는 자체 색 블록이 있어 그 줄만 테이프 톤으로 바꿨다. `build_columns.py`로 재생성하면 기존 손질(설명 메타·motion.css 등)과 차이가 생겨 재생성 대신 색 두 줄만 치환했고, 템플릿도 같은 색으로 맞췄다. 위스키 개별 페이지는 고유 팔레트(금색)라 그대로 둔다.
+
+## 기존 버전 보관 (2026-10-14)
+- 카세트테이프 개편 직전 사이트(지구본 홈·GitHub 남색 테마) = main 커밋 `ddf21d39dfd4292449ce5a53350c6b28a99f0635` ("홈페이지 전체 정리 … (#6)").
+- 원격 태그 `site-v1-before-tape`를 만들려 했으나 이 세션의 GitHub 프록시가 태그 쓰기를 막았다(git push 끊김, API 403). 로컬 태그만 있다.
+- main 기록에 남아 있으므로 병합 후에도 언제든 되돌릴 수 있다: `git checkout ddf21d39dfd4292449ce5a53350c6b28a99f0635 -- .` 로 파일을 되살리거나, GitHub에서 이 커밋으로 태그·릴리스를 만들어 두면 된다.
