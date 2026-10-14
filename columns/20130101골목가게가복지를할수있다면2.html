@@ -17,6 +17,7 @@
 <style>
 :root{--bg:#231c17;--surface:#2f2620;--border:#4a3d32;--text:#efe4cf;--ink:#fbf3e2;--muted:#b3a28a;--accent:#f2a33a;}
 [data-theme="light"]{--bg:#f4ecd8;--surface:#fbf6ea;--border:#d8c9a8;--text:#2b2420;--ink:#1b1612;--muted:#7a6a56;--accent:#c4571f;}
+:root{--tc:#f2a33a;}[data-theme="light"]{--tc:#9a6a12;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.8;}
 a{color:inherit;text-decoration:none;}
@@ -31,7 +32,7 @@ header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px 
 .theme-btn{background:none;border:1px solid var(--border);color:var(--muted);font-size:11px;font-family:inherit;cursor:pointer;padding:0.3rem 0.7rem;transition:all 0.15s;}
 .theme-btn:hover{border-color:var(--accent);color:var(--accent);}
 .article-wrap{max-width:720px;margin:0 auto;padding:3rem 2rem 5rem;}
-.a-type{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;color:#d29922;margin-bottom:1rem;}
+.a-type{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;color:var(--tc);margin-bottom:1rem;}
 .a-title{font-family:'Noto Serif KR',serif;font-size:2rem;font-weight:700;line-height:1.35;color:var(--ink);margin-bottom:1.2rem;}
 .a-meta{display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);}
 .a-date{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);}
@@ -55,6 +56,7 @@ footer{border-top:1px solid var(--border);text-align:center;padding:1.5rem 1rem;
 @media(max-width:900px){.hd-nav{display:none;}#mqb{display:flex;}body{padding-bottom:4rem;}}
 @media(max-width:600px){.article-wrap{padding:2rem 1.2rem 4rem;}.a-title{font-size:1.5rem;}.a-body{font-size:14px;}.art-nav{padding:1.5rem 1.2rem 3rem;}}
 </style>
+<link rel="stylesheet" href="/css/motion.css">
 </head>
 <body>
 <header>
@@ -76,7 +78,7 @@ footer{border-top:1px solid var(--border);text-align:center;padding:1.5rem 1rem;
   <h1 class="a-title">골목 가게가 복지를 할 수 있다면 — 2013년 나눔가게 기획의 기록</h1>
   <div class="a-meta">
     <span class="a-date">2013-01-01</span>
-    <span class="a-tag" style="border-color:#d2992244;color:#d29922">지역공동체</span><span class="a-tag" style="border-color:#d2992244;color:#d29922">사회복지</span><span class="a-tag" style="border-color:#d2992244;color:#d29922">나눔문화</span>
+    <span class="a-tag" style="border-color:color-mix(in srgb,var(--tc) 30%,transparent);color:var(--tc)">지역공동체</span><span class="a-tag" style="border-color:color-mix(in srgb,var(--tc) 30%,transparent);color:var(--tc)">사회복지</span><span class="a-tag" style="border-color:color-mix(in srgb,var(--tc) 30%,transparent);color:var(--tc)">나눔문화</span>
   </div>
   <div class="a-body">
     <p>2013년 초, 나는 한 가지 질문에서 기획을 시작했다. 복지는 반드시 정부가 직접 전달해야 하는가. 예산을 편성하고, 수당을 지급하고, 담당자가 가정을 방문하는 방식이 전부인가. 골목 가게가, 동네 식당이, 미용실 원장이 복지의 한 축을 담당할 수는 없는가.</p>

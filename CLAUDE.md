@@ -102,7 +102,7 @@ GitHub Pages 기반 개인 사이트 (`choijc79.github.io`) 관리 및 콘텐츠
 |------|------|
 | `publish.py` | GitHub API로 전체 사이트 배포. `build_memo_html()` 포함 (memo.html 자동 생성). `build_column_html()`은 더 이상 사용하지 않는 레거시 함수 — column.html은 로컬 파일을 그대로 업로드함 |
 | `💬 칼럼·기고.md` | 칼럼 원본. `---` 구분자, `## 제목 \| YYYY-MM-DD \| 태그` 헤더 형식 |
-| `build_columns.py` | `columns/*.html` (개별 칼럼 전문 페이지) 생성 스크립트. 칼럼 추가/수정 후 수동 실행 필요 |
+| `build_columns.py` | `columns/*.html` (개별 칼럼 전문 페이지) 생성 스크립트. 칼럼 추가/수정 후 수동 실행 필요. 다시 실행해도 기존 페이지와 같은 결과가 나온다. 템플릿과 다르게 직접 만든 페이지는 스크립트 위쪽 `HANDMADE`에 슬러그를 넣어 덮어쓰지 않게 한다 |
 | `columns/` | 개별 칼럼 전문 페이지 (`build_columns.py`가 생성, publish.py가 그대로 업로드) |
 | `📝 정리노트.md` | 정리노트 원본 |
 | `index.html` | 홈페이지 (카세트테이프 첫 화면 `#tape-hero`: 카세트 데크 `.deck`(VU 미터·카운터·테이프 칸·건반 키)·모토로라 삐삐·A면/B면 트랙 목록). CSS/JS는 외부 파일로 분리됨 — 아래 `css/`, `js/` 참고 |

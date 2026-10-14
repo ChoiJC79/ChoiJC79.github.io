@@ -17,6 +17,8 @@ from pathlib import Path
 BASE_DIR = Path(__file__).parent
 COLS_DIR = BASE_DIR / 'columns'
 COLS_DIR.mkdir(exist_ok=True)
+# 템플릿과 다르게 직접 만든 칼럼 페이지 (재생성하면 덮어써지므로 건너뜀)
+HANDMADE = {'20260723정리하는프로젝트를정리하지못한한달'}
 
 # ─── 데이터 로드 ─────────────────────────────────────────────
 
@@ -116,6 +118,8 @@ def md_to_html(text):
         s = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', s)
         s = re.sub(r'\*(.+?)\*', r'<em>\1</em>', s)
         s = re.sub(r'\[(.+?)\]\((.+?)\)', r'<a href="\2">\1</a>', s)
+        # 원본에 직접 넣은 <img> 태그는 이스케이프를 되돌려 사진으로 보이게 한다
+        s = re.sub(r'&lt;img ((?:(?!&gt;).)*)&gt;', lambda m: '<img ' + m.group(1).replace('&quot;', '"') + '>', s)
         return s
     paras = re.split(r'\n{2,}', text.strip())
     result = []
@@ -159,15 +163,15 @@ def make_page(idx, total, col, matched_list):
     prev_item = matched_list[idx + 1] if idx + 1 < total else None
     next_item = matched_list[idx - 1] if idx > 0 else None
 
-    body_plain = re.sub(r'\*+', '', body).replace('\n', ' ').strip()
+    body_plain = ' '.join(re.sub(r'\*+', '', body).split())
     excerpt = body_plain[:110] + '…' if len(body_plain) > 110 else body_plain
 
     type_label = '삶의 기록' if typ == 'life' else '행정·정책'
-    type_color = '#3fb950' if typ == 'life' else '#d29922'
-    color = type_color
+    # 분류 색: 테이프 톤 (다크, 라이트)
+    tc_dark, tc_light = ('#e2603f', '#b8442a') if typ == 'life' else ('#f2a33a', '#9a6a12')
 
     tag_chips = ''.join(
-        f'<span class="a-tag" style="border-color:{color}44;color:{color}">{t.strip()}</span>'
+        f'<span class="a-tag" style="border-color:color-mix(in srgb,var(--tc) 30%,transparent);color:var(--tc)">{t.strip()}</span>'
         for t in tag.split('·') if t.strip()
     )
 
@@ -199,6 +203,7 @@ def make_page(idx, total, col, matched_list):
 <style>
 :root{{--bg:#231c17;--surface:#2f2620;--border:#4a3d32;--text:#efe4cf;--ink:#fbf3e2;--muted:#b3a28a;--accent:#f2a33a;}}
 [data-theme="light"]{{--bg:#f4ecd8;--surface:#fbf6ea;--border:#d8c9a8;--text:#2b2420;--ink:#1b1612;--muted:#7a6a56;--accent:#c4571f;}}
+:root{{--tc:{tc_dark};}}[data-theme="light"]{{--tc:{tc_light};}}
 *{{margin:0;padding:0;box-sizing:border-box;}}
 body{{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.8;}}
 a{{color:inherit;text-decoration:none;}}
@@ -213,7 +218,7 @@ header{{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px
 .theme-btn{{background:none;border:1px solid var(--border);color:var(--muted);font-size:11px;font-family:inherit;cursor:pointer;padding:0.3rem 0.7rem;transition:all 0.15s;}}
 .theme-btn:hover{{border-color:var(--accent);color:var(--accent);}}
 .article-wrap{{max-width:720px;margin:0 auto;padding:3rem 2rem 5rem;}}
-.a-type{{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;color:{type_color};margin-bottom:1rem;}}
+.a-type{{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;color:var(--tc);margin-bottom:1rem;}}
 .a-title{{font-family:'Noto Serif KR',serif;font-size:2rem;font-weight:700;line-height:1.35;color:var(--ink);margin-bottom:1.2rem;}}
 .a-meta{{display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);}}
 .a-date{{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);}}
@@ -313,6 +318,9 @@ def main():
     for idx, col in enumerate(matched):
         slug = col['slug']
         out_path = COLS_DIR / f'{slug}.html'
+        if slug in HANDMADE:
+            print(f'  [{idx+1:02d}/{total}] {slug}.html (직접 만든 페이지라 건너뜀)')
+            continue
         content = make_page(idx, total, col, matched)
         with open(out_path, 'w', encoding='utf-8') as f:
             f.write(content)

@@ -17,6 +17,7 @@
 <style>
 :root{--bg:#231c17;--surface:#2f2620;--border:#4a3d32;--text:#efe4cf;--ink:#fbf3e2;--muted:#b3a28a;--accent:#f2a33a;}
 [data-theme="light"]{--bg:#f4ecd8;--surface:#fbf6ea;--border:#d8c9a8;--text:#2b2420;--ink:#1b1612;--muted:#7a6a56;--accent:#c4571f;}
+:root{--tc:#f2a33a;}[data-theme="light"]{--tc:#9a6a12;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.8;}
 a{color:inherit;text-decoration:none;}
@@ -31,7 +32,7 @@ header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px 
 .theme-btn{background:none;border:1px solid var(--border);color:var(--muted);font-size:11px;font-family:inherit;cursor:pointer;padding:0.3rem 0.7rem;transition:all 0.15s;}
 .theme-btn:hover{border-color:var(--accent);color:var(--accent);}
 .article-wrap{max-width:720px;margin:0 auto;padding:3rem 2rem 5rem;}
-.a-type{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;color:#d29922;margin-bottom:1rem;}
+.a-type{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;color:var(--tc);margin-bottom:1rem;}
 .a-title{font-family:'Noto Serif KR',serif;font-size:2rem;font-weight:700;line-height:1.35;color:var(--ink);margin-bottom:1.2rem;}
 .a-meta{display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);}
 .a-date{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);}
@@ -55,6 +56,7 @@ footer{border-top:1px solid var(--border);text-align:center;padding:1.5rem 1rem;
 @media(max-width:900px){.hd-nav{display:none;}#mqb{display:flex;}body{padding-bottom:4rem;}}
 @media(max-width:600px){.article-wrap{padding:2rem 1.2rem 4rem;}.a-title{font-size:1.5rem;}.a-body{font-size:14px;}.art-nav{padding:1.5rem 1.2rem 3rem;}}
 </style>
+<link rel="stylesheet" href="/css/motion.css">
 </head>
 <body>
 <header>
@@ -76,7 +78,7 @@ footer{border-top:1px solid var(--border);text-align:center;padding:1.5rem 1rem;
   <h1 class="a-title">아무 일도 없었습니다</h1>
   <div class="a-meta">
     <span class="a-date">2026-07-18</span>
-    <span class="a-tag" style="border-color:#d2992244;color:#d29922">공무원</span><span class="a-tag" style="border-color:#d2992244;color:#d29922">재난</span><span class="a-tag" style="border-color:#d2992244;color:#d29922">행정</span>
+    <span class="a-tag" style="border-color:color-mix(in srgb,var(--tc) 30%,transparent);color:var(--tc)">공무원</span><span class="a-tag" style="border-color:color-mix(in srgb,var(--tc) 30%,transparent);color:var(--tc)">재난</span><span class="a-tag" style="border-color:color-mix(in srgb,var(--tc) 30%,transparent);color:var(--tc)">행정</span>
   </div>
   <div class="a-body">
     <p>7월 18일 토요일 오전 10시 28분, 자연재난팀장이 짧은 문장 하나를 올렸다. &quot;피해사항은 없습니다.&quot; 그게 전부였다. 그리고 그 문장 하나로 며칠간의 긴장이 끝났다.</p>
@@ -92,8 +94,8 @@ footer{border-top:1px solid var(--border);text-align:center;padding:1.5rem 1rem;
   </div>
 </div>
 <nav class="art-nav">
-  <a class="nav-prev" href="/columns/20260702직위에님자를붙이는현상.html">← 직위에 '님' 자를 붙이는 현상</a>
-  
+  <a class="nav-prev" href="/columns/20260702직위에님자를붙이는현상.html">← 직위에 &#x27;님&#x27; 자를 붙이는 현상</a>
+  <a class="nav-next" href="/columns/20260723정리하는프로젝트를정리하지못한한달.html">정리하는 프로젝트를 정리하지 못한 한 달 →</a>
 </nav>
 </main>
 <footer>© 최승환 · choijc79.github.io</footer>
