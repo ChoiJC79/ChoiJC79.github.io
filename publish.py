@@ -648,8 +648,8 @@ def build_memo_html():
   --green:#5A7A3A; --purple:#7A4AB0; --amber:#E07828;
 }}
 [data-theme="dark"] {{
-  --bg:#0d1117; --surface:#161b22; --border:#2c3240;
-  --text:#E8E0D0; --muted:#8b8070; --accent:#F08840;
+  --bg:#231c17; --surface:#2f2620; --border:#4a3d32;
+  --text:#efe4cf; --muted:#b3a28a; --accent:#f2a33a;
   --green:#3fb950; --purple:#bc8cff; --amber:#F08840;
 }}
 *{{box-sizing:border-box;margin:0;padding:0;}}
@@ -824,11 +824,6 @@ def main():
             if os.path.isfile(imgpath):
                 push_binary_file(f"images/{imgfile}", imgpath, f"img ({now_str})")
 
-    print("[img] img/earth.jpg (지구 텍스처) ...")
-    _earth = os.path.join(BASE_DIR, "img", "earth.jpg")
-    if os.path.exists(_earth):
-        push_binary_file("img/earth.jpg", _earth, f"earth-texture ({now_str})")
-
     print("[img] img/ (칼럼 사진) ...")
     col_img_dir = os.path.join(BASE_DIR, "img")
     if os.path.exists(col_img_dir):
@@ -892,10 +887,11 @@ def main():
     push_local("css/jc-picker.css",                   "update jc-picker css")
     push_local("css/dusk.css",                        "update dusk css")
     push_local("css/theme.css",                       "update theme css")
+    push_local("css/tape.css",                        "update tape css")
     push_local("js/site.js",                          "update site js")
     push_local("js/theme-toggle.js",                  "update theme toggle js")
     push_local("js/dusk.js",                          "update dusk js")
-    push_local("js/globe.js",                         "update globe js")
+    push_local("js/tape.js",                          "update tape js")
     push_local("js/jc-picker.js",                      "update jc-picker js")
     push_local("js/motion.js",                         "update motion js")
     push_local("css/motion.css",                       "update motion css")

@@ -18,6 +18,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/theme.css">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/tape.css">
 <link rel="stylesheet" href="/css/motion.css">
 </head>
 <body>
@@ -34,22 +36,60 @@
   <button id="theme-btn" onclick="toggleTheme()">&#9728; 라이트</button>
 </nav>
 
-<section id="hero">
-  <canvas id="globe-canvas"></canvas>
-  <div class="hero-mask"></div>
-  <div class="hero-content">
-    <div class="hero-greeting" id="hero-greeting"></div>
-    <div class="hero-eyebrow">충청북도 제천시 · 지방행정 공무원</div>
-    <h1 class="hero-name">최승환</h1>
-    <span class="hero-name-en">CHOI SEUNG-HWAN</span>
-    <div class="hero-rule"></div>
-    <p class="hero-subtitle">제천시청 행정공무원 · 도시경영학 박사과정</p>
-    <p class="hero-desc">현장에서 쌓은 지방행정 경험과 개인적인 호기심들이 연구의 토대입니다. 도시와 사람과 제도가 맞물리는 방식을 들여다보는 한편, 고향을 향한 사랑과 지역 공동체가 이어지는 가능성을 꾸준히 살펴보고 있습니다.</p>
-    <div><a href="/about.html" class="btn btn-primary">소개 &rarr;</a><a href="/research.html" class="btn btn-outline">연구 보기</a></div>
+<section id="tape-hero" aria-label="소개">
+  <div class="tape-main">
+    <div class="tape-id">
+      <div class="tape-greeting" id="hero-greeting"></div>
+      <h1>최승환</h1>
+      <p>충청북도 제천시청 행정공무원 · 도시경영학 박사과정</p>
+    </div>
+    <div class="tape playing" role="img" aria-label="카세트테이프 라벨: 제천 사랑방 — 최승환이 녹음한 공직 20년, 그리고 사는 이야기">
+      <i class="screw s1"></i><i class="screw s2"></i><i class="screw s3"></i><i class="screw s4"></i>
+      <div class="tape-label">
+        <div class="tape-stripe"></div>
+        <div class="tape-side">A</div>
+        <div class="tape-title">제천 사랑방 — 최승환이 녹음한<br>공직 20년, 그리고 사는 이야기</div>
+        <div class="tape-window"><div class="tape-reel"></div><div class="tape-ribbon"></div><div class="tape-reel"></div></div>
+      </div>
+      <div class="tape-bottom"><b></b><b></b><b></b><b></b></div>
+    </div>
+    <div class="tape-deck" role="group" aria-label="테이프 데크">
+      <a href="/chronicle.html" title="되감기 — 1979년부터의 기록">◀◀<span>지난 기록</span></a>
+      <a href="/column.html" id="deck-play" class="play" title="재생 — 최신 칼럼">▶<span>재생</span></a>
+      <a href="/about.html" title="정지 — 잠깐 쉬어 가며 소개 보기">■<span>소개</span></a>
+      <a href="/column.html" title="빨리 감기 — 칼럼 전체">▶▶<span>칼럼 전체</span></a>
+      <span class="tape-counter" id="tape-counter" aria-hidden="true">0 0 0 0</span>
+    </div>
+    <p class="tape-intro">제천시청에서 일하고, 밤에는 박사과정 공부를 합니다.<br>현장에서 건진 생각과 소소한 하루를 테이프에 녹음하듯 적어 둡니다.</p>
   </div>
-  <div class="scroll-hint"><div class="scroll-line"></div><span>SCROLL</span></div>
-  <div id="hero-stats">
-    <div class="hs-block"><span class="hs-label">최근 수정</span><span class="hs-value" id="last-modified">—</span></div>
+
+  <div class="tape-tracks">
+    <div class="pager" aria-label="모토로라 삐삐 — 새 글 알림">
+      <div class="pager-top"><span class="pager-btn"></span><span class="pager-led"></span></div>
+      <a class="pager-lcd" id="pager-lcd" href="/column.html">
+        <span class="pager-row"><span id="pager-clock">--:--</span><span>✉ 1</span></span>
+        <span class="pager-num" id="pager-num">0000</span>
+        <span class="pager-msg"><span id="pager-text">새 글을 받는 중…</span></span>
+      </a>
+      <div class="pager-brand">MOTOROLA <small>012-79-1115</small></div>
+    </div>
+    <h2>A면 · 일하는 시간</h2>
+    <ol>
+      <li><a href="/about.html"><span class="no">A1</span>소개<span class="sub">공직 이력</span></a></li>
+      <li><a href="/research.html"><span class="no">A2</span>연구·분석<span class="sub">지방세·납세지</span></a></li>
+      <li><a href="/column.html"><span class="no">A3</span>칼럼<span class="sub">행정·삶의 기록</span></a></li>
+      <li><a href="/guides.html"><span class="no">A4</span>AI 가이드<span class="sub">주간·실무 가이드</span></a></li>
+      <li><a href="/memo.html"><span class="no">A5</span>정리노트<span class="sub">업무·학습 메모</span></a></li>
+      <li><a href="/leaflet.html"><span class="no">A6</span>리플릿 제작기<span class="sub">인쇄물 도구</span></a></li>
+    </ol>
+    <h2>B면 · 쉬는 시간</h2>
+    <ol>
+      <li><a href="/local.html"><span class="no">B1</span>제천 소개<span class="sub">청풍호·의림지</span></a></li>
+      <li><a href="/tour.html"><span class="no">B2</span>바이크·여행<span class="sub">라이딩·여행기</span></a></li>
+      <li><a href="/whisky.html"><span class="no">B3</span>위스키<span class="sub">싱글몰트</span></a></li>
+      <li><a href="/guestbook.html"><span class="no">B4</span>방명록<span class="sub">공중전화</span></a></li>
+      <li><a href="/uirim-final-notes.html" class="bonus"><span class="no">+</span>보너스 트랙 · 의림여중 기말노트<span class="sub">11월 3~5일</span></a></li>
+    </ol>
   </div>
 </section>
 
@@ -116,34 +156,6 @@
   </div>
   <div class="recent-list" id="recent-list"></div>
 </section>
-
-<div class="cat-section">
-  <div class="cat-section-label">Pages</div>
-  <div class="cat-grid">
-    <a href="/about.html" class="cat-card"><div class="cat-icon">👤</div><div class="cat-title">소개</div><div class="cat-desc">프로필 · 공직 경력</div><div class="cat-arrow">&rarr;</div></a>
-    <a href="/research.html" class="cat-card"><div class="cat-icon">🔬</div><div class="cat-title">연구 · 분석</div><div class="cat-desc">지방세 · 정책연구 · 행정 성과</div><div class="cat-arrow">&rarr;</div></a>
-    <a href="/column.html" class="cat-card"><div class="cat-icon">💬</div><div class="cat-title">칼럼</div><div class="cat-desc">제도 개선 및 행정 에세이</div><div class="cat-arrow">&rarr;</div></a>
-    <a href="/guides.html" class="cat-card"><div class="cat-icon">⚙️</div><div class="cat-title">AI 가이드</div><div class="cat-desc">주간 도구 가이드 · 실무 활용 20편</div><div class="cat-arrow">&rarr;</div></a>
-    <a href="/memo.html" class="cat-card"><div class="cat-icon">📋</div><div class="cat-title">정리노트</div><div class="cat-desc">업무 · 학습 정리</div><div class="cat-arrow">&rarr;</div></a>
-    <a href="/local.html" class="cat-card photo-card">
-      <div class="photo-strip">
-        <img src="/img/col_cheongpung.jpg" alt="청풍호">
-        <img src="/img/col_uirimji.jpg" alt="의림지">
-        <img src="/img/col_woraksan.jpg" alt="월악산">
-      </div>
-      <div class="card-inner">
-        <div class="cat-title">제천 소개</div>
-        <div class="cat-desc">청풍호 · 월악산 · 의림지</div>
-        <div class="cat-arrow">&rarr;</div>
-      </div>
-    </a>
-    <a href="/whisky.html" class="cat-card"><div class="cat-icon">🥃</div><div class="cat-title">위스키</div><div class="cat-desc">싱글몰트 가이드</div><div class="cat-arrow">&rarr;</div></a>
-    <a href="/tour.html" class="cat-card"><div class="cat-icon">🏍</div><div class="cat-title">투어</div><div class="cat-desc">라이딩 · 여행 기록</div><div class="cat-arrow">&rarr;</div></a>
-    <a href="/leaflet.html" class="cat-card"><div class="cat-icon">🖨</div><div class="cat-title">리플릿 제작기</div><div class="cat-desc">사진 · 문구 편집 · PDF 인쇄</div><div class="cat-arrow">&rarr;</div></a>
-    <a href="/uirim-final-notes.html" class="cat-card wide full"><div class="cat-icon">📚</div><div><div class="cat-title">의림여중 기말노트</div><div class="cat-desc">3학년 2학기 기말고사 대비 — 7과목 정리 · 단어 카드 · 문제 (11월 3~5일)</div></div><div class="cat-arrow">&rarr;</div></a>
-    <a href="/guestbook.html" class="cat-card wide"><div class="cat-icon">✉</div><div><div class="cat-title">방명록</div><div class="cat-desc">자유롭게 인사 남겨주세요 — 짧은 메모도 환영합니다</div></div><div class="cat-arrow">&rarr;</div></a>
-  </div>
-</div>
 
 <section id="links">
   <div class="lk-eyebrow">Quick Links</div><div class="lk-h">즐겨찾기</div>
@@ -227,12 +239,11 @@
   </button>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="/js/globe.js"></script>
 <script src="/js/jc-picker.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/suncalc/1.9.0/suncalc.min.js"></script>
 <script src="/js/dusk.js"></script>
 <script src="/js/site.js"></script>
+<script src="/js/tape.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
 <script src="/js/motion.js" defer></script>
 </body>

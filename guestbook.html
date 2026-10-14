@@ -95,6 +95,8 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/theme.css">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/tape.css">
 <link rel="stylesheet" href="/css/motion.css">
 </head>
 <body>
@@ -115,7 +117,7 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 <section class="hero">
   <div class="hero-label">Guestbook</div>
   <h1>방명록</h1>
-  <p>들러주셔서 감사합니다. 짧은 인사라도 남겨주시면 반갑겠습니다.</p>
+  <p>들러주셔서 감사합니다. 공중전화에 동전 넣듯 짧은 인사라도 남겨주시면, 음성사서함에 고이 담아 두겠습니다.</p>
 </section>
 
 <main class="main">
@@ -125,7 +127,10 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
     <a href="https://supabase.com" target="_blank">supabase.com</a>에서 무료 프로젝트를 만들고, Project Settings → API에서 값을 복사하세요.</p>
   </div>
 
-  <!-- 글쓰기 -->
+  <div class="booth">
+  <!-- 글쓰기: 공중전화 -->
+  <div class="payphone">
+  <div class="payphone-sign">공중전화</div>
   <div class="write-box">
     <h2>✍️ 글 남기기</h2>
     <div class="form-row">
@@ -141,10 +146,22 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
     </div>
     <div class="msg" id="gbMsg"></div>
   </div>
+  <div class="payphone-keys" aria-hidden="true"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i><i>9</i><i>*</i><i>0</i><i>#</i></div>
+  </div>
+
+  <!-- 전화카드 -->
+  <a class="phonecard" href="mailto:7979@korea.kr" aria-label="이메일 보내기: 7979@korea.kr">
+    <span class="phonecard-top">전화카드 · 제천 사랑방</span>
+    <span class="phonecard-name">최승환에게 직접 걸기</span>
+    <span class="phonecard-mail">7979@korea.kr</span>
+    <span class="phonecard-units"><b>50</b>도수</span>
+    <span class="phonecard-holes" aria-hidden="true"><i class="used"></i><i class="used"></i><i class="used"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+  </a>
+  </div>
 
   <!-- 목록 -->
   <div class="entries-head">
-    <h2>📋 방명록 목록</h2>
+    <h2>📼 음성사서함</h2>
     <span>
       <button type="button" class="admin-link" id="adminBtn" onclick="toggleAdmin()">관리</button>
       <span class="entry-count" id="entryCount"></span>
