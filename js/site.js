@@ -66,7 +66,7 @@ function searchGoogle(e){e.preventDefault();var q=document.getElementById('googl
   });
 })();
 
-/* ── 홈 통계 위젯: 연금 D-day / 최근수정 / 방문자수 ── */
+/* ── 홈 통계 위젯: 최근수정 / 방문자수 ── */
 (function(){
 
   /* 0. 시간대별 인사말 */
@@ -80,15 +80,6 @@ function searchGoogle(e){e.preventDefault();var q=document.getElementById('googl
               h >= 22            ? '오늘도 수고하셨습니다' :
                                    '이 시간까지 찾아주셨네요';
     el.textContent = msg;
-  })();
-
-  /* 1. 공무원연금 개시 D-day (1979년 11월생, 65세 → 2044-11-01) */
-  (function(){
-    var el = document.getElementById('pension-dday');
-    if(!el) return;
-    var target = new Date(2044, 10, 1); /* month 0-based */
-    var diff = Math.ceil((target - new Date()) / 86400000);
-    el.textContent = 'D-' + diff.toLocaleString('ko-KR');
   })();
 
   /* 2. 웹페이지 최근 수정일 */

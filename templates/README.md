@@ -14,5 +14,5 @@
 ## 원칙
 
 - 템플릿의 CSS 클래스 구조(`.hero`, `.section`, `.card`, `.timeline`, `.step-list`, `.tasting-grid` 등)는 그대로 두고 내용만 바꾼다. 구조를 바꾸면 디자인 시스템(`css/synthwave.css`, `css/pages.css`)과 어긋난다.
-- 새 위스키 페이지는 예전 방식(인라인 `<style>` 전체 복제, 예: `ardbeg10.html`)이 아니라 `css/synthwave.css` + `css/pages.css` 링크 방식을 따른다. `balvenie12.html`, `dalmore12.html` 이후 페이지가 현재 표준.
+- 위스키 페이지는 자체 인라인 `<style>`(템플릿에 포함)을 쓴다. `css/synthwave.css`·`css/pages.css`만 링크하면 위스키 전용 색상(`--deep`, `--gold` 등)이 없어 배경이 투명해지고 첫 화면이 760px로 줄어든다. 색은 `:root`의 `--gold` 3개 값만 바꿔 위스키별로 구분한다.
 - 체크리스트는 항목을 지우지 말고 `[x]`로 체크하며 진행. 작업 중 판단·이유는 각 파일 하단의 "메모" 섹션에 남긴다.

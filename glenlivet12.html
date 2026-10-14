@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>글렌리벳 12년산 — 완전 가이드</title>
+<title>글렌리벳 12년산 — 완전 가이드 | 최승환</title>
 <meta name="description" content="스코틀랜드 위스키 합법화의 시작. 꽃향기와 복숭아, 가벼운 스페이사이드 스타일의 교과서. 글렌리벳 12년 완전 가이드.">
 <meta property="og:title" content="글렌리벳 12년산 완전 가이드 | 최승환">
 <meta property="og:description" content="스코틀랜드 위스키 합법화의 시작. 꽃향기와 복숭아, 가벼운 스페이사이드 스타일의 교과서. 글렌리벳 12년 완전 가이드.">
@@ -87,6 +87,12 @@ footer p{font-family:"Cormorant Garamond",serif;font-size:0.8rem;color:rgba(201,
 @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
 @keyframes scrollPulse{0%,100%{opacity:0.3;}50%{opacity:1;}}
 @media(max-width:600px){.hero-title{font-size:3rem;}.cards{grid-template-columns:1fr;}.tasting-grid{grid-template-columns:1fr;}.spec-box{grid-template-columns:1fr 1fr;}}
+
+/* 공통 CSS(synthwave/pages)와 충돌하던 배경·첫 화면 폭을 위스키 페이지 기본값으로 복원 */
+:root{--gold:#C9A84C;--gold-light:#E8C97A;--gold-pale:#F5E8C0;--deep:#1A1208;--dark:#2D1E0A;--mid:#4A2F0D;--amber:#8B4A0E;--cream:#F8F2E4;}
+html,body{background:var(--deep);}
+body{font-family:"Noto Serif KR",serif;}
+.hero{max-width:none;margin:0;padding:0;border-bottom:none;}
 </style>
 <link rel="stylesheet" href="/css/motion.css">
 </head>
@@ -106,7 +112,7 @@ footer p{font-family:"Cormorant Garamond",serif;font-size:0.8rem;color:rgba(201,
   <h1 class="hero-title">글렌리벳<br><em>12년산</em></h1>
   <p class="hero-sub">The Founder of the Style</p>
   <div class="hero-divider"></div>
-  <p class="hero-desc">스코틀랜드 위스키 합법화의 출발점. 꽃향기와 사탕 과자, 가벼운 과일의 스페이사이드.<br>모든 싱글 몰트가 이 스타일을 기준으로 만들어졌습니다.</p>
+  <p class="hero-desc">스코틀랜드 위스키 합법화의 출발점. 꽃향기와 사탕 과자, 가벼운 과일의 스페이사이드.<br>스페이사이드 스타일의 기준으로 자주 꼽힙니다.</p>
   <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
 </section>
 
