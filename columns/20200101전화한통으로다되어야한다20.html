@@ -17,6 +17,7 @@
 <style>
 :root{--bg:#231c17;--surface:#2f2620;--border:#4a3d32;--text:#efe4cf;--ink:#fbf3e2;--muted:#b3a28a;--accent:#f2a33a;}
 [data-theme="light"]{--bg:#f4ecd8;--surface:#fbf6ea;--border:#d8c9a8;--text:#2b2420;--ink:#1b1612;--muted:#7a6a56;--accent:#c4571f;}
+:root{--tc:#f2a33a;}[data-theme="light"]{--tc:#9a6a12;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--bg);color:var(--text);font-family:'Noto Sans KR',sans-serif;font-weight:300;line-height:1.8;}
 a{color:inherit;text-decoration:none;}
@@ -31,7 +32,7 @@ header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px 
 .theme-btn{background:none;border:1px solid var(--border);color:var(--muted);font-size:11px;font-family:inherit;cursor:pointer;padding:0.3rem 0.7rem;transition:all 0.15s;}
 .theme-btn:hover{border-color:var(--accent);color:var(--accent);}
 .article-wrap{max-width:720px;margin:0 auto;padding:3rem 2rem 5rem;}
-.a-type{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;color:#d29922;margin-bottom:1rem;}
+.a-type{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;color:var(--tc);margin-bottom:1rem;}
 .a-title{font-family:'Noto Serif KR',serif;font-size:2rem;font-weight:700;line-height:1.35;color:var(--ink);margin-bottom:1.2rem;}
 .a-meta{display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);}
 .a-date{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);}
@@ -55,6 +56,7 @@ footer{border-top:1px solid var(--border);text-align:center;padding:1.5rem 1rem;
 @media(max-width:900px){.hd-nav{display:none;}#mqb{display:flex;}body{padding-bottom:4rem;}}
 @media(max-width:600px){.article-wrap{padding:2rem 1.2rem 4rem;}.a-title{font-size:1.5rem;}.a-body{font-size:14px;}.art-nav{padding:1.5rem 1.2rem 3rem;}}
 </style>
+<link rel="stylesheet" href="/css/motion.css">
 </head>
 <body>
 <header>
@@ -76,7 +78,7 @@ footer{border-top:1px solid var(--border);text-align:center;padding:1.5rem 1rem;
   <h1 class="a-title">전화 한 통으로 다 되어야 한다 — 2020년 통합 ARS 제안의 기록</h1>
   <div class="a-meta">
     <span class="a-date">2020-01-01</span>
-    <span class="a-tag" style="border-color:#d2992244;color:#d29922">행정혁신</span><span class="a-tag" style="border-color:#d2992244;color:#d29922">납세편의</span><span class="a-tag" style="border-color:#d2992244;color:#d29922">디지털행정</span>
+    <span class="a-tag" style="border-color:color-mix(in srgb,var(--tc) 30%,transparent);color:var(--tc)">행정혁신</span><span class="a-tag" style="border-color:color-mix(in srgb,var(--tc) 30%,transparent);color:var(--tc)">납세편의</span><span class="a-tag" style="border-color:color-mix(in srgb,var(--tc) 30%,transparent);color:var(--tc)">디지털행정</span>
   </div>
   <div class="a-body">
     <p>2020년, 세정과에서 일하던 나는 이런 장면을 자주 봤다. 부동산이나 차량 매매를 앞둔 시민이, 혹은 법무사나 매매상 직원이 전화를 걸어온다. &quot;거래 전에 체납 세금이 있는지 확인하고 싶어요.&quot; 그러면 담당자는 이렇게 답한다. &quot;지방세는 저희 과에서 확인해 드릴 수 있는데, 교통 과태료는 교통과에, 환경개선부담금은 환경과에 따로 전화하셔야 해요.&quot;</p>
