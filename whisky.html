@@ -46,6 +46,7 @@ a{color:var(--accent);text-decoration:none;}
 footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:11px;color:var(--muted);letter-spacing:0.04em;margin-top:2rem;}
 @media(max-width:600px){.col-list{padding:1rem;}.col-card{padding:1.2rem 1.4rem;}}
 </style>
+<link rel="stylesheet" href="/css/motion.css">
 </head>
 <body>
 <header class="site-header">
@@ -214,5 +215,7 @@ function toggleTheme(){
   if(btn) btn.textContent=next==='dark'?'☀ 라이트':'☾ 다크';
 }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
 </body>
 </html>

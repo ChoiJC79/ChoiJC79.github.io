@@ -228,7 +228,8 @@ def page_shell(title, desc, url, body_html, extra_nav=""):
 <meta property="og:type" content="article">
 <meta property="og:url" content="{url}">
 <meta property="og:site_name" content="최승환 · Jecheon">
-{HEAD_FONTS}</head>
+{HEAD_FONTS}<link rel="stylesheet" href="/css/motion.css">
+</head>
 <body>
 <header class="site-header">
   <div class="logo">최승환 · 가이드</div>

@@ -237,6 +237,7 @@ footer{{border-top:1px solid var(--border);text-align:center;padding:1.5rem 1rem
 @media(max-width:900px){{.hd-nav{{display:none;}}#mqb{{display:flex;}}body{{padding-bottom:4rem;}}}}
 @media(max-width:600px){{.article-wrap{{padding:2rem 1.2rem 4rem;}}.a-title{{font-size:1.5rem;}}.a-body{{font-size:14px;}}.art-nav{{padding:1.5rem 1.2rem 3rem;}}}}
 </style>
+<link rel="stylesheet" href="/css/motion.css">
 </head>
 <body>
 <header>

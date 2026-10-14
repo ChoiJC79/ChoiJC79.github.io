@@ -684,6 +684,7 @@ footer{{border-top:1px solid var(--border);padding:2rem;text-align:center;font-s
 #mqb a:hover,#mqb a:active{{border-color:var(--accent);color:var(--accent);}}
 @media(max-width:768px){{#mqb{{display:flex;}} body{{padding-bottom:4rem;}}}}
 </style>
+<link rel="stylesheet" href="/css/motion.css">
 </head>
 <body>
 <header class="site-header">
@@ -892,6 +893,7 @@ def main():
     push_local("js/globe.js",                         "update globe js")
     push_local("js/jc-picker.js",                      "update jc-picker js")
     push_local("js/motion.js",                         "update motion js")
+    push_local("css/motion.css",                       "update motion css")
 
     print("=" * 50)
     print("  Done!")

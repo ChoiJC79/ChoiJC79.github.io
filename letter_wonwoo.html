@@ -198,6 +198,7 @@ footer {
 #mqb a{flex:1;text-align:center;color:var(--muted);font-size:10px;padding:0.4rem 0.2rem;border:1px solid var(--border);line-height:1.4;transition:all 0.15s;text-decoration:none;}
 #mqb a:hover,#mqb a.active{border-color:var(--accent);color:var(--accent);}
 </style>
+<link rel="stylesheet" href="/css/motion.css">
 </head>
 <body>
 
@@ -866,5 +867,7 @@ function startAuto() { timer = setInterval(function(){ goSlide(current + 1); }, 
     .catch(function(){});
 })();
 </script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
 </body>
 </html>

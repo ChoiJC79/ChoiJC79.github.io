@@ -1,0 +1,19 @@
+/* 사이트 공통 CSS 모션: 페이지 전환 크로스페이드·첫 화면 제목 등장·누름 반응 (스크롤 등장은 js/motion.js) */
+@media (prefers-reduced-motion: no-preference) {
+  /* 같은 사이트 안에서 페이지를 옮길 때 부드럽게 겹쳐 바뀜 (지원 브라우저만) */
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.28s; }
+
+  /* 첫 화면 제목 묶음: h1이 들어 있는 상자의 앞쪽 요소가 차례로 올라온다. 첫 페인트부터 적용돼 깜빡임이 없다. :where로 우선순위를 0으로 둬 페이지 고유 애니메이션이 있으면 그쪽이 이긴다 */
+  @keyframes mo-rise { from { opacity: 0; translate: 0 14px; } to { opacity: 1; translate: 0 0; } }
+  :where(:where(header, section, article, div, main):has(> h1):not(.hero-content) > :nth-child(-n+5)) {
+    animation: mo-rise 0.7s cubic-bezier(.2, .7, .2, 1) both;
+  }
+  :where(:where(header, section, article, div, main):has(> h1):not(.hero-content) > :nth-child(2)) { animation-delay: 0.08s; }
+  :where(:where(header, section, article, div, main):has(> h1):not(.hero-content) > :nth-child(3)) { animation-delay: 0.16s; }
+  :where(:where(header, section, article, div, main):has(> h1):not(.hero-content) > :nth-child(4)) { animation-delay: 0.24s; }
+  :where(:where(header, section, article, div, main):has(> h1):not(.hero-content) > :nth-child(5)) { animation-delay: 0.32s; }
+
+  /* 누름 반응: 버튼·카드·하단 탭을 누르는 순간 살짝 눌린다 (hover의 transform과 겹치지 않게 scale 속성 사용) */
+  :is(button, .btn, .cat-card, .col-card, .recent-card, .lk-btn, .lk-a, #mqb a, .tab-nav a):active { scale: 0.97; }
+}

@@ -38,6 +38,7 @@ def head(title, desc, url, og_type):
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/theme.css">
 <link rel="stylesheet" href="/css/practice.css">
+<link rel="stylesheet" href="/css/motion.css">
 </head>
 <body>
 <header class="site-header">
