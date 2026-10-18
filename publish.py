@@ -866,6 +866,7 @@ def main():
     push_local("balvenie12.html",                    "update balvenie guide")
     push_local("dalmore12.html",                     "update dalmore guide")
     push_local("glenlivet12.html",                   "update glenlivet guide")
+    push_local("glenlivet15.html",                   "add glenlivet 15 guide")
     push_local("lagavulin16.html",                   "update lagavulin guide")
     push_local("laphroaig10.html",                   "update laphroaig guide")
     push_local("talisker10.html",                    "update talisker guide")
