@@ -19,12 +19,15 @@
 <link rel="stylesheet" href="/css/pages.css">
 <link rel="stylesheet" href="/css/theme.css">
 <style>
+  /* 연대기 전용 색 변수 — 8월 업로드 때 정의가 빠져 있던 것을 사이트 공통 토큰(theme.css)에 연결해 복원 */
+  :root{--paper:var(--bg);--card:var(--surface);--line:var(--border);--ink-soft:var(--muted);--shadow:0 2px 12px rgba(0,0,0,.18);--nation:#c4571f;--jc:#2f5d8a}
+  [data-theme="dark"]{--nation:#f2a33a;--jc:#6cc3d5}
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{background:var(--paper);color:var(--ink);font-family:"Pretendard",-apple-system,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
   .wrap{max-width:900px;margin:0 auto;padding:0 22px 120px}
 
-  header{padding:80px 0 42px;border-bottom:1px solid var(--line)}
+  .wrap > header:not(#navbar){position:static;z-index:auto;display:block;height:auto;background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none;padding:80px 0 42px;border-bottom:1px solid var(--line)}
   .eyebrow{font-size:13px;letter-spacing:.32em;color:var(--ink-soft);margin-bottom:20px}
   h1{font-family:var(--font-display);font-weight:700;font-size:clamp(28px,5.2vw,44px);line-height:1.35;letter-spacing:-.01em}
   h1 .n-c{color:var(--nation)} h1 .j-c{color:var(--jc)}
@@ -111,6 +114,10 @@
   .item.hide,.year-group.hide,.decade.hide{display:none}
 
   @media(max-width:560px){
+    .toolbar button{min-height:40px;font-size:14px}
+    .search{font-size:16px;min-height:44px}
+    .decnav a{display:inline-flex;align-items:center;min-height:40px;padding:0 14px}
+    .tag{font-size:12px;padding:2px 10px}
     .item-head{flex-wrap:wrap;gap:4px 10px;padding:12px 14px}
     .item-date{min-width:auto}
     .item-title{flex-basis:100%;order:3}

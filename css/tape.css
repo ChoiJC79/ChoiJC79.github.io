@@ -132,7 +132,7 @@ html[data-theme="light"] .cat-bar .cat-btn.active { background: var(--tape-shell
   #tape-hero { grid-template-columns: 1fr; padding: 84px 16px 40px; gap: 28px; }
   .pager { transform: none; margin: 0 0 20px; width: auto; }
   .deck { padding: 10px 10px 10px; }
-  .deck-brand small, .deck-lamp { display: none; }
+  .deck-brand small, .deck-lamp, .tape-type { display: none; }
   .deck-brand { font-size: 9px; letter-spacing: .08em; }
   .vu { width: 48px; height: 30px; }
   .vu i { height: 30px; }
