@@ -348,3 +348,9 @@ footer { border-top: 1px solid var(--border); color: var(--muted); }
 .g-term { background: color-mix(in srgb, var(--purple) 8%, transparent); }
 .g-verify { background: color-mix(in srgb, var(--green) 8%, transparent); }
 .g-code pre code, .g-prompt pre code { background: none; padding: 0; }
+
+/* ── 모바일 가독성: 10~11px 보조 글자는 12px로, 작은 탭·버튼은 터치 영역 40px 이상 ── */
+@media (max-width: 600px) {
+  .hero-label, .hero-meta, .section-label, .col-date, .col-tag, .col-more, .page-link-desc, .cat-sub, .topic-tag, .place-tag, .thesis-badge, .finding-unit, .finding-desc, .method-label, .doc-count, .doc-budget, .photo-doc-tag, .related-label, .tl-date, .hstat-sub, .stat-unit, .place-en, .note-sig, .wiki-link, .idx-date, footer, #theme-toggle, #theme-btn { font-size: 12px !important; }  /* 페이지 안 <style>이 theme.css보다 뒤에 와서 !important 필요 */
+  .pr-tab, .related-link { min-height: 40px; display: inline-flex; align-items: center; }
+}
