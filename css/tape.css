@@ -129,7 +129,7 @@ html[data-theme="light"] .tape-tracks .no { color: var(--tape-red); }
 html[data-theme="light"] .cat-bar .cat-btn.active { background: var(--tape-shell); border-color: var(--tape-shell); color: var(--tape-paper); }
 
 @media (max-width: 860px) {
-  #tape-hero { grid-template-columns: 1fr; padding: 84px 16px 40px; gap: 28px; }
+  #tape-hero { grid-template-columns: 1fr; padding: 70px 16px 40px; gap: 18px; }
   .pager { transform: none; margin: 0 0 20px; width: auto; }
   .deck { padding: 10px 10px 10px; }
   .deck-brand small, .deck-lamp, .tape-type { display: none; }
@@ -138,6 +138,9 @@ html[data-theme="light"] .cat-bar .cat-btn.active { background: var(--tape-shell
   .vu i { height: 30px; }
   .tape-counter { font-size: 13px; padding: 4px 6px; }
   .deck-door { padding: 8px; }
+  /* 테이프 폭을 화면 높이에 묶어 첫 화면에 데크 버튼까지 들어오게 */
+  .deck-door .tape { width: min(100%, 36svh); margin-inline: auto; }
+  .tape-title { font-size: clamp(13px, 4.6cqw, 33px); }
   .tape-deck a { min-height: 50px; font-size: 15px; }
   .tape-deck a span { font-size: 12px; }
   .tape-intro { font-size: 18px; }
