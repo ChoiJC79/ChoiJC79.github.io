@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" role="img" aria-label="교실 난로 위 노란 주전자와 도시락">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="62%" r="55%">
+      <stop offset="0" stop-color="#f08a3c" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#1a1410" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="kettle" x1="0" x2="1">
+      <stop offset="0" stop-color="#c99a1e"/><stop offset=".45" stop-color="#f4cf4a"/><stop offset="1" stop-color="#b8861a"/>
+    </linearGradient>
+    <linearGradient id="tin" x1="0" x2="1">
+      <stop offset="0" stop-color="#8d939a"/><stop offset=".5" stop-color="#d7dbe0"/><stop offset="1" stop-color="#7c828a"/>
+    </linearGradient>
+    <linearGradient id="stove" x1="0" x2="1">
+      <stop offset="0" stop-color="#1c1d20"/><stop offset=".5" stop-color="#3a3b40"/><stop offset="1" stop-color="#18191c"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="520" fill="#1a1410"/>
+  <rect x="40" y="40" width="300" height="150" rx="4" fill="#23362c" stroke="#5a4630" stroke-width="8"/>
+  <path d="M70 90h120M70 120h170M70 150h90" stroke="#cfd8c8" stroke-opacity=".35" stroke-width="4" stroke-linecap="round"/>
+  <rect x="520" y="40" width="230" height="170" fill="#2c3440" stroke="#6b5338" stroke-width="8"/>
+  <path d="M635 40v170M520 125h230" stroke="#6b5338" stroke-width="6"/>
+  <rect y="400" width="800" height="120" fill="#4a3220"/>
+  <path d="M0 430h800M0 465h800M0 500h800" stroke="#3a2617" stroke-width="3"/>
+  <rect width="800" height="520" fill="url(#glow)"/>
+  <rect x="455" y="0" width="34" height="160" fill="#2a2b2f"/>
+  <rect x="451" y="110" width="42" height="10" fill="#1a1b1e"/>
+  <rect x="300" y="250" width="220" height="165" rx="18" fill="url(#stove)"/>
+  <rect x="290" y="236" width="240" height="22" rx="6" fill="#2b2c30"/>
+  <rect x="380" y="330" width="60" height="44" rx="6" fill="#ff7a2a" opacity=".85"/>
+  <rect x="380" y="330" width="60" height="44" rx="6" fill="none" stroke="#141416" stroke-width="5"/>
+  <path d="M320 415l-10 20M500 415l10 20" stroke="#18191c" stroke-width="10" stroke-linecap="round"/>
+  <rect x="300" y="208" width="108" height="30" rx="4" fill="url(#tin)"/>
+  <rect x="306" y="180" width="104" height="30" rx="4" fill="url(#tin)"/>
+  <rect x="300" y="152" width="108" height="30" rx="4" fill="url(#tin)"/>
+  <path d="M300 222h108M306 194h104M300 166h108" stroke="#6d737a" stroke-width="2"/>
+  <path d="M430 236c-4-46 10-74 50-74s54 28 50 74z" fill="url(#kettle)"/>
+  <rect x="462" y="146" width="36" height="18" rx="6" fill="#d9ad2a"/>
+  <path d="M440 190c-28-6-40-26-46-44" stroke="#d9ad2a" stroke-width="12" stroke-linecap="round" fill="none"/>
+  <path d="M455 160c0-34 50-34 50 0" stroke="#a37a16" stroke-width="7" fill="none"/>
+  <g fill="none" stroke="#f3e6d2" stroke-opacity=".45" stroke-width="5" stroke-linecap="round">
+    <path d="M392 136c-14-16 10-26-4-44"/>
+    <path d="M520 130c-14-18 12-28-2-50"/>
+    <path d="M352 132c-12-14 8-22-4-38"/>
+  </g>
+</svg>
