@@ -178,6 +178,18 @@ a{color:var(--accent);text-decoration:none;}
 .qa-card .qa-preview{color:var(--muted);}
 .qa-card details summary{cursor:pointer;color:var(--accent);font-size:12px;margin-top:0.3rem;}
 .qa-card details p{margin:0.5rem 0 0;color:var(--ink);white-space:pre-wrap;overflow-wrap:anywhere;}
+.pl-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem 1.2rem;margin-bottom:1.3rem;}
+.pl-box h3{font-size:14px;margin:0 0 0.3rem;color:var(--ink);}
+.pl-field{margin-top:0.7rem;}
+.pl-field>b{display:block;font-size:12px;color:var(--muted);margin-bottom:0.35rem;}
+.pl-chips{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.pl-chip{font-size:12px;padding:0.3rem 0.65rem;border-radius:999px;border:1px solid var(--border);background:var(--bg);color:var(--ink);cursor:pointer;font-family:var(--font-body);}
+.pl-chip.core{border-color:color-mix(in srgb,var(--accent) 60%,var(--border));}
+.pl-chip[disabled]{opacity:0.45;cursor:default;}
+.pl-chip.on{background:color-mix(in srgb,var(--accent) 22%,var(--bg));border-color:var(--accent);}
+.pl-chip em{font-style:normal;color:var(--accent);font-weight:700;margin-left:0.3rem;}
+#qa-list{scroll-margin-top:210px;}
+.qa-pl{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:0.45rem;}
 .qa-note{font-size:12px;color:var(--muted);margin:-0.6rem 0 1rem;}
 .vid-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.05rem 1.2rem;display:flex;flex-direction:column;gap:0.5rem;justify-content:space-between;}
 .vid-top{display:flex;justify-content:space-between;align-items:center;gap:0.5rem;font-size:11px;color:var(--muted);}
@@ -250,7 +262,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
       <div class="kpi-card">
         <div class="kpi-num" id="kpi-members">14명</div>
         <div class="kpi-label">제10대 의원 전수 프로파일</div>
-        <div class="kpi-sub">국민의힘 10명 · 더불어민주당 4명</div>
+        <div class="kpi-sub">국민의힘 7명 · 더불어민주당 7명</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-num" id="kpi-speeches">15건</div>
@@ -310,8 +322,8 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
       <div class="net-canvas-box">
         <div class="net-toolbar">
           <div class="net-legend">
-            <span class="legend-item"><i class="legend-dot" style="background:#e2603f;"></i>국민의힘 의원 (10)</span>
-            <span class="legend-item"><i class="legend-dot" style="background:#58a6ff;"></i>더불어민주당 의원 (4)</span>
+            <span class="legend-item"><i class="legend-dot" style="background:#e2603f;"></i>국민의힘 의원 (7)</span>
+            <span class="legend-item"><i class="legend-dot" style="background:#58a6ff;"></i>더불어민주당 의원 (7)</span>
             <span class="legend-item"><i class="legend-dot" style="background:#f2a33a;"></i>핵심 쟁점·예산 현안 (12)</span>
             <span class="legend-item"><i class="legend-dot" style="background:#a9c46a;"></i>시민·상인·외부기관 (4)</span>
           </div>
@@ -401,8 +413,8 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
       </div>
       <div style="display:flex;gap:0.5rem;">
         <button class="yt-btn" onclick="filterMemberCards('__all__')">전체 (14)</button>
-        <button class="yt-btn" onclick="filterMemberCards('국민의힘')">국민의힘 (10)</button>
-        <button class="yt-btn" onclick="filterMemberCards('더불어민주당')">더불어민주당 (4)</button>
+        <button class="yt-btn" onclick="filterMemberCards('국민의힘')">국민의힘 (7)</button>
+        <button class="yt-btn" onclick="filterMemberCards('더불어민주당')">더불어민주당 (7)</button>
         <button class="yt-btn" onclick="filterMemberCards('자치행정위원회')">자치행정위</button>
         <button class="yt-btn" onclick="filterMemberCards('산업건설위원회')">산업건설위</button>
       </div>
@@ -460,7 +472,13 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
         <p class="sec-sub">상임위·본회의 자막에서 의원 질의와 집행부 답변을 회의 → 부서 순으로 묶었습니다. 시각 버튼을 누르면 그 지점부터 재생됩니다.</p>
       </div>
     </div>
+    <div class="pl-box">
+      <h3>📜 민선9기 공약백서 ↔ 의원 질의 연결</h3>
+      <p class="qa-note" style="margin:0;">공약 사업명·핵심 단어가 질의응답 본문에 나오면 연결했습니다. 단어 일치 기준이라 실제 관련성은 영상으로 확인하세요. ★는 핵심공약, 숫자는 관련 질의 수입니다.</p>
+      <div id="pl-list"></div>
+    </div>
     <div class="filter-bar">
+      <select id="qa-pledge" class="filter-select" onchange="renderQA()"><option value="__all__">📜 전체 공약</option></select>
       <select id="qa-meeting" class="filter-select" onchange="renderQA()"><option value="__all__">📂 전체 회의</option></select>
       <select id="qa-dept" class="filter-select" onchange="renderQA()"><option value="__all__">🏢 전체 부서</option></select>
       <select id="qa-member" class="filter-select" onchange="renderQA()"><option value="__all__">👤 전체 의원</option></select>
@@ -1197,6 +1215,8 @@ function renderArchive() {
 
 // 5. 회의·부서별 질의응답
 const QA = window.QA_DATA || [];
+const PL = window.PLEDGES || [];
+const PLMAP = Object.fromEntries(PL.map(p => [p.id, p]));
 const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function initQAFilters() {
   const fill = (id, vals) => document.getElementById(id).insertAdjacentHTML('beforeend',
@@ -1205,6 +1225,20 @@ function initQAFilters() {
   fill('qa-dept', [...new Set(QA.map(q => q.dept))].sort((a, b) => a.localeCompare(b, 'ko')));
   fill('qa-member', [...new Set(QA.map(q => q.member))].sort((a, b) => a.localeCompare(b, 'ko')));
   document.getElementById('tab-count-qa').textContent = QA.length;
+  document.getElementById('qa-pledge').insertAdjacentHTML('beforeend',
+    PL.filter(p => p.n).map(p => `<option value="${p.id}">${p.core ? '★ ' : ''}${esc(p.title)} (${p.n})</option>`).join(''));
+  const fields = [...new Set(PL.map(p => p.field))];
+  document.getElementById('pl-list').innerHTML = fields.map(f => `<div class="pl-field"><b>${esc(f)}</b><div class="pl-chips">${
+    PL.filter(p => p.field === f).map(p => `<button class="pl-chip${p.core ? ' core' : ''}" data-pl="${p.id}" ${p.n ? '' : 'disabled'} title="${esc(p.dept)}">${p.core ? '★ ' : ''}${esc(p.title)}<em>${p.n}</em></button>`).join('')
+  }</div></div>`).join('');
+  document.getElementById('view-qa').addEventListener('click', e => {
+    const c = e.target.closest('[data-pl]');
+    if (!c || c.disabled) return;
+    const sel = document.getElementById('qa-pledge');
+    sel.value = sel.value === c.dataset.pl ? '__all__' : c.dataset.pl;
+    renderQA();
+    document.getElementById('qa-list').scrollIntoView({behavior: 'smooth', block: 'start'});
+  });
   document.getElementById('qa-list').addEventListener('click', e => {
     const b = e.target.closest('[data-vid]');
     if (b) openYtModal(b.dataset.vid, b.dataset.sec, b.dataset.title, '');
@@ -1212,8 +1246,9 @@ function initQAFilters() {
 }
 function renderQA() {
   const val = id => document.getElementById(id).value;
-  const [mt, dp, mb, kw] = [val('qa-meeting'), val('qa-dept'), val('qa-member'), val('qa-q').trim()];
-  const rows = QA.filter(q => (mt === '__all__' || q.title === mt) && (dp === '__all__' || q.dept === dp)
+  const [pl, mt, dp, mb, kw] = [val('qa-pledge'), val('qa-meeting'), val('qa-dept'), val('qa-member'), val('qa-q').trim()];
+  document.querySelectorAll('.pl-chip').forEach(c => c.classList.toggle('on', c.dataset.pl === pl));
+  const rows = QA.filter(q => (pl === '__all__' || (q.pledges || []).includes(pl)) && (mt === '__all__' || q.title === mt) && (dp === '__all__' || q.dept === dp)
     && (mb === '__all__' || q.member === mb) && (!kw || q.text.includes(kw)));
   const groups = new Map();  // 회의 → 부서 → 질의 (데이터는 최신 회의 순 정렬됨)
   rows.forEach(q => {
@@ -1232,6 +1267,7 @@ function renderQA() {
         html += `<article class="qa-card"><div class="qa-top"><span class="qa-who">${esc(q.member)} 의원</span>
           <button class="yt-btn" data-vid="${esc(q.vid)}" data-sec="${q.sec}" data-title="${esc(q.member + ' — ' + dept)}">▶ ${esc(q.ts)}</button></div>
           <div class="qa-preview">${esc(head)}${q.text.length > 220 ? '…' : ''}</div>
+          ${(q.pledges || []).length ? `<div class="qa-pl">${q.pledges.map(id => `<button class="pl-chip${PLMAP[id].core ? ' core' : ''}" data-pl="${id}">📜 ${PLMAP[id].core ? '★ ' : ''}${esc(PLMAP[id].title)}</button>`).join('')}</div>` : ''}
           ${q.text.length > 220 ? `<details><summary>질의응답 전체 보기 (${q.text.length.toLocaleString()}자)</summary><p>${esc(q.text)}</p></details>` : ''}</article>`;
       });
       html += '</div>';
