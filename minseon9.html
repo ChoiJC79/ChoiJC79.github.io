@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<!-- 민선9기 이상천 제천시장 페이스북 글을 공약·시정·현안으로 정리한 노트 (매주 자동 갱신) -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>민선9기 시정 노트</title>
+<meta name="description" content="이상천 제천시장 페이스북 글을 읽고 선거 공약, 취임 후 시정, 주요 현안과 공약 이행 흐름을 정리한 노트.">
+<meta property="og:title" content="민선9기 시정 노트 | 최승환">
+<meta property="og:description" content="이상천 제천시장 페이스북 글을 읽고 선거 공약, 취임 후 시정, 주요 현안과 공약 이행 흐름을 정리한 노트.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/minseon9.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/css/motion.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=Noto+Sans+KR:wght@300;400;500&display=swap">
+<style>
+/* 레이아웃: 머리말 → 숫자 → 흐름 분석 → 공약 추적표 → 시정 타임라인 → 전체 글 목록 */
+:root{color-scheme:light;
+  --bg:#f6f8fa;--surface:#fff;--border:#d0d7de;--text:#1f2328;--muted:#59636e;
+  --accent:#0969da;--amber:#9a6700;--green:#1a7f37;--purple:#8250df;--lake:#1b7c94;
+  --serif:"Noto Serif KR","AppleMyungjo",ui-serif,Georgia,serif;
+  --sans:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;
+  --bg:#0d1117;--surface:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;
+  --accent:#58a6ff;--amber:#d29922;--green:#3fb950;--purple:#bc8cff;--lake:#5cbcd4}}
+:root[data-theme="dark"]{color-scheme:dark;
+  --bg:#0d1117;--surface:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;
+  --accent:#58a6ff;--amber:#d29922;--green:#3fb950;--purple:#bc8cff;--lake:#5cbcd4}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;line-height:1.75;font-size:15px}
+a{color:var(--accent)}
+.wrap{max-width:980px;margin:0 auto;padding:28px 16px 64px}
+.top{font-size:13px;color:var(--muted);margin-bottom:18px}
+.top a{color:var(--muted);text-decoration:none}
+h1{font-family:var(--serif);font-size:clamp(24px,4vw,34px);line-height:1.35;margin:0 0 10px}
+h2{font-family:var(--serif);font-size:21px;margin:44px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+h3{font-size:16px;font-weight:500;margin:0 0 6px}
+.lead{color:var(--muted);margin:0 0 6px}
+.note{font-size:13px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:22px 0 0}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px}
+.stat b{display:block;font-family:var(--serif);font-size:24px;line-height:1.2}
+.stat span{font-size:12.5px;color:var(--muted)}
+.insight{display:grid;gap:12px}
+.insight>div{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:8px;padding:14px 16px}
+.insight p{margin:0}
+.tbl{width:100%;border-collapse:collapse;font-size:14px;background:var(--surface);border:1px solid var(--border)}
+.tbl th,.tbl td{padding:9px 10px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+.tbl th{font-weight:500;color:var(--muted);font-size:12.5px;white-space:nowrap}
+.tblwrap{overflow-x:auto}
+.st{display:inline-block;font-size:12px;border-radius:999px;padding:1px 9px;border:1px solid currentColor;white-space:nowrap}
+.st.go{color:var(--green)}.st.part{color:var(--amber)}.st.none{color:var(--muted)}
+.tl{list-style:none;margin:0;padding:0 0 0 18px;border-left:2px solid var(--border)}
+.tl li{position:relative;margin:0 0 16px}
+.tl li::before{content:"";position:absolute;left:-24px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--lake)}
+.tl .d{font-size:12.5px;color:var(--muted)}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 14px}
+.chip{font:inherit;font-size:13px;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:4px 12px;cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
+#q{font:inherit;font-size:14px;flex:1;min-width:160px;padding:6px 10px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--text)}
+.post{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin:0 0 10px}
+.post .m{font-size:12.5px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap}
+.post .k{font-weight:500}
+.post p{margin:4px 0 0}
+.k-시정{color:var(--lake)}.k-선거{color:var(--purple)}.k-소통{color:var(--amber)}
+footer{margin-top:48px;font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a href="/">← 홈</a> · 최승환 · 읽은 것</div>
+  <h1>민선9기 시정 노트 — 이상천 시장의 글로 읽는 제천</h1>
+  <p class="lead">이상천 제천시장이 페이스북에 직접 올린 글을 처음부터 다시 읽고 정리했다. 예비후보 시절의 공약, 당선과 인수위, 2026년 7월 1일 취임 이후의 시정을 한 흐름으로 묶었다.</p>
+  <p class="note" id="range"></p>
+  <div class="stats" id="stats"></div>
+
+  <h2>글에서 읽히는 다섯 가지 흐름</h2>
+  <div class="insight">
+      <div><h3>'숫자'에서 '체감'으로, 다시 '숫자'로</h3><p>선거 기간에는 '3조 원 투자유치, 천만 관광객'처럼 종이 위 숫자를 비판하고 아이 키우기 좋은 환경·빈 점포 같은 체감 지표를 앞세웠다. 취임 뒤에는 1,070억 원 투자협약, 575억 원 농촌재생, 128억 원 에어돔 같은 확보 금액을 직접 제시하고 있다. 공약은 체감 언어로 말하고 성과는 재원 확보로 증명하는 두 겹의 화법으로 보인다.</p></div>
+      <div><h3>'원팀'과 집권여당 프레임</h3><p>도지사 예비후보 3명과의 정책협력 MOU, 당 대표의 제천 방문, "힘 있는 집권여당"이라는 표현이 선거 내내 이어졌다. 대통령 임기와 겹치는 4년을 '골든타임'으로 규정한 만큼, 취임 뒤 국비 확보와 부처 방문, 코레일네트웍스 이전 같은 중앙 연계 사업이 평가의 중심이 될 것이라고 생각한다.</p></div>
+      <div><h3>갈등 현안은 '논쟁 → 여론 → 결단'</h3><p>교정시설 유치는 7월에 찬반 논거를 모두 소개하며 성급한 결정을 경계했고, 9월 여론조사에서 찬성이 높게 나오자 후속 절차를 신속히 밟겠다고 밝혔다. 파크골프장 이전도 아파트 주민의 주거권과 동호인 3,000명의 여가라는 상충 가치를 함께 놓고 '1년 6개월 한시'라는 조건을 붙였다. 결정의 근거를 글로 먼저 공개하는 방식이 반복된다.</p></div>
+      <div><h3>원도심과 일상 문화에 무게</h3><p>국제음악영화제를 청풍에서 예술의전당·광장·거리로 옮겼고, 시티패스·주말 광장 프로그램·상생캠퍼스로 원도심 체류를 늘리는 데 공을 들이고 있다. 민선7기에 만든 예술의전당·달빛정원·하소천 산책로를 다시 이어 붙이는 '연속성의 시정'으로도 읽힌다.</p></div>
+      <div><h3>행정에 주는 시사점</h3><p>취임 6개월 안에 의사결정을 마치고 본예산에 담겠다는 일정이 분명하므로 2027년 본예산과 2회 추경의 공약 사업 편성이 실제 이행의 첫 잣대가 될 것으로 보인다. 산하기관·지원단체 임금과 처우 점검, 지역 건설업 참여 확대처럼 재정 배분을 건드리는 과제는 근거 자료와 형평 기준을 먼저 갖추는 쪽이 갈등 비용을 줄일 것이라고 생각한다. 보훈병원, 아동 의료, 효도수당처럼 선거 때 크게 약속했으나 취임 뒤 글에 아직 나오지 않은 과제는 추진 현황을 따로 챙길 필요가 있어 보인다.</p></div>
+  </div>
+
+  <h2>공약은 어디까지 왔나</h2>
+  <p class="note">선거 기간 글에 나온 약속과 취임 뒤 글에 나온 언급을 짝지었다. 시장 본인 글만을 근거로 한 것이라 실제 추진 상황과 다를 수 있다.</p>
+  <div class="tblwrap"><table class="tbl">
+    <thead><tr><th>분야</th><th>선거 때 약속</th><th>취임 뒤 글에서</th><th>상태</th></tr></thead>
+    <tbody id="pledges"></tbody>
+  </table></div>
+
+  <h2>취임 뒤 시정 흐름</h2>
+  <ul class="tl" id="timeline"></ul>
+
+  <h2>전체 글</h2>
+  <div class="bar" id="kinds"></div>
+  <div class="bar"><input id="q" type="search" placeholder="낱말로 찾기 (예: 교정시설, 영화제)" aria-label="글 검색"><span class="note" id="count"></span></div>
+  <div id="list"></div>
+
+  <footer>이상천 시장 페이스북(facebook.com/lsc016)에 공개된 글을 읽고 요약했다. 해석과 분석은 정리한 사람의 개인 의견이다. 매주 새 글을 확인해 갱신한다.</footer>
+</div>
+<script>
+const P = [{"d":"2026-11-06","k":"시정","t":"가을의 끝자락, 내일을 준비합니다","s":"시티패스 시범사업 3만 명 목표 초과, 주말 광장·상생캠퍼스 안착을 알렸다. 교육혁신 선도지역(60억), 전지훈련 에어돔(128억), 비아오파마코리아 투자협약(220억), 시민축구단 전국체전 준우승, 12월 23일 겨울왕국축제 시즌2, 국비 확보와 코레일네트웍스 이전 추진을 함께 전했다.","l":"https://www.facebook.com/lsc016/posts/pfbid02WsPoTsXQy2Kcp21VmTqqMFUNRHjmT49Kepy4ATafxyxtuvsxxqSbD6HRyHzuiQAAl"},{"d":"2026-10-30","k":"시정","t":"제천시 '유쾌한 홍보'가 이슈로","s":"행정 용어 대신 유머를 담은 시 홍보가 YTN·CBS노컷뉴스에 소개됐다며 민선9기 홍보 혁신을 자랑했다.","l":"https://www.facebook.com/lsc016/posts/pfbid02mvCbQMj8f91LiX46TiRg6e4rPPy6PrctWZA18nGKAHhoy2hXe8zANS8BpLxM4Mpel"},{"d":"2026-10-16","k":"시정","t":"취임 100일, 변화는 이제 시작","s":"모든 시민이 존중받는 도시를 내걸고 시 산하기관·복지 지원단체의 임금과 처우 체계 점검을 시작했다고 밝혔다. 관행·기득권과의 마찰을 인정하면서 시민 전체의 이익을 판단 기준으로 삼겠다고 했고, 지역 건설업 참여 확대 방안과 공직사회 변화도 언급했다.","l":"https://www.facebook.com/lsc016/posts/pfbid05H1aRCRkALwzkk4uLLAkZMtDWDP3d9BRgo6bPYEodJStopBZJG5VKv3LmqQUnbdyl"},{"d":"2026-09-22","k":"소통","t":"추석 인사","s":"평범한 바람조차 녹록지 않은 현실을 짚으며 '힘내시라'는 말 대신 시정부터 할 일을 하겠다고 약속했다.","l":"https://www.facebook.com/lsc016/posts/pfbid024wu2xWT2GCTqcfnKeJi7WT56sa3yC7Zx3bfNNLdwdRGHLRZrF8VPQyCXicJn2DZsl"},{"d":"2026-09-12","k":"시정","t":"파크골프장 이전에 대한 설명","s":"미니복합타운 임시 파크골프장은 아파트 소음과 공공부지 목적 때문에 폐쇄가 불가피하다고 했다. 포전리 36홀 정규 구장(내후년 상반기 개장) 전까지 1년 6개월간 비행장 유휴부지를 한시 활용하고, 통학로 안전과 운영시간 제한 대책을 세우겠다고 밝혔다.","l":"https://www.facebook.com/lsc016/posts/pfbid0Uz5LkDwB6rrwHhkMGYubj9ctVddHZC8MP9RqxPnfvS4RSEupj4di3b8H7tmMyzful"},{"d":"2026-09-08","k":"시정","t":"영화제 폐막과 교정시설 결단","s":"국제음악영화제가 '소멸 도시' 오명을 벗는 자긍심이 되길 바란다고 했다. 교정시설 건립 여론조사에서 찬성이 더 높게 나온 만큼 후속 절차를 신속하고 책임 있게 추진하겠다고 밝혔다.","l":"https://www.facebook.com/lsc016/posts/pfbid02eSRCuMvKAxHKxndtFZ1pBbExKcVHDzAmAU8AHk3Lf6KKcBmSTZcgYGPsXQ88ns1Al"},{"d":"2026-08-24","k":"소통","t":"#차마하지못한말 (릴스)","s":"새 출발을 응원하고 묵묵히 일하는 공직자들에게 고마움을 전하는 짧은 영상이다.","l":"https://www.facebook.com/reel/1382378504081972/"},{"d":"2026-08-18","k":"시정","t":"국제음악영화제를 시민 곁으로","s":"'정말 필요한 영화제인가'라는 질문에 답하며, 경제 효과를 과장하지 않되 다시 찾고 싶은 제천을 만드는 투자라고 설명했다. 영화제를 청풍에서 예술의전당·광장·거리로 옮겼고 9월 3~8일 제22회 영화제를 알렸다.","l":"https://www.facebook.com/lsc016/posts/pfbid0sQ1AGaYZUvfVGXaw9dzrp8upNofQET1uzX2XGodtBXMGnpQ9GihMXSbQhuioYjrWl"},{"d":"2026-08-10","k":"시정","t":"취임 한 달 보고","s":"업무보고·읍면동 순회·과감한 인사·신규 공직자 150여 명 면담을 전했다. 인팩이피엠 1,070억 투자협약, 월악 농촌재생 575억 협약, 국립산림치유원(2,000억) 유치 활동, 은퇴자마을 특별법(내년 3월) 공모 준비, 4산단·국가산단 협의, 시티패스, 2회 추경, 사계절 축제 재편, 수산의원 지원을 과제로 꼽았다. 취임 6개월 안에 결정을 마쳐 본예산에 담겠다고 했다.","l":"https://www.facebook.com/lsc016/posts/pfbid0iZ3VEeZ8w1bUj1HEEAimjaY1ruiP6hfse6MwWdoGXFbrUMdg9TsZaogTLVEQem8bl"},{"d":"2026-07-22","k":"시정","t":"교정시설 유치 논쟁에 대하여","s":"도시 이미지·치유관광과의 부조화를 걱정하는 반대 의견과, 4천억 원 규모 건립의 경기 부양·유동인구 효과를 드는 찬성 의견을 모두 소개했다. 성급한 찬반 대신 과학적 검증과 객관적 여론 청취를 하겠다고 밝혔다.","l":"https://www.facebook.com/lsc016/posts/pfbid02RFcu85WboKmWP5Jz5MVNWFMW242XDXZ9Tr4L4AfJTJkQazWv7vM77bY7AYULt1AUl"},{"d":"2026-07-19","k":"시정","t":"취임 보름, 먹고사는 문제","s":"하반기 경제를 가장 걱정한다며, 7월 15일 개원한 제10대 시의회와 한 팀으로 답을 찾겠다고 했다.","l":"https://www.facebook.com/lsc016/posts/pfbid06jRuKrqXnrS4GfDVDhivWgrUogWHgHuXuSv11kN84U8GMJawgVdkehzjgGmp3dnRl"},{"d":"2026-07-09","k":"시정","t":"집중호우 비상근무","s":"재난안전대책본부 비상 1단계로 19개 부서·17개 읍면동 65명이 비상근무 중이며, 산사태·하천 위험지역 출입 자제를 당부했다.","l":"https://www.facebook.com/lsc016/posts/pfbid0RJ8fqCQgRhLNXJGrNc66UFhUbEXLUfcmeRpcREf6gqQWYaC17Yh2gQqvr48aqoPCl"},{"d":"2026-06-30","k":"소통","t":"취임 전날, 다시 제천시장의 삶으로","s":"30여 년 공직과 민선7기를 돌아보며 '사람·문화·경제가 꽃피는 행복도시'를 시정 비전으로 밝혔다. 인수위와 20여 일 동안 시정을 살폈다고 했다.","l":"https://www.facebook.com/lsc016/posts/pfbid083YraMXYhq7nTNHwYEKm72DnzZemyt7kAbSuP97Uigqd6w1g29Gm4CnEzzJdH2A9l"},{"d":"2026-06-17","k":"시정","t":"시장직 인수위원회 출범","s":"실무 위주로 간소하게 꾸렸다며 두 원칙을 밝혔다. 전임 시정 사업도 시민에게 보탬이 되면 이어가되 예산 낭비·보여주기 사업은 고치고, 문턱 없는 인수위가 되겠다는 것이다. 어르신 식사·아이 돌봄·소상공인 민생을 먼저 챙기겠다고 했다.","l":"https://www.facebook.com/lsc016/posts/pfbid0Rvpw24MrWxAhoeMffKnHiez7JAAejaSfrfKhEanvkEmfpoU2PALmxjaa6UZnVWAzl"},{"d":"2026-06-04","k":"선거","t":"당선 인사","s":"제천시장 당선인으로서 '이제 다시 시작'이라며 감사를 전했다.","l":"https://www.facebook.com/lsc016/posts/pfbid0TyDBykVYsVCV3hcwWS9FqiXyVq8wrPvz75P3uJkSztuyXstkssaw6DN4N8EqSh4Yl"},{"d":"2026-06-02","k":"선거","t":"1,463일의 간절함 (릴스)","s":"선거 전날 투표를 호소한 영상이다.","l":"https://www.facebook.com/reel/3432670950258965/"},{"d":"2026-06-01","k":"선거","t":"기호1번 이상천 (릴스)","s":"6월 3일 제천시장 선거 투표 호소 영상이다.","l":"https://www.facebook.com/reel/924821613902857/"},{"d":"2026-05-31","k":"선거","t":"제천을 위한 기도","s":"골목의 불, 청년의 귀향, 어르신의 평안을 빌며 남은 3일 지인 투표 독려를 부탁했다.","l":"https://www.facebook.com/lsc016/posts/pfbid02viYFFRbxvjcWFeJkM1sefSTsh6Sn6NDDUj1VGFF6NokJLrsDdL7GobMxQ3JhnvwNl"},{"d":"2026-05-30","k":"선거","t":"사전투표를 마치며","s":"민선7기의 부족함을 사과하고, 대통령 임기와 함께 가는 4년을 집권 정부 예산으로 제천을 되살릴 '골든타임'으로 규정했다.","l":"https://www.facebook.com/lsc016/posts/pfbid0qaWK3ZqAqbiLVn5HcvcMbDJGxgFuJ624TfdnMFRWZ6kZKYwZwkZKt7aeiNhWrJ5Ul"},{"d":"2026-05-29","k":"선거","t":"아이와 청년의 방파제 (릴스)","s":"아이들과 청년이 웃을 수 있는 제천의 방파제가 되겠다고 약속했다.","l":"https://www.facebook.com/reel/1866205964335956/"},{"d":"2026-05-28","k":"선거","t":"사전투표 전날, 정치는 사람에 대한 태도","s":"권력보다 사람, 약한 사람의 손을 먼저 잡는 품격 있는 제천을 약속했다.","l":"https://www.facebook.com/lsc016/posts/pfbid02CkFFyCCdQeKed1m8oZpFWAd65AAb7m4Ad4c9AjHBVUanpSstCobR8N14i987b5adl"},{"d":"2026-05-27","k":"선거","t":"세 가지 약속","s":"대규모 산업단지 조성, 기업 유치로 일자리 창출, 국립보훈병원 유치를 핵심 공약으로 내세웠다.","l":"https://www.facebook.com/lsc016/posts/pfbid0cvcabe1gCEGKcbFm1fzJNHw2KWK7R7L9Sz7C5NdbtegTmyDj6DuKMKZuat82gQXUl"},{"d":"2026-05-26","k":"선거","t":"소방서~원뜰 도로, 220억이면 된다","s":"대규모 주거지 입주로 막히는 출퇴근길을 풀 도로 개설을 약속하며, 상대 후보가 토론회에서 말한 6,000억 원 사업비를 반박했다.","l":"https://www.facebook.com/lsc016/posts/pfbid02ZXhyw1KruyuLM2PwJbuwzBrnY4oqhpX5soK1hSdyoxHVt7EJ6ADDHNum1xvuk6zol"},{"d":"2026-05-25","k":"선거","t":"당 대표 제천 방문 예고","s":"중앙정부의 문을 열 집권여당의 힘을 강조하며 남천약국 사거리 유세를 알렸다.","l":"https://www.facebook.com/lsc016/posts/pfbid025G2XwPNiDGoRVfzomnNkzS6efQHtPfo9FYQwk4oStiUgEhXnCNAK8tSK7xHBUGHUl"},{"d":"2026-05-24","k":"선거","t":"국립보훈병원 제천 유치 (릴스)","s":"도지사 후보와 함께 전국 7번째 국립보훈병원 제천 유치를 약속했다.","l":"https://www.facebook.com/reel/3218102091721663/"},{"d":"2026-05-23","k":"선거","t":"노무현 전 대통령 서거일","s":"지난 4년 낙선의 성찰을 고백하며 한 번 더 믿어달라고 호소했다.","l":"https://www.facebook.com/lsc016/posts/pfbid02mr3vHtgoDc3Rsh2BMth8m5LoMHUENNq9b97KxAHAntH73wPovz224H7rCDXNvZ6Vl"},{"d":"2026-05-22","k":"선거","t":"기호1번 (릴스)","s":"후보 소개 영상이다.","l":"https://www.facebook.com/reel/1117232138146228/"},{"d":"2026-05-22","k":"선거","t":"합동출정식","s":"산업단지·기업 유치, 국립보훈병원 유치를 다시 약속하고 어르신 복지·안전한 하굣길·청년의 저녁 있는 삶 같은 생활 공약을 함께 강조했다.","l":"https://www.facebook.com/lsc016/posts/pfbid0a6oJPdujeF727NgLgVUfkn1JgcHhn5BQuwJbE1NBxhgCTHtkLdXxSA83V8KSehPml"},{"d":"2026-05-21","k":"선거","t":"지금의 제천, 만족하십니까","s":"정파를 따지지 않는 '실용 시장'을 내세우며 시장·도의원·시의원의 역할 분담을 말했다.","l":"https://www.facebook.com/lsc016/posts/pfbid02VjYGCRnDKe7f2oirmzGhNn6ADgHEiEixzYDNEvLRE2Xsc8vm78mdvCaUatKf8An8l"},{"d":"2026-05-20","k":"선거","t":"두 번째 TV 토론 뒤","s":"첫 여론조사 근소 우세 소식을 전하며 60·70대 표심과 40·50대의 설득을 호소했다.","l":"https://www.facebook.com/lsc016/posts/pfbid03gWYcmojfuPSXk8zHDiVDq8WRKrAo7Qy1NMm9T9GFqTBm697yDZ9yP2NB57kRmrZl"},{"d":"2026-05-17","k":"선거","t":"의료 방어선","s":"민선7기 때 명지병원과 협력해 심·뇌혈관센터를 유치한 경험을 들어 제천 의료 기반 강화를 약속했다.","l":"https://www.facebook.com/lsc016/posts/pfbid037vZM8wReRSPAYg818ZbGeLJGRwsk7cshJUmnUGgNBxig7Pp2DMesDrdE5eoHRruPl"},{"d":"2026-05-14","k":"선거","t":"도약이냐 정체냐 (릴스)","s":"중앙정부와 충북도의 지원이 함께해야 제천이 도약한다고 말했다.","l":"https://www.facebook.com/reel/892004217234660/"},{"d":"2026-05-13","k":"선거","t":"'진짜 투자'를 가져오겠다","s":"코로나와 수해를 겪은 민선7기를 숫자로만 비교하는 데 반박하고, 초고층 타워 같은 공약 대신 공공기관·기업 유치를 약속했다.","l":"https://www.facebook.com/lsc016/posts/pfbid0DSDc7MhCnRDtRqVMX98oLiJqKN3bQc87iMiTg8TbgDLyZLYNA9LfstSDxZtaerRol"},{"d":"2026-05-11","k":"선거","t":"4년 전의 눈물 (릴스)","s":"남은 23일 시민을 찾아가겠다는 영상이다.","l":"https://www.facebook.com/reel/1519309339865067/"},{"d":"2026-05-09","k":"선거","t":"정치는 시민의 삶에 힘이 되는 것","s":"3조 원 투자유치·천만 관광객이라는 숫자와 달리 아이 키우기 환경 전국 221위, 늘어나는 임대 현수막을 짚으며 체감하는 변화를 약속했다.","l":"https://www.facebook.com/lsc016/posts/pfbid02nXatsFuDHmVSSEXYSEGq8RMNradabu4qyyCGJwvibTtYXFqoUJNDisu3SfvUEaZkl"},{"d":"2026-05-08","k":"소통","t":"어버이날","s":"어머니를 그리는 자신의 글을 인용하며 효도하는 자식들의 부담을 덜어주는 정책을 말했다.","l":"https://www.facebook.com/lsc016/posts/pfbid02tL4VrSbjkkpFNbTPPPvNHBH5U7h9Rmwf9Mono3USHD9DnXTkzEomQrVTeww8RwaGl"},{"d":"2026-05-05","k":"선거","t":"어린이날 공약","s":"24시간 소아과, 365일 공공약국, 아동 의료비 지원, 24시간 돌봄체계, 청소년 공간과 등하굣길 안전을 약속했다.","l":"https://www.facebook.com/lsc016/posts/pfbid08UtMx8zAFFrSJ7wHsS6ZwMMifdy4cYRafCuVagdUmUJ5Donr4DV9BdCpdmWt8KnLl"},{"d":"2026-05-03","k":"선거","t":"3분은 너무 짧았다 (릴스)","s":"토론 뒤 진심을 걷겠다는 짧은 영상이다.","l":"https://www.facebook.com/reel/960825086712838/"},{"d":"2026-05-01","k":"선거","t":"예술의전당의 시간을 다시 흐르게","s":"민선7기에 만든 그네공원·달빛정원·예술의전당·상생캠퍼스를 돌아보며, 예술의전당 광장에 파고라·벤치·야외공연을 더하겠다고 했다.","l":"https://www.facebook.com/lsc016/posts/pfbid02gHzNxzLKckkDW55VcgtRPzcAppkuEdoFBviy9PJZ21h2qf1E4PBeGejDzWuUs6iEl"},{"d":"2026-04-29","k":"선거","t":"보수 4선 의원의 지지 (릴스)","s":"송광호 전 의원이 개소식에 오른 것을 두고 이념을 넘어 민생과 경제를 말했다.","l":"https://www.facebook.com/reel/1000831979143982/"},{"d":"2026-04-28","k":"선거","t":"제천 베테랑 (릴스)","s":"제천의 새로운 봄을 약속하는 소개 영상이다.","l":"https://www.facebook.com/reel/2300475517027610/"},{"d":"2026-04-26","k":"선거","t":"당 대표·도지사 후보와 제천 방문","s":"시민의 기도를 살림살이로 실어 나르는 '수레'가 되겠다고 했다.","l":"https://www.facebook.com/lsc016/posts/pfbid02uRqgr31DmFyFGSD3ViwLoGK9wtFX7osdL9nCezNZTwDXGf3DQcxU8xWSQHVjwaAHl"},{"d":"2026-04-25","k":"선거","t":"선거사무소 개소식","s":"개소식을 찾은 시민에게 감사를 전했다.","l":"https://www.facebook.com/lsc016/posts/pfbid032UHX6n5E2UL4h1LFLiMuFnigSxZhpnSgdfo9nypJjoVGqBp7TmtJNQvdzbKBgNsCl"},{"d":"2026-04-24","k":"선거","t":"개소식 안내 (릴스)","s":"4월 25일 선거사무소 개소식 안내다.","l":"https://www.facebook.com/reel/1507654180989697/"},{"d":"2026-04-23","k":"소통","t":"도시바람길숲 선정 축하","s":"사업 선정에 힘쓴 공무원에게 감사하며 친수공간까지 더한 '자연치유도시' 완성에 함께하겠다고 했다.","l":"https://www.facebook.com/lsc016/posts/pfbid02QLDWND5ufmtTBDGwhrWKhgN6AK4Z3bQ8gb7eS8TfBhdzFcZ85frDmB5gw9i2ZcLBl"},{"d":"2026-04-22","k":"선거","t":"민선7기의 교훈, 제천 원팀","s":"도의 지원 없이는 한계가 있다는 교훈에서 도지사 후보와의 '제천 원팀'을 강조했다.","l":"https://www.facebook.com/lsc016/posts/pfbid0kiR7G5MJrsKoVmkGRMBLud2cQkHEogUVF6ro7vxtg5Zw8GPc4fkc5SuzDK8r55rel"},{"d":"2026-04-20","k":"선거","t":"장애인의 날","s":"일자리·자립, 의료·돌봄 연결, 이동 편의, 체육·교육·복지를 잇는 장애인 인재육성 기반을 약속했다.","l":"https://www.facebook.com/lsc016/posts/pfbid02zaJzch4BA6q2TJJHK5AFhRNZwAmQTFfbuQu5zTugSJsgpFJmsnTUmkDac8pwXoX6l"},{"d":"2026-04-17","k":"선거","t":"공약이행률 96.4","s":"민선7기 공약이행률 96.4%를 근거로 준비된 시장임을 내세웠다.","l":"https://www.facebook.com/lsc016/posts/pfbid06tw14j92PuWNYeUi7UWgi6eiKivyiAiN65P4zGwmSE6aRCW1sMBi5nJzqTStD2s6l"},{"d":"2026-04-14","k":"선거","t":"4km 도심 벚꽃 산책로","s":"하소천 산책로에 이어 신월교~세명대 입구까지 벚나무를 심어 약 4km 산책로를 잇겠다고 했다.","l":"https://www.facebook.com/lsc016/posts/pfbid02tCrSb4ncUwsHuWAnxf7og7CJxxY2K9cnXhxAg44gkwGoC4qY11yhoaHkexV9P5n6l"},{"d":"2026-04-13","k":"선거","t":"제천만의 명장면 공약 (릴스)","s":"명지초 안전보행브릿지, 노후주택 맑은물 안심케어, 장애인회관, 청년 일주문 정책, 중앙시장 복합문화공간, 고암~신백천 산책로, 제천역광장, 하소동 숲길, 소방서~원뜰 도로, 신호연동, 펫파크를 공약했다.","l":"https://www.facebook.com/reel/2775916266100701/"},{"d":"2026-04-10","k":"선거","t":"지난 선거의 경쟁자에게 먼저 인사","s":"김창규 후보에게 먼저 손을 내민 이유를 지난 선거의 미련을 털기 위함이라고 설명했다.","l":"https://www.facebook.com/lsc016/posts/pfbid021pHJnhxvE22aMsXfQdtfjJNiNeDQ715W9s38YQSWodKdJS7K6AQF1QDzVtwrpQGwl"},{"d":"2026-04-09","k":"선거","t":"당내 경선 승리","s":"경선 승리를 알리고 경쟁한 전원표 위원장에게 위로를 전했다.","l":"https://www.facebook.com/lsc016/posts/pfbid02wfN2rQ7voukQdRT1wg4ntndfRSwAL9iiA4awuw1147tb3Lp7qZU9CttvZCpgKjqcl"},{"d":"2026-04-05","k":"선거","t":"시장은 연습하는 자리가 아니다 (릴스)","s":"예비후보로서 베테랑 행정가임을 내세운 영상이다.","l":"https://www.facebook.com/reel/1334870291812497/"},{"d":"2026-04-04","k":"소통","t":"탄핵 인용 1주년 (릴스)","s":"민주주의의 가치를 되새기는 영상이다.","l":"https://www.facebook.com/reel/26549172848070087/"},{"d":"2026-04-03","k":"소통","t":"공직자에게 전하지 못한 마음 (릴스)","s":"시장 퇴임 뒤 동료 공직자에게 미안함을 고백했던 글을 다시 꺼내 책임감으로 돌려드리겠다고 했다.","l":"https://www.facebook.com/reel/1269591288608287/"},{"d":"2026-04-01","k":"선거","t":"사회복지종사자 복지포인트 (릴스)","s":"사회복지종사자 복지포인트 지급 제도를 공약했다.","l":"https://www.facebook.com/reel/1645843533208134/"},{"d":"2026-03-27","k":"소통","t":"계절 인사","s":"흐르는 물에 빗대어 변화의 길을 응원하는 글이다.","l":"https://www.facebook.com/lsc016/posts/pfbid02mNK34Qz3QphbPYTNXPfefgeoSbJFRgQRb79zzHMhhM3EjbS9bed5etXUnhTswccPl"},{"d":"2026-03-24","k":"선거","t":"아동 의료 공약 (릴스)","s":"심야어린이병원, 주말공공약국, 18세 미만 의료비 100만 원 초과분 3,000만 원까지 전액 지원을 공약했다.","l":"https://www.facebook.com/reel/2339366849899505/"},{"d":"2026-03-21","k":"소통","t":"대전 화재 애도","s":"희생자를 애도하고 제천도 작은 위험을 놓치지 않아야 한다고 했다.","l":"https://www.facebook.com/lsc016/posts/pfbid02oAAr79jiHxKUm3BgrLx5JCjG2m4bEMckGE6qyUFrcrv1vSe2Y5NRQEpbuSB5RGayl"},{"d":"2026-03-20","k":"선거","t":"효도수당 (릴스)","s":"75세 이상 부모를 부양하는 중장년 가정에 연 3회 총 60만 원 효도수당을 공약했다.","l":"https://www.facebook.com/reel/948328597728797/"},{"d":"2026-03-16","k":"선거","t":"일과 사는 남자 (릴스)","s":"짧은 소개 영상이다.","l":"https://www.facebook.com/reel/717513221351758/"},{"d":"2026-03-09","k":"선거","t":"전통시장 (릴스)","s":"전통시장을 지역 경제의 온기로 말하며 응원을 부탁했다.","l":"https://www.facebook.com/reel/1283954093613043/"},{"d":"2026-03-04","k":"선거","t":"도지사 후보들과 정책협력 MOU (릴스)","s":"누가 도지사가 되든 제천 몫을 먼저 확보하는 장치라고 설명했다.","l":"https://www.facebook.com/reel/816540814789742/"},{"d":"2026-03-01","k":"소통","t":"3·1절 107주년","s":"3·1절 인사다.","l":"https://www.facebook.com/lsc016/posts/pfbid035R6BokUjzdtrYZXNF44kt36bcTLiEsWgGnizVc1cJB2z4BNhcxJxyDacCohh9TSml"},{"d":"2026-02-27","k":"선거","t":"북부권 균형발전 정책협력 MOU","s":"도지사 예비후보 3명과 공공기관 전략 유치, 북부권 산업 재배치, 전략산업 거점, 정주 인프라를 도정 공동 의제로 명문화했다고 밝혔다.","l":"https://www.facebook.com/lsc016/posts/pfbid02Fuih5gA1587bJbugvk4ViGZ1EerXZcXKD4tQSoWoaLEuS3Pnej4i59bHM7hjUwFbl"}];
+const PLEDGES = [["산업·일자리", "대규모 산업단지 조성, 기업 유치", "4산단 착공·국가산단 협의, 인팩이피엠 1,070억·비아오파마코리아 220억 투자협약", "go"], ["공공기관", "공공기관 전략 유치", "코레일네트웍스 이전 추진, 국립산림치유원(2,000억) 유치 활동", "part"], ["의료", "국립보훈병원 유치, 의료 방어선", "아직 언급 없음", "none"], ["아동·청소년", "심야어린이병원·주말공공약국·아동 의료비·24시간 돌봄", "아직 언급 없음 (교육혁신 선도지역 60억 선정)", "none"], ["복지", "효도수당 60만 원, 사회복지종사자 복지포인트, 장애인회관", "산하기관·복지 지원단체 임금·처우 체계 점검 착수", "part"], ["원도심·문화", "예술의전당 광장 활성화, 중앙시장 복합문화공간", "영화제 도심 이전, 시티패스 3만 명 초과, 주말 광장·상생캠퍼스", "go"], ["교통", "소방서~원뜰 도로(220억), 신호연동", "아직 언급 없음", "none"], ["녹지·산책", "4km 도심 벚꽃길, 고암~신백천 산책로, 하소동 숲길", "아직 언급 없음", "none"], ["인구·정주", "청년 일주문, 정주 인프라", "은퇴자마을 특별법(2027.3) 대비 공모 준비", "part"], ["체육", "(선거 때 언급 없음)", "포전리 36홀 파크골프장 추진, 에어돔 128억 공모 선정", "go"]];
+const TIMELINE = [["2026-06-17", "인수위 출범", "좋은 사업은 잇고, 예산 낭비·보여주기 사업은 고친다는 원칙"], ["2026-07-01", "민선9기 취임", "비전: 사람·문화·경제가 꽃피는 행복도시"], ["2026-07-09", "집중호우 비상 1단계", "65명 비상근무, 큰 피해 없음"], ["2026-07-22", "교정시설 공론화", "찬반 논거 공개, 과학적 검증과 여론 청취 예고"], ["2026-08-10", "취임 한 달", "인팩이피엠 1,070억 협약, 월악 농촌재생 575억, 국립산림치유원 유치전, 은퇴자마을 공모 준비, 2회 추경"], ["2026-09-03", "제22회 국제음악영화제", "청풍에서 예술의전당·광장·거리로 이전 (9.3~9.8)"], ["2026-09-08", "교정시설 추진 결정", "여론조사 찬성 우세, 후속 절차 착수"], ["2026-09-12", "파크골프장 한시 이전", "비행장 유휴부지 1년 6개월 활용, 포전리 36홀 내후년 상반기"], ["2026-10-16", "취임 100일", "산하기관 임금·처우 점검, 지역 건설업 참여 확대"], ["2026-11-06", "가을 결산", "시티패스 3만 명 초과, 교육혁신 60억, 에어돔 128억, 비아오파마 220억, 겨울왕국축제(12.23~), 코레일네트웍스 이전 추진"]];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const dot = d => d.replaceAll("-", ".");
+const ST = {go:"추진 중", part:"일부", none:"언급 없음"};
+const kinds = ["시정","선거","소통"];
+document.getElementById("range").textContent = `${dot(P[P.length-1].d)} ~ ${dot(P[0].d)} 게시글 ${P.length}편`;
+document.getElementById("stats").innerHTML = [
+  [P.length + "편", "읽은 글"],
+  ...kinds.map(k => [P.filter(p => p.k === k).length + "편", k + " 관련"]),
+  [PLEDGES.filter(r => r[3] !== "none").length + "/" + PLEDGES.length, "취임 뒤 언급된 공약 분야"]
+].map(([b, s]) => `<div class="stat"><b>${b}</b><span>${s}</span></div>`).join("");
+document.getElementById("pledges").innerHTML = PLEDGES.map(r =>
+  `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td><span class="st ${r[3]}">${ST[r[3]]}</span></td></tr>`).join("");
+document.getElementById("timeline").innerHTML = TIMELINE.map(r =>
+  `<li><div class="d">${dot(r[0])}</div><b>${esc(r[1])}</b><div>${esc(r[2])}</div></li>`).join("");
+let kind = "", q = "";
+document.getElementById("kinds").innerHTML = ["", ...kinds].map(k => `<button class="chip" data-k="${k}">${k || "전체"}</button>`).join("");
+function render() {
+  const rows = P.filter(p => (!kind || p.k === kind) && (!q || (p.t + p.s).includes(q)));
+  document.getElementById("count").textContent = rows.length + "편";
+  document.getElementById("list").innerHTML = rows.map(p => `<article class="post">
+    <div class="m"><span class="k k-${p.k}">${p.k}</span><span>${dot(p.d)}</span><a href="${esc(p.l)}" target="_blank" rel="noopener">원문</a></div>
+    <h3>${esc(p.t)}</h3><p>${esc(p.s)}</p></article>`).join("");
+  document.querySelectorAll("#kinds .chip").forEach(b => b.setAttribute("aria-pressed", b.dataset.k === kind));
+}
+document.getElementById("kinds").onclick = e => { const b = e.target.closest(".chip"); if (b) { kind = b.dataset.k; render(); } };
+document.getElementById("q").oninput = e => { q = e.target.value.trim(); render(); };
+render();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+</body>
+</html>
