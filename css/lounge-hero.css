@@ -1,0 +1,31 @@
+/* 홈 첫 화면: 1979 라운지 조감도 위 물건마다 메뉴 탭이 은은하게 떠오르는 영역 */
+#lounge-hero{background:#2b3038;padding:88px max(16px,env(safe-area-inset-right,0px)) 36px max(16px,env(safe-area-inset-left,0px))}
+.lounge-head{max-width:1100px;margin:0 auto 14px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;color:#e9e2d6}
+.lounge-title{font-family:"Noto Serif KR",serif;font-size:clamp(20px,2.6vw,28px);font-weight:700;margin:0;letter-spacing:.01em}
+.lounge-title small{font-size:.55em;color:#d9a85b;margin-right:10px;letter-spacing:.12em;font-weight:600}
+.lounge-head p{margin:0;font-size:13px;color:#a7a39b}
+.lounge{position:relative;max-width:1100px;margin:0 auto;aspect-ratio:1024/571}
+.lounge img{display:block;width:100%;height:100%;border-radius:6px}
+.spot{position:absolute;display:block;border-radius:10px;outline:none}
+.spot::before{content:"";position:absolute;inset:0;border-radius:inherit;opacity:0;
+  background:radial-gradient(closest-side,rgba(255,214,150,.28),rgba(255,214,150,0));transition:opacity .35s ease-out}
+.spot .tab{position:absolute;left:50%;bottom:calc(100% - 4px);transform:translate(-50%,8px);opacity:0;white-space:nowrap;pointer-events:none;
+  background:rgba(24,20,16,.82);color:#f3e9d8;border:1px solid rgba(217,168,91,.55);border-radius:6px;padding:5px 11px 6px;
+  font-size:13px;line-height:1.3;text-align:center;backdrop-filter:blur(3px);
+  transition:opacity .35s ease-out,transform .35s ease-out}
+.spot .tab b{display:block;font-weight:600;letter-spacing:.02em}
+.spot .tab i{display:block;font-style:normal;font-size:11px;color:#c9b48f}
+.lounge:hover .spot .tab{opacity:.38;transform:translate(-50%,4px)}
+.lounge .spot:hover .tab,.lounge .spot:focus-visible .tab{opacity:1;transform:translate(-50%,0)}
+.spot:hover::before,.spot:focus-visible::before{opacity:1}
+.spot:focus-visible{box-shadow:0 0 0 2px #d9a85b}
+.spot.down .tab{bottom:auto;top:calc(100% - 4px);transform:translate(-50%,-8px)}
+.lounge:hover .spot.down .tab{transform:translate(-50%,-4px)}
+.lounge .spot.down:hover .tab,.lounge .spot.down:focus-visible .tab{transform:translate(-50%,0)}
+.lounge-chips,.hint-touch{display:none}
+.lounge-chips{max-width:1100px;margin:14px auto 0;flex-wrap:wrap;gap:8px}
+.lounge-chips a{color:#f3e9d8;border:1px solid rgba(217,168,91,.5);border-radius:999px;padding:5px 12px;font-size:13px;text-decoration:none}
+@media (hover:none){.spot .tab{display:none}.lounge-chips{display:flex}.hint-mouse{display:none}.hint-touch{display:inline}}
+@media (prefers-reduced-motion:reduce){.spot .tab,.spot::before{transition:opacity .2s linear}.spot .tab,.lounge:hover .spot .tab,.lounge .spot:hover .tab{transform:translate(-50%,0)}}
+@media (max-width:760px){#lounge-hero{padding-top:70px}}
+#tape-hero{padding-top:56px}
