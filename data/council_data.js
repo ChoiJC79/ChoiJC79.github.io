@@ -15,6 +15,10 @@ window.COUNCIL_DATA = {
         "2027년도 본예산안 및 기금운용계획안 심의",
         "시정질문 및 집행부 답변 (시장 및 관계공무원 출석)"
       ]
+    },
+    "partySplit": {
+      "국민의힘": 10,
+      "더불어민주당": 4
     }
   },
   "members": [
@@ -224,7 +228,7 @@ window.COUNCIL_DATA = {
     {
       "id": "kim_byeonggwon",
       "name": "김병권",
-      "party": "국민의힘",
+      "party": "더불어민주당",
       "district": "나선거구 (의림지·청전)",
       "role": "산업건설위원",
       "committee": "산업건설위원회",
@@ -340,7 +344,7 @@ window.COUNCIL_DATA = {
     {
       "id": "kim_seonghwi",
       "name": "김성휘",
-      "party": "더불어민주당",
+      "party": "국민의힘",
       "district": "다선거구 (중앙·영서·용두)",
       "role": "인사청문특위 부위원장 / 자치행정위원",
       "committee": "자치행정위원회",
@@ -397,7 +401,7 @@ window.COUNCIL_DATA = {
     {
       "id": "park_heonyeong",
       "name": "박헌영",
-      "party": "더불어민주당",
+      "party": "국민의힘",
       "district": "라선거구 (청풍·수산·덕산·한수·화산)",
       "role": "자치행정위원",
       "committee": "자치행정위원회",
@@ -794,7 +798,7 @@ window.COUNCIL_DATA = {
       "type": "상임위 핵심질의 (안건삭제 주도)",
       "memberId": "kim_byeonggwon",
       "memberName": "김병권 · 이경자 의원",
-      "party": "국민의힘",
+      "party": "여야 공동",
       "district": "산업건설위원회",
       "title": "중앙시장 2층 72개 점포 매입 '일자리 배움센터(32.7억)' 제동 — 청년몰 실패 교훈과 부서 불통 질타",
       "videoId": "-uJtozMh11M",
@@ -1040,7 +1044,7 @@ window.COUNCIL_DATA = {
       "type": "5분 자유발언",
       "memberId": "kim_byeonggwon",
       "memberName": "김병권 의원",
-      "party": "국민의힘",
+      "party": "더불어민주당",
       "district": "나선거구 (산업건설위원)",
       "title": "한국농어촌공사 관행적 일괄 위탁(7개 사업 539억, 연 수수료 29억) 문제점 폭로 및 자체 역량·감독 강화 촉구",
       "videoId": "WnULdSFJT4Y",
@@ -1340,7 +1344,7 @@ window.COUNCIL_DATA = {
         "id": "m_kimbg",
         "label": "김병권 의원",
         "group": "member",
-        "party": "국힘",
+        "party": "민주",
         "size": 20
       },
       {
@@ -1368,7 +1372,7 @@ window.COUNCIL_DATA = {
         "id": "m_kimsh",
         "label": "김성휘 의원",
         "group": "member",
-        "party": "민주",
+        "party": "국힘",
         "size": 18
       },
       {
@@ -1382,7 +1386,7 @@ window.COUNCIL_DATA = {
         "id": "m_parkhy",
         "label": "박헌영 의원",
         "group": "member",
-        "party": "민주",
+        "party": "국힘",
         "size": 17
       },
       {

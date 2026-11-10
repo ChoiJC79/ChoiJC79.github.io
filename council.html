@@ -239,7 +239,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
       <div class="kpi-card">
         <div class="kpi-num" id="kpi-members">14명</div>
         <div class="kpi-label">제10대 의원 전수 프로파일</div>
-        <div class="kpi-sub">국민의힘 9명 · 더불어민주당 5명</div>
+        <div class="kpi-sub">국민의힘 10명 · 더불어민주당 4명</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-num" id="kpi-speeches">15건</div>
@@ -295,8 +295,8 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
       <div class="net-canvas-box">
         <div class="net-toolbar">
           <div class="net-legend">
-            <span class="legend-item"><i class="legend-dot" style="background:#e2603f;"></i>국민의힘 의원 (9)</span>
-            <span class="legend-item"><i class="legend-dot" style="background:#58a6ff;"></i>더불어민주당 의원 (5)</span>
+            <span class="legend-item"><i class="legend-dot" style="background:#e2603f;"></i>국민의힘 의원 (10)</span>
+            <span class="legend-item"><i class="legend-dot" style="background:#58a6ff;"></i>더불어민주당 의원 (4)</span>
             <span class="legend-item"><i class="legend-dot" style="background:#f2a33a;"></i>핵심 쟁점·예산 현안 (12)</span>
             <span class="legend-item"><i class="legend-dot" style="background:#a9c46a;"></i>시민·상인·외부기관 (4)</span>
           </div>
@@ -386,8 +386,8 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
       </div>
       <div style="display:flex;gap:0.5rem;">
         <button class="yt-btn" onclick="filterMemberCards('__all__')">전체 (14)</button>
-        <button class="yt-btn" onclick="filterMemberCards('국민의힘')">국민의힘 (9)</button>
-        <button class="yt-btn" onclick="filterMemberCards('더불어민주당')">더불어민주당 (5)</button>
+        <button class="yt-btn" onclick="filterMemberCards('국민의힘')">국민의힘 (10)</button>
+        <button class="yt-btn" onclick="filterMemberCards('더불어민주당')">더불어민주당 (4)</button>
         <button class="yt-btn" onclick="filterMemberCards('자치행정위원회')">자치행정위</button>
         <button class="yt-btn" onclick="filterMemberCards('산업건설위원회')">산업건설위</button>
       </div>
@@ -616,21 +616,21 @@ function initNetworkLayout() {
   const issues = nodes.filter(n => n.group === 'issue');
   const actors = nodes.filter(n => n.group === 'actor');
 
-  // 좌측 아치: 의원 14명
+  // 좌측: 의원 14명 (2열 × 7행)
   members.forEach((n, idx) => {
     const col = idx % 2;
     const row = Math.floor(idx / 2);
-    nodePositions[n.id] = { x: 95 + col * 105, y: 48 + row * 60 };
+    nodePositions[n.id] = { x: 62 + col * 92, y: 36 + row * 62 };
   });
-  // 중앙~우측: 핵심 현안 12건
+  // 가운데: 핵심 현안 12건 (3열 × 4행, 이름이 겹치지 않게 넓게)
   issues.forEach((n, idx) => {
-    const col = idx % 2;
-    const row = Math.floor(idx / 2);
-    nodePositions[n.id] = { x: 375 + col * 175, y: 55 + row * 68 };
+    const col = idx % 3;
+    const row = Math.floor(idx / 3);
+    nodePositions[n.id] = { x: 335 + col * 145, y: 58 + row * 112 };
   });
-  // 최우측: 외부 이해관계자 4건
+  // 우측: 외부 이해관계자 4건
   actors.forEach((n, idx) => {
-    nodePositions[n.id] = { x: 725, y: 85 + idx * 95 };
+    nodePositions[n.id] = { x: 760, y: 70 + idx * 110 };
   });
 }
 
@@ -669,10 +669,13 @@ function renderNetworkGraph() {
     const sw = isHi ? 2.2 : 1;
     const mx = (p1.x + p2.x) / 2;
     const my = (p1.y + p2.y) / 2;
-    html += `<line x1="${p1.x}" y1="${p1.y}" x2="${p2.x}" y2="${p2.y}" stroke="${stroke}" stroke-width="${sw}" stroke-dasharray="${dash}" opacity="${op}" />`;
+    // 가로 방향 완만한 곡선 (중점은 직선과 같아 라벨 위치는 그대로)
+    const dx = (p2.x - p1.x) * 0.5;
+    html += `<path d="M${p1.x},${p1.y} C${p1.x + dx},${p1.y} ${p2.x - dx},${p2.y} ${p2.x},${p2.y}" fill="none" stroke="${stroke}" stroke-width="${sw}" stroke-dasharray="${dash}" opacity="${op}" />`;
     if (isHi && selectedNetNodeId) {
-      html += `<rect x="${mx - 42}" y="${my - 9}" width="84" height="16" rx="4" fill="#1b1612" stroke="${stroke}" stroke-width="0.8" opacity="0.92"/>`;
-      html += `<text x="${mx}" y="${my + 3}" text-anchor="middle" fill="#efe4cf" font-size="9.5" font-weight="600">${e.label}</text>`;
+      const w = Math.max(40, String(e.label).length * 8.4 + 12);  // 라벨 길이에 맞춘 상자
+      html += `<rect x="${mx - w / 2}" y="${my - 9}" width="${w}" height="17" rx="4" fill="#1b1612" stroke="${stroke}" stroke-width="0.8" opacity="0.95"/>`;
+      html += `<text x="${mx}" y="${my + 3.5}" text-anchor="middle" fill="#efe4cf" font-size="9.5" font-weight="600">${e.label}</text>`;
     }
   });
 
@@ -689,8 +692,12 @@ function renderNetworkGraph() {
     if (isSel) {
       html += `<circle r="${r + 6}" fill="none" stroke="${col}" stroke-width="2" stroke-dasharray="3,2"/>`;
     }
+    // 그래프에는 짧은 이름(의원은 이름만, 현안은 9자), 전체 이름은 마우스를 올리면 표시
+    const isMember = n.group === 'member_ppp' || n.group === 'member_dpk';
+    const short = isMember ? n.label.split(' ')[0] : (n.label.length > 9 ? n.label.slice(0, 9) + '…' : n.label);
+    html += `<title>${n.fullLabel || n.label}</title>`;
     html += `<circle r="${r}" fill="${col}" stroke="#1b1612" stroke-width="2"/>`;
-    html += `<text y="${r + 13}" text-anchor="middle" fill="var(--ink)" font-size="11" font-weight="${isSel ? '700' : '600'}">${n.label}</text>`;
+    html += `<text y="${r + 13}" text-anchor="middle" fill="var(--ink)" stroke="var(--bg)" stroke-width="3" paint-order="stroke" font-size="11" font-weight="${isSel ? '700' : '600'}">${short}</text>`;
     html += `</g>`;
   });
 
