@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<!-- 철도 장벽을 반영한 제천시 행정동 재편 연구 페이지 (막대 전환·우회 동선·도달권 게이지 모션 포함) -->
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>철도가 끊은 생활권, 행정동을 다시 긋다 | 최승환</title>
+<meta name="description" content="공간 AI로 제천시 동지역 9개 행정동을 8개 생활권 동으로 재편. 인구 격차 4.6배→2.2배, 도보 15분 도달권 57.9%→91.6%, 청사 신축 회피비용 약 107억 원.">
+<meta property="og:title" content="철도가 끊은 생활권, 행정동을 다시 긋다 | 최승환">
+<meta property="og:description" content="철도 장벽을 반영한 공간 AI로 제천시 행정동 재편안과 법·선거구·예산 실행 방안을 분석했습니다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/jecheon_district_reform.html">
+<meta property="og:image" content="https://choijc79.github.io/img/jecheon_district_map1.jpg">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="/css/theme.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-body);font-weight:400;line-height:1.8;}
+a{color:var(--accent);text-decoration:none;}
+:root{--rail:#e08a3c;}
+html[data-theme="light"]{--rail:#c46a1c;}
+
+.site-header{position:sticky;top:0;z-index:100;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px;}
+.logo{font-family:var(--font-display);font-size:15px;color:var(--accent);letter-spacing:0.04em;}
+.nav-links{display:flex;gap:1.5rem;font-size:12px;}
+.nav-links a{color:var(--muted);transition:color 0.15s;}
+.nav-links a:hover{color:var(--accent);}
+#theme-toggle{background:none;border:1px solid var(--border);color:var(--muted);font-size:11px;padding:3px 11px;border-radius:20px;cursor:pointer;font-family:var(--font-body);margin-left:1rem;}
+#theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
+
+.wrap{max-width:880px;margin:0 auto;padding:0 2rem;}
+.hero{padding:4rem 0 2.5rem;}
+.eyebrow{font-size:11px;letter-spacing:0.16em;color:var(--muted);text-transform:uppercase;margin-bottom:0.8rem;}
+.hero h1{font-family:var(--font-display);font-size:clamp(26px,4.4vw,40px);font-weight:700;line-height:1.35;color:var(--ink);margin-bottom:1rem;}
+.hero h1 em{font-style:normal;color:var(--rail);}
+.hero .lead{font-size:15px;color:var(--muted);line-height:1.9;max-width:640px;}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-top:2rem;}
+.hstat{background:var(--surface);padding:1.1rem 1.2rem;display:flex;flex-direction:column;gap:0.1rem;}
+.hstat .stat-num{font-family:var(--font-mono);font-size:1.7rem;font-weight:600;color:var(--accent);line-height:1.2;}
+.hstat b{font-size:12.5px;font-weight:500;color:var(--text);}
+.hstat small{font-size:11px;color:var(--muted);}
+.meta-row{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.4rem;}
+.chip{font-size:11px;padding:3px 10px;border-radius:999px;border:1px solid var(--border);color:var(--muted);}
+
+.sec{padding:3.5rem 0 0;}
+.sec-head{display:flex;align-items:baseline;gap:0.8rem;margin-bottom:0.6rem;}
+.sec-no{font-family:var(--font-mono);font-size:12px;color:var(--rail);}
+.sec h2{font-family:var(--font-display);font-size:clamp(19px,2.6vw,24px);font-weight:700;color:var(--ink);line-height:1.45;}
+.sec p.desc{font-size:14px;color:var(--muted);line-height:1.9;margin-bottom:1.4rem;max-width:700px;}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.6rem;box-shadow:var(--card-shadow);}
+.note{font-size:11.5px;color:var(--muted);margin-top:0.9rem;}
+
+/* 01 막대 */
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:999px;padding:3px;margin-bottom:1.2rem;}
+.seg button{background:none;border:0;color:var(--muted);font:inherit;font-size:12.5px;padding:5px 14px;border-radius:999px;cursor:pointer;}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--bg);}
+.pop-row{display:grid;grid-template-columns:7.5em 1fr 4.5em;align-items:center;gap:0.8rem;height:30px;font-size:13px;transition:opacity .4s;}
+.pop-name{color:var(--text);white-space:nowrap;}
+.pop-row.new .pop-name{color:var(--accent);font-weight:500;}
+.pop-track{height:14px;border-radius:4px;overflow:hidden;background:linear-gradient(90deg,transparent 42.86%,color-mix(in srgb,var(--green) 14%,transparent) 42.86%,color-mix(in srgb,var(--green) 14%,transparent) 96.2%,transparent 96.2%);}
+.pop-bar{display:block;height:100%;width:100%;border-radius:4px;background:var(--accent);transform-origin:0 50%;transform:scaleX(0);}
+.pop-row.old .pop-bar{background:var(--muted);}
+.pop-val{font-family:var(--font-mono);font-size:12px;color:var(--muted);text-align:right;}
+.ratio{display:flex;align-items:baseline;gap:0.6rem;margin-top:1.2rem;padding-top:1rem;border-top:1px solid var(--border);font-size:13px;color:var(--muted);flex-wrap:wrap;}
+.ratio strong{font-family:var(--font-mono);font-size:2rem;color:var(--ink);line-height:1;}
+.legend-band{display:inline-block;width:18px;height:10px;background:color-mix(in srgb,var(--green) 30%,transparent);border-radius:2px;margin-right:4px;vertical-align:middle;}
+
+/* 02 철도 우회 */
+.rail-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:1.4rem;align-items:center;}
+.rail-svg{width:100%;height:auto;display:block;}
+.rail-svg text{font-family:var(--font-body);font-size:13px;fill:var(--muted);}
+.rail-svg .lbl{fill:var(--text);font-weight:500;}
+.rail-stats{display:flex;flex-direction:column;gap:0.9rem;}
+.rs{border-left:3px solid var(--border);padding-left:0.9rem;}
+.rs small{display:block;font-size:11.5px;color:var(--muted);}
+.rs span{font-family:var(--font-mono);font-size:1.25rem;color:var(--text);}
+.rs.hot{border-color:var(--rail);}
+.rs.hot span{color:var(--rail);}
+.rs.good{border-color:var(--accent);}
+.rs.good span{color:var(--accent);font-size:1.6rem;}
+.replay{background:none;border:1px solid var(--border);color:var(--muted);border-radius:999px;font:inherit;font-size:12px;padding:4px 12px;cursor:pointer;align-self:flex-start;}
+.replay:hover{border-color:var(--accent);color:var(--accent);}
+
+/* 03 AI 단계 */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.step{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.3rem;}
+.step i{font-style:normal;font-family:var(--font-mono);font-size:11px;color:var(--rail);}
+.step h3{font-size:15px;font-weight:700;color:var(--ink);margin:0.3rem 0 0.4rem;}
+.step p{font-size:12.5px;color:var(--muted);line-height:1.7;}
+
+/* 04 도달권 */
+.gauges{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.gauge{display:flex;align-items:center;gap:1.2rem;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.3rem;}
+.gauge svg{width:120px;height:120px;flex:none;transform:rotate(-90deg);}
+.gauge .trk{fill:none;stroke:var(--border);stroke-width:12;}
+.gauge .arc{fill:none;stroke:var(--muted);stroke-width:12;stroke-linecap:round;}
+.gauge.after .arc{stroke:var(--accent);}
+.gauge .g-num{font-family:var(--font-mono);font-size:1.8rem;color:var(--ink);line-height:1.1;}
+.gauge.after .g-num{color:var(--accent);}
+.gauge b{display:block;font-size:13px;color:var(--text);font-weight:500;}
+.gauge small{font-size:11.5px;color:var(--muted);}
+
+/* 지도 */
+.maps{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.map{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:zoom-in;padding:0;text-align:left;font:inherit;color:inherit;transition:border-color .2s,transform .2s;}
+.map:hover{border-color:var(--accent);transform:translateY(-2px);}
+.map img{display:block;width:100%;height:auto;aspect-ratio:2000/1161;object-fit:cover;}
+.map span{display:block;padding:0.8rem 1rem;font-size:12.5px;color:var(--text);}
+dialog.viewer{border:0;padding:0;background:transparent;max-width:min(96vw,1600px);margin:auto;}
+dialog.viewer::backdrop{background:rgba(1,4,9,0.85);}
+dialog.viewer img{display:block;max-width:100%;max-height:90vh;border-radius:8px;}
+
+/* 05 청사·예산 */
+.cost-row{display:grid;grid-template-columns:8em 1fr 5em;gap:0.8rem;align-items:center;margin-bottom:0.7rem;font-size:13px;}
+.cost-bar{height:22px;border-radius:5px;background:var(--muted);transform-origin:0 50%;transform:scaleX(0);}
+.cost-row.ok .cost-bar{background:var(--accent);}
+.cost-row b{font-family:var(--font-mono);font-weight:600;text-align:right;}
+.save{font-size:14px;color:var(--text);margin-top:1rem;}
+.save strong{font-family:var(--font-mono);font-size:1.5rem;color:var(--accent);}
+.convert{display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;margin-top:1.3rem;}
+.cv{border:1px solid var(--border);border-radius:12px;padding:0.9rem 1rem;font-size:12.5px;color:var(--muted);}
+.cv b{display:block;color:var(--text);font-size:13.5px;margin-bottom:0.2rem;}
+
+/* 06 법·선거구 */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.law{list-style:none;}
+.law li{display:flex;justify-content:space-between;gap:1rem;padding:0.55rem 0;border-bottom:1px solid var(--border);font-size:13px;}
+.law li:last-child{border-bottom:0;}
+.tag{font-size:11px;padding:1px 9px;border-radius:999px;white-space:nowrap;border:1px solid var(--border);color:var(--muted);}
+.tag.on{border-color:var(--accent);color:var(--accent);}
+.tag.new{border-color:var(--rail);color:var(--rail);}
+.panel h3{font-size:14.5px;color:var(--ink);margin-bottom:0.7rem;}
+.panel p{font-size:13px;color:var(--muted);line-height:1.8;}
+
+/* 07 로드맵 */
+.road{position:relative;padding-left:2rem;}
+.road-line{position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--border);border-radius:2px;overflow:hidden;}
+.road-line i{display:block;width:100%;height:100%;background:var(--accent);transform-origin:50% 0;transform:scaleY(0);}
+.road-item{position:relative;padding-bottom:1.6rem;}
+.road-item::before{content:'';position:absolute;left:-2rem;top:6px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:2px solid var(--accent);}
+.road-item.last::before{border-color:var(--rail);}
+.road-item small{font-family:var(--font-mono);font-size:11.5px;color:var(--accent);}
+.road-item.last small{color:var(--rail);}
+.road-item h3{font-size:15px;color:var(--ink);margin:0.1rem 0 0.2rem;}
+.road-item p{font-size:13px;color:var(--muted);}
+
+.outro{padding:4rem 0 1rem;text-align:center;}
+.outro p{font-family:var(--font-display);font-size:clamp(18px,2.6vw,24px);color:var(--ink);line-height:1.6;}
+.outro small{display:block;margin-top:1rem;font-size:12px;color:var(--muted);line-height:1.8;}
+.back{display:inline-block;margin-top:1.4rem;font-size:13px;}
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:11px;color:var(--muted);margin-top:3rem;}
+
+#mqb{display:none;position:fixed;bottom:0;left:0;right:0;z-index:999;background:var(--surface);border-top:1px solid var(--border);padding:0.45rem 0.6rem;gap:0.4rem;justify-content:space-around;}#mqb a{flex:1;text-align:center;color:var(--muted);font-size:10px;padding:0.4rem 0.2rem;border:1px solid var(--border);line-height:1.4;}
+@media(max-width:900px){.nav-links{display:none;}#mqb{display:flex;}body{padding-bottom:4rem;}}
+@media(max-width:720px){
+  .wrap{padding:0 16px;}
+  .site-header{padding:0 16px;}
+  .hero-stats{grid-template-columns:repeat(2,1fr);}
+  .rail-grid,.two,.gauges,.steps,.maps,.convert{grid-template-columns:1fr;}
+  .pop-row{grid-template-columns:6.5em 1fr 4em;gap:0.5rem;font-size:12px;}
+  .cost-row{grid-template-columns:6.5em 1fr 4.2em;}
+  .gauge svg{width:96px;height:96px;}
+}
+</style>
+<link rel="stylesheet" href="/css/motion.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">최승환 · 연구</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()" aria-label="테마 전환">☀ 라이트</button>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <div class="eyebrow">Policy Research · 공간 AI · 2026</div>
+    <h1>철도가 끊은 생활권,<br>행정동을 <em>다시 긋다</em></h1>
+    <p class="lead">제천시 동지역 9개 행정동은 철도로 끊긴 생활권과 2년 새 더 벌어진 인구 격차를 담지 못하고 있습니다. 철도를 장벽으로 인식하는 공간 AI로 경계를 다시 그리고, 청사를 새로 짓지 않고 기능을 바꾸는 방식으로 행정 접근성을 높이는 방안을 분석했습니다.</p>
+    <div class="hero-stats">
+      <div class="hstat"><span class="stat-num">2.2배</span><b>동별 인구 최대/최소 격차</b><small>현행 4.6배</small></div>
+      <div class="hstat"><span class="stat-num">91.6%</span><b>도보 15분 도달권</b><small>현행 57.9%</small></div>
+      <div class="hstat"><span class="stat-num">7분</span><b>강제동 → 행정센터</b><small>현행 도보 48분</small></div>
+      <div class="hstat"><span class="stat-num">107억</span><b>청사 신축 회피비용</b><small>기능전환비 약 13억 원</small></div>
+    </div>
+    <div class="meta-row">
+      <span class="chip">2026 제천시 AI 활용 데이터 분석 아이디어 공모전 출품</span>
+      <span class="chip">PySAL 공간 제약 군집화</span>
+      <span class="chip">OSMnx 보행망</span>
+      <span class="chip">인구 2026. 9. 30. 기준</span>
+    </div>
+  </div>
+
+  <!-- 01 인구 격차 -->
+  <section class="sec">
+    <div class="sec-head"><span class="sec-no">01</span><h2>한 센터는 2만 명, 다른 센터는 4천 명</h2></div>
+    <p class="desc">동지역 인구는 2년 동안 거의 그대로(106,510명 → 106,171명)인데, 신흥 주거지인 교동·용두동만 늘고 나머지 7개 동은 모두 줄었습니다. 최대/최소 격차는 3.8배(2024)에서 4.6배(2026)로 벌어졌습니다.</p>
+    <div class="panel" data-motion>
+      <div class="seg" role="group" aria-label="현행과 개편안 전환">
+        <button type="button" data-mode="before" aria-pressed="true">현행 9개 동</button>
+        <button type="button" data-mode="after" aria-pressed="false">개편안 8개 동</button>
+      </div>
+      <div id="popChart" aria-live="polite"></div>
+      <div class="ratio"><span>최대/최소 격차</span><strong id="ratioNum">4.6</strong><span>배</span><span id="ratioSub">교동 20,202명 ÷ 남현동 4,383명</span></div>
+      <p class="note"><span class="legend-band"></span>적정 인구 범위(약 9천~2만 명). 개편안에서는 모든 동이 이 범위 안에 들어옵니다.</p>
+    </div>
+  </section>
+
+  <!-- 02 철도 우회 -->
+  <section class="sec">
+    <div class="sec-head"><span class="sec-no">02</span><h2>직선 1.7km를 3.2km로 돌아가는 동네</h2></div>
+    <p class="desc">화산동은 서류상 하나의 동이지만 중앙선·태백선 철도가 한가운데를 지납니다. 철도 남측 강제동 주민 약 1만 명은 영천지하차도 한 곳을 거쳐야 북측 센터에 닿습니다. 아래는 그 동선을 단순화한 모식도입니다.</p>
+    <div class="panel" data-motion>
+      <div class="rail-grid">
+        <svg class="rail-svg" id="railSvg" viewBox="0 0 640 340" role="img" aria-label="강제동에서 화산동 센터까지 철도를 돌아가는 동선과 강제명지동 신설 후 동선 모식도">
+          <text x="16" y="34">철도 북측</text>
+          <text x="16" y="326">철도 남측</text>
+          <path d="M0,196 C200,170 420,164 640,140" fill="none" stroke="var(--rail)" stroke-width="5"/>
+          <path d="M0,196 C200,170 420,164 640,140" fill="none" stroke="var(--rail)" stroke-width="14" stroke-dasharray="2 12" opacity="0.6"/>
+          <text x="470" y="198" style="fill:var(--rail)">중앙선·태백선</text>
+          <path id="pStraight" d="M230,272 L400,84" fill="none" stroke="var(--muted)" stroke-width="2" stroke-dasharray="5 6"/>
+          <g id="xMark" style="transform-origin:316px 178px">
+            <circle cx="316" cy="178" r="13" fill="var(--bg)" stroke="var(--red)" stroke-width="2"/>
+            <path d="M310,172 L322,184 M322,172 L310,184" stroke="var(--red)" stroke-width="2.5"/>
+          </g>
+          <path id="pDetour" d="M230,272 C330,270 470,236 560,152 C600,112 470,70 400,84" fill="none" stroke="var(--rail)" stroke-width="3.5" stroke-linecap="round"/>
+          <g><rect x="546" y="138" width="28" height="28" rx="6" fill="var(--bg)" stroke="var(--rail)" stroke-width="2"/><text x="530" y="124" class="lbl">영천지하차도</text></g>
+          <path id="pShort" d="M230,272 Q262,262 290,236" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/>
+          <g><circle cx="400" cy="84" r="11" fill="var(--surface)" stroke="var(--text)" stroke-width="2.5"/><text x="416" y="70" class="lbl">화산동 센터(현행)</text></g>
+          <g id="newCenter" style="transform-origin:290px 236px"><circle cx="290" cy="236" r="12" fill="var(--accent)"/><text x="306" y="250" style="fill:var(--accent);font-weight:600">강제명지동 센터(신설)</text></g>
+          <g><circle cx="230" cy="272" r="9" fill="var(--surface)" stroke="var(--rail)" stroke-width="2.5"/><text x="150" y="304" class="lbl">강제동 주거지</text></g>
+          <circle id="walker" r="7" fill="var(--ink)" cx="0" cy="0" style="transform:translate(230px,272px)"/>
+        </svg>
+        <div class="rail-stats">
+          <div class="rs"><small>직선거리</small><span>1.7km</span></div>
+          <div class="rs hot"><small>실제 도로거리 · 우회계수 1.88</small><span>3.2km</span></div>
+          <div class="rs hot"><small>도보 소요시간(현행)</small><span id="tOld">48분</span></div>
+          <div class="rs good"><small>강제명지동 신설 후</small><span id="tNew">0.6km · 7분</span></div>
+          <button class="replay" type="button" id="railReplay">↻ 동선 다시 보기</button>
+        </div>
+      </div>
+      <p class="note">우회계수 = 도로망 최단경로 ÷ 직선거리. 1.5를 넘으면 도보 이동이 크게 불편한 것으로 봅니다. 신월 미니복합타운도 용두동 센터까지 도보 50분이 걸려, 이곳은 동을 나누지 않고 스마트현장민원실(도보 3분)로 해결합니다.</p>
+    </div>
+  </section>
+
+  <!-- 03 AI -->
+  <section class="sec">
+    <div class="sec-head"><span class="sec-no">03</span><h2>AI는 철도를 건너지 않는 묶음을 찾았다</h2></div>
+    <p class="desc">붙어 있는 구역끼리만 묶어야 하므로 일반 군집화 대신 공간 제약 군집화를 썼습니다. 철도로 갈라진 구 화산동과 강제·명지 지역은 경계가 맞닿아도 인접하지 않은 것으로 처리했습니다.</p>
+    <div class="steps">
+      <div class="step"><i>STEP 1 · 단절 진단</i><h3>우회계수 계산</h3><p>OSMnx 보행 도로망에서 다익스트라 최단경로를 구해 직선거리와 비교했습니다.</p></div>
+      <div class="step"><i>STEP 2 · 경계 재편</i><h3>WardSpatial 8개 군집</h3><p>PySAL spopt로 Queen 인접 행렬에서 철도 구간 가중치를 0으로 두고 실제 인구로 군집화했습니다. 철도 남측은 북측과 묶이지 않았습니다.</p></div>
+      <div class="step"><i>STEP 3 · 행정 보정·검증</i><h3>인구 9천~2만 명 기준</h3><p>3,500명뿐인 화산동 북측은 중앙·남현동과 합쳐 중앙원도심동(12,864명)으로, 철도 남측은 강제명지동(10,522명)으로 확정했습니다.</p></div>
+    </div>
+  </section>
+
+  <!-- 04 도달권 -->
+  <section class="sec">
+    <div class="sec-head"><span class="sec-no">04</span><h2>도보 15분 안에 센터에 닿는 시민</h2></div>
+    <p class="desc">각 거점에서 도보 15분(반경 약 1km) 안에 사는 인구를 공간 결합으로 계산했습니다. 개편 후에는 8개 센터와 신월 스마트현장민원실 같은 특화 거점을 함께 넣었습니다.</p>
+    <div class="gauges">
+      <div class="gauge" data-motion data-p="57.9">
+        <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="trk" cx="60" cy="60" r="50"/><circle class="arc" cx="60" cy="60" r="50"/></svg>
+        <div><span class="g-num">57.9%</span><b>현행 9개 센터</b><small>사각지대 약 2.84만 명</small></div>
+      </div>
+      <div class="gauge after" data-motion data-p="91.6">
+        <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="trk" cx="60" cy="60" r="50"/><circle class="arc" cx="60" cy="60" r="50"/></svg>
+        <div><span class="g-num">91.6%</span><b>개편 8개 센터 + 특화 거점</b><small>사각지대 약 0.57만 명 (79.9% 해소)</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 지도 -->
+  <section class="sec">
+    <div class="sec-head"><span class="sec-no">MAP</span><h2>분석 지도 3장</h2></div>
+    <p class="desc">지도를 누르면 크게 볼 수 있습니다.</p>
+    <div class="maps">
+      <button class="map" type="button" data-motion data-src="/img/jecheon_district_map1.jpg"><img src="/img/jecheon_district_map1.jpg" alt="지도 1: 제천시 동지역 행정경계 재편 상세도" loading="lazy" width="2000" height="1161"><span>① 행정경계 재편안: 9개 동 → 8개 동</span></button>
+      <button class="map" type="button" data-motion data-src="/img/jecheon_district_map2.jpg"><img src="/img/jecheon_district_map2.jpg" alt="지도 2: 5대 생활권 및 도로망 보행 우회 동선 분석도" loading="lazy" width="2000" height="1166"><span>② 5대 생활권과 도로망 우회 동선</span></button>
+      <button class="map" type="button" data-motion data-src="/img/jecheon_district_map3.jpg"><img src="/img/jecheon_district_map3.jpg" alt="지도 3: 행정서비스 도보 15분 도달권 전후 비교" loading="lazy" width="2000" height="1166"><span>③ 도보 15분 도달권 전·후 비교</span></button>
+    </div>
+    <dialog class="viewer" id="viewer"><img alt=""></dialog>
+  </section>
+
+  <!-- 05 청사·예산 -->
+  <section class="sec">
+    <div class="sec-head"><span class="sec-no">05</span><h2>청사는 없애지 않고, 새로 짓지도 않는다</h2></div>
+    <p class="desc">원도심 청사를 폐지하는 대신 기능을 바꿉니다. 강제명지동 센터와 신월 현장민원실은 기존 공공시설을 활용합니다. 기능전환비 13억 원은 투자심사 기준(20억 원)에 못 미칩니다.</p>
+    <div class="panel" data-motion id="costPanel">
+      <div class="cost-row"><span>청사 1곳 신축</span><div class="cost-bar" data-v="1"></div><b>120억</b></div>
+      <div class="cost-row ok"><span>기능 전환</span><div class="cost-bar" data-v="0.108"></div><b>13억</b></div>
+      <p class="save">신축 회피비용 <strong>약 107억 원</strong> · 전환비가 3배가 되어도 약 81억 원</p>
+      <div class="convert">
+        <div class="cv"><b>중앙동 청사</b>중앙원도심동 통합 본소</div>
+        <div class="cv"><b>남현동 청사</b>어르신 건강생활지원센터 (65세 이상 40%)</div>
+        <div class="cv"><b>화산동 청사</b>제천역세권 도시재생지원센터</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 법·선거구 -->
+  <section class="sec">
+    <div class="sec-head"><span class="sec-no">06</span><h2>시행할 수 있는가: 법규와 선거구</h2></div>
+    <p class="desc">법정동은 그대로 두고 행정동만 재편하므로 「지방자치법」 제7조제4항의 조례 경로를 따릅니다. 법령·자치법규는 2026. 10. 16. 국가법령정보센터 자료로 확인했습니다.</p>
+    <div class="two">
+      <div class="panel" data-motion>
+        <h3>고쳐야 할 시 자치법규</h3>
+        <ul class="law">
+          <li>행정복지센터 위치 조례 <span class="tag on">개정 · 재적 과반</span></li>
+          <li>행정기구 설치 조례 <span class="tag on">개정</span></li>
+          <li>행정기구 설치 조례 시행규칙 <span class="tag on">개정</span></li>
+          <li>건강생활지원센터 설치 조례 <span class="tag new">제정</span></li>
+          <li>동리 명칭·구역 조례 <span class="tag">개정 안 함</span></li>
+        </ul>
+      </div>
+      <div class="panel" data-motion>
+        <h3>통합할 세 동이 서로 다른 선거구에</h3>
+        <p>중앙동(시의원 바·도의원 제2), 남현동(마·제3), 화산동(라·제3)을 그대로 합치면 한 행정동이 여러 선거구로 나뉘어 「공직선거법」 제26조제3항·제4항에 어긋납니다. 바뀌는 선거구를 최소화한 조정안을 만들고, 시행일을 2030년 지방선거 선거구 획정 전인 2029년 하반기로 잡았습니다.</p>
+      </div>
+    </div>
+    <div class="panel" data-motion style="margin-top:1rem">
+      <h3>분포 전체가 고르게 된다</h3>
+      <p>동별 인구 변동계수 0.458 → 0.317, 지니계수 0.255 → 0.168. 최대·최소뿐 아니라 분포 전체의 불균형이 30% 이상 줄어듭니다. 정원 증원 없이 동장 직위만 9개에서 8개로 재배치합니다.</p>
+    </div>
+  </section>
+
+  <!-- 07 로드맵 -->
+  <section class="sec" id="roadSec">
+    <div class="sec-head"><span class="sec-no">07</span><h2>정원 조정 없이 할 수 있는 일부터</h2></div>
+    <p class="desc">현장 창구는 조례 개정 없이 1년 차에 시작하고, 그 운영 실적을 주민 설명 자료로 씁니다.</p>
+    <div class="road">
+      <div class="road-line" aria-hidden="true"><i id="roadFill"></i></div>
+      <div class="road-item"><small>1단계 · 1년 차</small><h3>현장 창구 확충</h3><p>신월 스마트현장민원실, 장락동 무인민원발급기, 강제동 정기 출장 민원창구. 조례 개정·정원 변경 없음.</p></div>
+      <div class="road-item"><small>2단계 · 1~2년 차</small><h3>의견 수렴과 제도 준비</h3><p>행정안전부 사전 협의, 주민설명회, 선거구 조정안 건의, 조례안 입법예고(20일 이상).</p></div>
+      <div class="road-item last"><small>3단계 · 2029년 하반기</small><h3>행정동 경계 조정</h3><p>강제명지동 신설, 중앙원도심동 통합, 남현·화산 청사 기능전환. 동별 인력 배치는 조직진단으로 결정.</p></div>
+    </div>
+  </section>
+
+  <div class="outro">
+    <p>지도 위 거리가 아니라<br>실제로 걸어가는 생활권으로</p>
+    <small>활용 데이터: 충청북도 제천시_월별인구현황(공공데이터포털) · 제천시 인구현황(2026. 9. 30.) · 읍면동 행정복지센터 주소 · 행정동 경계(SGIS) · OpenStreetMap 도로망·철도<br>화산동 남북 인구 분리와 예산 금액은 추정치입니다.</small>
+    <a class="back" href="/research.html">← 연구 목록으로</a>
+  </div>
+</main>
+
+<footer>© 2026 최승환 · 충청북도 제천시청 · 도시경영학 박사과정 · choijc79.github.io</footer>
+
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/research.html">🔬<br>연구</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/guides.html">⚙️<br>가이드</a>
+  <a href="/memo.html">📋<br>노트</a>
+</div>
+<script src="/js/theme-toggle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+<script>
+// 이 페이지 전용 모션: 인구 막대 전환, 철도 우회 동선, 도달권 게이지, 예산 막대, 로드맵 진행선, 지도 확대
+document.addEventListener('DOMContentLoaded', function () {
+  var M = window.Motion;
+  var still = !M || matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var MAX = 21000;
+  function fmt(n) { return Math.round(n).toLocaleString('ko-KR'); }
+  function tween(from, to, opt, fn) {
+    if (still) { fn(to); return Promise.resolve(); }
+    return M.animate(from, to, Object.assign({ duration: 0.8, ease: 'easeOut', onUpdate: fn }, opt));
+  }
+  function onView(el, fn) {
+    if (still) { fn(); return; }
+    M.inView(el, function () { fn(); }, { amount: 0.4 });
+  }
+
+  // 지도 확대 (Motion 없이도 동작)
+  var viewer = document.getElementById('viewer');
+  document.querySelectorAll('.map').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var img = viewer.querySelector('img');
+      img.src = b.dataset.src;
+      img.alt = b.querySelector('img').alt;
+      viewer.showModal();
+    });
+  });
+  viewer.addEventListener('click', function () { viewer.close(); });
+
+  // 01 인구 막대: 현행 ↔ 개편안
+  var rows = [
+    ['교동', 20202, 20202], ['용두동', 19914, 19914], ['청전동', 13910, 13910],
+    ['신백동', 9984, 9984], ['의림지동', 9399, 9399], ['영서동', 9376, 9376],
+    ['화산동', 14022, 0], ['중앙동', 4981, 0], ['남현동', 4383, 0],
+    ['중앙원도심동', 0, 12864], ['강제명지동', 0, 10522]
+  ];
+  var chart = document.getElementById('popChart');
+  var cur = rows.map(function () { return 0; });
+  rows.forEach(function (r) {
+    var cls = r[2] === 0 ? 'old' : (r[1] === 0 ? 'new' : '');
+    chart.insertAdjacentHTML('beforeend', '<div class="pop-row ' + cls + '"><span class="pop-name">' + r[0] +
+      '</span><span class="pop-track"><i class="pop-bar"></i></span><span class="pop-val">-</span></div>');
+  });
+  var rowEls = chart.querySelectorAll('.pop-row');
+  var ratioNum = document.getElementById('ratioNum'), ratioSub = document.getElementById('ratioSub');
+  var ratio = 0;
+  function setMode(mode) {
+    var col = mode === 'after' ? 2 : 1;
+    document.querySelectorAll('.seg button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.mode === mode)); });
+    rows.forEach(function (r, i) {
+      var to = r[col], el = rowEls[i], bar = el.querySelector('.pop-bar'), val = el.querySelector('.pop-val');
+      var from = cur[i];
+      cur[i] = to;
+      if (still) bar.style.transform = 'scaleX(' + to / MAX + ')';
+      else M.animate(bar, { transform: ['scaleX(' + from / MAX + ')', 'scaleX(' + to / MAX + ')'] }, { duration: 0.8, ease: 'easeOut', delay: i * 0.04 });
+      tween(from, to, { delay: i * 0.04 }, function (v) { val.textContent = v < 1 ? '-' : fmt(v); });
+      el.style.opacity = to === 0 ? '0.4' : '';
+    });
+    var target = mode === 'after' ? 2.2 : 4.6;
+    tween(ratio, target, { duration: 1 }, function (v) { ratioNum.textContent = v.toFixed(1); });
+    ratio = target;
+    ratioSub.textContent = mode === 'after' ? '교동 20,202명 ÷ 영서동 9,376명' : '교동 20,202명 ÷ 남현동 4,383명';
+  }
+  document.querySelectorAll('.seg button').forEach(function (b) {
+    b.addEventListener('click', function () { setMode(b.dataset.mode); });
+  });
+  var autoplayed = false;
+  onView(chart, function () {
+    if (autoplayed) return;
+    autoplayed = true;
+    setMode('before');
+    if (!still) setTimeout(function () { setMode('after'); }, 1800);
+  });
+
+  // 02 철도 우회 동선
+  var svg = document.getElementById('railSvg');
+  var pS = document.getElementById('pStraight'), pD = document.getElementById('pDetour'), pN = document.getElementById('pShort');
+  var xMark = document.getElementById('xMark'), newC = document.getElementById('newCenter'), walker = document.getElementById('walker');
+  var tOld = document.getElementById('tOld'), tNew = document.getElementById('tNew');
+  function hidePath(p) { var L = p.getTotalLength(); p.style.strokeDasharray = L; p.style.strokeDashoffset = L; }
+  function draw(p, dur, label, minutes) {
+    var L = p.getTotalLength();
+    p.style.strokeDasharray = L;
+    return M.animate(0, 1, { duration: dur, ease: 'easeInOut', onUpdate: function (t) {
+      p.style.strokeDashoffset = L * (1 - t);
+      var pt = p.getPointAtLength(L * t);
+      walker.style.transform = 'translate(' + pt.x + 'px,' + pt.y + 'px)';
+      if (label) label.textContent = Math.round(minutes * t) + '분';
+    } });
+  }
+  var running = false;
+  function playRail() {
+    if (still || running) return;
+    running = true;
+    hidePath(pD); hidePath(pN);
+    pS.style.opacity = '0'; xMark.style.opacity = '0'; newC.style.opacity = '0';
+    walker.style.transform = 'translate(230px,272px)';
+    tOld.textContent = '0분'; tNew.textContent = '-';
+    M.animate(pS, { opacity: [0, 1] }, { duration: 0.4 })
+      .then(function () { return M.animate(xMark, { opacity: [0, 1], transform: ['scale(0.4)', 'scale(1)'] }, { duration: 0.35, ease: 'easeOut' }); })
+      .then(function () { return draw(pD, 2.4, tOld, 48); })
+      .then(function () { walker.style.transform = 'translate(230px,272px)'; return M.animate(newC, { opacity: [0, 1], transform: ['scale(0.6)', 'scale(1)'] }, { duration: 0.4, ease: 'easeOut', delay: 0.3 }); })
+      .then(function () { return draw(pN, 0.7, null, 0); })
+      .then(function () { tNew.textContent = '0.6km · 7분'; running = false; });
+  }
+  if (still) walker.style.display = 'none';
+  else { hidePath(pD); hidePath(pN); newC.style.opacity = '0'; }
+  var played = false;
+  onView(svg, function () { if (!played) { played = true; playRail(); } });
+  document.getElementById('railReplay').addEventListener('click', playRail);
+
+  // 04 도달권 게이지
+  var C = 2 * Math.PI * 50;
+  document.querySelectorAll('.gauge').forEach(function (g) {
+    var p = parseFloat(g.dataset.p), arc = g.querySelector('.arc'), num = g.querySelector('.g-num');
+    arc.style.strokeDasharray = C;
+    arc.style.strokeDashoffset = C;
+    onView(g, function () {
+      tween(0, p, { duration: 1.4 }, function (v) {
+        arc.style.strokeDashoffset = C * (1 - v / 100);
+        num.textContent = v.toFixed(1) + '%';
+      });
+    });
+  });
+
+  // 05 예산 막대
+  var bars = document.querySelectorAll('.cost-bar');
+  onView(document.getElementById('costPanel'), function () {
+    bars.forEach(function (b, i) {
+      var to = 'scaleX(' + b.dataset.v + ')';
+      if (still) b.style.transform = to;
+      else M.animate(b, { transform: ['scaleX(0)', to] }, { duration: 0.9, ease: 'easeOut', delay: 0.15 + i * 0.25 });
+    });
+  });
+
+  // 07 로드맵 진행선: 스크롤에 맞춰 채움
+  var fill = document.getElementById('roadFill');
+  if (still) fill.style.transform = 'scaleY(1)';
+  else M.scroll(M.animate(fill, { transform: ['scaleY(0)', 'scaleY(1)'] }, { ease: 'linear' }),
+    { target: document.getElementById('roadSec'), offset: ['start 0.75', 'end 0.6'] });
+});
+</script>
+</body>
+</html>
