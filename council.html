@@ -485,7 +485,96 @@ function toggleTheme(){
 }
 
 const DATA = window.COUNCIL_DATA || { members:[], storylines:[], speeches:[], network:{nodes:[],edges:[]}, anomalies:[], videos:[] };
-let selectedNetNodeId = 'i_market';
+
+// council_data.js(수집 데이터)와 화면 코드의 필드 이름이 달라 한 곳에서 화면 코드가 기대하는 모양으로 맞춘다.
+(function adaptCouncilData(D) {
+  const toTime = s => { s = +s || 0; const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60;
+    return (h ? h + ':' + String(m).padStart(2, '0') : m) + ':' + String(x).padStart(2, '0'); };
+  if (D.meta && !D.meta.generatedAt) D.meta.generatedAt = (D.meta.updatedAt || '').replace(/\s*KST$/, '');
+
+  // 의원: 레이더 배열·포지션·행간 필드 이름 맞추기
+  D.members.forEach(m => {
+    if (Array.isArray(m.radar)) { const [budget, policy, field, critique, legislation] = m.radar; m.radar = { budget, policy, field, critique, legislation }; }
+    if (m.matrixPos && m.x === undefined) { m.x = m.matrixPos.x; m.y = m.matrixPos.y; }
+    m.subtext = m.subtext || m.hiddenIntent || '';
+    m.nextLogic = m.nextLogic || m.expectedLogic || '';
+    m.interests = m.interests || m.keywords || [];
+    m.demands = m.demands || m.summary || '';
+    m.criticismStyle = m.criticismStyle || m.styleTag || '';
+  });
+
+  // 발언: 인용·논리 트리 필드 이름 맞추기
+  D.speeches.forEach(sp => {
+    sp.department = sp.department || sp.targetDept || '';
+    sp.quotes = sp.quotes || (sp.exactQuotes || []).map(q => ({ text: q.text, sec: q.sec, time: q.ts || toTime(q.sec) }));
+    const lt = sp.logicTree || {};
+    sp.logicTree = {
+      phenomenon: lt.phenomenon || lt.background || '',
+      quoteSummary: lt.quoteSummary || (sp.quotes[0] ? sp.quotes[0].text : ''),
+      surfaceDemand: lt.surfaceDemand || (Array.isArray(lt.demands) ? lt.demands.join('<br>') : (lt.demands || '')),
+      hiddenIntent: lt.hiddenIntent || lt.subtext || '',
+      expectedNext: lt.expectedNext || lt.nextMove || ''
+    };
+  });
+
+  // 의원 대표 발언: 해당 의원의 첫 발언 인용, 없으면 요약문(영상 버튼은 열리지 않음)
+  D.members.forEach(m => {
+    if (m.signatureQuote) return;
+    const sp = D.speeches.find(s => s.memberId === m.id);
+    const q = sp && sp.quotes[0];
+    m.signatureQuote = q ? { text: q.text, videoId: sp.videoId, sec: q.sec, time: q.time, session: sp.session }
+                         : { text: m.summary || '', videoId: '', sec: 0, time: '영상 없음', session: '' };
+  });
+
+  // 관계망: 노드 묶음 이름을 화면 기준으로, 의원 노드 ID를 의원 ID로 통일
+  const byName = {}; D.members.forEach(m => byName[m.name] = m.id);
+  const idMap = {};
+  D.network.nodes.forEach(n => {
+    const first = String(n.label).split('\n')[0];
+    if (n.group === 'member') {
+      n.group = /민주/.test(n.party) ? 'member_dpk' : 'member_ppp';
+      const mid = byName[first.split(' ')[0]];
+      if (mid) { idMap[n.id] = mid; n.id = mid; }
+    } else if (/^issue/.test(n.group)) n.group = 'issue';
+    else if (n.group === 'stakeholder') n.group = 'actor';
+    n.fullLabel = String(n.label).replace(/\n/g, ' ');
+    n.label = first;
+  });
+  D.network.edges.forEach(e => {
+    e.source = idMap[e.source] || e.source; e.target = idMap[e.target] || e.target;
+    if (e.type === 'support') e.type = 'lead'; else if (e.type === 'amend' || e.type === 'conflict') e.type = 'block';
+  });
+
+  // 회차 간 흐름: steps → stages
+  D.storylines.forEach(st => {
+    if (st.stages) return;
+    const steps = st.steps || [];
+    st.members = st.members || [...new Set(steps.map(s => s.actor).filter(Boolean))];
+    st.summary = st.summary || st.status || '';
+    st.stages = steps.map(s => ({
+      status: /삭제|제동|보류|부결|삭감/.test(s.tag) ? 'shock' : /예상|정례회|전망/.test(s.tag + s.session) ? 'forecast'
+             : /가결|부활|통과|반영/.test(s.tag) ? 'resolve' : 'pivot',
+      session: s.session, date: s.date, label: s.tag, detail: s.desc, actors: s.actor || '',
+      videoId: s.videoId, sec: s.sec
+    }));
+  });
+
+  // 비만장일치·삭제 표결
+  D.anomalies = D.anomalies || (D.keyAnomalies || []).map(a => ({
+    session: a.session, date: a.committee, result: a.badge, agenda: a.agenda,
+    voteDetail: a.result, meaning: a.detail, videoId: a.videoId, sec: a.sec, time: toTime(a.sec)
+  }));
+
+  // 영상 아카이브: 유형 이름을 필터 값과 맞추고 표시용 필드 채우기
+  const typeAlias = { '자치행정위': '자치행정위원회', '산업건설위': '산업건설위원회', '예결특위': '예산결산특별위원회', '조례 인터뷰': '조례·인터뷰' };
+  D.videos.forEach(v => {
+    v.type = typeAlias[v.type] || v.type;
+    v.durationStr = v.durationStr || v.type;
+    v.lineCount = v.lineCount || v.transcriptLines || 0;
+  });
+})(DATA);
+
+let selectedNetNodeId = 'i_jobcenter';
 let selectedMemberId = 'kim_jeongmun';
 let currentMemberFilter = '__all__';
 
@@ -500,6 +589,7 @@ function switchView(viewName, btnEl) {
 
 // 유튜브 타임스탬프 모달 열기
 function openYtModal(videoId, startSec, title, quoteText) {
+  if (!videoId) return;  // 연결된 영상이 없는 항목
   const modal = document.getElementById('yt-modal');
   const iframe = document.getElementById('yt-iframe');
   const sec = Math.max(0, parseInt(startSec || 0, 10));
@@ -691,7 +781,7 @@ function renderNetworkInspector() {
   box.innerHTML = `
     <div>
       <span class="insp-badge" style="background:rgba(242,163,58,0.16);color:var(--accent);">${badgeLabel}</span>
-      <h3 class="insp-title">${node ? node.label : selectedNetNodeId}</h3>
+      <h3 class="insp-title">${node ? (node.fullLabel || node.label) : selectedNetNodeId}</h3>
       <p style="font-size:12px;color:var(--muted);margin-top:0.15rem;">${node?.role || ''} ${node?.committee ? '· ' + node.committee : ''}</p>
     </div>
     ${memberExtra}
@@ -1033,7 +1123,7 @@ function renderArchive() {
   const qVal = (document.getElementById('arch-q')?.value || '').trim().toLowerCase();
 
   const list = DATA.videos.filter(v => {
-    if (sVal !== '__all__' && v.session !== sVal) return false;
+    if (sVal !== '__all__' && !v.session.includes(sVal) && !(sVal === '인사청문회' && v.session.includes('인사청문'))) return false;
     if (tVal !== '__all__' && v.type !== tVal) return false;
     if (qVal) {
       const hay = `${v.title} ${v.session} ${v.type} ${v.excerpt || ''}`.toLowerCase();

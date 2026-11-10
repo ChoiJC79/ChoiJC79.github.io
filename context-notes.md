@@ -100,3 +100,5 @@
 - 모바일 최적화 2차(2026-10-19): 65쪽을 360px로 점검해 가로 넘침 0 확인. 고친 것은 ① 위스키 상세 11쪽+템플릿의 고정 내비(링크 20px→44px 터치 영역, 100svh) ② 연대기 입력칸 16px·버튼 40px ③ theme.css 모바일 블록(10~11px 보조 글자→12px, 탭·관련 링크 40px, 인라인 <style>이 뒤에 와서 !important 사용) ④ 홈 장식용 초소형 글자(tape-type·deck-brand small) 숨김. 연대기 페이지는 8월 말 업로드 때 색 변수 정의(--paper 등)가 빠져 다크·라이트 모두 깨져 있었고, 일반 header 규칙(sticky·남색)이 본문 머리글에 걸려 있어 .wrap > header:not(#navbar)로 덮어 복원.
 
 - **홈 첫 화면 = 1979 라운지 조감도 (2026-11-10)**: 운영자가 준 라운지 조감도(img/lounge1979.jpg)를 홈 맨 위에 두고 물건마다 메뉴를 연결(문=소개, 위스키 선반=위스키, 바=1979 라운지, 책장=연구, 턴테이블=칼럼, 스크린=유튜브, 탁자=정리노트, 라운지 체어=가이드, 커튼=의회, 소파=방명록). 장면에 마우스를 올리면 탭 전체가 옅게, 가리킨 물건은 또렷하게 떠오름(css/lounge-hero.css). 터치 기기는 탭 대신 그림 아래 칩 목록. 기존 카세트·목차는 그 아래 유지. index.css가 `nav` 태그를 전역 고정 메뉴로 꾸미므로 새 목록은 div를 씀.
+
+- **council.html 빈 화면 수정 (2026-11-10)**: Antigravity가 만든 화면 코드와 data/council_data.js의 필드 이름이 달라(노드 group member/stakeholder↔member_ppp/actor, 의원 노드 ID m_kimjm↔kim_jeongmun, keyAnomalies↔anomalies, meta.updatedAt↔generatedAt, steps↔stages, exactQuotes↔quotes, logicTree 키 등) 첫 렌더에서 오류가 나 관계망 이하 전 구역이 비었음. 함수는 그대로 두고 DATA 직후 adaptCouncilData()에서 데이터를 화면 기준 모양으로 변환. 데이터 생성기를 고칠 때는 이 변환과 맞춰야 함.
