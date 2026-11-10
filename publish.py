@@ -882,6 +882,8 @@ def main():
     push_local("jecheon_investment_plan.html",       "add investment plan page")
     push_local("letter_wonwoo.html",                   "add letter to wonwoo")
     push_local("research.html",                      "update research")
+    push_local("council.html",                       "update council page")
+    push_local("data/council_data.js",               "update council data")
     push_local("index.html",                         "update index")
 
     print("[css/js] index 페이지 스타일·스크립트 ...")

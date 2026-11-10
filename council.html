@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제천시의회 의정분석 | 최승환</title>
+<meta name="description" content="제10대 제천시의회(2026.07~현재) 80편 회의·발언 전수 분석. 의원 14명 성향 매트릭스, 핵심 워딩 타임스탬프, 숨은 뜻(행간)과 후속 예상 논리, 회차 간 인과 흐름도.">
+<meta property="og:title" content="제천시의회 의정분석 | 최승환">
+<meta property="og:description" content="제10대 제천시의회(2026.07~현재) 회의·발언 전수 분석. 의원별 핵심 워딩, 숨은 뜻(행간), 후속 예상 논리와 유기적 관계망 대시보드.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://choijc79.github.io/council.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/motion.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-body);font-weight:400;background:var(--bg);color:var(--text);line-height:1.65;}
+a{color:var(--accent);text-decoration:none;}
+
+/* ── Header ── */
+.site-header{position:sticky;top:0;z-index:120;background:var(--header-bg);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:54px;backdrop-filter:saturate(180%) blur(16px);}
+.logo{font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--ink);}
+.nav-links{display:flex;gap:1.3rem;font-size:13px;align-items:center;}
+.nav-links a{color:var(--muted);transition:color 0.15s;}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);font-weight:600;}
+#theme-toggle{border:1px solid var(--border);border-radius:999px;background:var(--surface);color:var(--muted);font-size:12px;padding:5px 12px;cursor:pointer;font-family:var(--font-body);}
+
+/* ── Main Container ── */
+.container{max-width:1240px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
+
+/* ── Hero Header ── */
+.hero-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem 2.2rem;margin-bottom:1.6rem;position:relative;overflow:hidden;box-shadow:var(--card-shadow);}
+.hero-box::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3));}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1.2rem;flex-wrap:wrap;margin-bottom:1rem;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:0.5rem;font-size:11.5px;font-weight:600;color:var(--accent);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.4rem;}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#3fb950;box-shadow:0 0 8px #3fb950;display:inline-block;animation:pulseDot 2s infinite;}
+@keyframes pulseDot{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.45;transform:scale(0.85);}}
+.hero-title{font-family:var(--font-display);font-size:clamp(1.45rem,3vw,2.15rem);font-weight:700;color:var(--ink);line-height:1.35;margin-bottom:0.5rem;}
+.hero-desc{font-size:13.5px;color:var(--muted);max-width:820px;line-height:1.75;}
+.sync-badge{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.7rem 1rem;font-size:11.5px;color:var(--muted);display:flex;flex-direction:column;gap:0.25rem;min-width:230px;}
+.sync-badge strong{color:var(--ink);font-family:var(--font-mono);font-size:12px;}
+
+/* ── KPI Strip ── */
+.kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0.8rem;margin-top:1.4rem;padding-top:1.4rem;border-top:1px solid var(--border);}
+.kpi-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.9rem 1rem;}
+.kpi-num{font-family:var(--font-mono);font-size:1.35rem;font-weight:700;color:var(--accent);line-height:1.2;}
+.kpi-label{font-size:12px;font-weight:600;color:var(--ink);margin-top:0.2rem;}
+.kpi-sub{font-size:11px;color:var(--muted);margin-top:0.1rem;}
+
+/* ── View Tabs ── */
+.view-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:0.65rem;margin-bottom:1.8rem;position:sticky;top:62px;z-index:95;background:color-mix(in srgb,var(--bg) 88%,transparent);padding:0.55rem;border:1px solid var(--border);border-radius:14px;backdrop-filter:blur(12px);}
+.view-tab{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:0.85rem 1rem;cursor:pointer;text-align:left;transition:transform 0.15s ease,border-color 0.2s,background 0.2s;color:var(--muted);font-family:var(--font-body);}
+.view-tab:hover{border-color:var(--accent);color:var(--ink);}
+.view-tab.active{background:color-mix(in srgb,var(--accent) 16%,var(--surface));border-color:var(--accent);color:var(--ink);box-shadow:0 4px 14px rgba(0,0,0,0.2);}
+.vt-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.2rem;}
+.vt-title{font-size:13.5px;font-weight:700;color:var(--ink);}
+.vt-count{font-family:var(--font-mono);font-size:11px;padding:1px 7px;border-radius:99px;background:var(--bg);color:var(--accent);border:1px solid var(--border);}
+.vt-sub{font-size:11.5px;color:var(--muted);display:block;}
+
+.view-panel{display:none;}
+.view-panel.active{display:block;}
+
+/* ── Section Headers ── */
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin:2rem 0 1rem;}
+.sec-head:first-child{margin-top:0;}
+.sec-title{font-family:var(--font-display);font-size:1.25rem;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:0.55rem;}
+.sec-sub{font-size:12.5px;color:var(--muted);}
+
+/* ── View 1: Network Graph & Storylines ── */
+.net-layout{display:grid;grid-template-columns:1fr 370px;gap:1rem;margin-bottom:2rem;}
+.net-canvas-box{background:var(--surface);border:1px solid var(--border);border-radius:14px;position:relative;overflow:hidden;min-height:520px;display:flex;flex-direction:column;}
+.net-toolbar{display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;border-bottom:1px solid var(--border);background:var(--bg);flex-wrap:wrap;gap:0.5rem;}
+.net-legend{display:flex;gap:0.9rem;flex-wrap:wrap;font-size:11.5px;color:var(--muted);}
+.legend-item{display:inline-flex;align-items:center;gap:0.35rem;}
+.legend-dot{width:10px;height:10px;border-radius:50%;display:inline-block;}
+#network-svg{width:100%;height:465px;cursor:grab;user-select:none;background:radial-gradient(circle at center,rgba(242,163,58,0.05) 0%,transparent 70%);}
+#network-svg:active{cursor:grabbing;}
+.net-inspector{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.25rem;display:flex;flex-direction:column;gap:0.9rem;max-height:525px;overflow-y:auto;}
+.insp-badge{display:inline-block;font-size:11px;padding:2px 9px;border-radius:99px;font-weight:600;margin-bottom:0.3rem;}
+.insp-title{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--ink);}
+.insp-conn-list{display:flex;flex-direction:column;gap:0.5rem;margin-top:0.4rem;}
+.insp-conn-item{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:0.65rem 0.8rem;font-size:12px;cursor:pointer;transition:border-color 0.15s;}
+.insp-conn-item:hover{border-color:var(--accent);}
+
+/* ── Cross-Session Storyline Flows ── */
+.storyline-list{display:flex;flex-direction:column;gap:1.1rem;margin-bottom:2.2rem;}
+.story-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.4rem 1.5rem;position:relative;}
+.story-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:1.1rem;}
+.story-title{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--ink);}
+.story-cat{font-size:11px;padding:3px 10px;border-radius:99px;background:color-mix(in srgb,var(--accent) 15%,transparent);color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 40%,transparent);font-weight:600;}
+.story-summary{font-size:12.5px;color:var(--muted);margin-bottom:1.1rem;}
+.story-stages{display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;position:relative;}
+.stage-node{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.95rem;position:relative;display:flex;flex-direction:column;gap:0.4rem;}
+.stage-node.shock{border-color:rgba(226,96,63,0.65);background:color-mix(in srgb,var(--red) 7%,var(--bg));}
+.stage-node.pivot{border-color:rgba(242,163,58,0.65);}
+.stage-node.resolve{border-color:rgba(169,196,106,0.65);}
+.stage-node.forecast{border-style:dashed;border-color:var(--purple);background:color-mix(in srgb,var(--purple) 7%,var(--bg));}
+.stage-step-num{font-family:var(--font-mono);font-size:10.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--accent);}
+.stage-session{font-size:11px;color:var(--muted);}
+.stage-label{font-size:13px;font-weight:700;color:var(--ink);line-height:1.4;}
+.stage-detail{font-size:11.8px;color:var(--text);line-height:1.55;flex:1;}
+.stage-actors{font-size:11px;color:var(--accent2);font-weight:500;margin-top:0.2rem;}
+
+/* ── Anomalies Grid ── */
+.anomaly-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0.9rem;}
+.anomaly-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.15rem 1.3rem;display:flex;flex-direction:column;gap:0.55rem;}
+.anomaly-top{display:flex;justify-content:space-between;align-items:center;gap:0.5rem;flex-wrap:wrap;}
+.anomaly-badge{font-size:11px;font-weight:700;padding:2px 9px;border-radius:6px;background:color-mix(in srgb,var(--red) 18%,transparent);color:var(--red);border:1px solid color-mix(in srgb,var(--red) 40%,transparent);}
+.anomaly-title{font-size:14px;font-weight:700;color:var(--ink);}
+.anomaly-sub{font-size:12px;color:var(--muted);line-height:1.6;background:var(--bg);padding:0.65rem 0.8rem;border-radius:8px;border-left:3px solid var(--accent);}
+
+/* ── View 2: 5-Stage Logic Anatomy Cards ── */
+.filter-bar{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem 1.2rem;margin-bottom:1.3rem;display:flex;gap:0.75rem;flex-wrap:wrap;align-items:center;}
+.filter-select,.filter-input{background:var(--bg);border:1px solid var(--border);color:var(--ink);padding:0.5rem 0.85rem;border-radius:8px;font-size:13px;font-family:var(--font-body);}
+.filter-input{flex:1;min-width:200px;}
+.speech-list{display:flex;flex-direction:column;gap:1.25rem;}
+.speech-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;transition:border-color 0.2s;}
+.speech-card:hover{border-color:color-mix(in srgb,var(--accent) 55%,var(--border));}
+.sp-header{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:1.1rem;padding-bottom:0.9rem;border-bottom:1px solid var(--border);}
+.sp-member-pill{display:inline-flex;align-items:center;gap:0.5rem;font-size:13px;font-weight:700;color:var(--ink);background:var(--bg);padding:0.35rem 0.8rem;border-radius:99px;border:1px solid var(--border);}
+.party-dot{width:8px;height:8px;border-radius:50%;display:inline-block;}
+.party-ppp{background:#e2603f;}
+.party-dpk{background:#58a6ff;}
+.sp-title{font-family:var(--font-display);font-size:1.18rem;font-weight:700;color:var(--ink);margin-top:0.45rem;line-height:1.4;}
+.sp-meta{font-size:12px;color:var(--muted);display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:0.25rem;}
+.yt-btn{display:inline-flex;align-items:center;gap:0.4rem;background:color-mix(in srgb,var(--red) 16%,var(--bg));color:var(--ink);border:1px solid color-mix(in srgb,var(--red) 45%,var(--border));padding:0.42rem 0.85rem;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;transition:transform 0.15s,background 0.15s;font-family:var(--font-mono);}
+.yt-btn:hover{background:color-mix(in srgb,var(--red) 28%,var(--bg));transform:translateY(-1px);}
+
+/* 5-Stage Logic Tree */
+.logic-tree{display:grid;grid-template-columns:repeat(5,1fr);gap:0.65rem;margin-bottom:1.1rem;}
+.logic-step{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.9rem;display:flex;flex-direction:column;gap:0.35rem;position:relative;}
+.logic-step.step-subtext{border-color:var(--amber);background:color-mix(in srgb,var(--amber) 8%,var(--bg));}
+.logic-step.step-next{border-color:var(--purple);background:color-mix(in srgb,var(--purple) 8%,var(--bg));}
+.ls-head{font-size:11px;font-weight:700;color:var(--muted);display:flex;align-items:center;justify-content:space-between;}
+.step-subtext .ls-head{color:var(--amber);}
+.step-next .ls-head{color:var(--purple);}
+.ls-body{font-size:12.3px;color:var(--text);line-height:1.6;}
+
+.quotes-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.9rem 1.1rem;display:flex;flex-direction:column;gap:0.6rem;}
+.quote-row{display:flex;align-items:flex-start;gap:0.7rem;font-size:12.8px;line-height:1.65;color:var(--ink);}
+.quote-row blockquote{flex:1;font-style:normal;color:var(--text);}
+
+/* ── View 3: 14 Members Positioning Map & Radar ── */
+.matrix-layout{display:grid;grid-template-columns:1.1fr 0.9fr;gap:1.2rem;margin-bottom:2rem;}
+.matrix-box,.radar-box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.3rem;}
+#matrix-svg{width:100%;height:420px;background:var(--bg);border:1px solid var(--border);border-radius:10px;user-select:none;}
+.radar-top{display:flex;justify-content:space-between;align-items:flex-start;gap:0.8rem;margin-bottom:0.8rem;}
+#radar-svg{width:100%;height:260px;}
+.member-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;}
+.member-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.35rem;display:flex;flex-direction:column;gap:0.75rem;cursor:pointer;transition:border-color 0.2s,transform 0.15s;}
+.member-card:hover,.member-card.selected{border-color:var(--accent);transform:translateY(-2px);}
+.mc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:0.8rem;}
+.mc-name{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:0.45rem;}
+.mc-role{font-size:11.5px;color:var(--accent);font-weight:600;}
+.mc-district{font-size:11.5px;color:var(--muted);}
+.mc-style{font-size:11.5px;padding:3px 9px;border-radius:6px;background:var(--bg);border:1px solid var(--border);color:var(--accent2);font-weight:600;}
+.mc-tags{display:flex;flex-wrap:wrap;gap:0.35rem;}
+.mc-tag{font-size:11px;padding:2px 8px;border-radius:99px;background:var(--bg);border:1px solid var(--border);color:var(--muted);}
+.mc-anatomy{display:grid;grid-template-columns:1fr;gap:0.45rem;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;font-size:12px;}
+.mc-row strong{color:var(--accent);margin-right:0.35rem;}
+.mc-row.subtext strong{color:var(--amber);}
+.mc-row.nextlogic strong{color:var(--purple);}
+
+/* ── View 4: 80 Videos Archive ── */
+.archive-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0.85rem;}
+.vid-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.05rem 1.2rem;display:flex;flex-direction:column;gap:0.5rem;justify-content:space-between;}
+.vid-top{display:flex;justify-content:space-between;align-items:center;gap:0.5rem;font-size:11px;color:var(--muted);}
+.vid-badge{padding:2px 8px;border-radius:5px;background:var(--bg);border:1px solid var(--border);color:var(--accent);font-weight:600;}
+.vid-title{font-size:13.5px;font-weight:700;color:var(--ink);line-height:1.45;}
+.vid-Excerpt{font-size:11.8px;color:var(--muted);line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.vid-foot{display:flex;justify-content:space-between;align-items:center;gap:0.5rem;padding-top:0.45rem;border-top:1px solid var(--border);margin-top:0.2rem;}
+
+/* ── Video Modal ── */
+.yt-modal{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,0.78);display:none;align-items:center;justify-content:center;padding:1.2rem;backdrop-filter:blur(6px);}
+.yt-modal.open{display:flex;}
+.yt-modal-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;max-width:920px;width:100%;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.6);}
+.yt-modal-head{display:flex;justify-content:space-between;align-items:center;padding:0.9rem 1.25rem;border-bottom:1px solid var(--border);background:var(--bg);}
+.yt-modal-title{font-size:14px;font-weight:700;color:var(--ink);}
+.yt-modal-close{background:none;border:1px solid var(--border);color:var(--muted);border-radius:8px;padding:4px 10px;cursor:pointer;font-size:12px;}
+.yt-iframe-wrap{position:relative;padding-bottom:56.25%;height:0;background:#000;}
+.yt-iframe-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+.yt-modal-quote{padding:0.9rem 1.25rem;font-size:12.5px;color:var(--text);background:var(--surface);border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;}
+
+footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:center;font-size:11.5px;color:var(--muted);margin-top:3rem;}
+
+@media(max-width:980px){
+  .kpi-grid{grid-template-columns:repeat(2,1fr);}
+  .view-tabs{grid-template-columns:repeat(2,1fr);position:static;}
+  .net-layout,.matrix-layout,.story-stages,.logic-tree,.member-grid,.anomaly-grid,.archive-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="logo">최승환 · 제천시의회 분석</a>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/council.html" class="active">의회</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">☀ 라이트</button>
+</header>
+
+<main class="container">
+  <!-- Hero -->
+  <section class="hero-box">
+    <div class="hero-top">
+      <div>
+        <div class="hero-eyebrow"><span class="live-dot"></span> 제10대 제천시의회 의정 데이터 인텔리전스 (2026.07 ~ 현재)</div>
+        <h1 class="hero-title">발언 워딩·행간(숨은 뜻)·유기적 관계망 대시보드</h1>
+        <p class="hero-desc">
+          2026년 7월 제10대 개원 이후 제천시의회 공식 유튜브에 업로드된 본회의·상임위·인사청문회·조례 인터뷰 전 영상(80편)의 음성 자막을 전수 추출해 구조화했습니다. 단순 요약이 아니라 <strong>실제 워딩 타임스탬프</strong>, <strong>표면 요구 이면의 행간(숨은 뜻)</strong>, 그리고 다가올 <strong>제364회 정례회(행정사무감사·2027 본예산) 후속 예상 논리</strong>를 유기적 다이어그램으로 연결합니다.
+        </p>
+      </div>
+      <div class="sync-badge">
+        <span>📡 유튜브 자동 동기화 파이프라인</span>
+        <strong id="meta-sync-time">2026-11-10 09:55 KST</strong>
+        <span>채널: 제천시의회 (UCg3R1CA...)</span>
+        <span>매일 09:00 · 19:00 신규 영상 자동 분석</span>
+      </div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-num" id="kpi-videos">80편</div>
+        <div class="kpi-label">2026.07 이후 분석 영상</div>
+        <div class="kpi-sub">생중계 37편 · 녹화·인터뷰 43편</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-num" id="kpi-members">14명</div>
+        <div class="kpi-label">제10대 의원 전수 프로파일</div>
+        <div class="kpi-sub">국민의힘 9명 · 더불어민주당 5명</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-num" id="kpi-speeches">15건</div>
+        <div class="kpi-label">5단계 논리 해부도</div>
+        <div class="kpi-sub">워딩 → 숨은 뜻 → 예상 후속논리</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-num" id="kpi-storylines">5대 줄기</div>
+        <div class="kpi-label">회차 간 인과 흐름도</div>
+        <div class="kpi-sub">제359회(7월) ➔ 제364회(11월)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-num" id="kpi-anomalies">7건</div>
+        <div class="kpi-label">비만장일치·삭감·삭제</div>
+        <div class="kpi-sub">공유재산 삭제 3건 · 표결이탈 3건</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 Interactive View Tabs -->
+  <div class="view-tabs" role="tablist">
+    <button class="view-tab active" onclick="switchView('network', this)">
+      <div class="vt-top"><span class="vt-title">🕸️ 1. 유기적 관계망 &amp; 인과 흐름도</span><span class="vt-count">Flow</span></div>
+      <span class="vt-sub">의원↔핵심현안 네트워크 · 회차 간 5대 서사 진화도</span>
+    </button>
+    <button class="view-tab" onclick="switchView('anatomy', this)">
+      <div class="vt-top"><span class="vt-title">🎯 2. 워딩·숨은 뜻·예상논리 해부</span><span class="vt-count" id="tab-count-speeches">15</span></div>
+      <span class="vt-sub">타임스탬프 원문 재생 + 5단계 논리 트리 다이어그램</span>
+    </button>
+    <button class="view-tab" onclick="switchView('members', this)">
+      <div class="vt-top"><span class="vt-title">📊 3. 의원 14명 성향 매트릭스</span><span class="vt-count">14</span></div>
+      <span class="vt-sub">2x2 포지셔닝 맵 · 5축 레이더 · 의원별 대응 전략</span>
+    </button>
+    <button class="view-tab" onclick="switchView('archive', this)">
+      <div class="vt-top"><span class="vt-title">📺 4. 7월 이후 전 영상 아카이브</span><span class="vt-count" id="tab-count-videos">80</span></div>
+      <span class="vt-sub">제359~363회 본회의·상임위·청문회·인터뷰 검색</span>
+    </button>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- VIEW 1: NETWORK GRAPH & CROSS-SESSION STORYLINES                  -->
+  <!-- ================================================================= -->
+  <section id="view-network" class="view-panel active">
+    <div class="sec-head">
+      <div>
+        <h2 class="sec-title">🕸️ 의원 14명 ↔ 핵심 현안 12건 ↔ 이해관계자 유기적 관계망</h2>
+        <p class="sec-sub">노드를 클릭하면 해당 의원이나 현안에 연결된 발언·공방·이해관계가 우측 패널에 즉시 필터링됩니다. 드래그하여 위치를 조정할 수 있습니다.</p>
+      </div>
+      <button class="yt-btn" onclick="resetNetworkSelection()">↺ 전체 관계망 초기화</button>
+    </div>
+
+    <div class="net-layout">
+      <div class="net-canvas-box">
+        <div class="net-toolbar">
+          <div class="net-legend">
+            <span class="legend-item"><i class="legend-dot" style="background:#e2603f;"></i>국민의힘 의원 (9)</span>
+            <span class="legend-item"><i class="legend-dot" style="background:#58a6ff;"></i>더불어민주당 의원 (5)</span>
+            <span class="legend-item"><i class="legend-dot" style="background:#f2a33a;"></i>핵심 쟁점·예산 현안 (12)</span>
+            <span class="legend-item"><i class="legend-dot" style="background:#a9c46a;"></i>시민·상인·외부기관 (4)</span>
+          </div>
+          <span style="font-size:11px;color:var(--muted);">💡 실선: 주도·압박 / 점선: 제동·삭제·충돌</span>
+        </div>
+        <svg id="network-svg" viewBox="0 0 820 470"></svg>
+      </div>
+
+      <aside class="net-inspector" id="net-inspector">
+        <!-- Populated by JS -->
+      </aside>
+    </div>
+
+    <div class="sec-head">
+      <div>
+        <h2 class="sec-title">🔄 회차 간 현안 진화 인과 흐름도 (7월 개원 ➔ 11월 정례회)</h2>
+        <p class="sec-sub">단발성 발언이 아니라 7월(제359회) 공유재산 삭제부터 9월(제361회) 5분발언, 10~11월(제362~363회) 재상정·부결까지 이어지는 5대 핵심 줄기입니다.</p>
+      </div>
+    </div>
+    <div class="storyline-list" id="storyline-list"></div>
+
+    <div class="sec-head">
+      <div>
+        <h2 class="sec-title">⚡ 비만장일치 표결 · 예산 칼질 · 공유재산 본문 삭제 7대 시그널</h2>
+        <p class="sec-sub">만장일치 관행을 깨고 기권·반대표가 나왔거나 상임위에서 본문이 통째로 삭제된 핵심 충돌 지점입니다.</p>
+      </div>
+    </div>
+    <div class="anomaly-grid" id="anomaly-grid"></div>
+  </section>
+
+  <!-- ================================================================= -->
+  <!-- VIEW 2: 5-STAGE SPEECH & DEBATE LOGIC ANATOMY                     -->
+  <!-- ================================================================= -->
+  <section id="view-anatomy" class="view-panel">
+    <div class="sec-head">
+      <div>
+        <h2 class="sec-title">🎯 발언·워딩·숨은 뜻(행간)·예상 후속논리 5단계 해부도</h2>
+        <p class="sec-sub">타임스탬프 버튼을 누르면 해당 의원의 실제 발언 지점부터 유튜브 영상이 즉시 재생됩니다.</p>
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <select id="filter-member" class="filter-select" onchange="renderSpeeches()">
+        <option value="__all__">👤 전체 의원 (14명)</option>
+      </select>
+      <select id="filter-session" class="filter-select" onchange="renderSpeeches()">
+        <option value="__all__">🏛️ 전체 회기·회의</option>
+        <option value="제363회">제363회 임시회 (11월)</option>
+        <option value="제362회">제362회 임시회 (10월)</option>
+        <option value="제361회">제361회 임시회 (9월)</option>
+        <option value="인사청문">인사청문특위 (8월)</option>
+      </select>
+      <input type="text" id="filter-speech-q" class="filter-input" placeholder="워딩, 부서명, 키워드 검색 (예: 파크골프장, 중앙시장, 출렁다리, 용역)..." oninput="renderSpeeches()">
+    </div>
+
+    <div class="speech-list" id="speech-list"></div>
+  </section>
+
+  <!-- ================================================================= -->
+  <!-- VIEW 3: 14 MEMBERS POSITIONING MATRIX & RADAR PROFILES            -->
+  <!-- ================================================================= -->
+  <section id="view-members" class="view-panel">
+    <div class="sec-head">
+      <div>
+        <h2 class="sec-title">📊 제10대 제천시의원 14명 성향 2x2 포지셔닝 맵 &amp; 5축 레이더</h2>
+        <p class="sec-sub">가로축은 의제 범위(지역구·현장민원 ↔ 거시 정책·재정·제도), 세로축은 집행부 관계(협조·대안제시 ↔ 송곳검증·예산제동)를 나타냅니다.</p>
+      </div>
+    </div>
+
+    <div class="matrix-layout">
+      <div class="matrix-box">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem;">
+          <strong style="font-size:13.5px;color:var(--ink);">🧭 의정 성향 2x2 포지셔닝 매트릭스 (의원 클릭 시 우측 레이더 연동)</strong>
+          <span style="font-size:11.5px;color:var(--muted);">🔴 국민의힘 · 🔵 더불어민주당</span>
+        </div>
+        <svg id="matrix-svg" viewBox="0 0 560 400"></svg>
+      </div>
+
+      <div class="radar-box" id="radar-inspector">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+    <div class="sec-head">
+      <div>
+        <h2 class="sec-title">🗂️ 의원 14명 전수 프로파일 (핵심 관심사 · 비판 패턴 · 숨은 뜻 · 예상 논리)</h2>
+      </div>
+      <div style="display:flex;gap:0.5rem;">
+        <button class="yt-btn" onclick="filterMemberCards('__all__')">전체 (14)</button>
+        <button class="yt-btn" onclick="filterMemberCards('국민의힘')">국민의힘 (9)</button>
+        <button class="yt-btn" onclick="filterMemberCards('더불어민주당')">더불어민주당 (5)</button>
+        <button class="yt-btn" onclick="filterMemberCards('자치행정위원회')">자치행정위</button>
+        <button class="yt-btn" onclick="filterMemberCards('산업건설위원회')">산업건설위</button>
+      </div>
+    </div>
+
+    <div class="member-grid" id="member-grid"></div>
+  </section>
+
+  <!-- ================================================================= -->
+  <!-- VIEW 4: ALL 80 VIDEOS ARCHIVE (SINCE JULY 2026)                   -->
+  <!-- ================================================================= -->
+  <section id="view-archive" class="view-panel">
+    <div class="sec-head">
+      <div>
+        <h2 class="sec-title">📺 2026년 7월 이후 제천시의회 전체 영상 아카이브 (80편 전수 수록)</h2>
+        <p class="sec-sub">제359회~제363회 본회의, 상임위, 인사청문회, 시크한 인터뷰(조례), 의정뉴스 및 공청회 영상을 모두 검색하고 즉시 재생할 수 있습니다.</p>
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <select id="arch-session" class="filter-select" onchange="renderArchive()">
+        <option value="__all__">📂 전체 회기</option>
+        <option value="제363회">제363회 임시회 (2026.11)</option>
+        <option value="제362회">제362회 임시회 (2026.10)</option>
+        <option value="제361회">제361회 임시회 (2026.09)</option>
+        <option value="제360회">제360회 임시회 (2026.07~08)</option>
+        <option value="제359회">제359회 임시회 (2026.07 개원)</option>
+        <option value="인사청문회">김창규 제천문화재단 이사장 인사청문회</option>
+        <option value="시크한 인터뷰">시크한 인터뷰 (조례·의원 대담)</option>
+        <option value="공청회·간담회">정책간담회 · 시민공청회</option>
+        <option value="의정뉴스·홍보">제천시의회 뉴스 · 홍보</option>
+      </select>
+      <select id="arch-type" class="filter-select" onchange="renderArchive()">
+        <option value="__all__">🎬 전체 유형</option>
+        <option value="본회의">본회의</option>
+        <option value="5분 자유발언">5분 자유발언</option>
+        <option value="자치행정위원회">자치행정위원회</option>
+        <option value="산업건설위원회">산업건설위원회</option>
+        <option value="예산결산특별위원회">예산결산특별위원회</option>
+        <option value="의회운영위원회">의회운영위원회</option>
+        <option value="인사청문회">인사청문회</option>
+        <option value="조례·인터뷰">조례·인터뷰</option>
+      </select>
+      <input type="text" id="arch-q" class="filter-input" placeholder="영상 제목, 의원명, 자막 발췌 키워드 검색..." oninput="renderArchive()">
+    </div>
+
+    <div class="archive-grid" id="archive-grid"></div>
+  </section>
+</main>
+
+<!-- YouTube Instant Timestamp Player Modal -->
+<div class="yt-modal" id="yt-modal" onclick="if(event.target===this)closeYtModal()">
+  <div class="yt-modal-box">
+    <div class="yt-modal-head">
+      <div class="yt-modal-title" id="yt-modal-title">영상 재생</div>
+      <button class="yt-modal-close" onclick="closeYtModal()">✕ 닫기</button>
+    </div>
+    <div class="yt-iframe-wrap">
+      <iframe id="yt-iframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="yt-modal-quote">
+      <span id="yt-modal-desc" style="flex:1;"></span>
+      <a id="yt-external-link" href="#" target="_blank" rel="noopener" class="yt-btn">↗ 유튜브 앱/새창으로 열기</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2026 최승환 · 충청북도 제천시청 · 도시경영학 박사과정 · choijc79.github.io
+</footer>
+
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/about.html">👤<br>소개</a>
+  <a href="/research.html">🔬<br>연구</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/council.html">🏛️<br>의회</a>
+</div>
+
+<script src="/data/council_data.js"></script>
+<script>
+// 테마 초기화 및 전환
+(function(){
+  var t = localStorage.getItem('choijc-theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', t);
+  var btn = document.getElementById('theme-toggle');
+  if (btn) btn.textContent = t === 'dark' ? '☀ 라이트' : '☾ 다크';
+})();
+function toggleTheme(){
+  var cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', cur);
+  localStorage.setItem('choijc-theme', cur);
+  var btn = document.getElementById('theme-toggle');
+  if (btn) btn.textContent = cur === 'dark' ? '☀ 라이트' : '☾ 다크';
+}
+
+const DATA = window.COUNCIL_DATA || { members:[], storylines:[], speeches:[], network:{nodes:[],edges:[]}, anomalies:[], videos:[] };
+let selectedNetNodeId = 'i_market';
+let selectedMemberId = 'kim_jeongmun';
+let currentMemberFilter = '__all__';
+
+// 탭 전환
+function switchView(viewName, btnEl) {
+  document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.view-tab').forEach(b => b.classList.remove('active'));
+  const target = document.getElementById('view-' + viewName);
+  if (target) target.classList.add('active');
+  if (btnEl) btnEl.classList.add('active');
+}
+
+// 유튜브 타임스탬프 모달 열기
+function openYtModal(videoId, startSec, title, quoteText) {
+  const modal = document.getElementById('yt-modal');
+  const iframe = document.getElementById('yt-iframe');
+  const sec = Math.max(0, parseInt(startSec || 0, 10));
+  document.getElementById('yt-modal-title').textContent = title || '제천시의회 영상 재생';
+  document.getElementById('yt-modal-desc').textContent = quoteText ? ('💬 "' + quoteText + '"') : '타임스탬프 지점부터 자동 재생됩니다.';
+  document.getElementById('yt-external-link').href = `https://www.youtube.com/watch?v=${videoId}&t=${sec}s`;
+  iframe.src = `https://www.youtube.com/embed/${videoId}?start=${sec}&autoplay=1&rel=0`;
+  modal.classList.add('open');
+}
+function closeYtModal() {
+  const modal = document.getElementById('yt-modal');
+  const iframe = document.getElementById('yt-iframe');
+  iframe.src = '';
+  modal.classList.remove('open');
+}
+
+// ============================================================================
+// 1. 유기적 관계망 SVG 렌더링 (드래그 & 클릭 필터링 지원)
+// ============================================================================
+const nodePositions = {};
+function initNetworkLayout() {
+  const nodes = DATA.network.nodes;
+  const members = nodes.filter(n => n.group === 'member_ppp' || n.group === 'member_dpk');
+  const issues = nodes.filter(n => n.group === 'issue');
+  const actors = nodes.filter(n => n.group === 'actor');
+
+  // 좌측 아치: 의원 14명
+  members.forEach((n, idx) => {
+    const col = idx % 2;
+    const row = Math.floor(idx / 2);
+    nodePositions[n.id] = { x: 95 + col * 105, y: 48 + row * 60 };
+  });
+  // 중앙~우측: 핵심 현안 12건
+  issues.forEach((n, idx) => {
+    const col = idx % 2;
+    const row = Math.floor(idx / 2);
+    nodePositions[n.id] = { x: 375 + col * 175, y: 55 + row * 68 };
+  });
+  // 최우측: 외부 이해관계자 4건
+  actors.forEach((n, idx) => {
+    nodePositions[n.id] = { x: 725, y: 85 + idx * 95 };
+  });
+}
+
+function getNodeColor(group) {
+  if (group === 'member_ppp') return '#e2603f';
+  if (group === 'member_dpk') return '#58a6ff';
+  if (group === 'issue') return '#f2a33a';
+  return '#a9c46a';
+}
+
+function renderNetworkGraph() {
+  const svg = document.getElementById('network-svg');
+  if (!svg) return;
+  const nodes = DATA.network.nodes;
+  const edges = DATA.network.edges;
+
+  const connectedEdges = selectedNetNodeId
+    ? edges.filter(e => e.source === selectedNetNodeId || e.target === selectedNetNodeId)
+    : edges;
+  const connectedNodeIds = new Set();
+  if (selectedNetNodeId) {
+    connectedNodeIds.add(selectedNetNodeId);
+    connectedEdges.forEach(e => { connectedNodeIds.add(e.source); connectedNodeIds.add(e.target); });
+  }
+
+  let html = '';
+  // Edges
+  edges.forEach(e => {
+    const p1 = nodePositions[e.source];
+    const p2 = nodePositions[e.target];
+    if (!p1 || !p2) return;
+    const isHi = !selectedNetNodeId || (e.source === selectedNetNodeId || e.target === selectedNetNodeId);
+    const stroke = e.type === 'block' ? '#e2603f' : (e.type === 'lead' ? '#f2a33a' : '#8b949e');
+    const dash = e.type === 'block' ? '5,4' : '';
+    const op = isHi ? 0.88 : 0.14;
+    const sw = isHi ? 2.2 : 1;
+    const mx = (p1.x + p2.x) / 2;
+    const my = (p1.y + p2.y) / 2;
+    html += `<line x1="${p1.x}" y1="${p1.y}" x2="${p2.x}" y2="${p2.y}" stroke="${stroke}" stroke-width="${sw}" stroke-dasharray="${dash}" opacity="${op}" />`;
+    if (isHi && selectedNetNodeId) {
+      html += `<rect x="${mx - 42}" y="${my - 9}" width="84" height="16" rx="4" fill="#1b1612" stroke="${stroke}" stroke-width="0.8" opacity="0.92"/>`;
+      html += `<text x="${mx}" y="${my + 3}" text-anchor="middle" fill="#efe4cf" font-size="9.5" font-weight="600">${e.label}</text>`;
+    }
+  });
+
+  // Nodes
+  nodes.forEach(n => {
+    const pos = nodePositions[n.id];
+    if (!pos) return;
+    const isHi = !selectedNetNodeId || connectedNodeIds.has(n.id);
+    const isSel = n.id === selectedNetNodeId;
+    const col = getNodeColor(n.group);
+    const r = n.group === 'issue' ? 16 : (n.group === 'actor' ? 14 : 14);
+    const op = isHi ? 1 : 0.22;
+    html += `<g class="net-node" data-id="${n.id}" transform="translate(${pos.x},${pos.y})" style="opacity:${op};cursor:pointer;">`;
+    if (isSel) {
+      html += `<circle r="${r + 6}" fill="none" stroke="${col}" stroke-width="2" stroke-dasharray="3,2"/>`;
+    }
+    html += `<circle r="${r}" fill="${col}" stroke="#1b1612" stroke-width="2"/>`;
+    html += `<text y="${r + 13}" text-anchor="middle" fill="var(--ink)" font-size="11" font-weight="${isSel ? '700' : '600'}">${n.label}</text>`;
+    html += `</g>`;
+  });
+
+  svg.innerHTML = html;
+
+  // Bind click & drag
+  svg.querySelectorAll('.net-node').forEach(g => {
+    const id = g.getAttribute('data-id');
+    g.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      selectedNetNodeId = id;
+      renderNetworkGraph();
+      renderNetworkInspector();
+    });
+  });
+}
+
+function resetNetworkSelection() {
+  selectedNetNodeId = null;
+  renderNetworkGraph();
+  renderNetworkInspector();
+}
+
+function renderNetworkInspector() {
+  const box = document.getElementById('net-inspector');
+  if (!box) return;
+  if (!selectedNetNodeId) {
+    box.innerHTML = `
+      <div>
+        <span class="insp-badge" style="background:rgba(242,163,58,0.15);color:var(--accent);">전체 관계망 보기 모드</span>
+        <h3 class="insp-title">노드를 클릭해 상세 연결망을 확인하세요</h3>
+        <p style="font-size:12.5px;color:var(--muted);margin-top:0.4rem;">
+          좌측의 의원(14명), 중앙의 핵심 현안(12건), 우측의 이해관계자(4곳) 중 아무 노드나 클릭하면 연결된 발언·표결·숨은 뜻이 여기에 표시됩니다.
+        </p>
+      </div>
+    `;
+    return;
+  }
+
+  const node = DATA.network.nodes.find(n => n.id === selectedNetNodeId);
+  const edges = DATA.network.edges.filter(e => e.source === selectedNetNodeId || e.target === selectedNetNodeId);
+  const member = DATA.members.find(m => m.id === selectedNetNodeId);
+
+  let badgeLabel = '핵심 쟁점·예산 현안';
+  if (node.group === 'member_ppp') badgeLabel = '국민의힘 의원';
+  if (node.group === 'member_dpk') badgeLabel = '더불어민주당 의원';
+  if (node.group === 'actor') badgeLabel = '시민·상인·외부기관';
+
+  let connHtml = edges.map(e => {
+    const otherId = e.source === selectedNetNodeId ? e.target : e.source;
+    const otherNode = DATA.network.nodes.find(n => n.id === otherId);
+    const dir = e.source === selectedNetNodeId ? '➔' : '⬅';
+    return `
+      <div class="insp-conn-item" onclick="selectedNetNodeId='${otherId}';renderNetworkGraph();renderNetworkInspector();">
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <strong style="color:var(--ink);">${dir} ${otherNode ? otherNode.label : otherId}</strong>
+          <span style="font-size:11px;color:var(--accent);font-weight:600;">${e.label}</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  let memberExtra = '';
+  if (member) {
+    memberExtra = `
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;font-size:12px;display:flex;flex-direction:column;gap:0.45rem;">
+        <div><strong style="color:var(--accent);">소속·직책:</strong> ${member.role} (${member.committee} · ${member.district})</div>
+        <div><strong style="color:var(--accent);">의정 스타일:</strong> ${member.styleTag}</div>
+        <div><strong style="color:var(--amber);">🔍 숨은 뜻(행간):</strong> ${member.subtext}</div>
+        <div><strong style="color:var(--purple);">🔮 예상 후속논리:</strong> ${member.nextLogic}</div>
+      </div>
+    `;
+  }
+
+  // Find related speeches
+  const relSpeeches = DATA.speeches.filter(s =>
+    s.memberId === selectedNetNodeId ||
+    (node && (s.title.includes(node.label.split(' ')[0]) || s.department.includes(node.label.split(' ')[0])))
+  );
+
+  let spHtml = relSpeeches.map(s => `
+    <div class="insp-conn-item" onclick="openYtModal('${s.videoId}', ${s.quotes[0]?.sec || 0}, '${s.memberName} — ${s.title}', '${(s.quotes[0]?.text || '').replace(/'/g, '')}')">
+      <div style="font-size:11px;color:var(--accent);font-weight:600;">▶ ${s.session} · ${s.memberName} (${s.quotes[0]?.time || '00:00'})</div>
+      <div style="font-weight:700;color:var(--ink);margin-top:0.15rem;">${s.title}</div>
+    </div>
+  `).join('');
+
+  box.innerHTML = `
+    <div>
+      <span class="insp-badge" style="background:rgba(242,163,58,0.16);color:var(--accent);">${badgeLabel}</span>
+      <h3 class="insp-title">${node ? node.label : selectedNetNodeId}</h3>
+      <p style="font-size:12px;color:var(--muted);margin-top:0.15rem;">${node?.role || ''} ${node?.committee ? '· ' + node.committee : ''}</p>
+    </div>
+    ${memberExtra}
+    <div>
+      <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:0.35rem;">🔗 직접 연결된 관계망 (${edges.length}건)</div>
+      <div class="insp-conn-list">${connHtml || '<div style="font-size:12px;color:var(--muted);">연결 항목 없음</div>'}</div>
+    </div>
+    ${relSpeeches.length ? `
+    <div>
+      <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:0.35rem;">🎙️ 관련 핵심 발언 바로 재생 (${relSpeeches.length}건)</div>
+      <div class="insp-conn-list">${spHtml}</div>
+    </div>` : ''}
+  `;
+}
+
+// ============================================================================
+// 2. 회차 간 인과 흐름도 & 비만장일치 표결 렌더링
+// ============================================================================
+function renderStorylines() {
+  const wrap = document.getElementById('storyline-list');
+  if (!wrap) return;
+  wrap.innerHTML = DATA.storylines.map(st => `
+    <article class="story-card">
+      <div class="story-head">
+        <div>
+          <span class="story-cat">${st.category}</span>
+          <h3 class="story-title" style="margin-top:0.35rem;">${st.title}</h3>
+        </div>
+        <span style="font-size:11.5px;color:var(--muted);">참여 의원: <strong style="color:var(--ink);">${st.members.join(', ')}</strong></span>
+      </div>
+      <p class="story-summary">${st.summary}</p>
+      <div class="story-stages">
+        ${st.stages.map((sg, idx) => `
+          <div class="stage-node ${sg.status}">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <span class="stage-step-num">STAGE ${idx + 1}</span>
+              <span class="stage-session">${sg.session} (${sg.date})</span>
+            </div>
+            <div class="stage-label">${sg.label}</div>
+            <p class="stage-detail">${sg.detail}</p>
+            <div class="stage-actors">👤 ${sg.actors}</div>
+            ${sg.videoId ? `
+              <button class="yt-btn" style="margin-top:0.4rem;width:100%;justify-content:center;" onclick="openYtModal('${sg.videoId}', ${sg.sec || 0}, '${st.title} — ${sg.label}', '${sg.detail.replace(/'/g, '')}')">
+                ▶ ${sg.session.split(' ')[0]} 영상 확인
+              </button>
+            ` : ''}
+          </div>
+        `).join('')}
+      </div>
+    </article>
+  `).join('');
+
+  const anomWrap = document.getElementById('anomaly-grid');
+  if (anomWrap) {
+    anomWrap.innerHTML = DATA.anomalies.map(a => `
+      <div class="anomaly-card">
+        <div class="anomaly-top">
+          <span style="font-size:11.5px;color:var(--muted);font-weight:600;">${a.session} · ${a.date}</span>
+          <span class="anomaly-badge">${a.result}</span>
+        </div>
+        <div class="anomaly-title">${a.agenda}</div>
+        <div style="font-size:12px;color:var(--accent2);font-weight:600;">표결·처리 내역: ${a.voteDetail}</div>
+        <div class="anomaly-sub"><strong>🔍 행간 의미:</strong> ${a.meaning}</div>
+        <div style="display:flex;justify-content:flex-end;margin-top:0.2rem;">
+          <button class="yt-btn" onclick="openYtModal('${a.videoId}', ${a.sec}, '${a.agenda}', '${a.meaning.replace(/'/g, '')}')">
+            ▶ [${a.time}] 표결·심사 현장 재생
+          </button>
+        </div>
+      </div>
+    `).join('');
+  }
+}
+
+// ============================================================================
+// 3. View 2: 5단계 발언·워딩·숨은 뜻 해부도 렌더링
+// ============================================================================
+function initSpeechFilters() {
+  const sel = document.getElementById('filter-member');
+  if (!sel) return;
+  DATA.members.forEach(m => {
+    const opt = document.createElement('option');
+    opt.value = m.id;
+    opt.textContent = `${m.name} (${m.party} · ${m.role})`;
+    sel.appendChild(opt);
+  });
+}
+
+function renderSpeeches() {
+  const mVal = document.getElementById('filter-member')?.value || '__all__';
+  const sVal = document.getElementById('filter-session')?.value || '__all__';
+  const qVal = (document.getElementById('filter-speech-q')?.value || '').trim().toLowerCase();
+
+  const filtered = DATA.speeches.filter(sp => {
+    if (mVal !== '__all__' && sp.memberId !== mVal) return false;
+    if (sVal !== '__all__' && !sp.session.includes(sVal)) return false;
+    if (qVal) {
+      const hay = [
+        sp.memberName, sp.title, sp.session, sp.department,
+        sp.logicTree.phenomenon, sp.logicTree.quoteSummary,
+        sp.logicTree.surfaceDemand, sp.logicTree.hiddenIntent,
+        sp.logicTree.expectedNext, ...(sp.quotes.map(q => q.text))
+      ].join(' ').toLowerCase();
+      if (!hay.includes(qVal)) return false;
+    }
+    return true;
+  });
+
+  const wrap = document.getElementById('speech-list');
+  if (!wrap) return;
+
+  wrap.innerHTML = filtered.map(sp => {
+    const mem = DATA.members.find(m => m.id === sp.memberId);
+    const pClass = mem?.party === '국민의힘' ? 'party-ppp' : 'party-dpk';
+    return `
+      <article class="speech-card">
+        <div class="sp-header">
+          <div>
+            <span class="sp-member-pill">
+              <i class="party-dot ${pClass}"></i>
+              ${sp.memberName} 의원 <small style="color:var(--muted);font-weight:400;">(${mem ? mem.committee : ''})</small>
+            </span>
+            <h3 class="sp-title">${sp.title}</h3>
+            <div class="sp-meta">
+              <span>📅 ${sp.date}</span>
+              <span>🏛️ ${sp.session} (${sp.type})</span>
+              <span>🎯 대상 부서: <strong style="color:var(--accent);">${sp.department}</strong></span>
+            </div>
+          </div>
+          <button class="yt-btn" onclick="openYtModal('${sp.videoId}', ${sp.quotes[0]?.sec || 0}, '${sp.memberName} — ${sp.title}', '${(sp.quotes[0]?.text || '').replace(/'/g, '')}')">
+            ▶ [${sp.quotes[0]?.time || '00:00'}] 원본 영상 재생
+          </button>
+        </div>
+
+        <!-- 5단계 논리 해부 트리 -->
+        <div class="logic-tree">
+          <div class="logic-step">
+            <div class="ls-head"><span>① 현장·배경 현상</span><span>Fact</span></div>
+            <div class="ls-body">${sp.logicTree.phenomenon}</div>
+          </div>
+          <div class="logic-step">
+            <div class="ls-head"><span>② 핵심 워딩 요지</span><span>Wording</span></div>
+            <div class="ls-body" style="font-weight:600;color:var(--ink);">"${sp.logicTree.quoteSummary}"</div>
+          </div>
+          <div class="logic-step">
+            <div class="ls-head"><span>③ 표면 요구사항</span><span>Demand</span></div>
+            <div class="ls-body">${sp.logicTree.surfaceDemand}</div>
+          </div>
+          <div class="logic-step step-subtext">
+            <div class="ls-head"><span>④ 🔍 숨은 뜻 (행간)</span><span>Subtext</span></div>
+            <div class="ls-body">${sp.logicTree.hiddenIntent}</div>
+          </div>
+          <div class="logic-step step-next">
+            <div class="ls-head"><span>⑤ 🔮 후속 예상 논리</span><span>Forecast</span></div>
+            <div class="ls-body">${sp.logicTree.expectedNext}</div>
+          </div>
+        </div>
+
+        <!-- 실제 발언 타임스탬프 인용구 -->
+        <div class="quotes-box">
+          <div style="font-size:11.5px;font-weight:700;color:var(--muted);">🎙️ 실제 발언 워딩 (클릭 시 해당 초(sec)로 즉시 이동)</div>
+          ${sp.quotes.map(q => `
+            <div class="quote-row">
+              <button class="yt-btn" onclick="openYtModal('${sp.videoId}', ${q.sec}, '${sp.memberName} — ${sp.title}', '${q.text.replace(/'/g, '')}')">
+                ▶ ${q.time}
+              </button>
+              <blockquote>"${q.text}"</blockquote>
+            </div>
+          `).join('')}
+        </div>
+      </article>
+    `;
+  }).join('');
+}
+
+// ============================================================================
+// 4. View 3: 의원 14명 2x2 포지셔닝 맵 & 5축 레이더 & 프로파일 카드
+// ============================================================================
+function renderMatrixAndRadar() {
+  const svg = document.getElementById('matrix-svg');
+  if (!svg) return;
+  const W = 560, H = 400, pad = 44;
+  const cx = W / 2, cy = H / 2;
+
+  let html = `
+    <!-- Quadrant Backgrounds -->
+    <rect x="${pad}" y="${pad}" width="${cx - pad}" height="${cy - pad}" fill="rgba(226,96,63,0.04)" />
+    <rect x="${cx}" y="${pad}" width="${cx - pad}" height="${cy - pad}" fill="rgba(242,163,58,0.05)" />
+    <rect x="${pad}" y="${cy}" width="${cx - pad}" height="${cy - pad}" fill="rgba(127,179,200,0.04)" />
+    <rect x="${cx}" y="${cy}" width="${cx - pad}" height="${cy - pad}" fill="rgba(169,196,106,0.04)" />
+
+    <!-- Axes -->
+    <line x1="${pad}" y1="${cy}" x2="${W - pad}" y2="${cy}" stroke="var(--border)" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <line x1="${cx}" y1="${pad}" x2="${cx}" y2="${H - pad}" stroke="var(--border)" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+    <!-- Axis Labels -->
+    <text x="${cx}" y="22" text-anchor="middle" fill="var(--amber)" font-size="11.5" font-weight="700">▲ 집행부 강성 견제 · 예산 제동 · 송곳 검증</text>
+    <text x="${cx}" y="${H - 12}" text-anchor="middle" fill="var(--green)" font-size="11.5" font-weight="700">▼ 집행부 협조 · 조례 입법 · 대안 제시</text>
+    <text x="14" y="${cy - 8}" text-anchor="start" fill="var(--muted)" font-size="11" font-weight="600">◀ 지역구·현장민원 밀착</text>
+    <text x="${W - 14}" y="${cy - 8}" text-anchor="end" fill="var(--muted)" font-size="11" font-weight="600">거시 정책·재정·제도 ▶</text>
+  `;
+
+  DATA.members.forEach(m => {
+    const x = cx + (m.x / 100) * (cx - pad - 24);
+    const y = cy - (m.y / 100) * (cy - pad - 24);
+    const col = m.party === '국민의힘' ? '#e2603f' : '#58a6ff';
+    const isSel = m.id === selectedMemberId;
+    html += `<g style="cursor:pointer;" onclick="selectMember('${m.id}')">`;
+    if (isSel) {
+      html += `<circle cx="${x}" cy="${y}" r="15" fill="none" stroke="var(--accent2)" stroke-width="2.2" stroke-dasharray="3,2"/>`;
+    }
+    html += `<circle cx="${x}" cy="${y}" r="${isSel ? 9.5 : 7.5}" fill="${col}" stroke="#1b1612" stroke-width="2"/>`;
+    html += `<text x="${x}" y="${y - 12}" text-anchor="middle" fill="var(--ink)" font-size="11" font-weight="${isSel ? '700' : '600'}">${m.name}</text>`;
+    html += `</g>`;
+  });
+
+  svg.innerHTML = html;
+  renderRadarBox();
+}
+
+function renderRadarBox() {
+  const box = document.getElementById('radar-inspector');
+  if (!box) return;
+  const m = DATA.members.find(x => x.id === selectedMemberId) || DATA.members[0];
+  if (!m) return;
+
+  const labels = ['예산·재정 검증', '정책·제도 설계', '현장·상권 밀착', '집행부 압박강도', '조례·대안 입법'];
+  const vals = [m.radar.budget, m.radar.policy, m.radar.field, m.radar.critique, m.radar.legislation];
+  const cx = 150, cy = 122, maxR = 82;
+
+  let gridHtml = '';
+  [0.25, 0.5, 0.75, 1].forEach(level => {
+    const pts = labels.map((_, i) => {
+      const ang = -Math.PI / 2 + (i * 2 * Math.PI) / 5;
+      return `${cx + Math.cos(ang) * maxR * level},${cy + Math.sin(ang) * maxR * level}`;
+    }).join(' ');
+    gridHtml += `<polygon points="${pts}" fill="none" stroke="var(--border)" stroke-width="1"/>`;
+  });
+
+  let axisHtml = '';
+  const dataPts = labels.map((lb, i) => {
+    const ang = -Math.PI / 2 + (i * 2 * Math.PI) / 5;
+    const gx = cx + Math.cos(ang) * maxR;
+    const gy = cy + Math.sin(ang) * maxR;
+    const lx = cx + Math.cos(ang) * (maxR + 24);
+    const ly = cy + Math.sin(ang) * (maxR + 16);
+    axisHtml += `<line x1="${cx}" y1="${cy}" x2="${gx}" y2="${gy}" stroke="var(--border)" stroke-width="1"/>`;
+    axisHtml += `<text x="${lx}" y="${ly + 4}" text-anchor="middle" fill="var(--muted)" font-size="10.5" font-weight="600">${lb}(${vals[i]})</text>`;
+    const r = (vals[i] / 100) * maxR;
+    return `${cx + Math.cos(ang) * r},${cy + Math.sin(ang) * r}`;
+  }).join(' ');
+
+  const col = m.party === '국민의힘' ? '#e2603f' : '#58a6ff';
+
+  box.innerHTML = `
+    <div class="radar-top">
+      <div>
+        <span style="font-size:11.5px;color:${col};font-weight:700;">● ${m.party} · ${m.committee}</span>
+        <h3 style="font-family:var(--font-display);font-size:1.25rem;color:var(--ink);margin-top:0.15rem;">${m.name} 의원 (${m.role})</h3>
+        <div style="font-size:12px;color:var(--muted);">지역구: ${m.district} | 스타일: <strong style="color:var(--accent2);">${m.styleTag}</strong></div>
+      </div>
+    </div>
+    <svg id="radar-svg" viewBox="0 0 300 245">
+      ${gridHtml}
+      ${axisHtml}
+      <polygon points="${dataPts}" fill="${col}" fill-opacity="0.28" stroke="${col}" stroke-width="2.2"/>
+    </svg>
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;font-size:12px;display:flex;flex-direction:column;gap:0.4rem;">
+      <div><strong style="color:var(--accent);">핵심 워딩:</strong> "${m.signatureQuote.text}"</div>
+      <div><strong style="color:var(--amber);">🔍 숨은 뜻:</strong> ${m.subtext}</div>
+      <div><strong style="color:var(--purple);">🔮 예상 논리:</strong> ${m.nextLogic}</div>
+      <div style="display:flex;justify-content:flex-end;margin-top:0.2rem;">
+        <button class="yt-btn" onclick="openYtModal('${m.signatureQuote.videoId}', ${m.signatureQuote.sec}, '${m.name} 의원 대표 발언', '${m.signatureQuote.text.replace(/'/g, '')}')">
+          ▶ [${m.signatureQuote.time}] 대표 워딩 영상 재생
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+function selectMember(id) {
+  selectedMemberId = id;
+  renderMatrixAndRadar();
+  document.querySelectorAll('.member-card').forEach(c => {
+    c.classList.toggle('selected', c.getAttribute('data-id') === id);
+  });
+}
+
+function filterMemberCards(filterVal) {
+  currentMemberFilter = filterVal;
+  renderMemberCards();
+}
+
+function renderMemberCards() {
+  const wrap = document.getElementById('member-grid');
+  if (!wrap) return;
+  const list = DATA.members.filter(m => {
+    if (currentMemberFilter === '__all__') return true;
+    return m.party === currentMemberFilter || m.committee === currentMemberFilter;
+  });
+
+  wrap.innerHTML = list.map(m => {
+    const pClass = m.party === '국민의힘' ? 'party-ppp' : 'party-dpk';
+    const isSel = m.id === selectedMemberId ? 'selected' : '';
+    return `
+      <article class="member-card ${isSel}" data-id="${m.id}" onclick="selectMember('${m.id}')">
+        <div class="mc-top">
+          <div>
+            <div class="mc-name"><i class="party-dot ${pClass}"></i>${m.name} <span class="mc-role">${m.role}</span></div>
+            <div class="mc-district">${m.party} · ${m.committee} · 선거구(${m.district})</div>
+          </div>
+          <span class="mc-style">${m.styleTag}</span>
+        </div>
+        <div class="mc-tags">
+          ${m.interests.map(t => `<span class="mc-tag">#${t}</span>`).join('')}
+        </div>
+        <div class="mc-anatomy">
+          <div class="mc-row"><strong>📌 핵심 요구:</strong>${m.demands}</div>
+          <div class="mc-row"><strong>⚡ 비판 스타일:</strong>${m.criticismStyle}</div>
+          <div class="mc-row subtext"><strong>🔍 숨은 뜻(행간):</strong>${m.subtext}</div>
+          <div class="mc-row nextlogic"><strong>🔮 11월 정례회 예상논리:</strong>${m.nextLogic}</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:0.6rem;padding-top:0.2rem;">
+          <span style="font-size:11.5px;color:var(--muted);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">💬 "${m.signatureQuote.text}"</span>
+          <button class="yt-btn" onclick="event.stopPropagation();openYtModal('${m.signatureQuote.videoId}', ${m.signatureQuote.sec}, '${m.name} 의원 (${m.signatureQuote.session})', '${m.signatureQuote.text.replace(/'/g, '')}')">
+            ▶ ${m.signatureQuote.time}
+          </button>
+        </div>
+      </article>
+    `;
+  }).join('');
+}
+
+// ============================================================================
+// 5. View 4: 80 Videos Archive 렌더링
+// ============================================================================
+function renderArchive() {
+  const sVal = document.getElementById('arch-session')?.value || '__all__';
+  const tVal = document.getElementById('arch-type')?.value || '__all__';
+  const qVal = (document.getElementById('arch-q')?.value || '').trim().toLowerCase();
+
+  const list = DATA.videos.filter(v => {
+    if (sVal !== '__all__' && v.session !== sVal) return false;
+    if (tVal !== '__all__' && v.type !== tVal) return false;
+    if (qVal) {
+      const hay = `${v.title} ${v.session} ${v.type} ${v.excerpt || ''}`.toLowerCase();
+      if (!hay.includes(qVal)) return false;
+    }
+    return true;
+  });
+
+  const wrap = document.getElementById('archive-grid');
+  if (!wrap) return;
+  wrap.innerHTML = list.map(v => `
+    <div class="vid-card">
+      <div>
+        <div class="vid-top">
+          <span><span class="vid-badge">${v.session}</span> · ${v.type}</span>
+          <span style="font-family:var(--font-mono);">${v.date} (${v.durationStr})</span>
+        </div>
+        <div class="vid-title" style="margin-top:0.45rem;">${v.title}</div>
+        <p class="vid-Excerpt" style="margin-top:0.35rem;">${v.excerpt || '자막 데이터 분석 완료'}</p>
+      </div>
+      <div class="vid-foot">
+        <span style="font-size:11px;color:var(--muted);">자막 ${v.lineCount || 0}줄 수록</span>
+        <button class="yt-btn" onclick="openYtModal('${v.id}', 0, '${v.title.replace(/'/g, '')}', '')">
+          ▶ 영상 바로보기
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+
+// 초기화 실행
+document.addEventListener('DOMContentLoaded', () => {
+  if (DATA.meta) {
+    document.getElementById('meta-sync-time').textContent = DATA.meta.generatedAt + ' KST';
+    document.getElementById('kpi-videos').textContent = DATA.videos.length + '편';
+    document.getElementById('tab-count-videos').textContent = DATA.videos.length;
+    document.getElementById('tab-count-speeches').textContent = DATA.speeches.length;
+  }
+  initNetworkLayout();
+  renderNetworkGraph();
+  renderNetworkInspector();
+  renderStorylines();
+  initSpeechFilters();
+  renderSpeeches();
+  renderMatrixAndRadar();
+  renderMemberCards();
+  renderArchive();
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+</body>
+</html>
