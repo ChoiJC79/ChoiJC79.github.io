@@ -853,6 +853,7 @@ def main():
     push_local("macallan.html",                      "update macallan")
     push_local("whisky.html",                        "update whisky")
     push_local("tour.html",                          "update tour")
+    push_local("jisikinside.html",                   "update jisikinside")
     push_local("taipei_travel_plan_v10_upgrade.html","update taipei")
     push_local("vietnam_moto_guide.html",            "update vietnam")
     push_local("vietnam-motorbike-tour.html",        "update vietnam north tour")
