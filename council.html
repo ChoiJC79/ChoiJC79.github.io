@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>제천시의회 의정분석 | 최승환</title>
-<meta name="description" content="제10대 제천시의회(2026.07~현재) 80편 회의·발언 전수 분석. 의원 14명 성향 매트릭스, 핵심 워딩 타임스탬프, 숨은 뜻(행간)과 후속 예상 논리, 회차 간 인과 흐름도.">
+<meta name="description" content="제10대 제천시의회(2026.07~현재) 80편 회의·발언 전수 분석. 의원 14명 성향 매트릭스, 핵심 워딩 타임스탬프와 후속 예상 논리, 회차 간 인과 흐름도.">
 <meta property="og:title" content="제천시의회 의정분석 | 최승환">
-<meta property="og:description" content="제10대 제천시의회(2026.07~현재) 회의·발언 전수 분석. 의원별 핵심 워딩, 숨은 뜻(행간), 후속 예상 논리와 유기적 관계망 대시보드.">
+<meta property="og:description" content="제10대 제천시의회(2026.07~현재) 회의·발언 전수 분석. 의원별 핵심 워딩, 후속 예상 논리와 유기적 관계망 대시보드.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://choijc79.github.io/council.html">
 <meta property="og:site_name" content="최승환 · Jecheon">
@@ -53,7 +53,7 @@ a{color:var(--accent);text-decoration:none;}
 .kpi-sub{font-size:11px;color:var(--muted);margin-top:0.1rem;}
 
 /* ── View Tabs ── */
-.view-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:0.65rem;margin-bottom:1.8rem;position:sticky;top:62px;z-index:95;background:color-mix(in srgb,var(--bg) 88%,transparent);padding:0.55rem;border:1px solid var(--border);border-radius:14px;backdrop-filter:blur(12px);}
+.view-tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:0.65rem;margin-bottom:1.8rem;position:sticky;top:62px;z-index:95;background:color-mix(in srgb,var(--bg) 88%,transparent);padding:0.55rem;border:1px solid var(--border);border-radius:14px;backdrop-filter:blur(12px);}
 .view-tab{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:0.85rem 1rem;cursor:pointer;text-align:left;transition:transform 0.15s ease,border-color 0.2s,background 0.2s;color:var(--muted);font-family:var(--font-body);}
 .view-tab:hover{border-color:var(--accent);color:var(--ink);}
 .view-tab.active{background:color-mix(in srgb,var(--accent) 16%,var(--surface));border-color:var(--accent);color:var(--ink);box-shadow:0 4px 14px rgba(0,0,0,0.2);}
@@ -132,7 +132,7 @@ a{color:var(--accent);text-decoration:none;}
 .yt-btn:hover{background:color-mix(in srgb,var(--red) 28%,var(--bg));transform:translateY(-1px);}
 
 /* 5-Stage Logic Tree */
-.logic-tree{display:grid;grid-template-columns:repeat(5,1fr);gap:0.65rem;margin-bottom:1.1rem;}
+.logic-tree{display:grid;grid-template-columns:repeat(4,1fr);gap:0.65rem;margin-bottom:1.1rem;}
 .logic-step{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.9rem;display:flex;flex-direction:column;gap:0.35rem;position:relative;}
 .logic-step.step-subtext{border-color:var(--amber);background:color-mix(in srgb,var(--amber) 8%,var(--bg));}
 .logic-step.step-next{border-color:var(--purple);background:color-mix(in srgb,var(--purple) 8%,var(--bg));}
@@ -168,6 +168,17 @@ a{color:var(--accent);text-decoration:none;}
 
 /* ── View 4: 80 Videos Archive ── */
 .archive-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0.85rem;}
+.qa-meeting{margin-bottom:1.6rem;}
+.qa-meeting>h3{font-size:15px;margin:0 0 0.7rem;color:var(--ink);}
+.qa-dept{border-left:3px solid var(--accent);padding-left:0.9rem;margin:0 0 1rem;}
+.qa-dept>h4{font-size:13px;margin:0 0 0.5rem;color:var(--muted);}
+.qa-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:0.8rem 1rem;margin-bottom:0.5rem;font-size:13px;line-height:1.7;}
+.qa-card .qa-top{display:flex;gap:0.6rem;align-items:center;flex-wrap:wrap;margin-bottom:0.35rem;}
+.qa-card .qa-who{font-weight:700;color:var(--ink);}
+.qa-card .qa-preview{color:var(--muted);}
+.qa-card details summary{cursor:pointer;color:var(--accent);font-size:12px;margin-top:0.3rem;}
+.qa-card details p{margin:0.5rem 0 0;color:var(--ink);white-space:pre-wrap;overflow-wrap:anywhere;}
+.qa-note{font-size:12px;color:var(--muted);margin:-0.6rem 0 1rem;}
 .vid-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.05rem 1.2rem;display:flex;flex-direction:column;gap:0.5rem;justify-content:space-between;}
 .vid-top{display:flex;justify-content:space-between;align-items:center;gap:0.5rem;font-size:11px;color:var(--muted);}
 .vid-badge{padding:2px 8px;border-radius:5px;background:var(--bg);border:1px solid var(--border);color:var(--accent);font-weight:600;}
@@ -217,9 +228,9 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
     <div class="hero-top">
       <div>
         <div class="hero-eyebrow"><span class="live-dot"></span> 제10대 제천시의회 의정 데이터 인텔리전스 (2026.07 ~ 현재)</div>
-        <h1 class="hero-title">발언 워딩·행간(숨은 뜻)·유기적 관계망 대시보드</h1>
+        <h1 class="hero-title">발언 워딩·유기적 관계망 대시보드</h1>
         <p class="hero-desc">
-          2026년 7월 제10대 개원 이후 제천시의회 공식 유튜브에 업로드된 본회의·상임위·인사청문회·조례 인터뷰 전 영상(80편)의 음성 자막을 전수 추출해 구조화했습니다. 단순 요약이 아니라 <strong>실제 워딩 타임스탬프</strong>, <strong>표면 요구 이면의 행간(숨은 뜻)</strong>, 그리고 다가올 <strong>제364회 정례회(행정사무감사·2027 본예산) 후속 예상 논리</strong>를 유기적 다이어그램으로 연결합니다.
+          2026년 7월 제10대 개원 이후 제천시의회 공식 유튜브에 업로드된 본회의·상임위·인사청문회·조례 인터뷰 전 영상(80편)의 음성 자막을 전수 추출해 구조화했습니다. 단순 요약이 아니라 <strong>실제 워딩 타임스탬프</strong>와 다가올 <strong>제364회 정례회(행정사무감사·2027 본예산) 후속 예상 논리</strong>를 유기적 다이어그램으로 연결합니다.
         </p>
       </div>
       <div class="sync-badge">
@@ -243,8 +254,8 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
       </div>
       <div class="kpi-card">
         <div class="kpi-num" id="kpi-speeches">15건</div>
-        <div class="kpi-label">5단계 논리 해부도</div>
-        <div class="kpi-sub">워딩 → 숨은 뜻 → 예상 후속논리</div>
+        <div class="kpi-label">4단계 논리 해부도</div>
+        <div class="kpi-sub">워딩 → 요구사항 → 예상 후속논리</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-num" id="kpi-storylines">5대 줄기</div>
@@ -266,8 +277,8 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
       <span class="vt-sub">의원↔핵심현안 네트워크 · 회차 간 5대 서사 진화도</span>
     </button>
     <button class="view-tab" onclick="switchView('anatomy', this)">
-      <div class="vt-top"><span class="vt-title">🎯 2. 워딩·숨은 뜻·예상논리 해부</span><span class="vt-count" id="tab-count-speeches">15</span></div>
-      <span class="vt-sub">타임스탬프 원문 재생 + 5단계 논리 트리 다이어그램</span>
+      <div class="vt-top"><span class="vt-title">🎯 2. 워딩·요구·예상논리 해부</span><span class="vt-count" id="tab-count-speeches">15</span></div>
+      <span class="vt-sub">타임스탬프 원문 재생 + 4단계 논리 트리 다이어그램</span>
     </button>
     <button class="view-tab" onclick="switchView('members', this)">
       <div class="vt-top"><span class="vt-title">📊 3. 의원 14명 성향 매트릭스</span><span class="vt-count">14</span></div>
@@ -276,6 +287,10 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
     <button class="view-tab" onclick="switchView('archive', this)">
       <div class="vt-top"><span class="vt-title">📺 4. 7월 이후 전 영상 아카이브</span><span class="vt-count" id="tab-count-videos">80</span></div>
       <span class="vt-sub">제359~363회 본회의·상임위·청문회·인터뷰 검색</span>
+    </button>
+    <button class="view-tab" onclick="switchView('qa', this)">
+      <div class="vt-top"><span class="vt-title">💬 5. 회의·부서별 질의응답</span><span class="vt-count" id="tab-count-qa">0</span></div>
+      <span class="vt-sub">의원 질의 ↔ 집행부 답변 원문 · 타임스탬프 재생</span>
     </button>
   </div>
 
@@ -333,7 +348,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
   <section id="view-anatomy" class="view-panel">
     <div class="sec-head">
       <div>
-        <h2 class="sec-title">🎯 발언·워딩·숨은 뜻(행간)·예상 후속논리 5단계 해부도</h2>
+        <h2 class="sec-title">🎯 발언·워딩·요구사항·예상 후속논리 4단계 해부도</h2>
         <p class="sec-sub">타임스탬프 버튼을 누르면 해당 의원의 실제 발언 지점부터 유튜브 영상이 즉시 재생됩니다.</p>
       </div>
     </div>
@@ -382,7 +397,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
 
     <div class="sec-head">
       <div>
-        <h2 class="sec-title">🗂️ 의원 14명 전수 프로파일 (핵심 관심사 · 비판 패턴 · 숨은 뜻 · 예상 논리)</h2>
+        <h2 class="sec-title">🗂️ 의원 14명 전수 프로파일 (핵심 관심사 · 비판 패턴 · 예상 논리)</h2>
       </div>
       <div style="display:flex;gap:0.5rem;">
         <button class="yt-btn" onclick="filterMemberCards('__all__')">전체 (14)</button>
@@ -436,6 +451,24 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
 
     <div class="archive-grid" id="archive-grid"></div>
   </section>
+
+  <!-- VIEW 5: 회의·부서별 질의응답 (data/qa_data.js, scripts/build_qa_data.py 로 생성) -->
+  <section id="view-qa" class="view-panel">
+    <div class="sec-head">
+      <div>
+        <h2 class="sec-title">💬 회의별 · 부서별 의원 질의응답</h2>
+        <p class="sec-sub">상임위·본회의 자막에서 의원 질의와 집행부 답변을 회의 → 부서 순으로 묶었습니다. 시각 버튼을 누르면 그 지점부터 재생됩니다.</p>
+      </div>
+    </div>
+    <div class="filter-bar">
+      <select id="qa-meeting" class="filter-select" onchange="renderQA()"><option value="__all__">📂 전체 회의</option></select>
+      <select id="qa-dept" class="filter-select" onchange="renderQA()"><option value="__all__">🏢 전체 부서</option></select>
+      <select id="qa-member" class="filter-select" onchange="renderQA()"><option value="__all__">👤 전체 의원</option></select>
+      <input type="text" id="qa-q" class="filter-input" placeholder="질의·답변 내용 검색 (예: 유수율, 파크골프, 용역)..." oninput="renderQA()">
+    </div>
+    <p class="qa-note" id="qa-note"></p>
+    <div id="qa-list"></div>
+  </section>
 </main>
 
 <!-- YouTube Instant Timestamp Player Modal -->
@@ -468,6 +501,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
 </div>
 
 <script src="/data/council_data.js"></script>
+<script src="/data/qa_data.js"></script>
 <script>
 // 테마 초기화 및 전환
 (function(){
@@ -730,7 +764,7 @@ function renderNetworkInspector() {
         <span class="insp-badge" style="background:rgba(242,163,58,0.15);color:var(--accent);">전체 관계망 보기 모드</span>
         <h3 class="insp-title">노드를 클릭해 상세 연결망을 확인하세요</h3>
         <p style="font-size:12.5px;color:var(--muted);margin-top:0.4rem;">
-          좌측의 의원(14명), 중앙의 핵심 현안(12건), 우측의 이해관계자(4곳) 중 아무 노드나 클릭하면 연결된 발언·표결·숨은 뜻이 여기에 표시됩니다.
+          좌측의 의원(14명), 중앙의 핵심 현안(12건), 우측의 이해관계자(4곳) 중 아무 노드나 클릭하면 연결된 발언·표결이 여기에 표시됩니다.
         </p>
       </div>
     `;
@@ -766,7 +800,6 @@ function renderNetworkInspector() {
       <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;font-size:12px;display:flex;flex-direction:column;gap:0.45rem;">
         <div><strong style="color:var(--accent);">소속·직책:</strong> ${member.role} (${member.committee} · ${member.district})</div>
         <div><strong style="color:var(--accent);">의정 스타일:</strong> ${member.styleTag}</div>
-        <div><strong style="color:var(--amber);">🔍 숨은 뜻(행간):</strong> ${member.subtext}</div>
         <div><strong style="color:var(--purple);">🔮 예상 후속논리:</strong> ${member.nextLogic}</div>
       </div>
     `;
@@ -851,9 +884,8 @@ function renderStorylines() {
         </div>
         <div class="anomaly-title">${a.agenda}</div>
         <div style="font-size:12px;color:var(--accent2);font-weight:600;">표결·처리 내역: ${a.voteDetail}</div>
-        <div class="anomaly-sub"><strong>🔍 행간 의미:</strong> ${a.meaning}</div>
         <div style="display:flex;justify-content:flex-end;margin-top:0.2rem;">
-          <button class="yt-btn" onclick="openYtModal('${a.videoId}', ${a.sec}, '${a.agenda}', '${a.meaning.replace(/'/g, '')}')">
+          <button class="yt-btn" onclick="openYtModal('${a.videoId}', ${a.sec}, '${a.agenda}', '')">
             ▶ [${a.time}] 표결·심사 현장 재생
           </button>
         </div>
@@ -863,7 +895,7 @@ function renderStorylines() {
 }
 
 // ============================================================================
-// 3. View 2: 5단계 발언·워딩·숨은 뜻 해부도 렌더링
+// 3. View 2: 4단계 발언·워딩 해부도 렌더링
 // ============================================================================
 function initSpeechFilters() {
   const sel = document.getElementById('filter-member');
@@ -888,7 +920,7 @@ function renderSpeeches() {
       const hay = [
         sp.memberName, sp.title, sp.session, sp.department,
         sp.logicTree.phenomenon, sp.logicTree.quoteSummary,
-        sp.logicTree.surfaceDemand, sp.logicTree.hiddenIntent,
+        sp.logicTree.surfaceDemand,
         sp.logicTree.expectedNext, ...(sp.quotes.map(q => q.text))
       ].join(' ').toLowerCase();
       if (!hay.includes(qVal)) return false;
@@ -922,7 +954,7 @@ function renderSpeeches() {
           </button>
         </div>
 
-        <!-- 5단계 논리 해부 트리 -->
+        <!-- 4단계 논리 해부 트리 -->
         <div class="logic-tree">
           <div class="logic-step">
             <div class="ls-head"><span>① 현장·배경 현상</span><span>Fact</span></div>
@@ -936,12 +968,8 @@ function renderSpeeches() {
             <div class="ls-head"><span>③ 표면 요구사항</span><span>Demand</span></div>
             <div class="ls-body">${sp.logicTree.surfaceDemand}</div>
           </div>
-          <div class="logic-step step-subtext">
-            <div class="ls-head"><span>④ 🔍 숨은 뜻 (행간)</span><span>Subtext</span></div>
-            <div class="ls-body">${sp.logicTree.hiddenIntent}</div>
-          </div>
           <div class="logic-step step-next">
-            <div class="ls-head"><span>⑤ 🔮 후속 예상 논리</span><span>Forecast</span></div>
+            <div class="ls-head"><span>④ 🔮 후속 예상 논리</span><span>Forecast</span></div>
             <div class="ls-body">${sp.logicTree.expectedNext}</div>
           </div>
         </div>
@@ -1057,7 +1085,6 @@ function renderRadarBox() {
     </svg>
     <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;font-size:12px;display:flex;flex-direction:column;gap:0.4rem;">
       <div><strong style="color:var(--accent);">핵심 워딩:</strong> "${m.signatureQuote.text}"</div>
-      <div><strong style="color:var(--amber);">🔍 숨은 뜻:</strong> ${m.subtext}</div>
       <div><strong style="color:var(--purple);">🔮 예상 논리:</strong> ${m.nextLogic}</div>
       <div style="display:flex;justify-content:flex-end;margin-top:0.2rem;">
         <button class="yt-btn" onclick="openYtModal('${m.signatureQuote.videoId}', ${m.signatureQuote.sec}, '${m.name} 의원 대표 발언', '${m.signatureQuote.text.replace(/'/g, '')}')">
@@ -1107,7 +1134,6 @@ function renderMemberCards() {
         <div class="mc-anatomy">
           <div class="mc-row"><strong>📌 핵심 요구:</strong>${m.demands}</div>
           <div class="mc-row"><strong>⚡ 비판 스타일:</strong>${m.criticismStyle}</div>
-          <div class="mc-row subtext"><strong>🔍 숨은 뜻(행간):</strong>${m.subtext}</div>
           <div class="mc-row nextlogic"><strong>🔮 11월 정례회 예상논리:</strong>${m.nextLogic}</div>
         </div>
         <div style="display:flex;justify-content:space-between;align-items:center;gap:0.6rem;padding-top:0.2rem;">
@@ -1161,6 +1187,54 @@ function renderArchive() {
   `).join('');
 }
 
+// 5. 회의·부서별 질의응답
+const QA = window.QA_DATA || [];
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function initQAFilters() {
+  const fill = (id, vals) => document.getElementById(id).insertAdjacentHTML('beforeend',
+    vals.map(v => `<option value="${esc(v)}">${esc(v)}</option>`).join(''));
+  fill('qa-meeting', [...new Set(QA.map(q => q.title))]);
+  fill('qa-dept', [...new Set(QA.map(q => q.dept))].sort((a, b) => a.localeCompare(b, 'ko')));
+  fill('qa-member', [...new Set(QA.map(q => q.member))].sort((a, b) => a.localeCompare(b, 'ko')));
+  document.getElementById('tab-count-qa').textContent = QA.length;
+  document.getElementById('qa-list').addEventListener('click', e => {
+    const b = e.target.closest('[data-vid]');
+    if (b) openYtModal(b.dataset.vid, b.dataset.sec, b.dataset.title, '');
+  });
+}
+function renderQA() {
+  const val = id => document.getElementById(id).value;
+  const [mt, dp, mb, kw] = [val('qa-meeting'), val('qa-dept'), val('qa-member'), val('qa-q').trim()];
+  const rows = QA.filter(q => (mt === '__all__' || q.title === mt) && (dp === '__all__' || q.dept === dp)
+    && (mb === '__all__' || q.member === mb) && (!kw || q.text.includes(kw)));
+  const groups = new Map();  // 회의 → 부서 → 질의 (데이터는 최신 회의 순 정렬됨)
+  rows.forEach(q => {
+    if (!groups.has(q.title)) groups.set(q.title, new Map());
+    const d = groups.get(q.title);
+    if (!d.has(q.dept)) d.set(q.dept, []);
+    d.get(q.dept).push(q);
+  });
+  let html = '';
+  groups.forEach((depts, title) => {
+    html += `<div class="qa-meeting"><h3>📅 ${esc(title)}</h3>`;
+    depts.forEach((qs, dept) => {
+      html += `<div class="qa-dept"><h4>🏢 ${esc(dept)} · ${qs.length}건</h4>`;
+      qs.sort((a, b) => a.sec - b.sec).forEach(q => {
+        const head = q.text.slice(0, 220);
+        html += `<article class="qa-card"><div class="qa-top"><span class="qa-who">${esc(q.member)} 의원</span>
+          <button class="yt-btn" data-vid="${esc(q.vid)}" data-sec="${q.sec}" data-title="${esc(q.member + ' — ' + dept)}">▶ ${esc(q.ts)}</button></div>
+          <div class="qa-preview">${esc(head)}${q.text.length > 220 ? '…' : ''}</div>
+          ${q.text.length > 220 ? `<details><summary>질의응답 전체 보기 (${q.text.length.toLocaleString()}자)</summary><p>${esc(q.text)}</p></details>` : ''}</article>`;
+      });
+      html += '</div>';
+    });
+    html += '</div>';
+  });
+  document.getElementById('qa-note').textContent =
+    `${rows.length}건 · 유튜브 자동자막 기반이라 오탈자가 있고, 질문과 답변 화자는 구분되지 않습니다. 정확한 내용은 영상으로 확인하세요.`;
+  document.getElementById('qa-list').innerHTML = html || '<p class="qa-note">조건에 맞는 질의가 없습니다.</p>';
+}
+
 // 초기화 실행
 document.addEventListener('DOMContentLoaded', () => {
   if (DATA.meta) {
@@ -1169,15 +1243,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('tab-count-videos').textContent = DATA.videos.length;
     document.getElementById('tab-count-speeches').textContent = DATA.speeches.length;
   }
-  initNetworkLayout();
-  renderNetworkGraph();
-  renderNetworkInspector();
-  renderStorylines();
-  initSpeechFilters();
-  renderSpeeches();
-  renderMatrixAndRadar();
-  renderMemberCards();
-  renderArchive();
+  // 단계별 격리: 한 탭의 데이터 불일치가 다른 탭 렌더링을 막지 않도록
+  [initNetworkLayout, renderNetworkGraph, renderNetworkInspector, renderStorylines, initSpeechFilters,
+   renderSpeeches, renderMatrixAndRadar, renderMemberCards, renderArchive, initQAFilters, renderQA]
+    .forEach(fn => { try { fn(); } catch (e) { console.error(fn.name, e); } });
 });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
