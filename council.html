@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>제천시의회 의정분석 | 최승환</title>
-<meta name="description" content="제10대 제천시의회(2026.07~현재) 80편 회의·발언 전수 분석. 의원 14명 성향 매트릭스, 핵심 워딩 타임스탬프와 후속 예상 논리, 회차 간 인과 흐름도.">
+<meta name="description" content="제10대 제천시의회(2026.07~현재) 80편 회의·발언 전수 분석. 의원 14명 성향 매트릭스, 핵심 워딩 타임스탬프, 의미 해석과 후속 예상 논리, 회차 간 인과 흐름도.">
 <meta property="og:title" content="제천시의회 의정분석 | 최승환">
-<meta property="og:description" content="제10대 제천시의회(2026.07~현재) 회의·발언 전수 분석. 의원별 핵심 워딩, 후속 예상 논리와 유기적 관계망 대시보드.">
+<meta property="og:description" content="제10대 제천시의회(2026.07~현재) 회의·발언 전수 분석. 의원별 핵심 워딩, 의미 해석, 후속 예상 논리와 유기적 관계망 대시보드.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://choijc79.github.io/council.html">
 <meta property="og:site_name" content="최승환 · Jecheon">
@@ -132,7 +132,7 @@ a{color:var(--accent);text-decoration:none;}
 .yt-btn:hover{background:color-mix(in srgb,var(--red) 28%,var(--bg));transform:translateY(-1px);}
 
 /* 5-Stage Logic Tree */
-.logic-tree{display:grid;grid-template-columns:repeat(4,1fr);gap:0.65rem;margin-bottom:1.1rem;}
+.logic-tree{display:grid;grid-template-columns:repeat(5,1fr);gap:0.65rem;margin-bottom:1.1rem;}
 .logic-step{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.9rem;display:flex;flex-direction:column;gap:0.35rem;position:relative;}
 .logic-step.step-subtext{border-color:var(--amber);background:color-mix(in srgb,var(--amber) 8%,var(--bg));}
 .logic-step.step-next{border-color:var(--purple);background:color-mix(in srgb,var(--purple) 8%,var(--bg));}
@@ -228,9 +228,9 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
     <div class="hero-top">
       <div>
         <div class="hero-eyebrow"><span class="live-dot"></span> 제10대 제천시의회 의정 데이터 인텔리전스 (2026.07 ~ 현재)</div>
-        <h1 class="hero-title">발언 워딩·유기적 관계망 대시보드</h1>
+        <h1 class="hero-title">발언 워딩·의미 해석·유기적 관계망 대시보드</h1>
         <p class="hero-desc">
-          2026년 7월 제10대 개원 이후 제천시의회 공식 유튜브에 업로드된 본회의·상임위·인사청문회·조례 인터뷰 전 영상(80편)의 음성 자막을 전수 추출해 구조화했습니다. 단순 요약이 아니라 <strong>실제 워딩 타임스탬프</strong>와 다가올 <strong>제364회 정례회(행정사무감사·2027 본예산) 후속 예상 논리</strong>를 유기적 다이어그램으로 연결합니다.
+          2026년 7월 제10대 개원 이후 제천시의회 공식 유튜브에 업로드된 본회의·상임위·인사청문회·조례 인터뷰 전 영상(80편)의 음성 자막을 전수 추출해 구조화했습니다. 단순 요약이 아니라 <strong>실제 워딩 타임스탬프</strong>, <strong>표면 요구 이면의 의미 해석</strong>, 그리고 다가올 <strong>제364회 정례회(행정사무감사·2027 본예산) 후속 예상 논리</strong>를 유기적 다이어그램으로 연결합니다.
         </p>
       </div>
       <div class="sync-badge">
@@ -254,8 +254,8 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
       </div>
       <div class="kpi-card">
         <div class="kpi-num" id="kpi-speeches">15건</div>
-        <div class="kpi-label">4단계 논리 해부도</div>
-        <div class="kpi-sub">워딩 → 요구사항 → 예상 후속논리</div>
+        <div class="kpi-label">5단계 논리 해부도</div>
+        <div class="kpi-sub">워딩 → 의미 해석 → 예상 후속논리</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-num" id="kpi-storylines">5대 줄기</div>
@@ -277,8 +277,8 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
       <span class="vt-sub">의원↔핵심현안 네트워크 · 회차 간 5대 서사 진화도</span>
     </button>
     <button class="view-tab" onclick="switchView('anatomy', this)">
-      <div class="vt-top"><span class="vt-title">🎯 2. 워딩·요구·예상논리 해부</span><span class="vt-count" id="tab-count-speeches">15</span></div>
-      <span class="vt-sub">타임스탬프 원문 재생 + 4단계 논리 트리 다이어그램</span>
+      <div class="vt-top"><span class="vt-title">🎯 2. 워딩·의미 해석·예상논리 해부</span><span class="vt-count" id="tab-count-speeches">15</span></div>
+      <span class="vt-sub">타임스탬프 원문 재생 + 5단계 논리 트리 다이어그램</span>
     </button>
     <button class="view-tab" onclick="switchView('members', this)">
       <div class="vt-top"><span class="vt-title">📊 3. 의원 14명 성향 매트릭스</span><span class="vt-count">14</span></div>
@@ -348,7 +348,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
   <section id="view-anatomy" class="view-panel">
     <div class="sec-head">
       <div>
-        <h2 class="sec-title">🎯 발언·워딩·요구사항·예상 후속논리 4단계 해부도</h2>
+        <h2 class="sec-title">🎯 발언·워딩·의미 해석·예상 후속논리 5단계 해부도</h2>
         <p class="sec-sub">타임스탬프 버튼을 누르면 해당 의원의 실제 발언 지점부터 유튜브 영상이 즉시 재생됩니다.</p>
       </div>
     </div>
@@ -397,7 +397,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
 
     <div class="sec-head">
       <div>
-        <h2 class="sec-title">🗂️ 의원 14명 전수 프로파일 (핵심 관심사 · 비판 패턴 · 예상 논리)</h2>
+        <h2 class="sec-title">🗂️ 의원 14명 전수 프로파일 (핵심 관심사 · 비판 패턴 · 의미 해석 · 예상 논리)</h2>
       </div>
       <div style="display:flex;gap:0.5rem;">
         <button class="yt-btn" onclick="filterMemberCards('__all__')">전체 (14)</button>
@@ -764,7 +764,7 @@ function renderNetworkInspector() {
         <span class="insp-badge" style="background:rgba(242,163,58,0.15);color:var(--accent);">전체 관계망 보기 모드</span>
         <h3 class="insp-title">노드를 클릭해 상세 연결망을 확인하세요</h3>
         <p style="font-size:12.5px;color:var(--muted);margin-top:0.4rem;">
-          좌측의 의원(14명), 중앙의 핵심 현안(12건), 우측의 이해관계자(4곳) 중 아무 노드나 클릭하면 연결된 발언·표결이 여기에 표시됩니다.
+          좌측의 의원(14명), 중앙의 핵심 현안(12건), 우측의 이해관계자(4곳) 중 아무 노드나 클릭하면 연결된 발언·표결·의미 해석이 여기에 표시됩니다.
         </p>
       </div>
     `;
@@ -800,6 +800,7 @@ function renderNetworkInspector() {
       <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;font-size:12px;display:flex;flex-direction:column;gap:0.45rem;">
         <div><strong style="color:var(--accent);">소속·직책:</strong> ${member.role} (${member.committee} · ${member.district})</div>
         <div><strong style="color:var(--accent);">의정 스타일:</strong> ${member.styleTag}</div>
+        <div><strong style="color:var(--amber);">🔍 의미 해석:</strong> ${member.subtext}</div>
         <div><strong style="color:var(--purple);">🔮 예상 후속논리:</strong> ${member.nextLogic}</div>
       </div>
     `;
@@ -884,8 +885,9 @@ function renderStorylines() {
         </div>
         <div class="anomaly-title">${a.agenda}</div>
         <div style="font-size:12px;color:var(--accent2);font-weight:600;">표결·처리 내역: ${a.voteDetail}</div>
+        <div class="anomaly-sub"><strong>🔍 행간 의미:</strong> ${a.meaning}</div>
         <div style="display:flex;justify-content:flex-end;margin-top:0.2rem;">
-          <button class="yt-btn" onclick="openYtModal('${a.videoId}', ${a.sec}, '${a.agenda}', '')">
+          <button class="yt-btn" onclick="openYtModal('${a.videoId}', ${a.sec}, '${a.agenda}', '${a.meaning.replace(/'/g, '')}')">
             ▶ [${a.time}] 표결·심사 현장 재생
           </button>
         </div>
@@ -895,7 +897,7 @@ function renderStorylines() {
 }
 
 // ============================================================================
-// 3. View 2: 4단계 발언·워딩 해부도 렌더링
+// 3. View 2: 5단계 발언·워딩·의미 해석 해부도 렌더링
 // ============================================================================
 function initSpeechFilters() {
   const sel = document.getElementById('filter-member');
@@ -920,7 +922,7 @@ function renderSpeeches() {
       const hay = [
         sp.memberName, sp.title, sp.session, sp.department,
         sp.logicTree.phenomenon, sp.logicTree.quoteSummary,
-        sp.logicTree.surfaceDemand,
+        sp.logicTree.surfaceDemand, sp.logicTree.hiddenIntent,
         sp.logicTree.expectedNext, ...(sp.quotes.map(q => q.text))
       ].join(' ').toLowerCase();
       if (!hay.includes(qVal)) return false;
@@ -954,7 +956,7 @@ function renderSpeeches() {
           </button>
         </div>
 
-        <!-- 4단계 논리 해부 트리 -->
+        <!-- 5단계 논리 해부 트리 -->
         <div class="logic-tree">
           <div class="logic-step">
             <div class="ls-head"><span>① 현장·배경 현상</span><span>Fact</span></div>
@@ -968,8 +970,12 @@ function renderSpeeches() {
             <div class="ls-head"><span>③ 표면 요구사항</span><span>Demand</span></div>
             <div class="ls-body">${sp.logicTree.surfaceDemand}</div>
           </div>
+          <div class="logic-step step-subtext">
+            <div class="ls-head"><span>④ 🔍 의미 해석</span><span>Subtext</span></div>
+            <div class="ls-body">${sp.logicTree.hiddenIntent}</div>
+          </div>
           <div class="logic-step step-next">
-            <div class="ls-head"><span>④ 🔮 후속 예상 논리</span><span>Forecast</span></div>
+            <div class="ls-head"><span>⑤ 🔮 후속 예상 논리</span><span>Forecast</span></div>
             <div class="ls-body">${sp.logicTree.expectedNext}</div>
           </div>
         </div>
@@ -1085,6 +1091,7 @@ function renderRadarBox() {
     </svg>
     <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;font-size:12px;display:flex;flex-direction:column;gap:0.4rem;">
       <div><strong style="color:var(--accent);">핵심 워딩:</strong> "${m.signatureQuote.text}"</div>
+      <div><strong style="color:var(--amber);">🔍 의미 해석:</strong> ${m.subtext}</div>
       <div><strong style="color:var(--purple);">🔮 예상 논리:</strong> ${m.nextLogic}</div>
       <div style="display:flex;justify-content:flex-end;margin-top:0.2rem;">
         <button class="yt-btn" onclick="openYtModal('${m.signatureQuote.videoId}', ${m.signatureQuote.sec}, '${m.name} 의원 대표 발언', '${m.signatureQuote.text.replace(/'/g, '')}')">
@@ -1134,6 +1141,7 @@ function renderMemberCards() {
         <div class="mc-anatomy">
           <div class="mc-row"><strong>📌 핵심 요구:</strong>${m.demands}</div>
           <div class="mc-row"><strong>⚡ 비판 스타일:</strong>${m.criticismStyle}</div>
+          <div class="mc-row subtext"><strong>🔍 의미 해석:</strong>${m.subtext}</div>
           <div class="mc-row nextlogic"><strong>🔮 11월 정례회 예상논리:</strong>${m.nextLogic}</div>
         </div>
         <div style="display:flex;justify-content:space-between;align-items:center;gap:0.6rem;padding-top:0.2rem;">
