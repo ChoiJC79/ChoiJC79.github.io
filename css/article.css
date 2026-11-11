@@ -43,3 +43,7 @@
   .a-body { font-size: 14px; }
   .art-nav { padding: 1.5rem 1.2rem 3rem; }
 }
+
+/* 모바일 머리 메뉴: 다른 칼럼(build_columns.py)과 같은 기준 */
+@media (max-width: 900px) { .hd-nav { display: none; } }
+@media (max-width: 600px) { .hd-inner { padding: 0 1.2rem; gap: 0.8rem; } }

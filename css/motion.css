@@ -1,4 +1,8 @@
 /* 사이트 공통 CSS 모션: 페이지 전환 크로스페이드·첫 화면 제목 등장·누름 반응 (스크롤 등장은 js/motion.js) */
+/* 모바일 글자 기준 맞춤: iOS·안드로이드가 가로 화면에서 글자를 임의로 키우지 않게 하고, 긴 단어·주소는 화면 폭에서 줄을 바꾼다 */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { overflow-wrap: break-word; }
+
 @media (prefers-reduced-motion: no-preference) {
   /* 같은 사이트 안에서 페이지를 옮길 때 부드럽게 겹쳐 바뀜 (지원 브라우저만) */
   @view-transition { navigation: auto; }
