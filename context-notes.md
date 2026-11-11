@@ -102,3 +102,10 @@
 - **홈 첫 화면 = 1979 라운지 조감도 (2026-11-10)**: 운영자가 준 라운지 조감도(img/lounge1979.jpg)를 홈 맨 위에 두고 물건마다 메뉴를 연결(문=소개, 위스키 선반=위스키, 바=1979 라운지, 책장=연구, 턴테이블=칼럼, 스크린=유튜브, 탁자=정리노트, 라운지 체어=가이드, 커튼=의회, 소파=방명록). 장면에 마우스를 올리면 탭 전체가 옅게, 가리킨 물건은 또렷하게 떠오름(css/lounge-hero.css). 터치 기기는 탭 대신 그림 아래 칩 목록. 기존 카세트·목차는 그 아래 유지. index.css가 `nav` 태그를 전역 고정 메뉴로 꾸미므로 새 목록은 div를 씀.
 
 - **council.html 빈 화면 수정 (2026-11-10)**: Antigravity가 만든 화면 코드와 data/council_data.js의 필드 이름이 달라(노드 group member/stakeholder↔member_ppp/actor, 의원 노드 ID m_kimjm↔kim_jeongmun, keyAnomalies↔anomalies, meta.updatedAt↔generatedAt, steps↔stages, exactQuotes↔quotes, logicTree 키 등) 첫 렌더에서 오류가 나 관계망 이하 전 구역이 비었음. 함수는 그대로 두고 DATA 직후 adaptCouncilData()에서 데이터를 화면 기준 모양으로 변환. 데이터 생성기를 고칠 때는 이 변환과 맞춰야 함.
+
+- **진로 나침반 공개 진로검사 (2026-11-11)**: 운영자 딸(고1 진학 예정)의 진로 탐색용으로 시작했으나 운영자 결정으로 누구나 쓰는 공개 도구로 운영. 페이지에 특정 학생 이름을 넣지 않는다. 응답은 운영자 구글 시트로 Apps Script 전송(운영자 선택).
+  - 문항 출처: 성격 50문항은 공개 도메인 IPIP Big-Five Factor Markers(Goldberg, 1992) 번역(역문항 18개, 원키 그대로). 흥미·진로적응력은 Holland RIASEC·Savickas 4C 개념에 맞춰 새로 쓴 문항. O*NET 흥미검사는 번역 시 개발자 라이선스의 타당화 의무가 있어, CAAS는 이용 조건 미확인이라 문항을 쓰지 않음. 한국 규준이 없으므로 결과는 개인 안의 상대적 높낮이로만 해석하고 커리어넷 검사로 보완하라고 화면에 밝힌다.
+  - 개인정보: 공개 페이지가 다른 학생 응답까지 받게 되므로 실명·연락처·학교명은 받지 않고 별칭·학년·응답만 수집. 전송은 기본값이 아니라 동의 체크 후에만, 만 14세 미만은 보호자 동의 확인란. 보관 기간을 화면에 적는다(1년 후 삭제 권장).
+  - 전송 방식: GitHub Pages는 서버가 없어 `fetch(ENDPOINT,{method:'POST',mode:'no-cors',body:text/plain})`. no-cors라 응답을 읽을 수 없으므로 "보냈습니다"는 요청 완료 기준이며 시트에서 확인해야 한다. 엔드포인트 URL은 공개 페이지에 노출되므로 스크립트 쪽에서 형식·크기 검사와 분당 상한, 수식 주입 방지를 한다.
+  - 모션: 사이트 공통 js/motion.js가 `section,article,.card,.step,[data-motion]` 등을 자동 등장시키므로 이 페이지는 해당 태그·클래스를 쓰지 않고 `cc-` 접두 클래스와 div만 쓴다. 화면 전환은 Motion.animate(transform·opacity, easeOut 0.28s), 동작 줄이기·CDN 실패 시 즉시 전환.
+  - 검증(2026-11-11): Playwright로 1280px·375px에서 전 문항 응답 → 흥미 코드 RIA(설계값과 일치), 성격 전부 5 응답 시 외향 3.0·친화 3.4·성실 3.4·정서안정 1.8·개방 3.8로 키(역문항 18개) 수작업 계산과 일치, 가로 넘침 없음, 페이지 오류 0. 전송 본문은 Apps Script 검사(isNums_)를 통과하고, `=`로 시작하는 서술은 clip_이 `'`를 붙여 수식 실행을 막는다.
