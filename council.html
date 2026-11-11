@@ -216,6 +216,60 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
   .view-tabs{grid-template-columns:repeat(2,1fr);position:static;}
   .net-layout,.matrix-layout,.story-stages,.logic-tree,.member-grid,.anomaly-grid,.archive-grid{grid-template-columns:1fr;}
 }
+/* ── 편집 디자인 덧씌움: 둥근 상자·광택·이중 상자를 걷어내고 가는 선과 활자로 위계를 만든다 ── */
+:root{--hair:color-mix(in srgb,var(--ink) 13%,transparent);--hair2:color-mix(in srgb,var(--ink) 30%,transparent);}
+.hero-box{background:transparent;border:0;border-top:1px solid var(--ink);border-bottom:1px solid var(--hair);border-radius:0;box-shadow:none;padding:1.5rem 0 0;overflow:visible;}
+.hero-box::before{display:none;}
+.hero-eyebrow{font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--muted);letter-spacing:0.08em;margin-bottom:0.8rem;}
+.hero-title{font-size:clamp(1.6rem,3.4vw,2.45rem);letter-spacing:-0.025em;line-height:1.28;margin-bottom:0.8rem;}
+.hero-desc{font-size:14px;}
+.hero-desc strong{font-weight:600;color:var(--ink);}
+.sync-badge{background:transparent;border:0;border-left:1px solid var(--hair);border-radius:0;padding:0.15rem 0 0.15rem 1.1rem;}
+.kpi-grid{gap:0;border-top:1px solid var(--hair);padding-top:0;margin-top:1.6rem;}
+.kpi-card{background:transparent;border:0;border-left:1px solid var(--hair);border-radius:0;padding:1.05rem 1.15rem 1.1rem;}
+.kpi-card:first-child{border-left:0;padding-left:0;}
+.kpi-num{font-family:var(--font-display);font-size:1.95rem;font-weight:700;color:var(--ink);letter-spacing:-0.02em;}
+.kpi-label{font-weight:500;margin-top:0.3rem;}
+.view-tabs{gap:0;padding:0;border:0;border-bottom:1px solid var(--hair);border-radius:0;box-shadow:none;background:var(--bg);margin-bottom:2.2rem;}
+.view-tab{background:transparent;border:0;border-radius:0;box-shadow:none;padding:0.95rem 1rem 0.9rem;}
+.view-tab:hover,.view-tab.active{background:transparent;border:0;box-shadow:none;}
+.vt-title{font-weight:600;color:var(--muted);transition:color 0.2s ease;}
+.view-tab:hover .vt-title,.view-tab.active .vt-title{color:var(--ink);}
+.vt-no{font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--accent);margin-right:0.5rem;}
+.vt-count{background:transparent;border:0;padding:0;color:var(--muted);}
+.vt-ind{position:absolute;left:0;bottom:-1px;width:100px;height:2px;background:var(--ink);transform-origin:0 50%;transform:scaleX(0);pointer-events:none;}
+.sec-head{position:relative;border-top:1px solid var(--hair);padding-top:1.15rem;margin-top:2.6rem;}
+.sec-head:first-child{margin-top:0;}
+.sec-rule{position:absolute;left:0;top:-1px;width:64px;height:1px;background:var(--ink);transform-origin:0 50%;}
+.sec-title{font-size:1.32rem;letter-spacing:-0.02em;}
+.story-card,.anomaly-card,.speech-card,.member-card,.vid-card,.qa-card,.pl-box,.filter-bar,.net-canvas-box,.net-inspector,.matrix-box,.radar-box,.yt-modal-box{border-radius:4px;border-color:var(--hair);box-shadow:none;}
+.story-card:hover,.speech-card:hover,.member-card:hover,.vid-card:hover,.anomaly-card:hover{border-color:var(--hair2);transform:none;}
+.member-card.selected{border-color:var(--ink);transform:none;}
+.net-toolbar,.yt-modal-head{background:transparent;}
+.insp-conn-item,.quotes-box,.mc-anatomy,.sp-member-pill{background:transparent;border-color:var(--hair);border-radius:3px;}
+.insp-conn-item:hover{border-color:var(--hair2);}
+.stage-node,.logic-step{background:transparent;border:1px solid var(--hair);border-top:2px solid var(--hair2);border-radius:2px;}
+.stage-node.shock{background:transparent;border-color:var(--hair);border-top-color:var(--red);}
+.stage-node.pivot{border-color:var(--hair);border-top-color:var(--accent);}
+.stage-node.resolve{border-color:var(--hair);border-top-color:var(--green);}
+.stage-node.forecast{background:transparent;border:1px dashed var(--hair2);border-top:2px dashed var(--purple);}
+.logic-step.step-subtext{background:transparent;border-color:var(--hair);border-top-color:var(--amber);}
+.logic-step.step-next{background:transparent;border-color:var(--hair);border-top-color:var(--purple);}
+.stage-step-num{color:var(--muted);}
+.story-cat,.anomaly-badge,.vid-badge,.mc-style,.insp-badge{background:transparent;border:0;padding:0;border-radius:0;font-family:var(--font-mono);font-size:11px;letter-spacing:0.04em;}
+.anomaly-sub{background:transparent;border-left:2px solid var(--hair2);border-radius:0;padding:0.1rem 0 0.1rem 0.8rem;}
+.mc-tag,.pl-chip{border-radius:3px;}
+.yt-btn{background:transparent;border:1px solid var(--hair2);border-radius:3px;box-shadow:none;letter-spacing:0;}
+.yt-btn:hover{background:transparent;border-color:var(--ink);transform:none;}
+.filter-select,.filter-input{border-radius:3px;}
+#network-svg{background:none;}
+.qa-dept{border-left-color:var(--hair2);}
+@media(max-width:980px){
+  .kpi-card{border-left:0;border-top:1px solid var(--hair);padding-left:0;}
+  .kpi-card:nth-child(-n+2){border-top:0;}
+  .vt-ind{display:none;}
+  .view-tab.active{box-shadow:inset 0 -2px 0 var(--ink);}
+}
 </style>
 </head>
 <body>
@@ -239,14 +293,14 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
   <section class="hero-box">
     <div class="hero-top">
       <div>
-        <div class="hero-eyebrow"><span class="live-dot"></span> 제10대 제천시의회 의정 데이터 인텔리전스 (2026.07 ~ 현재)</div>
+        <div class="hero-eyebrow">제10대 제천시의회 · 2026.07 – 현재</div>
         <h1 class="hero-title">발언 워딩·의미 해석·유기적 관계망 대시보드</h1>
         <p class="hero-desc">
           2026년 7월 제10대 개원 이후 제천시의회 공식 유튜브에 업로드된 본회의·상임위·인사청문회·조례 인터뷰 전 영상(80편)의 음성 자막을 전수 추출해 구조화했습니다. 단순 요약이 아니라 <strong>실제 워딩 타임스탬프</strong>, <strong>표면 요구 이면의 의미 해석</strong>, 그리고 다가올 <strong>제364회 정례회(행정사무감사·2027 본예산) 후속 예상 논리</strong>를 유기적 다이어그램으로 연결합니다.
         </p>
       </div>
       <div class="sync-badge">
-        <span>📡 유튜브 자동 동기화 파이프라인</span>
+        <span>유튜브 자동 동기화 파이프라인</span>
         <strong id="meta-sync-time">2026-11-10 09:55 KST</strong>
         <span>채널: 제천시의회 (UCg3R1CA...)</span>
         <span>매일 09:00 · 19:00 신규 영상 자동 분석</span>
@@ -284,24 +338,25 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
 
   <!-- 4 Interactive View Tabs -->
   <div class="view-tabs" role="tablist">
+    <span class="vt-ind" aria-hidden="true"></span>
     <button class="view-tab active" onclick="switchView('network', this)">
-      <div class="vt-top"><span class="vt-title">🕸️ 1. 유기적 관계망 &amp; 인과 흐름도</span><span class="vt-count">Flow</span></div>
+      <div class="vt-top"><span class="vt-title"><span class="vt-no">01</span>유기적 관계망 &amp; 인과 흐름도</span><span class="vt-count">Flow</span></div>
       <span class="vt-sub">의원↔핵심현안 네트워크 · 회차 간 5대 서사 진화도</span>
     </button>
     <button class="view-tab" onclick="switchView('anatomy', this)">
-      <div class="vt-top"><span class="vt-title">🎯 2. 워딩·의미 해석·예상논리 해부</span><span class="vt-count" id="tab-count-speeches">15</span></div>
+      <div class="vt-top"><span class="vt-title"><span class="vt-no">02</span>워딩·의미 해석·예상논리 해부</span><span class="vt-count" id="tab-count-speeches">15</span></div>
       <span class="vt-sub">타임스탬프 원문 재생 + 5단계 논리 트리 다이어그램</span>
     </button>
     <button class="view-tab" onclick="switchView('members', this)">
-      <div class="vt-top"><span class="vt-title">📊 3. 의원 14명 성향 매트릭스</span><span class="vt-count">14</span></div>
+      <div class="vt-top"><span class="vt-title"><span class="vt-no">03</span>의원 14명 성향 매트릭스</span><span class="vt-count">14</span></div>
       <span class="vt-sub">2x2 포지셔닝 맵 · 5축 레이더 · 의원별 대응 전략</span>
     </button>
     <button class="view-tab" onclick="switchView('archive', this)">
-      <div class="vt-top"><span class="vt-title">📺 4. 7월 이후 전 영상 아카이브</span><span class="vt-count" id="tab-count-videos">80</span></div>
+      <div class="vt-top"><span class="vt-title"><span class="vt-no">04</span>7월 이후 전 영상 아카이브</span><span class="vt-count" id="tab-count-videos">80</span></div>
       <span class="vt-sub">제359~363회 본회의·상임위·청문회·인터뷰 검색</span>
     </button>
     <button class="view-tab" onclick="switchView('qa', this)">
-      <div class="vt-top"><span class="vt-title">💬 5. 회의·부서별 질의응답</span><span class="vt-count" id="tab-count-qa">0</span></div>
+      <div class="vt-top"><span class="vt-title"><span class="vt-no">05</span>회의·부서별 질의응답</span><span class="vt-count" id="tab-count-qa">0</span></div>
       <span class="vt-sub">의원 질의 ↔ 집행부 답변 원문 · 타임스탬프 재생</span>
     </button>
   </div>
@@ -312,7 +367,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
   <section id="view-network" class="view-panel active">
     <div class="sec-head">
       <div>
-        <h2 class="sec-title">🕸️ 의원 14명 ↔ 핵심 현안 12건 ↔ 이해관계자 유기적 관계망</h2>
+        <h2 class="sec-title">의원 14명 ↔ 핵심 현안 12건 ↔ 이해관계자 유기적 관계망</h2>
         <p class="sec-sub">노드를 클릭하면 해당 의원이나 현안에 연결된 발언·공방·이해관계가 우측 패널에 즉시 필터링됩니다. 드래그하여 위치를 조정할 수 있습니다.</p>
       </div>
       <button class="yt-btn" onclick="resetNetworkSelection()">↺ 전체 관계망 초기화</button>
@@ -327,7 +382,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
             <span class="legend-item"><i class="legend-dot" style="background:#f2a33a;"></i>핵심 쟁점·예산 현안 (12)</span>
             <span class="legend-item"><i class="legend-dot" style="background:#a9c46a;"></i>시민·상인·외부기관 (4)</span>
           </div>
-          <span style="font-size:11px;color:var(--muted);">💡 실선: 주도·압박 / 점선: 제동·삭제·충돌</span>
+          <span style="font-size:11px;color:var(--muted);">실선: 주도·압박 / 점선: 제동·삭제·충돌</span>
         </div>
         <svg id="network-svg" viewBox="0 0 820 470"></svg>
       </div>
@@ -339,7 +394,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
 
     <div class="sec-head">
       <div>
-        <h2 class="sec-title">🔄 회차 간 현안 진화 인과 흐름도 (7월 개원 ➔ 11월 정례회)</h2>
+        <h2 class="sec-title">회차 간 현안 진화 인과 흐름도 (7월 개원 ➔ 11월 정례회)</h2>
         <p class="sec-sub">단발성 발언이 아니라 7월(제359회) 공유재산 삭제부터 9월(제361회) 5분발언, 10~11월(제362~363회) 재상정·부결까지 이어지는 5대 핵심 줄기입니다.</p>
       </div>
     </div>
@@ -347,7 +402,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
 
     <div class="sec-head">
       <div>
-        <h2 class="sec-title">⚡ 비만장일치 표결 · 예산 칼질 · 공유재산 본문 삭제 7대 시그널</h2>
+        <h2 class="sec-title">비만장일치 표결 · 예산 칼질 · 공유재산 본문 삭제 7대 시그널</h2>
         <p class="sec-sub">만장일치 관행을 깨고 기권·반대표가 나왔거나 상임위에서 본문이 통째로 삭제된 핵심 충돌 지점입니다.</p>
       </div>
     </div>
@@ -360,17 +415,17 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
   <section id="view-anatomy" class="view-panel">
     <div class="sec-head">
       <div>
-        <h2 class="sec-title">🎯 발언·워딩·의미 해석·예상 후속논리 5단계 해부도</h2>
+        <h2 class="sec-title">발언·워딩·의미 해석·예상 후속논리 5단계 해부도</h2>
         <p class="sec-sub">타임스탬프 버튼을 누르면 해당 의원의 실제 발언 지점부터 유튜브 영상이 즉시 재생됩니다.</p>
       </div>
     </div>
 
     <div class="filter-bar">
       <select id="filter-member" class="filter-select" onchange="renderSpeeches()">
-        <option value="__all__">👤 전체 의원 (14명)</option>
+        <option value="__all__">전체 의원 (14명)</option>
       </select>
       <select id="filter-session" class="filter-select" onchange="renderSpeeches()">
-        <option value="__all__">🏛️ 전체 회기·회의</option>
+        <option value="__all__">전체 회기·회의</option>
         <option value="제363회">제363회 임시회 (11월)</option>
         <option value="제362회">제362회 임시회 (10월)</option>
         <option value="제361회">제361회 임시회 (9월)</option>
@@ -388,7 +443,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
   <section id="view-members" class="view-panel">
     <div class="sec-head">
       <div>
-        <h2 class="sec-title">📊 제10대 제천시의원 14명 성향 2x2 포지셔닝 맵 &amp; 5축 레이더</h2>
+        <h2 class="sec-title">제10대 제천시의원 14명 성향 2x2 포지셔닝 맵 &amp; 5축 레이더</h2>
         <p class="sec-sub">가로축은 의제 범위(지역구·현장민원 ↔ 거시 정책·재정·제도), 세로축은 집행부 관계(협조·대안제시 ↔ 송곳검증·예산제동)를 나타냅니다.</p>
       </div>
     </div>
@@ -396,8 +451,8 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
     <div class="matrix-layout">
       <div class="matrix-box">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem;">
-          <strong style="font-size:13.5px;color:var(--ink);">🧭 의정 성향 2x2 포지셔닝 매트릭스 (의원 클릭 시 우측 레이더 연동)</strong>
-          <span style="font-size:11.5px;color:var(--muted);">🔴 국민의힘 · 🔵 더불어민주당</span>
+          <strong style="font-size:13.5px;color:var(--ink);">의정 성향 2x2 포지셔닝 매트릭스 (의원 클릭 시 우측 레이더 연동)</strong>
+          <span style="font-size:11.5px;color:var(--muted);"><span class="party-dot party-ppp"></span> 국민의힘 · <span class="party-dot party-dpk"></span> 더불어민주당</span>
         </div>
         <svg id="matrix-svg" viewBox="0 0 560 400"></svg>
       </div>
@@ -409,7 +464,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
 
     <div class="sec-head">
       <div>
-        <h2 class="sec-title">🗂️ 의원 14명 전수 프로파일 (핵심 관심사 · 비판 패턴 · 의미 해석 · 예상 논리)</h2>
+        <h2 class="sec-title">의원 14명 전수 프로파일 (핵심 관심사 · 비판 패턴 · 의미 해석 · 예상 논리)</h2>
       </div>
       <div style="display:flex;gap:0.5rem;">
         <button class="yt-btn" onclick="filterMemberCards('__all__')">전체 (14)</button>
@@ -429,14 +484,14 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
   <section id="view-archive" class="view-panel">
     <div class="sec-head">
       <div>
-        <h2 class="sec-title">📺 2026년 7월 이후 제천시의회 전체 영상 아카이브 (80편 전수 수록)</h2>
+        <h2 class="sec-title">2026년 7월 이후 제천시의회 전체 영상 아카이브 (80편 전수 수록)</h2>
         <p class="sec-sub">제359회~제363회 본회의, 상임위, 인사청문회, 시크한 인터뷰(조례), 의정뉴스 및 공청회 영상을 모두 검색하고 즉시 재생할 수 있습니다.</p>
       </div>
     </div>
 
     <div class="filter-bar">
       <select id="arch-session" class="filter-select" onchange="renderArchive()">
-        <option value="__all__">📂 전체 회기</option>
+        <option value="__all__">전체 회기</option>
         <option value="제363회">제363회 임시회 (2026.11)</option>
         <option value="제362회">제362회 임시회 (2026.10)</option>
         <option value="제361회">제361회 임시회 (2026.09)</option>
@@ -448,7 +503,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
         <option value="의정뉴스·홍보">제천시의회 뉴스 · 홍보</option>
       </select>
       <select id="arch-type" class="filter-select" onchange="renderArchive()">
-        <option value="__all__">🎬 전체 유형</option>
+        <option value="__all__">전체 유형</option>
         <option value="본회의">본회의</option>
         <option value="5분 자유발언">5분 자유발언</option>
         <option value="자치행정위원회">자치행정위원회</option>
@@ -468,20 +523,20 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
   <section id="view-qa" class="view-panel">
     <div class="sec-head">
       <div>
-        <h2 class="sec-title">💬 회의별 · 부서별 의원 질의응답</h2>
+        <h2 class="sec-title">회의별 · 부서별 의원 질의응답</h2>
         <p class="sec-sub">상임위·본회의 자막에서 의원 질의와 집행부 답변을 회의 → 부서 순으로 묶었습니다. 시각 버튼을 누르면 그 지점부터 재생됩니다.</p>
       </div>
     </div>
     <div class="pl-box">
-      <h3>📜 민선9기 공약백서 ↔ 의원 질의 연결</h3>
+      <h3>민선9기 공약백서 ↔ 의원 질의 연결</h3>
       <p class="qa-note" style="margin:0;">공약 사업명·핵심 단어가 질의응답 본문에 나오면 연결했습니다. 단어 일치 기준이라 실제 관련성은 영상으로 확인하세요. ★는 핵심공약, 숫자는 관련 질의 수입니다.</p>
       <div id="pl-list"></div>
     </div>
     <div class="filter-bar">
-      <select id="qa-pledge" class="filter-select" onchange="renderQA()"><option value="__all__">📜 전체 공약</option></select>
-      <select id="qa-meeting" class="filter-select" onchange="renderQA()"><option value="__all__">📂 전체 회의</option></select>
-      <select id="qa-dept" class="filter-select" onchange="renderQA()"><option value="__all__">🏢 전체 부서</option></select>
-      <select id="qa-member" class="filter-select" onchange="renderQA()"><option value="__all__">👤 전체 의원</option></select>
+      <select id="qa-pledge" class="filter-select" onchange="renderQA()"><option value="__all__">전체 공약</option></select>
+      <select id="qa-meeting" class="filter-select" onchange="renderQA()"><option value="__all__">전체 회의</option></select>
+      <select id="qa-dept" class="filter-select" onchange="renderQA()"><option value="__all__">전체 부서</option></select>
+      <select id="qa-member" class="filter-select" onchange="renderQA()"><option value="__all__">전체 의원</option></select>
       <input type="text" id="qa-q" class="filter-input" placeholder="질의·답변 내용 검색 (예: 유수율, 파크골프, 용역)..." oninput="renderQA()">
     </div>
     <p class="qa-note" id="qa-note"></p>
@@ -511,15 +566,27 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
 </footer>
 
 <div id="mqb">
-  <a href="/">🏠<br>홈</a>
-  <a href="/about.html">👤<br>소개</a>
-  <a href="/research.html">🔬<br>연구</a>
-  <a href="/column.html">💬<br>칼럼</a>
-  <a href="/council.html">🏛️<br>의회</a>
+  <a href="/"><br>홈</a>
+  <a href="/about.html"><br>소개</a>
+  <a href="/research.html"><br>연구</a>
+  <a href="/column.html"><br>칼럼</a>
+  <a href="/council.html"><br>의회</a>
 </div>
 
 <script src="/data/council_data.js"></script>
 <script src="/data/qa_data.js"></script>
+<script>
+// 자동 생성 데이터에 섞인 장식 이모지를 화면에 그리기 전에 걷어낸다
+(function () {
+  var E = /[\u{1F300}-\u{1FAFF}\u{2600}-\u{2793}\u{2795}-\u{27BF}\u{2B50}]\u{FE0F}?\s?/gu;
+  function c(v) {
+    if (typeof v === 'string') return v.replace(E, '');
+    if (v && typeof v === 'object') { for (var k in v) v[k] = c(v[k]); }
+    return v;
+  }
+  if (window.COUNCIL_DATA) c(window.COUNCIL_DATA);
+})();
+</script>
 <script>
 // 테마 초기화 및 전환
 (function(){
@@ -646,7 +713,7 @@ function openYtModal(videoId, startSec, title, quoteText) {
   const iframe = document.getElementById('yt-iframe');
   const sec = Math.max(0, parseInt(startSec || 0, 10));
   document.getElementById('yt-modal-title').textContent = title || '제천시의회 영상 재생';
-  document.getElementById('yt-modal-desc').textContent = quoteText ? ('💬 "' + quoteText + '"') : '타임스탬프 지점부터 자동 재생됩니다.';
+  document.getElementById('yt-modal-desc').textContent = quoteText ? ('"' + quoteText + '"') : '타임스탬프 지점부터 자동 재생됩니다.';
   document.getElementById('yt-external-link').href = `https://www.youtube.com/watch?v=${videoId}&t=${sec}s`;
   iframe.src = `https://www.youtube.com/embed/${videoId}?start=${sec}&autoplay=1&rel=0`;
   modal.classList.add('open');
@@ -818,8 +885,8 @@ function renderNetworkInspector() {
       <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;font-size:12px;display:flex;flex-direction:column;gap:0.45rem;">
         <div><strong style="color:var(--accent);">소속·직책:</strong> ${member.role} (${member.committee} · ${member.district})</div>
         <div><strong style="color:var(--accent);">의정 스타일:</strong> ${member.styleTag}</div>
-        <div><strong style="color:var(--amber);">🔍 의미 해석:</strong> ${member.subtext}</div>
-        <div><strong style="color:var(--purple);">🔮 예상 후속논리:</strong> ${member.nextLogic}</div>
+        <div><strong style="color:var(--amber);">의미 해석:</strong> ${member.subtext}</div>
+        <div><strong style="color:var(--purple);">예상 후속논리:</strong> ${member.nextLogic}</div>
       </div>
     `;
   }
@@ -845,12 +912,12 @@ function renderNetworkInspector() {
     </div>
     ${memberExtra}
     <div>
-      <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:0.35rem;">🔗 직접 연결된 관계망 (${edges.length}건)</div>
+      <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:0.35rem;">직접 연결된 관계망 (${edges.length}건)</div>
       <div class="insp-conn-list">${connHtml || '<div style="font-size:12px;color:var(--muted);">연결 항목 없음</div>'}</div>
     </div>
     ${relSpeeches.length ? `
     <div>
-      <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:0.35rem;">🎙️ 관련 핵심 발언 바로 재생 (${relSpeeches.length}건)</div>
+      <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:0.35rem;">관련 핵심 발언 바로 재생 (${relSpeeches.length}건)</div>
       <div class="insp-conn-list">${spHtml}</div>
     </div>` : ''}
   `;
@@ -863,7 +930,7 @@ function renderStorylines() {
   const wrap = document.getElementById('storyline-list');
   if (!wrap) return;
   wrap.innerHTML = DATA.storylines.map(st => `
-    <article class="story-card">
+    <article class="story-card" data-motion>
       <div class="story-head">
         <div>
           <span class="story-cat">${st.category}</span>
@@ -881,7 +948,7 @@ function renderStorylines() {
             </div>
             <div class="stage-label">${sg.label}</div>
             <p class="stage-detail">${sg.detail}</p>
-            <div class="stage-actors">👤 ${sg.actors}</div>
+            <div class="stage-actors">${sg.actors}</div>
             ${sg.videoId ? `
               <button class="yt-btn" style="margin-top:0.4rem;width:100%;justify-content:center;" onclick="openYtModal('${sg.videoId}', ${sg.sec || 0}, '${st.title} — ${sg.label}', '${sg.detail.replace(/'/g, '')}')">
                 ▶ ${sg.session.split(' ')[0]} 영상 확인
@@ -896,14 +963,14 @@ function renderStorylines() {
   const anomWrap = document.getElementById('anomaly-grid');
   if (anomWrap) {
     anomWrap.innerHTML = DATA.anomalies.map(a => `
-      <div class="anomaly-card">
+      <div class="anomaly-card" data-motion>
         <div class="anomaly-top">
           <span style="font-size:11.5px;color:var(--muted);font-weight:600;">${a.session} · ${a.date}</span>
           <span class="anomaly-badge">${a.result}</span>
         </div>
         <div class="anomaly-title">${a.agenda}</div>
         <div style="font-size:12px;color:var(--accent2);font-weight:600;">표결·처리 내역: ${a.voteDetail}</div>
-        <div class="anomaly-sub"><strong>🔍 행간 의미:</strong> ${a.meaning}</div>
+        <div class="anomaly-sub"><strong>행간 의미:</strong> ${a.meaning}</div>
         <div style="display:flex;justify-content:flex-end;margin-top:0.2rem;">
           <button class="yt-btn" onclick="openYtModal('${a.videoId}', ${a.sec}, '${a.agenda}', '${a.meaning.replace(/'/g, '')}')">
             ▶ [${a.time}] 표결·심사 현장 재생
@@ -955,7 +1022,7 @@ function renderSpeeches() {
     const mem = DATA.members.find(m => m.id === sp.memberId);
     const pClass = mem?.party === '국민의힘' ? 'party-ppp' : 'party-dpk';
     return `
-      <article class="speech-card">
+      <article class="speech-card" data-motion>
         <div class="sp-header">
           <div>
             <span class="sp-member-pill">
@@ -964,9 +1031,9 @@ function renderSpeeches() {
             </span>
             <h3 class="sp-title">${sp.title}</h3>
             <div class="sp-meta">
-              <span>📅 ${sp.date}</span>
-              <span>🏛️ ${sp.session} (${sp.type})</span>
-              <span>🎯 대상 부서: <strong style="color:var(--accent);">${sp.department}</strong></span>
+              <span>${sp.date}</span>
+              <span>${sp.session} (${sp.type})</span>
+              <span>대상 부서: <strong style="color:var(--accent);">${sp.department}</strong></span>
             </div>
           </div>
           <button class="yt-btn" onclick="openYtModal('${sp.videoId}', ${sp.quotes[0]?.sec || 0}, '${sp.memberName} — ${sp.title}', '${(sp.quotes[0]?.text || '').replace(/'/g, '')}')">
@@ -989,18 +1056,18 @@ function renderSpeeches() {
             <div class="ls-body">${sp.logicTree.surfaceDemand}</div>
           </div>
           <div class="logic-step step-subtext">
-            <div class="ls-head"><span>④ 🔍 의미 해석</span><span>Subtext</span></div>
+            <div class="ls-head"><span>④ 의미 해석</span><span>Subtext</span></div>
             <div class="ls-body">${sp.logicTree.hiddenIntent}</div>
           </div>
           <div class="logic-step step-next">
-            <div class="ls-head"><span>⑤ 🔮 후속 예상 논리</span><span>Forecast</span></div>
+            <div class="ls-head"><span>⑤ 후속 예상 논리</span><span>Forecast</span></div>
             <div class="ls-body">${sp.logicTree.expectedNext}</div>
           </div>
         </div>
 
         <!-- 실제 발언 타임스탬프 인용구 -->
         <div class="quotes-box">
-          <div style="font-size:11.5px;font-weight:700;color:var(--muted);">🎙️ 실제 발언 워딩 (클릭 시 해당 초(sec)로 즉시 이동)</div>
+          <div style="font-size:11.5px;font-weight:700;color:var(--muted);">실제 발언 워딩 (클릭 시 해당 초(sec)로 즉시 이동)</div>
           ${sp.quotes.map(q => `
             <div class="quote-row">
               <button class="yt-btn" onclick="openYtModal('${sp.videoId}', ${q.sec}, '${sp.memberName} — ${sp.title}', '${q.text.replace(/'/g, '')}')">
@@ -1109,8 +1176,8 @@ function renderRadarBox() {
     </svg>
     <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;font-size:12px;display:flex;flex-direction:column;gap:0.4rem;">
       <div><strong style="color:var(--accent);">핵심 워딩:</strong> "${m.signatureQuote.text}"</div>
-      <div><strong style="color:var(--amber);">🔍 의미 해석:</strong> ${m.subtext}</div>
-      <div><strong style="color:var(--purple);">🔮 예상 논리:</strong> ${m.nextLogic}</div>
+      <div><strong style="color:var(--amber);">의미 해석:</strong> ${m.subtext}</div>
+      <div><strong style="color:var(--purple);">예상 논리:</strong> ${m.nextLogic}</div>
       <div style="display:flex;justify-content:flex-end;margin-top:0.2rem;">
         <button class="yt-btn" onclick="openYtModal('${m.signatureQuote.videoId}', ${m.signatureQuote.sec}, '${m.name} 의원 대표 발언', '${m.signatureQuote.text.replace(/'/g, '')}')">
           ▶ [${m.signatureQuote.time}] 대표 워딩 영상 재생
@@ -1157,13 +1224,13 @@ function renderMemberCards() {
           ${m.interests.map(t => `<span class="mc-tag">#${t}</span>`).join('')}
         </div>
         <div class="mc-anatomy">
-          <div class="mc-row"><strong>📌 핵심 요구:</strong>${m.demands}</div>
-          <div class="mc-row"><strong>⚡ 비판 스타일:</strong>${m.criticismStyle}</div>
-          <div class="mc-row subtext"><strong>🔍 의미 해석:</strong>${m.subtext}</div>
-          <div class="mc-row nextlogic"><strong>🔮 11월 정례회 예상논리:</strong>${m.nextLogic}</div>
+          <div class="mc-row"><strong>핵심 요구:</strong>${m.demands}</div>
+          <div class="mc-row"><strong>비판 스타일:</strong>${m.criticismStyle}</div>
+          <div class="mc-row subtext"><strong>의미 해석:</strong>${m.subtext}</div>
+          <div class="mc-row nextlogic"><strong>11월 정례회 예상논리:</strong>${m.nextLogic}</div>
         </div>
         <div style="display:flex;justify-content:space-between;align-items:center;gap:0.6rem;padding-top:0.2rem;">
-          <span style="font-size:11.5px;color:var(--muted);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">💬 "${m.signatureQuote.text}"</span>
+          <span style="font-size:11.5px;color:var(--muted);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">"${m.signatureQuote.text}"</span>
           <button class="yt-btn" onclick="event.stopPropagation();openYtModal('${m.signatureQuote.videoId}', ${m.signatureQuote.sec}, '${m.name} 의원 (${m.signatureQuote.session})', '${m.signatureQuote.text.replace(/'/g, '')}')">
             ▶ ${m.signatureQuote.time}
           </button>
@@ -1194,7 +1261,7 @@ function renderArchive() {
   const wrap = document.getElementById('archive-grid');
   if (!wrap) return;
   wrap.innerHTML = list.map(v => `
-    <div class="vid-card">
+    <div class="vid-card" data-motion>
       <div>
         <div class="vid-top">
           <span><span class="vid-badge">${v.session}</span> · ${v.type}</span>
@@ -1259,15 +1326,15 @@ function renderQA() {
   });
   let html = '';
   groups.forEach((depts, title) => {
-    html += `<div class="qa-meeting"><h3>📅 ${esc(title)}</h3>`;
+    html += `<div class="qa-meeting"><h3>${esc(title)}</h3>`;
     depts.forEach((qs, dept) => {
-      html += `<div class="qa-dept"><h4>🏢 ${esc(dept)} · ${qs.length}건</h4>`;
+      html += `<div class="qa-dept"><h4>${esc(dept)} · ${qs.length}건</h4>`;
       qs.sort((a, b) => a.sec - b.sec).forEach(q => {
         const head = q.text.slice(0, 220);
         html += `<article class="qa-card"><div class="qa-top"><span class="qa-who">${esc(q.member)} 의원</span>
           <button class="yt-btn" data-vid="${esc(q.vid)}" data-sec="${q.sec}" data-title="${esc(q.member + ' — ' + dept)}">▶ ${esc(q.ts)}</button></div>
           <div class="qa-preview">${esc(head)}${q.text.length > 220 ? '…' : ''}</div>
-          ${(q.pledges || []).length ? `<div class="qa-pl">${q.pledges.map(id => `<button class="pl-chip${PLMAP[id].core ? ' core' : ''}" data-pl="${id}">📜 ${PLMAP[id].core ? '★ ' : ''}${esc(PLMAP[id].title)}</button>`).join('')}</div>` : ''}
+          ${(q.pledges || []).length ? `<div class="qa-pl">${q.pledges.map(id => `<button class="pl-chip${PLMAP[id].core ? ' core' : ''}" data-pl="${id}">${PLMAP[id].core ? '★ ' : ''}${esc(PLMAP[id].title)}</button>`).join('')}</div>` : ''}
           ${q.text.length > 220 ? `<details><summary>질의응답 전체 보기 (${q.text.length.toLocaleString()}자)</summary><p>${esc(q.text)}</p></details>` : ''}</article>`;
       });
       html += '</div>';
@@ -1295,5 +1362,60 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 <script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
 <script src="/js/motion.js" defer></script>
+<script>
+// 의회 분석 페이지 전용 모션: 첫 화면 순차 등장 · 탭 밑줄 이동 · 구획 선 긋기 · 지표 숫자 올리기
+document.addEventListener('DOMContentLoaded', function () {
+  if (!window.Motion) return;
+  var animate = Motion.animate, inView = Motion.inView;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function done(el) { requestAnimationFrame(function () { requestAnimationFrame(function () { el.style.opacity = ''; el.style.transform = ''; }); }); }
+
+  // 탭 밑줄: 활성 탭 아래로 미끄러진다 (transform만 사용)
+  var tabs = document.querySelector('.view-tabs'), ind = tabs && tabs.querySelector('.vt-ind');
+  function place(btn, instant) {
+    if (!ind || !btn) return;
+    var to = 'translateX(' + btn.offsetLeft + 'px) scaleX(' + btn.offsetWidth / 100 + ')';
+    if (instant || reduce) ind.style.transform = to;
+    else animate(ind, { transform: to }, { duration: 0.35, ease: 'easeOut' });
+  }
+  if (tabs) {
+    place(tabs.querySelector('.view-tab.active'), true);
+    tabs.addEventListener('click', function (e) { var b = e.target.closest('.view-tab'); if (b) place(b); });
+    addEventListener('resize', function () { place(tabs.querySelector('.view-tab.active'), true); });
+  }
+
+  // 구획 머리 위 짧은 선: 화면에 들어오면 왼쪽에서 그어진다
+  document.querySelectorAll('.sec-head').forEach(function (h) {
+    var r = document.createElement('span');
+    r.className = 'sec-rule'; r.setAttribute('aria-hidden', 'true');
+    h.appendChild(r);
+    if (reduce) return;
+    r.style.transform = 'scaleX(0)';
+    inView(h, function () { animate(r, { transform: ['scaleX(0)', 'scaleX(1)'] }, { duration: 0.6, ease: 'easeOut' }); });
+  });
+  if (reduce) return;
+
+  // 첫 화면: 머리말부터 지표까지 차례로
+  var first = document.querySelectorAll('.hero-eyebrow,.hero-title,.hero-desc,.sync-badge,.kpi-card,.view-tabs');
+  var n = 0;
+  first.forEach(function (el) {
+    if (el.__motionDone || el.style.opacity === '0') return;
+    animate(el, { opacity: [0, 1], transform: ['translateY(10px)', 'translateY(0px)'] },
+      { duration: 0.55, ease: 'easeOut', delay: 0.04 + n++ * 0.05 }).then(done.bind(null, el));
+  });
+
+  // 지표 숫자: 0에서 올라가고 단위는 그대로
+  document.querySelectorAll('.kpi-num').forEach(function (el) {
+    var t = el.textContent.trim(), m = /^(\D*?)(\d+)(.*)$/.exec(t);
+    if (!m) return;
+    inView(el, function () {
+      animate(0, +m[2], { duration: 1.1, ease: 'easeOut',
+        onUpdate: function (v) { el.textContent = m[1] + Math.round(v) + m[3]; } })
+        .then(function () { el.textContent = t; });
+      return false;
+    });
+  });
+});
+</script>
 </body>
 </html>
