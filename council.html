@@ -53,7 +53,7 @@ a{color:var(--accent);text-decoration:none;}
 .kpi-sub{font-size:11px;color:var(--muted);margin-top:0.1rem;}
 
 /* ── View Tabs ── */
-.view-tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:0.65rem;margin-bottom:1.8rem;position:sticky;top:62px;z-index:95;background:color-mix(in srgb,var(--bg) 88%,transparent);padding:0.55rem;border:1px solid var(--border);border-radius:14px;backdrop-filter:blur(12px);}
+.view-tabs{display:grid;grid-template-columns:repeat(6,1fr);gap:0.65rem;margin-bottom:1.8rem;position:sticky;top:62px;z-index:95;background:color-mix(in srgb,var(--bg) 88%,transparent);padding:0.55rem;border:1px solid var(--border);border-radius:14px;backdrop-filter:blur(12px);}
 .view-tab{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:0.85rem 1rem;cursor:pointer;text-align:left;transition:transform 0.15s ease,border-color 0.2s,background 0.2s;color:var(--muted);font-family:var(--font-body);}
 .view-tab:hover{border-color:var(--accent);color:var(--ink);}
 .view-tab.active{background:color-mix(in srgb,var(--accent) 16%,var(--surface));border-color:var(--accent);color:var(--ink);box-shadow:0 4px 14px rgba(0,0,0,0.2);}
@@ -264,6 +264,28 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
 .filter-select,.filter-input{border-radius:3px;}
 #network-svg{background:none;}
 .qa-dept{border-left-color:var(--hair2);}
+.req-sum{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);margin-bottom:1.3rem;}
+.req-sum button{all:unset;cursor:pointer;padding:0.75rem 0.9rem;border-left:1px solid var(--hair);display:flex;justify-content:space-between;align-items:baseline;gap:0.5rem;font-size:12.5px;color:var(--muted);}
+.req-sum button:first-child{border-left:0;}
+.req-sum button b{font-family:var(--font-display);font-size:1.25rem;color:var(--ink);}
+.req-sum button.on{color:var(--ink);box-shadow:inset 0 -2px 0 var(--ink);}
+.req-list{border-top:1px solid var(--ink);}
+.req-row{display:grid;grid-template-columns:7.2rem 9rem 1fr 15rem 6rem;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--hair);font-size:13px;align-items:start;}
+.req-date{font-family:var(--font-mono);font-size:11.5px;color:var(--muted);line-height:1.5;}
+.req-who b{display:block;color:var(--ink);font-weight:600;}
+.req-who span{font-size:12px;color:var(--accent);}
+.req-item b{display:block;color:var(--ink);font-size:14px;font-weight:600;line-height:1.5;margin-bottom:0.15rem;}
+.req-item span{color:var(--muted);font-size:12.5px;}
+.req-ans{font-size:12.5px;color:var(--text);border-left:1px solid var(--hair2);padding-left:0.75rem;}
+.req-ans:empty::before{content:"답변 확인 안 됨";color:var(--muted);}
+.req-play{all:unset;cursor:pointer;white-space:nowrap;font-family:var(--font-mono);font-size:12px;color:var(--ink);border:1px solid var(--hair2);border-radius:3px;padding:0.3rem 0.5rem;text-align:center;}
+.req-play:hover{border-color:var(--ink);}
+@media(max-width:980px){
+  .req-row{grid-template-columns:1fr auto;gap:0.35rem 0.8rem;}
+  .req-date{grid-column:1;}
+  .req-play{grid-column:2;grid-row:1;}
+  .req-who,.req-item,.req-ans{grid-column:1/-1;}
+}
 @media(max-width:980px){
   .kpi-card{border-left:0;border-top:1px solid var(--hair);padding-left:0;}
   .kpi-card:nth-child(-n+2){border-top:0;}
@@ -358,6 +380,10 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
     <button class="view-tab" onclick="switchView('qa', this)">
       <div class="vt-top"><span class="vt-title"><span class="vt-no">05</span>회의·부서별 질의응답</span><span class="vt-count" id="tab-count-qa">0</span></div>
       <span class="vt-sub">의원 질의 ↔ 집행부 답변 원문 · 타임스탬프 재생</span>
+    </button>
+    <button class="view-tab" onclick="switchView('req', this)">
+      <div class="vt-top"><span class="vt-title"><span class="vt-no">06</span>의원 요구자료</span><span class="vt-count" id="tab-count-req">0</span></div>
+      <span class="vt-sub">의원이 부서에 요구한 자료·서면보고 목록과 답변</span>
     </button>
   </div>
 
@@ -542,6 +568,25 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
     <p class="qa-note" id="qa-note"></p>
     <div id="qa-list"></div>
   </section>
+
+  <!-- VIEW 6: 의원 요구자료 (data/council_requests.js, 외장 SSD scripts/build_requests.py 로 생성) -->
+  <section id="view-req" class="view-panel">
+    <div class="sec-head">
+      <div>
+        <h2 class="sec-title">의원 요구자료</h2>
+        <p class="sec-sub">상임위·본회의 자막에서 의원이 집행부에 자료 제출이나 서면·별도 보고를 요구한 대목을 골라 정리했습니다. 시각을 누르면 그 지점부터 재생됩니다.</p>
+      </div>
+    </div>
+    <div class="req-sum" id="req-sum"></div>
+    <div class="filter-bar">
+      <select id="req-dept" class="filter-select" onchange="renderReq()"><option value="__all__">전체 부서</option></select>
+      <select id="req-member" class="filter-select" onchange="renderReq()"><option value="__all__">전체 의원</option></select>
+      <select id="req-meeting" class="filter-select" onchange="renderReq()"><option value="__all__">전체 회의</option></select>
+      <input type="text" id="req-q" class="filter-input" placeholder="요구 자료·사유 검색 (예: 현황, 용역, 예산)..." oninput="renderReq()">
+    </div>
+    <p class="qa-note" id="req-note"></p>
+    <div class="req-list" id="req-list"></div>
+  </section>
 </main>
 
 <!-- YouTube Instant Timestamp Player Modal -->
@@ -575,6 +620,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
 
 <script src="/data/council_data.js"></script>
 <script src="/data/qa_data.js"></script>
+<script src="/data/council_requests.js"></script>
 <script>
 // 자동 생성 데이터에 섞인 장식 이모지를 화면에 그리기 전에 걷어낸다
 (function () {
@@ -1279,6 +1325,50 @@ function renderArchive() {
     </div>
   `).join('');
 }
+
+// 6. 의원 요구자료 (window.REQUESTS)
+const REQ = window.REQUESTS || [];
+const escR = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function initReq() {
+  const fill = (id, vals) => document.getElementById(id).insertAdjacentHTML('beforeend', vals.map(v => `<option value="${escR(v)}">${escR(v)}</option>`).join(''));
+  const by = {};
+  REQ.forEach(r => { by[r.dept] = (by[r.dept] || 0) + 1; });
+  const depts = Object.entries(by).sort((a, b) => b[1] - a[1]);
+  fill('req-dept', depts.map(d => d[0]));
+  fill('req-member', [...new Set(REQ.map(r => r.member))].sort((a, b) => a.localeCompare(b, 'ko')));
+  fill('req-meeting', [...new Set(REQ.map(r => r.title))]);
+  document.getElementById('tab-count-req').textContent = REQ.length;
+  document.getElementById('req-sum').innerHTML = depts.slice(0, 12).map(([d, n]) => `<button type="button" data-d="${escR(d)}"><span>${escR(d)}</span><b>${n}</b></button>`).join('');
+  document.getElementById('req-sum').onclick = e => {
+    const b = e.target.closest('button'); if (!b) return;
+    const sel = document.getElementById('req-dept');
+    sel.value = sel.value === b.dataset.d ? '__all__' : b.dataset.d;
+    renderReq();
+  };
+  document.getElementById('req-list').onclick = e => {
+    const b = e.target.closest('.req-play'); if (!b) return;
+    const r = REQ[+b.dataset.i];
+    openYtModal(r.vid, r.sec, `${r.member} 의원 → ${r.dept}`, r.item);
+  };
+  renderReq();
+}
+function renderReq() {
+  const v = id => document.getElementById(id).value;
+  const q = document.getElementById('req-q').value.trim();
+  const rows = REQ.map((r, i) => [r, i]).filter(([r]) => (v('req-dept') === '__all__' || r.dept === v('req-dept')) &&
+    (v('req-member') === '__all__' || r.member === v('req-member')) && (v('req-meeting') === '__all__' || r.title === v('req-meeting')) &&
+    (!q || (r.item + ' ' + r.why + ' ' + r.answer).includes(q)));
+  document.querySelectorAll('#req-sum button').forEach(b => b.classList.toggle('on', b.dataset.d === v('req-dept')));
+  document.getElementById('req-note').textContent = REQ.length ? `${rows.length}건 / 전체 ${REQ.length}건 · 자동 자막을 AI로 정리한 것이라 자료명·부서가 실제와 다를 수 있으니 영상으로 확인하세요.` : '요구자료 데이터를 아직 만들지 않았습니다.';
+  document.getElementById('req-list').innerHTML = rows.map(([r, i]) => `<div class="req-row">
+    <div class="req-date">${escR(r.date)}<br>${escR(r.kind)}</div>
+    <div class="req-who"><b>${escR(r.member)} 의원</b><span>→ ${escR(r.dept)}</span></div>
+    <div class="req-item"><b>${escR(r.item)}</b><span>${escR(r.why)}</span></div>
+    <div class="req-ans">${escR(r.answer)}</div>
+    <button type="button" class="req-play" data-i="${i}" title="${escR(r.title)}">▶ ${escR(r.ts)}</button>
+  </div>`).join('');
+}
+initReq();
 
 // 5. 회의·부서별 질의응답
 const QA = window.QA_DATA || [];
