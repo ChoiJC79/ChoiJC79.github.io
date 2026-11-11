@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<!-- 직접 만든 업무보고 자동취합 시스템 소개 페이지 (체험판 workreport-demo.html 연결, 저작권 고지 포함) -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>업무보고 자동취합 시스템</title>
+<meta name="description" content="부서마다 따로 쓰던 업무보고를 한 화면에서 입력·결재·취합하는 웹 시스템. 가상 데이터 체험판으로 직접 써 볼 수 있다.">
+<meta property="og:title" content="업무보고 자동취합 시스템 | 최승환">
+<meta property="og:description" content="부서마다 따로 쓰던 업무보고를 한 화면에서 입력·결재·취합하는 웹 시스템. 가상 데이터 체험판으로 직접 써 볼 수 있다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/workreport.html">
+<meta property="og:image" content="https://choijc79.github.io/img/workreport/status.jpg">
+<meta property="og:site_name" content="최승환">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/css/motion.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=Noto+Sans+KR:wght@300;400;500&display=swap">
+<style>
+:root{color-scheme:light;
+  --bg:#f6f8fa;--surface:#fff;--border:#d0d7de;--text:#1f2328;--muted:#59636e;
+  --accent:#0969da;--amber:#9a6700;--green:#1a7f37;--purple:#8250df;--lake:#1b7c94;
+  --serif:"Noto Serif KR","AppleMyungjo",ui-serif,Georgia,serif;
+  --sans:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;
+  --bg:#0d1117;--surface:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;
+  --accent:#58a6ff;--amber:#d29922;--green:#3fb950;--purple:#bc8cff;--lake:#5cbcd4}}
+:root[data-theme="dark"]{color-scheme:dark;
+  --bg:#0d1117;--surface:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;
+  --accent:#58a6ff;--amber:#d29922;--green:#3fb950;--purple:#bc8cff;--lake:#5cbcd4}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;line-height:1.75;font-size:15px}
+a{color:var(--accent)}
+.wrap{max-width:980px;margin:0 auto;padding:28px 16px 64px}
+.top{font-size:13px;color:var(--muted);margin-bottom:18px}
+.top a{color:var(--muted);text-decoration:none}
+h1{font-family:var(--serif);font-size:clamp(24px,4vw,34px);line-height:1.35;margin:0 0 10px}
+h2{font-family:var(--serif);font-size:21px;margin:44px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+h3{font-size:16px;font-weight:500;margin:0 0 6px}
+p{margin:0 0 10px}
+.lead{color:var(--muted);max-width:680px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 0}
+.btn{display:inline-block;padding:10px 18px;border-radius:8px;font-weight:500;text-decoration:none;border:1px solid var(--border);background:var(--surface);color:var(--text)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.flow li{background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--lake);border-radius:8px;padding:12px 14px;font-size:14px}
+.flow b{display:block;font-weight:500;margin-bottom:2px}
+.flow span{color:var(--muted);font-size:13px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:8px;padding:14px 16px}
+.card p{margin:0;color:var(--muted);font-size:14px}
+.shots{display:grid;gap:22px}
+figure{margin:0}
+figure img{display:block;width:100%;height:auto;border:1px solid var(--border);border-radius:8px}
+figcaption{font-size:13px;color:var(--muted);margin-top:6px}
+.copy{margin-top:44px;background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--purple);border-radius:8px;padding:16px 18px;font-size:14px}
+.copy h3{margin-bottom:8px}
+.copy p{margin:0 0 6px}
+.note{font-size:13px;color:var(--muted)}
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a href="/">← 홈</a> · <a href="/projects.html">프로젝트</a></div>
+
+  <h1>업무보고 자동취합 시스템</h1>
+  <p class="lead">국·과·팀이 주간·월중·반기 업무보고를 각자 문서로 만들어 메일로 모으고, 담당자가 그것을 다시 한 파일로 붙이는 일을 한 화면으로 옮긴 웹 시스템이다. 담당자가 입력하면 팀장·부서장·국장 결재를 거쳐 취합 보고서와 회의 자료가 자동으로 만들어진다.</p>
+  <div class="cta">
+    <a class="btn primary" href="/workreport-demo.html">체험판 열기 →</a>
+    <a class="btn" href="#copyright">저작권 안내</a>
+  </div>
+  <p class="note" style="margin-top:10px">체험판은 가상 부서·가상 데이터로 만들었다. 로그인 없이 쓸 수 있고, 입력한 내용은 이 브라우저에만 남는다. 상단 '현재 역할'을 바꾸면 결재 단계별 화면을 볼 수 있다.</p>
+
+  <h2>보고가 흘러가는 길</h2>
+  <ol class="flow">
+    <li><b>① 담당자 입력</b><span>보고 종류·기간·사업구분을 고르고 정해진 서식에 맞춰 작성</span></li>
+    <li><b>② 팀장 검토</b><span>승인하거나 사유를 붙여 반려</span></li>
+    <li><b>③ 부서장 승인</b><span>과 단위로 묶어 순서대로 확인</span></li>
+    <li><b>④ 국장 확인</b><span>최종 승인한 항목만 취합에 반영</span></li>
+    <li><b>⑤ 취합·회의</b><span>취합 보고서, 회의 자료, 지시사항 추적</span></li>
+  </ol>
+
+  <h2>무엇을 해결하나</h2>
+  <div class="cards">
+    <div class="card"><h3>조직 범위 결재</h3><p>역할과 소속에 따라 볼 수 있는 보고와 누를 수 있는 버튼이 달라진다. 부재 중에는 권한을 위임할 수 있다.</p></div>
+    <div class="card"><h3>바뀌지 않는 감사 기록</h3><p>누가 언제 무엇을 고치고 승인했는지 이력을 사슬처럼 이어 남겨, 나중에 고쳐 쓴 흔적을 확인할 수 있다.</p></div>
+    <div class="card"><h3>기간·조직별 자동 취합</h3><p>국장까지 확정된 보고만 골라 국·과 순서로 목차를 만들고, 인쇄·PDF·CSV로 내보낸다.</p></div>
+    <div class="card"><h3>회의 지시사항 추적</h3><p>회의에서 나온 지시를 해당 보고에 연결하고, 다음 보고에 반영됐는지 끝까지 따라간다.</p></div>
+    <div class="card"><h3>제출 현황 한눈에</h3><p>제출·미제출·작성 중인 부서를 숫자와 이름으로 보여 줘, 독촉 전화를 돌릴 필요가 줄어든다.</p></div>
+    <div class="card"><h3>동시 작성 충돌 방지</h3><p>여러 사람이 같은 항목을 고쳐도 버전을 비교해 먼저 저장한 내용을 지키고 알려 준다.</p></div>
+  </div>
+
+  <h2>화면</h2>
+  <div class="shots">
+    <figure><img src="/img/workreport/leader.jpg" width="1280" height="900" loading="lazy" alt="팀장 검토 화면. 제출된 보고마다 승인·반려·내용수정 버튼이 있다."><figcaption>팀장 검토 — 제출된 보고를 승인하면 부서장에게 넘어간다.</figcaption></figure>
+    <figure><img src="/img/workreport/status.jpg" width="1280" height="900" loading="lazy" alt="전체 제출현황 화면. 전체·제출·미제출·작성중·미작성 부서 수와 태그 구름, 업무 목록이 보인다."><figcaption>전체 제출현황 — 어느 부서가 아직 내지 않았는지 바로 보인다.</figcaption></figure>
+    <figure><img src="/img/workreport/report.jpg" width="1280" height="900" loading="lazy" alt="취합 보고서 화면. 보고서 종류와 범위를 고르면 국·과별 목차가 만들어진다."><figcaption>취합 보고서 — 확정된 항목만 모아 목차까지 자동으로 만든다.</figcaption></figure>
+  </div>
+
+  <h2>만든 방식</h2>
+  <p>화면은 HTML·JavaScript, 서버는 Python(Flask)과 SQLite·PostgreSQL로 만들었고, 기획·설계·검증 전 과정에서 AI 코딩 도구를 함께 썼다. 실제 운영판은 로그인과 서버 저장을 쓰고, 이 홈페이지의 체험판은 서버 없이 브라우저 저장소로만 돌아가도록 줄인 것이다.</p>
+
+  <section class="copy" id="copyright">
+    <h3>저작권 안내</h3>
+    <p>이 시스템의 프로그램 코드, 화면 구성, 결재·취합 설계는 최승환이 창작한 저작물로 「저작권법」의 보호를 받는다.</p>
+    <p>허락 없이 복제·배포·개작하거나 다른 기관·업체 제품에 옮겨 쓰는 것을 금한다. 체험판을 둘러보는 것은 자유롭다.</p>
+    <p class="note">도입·협업 문의는 <a href="/guestbook.html">방명록</a>으로 남겨 주시면 연락드린다.</p>
+  </section>
+
+  <footer>© 2026 최승환. All rights reserved. · 업무보고 자동취합 시스템</footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+</body>
+</html>
