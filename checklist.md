@@ -27,4 +27,4 @@
 - [x] `scripts/career-compass-sheet.gs` 작성: 시트 자동 머리행, 크기·형식 검사, 수식 주입 방지, 분당 전송 상한
 - [x] 채점 검증: 역문항 18개·유형별 문항 수·결과 코드 계산을 node로 확인, 스크립트 구문 검사
 - [x] `index.html` B면 트랙·`sitemap.xml`·`publish.py` 배포 목록 연결
-- [ ] 운영자가 Apps Script 배포 후 받은 URL을 `ENDPOINT`에 넣고 배포
+- [x] Apps Script 웹 앱 배포(시트 "진로나침반 응답", 프로젝트 "진로나침반 수집", 실행: 운영자 / 액세스: 모든 사용자) 후 URL을 `ENDPOINT`에 넣고 배포
