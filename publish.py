@@ -867,6 +867,7 @@ def main():
     push_local("budget_dashboard.html",      "update budget dashboard")
     push_local("guestbook.html",                     "update guestbook")
     push_local("uirim-final-notes.html",             "update uirim final notes")
+    push_local("career-compass.html",                "update career compass")
     push_local("chronicle.html",                     "update chronicle")
     push_local("about.html",                         "update about")
     push_local("glenfiddich12.html",                 "update glenfiddich guide")
