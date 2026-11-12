@@ -129,7 +129,8 @@ html[data-theme="light"] .tape-tracks .no { color: var(--tape-red); }
 html[data-theme="light"] .cat-bar .cat-btn.active { background: var(--tape-shell); border-color: var(--tape-shell); color: var(--tape-paper); }
 
 @media (max-width: 860px) {
-  #tape-hero { grid-template-columns: 1fr; padding: 70px 16px 40px; gap: 18px; }
+  /* minmax(0,…): 삐삐 글자 흐름(padding-left:100% + nowrap)이 칸을 화면 밖까지 늘려 폰이 페이지 전체를 축소해 보여 주던 문제 */
+  #tape-hero { grid-template-columns: minmax(0, 1fr); padding: 70px 16px 40px; gap: 18px; }
   .pager { transform: none; margin: 0 0 20px; width: auto; }
   /* 위 라운지 그림보다 작게: 데크를 폭 78%로 줄여 가운데 둔다 */
   .deck { padding: 8px; width: min(78%, 300px); margin-inline: auto; }
