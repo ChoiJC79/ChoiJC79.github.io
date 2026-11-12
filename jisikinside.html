@@ -19,21 +19,19 @@
 <style>
 /* 레이아웃: 위에 전체 분석(분야 막대·조회수 상위·흐름), 아래에 필터와 영상 카드 목록 */
 :root{
-  color-scheme:light;
+  color-scheme:dark;
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
-  --bg:#f6f8fa;--surface:#ffffff;--border:#d0d7de;--text:#1f2328;--muted:#59636e;
-  --accent:#0969da;--amber:#9a6700;--green:#1a7f37;--purple:#8250df;--lake:#1b7c94;
+  /* 홈과 같은 카세트테이프 컨셉 — 밤의 방(갈색) 기본 */
+  --bg:#231c17;--surface:#2f2620;--border:#4a3d32;--text:#efe4cf;--muted:#b3a28a;
+  --accent:#f2a33a;--amber:#f2a33a;--green:#a9c46a;--purple:#c9a0dc;--lake:#7fb3c8;
   --serif:"Noto Serif KR","AppleMyungjo",ui-serif,Georgia,serif;
   --sans:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,-apple-system,sans-serif;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0d1117;--surface:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;
-  --accent:#58a6ff;--amber:#d29922;--green:#3fb950;--purple:#bc8cff;--lake:#5cbcd4;color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0d1117;--surface:#161b22;--border:#30363d;--text:#e6edf3;--muted:#8b949e;
-  --accent:#58a6ff;--amber:#d29922;--green:#3fb950;--purple:#bc8cff;--lake:#5cbcd4;color-scheme:dark}
+:root[data-theme="light"]{
+  --bg:#f4ecd8;--surface:#fbf6ea;--border:#d8c9a8;--text:#2b2420;--muted:#7a6a56;
+  --accent:#c4571f;--amber:#b06a12;--green:#4f7a2a;--purple:#7a4a8f;--lake:#2f5d8a;color-scheme:light}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;line-height:1.75;font-size:15px}
 img{max-width:100%}
@@ -70,7 +68,7 @@ section{margin-top:44px}
 html.js-enabled .js-only{display:flex}
 .tools{flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
 .chip{border:1px solid var(--border);background:var(--surface);color:var(--muted);border-radius:999px;padding:4px 12px;font:inherit;font-size:13px;cursor:pointer}
-.chip[aria-pressed="true"]{color:var(--text);border-color:var(--accent);background:rgba(9,105,218,.12);background:color-mix(in srgb,var(--accent) 12%,var(--surface))}
+.chip[aria-pressed="true"]{color:var(--text);border-color:var(--accent);background:rgba(242,163,58,.14);background:color-mix(in srgb,var(--accent) 12%,var(--surface))}
 .tools input{flex:1 1 200px;min-width:0;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:8px;padding:7px 12px;font:inherit;font-size:14px}
 .tools select,.tools .btn-toggle{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:8px;padding:6px 10px;font:inherit;font-size:13px;cursor:pointer}
 .count{color:var(--muted);font-size:13px;margin-bottom:10px}
