@@ -131,18 +131,19 @@ html[data-theme="light"] .cat-bar .cat-btn.active { background: var(--tape-shell
 @media (max-width: 860px) {
   #tape-hero { grid-template-columns: 1fr; padding: 70px 16px 40px; gap: 18px; }
   .pager { transform: none; margin: 0 0 20px; width: auto; }
-  .deck { padding: 10px 10px 10px; }
+  /* 위 라운지 그림보다 작게: 데크를 폭 78%로 줄여 가운데 둔다 */
+  .deck { padding: 8px; width: min(78%, 300px); margin-inline: auto; }
   .deck-brand small, .deck-lamp, .tape-type { display: none; }
   .deck-brand { font-size: 9px; letter-spacing: .08em; }
   .vu { width: 48px; height: 30px; }
   .vu i { height: 30px; }
-  .tape-counter { font-size: 13px; padding: 4px 6px; }
+  .tape-counter { font-size: 13px; padding: 4px 6px; white-space: nowrap; }
   .deck-door { padding: 8px; }
   /* 테이프 폭을 화면 높이에 묶어 첫 화면에 데크 버튼까지 들어오게 */
   .deck-door .tape { width: min(100%, 36svh); margin-inline: auto; }
   .tape-title { font-size: clamp(13px, 4.6cqw, 33px); }
-  .tape-deck a { min-height: 50px; font-size: 15px; }
-  .tape-deck a span { font-size: 12px; }
+  .tape-deck a { min-height: 44px; font-size: 12px; }
+  .tape-deck a span { font-size: 10.5px; }
   .tape-intro { font-size: 18px; }
   .tape-tracks li a { padding: 8px 4px; font-size: 19px; }
   .tape-tracks .sub { font-size: 14px; }
@@ -254,3 +255,6 @@ html[data-theme="light"] .entries-head h2 { color: var(--accent); }
   .entry-list .entry-del { padding: 10px 12px; margin: -10px -12px -10px auto; }
   .admin-link { display: inline-block; padding: 10px 6px; }
 }
+
+/* 아주 좁은 폰: 줄인 데크 머리에 계기판까지 넣으면 숫자가 세로로 쪼개져 계기판을 뺀다 */
+@media (max-width: 400px) { .vu { display: none; } }
