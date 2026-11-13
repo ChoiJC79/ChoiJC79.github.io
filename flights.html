@@ -51,6 +51,15 @@ a{color:var(--accent);text-decoration:none;}
 .fs-meta{font-size:11px;color:var(--muted);margin-top:0.3rem;letter-spacing:0.02em;}
 .fs-price{font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--accent);white-space:nowrap;}
 .fs-stops{font-size:10px;color:var(--green);background:rgba(63,185,80,0.1);border:1px solid rgba(63,185,80,0.25);padding:1px 8px;border-radius:10px;margin-left:0.4rem;}
+.fs-codes{margin-top:2.5rem;border-top:1px solid var(--border);padding-top:1.5rem;}
+.fs-codes h2{font-family:var(--font-display);font-size:14px;margin-bottom:0.3rem;}
+.fs-codes-hint{font-size:11px;color:var(--muted);margin-bottom:1rem;}
+.fs-code-group{margin-bottom:1rem;}
+.fs-code-group h3{font-size:12px;color:var(--muted);letter-spacing:0.04em;margin-bottom:0.5rem;}
+.fs-code-grid{display:flex;flex-wrap:wrap;gap:0.5rem;}
+.fs-code-chip{font-size:12px;border:1px solid var(--border);border-radius:14px;padding:4px 10px;background:var(--surface);color:var(--text);cursor:pointer;font-family:var(--font-body);}
+.fs-code-chip:hover{border-color:var(--accent);color:var(--accent);}
+.fs-code-chip b{color:var(--accent);margin-left:4px;font-weight:700;}
 footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:11px;color:var(--muted);letter-spacing:0.04em;margin-top:2rem;}
 @media(max-width:600px){.fs-form{grid-template-columns:1fr;}.wrap{padding:1rem;}}
 </style>
@@ -103,6 +112,70 @@ footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-si
 
   <div class="fs-status" id="fs-status"></div>
   <div class="fs-results" id="fs-results"></div>
+
+  <div class="fs-codes">
+    <h2>공항 코드 모르면 여기서 클릭</h2>
+    <p class="fs-codes-hint">마지막으로 눌렀던 입력칸(출발지/도착지)에 바로 채워집니다.</p>
+
+    <div class="fs-code-group">
+      <h3>한국</h3>
+      <div class="fs-code-grid">
+        <button type="button" class="fs-code-chip" data-code="ICN">인천<b>ICN</b></button>
+        <button type="button" class="fs-code-chip" data-code="GMP">김포<b>GMP</b></button>
+        <button type="button" class="fs-code-chip" data-code="CJU">제주<b>CJU</b></button>
+        <button type="button" class="fs-code-chip" data-code="PUS">부산(김해)<b>PUS</b></button>
+        <button type="button" class="fs-code-chip" data-code="TAE">대구<b>TAE</b></button>
+        <button type="button" class="fs-code-chip" data-code="CJJ">청주<b>CJJ</b></button>
+      </div>
+    </div>
+
+    <div class="fs-code-group">
+      <h3>일본</h3>
+      <div class="fs-code-grid">
+        <button type="button" class="fs-code-chip" data-code="NRT">도쿄(나리타)<b>NRT</b></button>
+        <button type="button" class="fs-code-chip" data-code="HND">도쿄(하네다)<b>HND</b></button>
+        <button type="button" class="fs-code-chip" data-code="KIX">오사카(간사이)<b>KIX</b></button>
+        <button type="button" class="fs-code-chip" data-code="CTS">삿포로<b>CTS</b></button>
+        <button type="button" class="fs-code-chip" data-code="FUK">후쿠오카<b>FUK</b></button>
+        <button type="button" class="fs-code-chip" data-code="NGO">나고야<b>NGO</b></button>
+        <button type="button" class="fs-code-chip" data-code="OKA">오키나와<b>OKA</b></button>
+      </div>
+    </div>
+
+    <div class="fs-code-group">
+      <h3>동남아시아</h3>
+      <div class="fs-code-grid">
+        <button type="button" class="fs-code-chip" data-code="BKK">방콕(수완나품)<b>BKK</b></button>
+        <button type="button" class="fs-code-chip" data-code="DMK">방콕(돈무앙)<b>DMK</b></button>
+        <button type="button" class="fs-code-chip" data-code="DAD">다낭<b>DAD</b></button>
+        <button type="button" class="fs-code-chip" data-code="HAN">하노이<b>HAN</b></button>
+        <button type="button" class="fs-code-chip" data-code="SGN">호찌민<b>SGN</b></button>
+        <button type="button" class="fs-code-chip" data-code="CEB">세부<b>CEB</b></button>
+        <button type="button" class="fs-code-chip" data-code="MNL">마닐라<b>MNL</b></button>
+        <button type="button" class="fs-code-chip" data-code="KUL">쿠알라룸푸르<b>KUL</b></button>
+        <button type="button" class="fs-code-chip" data-code="SIN">싱가포르<b>SIN</b></button>
+        <button type="button" class="fs-code-chip" data-code="DPS">발리(덴파사르)<b>DPS</b></button>
+        <button type="button" class="fs-code-chip" data-code="CNX">치앙마이<b>CNX</b></button>
+      </div>
+    </div>
+
+    <div class="fs-code-group">
+      <h3>주요 도시</h3>
+      <div class="fs-code-grid">
+        <button type="button" class="fs-code-chip" data-code="HKG">홍콩<b>HKG</b></button>
+        <button type="button" class="fs-code-chip" data-code="TPE">타이베이<b>TPE</b></button>
+        <button type="button" class="fs-code-chip" data-code="PVG">상하이(푸동)<b>PVG</b></button>
+        <button type="button" class="fs-code-chip" data-code="PKX">베이징(다싱)<b>PKX</b></button>
+        <button type="button" class="fs-code-chip" data-code="GUM">괌<b>GUM</b></button>
+        <button type="button" class="fs-code-chip" data-code="SPN">사이판<b>SPN</b></button>
+        <button type="button" class="fs-code-chip" data-code="SYD">시드니<b>SYD</b></button>
+        <button type="button" class="fs-code-chip" data-code="LAX">로스앤젤레스<b>LAX</b></button>
+        <button type="button" class="fs-code-chip" data-code="JFK">뉴욕<b>JFK</b></button>
+        <button type="button" class="fs-code-chip" data-code="CDG">파리<b>CDG</b></button>
+        <button type="button" class="fs-code-chip" data-code="LHR">런던<b>LHR</b></button>
+      </div>
+    </div>
+  </div>
 </section>
 
 <footer>
@@ -126,6 +199,15 @@ function toggleTheme(){
   var btn=document.getElementById('theme-toggle');
   if(btn) btn.textContent=next==='dark'?'☀ 라이트':'☾ 다크';
 }
+
+let lastFocusedField = 'fs-destination';
+document.getElementById('fs-origin').addEventListener('focus', function(){ lastFocusedField = 'fs-origin'; });
+document.getElementById('fs-destination').addEventListener('focus', function(){ lastFocusedField = 'fs-destination'; });
+document.querySelectorAll('.fs-code-chip').forEach(function(chip){
+  chip.addEventListener('click', function(){
+    document.getElementById(lastFocusedField).value = chip.dataset.code;
+  });
+});
 
 const tripSelect = document.getElementById('fs-trip');
 const returnField = document.getElementById('fs-return-field');
