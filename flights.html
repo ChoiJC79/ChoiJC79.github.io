@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>항공권 검색 | 최승환</title>
+<meta name="description" content="출발지·도착지·날짜로 구글 플라이츠 최저가를 바로 조회하는 간단한 항공권 검색기.">
+<meta property="og:title" content="항공권 검색 | 최승환">
+<meta property="og:description" content="출발지·도착지·날짜로 구글 플라이츠 최저가를 바로 조회하는 간단한 항공권 검색기.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://choijc79.github.io/flights.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="항공권 검색 | 최승환">
+<meta name="twitter:description" content="출발지·도착지·날짜로 구글 플라이츠 최저가를 바로 조회하는 간단한 항공권 검색기.">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="/css/theme.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-body);font-weight:400;}
+a{color:var(--accent);text-decoration:none;}
+.site-header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px;transition:background 0.3s,border-color 0.3s;}
+.logo{font-family:var(--font-display);font-size:15px;color:var(--accent);letter-spacing:0.04em;}
+.nav-links{display:flex;gap:1.5rem;font-size:12px;}
+.nav-links a{color:var(--muted);text-decoration:none;transition:color 0.15s;}
+.nav-links a:hover{color:var(--accent);}
+#theme-toggle{background:none;border:1px solid var(--border);color:var(--muted);font-size:11px;padding:3px 11px;border-radius:20px;cursor:pointer;font-family:var(--font-body);letter-spacing:0.05em;transition:all 0.2s;margin-left:1rem;}
+#theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
+.hero{max-width:760px;margin:0 auto;padding:4rem 2rem 1.5rem;border-bottom:1px solid var(--border);}
+.hero-label{font-size:11px;letter-spacing:0.12em;color:var(--green);text-transform:uppercase;margin-bottom:0.8rem;}
+.hero h1{font-family:var(--font-display);font-size:clamp(24px,4vw,36px);font-weight:700;line-height:1.3;margin-bottom:0.8rem;}
+.hero p{color:var(--muted);font-size:13px;line-height:1.6;}
+.wrap{max-width:760px;margin:0 auto;padding:2rem;}
+.fs-form{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:1.6rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.fs-field{display:flex;flex-direction:column;gap:0.4rem;}
+.fs-field label{font-size:11px;color:var(--muted);letter-spacing:0.04em;}
+.fs-field input,.fs-field select{font-size:14px;padding:0.6rem 0.7rem;border:1px solid var(--border);border-radius:4px;background:var(--bg);color:var(--text);font-family:var(--font-body);}
+.fs-field input::placeholder{color:var(--border);}
+.fs-full{grid-column:1/-1;}
+.fs-submit{grid-column:1/-1;background:var(--accent);color:var(--bg);border:none;border-radius:4px;padding:0.75rem;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:0.04em;}
+.fs-submit:hover{opacity:0.9;}
+.fs-submit:disabled{opacity:0.5;cursor:default;}
+.fs-note{font-size:11px;color:var(--muted);margin-top:1rem;line-height:1.6;}
+.fs-status{margin:1.5rem 0;font-size:13px;color:var(--muted);}
+.fs-results{display:flex;flex-direction:column;gap:0.8rem;}
+.fs-card{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:1.1rem 1.4rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;}
+.fs-airline{font-size:12px;color:var(--muted);margin-bottom:0.3rem;}
+.fs-route{font-family:var(--font-display);font-size:15px;font-weight:600;}
+.fs-meta{font-size:11px;color:var(--muted);margin-top:0.3rem;letter-spacing:0.02em;}
+.fs-price{font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--accent);white-space:nowrap;}
+.fs-stops{font-size:10px;color:var(--green);background:rgba(63,185,80,0.1);border:1px solid rgba(63,185,80,0.25);padding:1px 8px;border-radius:10px;margin-left:0.4rem;}
+footer{border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:11px;color:var(--muted);letter-spacing:0.04em;margin-top:2rem;}
+@media(max-width:600px){.fs-form{grid-template-columns:1fr;}.wrap{padding:1rem;}}
+</style>
+<link rel="stylesheet" href="/css/motion.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 항공권 검색</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/tour.html">투어</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9790; 다크</button>
+</header>
+
+<section class="hero">
+  <div class="hero-label">Flight Search</div>
+  <h1>항공권 최저가,<br>바로 검색</h1>
+  <p>출발지·도착지·날짜를 넣으면 구글 플라이츠에서 가격을 긁어옵니다. 참고용 가격이니 실제 구매 전에는 항공사·여행사에서 한 번 더 확인하세요.</p>
+</section>
+
+<section class="wrap">
+  <form class="fs-form" id="fs-form">
+    <div class="fs-field">
+      <label for="fs-origin">출발지 (공항 코드 3자리)</label>
+      <input id="fs-origin" type="text" maxlength="3" placeholder="ICN" required>
+    </div>
+    <div class="fs-field">
+      <label for="fs-destination">도착지 (공항 코드 3자리)</label>
+      <input id="fs-destination" type="text" maxlength="3" placeholder="NRT" required>
+    </div>
+    <div class="fs-field">
+      <label for="fs-trip">여정</label>
+      <select id="fs-trip">
+        <option value="one-way">편도</option>
+        <option value="round-trip">왕복(참고용 추정가)</option>
+      </select>
+    </div>
+    <div class="fs-field">
+      <label for="fs-date">출발일</label>
+      <input id="fs-date" type="date" required>
+    </div>
+    <div class="fs-field" id="fs-return-field" hidden>
+      <label for="fs-return">귀국일</label>
+      <input id="fs-return" type="date">
+    </div>
+    <button class="fs-submit fs-full" type="submit" id="fs-submit">검색</button>
+  </form>
+  <p class="fs-note">공항 코드는 인천 ICN, 김포 GMP, 제주 CJU, 나리타 NRT, 도쿄(하네다) HND처럼 3자리 IATA 코드입니다. 서버가 잠들어 있으면 첫 검색이 10~30초 걸릴 수 있어요.</p>
+
+  <div class="fs-status" id="fs-status"></div>
+  <div class="fs-results" id="fs-results"></div>
+</section>
+
+<footer>
+  © 2026 최승환 · choijc79.github.io
+</footer>
+<script>
+// Render 무료 플랜에 배포한 flight-search-api 주소로 교체
+const API_BASE = "https://REPLACE-ME.onrender.com";
+
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'☀ 라이트':'☾ 다크';
+})();
+function toggleTheme(){
+  var html=document.documentElement;
+  var next=html.getAttribute('data-theme')==='dark'?'light':'dark';
+  html.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'☀ 라이트':'☾ 다크';
+}
+
+const tripSelect = document.getElementById('fs-trip');
+const returnField = document.getElementById('fs-return-field');
+tripSelect.addEventListener('change', function(){
+  returnField.hidden = tripSelect.value !== 'round-trip';
+  document.getElementById('fs-return').required = tripSelect.value === 'round-trip';
+});
+
+function fmtPrice(p, currency){
+  if (p == null) return '가격 미확정';
+  return p.toLocaleString('ko-KR') + ' ' + currency;
+}
+
+document.getElementById('fs-form').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const statusEl = document.getElementById('fs-status');
+  const resultsEl = document.getElementById('fs-results');
+  const submitBtn = document.getElementById('fs-submit');
+
+  const origin = document.getElementById('fs-origin').value.trim().toUpperCase();
+  const destination = document.getElementById('fs-destination').value.trim().toUpperCase();
+  const date = document.getElementById('fs-date').value;
+  const trip = tripSelect.value;
+  const returnDate = document.getElementById('fs-return').value;
+
+  if (origin.length !== 3 || destination.length !== 3) {
+    statusEl.textContent = '공항 코드는 3자리로 입력하세요.';
+    return;
+  }
+  if (trip === 'round-trip' && !returnDate) {
+    statusEl.textContent = '왕복은 귀국일을 입력하세요.';
+    return;
+  }
+
+  submitBtn.disabled = true;
+  statusEl.textContent = '조회 중... (서버가 잠들어 있으면 시간이 걸려요)';
+  resultsEl.innerHTML = '';
+
+  const params = new URLSearchParams({ origin, destination, date, trip });
+  if (trip === 'round-trip') params.set('return_date', returnDate);
+
+  try {
+    const res = await fetch(`${API_BASE}/search?${params.toString()}`);
+    if (!res.ok) {
+      const body = await res.json().catch(() => ({}));
+      throw new Error(body.detail || `서버 오류 (${res.status})`);
+    }
+    const data = await res.json();
+    if (!data.flights || data.flights.length === 0) {
+      statusEl.textContent = '검색 결과가 없습니다. 날짜나 공항 코드를 확인해보세요.';
+      return;
+    }
+    statusEl.textContent = `${data.flights.length}건 (최저가 순)`;
+    resultsEl.innerHTML = data.flights.map(function(f){
+      const first = f.legs[0];
+      const last = f.legs[f.legs.length - 1];
+      return `
+        <div class="fs-card">
+          <div>
+            <div class="fs-airline">${f.airlines.join(', ')}</div>
+            <div class="fs-route">${first.from} → ${last.to}
+              <span class="fs-stops">${f.stops === 0 ? '직항' : f.stops + '회 경유'}</span>
+            </div>
+            <div class="fs-meta">${first.departure} 출발 → ${last.arrival} 도착 · ${Math.floor(first.duration_min / 60)}시간 ${first.duration_min % 60}분</div>
+          </div>
+          <div class="fs-price">${fmtPrice(f.price, f.currency)}</div>
+        </div>
+      `;
+    }).join('');
+  } catch (err) {
+    statusEl.textContent = '조회 실패: ' + err.message;
+  } finally {
+    submitBtn.disabled = false;
+  }
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+</body>
+</html>

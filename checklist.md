@@ -1,3 +1,13 @@
+# 항공권 검색 (`flights.html`) + 백엔드 배포 (2026-11-13)
+
+- [x] GitHub에서 API 키 없는 오픈소스 조사 → `AWeirdDev/flights`(fast-flights, 구글 플라이츠 스크래핑) 선정
+- [x] fast-flights 3.1.0 파서 버그 발견(가격 미확정 itinerary에서 `IndexError`) → `app.py`에 한 줄 패치한 `parse_js` 몽키패치로 우회
+- [x] FastAPI 백엔드(`flight-search-api`) 작성, 로컬에서 국내선·국제선·왕복 실제 조회 확인
+- [x] 새 저장소 `ChoiJC79/flight-search-api` 생성·푸시, Render 무료 배포 안내(README.md)
+- [x] `flights.html` 작성(편도/왕복 폼, 결과 카드, 라이트/다크 테마), `index.html` B7·`tour.html` 내비·`sitemap.xml`·`publish.py` 연결
+- [ ] Render에 실제 배포하고 `flights.html`의 `API_BASE`를 배포 URL로 교체
+- [ ] 배포 후 실제 브라우저에서 라이트/다크·모바일 확인, git push로 배포
+
 # 제10대 제천시의회 의정분석 대시보드 (`council.html`) 및 일일 자동화 구축 (2026-11-10)
 
 - [x] 제천시의회 유튜브 채널(`UCg3R1CAEaA2VjeXZHQdCSSg`) 2026년 7월 이후 전체 영상 80편 메타데이터·자막 전수 추출

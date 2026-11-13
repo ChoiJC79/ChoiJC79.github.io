@@ -855,6 +855,7 @@ def main():
     push_local("whisky-lounge.html",                 "update whisky lounge masterplan")
     push_binary_file("img/col_whisky_lounge.jpg", os.path.join(BASE_DIR, "img", "col_whisky_lounge.jpg"), "add whisky lounge thumb")
     push_local("tour.html",                          "update tour")
+    push_local("flights.html",                       "update flights")
     push_local("jisikinside.html",                   "update jisikinside")
     push_local("minseon9.html",                      "update minseon9")
     push_local("workreport.html",                    "update workreport")

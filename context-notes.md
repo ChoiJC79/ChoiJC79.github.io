@@ -1,3 +1,13 @@
+# 2026-11-13 항공권 검색(`flights.html`) + `flight-search-api` 백엔드
+
+API 키 없이 구글 플라이츠를 스크래핑하는 `AWeirdDev/flights`(fast-flights, ⭐2,100+)를 썼다. 정적 사이트(GitHub Pages)라 API 키를 JS에 넣으면 그대로 노출되므로, 키가 필요 없는 스크래퍼를 고른 것이 핵심 선택 이유다.
+
+fast-flights 3.1.0은 실제로 깨져 있었다. 가격이 아직 안 뜬 itinerary는 구글이 `k[1][0]`을 빈 리스트로 주는데, 라이브러리 원본 `parser.py`의 `parse_js`가 그대로 `k[1][0][1]`을 인덱싱해서 `IndexError`가 났다(모든 노선에서 재현). `app.py`에 `parse_js`를 통째로 복사해 그 한 줄만 고친 `_patched_parse_js`를 만들어 `fast_flights.parser.parse_js`에 몽키패치했다. 업스트림이 고치면 이 패치 함수는 지워도 된다. 왕복(`round-trip`)은 구글이 출발편→복귀편을 2단계로 고르게 하는 구조라 이 라이브러리로는 정확한 결합가가 아닌 참고용 추정가만 나온다(업스트림 이슈 #23, 열려 있음). UI에 "참고용 추정가"로 명시했다.
+
+백엔드는 별도 저장소 `ChoiJC79/flight-search-api`(FastAPI, CORS는 `https://choijc79.github.io`만 허용)로 분리해 Render 무료 플랜에 배포한다. 무료 플랜은 15분 무요청 시 슬립 → 첫 요청 콜드 스타트 10~30초, `flights.html`에 안내 문구를 넣었다. 운영자가 Render 가입·배포 후 `flights.html`의 `API_BASE = "https://REPLACE-ME.onrender.com"`를 실제 배포 URL로 바꿔야 작동한다.
+
+`flights.html`은 `tour.html` 패턴(독립 `<style>`, `theme.css` 토큰, 자체 테마 토글)을 그대로 따랐다. `index.html` B면 트랙 B7, `tour.html` 상단 nav에 링크, `sitemap.xml`·`publish.py`에 등록했다.
+
 # 2026-11-10 제천시의회 의정분석 탭(`council.html`) 추가 및 일일 자동 동기화
 
 제10대 제천시의회(2026.07 개원~현재) 유튜브 채널의 본회의·상임위·인사청문회·조례 인터뷰 영상 80편과 자막을 전수 분석해 `/council.html`과 `/data/council_data.js`로 구조화했다. 단순 요약이 아니라 실제 발언 타임스탬프 즉시 재생, 표면 요구 이면의 숨은 뜻(행간), 다가올 제364회 정례회 예상 후속 논리를 5단계 트리와 유기적 관계망으로 시각화했다. 홈(`index.html`)의 상단 내비게이션, 카세트 A면 트랙(A7), 모바일 하단 탭바(`#mqb`)에 의회 탭을 연결했다.
