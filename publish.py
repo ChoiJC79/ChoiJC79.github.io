@@ -890,6 +890,7 @@ def main():
     push_local("jobs_in_jecheon.html",               "add Jobs in Jecheon page")
     push_local("jecheon_investment_plan.html",       "add investment plan page")
     push_local("letter_wonwoo.html",                   "add letter to wonwoo")
+    push_local("yeonwoo_suneung_roadmap.html",        "add yeonwoo suneung roadmap")
     push_local("research.html",                      "update research")
     push_local("council.html",                       "update council page")
     push_local("data/council_data.js",               "update council data")

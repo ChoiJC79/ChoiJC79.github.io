@@ -1,0 +1,527 @@
+<!-- 연우 2030학년도 수능 대비 3개년 로드맵 대시보드 -->
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>연우 수능 로드맵 | 최승환</title>
+<meta name="description" content="중3 겨울부터 고3 11월까지 3년을 어디에 얼마나 쓸지 정리한 연우 맞춤 수능 로드맵. 2028 통합형 수능 체제 대비.">
+<meta property="og:title" content="연우 수능 로드맵 | 최승환">
+<meta property="og:description" content="중3 겨울부터 고3 11월까지 3년을 어디에 얼마나 쓸지 정리한 연우 맞춤 수능 로드맵. 2028 통합형 수능 체제 대비.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/yeonwoo_suneung_roadmap.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="연우 수능 로드맵 | 최승환">
+<meta name="twitter:description" content="중3 겨울부터 고3 11월까지 3년을 어디에 얼마나 쓸지 정리한 연우 맞춤 수능 로드맵. 2028 통합형 수능 체제 대비.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="/css/motion.css">
+<style>
+
+/* 사이트 공통 헤더 & 내비게이션 */
+.site-header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--line);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px;transition:background .3s,border-color .3s}
+.site-logo{font-family:var(--display);font-size:15px;color:var(--accent);letter-spacing:.04em;text-decoration:none;font-weight:700}
+.nav-links{display:flex;gap:1.5rem;font-size:13px}
+.nav-links a{color:var(--muted);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--accent)}
+.nav-links a.active{color:var(--accent);font-weight:600}
+#theme-toggle{background:none;border:1px solid var(--line);color:var(--muted);font-size:11px;padding:3px 11px;border-radius:20px;cursor:pointer;font-family:var(--body);letter-spacing:.05em;transition:all .2s;margin-left:1rem}
+#theme-toggle:hover{border-color:var(--accent);color:var(--accent)}
+footer.site-footer{margin-top:60px;padding:32px 0;border-top:1px solid var(--line);text-align:center;font-size:12px;color:var(--muted)}
+footer.site-footer a{color:var(--accent);text-decoration:none}
+@media (max-width:600px){
+  .site-header{padding:0 1rem}
+  .nav-links{gap:.8rem;font-size:12px}
+}
+
+
+/* 레이아웃: 좌측 고정 목차 + 본문 한 칼럼. 월별 카드는 세로 타임라인, 영역별 표는 가로 스크롤 허용 */
+:root{
+  --bg:#f5f6f8; --surface:#ffffff; --fg:#1b2230; --muted:#5b6474; --line:#dde1e8;
+  --ink:#1f3a5f; --accent:#0e7c6b; --accent-soft:#e3f3ef; --warn:#b4541a; --warn-soft:#fbeadd;
+  --kor:#7a3e9d; --math:#1f5fbf; --eng:#0e7c6b; --soc:#b4541a; --sci:#2a7a3b; --his:#6b5b3e;
+  --display:"IBM Plex Sans KR","Noto Sans KR",system-ui,sans-serif;
+  --body:"Noto Sans KR",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#13171e; --surface:#1b2129; --fg:#e8ebf0; --muted:#9aa4b4; --line:#2c3440;
+  --ink:#9fc0ea; --accent:#4fc3ad; --accent-soft:#17352f; --warn:#f0a06a; --warn-soft:#3a2819;
+  --kor:#c594e3; --math:#7fb0f5; --eng:#4fc3ad; --soc:#f0a06a; --sci:#7fcf8f; --his:#c9b28a; color-scheme:dark}}
+
+/* 테마 확장 */
+:root[data-theme="dark"], html[data-theme="dark"]{
+  --bg:#13171e; --surface:#1b2129; --fg:#e8ebf0; --muted:#9aa4b4; --line:#2c3440;
+  --ink:#9fc0ea; --accent:#4fc3ad; --accent-soft:#17352f; --warn:#f0a06a; --warn-soft:#3a2819;
+  --kor:#c594e3; --math:#7fb0f5; --eng:#4fc3ad; --soc:#f0a06a; --sci:#7fcf8f; --his:#c9b28a; color-scheme:dark}
+html[data-theme="light"]{
+  --bg:#f5f6f8; --surface:#ffffff; --fg:#1b2230; --muted:#5b6474; --line:#dde1e8;
+  --ink:#1f3a5f; --accent:#0e7c6b; --accent-soft:#e3f3ef; --warn:#b4541a; --warn-soft:#fbeadd;
+  --kor:#7a3e9d; --math:#1f5fbf; --eng:#0e7c6b; --soc:#b4541a; --sci:#2a7a3b; --his:#6b5b3e; color-scheme:light}
+
+:root[data-theme="dark_disabled"]{
+  --bg:#13171e; --surface:#1b2129; --fg:#e8ebf0; --muted:#9aa4b4; --line:#2c3440;
+  --ink:#9fc0ea; --accent:#4fc3ad; --accent-soft:#17352f; --warn:#f0a06a; --warn-soft:#3a2819;
+  --kor:#c594e3; --math:#7fb0f5; --eng:#4fc3ad; --soc:#f0a06a; --sci:#7fcf8f; --his:#c9b28a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.65;margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-block:0 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.hero{padding:40px 0 24px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+h1{font-family:var(--display);font-size:clamp(28px,4vw,40px);line-height:1.2;margin:6px 0 10px;text-wrap:balance;color:var(--ink)}
+h2{font-family:var(--display);font-size:22px;margin:0 0 6px;color:var(--ink);text-wrap:balance}
+h3{font-family:var(--display);font-size:17px;margin:18px 0 6px}
+h4{font-family:var(--display);font-size:15px;margin:14px 0 4px;color:var(--muted)}
+p{margin:6px 0;max-width:72ch}
+.lead{font-size:16px;color:var(--fg);max-width:70ch}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-top:18px}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.fact .k{font-size:12px;color:var(--muted)}
+.fact .v{font-family:var(--display);font-weight:600;font-size:17px;margin-top:2px}
+.layout{display:grid;grid-template-columns:200px minmax(0,1fr);gap:32px;margin-top:24px}
+nav.toc{position:sticky;top:calc(68px + env(safe-area-inset-top,0px));align-self:start;font-size:13px}
+nav.toc a{display:block;padding:6px 0;color:var(--muted);text-decoration:none;border-left:2px solid var(--line);padding-left:10px}
+nav.toc a:hover,nav.toc a:focus{color:var(--fg);border-color:var(--accent);outline:none}
+main{min-width:0}
+section{padding:28px 0;border-bottom:1px solid var(--line)}
+section:last-child{border-bottom:0}
+.sub{color:var(--muted);font-size:14px;margin-bottom:14px}
+.note{background:var(--accent-soft);border-left:3px solid var(--accent);padding:10px 14px;border-radius:0 6px 6px 0;margin:12px 0;max-width:80ch}
+.caution{background:var(--warn-soft);border-left:3px solid var(--warn);padding:10px 14px;border-radius:0 6px 6px 0;margin:12px 0;max-width:80ch}
+.tbl{overflow-x:auto;margin:10px 0 4px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:560px}
+th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:12.5px;letter-spacing:.02em;background:var(--surface)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill{display:inline-block;font-size:11.5px;font-weight:600;padding:1px 8px;border-radius:999px;border:1px solid currentColor;margin-right:4px;white-space:nowrap}
+.kor{color:var(--kor)} .math{color:var(--math)} .eng{color:var(--eng)} .soc{color:var(--soc)} .sci{color:var(--sci)} .his{color:var(--his)}
+/* 타임라인 */
+.timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}
+.tl{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;min-width:0}
+.tl .when{font-family:var(--display);font-weight:600;color:var(--ink)}
+.tl .what{font-size:13.5px;color:var(--muted);margin-top:4px}
+.tl.now{border-color:var(--accent);box-shadow:inset 3px 0 0 var(--accent)}
+/* 월별 카드 */
+.months{display:grid;gap:12px;margin-top:10px}
+details.month{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:0}
+details.month summary{cursor:pointer;list-style:none;display:flex;gap:14px;align-items:baseline;padding:14px 16px;flex-wrap:wrap}
+details.month summary::-webkit-details-marker{display:none}
+details.month summary .m{font-family:var(--display);font-weight:700;font-size:16px;color:var(--ink);min-width:150px}
+details.month summary .goal{color:var(--muted);font-size:14px;flex:1;min-width:200px}
+details.month summary .chev{color:var(--muted);font-size:12px}
+details.month[open] summary .chev{transform:rotate(90deg)}
+details.month .body{padding:0 16px 16px;border-top:1px solid var(--line)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px 24px}
+.grid2 > div{min-width:0}
+ul{margin:4px 0 8px;padding-left:18px}
+li{margin:3px 0}
+li small,.src{color:var(--muted);font-size:12.5px}
+.why{font-size:13px;color:var(--muted);border-top:1px dashed var(--line);margin-top:10px;padding-top:8px}
+/* 체크리스트 */
+.check{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px 24px}
+.check label{display:flex;gap:10px;align-items:flex-start;padding:6px 0;cursor:pointer}
+.check input{margin-top:4px;accent-color:var(--accent)}
+.check label.done span{color:var(--muted);text-decoration:line-through}
+.progress{font-size:13px;color:var(--muted);margin:4px 0 10px}
+/* 근거 카드 */
+.srcs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.srccard{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;min-width:0}
+.srccard .who{font-family:var(--display);font-weight:600}
+.srccard .what{font-size:13.5px;margin-top:4px}
+.srccard a{color:var(--accent);word-break:break-all}
+blockquote{margin:6px 0;padding:6px 12px;border-left:3px solid var(--line);color:var(--fg);font-size:14px}
+a{color:var(--accent)}
+.day{display:grid;grid-template-columns:90px minmax(0,1fr);gap:4px 12px;font-size:14px;max-width:560px}
+.day b{font-variant-numeric:tabular-nums;color:var(--muted);font-weight:500}
+@media (max-width:900px){.layout{grid-template-columns:1fr}nav.toc{position:static;display:flex;flex-wrap:wrap;gap:4px 12px}nav.toc a{border-left:0;padding-left:0}.timeline{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.timeline{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:no-preference){details.month summary .chev{transition:transform .15s}}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="site-logo">최승환 · Jecheon</a>
+  <div style="display:flex;align-items:center;">
+    <nav class="nav-links">
+      <a href="/about.html">소개</a>
+      <a href="/research.html">연구</a>
+      <a href="/column.html">칼럼</a>
+      <a href="/letter_wonwoo.html">원우에게</a>
+      <a href="/yeonwoo_suneung_roadmap.html" class="active">연우 로드맵</a>
+    </nav>
+    <button id="theme-toggle" onclick="toggleTheme()">☾ 다크</button>
+  </div>
+</header>
+
+<div class="wrap">
+<header class="hero">
+  <div class="eyebrow">2026년 12월 시작 · 2030학년도 수능(2029년 11월) 대비</div>
+  <h1>연우 수능 로드맵</h1>
+  <p class="lead">중3 겨울부터 고3 11월까지 3년을 어디에 얼마나 쓸지 정리한 페이지입니다. 모든 권고는 평가원 공식 자료, 2026학년도 수능 실제 문제, 2028학년도 예시문항, 그리고 유명 강사·전문가의 공개 자료에서 가져왔고, 출처는 각 항목과 맨 아래 근거 모음에 적어 두었습니다.</p>
+  <div class="facts">
+    <div class="fact"><div class="k">연우 현재</div><div class="v">중3 · 일반고 진학</div></div>
+    <div class="fact"><div class="k">응시 수능</div><div class="v">2030학년도</div></div>
+    <div class="fact"><div class="k">수능 체제</div><div class="v">2028 통합형 3년차</div></div>
+    <div class="fact"><div class="k">계열 결정 시점</div><div class="v">2027년 11월</div></div>
+    <div class="fact"><div class="k">남은 기간</div><div class="v">약 36개월</div></div>
+  </div>
+</header>
+
+<div class="layout">
+<nav class="toc" aria-label="목차">
+  <a href="#big">1. 큰 그림</a>
+  <a href="#exam">2. 연우가 볼 시험</a>
+  <a href="#months">3. 월별 로드맵</a>
+  <a href="#subjects">4. 영역별 세부 학습</a>
+  <a href="#routine">5. 하루 루틴</a>
+  <a href="#prep">6. 준비물 체크리스트</a>
+  <a href="#sources">7. 근거 모음</a>
+  <a href="#risks">8. 변수와 점검일</a>
+</nav>
+
+<main>
+
+<section id="big">
+  <h2>1. 큰 그림: 3년을 네 구간으로</h2>
+  <p class="sub">현우진 강사(메가스터디 예비고1 설명회 자료)의 "고1 내신+다음 과목 선행, 고2까지 수능 과목 1차 완주, 고3은 반복"을 뼈대로 삼고, 2028 체제에 맞춰 탐구를 앞당겼습니다.</p>
+  <div class="timeline">
+    <div class="tl now"><div class="when">① 2026.12 ~ 2027.02<br>중3 겨울</div><div class="what">출발선 진단, 공부 습관, 중학 구멍 메우기(수학·과학), 영어 단어·구문, 통합과학·통합사회 전 범위 1회독</div></div>
+    <div class="tl"><div class="when">② 2027.03 ~ 2028.02<br>고1</div><div class="what">통합사회·통합과학 내신 = 수능 범위 전부. 공통수학1·2 완성. 3·6·9·11월 학평으로 진단. 11월에 계열·선택과목 결정</div></div>
+    <div class="tl"><div class="when">③ 2028.03 ~ 2029.02<br>고2</div><div class="what">대수·미적분Ⅰ·확률과 통계, 화법과 언어·독서와 작문·문학 완주. 2028 수능(첫 통합형) 기출 분석 반영</div></div>
+    <div class="tl"><div class="when">④ 2029.03 ~ 2029.11<br>고3</div><div class="what">2028·2029 수능 + 모평 6회로 실전 반복. 6월·9월 모평 → 11월 수능</div></div>
+  </div>
+  <div class="note"><b>왜 탐구를 중3 겨울부터 보나.</b> 2028 체제에서 통합사회·통합과학은 고1에 배우는 내용이 그대로 수능 범위입니다. 장풍 강사 자료에 따르면 통합과학은 중학 과학과 70% 이상 연계되고, 고1 3월 학평에서 과학 1등급 비율은 평균 7%로 사회(19%)의 절반도 안 됩니다. 중학 과학이 비어 있으면 고1 내신과 수능 탐구가 동시에 무너집니다.</div>
+</section>
+
+<section id="exam">
+  <h2>2. 연우가 볼 시험의 모양</h2>
+  <p class="sub">평가원 「2028학년도 수능 예시문항 안내」(2025.04) 원문과 예시문항 정답표에서 확인한 구조입니다. 2030학년도는 이 체제의 3년차입니다.</p>
+  <div class="tbl"><table>
+    <tr><th>영역</th><th>문항·시간</th><th>출제 과목(범위)</th><th>배점 구조(예시문항 기준)</th><th>현행과 달라진 점</th></tr>
+    <tr><td><span class="pill kor">국어</span></td><td>45문항 · 80분</td><td>화법과 언어, 독서와 작문, 문학</td><td>2점·3점 혼합. 예시문항은 화법과 언어 1~10번, 독서와 작문 11~30번, 문학 31~45번</td><td>선택과목 폐지. 문법이 전원 필수</td></tr>
+    <tr><td><span class="pill math">수학</span></td><td>30문항 · 100분</td><td>대수, 미적분Ⅰ, 확률과 통계 (공통수학1·2는 간접 범위)</td><td>1~3번 2점 / 4~13·22~25번 3점 / 14~21·26~30번 4점. 단답형 9문항이 22~30번</td><td>선택과목 폐지. 미적분Ⅱ·기하 미출제</td></tr>
+    <tr><td><span class="pill eng">영어</span></td><td>45문항 · 70분</td><td>듣기 17 + 독해 28, 절대평가</td><td>2점·3점</td><td>변경 없음</td></tr>
+    <tr><td><span class="pill his">한국사</span></td><td>20문항 · 30분</td><td>필수, 절대평가</td><td>2점·3점</td><td>변경 없음</td></tr>
+    <tr><td><span class="pill soc">통합사회</span></td><td>25문항 · 40분</td><td>통합사회1·2 (고1 공통)</td><td>1.5점 / 2점 / 2.5점, 50점 만점</td><td>모든 수험생 응시</td></tr>
+    <tr><td><span class="pill sci">통합과학</span></td><td>25문항 · 40분</td><td>통합과학1·2 (고1 공통)</td><td>1.5점 / 2점 / 2.5점, 50점 만점</td><td>모든 수험생 응시</td></tr>
+  </table></div>
+  <p class="src">EBS 연계율 50%, 영역별 배점·시험 순서는 현행과 동일(안내서 본문). 시간표(안): 국어 08:40, 수학 10:30, 영어 13:10, 한국사 14:50, 사회탐구 15:35, 과학탐구 16:30.</p>
+</section>
+
+<section id="months">
+  <h2>3. 월별 로드맵 (2026.12 ~ 2027.08 상세, 이후 분기별)</h2>
+  <p class="sub">카드를 열면 과목별 할 일과 그 근거가 나옵니다. 분량은 전문가 자료의 권고(하루 자율학습 4~5시간, 수학 90분, 국어·영어 각 60분 이상)를 기준으로 잡았고, 연우의 실제 성적이 들어오면 조정합니다.</p>
+  <div class="months">
+
+  <details class="month" open>
+    <summary><span class="m">2026년 12월</span><span class="goal">출발선 측정과 습관 만들기. 선행보다 "구멍 찾기"</span><span class="chev">▶</span></summary>
+    <div class="body"><div class="grid2">
+      <div><h4>공통</h4><ul>
+        <li><b>11월 21일(토) 14시 EBS 겨울방학 학습전략설명회</b>를 EBSi 유튜브로 시청하고 자료집을 받아 둡니다. 2028 통합형 수능 대비 국어 한병훈, 수학 남치열, 영어 김예령, 통합사회 이호성, 통합과학 김청해 강사가 발표합니다. 이미 지났다면 다시보기와 자료집으로 대체합니다.</li>
+        <li>고1 3월 학평 기출(2025·2026년 3월, 서울시교육청·EBSi에서 내려받기)을 국어·수학·영어·사회·과학 순으로 한 회분 풀어 출발선을 기록합니다. 과학은 장풍 강사 권고대로 25분 타이머.</li>
+        <li>평일 4시간, 주말 5시간 자율학습 시간표를 고정합니다. 기상·취침 시각부터 고정(생글생글 대학생 칼럼의 "습관 선행").</li>
+      </ul></div>
+      <div><h4>과목별</h4><ul>
+        <li><span class="pill math">수학</span> 중학 수학 단원 점검표를 만들고, 설명이 안 되는 단원만 골라 다시 봅니다. 도형(닮음·원·삼각비)과 함수(일차·이차)가 우선. <small>정승제: "조금이라도 설명이 안 되는 부분 있으면 완전히 설명하고 넘어가라", 중학 교재를 처음부터 다시 풀 필요는 없음.</small></li>
+        <li><span class="pill eng">영어</span> 고등 기초 단어장 1권 선택(워드마스터 고등 Basic 또는 능률보카 어원편 수준), 하루 30개 + 전날 복습. 3월 학평 영어 지문으로 주어·동사 찾기 훈련 시작.</li>
+        <li><span class="pill kor">국어</span> 중학 문법(품사·문장 성분·음운) 복습. 매일 비문학 1지문 읽고 중심 화제 한 줄 요약.</li>
+        <li><span class="pill sci">통합과학</span> 통합과학 기초(브리지) 강의 시작. <small>장풍: 12월 말~겨울방학 사이에 "중등 과학과 고등 통합과학 사이를 이어주는 연결 다리"를 만들 것.</small></li>
+        <li><span class="pill soc">통합사회</span> 중학 사회·도덕 핵심 복습. <small>이다지: 교과서를 모르면 중학 사회·도덕 복습이 최선의 준비.</small></li>
+      </ul></div>
+    </div><div class="why">근거: 메가스터디 예비고1 설명회 자료(현우진·장풍·이다지), YTN 정승제 인터뷰(2023.11), 피앤피뉴스 EBS 설명회 기사(2026.11.12). 구체 링크는 7절.</div></div>
+  </details>
+
+  <details class="month">
+    <summary><span class="m">2027년 1월</span><span class="goal">수학·과학 구멍 메우기 완료, 통합과학·통합사회 전 범위 1회독</span><span class="chev">▶</span></summary>
+    <div class="body"><div class="grid2">
+      <div><ul>
+        <li><span class="pill math">수학</span> 중학 점검 마무리 → 공통수학1 다항식·방정식과 부등식을 교과서 개념 위주로. 문제가 안 풀려도 풀이는 보지 않고 넘어가고, 한 단원 끝나면 EBS 예비고1 강의로 확인(사교육걱정없는세상 상담넷 방식). 행렬 단원이 새로 들어왔지만 계산법 위주라 부담은 작음(현우진).</li>
+        <li><span class="pill eng">영어</span> 단어 하루 30개 계속. 구문 교재 1권으로 수식어구·절에 괄호 치며 해석(눈으로만 읽지 않기). 주 1회 3월 학평 영어 1회분.</li>
+        <li><span class="pill kor">국어</span> 고등 문법 입문(음운 변동 → 단어의 형성 → 문장). 2028부터 문법이 전원 필수이므로 겨울에 한 번은 끝까지 가 봅니다. 독서는 매일 1지문, 주 2회 문학 작품 1편.</li>
+      </ul></div>
+      <div><ul>
+        <li><span class="pill sci">통합과학</span> 통합과학1·2 전 범위 개념 1회독. 단원 끝날 때마다 <b>백지노트</b>(단원명만 적고 아는 것을 다 쓴 뒤 색펜으로 채우기). <small>장풍: "겨울방학에는 꼭! 통합과학1, 2 전 범위 개념을 학습해야 합니다."</small></li>
+        <li><span class="pill soc">통합사회</span> 10개 주제(관점·행복·자연환경·생활공간·인권·시장·정의·문화·세계화·지속가능한 삶) 대략 1회독, 주제별 마인드맵 1장. <small>이다지: 전 범위 대략 개념 → 겨울방학에 중간고사 범위 심화.</small></li>
+        <li><span class="pill his">한국사</span> 주 2회 30분, 중3 역사 흐름 정리(선사~근현대 연표 1장).</li>
+      </ul></div>
+    </div><div class="why">근거: 메가스터디 설명회 자료, 노워리 상담넷(2026.02), 지역내일 예비고1 영어 공부법 ②, 에듀셀파 2028 국어 전략.</div></div>
+  </details>
+
+  <details class="month">
+    <summary><span class="m">2027년 2월</span><span class="goal">3월 학평 리허설, 1학기 중간고사 범위 선점</span><span class="chev">▶</span></summary>
+    <div class="body"><div class="grid2">
+      <div><ul>
+        <li><span class="pill math">수학</span> 공통수학1 도형의 방정식·경우의 수까지 개념 1회독. 배정 고교의 수학 교과서 출판사를 확인해 같은 교재로 예제 다시 풀기. 2026 수능 1~8번(2·3점)을 "나중에 이걸 풀게 된다"는 목표 감각으로 구경만.</li>
+        <li><span class="pill eng">영어</span> 2026 수능 18·19·20번(목적·심경·주장), 25~28번(도표·일치·안내문)을 풀어 봅니다. 중3도 단어만 되면 풀리는 번호라 자신감용. 듣기는 수능 1~17번 음원을 주 2회.</li>
+        <li><span class="pill kor">국어</span> 3월 학평 국어 기출 2회분을 80분 재고 풀기. 2026 수능 35~37번(발표), 43~45번(작문)은 중3도 접근 가능한 세트.</li>
+      </ul></div>
+      <div><ul>
+        <li><span class="pill sci">통합과학</span> <span class="pill soc">통합사회</span> 1학기 중간고사 범위(보통 통합사회1·통합과학1 앞 1~2단원)를 심화. 2028 예시문항 중 1.5점 문항부터 풀어 "수능이 묻는 방식"을 체험. <small>이다지: "4월 중간고사를 대비하려면 겨울방학인 2월까지 해당 내용은 학습이 되어야 한다."</small></li>
+        <li><b>2월 넷째 주</b>: 3월 학평 전 과목을 실제 시간표대로 하루에 풀어 봅니다(국어 80, 수학 100, 영어 70, 사회·과학 각 30분).</li>
+      </ul></div>
+    </div><div class="why">근거: 2026학년도 수능 문제지(보유 파일에서 번호별 발문 확인), 2028 예시문항 정답표, 메가스터디 설명회 자료.</div></div>
+  </details>
+
+  <details class="month">
+    <summary><span class="m">2027년 3월</span><span class="goal">입학. 3월 학평으로 첫 수능형 진단</span><span class="chev">▶</span></summary>
+    <div class="body"><ul>
+      <li>3월 학평(보통 셋째~넷째 주)은 내신에 안 들어가지만 전국 위치를 알려 줍니다. 결과가 나오면 <b>문항별 정오표</b>를 만들어 이 로드맵의 4절 표와 대조합니다. 영어는 번호별 유형이 고정이라 "어느 번호에서 틀렸나"가 곧 처방입니다.</li>
+      <li>내신 루틴 확립: 수업 당일 복습 20분, 주말에 주간 백지노트. 수행평가 일정을 플래너에 먼저 적습니다.</li>
+      <li>동아리·진로 탐색 시작. 2028 체제에서도 학생부(세특)는 수시에서 중요하고, 이공계 지원 시 미적분Ⅱ·기하 이수 여부를 볼 수 있다는 관측이 있어 계열 결정 전까지 수학은 넓게 유지합니다(현우진).</li>
+    </ul></div>
+  </details>
+
+  <details class="month">
+    <summary><span class="m">2027년 4월 ~ 6월</span><span class="goal">1학기 내신(= 통합사회·통합과학 수능 범위) 전력, 6월 학평</span><span class="chev">▶</span></summary>
+    <div class="body"><ul>
+      <li><b>4월 중간고사</b>: 통합사회·통합과학은 "내신 과목이자 수능 과목". 8학점·10학점으로 국영수와 같은 비중입니다. 교과서 자료(그래프·지도·실험)를 직접 해석하는 연습이 수능 2.5점 문항 대비와 같습니다.</li>
+      <li><span class="pill math">수학</span> 공통수학1 내신 + 공통수학2(집합·명제, 함수) 선행 개념. 계산 정확도 기록(틀린 문제 중 계산 실수 비율을 매주 셉니다).</li>
+      <li><span class="pill eng">영어</span> 단어장 1권 완료 → 2권째. 유형 독해를 21~24번(함축·요지·주제·제목)으로 확장.</li>
+      <li><span class="pill kor">국어</span> 문학 개념어(화자·시상 전개·서술자·갈등 구조) 정리, 고전시가 기초 어휘.</li>
+      <li><b>6월 학평</b> 후 3월과 비교해 번호별 변화를 기록합니다.</li>
+    </ul></div>
+  </details>
+
+  <details class="month">
+    <summary><span class="m">2027년 7월 ~ 8월</span><span class="goal">고1 여름: 공통수학2 완성, 대수 입문, 2학기 탐구 범위 선점</span><span class="chev">▶</span></summary>
+    <div class="body"><ul>
+      <li><span class="pill math">수학</span> 공통수학2 전 범위 → 대수(지수·로그) 개념 입문. 현우진 플랜 "고1: 내신 + 다음 과목 선행(수능 수준까지)".</li>
+      <li><span class="pill sci">통합과학</span> <span class="pill soc">통합사회</span> 2학기 범위(통합과학2·통합사회2) 개념 1회독 + 1학기 범위 백지노트 복습. 예시문항 성취기준 분포를 보면 통합사회2(인권·정의·시장·세계화)와 통합과학1 물질과 규칙성 비중이 큽니다(4절).</li>
+      <li><span class="pill eng">영어</span> 31~34번 빈칸, 36~39번 순서·삽입을 처음 체계적으로. 여기가 수능 영어 변별 구간입니다.</li>
+      <li><span class="pill kor">국어</span> 2026 수능 독서 세트 [1~3], [4~9]를 시간 제한 없이 풀고 발문 유형(일치·추론·보기 적용·어휘)을 표시해 봅니다.</li>
+    </ul></div>
+  </details>
+
+  <details class="month">
+    <summary><span class="m">2027년 9월 ~ 2028년 2월</span><span class="goal">고1 2학기: 9월·11월 학평, 11월 계열·선택과목 결정, 첫 통합형 수능 분석</span><span class="chev">▶</span></summary>
+    <div class="body"><ul>
+      <li><b>2027년 11월</b>: 고2 선택과목 신청. 이공계 가능성을 남기려면 미적분Ⅱ·기하를 넣어 둡니다. 수능 범위는 아니지만 대학이 학생부에서 확인할 수 있습니다.</li>
+      <li><b>2027년 11월 셋째 주 2028학년도 수능</b>: 첫 통합형 수능의 실제 문제가 나옵니다. 국어·수학·통합사회·통합과학을 이 페이지의 번호별 표 틀에 넣어 다시 분석하고 고2 계획을 갱신합니다.</li>
+      <li>겨울방학: 대수 완성 + 미적분Ⅰ(함수의 극한·미분) 개념. 확률과 통계는 공통수학1 경우의 수에서 바로 이어 시작(현우진: 확통이 "입시에서 가장 큰 변수가 될 수 있는 과목").</li>
+    </ul></div>
+  </details>
+
+  <details class="month">
+    <summary><span class="m">2028년 (고2)</span><span class="goal">수능 출제 과목 1차 완주</span><span class="chev">▶</span></summary>
+    <div class="body"><ul>
+      <li>국어: 화법과 언어·독서와 작문·문학 이수 = 수능 범위 완성. 2017~2026 수능 공통(독서·문학) 기출 + 2028 수능 기출을 세트 훈련.</li>
+      <li>수학: 대수 → 미적분Ⅰ → 확률과 통계를 2028년 안에 한 번씩 완주. 2022~2027 수능 공통 22문항 + 확통 8문항 세트, 2028·2029 모평.</li>
+      <li>영어: 수능 기출 10년치를 번호별로 묶어 유형 훈련. 절대평가 1등급(90점) 안정권 진입이 고2 목표.</li>
+      <li>탐구: 통합사회·통합과학은 수업이 끝났으므로 EBS 수능 빌드업(2026.08 발행) 같은 수능용 교재로 주 2회 유지. 2028 수능 실제 문항으로 2.5점 문항 패턴 익히기.</li>
+    </ul></div>
+  </details>
+
+  <details class="month">
+    <summary><span class="m">2029년 (고3)</span><span class="goal">반복과 실전. 6월·9월 모평 → 11월 수능</span><span class="chev">▶</span></summary>
+    <div class="body"><ul>
+      <li>2028·2029 수능 2회 + 2028~2030 모평 6회가 직접 기출. 매일 전 과목을 조금씩(현우진: "고3 때는 수능에 출제되는 모든 과목을 매일 조금씩 하면서 감을 잃지 않는 것").</li>
+      <li>6월 모평(2029.06) 결과로 수시·정시 비중 결정. 9월 모평 후 수시 원서.</li>
+    </ul></div>
+  </details>
+
+  </div>
+</section>
+
+<section id="subjects">
+  <h2>4. 영역별 세부 학습 내용 (기출·모평·예시문항 근거)</h2>
+  <p class="sub">보유한 2026학년도 수능 문제지와 2028 예시문항 안내서에서 직접 뽑은 구조입니다. "지금 할 일"은 중3 겨울 기준이고, 뒤로 갈수록 표의 번호대를 그대로 훈련 단위로 씁니다.</p>
+
+  <h3><span class="pill eng">영어</span> 번호별 유형은 고정. 2028에도 그대로</h3>
+  <p>2026학년도 수능 영어 문제지에서 확인한 번호별 발문입니다. 2014년 이후 거의 바뀌지 않았고 2028 체제에서도 변경이 없으므로, 영어는 지금부터 "번호 = 유형"으로 공부해도 수능까지 그대로 통합니다.</p>
+  <div class="tbl"><table>
+    <tr><th class="num">번호</th><th>유형</th><th>2026 수능 발문(발췌)</th><th>연우 단계</th></tr>
+    <tr><td class="num">1~17</td><td>듣기</td><td>대화·담화 17문항</td><td>중3 겨울부터 주 2회 음원</td></tr>
+    <tr><td class="num">18~20</td><td>목적 · 심경 · 주장</td><td>"Sophie의 심경 변화로 가장 적절한 것은?", "필자가 주장하는 바로 가장 적절한 것은?"</td><td>2027.02부터 바로 풀기</td></tr>
+    <tr><td class="num">21~24</td><td>함축의미 · 요지 · 주제 · 제목</td><td>"밑줄 친 made a lot of work less sticky가 의미하는 바"</td><td>고1 1학기</td></tr>
+    <tr><td class="num">25~28</td><td>도표 · 일치 · 안내문</td><td>"다음 도표의 내용과 일치하지 않는 것은?", "Max Kleiber에 관한 내용과 일치하지 않는 것은?"</td><td>2027.02부터 바로 풀기</td></tr>
+    <tr><td class="num">29~30</td><td>어법 · 어휘</td><td>"밑줄 친 부분 중 어법상 틀린 것은?"</td><td>고1 2학기(문법 정리 후)</td></tr>
+    <tr><td class="num">31~34</td><td>빈칸 추론</td><td>2026은 글쓰기 스타일, 디자인 피드백, 칸트의 법치 지문</td><td>고1 여름부터. 변별 구간</td></tr>
+    <tr><td class="num">35~39</td><td>무관 문장 · 순서 · 삽입</td><td></td><td>고1 여름부터. 변별 구간</td></tr>
+    <tr><td class="num">40</td><td>요약문 빈칸</td><td>"한 문장으로 요약하고자 한다. 빈칸 (A), (B)"</td><td>고1 2학기</td></tr>
+    <tr><td class="num">41~45</td><td>장문 (제목·어휘 / 순서·지칭·일치)</td><td>"윗글의 제목으로", "(a)~(e) 중 가리키는 대상이 다른 것"</td><td>고1 2학기</td></tr>
+  </table></div>
+  <p><b>지금 할 일.</b> 단어(하루 30개, 누적 복습) → 구문(주어·동사 찾고 수식어에 괄호) → 쉬운 번호대(18~20, 25~28)로 성공 경험 → 고1 여름에 빈칸·순서·삽입. 지역내일 영어 칼럼의 "유형독해와 구문독해 병행", "눈으로만 하는 독해보다 직접 표기" 원칙을 따릅니다.</p>
+
+  <h3><span class="pill math">수학</span> 2028 배치: 단답형 9문항이 22~30번, 4점이 14~21·26~30번</h3>
+  <p>2026학년도 수능 공통 1~22번의 소재(문제지 첫 줄에서 확인)와 2028 예시문항 배점을 함께 놓으면, 연우가 고2까지 완성해야 할 단원의 "번호별 자리"가 보입니다.</p>
+  <div class="tbl"><table>
+    <tr><th class="num">번호(2026 수능)</th><th>소재</th><th>해당 2022 개정 과목</th><th>2028 예시문항 배점</th></tr>
+    <tr><td class="num">1, 6, 22</td><td>지수 계산, 로그 부등식, log 곡선 위의 점</td><td>대수 (지수함수와 로그함수)</td><td>1~3번 2점 / 22번은 단답 3점</td></tr>
+    <tr><td class="num">8, 14, 18</td><td>sin·cos 값, 도형 속 삼각함수, 코사인법칙</td><td>대수 (삼각함수)</td><td>14번부터 4점</td></tr>
+    <tr><td class="num">12, 16, 20</td><td>등비수열, 귀납적 수열, 조건을 만족하는 수열</td><td>대수 (수열)</td><td>16번 단답 3점, 20번 4점</td></tr>
+    <tr><td class="num">2, 5, 9, 13, 15, 21</td><td>극한, 미분계수, 함수의 성질, 삼차함수</td><td>미적분Ⅰ (극한·미분)</td><td>13번 3점 / 15·21번 4점</td></tr>
+    <tr><td class="num">11, 17, 19</td><td>속도·위치, 부정적분, 부등식과 정적분</td><td>미적분Ⅰ (적분)</td><td>17번 단답 3점, 19번 4점</td></tr>
+    <tr><td class="num">23~30</td><td>중복순열, 사건의 확률, 정규분포, 이산확률변수, 분배</td><td>확률과 통계</td><td>2028은 22~25번 3점, 26~30번 4점 단답 포함</td></tr>
+  </table></div>
+  <p class="src">2028 예시문항 수학 정답표: 1~3번 2점, 4~13번 3점, 14~21번 4점, 22~25번 3점(단답), 26~30번 4점(단답). 합계 100점. 예시문항이 인용한 성취기준은 대수 14개, 확률과 통계 9개 코드로, 확통 비중이 작지 않습니다.</p>
+  <p><b>지금 할 일.</b> ① 중학 도형·함수 구멍(정승제: 설명이 안 되는 부분만 돌아가서). ② 공통수학1·2를 교과서로 정확히. 현우진 강사는 "고1 수학의 핵심은 계산력과 수식의 이해와 관찰"이며 "고1 수학을 제대로 학습하지 않고 그저 빠르기만 한 선행은 큰 실익이 없다"고 적었습니다. ③ 경우의 수를 대충 넘기지 않기. 2028부터 확률과 통계는 전원 직접 출제 과목이고 단답형에서 정답률이 떨어지는 과목입니다. ④ 고2 말까지 대수·미적분Ⅰ·확통 1회 완주.</p>
+
+  <h3><span class="pill kor">국어</span> 2026 수능 세트 구조와 2028 예시문항의 과목 배치</h3>
+  <div class="grid2">
+    <div><h4>2026학년도 수능(홀수형) 세트</h4><ul>
+      <li>[1~3] 독서 이론(독해의 단순 관점) · [4~9] 주제통합 독서(연대 보증 등 법·경제) · [10~13], [14~17], [18~21] 독서</li>
+      <li>[22~26], [27~30](현대소설 '독가촌'), [31~34] 문학 (가)(나) 묶음</li>
+      <li>[35~37] 화법(학생 발표) · [38~42] 화법과 작문 또는 언어와 매체 · [43~45] 작문(학생 초고)</li>
+      <li>발문 유형: "내용과 일치하지 않는 것", "㉠의 이유로 가장 적절한 것", "[A]에서 답을 찾을 수 있는 질문", "ⓐ와 ⓑ에 대한 이해", "말하기 방식", "글쓰기 방식"</li>
+    </ul></div>
+    <div><h4>2028 예시문항 국어(성취기준 인용 기준)</h4><ul>
+      <li>1~10번 화법과 언어: 담화의 공공성, 표현 전략, 토의, 단어의 짜임과 의미 관계, 국어의 변화, <b>표준 발음</b></li>
+      <li>11~30번 독서와 작문: 인문·예술, 과학·기술, 사회·문화 글 읽기 + 주제 통합 읽기, 논증·고쳐쓰기(27~30번은 작문 성격)</li>
+      <li>31~45번 문학: 갈래의 특성, 내용과 형식, 시대 상황과 문학, 비평</li>
+    </ul></div>
+  </div>
+  <p><b>지금 할 일.</b> ① 매일 비문학 1지문 읽고 화제와 문단별 중심 내용 한 줄 요약(지역내일·에듀셀파 권고). ② 문법은 음운 변동 → 단어 → 문장 → 국어사 순으로 겨울에 1회독. 화법과 언어가 전원 필수가 되면서 "매체"는 빠지고 문법 비중이 올라갑니다. ③ 2026 수능 35~37, 43~45번처럼 지문이 생활 담화인 세트부터 풀어 봅니다. ④ 문학은 고1에 개념어, 고2에 기출 세트.</p>
+
+  <h3><span class="pill soc">통합사회</span> 예시문항이 많이 물은 단원</h3>
+  <p>2028 예시문항 25문항이 인용한 성취기준을 대단원별로 센 결과입니다(한 문항이 두 개를 인용하기도 함).</p>
+  <div class="tbl"><table>
+    <tr><th>과목</th><th>대단원</th><th class="num">인용 수</th><th>내용 요소 (이다지 강사 정리)</th></tr>
+    <tr><td>통합사회1</td><td>인간, 사회, 환경과 행복</td><td class="num">3</td><td>행복의 의미·조건</td></tr>
+    <tr><td></td><td>자연환경과 인간</td><td class="num">4</td><td>자연환경, 자연관, 환경문제, 생태시민</td></tr>
+    <tr><td></td><td>문화와 다양성</td><td class="num">4</td><td>문화권, 문화 변동, 상대주의와 보편윤리, 다문화</td></tr>
+    <tr><td></td><td>생활공간과 사회</td><td class="num">2</td><td>산업화·도시화, 교통·통신</td></tr>
+    <tr><td>통합사회2</td><td>인권 보장과 헌법</td><td class="num">6</td><td>시민혁명, 인권, 헌법, 시민참여</td></tr>
+    <tr><td></td><td>사회 정의와 불평등</td><td class="num">8</td><td>정의의 기준, 정의관, 사회·공간 불평등</td></tr>
+    <tr><td></td><td>시장경제와 지속가능발전</td><td class="num">5</td><td>합리적 선택, 경제 주체, 국제 분업, 금융 생활</td></tr>
+    <tr><td></td><td>세계화와 평화</td><td class="num">7</td><td>세계화, 국제분쟁, 평화, 남북 분단</td></tr>
+    <tr><td></td><td>미래와 지속가능한 삶</td><td class="num">3</td><td>인구, 자원, 지속가능발전</td></tr>
+  </table></div>
+  <p><b>읽는 법.</b> 통합사회2(고1 2학기)가 29회, 통합사회1이 13회입니다. 2학기 내용이 수능에서 더 무겁고, 일반사회·윤리(정의·인권)와 지리(세계화·자원)가 섞인 융합 문항이 2.5점입니다. 이다지 강사는 "단순 암기와 벼락치기로는 상위권 진입이 불가능", 주제별 마인드맵과 백지복습·단권화를 권합니다. 교육부 설명으로 통합사회는 중학 내용 60%, 고1 내용 40%라서 <b>중학 사회·도덕 복습이 곧 선행</b>입니다.</p>
+
+  <h3><span class="pill sci">통합과학</span> 예시문항이 많이 물은 단원</h3>
+  <div class="tbl"><table>
+    <tr><th>과목</th><th>대단원</th><th class="num">인용 수</th><th>연계 중학 단원</th></tr>
+    <tr><td>통합과학1</td><td>과학의 기초 (기본량·단위, 측정과 어림)</td><td class="num">3</td><td>새 단원. 중학 과학 전반의 단위 감각</td></tr>
+    <tr><td></td><td>물질과 규칙성 (원소의 생성, 주기성, 화학 결합, 지각·생명체 물질)</td><td class="num">11</td><td>중2 물질의 구성, 중3 화학 반응</td></tr>
+    <tr><td></td><td>시스템과 상호작용 (역학, 지구 시스템, 생명 시스템)</td><td class="num">8</td><td>중1 지권, 중3 운동과 에너지, 중3 생식·유전</td></tr>
+    <tr><td>통합과학2</td><td>변화와 다양성 (산화·환원, 산·염기, 진화, 에너지 출입)</td><td class="num">6</td><td>중3 화학 반응, 중3 생물 다양성</td></tr>
+    <tr><td></td><td>환경과 에너지 (생태계, 온난화, 발전, 에너지 효율)</td><td class="num">8</td><td>중2 전기와 자기, 중3 기권과 날씨</td></tr>
+    <tr><td></td><td>과학과 미래 사회 (감염병, 빅데이터, 과학기술과 윤리)</td><td class="num">4</td><td>새 단원</td></tr>
+  </table></div>
+  <p><b>읽는 법.</b> 물질과 규칙성과 환경과 에너지가 가장 무겁습니다. 종로학원의 예시문항 분석에서 통합과학은 과목 간 융합은 없고 단원 내 통합 4문항, 계산이 줄고 자료 해석이 늘었다고 했습니다. 배기범 강사는 "좁은 개념보다 넓은 배경지식", "일상 현상과 과학 원리를 연결"을, 장풍 강사는 백지노트를 권합니다. 통합과학2의 '물질 변화에서 에너지 출입'과 '과학과 미래 사회'는 2022 개정에서 새로 들어온 부분이라 중학 복습만으로는 안 되고 고1 교과서로 채워야 합니다.</p>
+
+  <h3><span class="pill his">한국사</span></h3>
+  <p>절대평가(50점 만점, 40점 이상 1등급)이고 체제 변경이 없습니다. 2017~2026 수능 기출 20문항 × 10년이 그대로 유효합니다. 고1 한국사1·2 내신을 성실히 하고, 고2 겨울에 기출 10회분으로 마무리하면 충분합니다. 지금은 중3 역사 연표 1장이면 됩니다.</p>
+</section>
+
+<section id="routine">
+  <h2>5. 하루 루틴 (중3 겨울방학 기준 예시)</h2>
+  <p class="sub">전문가 자료의 권고(하루 자율학습 약 5시간, 수학 1시간 30분, 국어·영어 각 1시간 이상)를 연우 상황에 맞춰 평일 4시간 반으로 잡았습니다. 성적과 체력을 보고 늘리거나 줄입니다.</p>
+  <div class="grid2">
+    <div><h4>평일</h4><div class="day">
+      <b>90분</b><span>수학: 개념 40 + 문제 40 + 오답 10. 풀이 보지 않고 버티기</span>
+      <b>60분</b><span>영어: 단어 20(새 30개 + 복습) + 구문·독해 40</span>
+      <b>40분</b><span>국어: 비문학 1지문 요약 20 + 문법 20</span>
+      <b>40분</b><span>통합과학: 강의 또는 개념 1소단원 + 백지노트 5분</span>
+      <b>30분</b><span>통합사회: 1주제 개념 + 마인드맵</span>
+      <b>10분</b><span>플래너: 내일 할 일과 오늘 안 된 것</span>
+    </div></div>
+    <div><h4>주말</h4><div class="day">
+      <b>토</b><span>3월 학평 기출 1과목 실전(시간 재기) + 채점·오답 분석. 국어→수학→영어→사회→과학 순환</span>
+      <b>일</b><span>한국사 30분, 주간 백지노트(통과·통사), 영어 듣기 1회분, 쉬는 시간 확보</span>
+    </div></div>
+  </div>
+  <div class="caution"><b>하지 말 것.</b> 미적분까지 끝내는 선행, 개념 3바퀴 같은 속도 경쟁. 현우진 강사는 "너무 빠른 선행은 큰 의미가 없"고 고2까지 수능 과목을 한 번 완주하면 된다고 했습니다. 정승제 강사는 "고1 거를 두 바퀴 돌렸다, 이건 전혀 의미가 없고요. 하나를 하더라도 제대로"라고 했습니다.</div>
+</section>
+
+<section id="prep">
+  <h2>6. 준비물 체크리스트</h2>
+  <p class="sub">체크 상태는 이 브라우저에만 저장됩니다. 다른 기기에서 열면 초기화됩니다.</p>
+  <div class="progress" id="prog">0 / 0 완료</div>
+  <div class="check" id="checklist">
+    <label><input type="checkbox" id="c1"><span>EBS 겨울방학 학습전략설명회(2026.11.21 14시, EBSi 유튜브) 시청 또는 다시보기 + 자료집 저장</span></label>
+    <label><input type="checkbox" id="c2"><span>고1 3월 학평 기출 2년치(국·수·영·사·과) 내려받기 (서울시교육청 학력평가 자료실 또는 EBSi)</span></label>
+    <label><input type="checkbox" id="c3"><span>중학 수학 총정리 문제집 1권 (도형·함수 단원 포함)</span></label>
+    <label><input type="checkbox" id="c4"><span>공통수학1 교과서 (배정 고교 채택 출판사 확인 후 구매, 미정이면 EBS 예비고1 교재)</span></label>
+    <label><input type="checkbox" id="c5"><span>고등 기초 영단어장 1권 (워드마스터 고등 Basic 또는 능률보카 어원편 수준)</span></label>
+    <label><input type="checkbox" id="c6"><span>영어 구문 독해 교재 1권 (주어·동사·수식어 표시 연습용)</span></label>
+    <label><input type="checkbox" id="c7"><span>고등 국어 문법 기본서 1권 (음운·단어·문장·국어사 순)</span></label>
+    <label><input type="checkbox" id="c8"><span>통합과학 기초(브리지) 강의 선택 (EBSi 무료 또는 메가스터디 예비고1 강좌)</span></label>
+    <label><input type="checkbox" id="c9"><span>통합사회 개념 강의 또는 개념서 (배정 고교 교과서 출판사 확인 후 연계 문제집 추가)</span></label>
+    <label><input type="checkbox" id="c10"><span>2028 예시문항 안내서 PDF 출력 (국어·수학·통사·통과 문제지 + 정답표, 폴더에 보관 중)</span></label>
+    <label><input type="checkbox" id="c11"><span>2026학년도 수능 영어·국어 문제지 출력 (18~20·25~28번, 35~37·43~45번 체험용, 폴더에 보관 중)</span></label>
+    <label><input type="checkbox" id="c12"><span>백지노트용 A4 묶음, 색펜 2색, 타이머, 주간 플래너</span></label>
+    <label><input type="checkbox" id="c13"><span>문항별 정오표 양식 (연도 / 영역 / 번호 / 유형 / 정오 / 원인) 만들어 두기</span></label>
+    <label><input type="checkbox" id="c14"><span>12월 중 출발선 진단 결과(3월 학평 1회분 점수, 영단어 테스트, 수학 단원 점검표) 기록</span></label>
+    <label><input type="checkbox" id="c15"><span>고교 배정 후: 교과서 출판사 목록, 1학기 중간고사 범위, 수행평가 일정 확인</span></label>
+    <label><input type="checkbox" id="c16"><span>2027년 상반기: 국가교육위원회 대입 개편 확정안이 2030학년도에 영향 주는지 확인</span></label>
+  </div>
+</section>
+
+<section id="sources">
+  <h2>7. 근거 모음</h2>
+  <p class="sub">본문 권고의 출처입니다. 영상은 제목과 링크만 확인했고 내용은 직접 보지 못했으므로, 그 항목은 "볼 만한 영상"으로만 적었습니다. 설명회 자료와 기사는 본문을 읽고 인용했습니다.</p>
+  <div class="srcs">
+    <div class="srccard"><div class="who">한국교육과정평가원 · 2028학년도 수능 예시문항 안내 (2025.04)</div><div class="what">영역별 문항 수·시간·출제 과목, 예시문항 전체와 정답표, 문항별 교육과정 성취기준. 이 페이지의 2절과 4절 분포표의 1차 근거. <a href="https://files-scs.pstatic.net/2025/04/18/G6ub5vaNTG/%5B%EB%B3%84%EC%B2%A8%5D+2028%ED%95%99%EB%85%84%EB%8F%84+%EB%8C%80%ED%95%99%EC%88%98%ED%95%99%EB%8A%A5%EB%A0%A5%EC%8B%9C%ED%97%98+%EC%98%88%EC%8B%9C%EB%AC%B8%ED%95%AD+%EC%95%88%EB%82%B4.pdf">원문 PDF</a></div></div>
+    <div class="srccard"><div class="who">현우진 (수학) · 메가스터디 예비고1 설명회 자료</div><div class="what"><blockquote>"고1 수학의 핵심은 '계산력'과 '수식의 이해와 관찰'"</blockquote><blockquote>"고2 때까지는 수능에 출제되는 과목을 정확하게 한 번씩은 완주"</blockquote><blockquote>"확률과 통계… 어쩌면 입시에서 가장 큰 변수가 될 수 있는 과목"</blockquote>2024.12 설명회 자료라 대상은 한 학년 위지만 체제가 같습니다. <a href="https://file.megastudy.net/FileServer_New/file_att/event/2024/1206_pass/Megastudy_2025_pre-high_school_seminar.pdf">자료 PDF</a></div></div>
+    <div class="srccard"><div class="who">장풍 · 배기범 (통합과학) · 같은 자료</div><div class="what"><blockquote>"통합과학은 중등 과학과 70% 이상 연계된 과목"</blockquote><blockquote>"겨울방학에는 꼭! 통합과학1, 2 전 범위 개념을 학습해야 합니다."</blockquote>고1 3월 학평 과학 1등급 비율 평균 7%(사회 19%) 표, 백지노트 작성법 5단계, "좁은 개념보다는 넓은 배경지식".</div></div>
+    <div class="srccard"><div class="who">이다지 (통합사회) · 같은 자료</div><div class="what"><blockquote>"4월 중간고사를 대비하려면 겨울방학인 2월까지 해당 내용은 학습이 되어야 한다."</blockquote>10개 주제 구조, 중학 60%·고1 40% 구성, 마인드맵·백지복습·단권화, "이과 진학이어도 통합사회 내신은 중요".</div></div>
+    <div class="srccard"><div class="who">정승제 (수학) · YTN 더뉴스 인터뷰 (2023.11.14)</div><div class="what"><blockquote>"조금이라도 설명이 안 되는 부분 있으면 완전히 설명하고 넘어가라는 거예요."</blockquote><blockquote>"해설지 보지 않고 해설강의 보지 않고 자기 스스로 풀어내는 그 연습."</blockquote><a href="https://www.ytn.co.kr/_ln/0103_202311141437518351">기사</a></div></div>
+    <div class="srccard"><div class="who">EBS 겨울방학 학습전략설명회 (2026.11.21) · 피앤피뉴스</div><div class="what">2028 통합형 수능 대비. 국어 한병훈, 수학 남치열, 영어 김예령, 통합사회 이호성, 통합과학 김청해. "계열이나 관심 분야에 치우치지 않는 학습". <a href="https://gosiweek.com/article/1065578697332162">기사</a> · EBS 수능 빌드업 통합사회·통합과학 발행(2026.08) <a href="https://www.veritas-a.com/news/articleView.html?idxno=623724">기사</a></div></div>
+    <div class="srccard"><div class="who">사교육걱정없는세상 노워리 상담넷 (2026.02)</div><div class="what">예비고1 수학: 교과서 개념 먼저, 풀이 절대 보지 않기, 한 단원 뒤 EBS 강의로 확인. <a href="https://noworry.kr/counselingfaq/?bmode=view&idx=170067976">상담 글</a></div></div>
+    <div class="srccard"><div class="who">지역내일 · 예비고1 영어 공부법 ② (2020.11)</div><div class="what">구문독해와 유형독해 병행, 주어·동사 찾고 괄호 치기, "눈으로만 하는 독해 공부보다는 직접 표기해가며". <a href="https://www.localnaeil.com/News/View/644450">기사</a></div></div>
+    <div class="srccard"><div class="who">종로학원 분석 · 지역내일 (2025.05)</div><div class="what">2028 예시문항: 통합사회는 과목 융합 문항 증가, 통합과학은 단원 내 통합 4문항, 계산 감소·자료 해석 증가, 배점 1.5/2/2.5. <a href="https://www.localnaeil.com/News/View/652907/1">기사</a></div></div>
+    <div class="srccard"><div class="who">에듀셀파 · 2028 수능 대비 예비고1 국어 (2026.03)</div><div class="what">화법과 언어·독서와 작문·문학 체제, 매체 제외, 문법 필수화, 음운 변동·단어·맞춤법·중세 국어 정리 순서. <a href="https://blog.edusherpa.kr/blog/study/2026/3/13/276/">글</a></div></div>
+    <div class="srccard"><div class="who">생글생글 대학생 칼럼 (2026.01) · 새이솔 입시리포트</div><div class="what">"습관 선행", 우선순위 영어·수학 다음 국어, 하루 자율학습 약 5시간·수학 1시간 30분. <a href="https://sgsg.hankyung.com/article/2026012383481">칼럼</a> · <a href="https://www.saeisol.com/report/?bmode=view&idx=169320679">리포트</a></div></div>
+    <div class="srccard"><div class="who">볼 만한 영상 (제목 확인, 내용 미확인)</div><div class="what">
+      <a href="https://www.youtube.com/watch?v=2KrOPWG1Rnk">EBS 학습전략설명회 · 2028 수능 대비 전략 《통합과학》</a><br>
+      <a href="https://www.youtube.com/watch?v=bInUU77qV_c">KNS 고교입학백서 · 전 하나고 진학부장 김학수 소장, 예비고1 겨울방학</a><br>
+      <a href="https://www.youtube.com/watch?v=JoFJzv6IFYw">메가스터디 통합과학 이동휘 · 예비고1 겨울엔 이것만</a><br>
+      <a href="https://www.youtube.com/watch?v=ts5VK0_1ClY">메가스터디 국어 주미선 · 예비고1 겨울방학 학습법</a><br>
+      <a href="https://www.youtube.com/watch?v=DS-Qsnp9LZY">EBSi 오리지널 · 예비 고1 겨울방학 국영수 과목별 공부 루틴</a><br>
+      <a href="https://www.youtube.com/watch?v=TfsuGHfbvEI">20년차 입시 전문가의 예비고1 겨울방학 공부 로드맵</a>
+    </div></div>
+  </div>
+</section>
+
+<section id="risks">
+  <h2>8. 변수와 점검일</h2>
+  <ul>
+    <li><b>대입 개편 논의.</b> 국가교육위원회가 전 과목 절대평가·서논술형을 2032~2033학년도 수능 대상으로 검토 중입니다(2026.09 보도). 2030학년도에는 적용되지 않을 가능성이 높지만 2027년 상반기에 확정안을 한 번 확인합니다.</li>
+    <li><b>첫 통합형 수능의 난이도 분포.</b> 현우진 강사도 "6월과 9월 평가원 시험에서 많은 시도와 실험이 있을 수" 있다고 썼습니다. 2027년 11월 2028 수능 실제 문항이 나오면 이 페이지의 4절을 갱신합니다.</li>
+    <li><b>점검일.</b> 2027.03 학평 → 2027.06 학평 → 2027.09 학평 → 2027.11 계열 결정 + 2028 수능 분석 → 2028.03 고2 계획 갱신.</li>
+    <li><b>지금 필요한 입력.</b> 연우의 중3 과목별 성적, 영어·수학 중 더 약한 쪽, 하루 공부 가능 시간. 이 셋이 오면 5절 루틴과 12월 카드를 연우 숫자로 다시 씁니다.</li>
+  </ul>
+</section>
+
+</main>
+</div>
+</div>
+
+<footer class="site-footer">
+  <div>&copy; 2026 최승환 · Jecheon &nbsp;·&nbsp; <a href="/">choijc79.github.io</a></div>
+</footer>
+
+<script>
+(function(){
+  var KEY='yw-roadmap-check-v1';
+  var boxes=Array.prototype.slice.call(document.querySelectorAll('#checklist input[type=checkbox]'));
+  var saved={};
+  try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){saved={};}
+  function render(){
+    var done=0;
+    boxes.forEach(function(b){
+      var lab=b.closest('label');
+      if(b.checked){done++;lab.classList.add('done');}else{lab.classList.remove('done');}
+    });
+    document.getElementById('prog').textContent=done+' / '+boxes.length+' 완료';
+  }
+  boxes.forEach(function(b){
+    if(saved[b.id])b.checked=true;
+    b.addEventListener('change',function(){
+      saved[b.id]=b.checked;
+      try{localStorage.setItem(KEY,JSON.stringify(saved));}catch(e){}
+      render();
+    });
+  });
+  render();
+})();
+</script>
+<script src="/js/theme-toggle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+</body>
+</html>
