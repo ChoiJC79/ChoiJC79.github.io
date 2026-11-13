@@ -81,12 +81,12 @@
       <span class="tape-counter" id="tape-counter">0 0 0 0</span>
     </div>
     <div class="deck-door">
-    <div class="tape playing" role="img" aria-label="카세트테이프 라벨: 제천 사랑방 — 최승환이 녹음한 사는 이야기">
+    <div class="tape" id="hero-tape" role="img" aria-label="카세트테이프: 제천 사랑방 — 1979 라운지 재즈">
       <i class="screw s1"></i><i class="screw s2"></i><i class="screw s3"></i><i class="screw s4"></i>
       <div class="tape-label">
         <div class="tape-stripe"></div>
         <div class="tape-side">A</div>
-        <div class="tape-title">제천 사랑방 — 최승환이 녹음한<br>생각과 사는 이야기</div>
+        <div class="tape-title" id="tape-title-display">제천 사랑방 · 1979 재즈<br><span id="tape-track-name" style="font-size:0.55em;letter-spacing:0;font-family:sans-serif;opacity:0.9;">♪ 1. 심야 색소폰 라운지</span></div>
         <div class="tape-window"><div class="tape-reel"></div><div class="tape-ribbon"></div><div class="tape-reel"></div></div>
       </div>
       <span class="tape-type">C-60 · TYPE I NORMAL</span>
@@ -94,10 +94,10 @@
     </div>
     </div>
     <div class="tape-deck" role="group" aria-label="테이프 데크">
-      <a href="/chronicle.html" title="되감기 — 1979년부터의 기록">◀◀<span>지난 기록</span></a>
-      <a href="/column.html" id="deck-play" class="play" title="재생 — 최신 칼럼">▶<span>재생</span></a>
-      <a href="/about.html" title="정지 — 잠깐 쉬어 가며 소개 보기">■<span>소개</span></a>
-      <a href="/column.html" title="빨리 감기 — 칼럼 전체">▶▶<span>칼럼 전체</span></a>
+      <button type="button" id="deck-prev" title="이전 곡 (되감기)">◀◀<span>이전 곡</span></button>
+      <button type="button" id="deck-play" class="play" title="재생 / 일시정지">▶<span id="deck-play-label">재생</span></button>
+      <button type="button" id="deck-stop" title="정지">■<span>정지</span></button>
+      <button type="button" id="deck-next" title="다음 곡 (빨리 감기)">▶▶<span>다음 곡</span></button>
     </div>
     </div>
     <p class="tape-intro">제천에서 살며 공부합니다.<br>일상에서 건진 생각과 소소한 하루를 테이프에 녹음하듯 적어 둡니다.</p>
@@ -225,7 +225,11 @@
 </section>
 
 <footer>
-  <div><span class="footer-name">최승환</span><span class="footer-sub">충청북도 제천</span></div>
+  <div>
+    <span class="footer-name">최승환</span>
+    <span class="footer-sub">충청북도 제천</span>
+    <div style="font-size:10px;color:var(--muted);opacity:0.65;margin-top:4px;">BGM: Night on the Docks, Bossa Antigua, Groove Grove by Kevin MacLeod (CC BY 4.0)</div>
+  </div>
   <div style="display:flex;align-items:center;gap:1rem;">
     <a href="/guestbook.html" style="font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:0.04em;">✉ 방명록</a><a href="/letter_wonwoo.html" style="font-size:11px;color:var(--muted);text-decoration:none;letter-spacing:0.04em;opacity:0.7;">♡ 원우에게</a>
     <span class="footer-right">&copy; 2026 choijc79.github.io</span>
@@ -240,6 +244,21 @@
   <a href="/jisikinside.html">📺<br>지식</a>
   <a href="/minseon9.html">🏛️<br>민선9기</a>
   <a href="/memo.html">📋<br>노트</a>
+</div>
+
+<!-- ── 1979 라운지 재즈 BGM 플로팅 플레이어 ── -->
+<div id="lounge-bgm" role="region" aria-label="1979 라운지 재즈 배경음악">
+  <button type="button" class="bgm-disc" id="bgm-disc-btn" title="재생 / 일시정지" aria-label="음악 재생/일시정지">🎷</button>
+  <div class="bgm-info" id="bgm-info-btn" title="다음 곡으로 변경">
+    <span class="bgm-kicker">1979 Lounge Jazz</span>
+    <span class="bgm-title" id="bgm-track-display">1. 심야 색소폰 라운지</span>
+  </div>
+  <div class="bgm-btns">
+    <button type="button" class="bgm-btn" id="bgm-prev-btn" title="이전 곡" aria-label="이전 곡">◀</button>
+    <button type="button" class="bgm-btn play-toggle" id="bgm-play-btn" title="재생 / 일시정지" aria-label="재생">▶</button>
+    <button type="button" class="bgm-btn" id="bgm-next-btn" title="다음 곡" aria-label="다음 곡">▶</button>
+    <button type="button" class="bgm-btn" id="bgm-mute-btn" title="음소거 토글" aria-label="음소거">🔊</button>
+  </div>
 </div>
 
 <!-- ── 제천 맛집 랜덤 추천 (구석 위젯) ── -->

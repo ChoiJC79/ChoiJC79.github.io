@@ -26,7 +26,8 @@
 .vu i { position: absolute; left: 50%; bottom: -6px; width: 1.5px; height: 38px; margin-left: -1px; background: #1d1d20; transform-origin: 50% 100%; transform: rotate(-42deg); }
 .vu b { position: absolute; left: 5px; bottom: 2px; font: 700 8px/1 Arial, sans-serif; color: #3b2a17; }
 .deck-lamp { display: flex; align-items: center; gap: 5px; font: 700 9px/1 Arial, sans-serif; letter-spacing: .12em; color: #2b2b2e; }
-.deck-lamp::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #5ee36b; box-shadow: 0 0 8px #5ee36b; }
+.deck-lamp::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #2f3a30; box-shadow: none; transition: background .3s, box-shadow .3s; }
+.deck.playing .deck-lamp::before { background: #5ee36b; box-shadow: 0 0 8px #5ee36b; }
 .tape-counter { background: #111; color: #f2ecdd; font-family: var(--font-mono); font-size: 16px; padding: 5px 8px; border-radius: 3px; letter-spacing: 1px; background-image: linear-gradient(rgba(255,255,255,.18), transparent 35%, transparent 65%, rgba(0,0,0,.6)); box-shadow: inset 0 0 0 2px #2b2b2e; }
 .deck-door { position: relative; padding: 12px; border-radius: 8px; background: #17130f; box-shadow: inset 0 3px 10px rgba(0,0,0,.8), 0 1px 0 rgba(255,255,255,.6); }
 .deck-door::after { content: ''; position: absolute; inset: 0; border-radius: 8px; pointer-events: none; background: linear-gradient(115deg, rgba(255,255,255,.14) 0 18%, transparent 30% 100%), rgba(40,30,22,.12); }
@@ -53,21 +54,162 @@
 @media (prefers-reduced-motion: no-preference) {
   .tape.playing .tape-reel { animation: tape-spin 3.2s linear infinite; }
   .tape.playing .tape-reel + .tape-ribbon + .tape-reel { animation-duration: 1.6s; }
-  .vu i { animation: vu-needle 1.9s ease-out infinite; }
-  .vu-r i { animation-duration: 1.45s; animation-delay: -.6s; }
-  .deck-lamp::before { animation: pager-led 2.4s steps(1) infinite; }
+  .deck.playing .vu i { animation: vu-needle 1.9s ease-out infinite; }
+  .deck.playing .vu-r i { animation-duration: 1.45s; animation-delay: -.6s; }
+  .deck.playing .deck-lamp::before { animation: pager-led 2.4s steps(1) infinite; }
 }
 @keyframes tape-spin { to { transform: rotate(360deg); } }
 @keyframes vu-needle { 0% { transform: rotate(-40deg); } 12% { transform: rotate(-8deg); } 24% { transform: rotate(-22deg); } 38% { transform: rotate(4deg); } 52% { transform: rotate(-26deg); } 64% { transform: rotate(-12deg); } 80% { transform: rotate(-34deg); } 100% { transform: rotate(-40deg); } }
 
 /* ── 건반식 조작 키 (▶는 눌려 잠긴 상태) ── */
 .tape-deck { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-top: 12px; padding: 5px; border-radius: 6px; background: #1d1d20; box-shadow: inset 0 2px 4px rgba(0,0,0,.6); }
-.tape-deck a { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 56px; padding: 6px 2px 8px; text-decoration: none; color: #1d1d20; font: 700 17px/1.1 sans-serif; text-align: center; border-radius: 3px 3px 5px 5px; background: linear-gradient(#f4f4f6, #c5c6cb 85%, #a9aaaf); box-shadow: 0 6px 0 #6c6d73, inset 0 1px 0 #fff; margin-bottom: 6px; transition: transform .08s, box-shadow .08s; }
-.tape-deck a span { margin-top: 4px; font: 400 13px/1.2 var(--font-body); color: #3a3a3e; }
-.tape-deck a:hover { background: linear-gradient(#fff, #d5d6db 85%, #b5b6bb); }
-.tape-deck a:active, .tape-deck a.play { transform: translateY(4px); box-shadow: 0 2px 0 #6c6d73, inset 0 1px 0 #fff; }
-.tape-deck a.play { background: linear-gradient(#f2cc4d, #d9a92a 85%, #b98d1c); }
+.tape-deck a, .tape-deck button { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 56px; padding: 6px 2px 8px; text-decoration: none; color: #1d1d20; font: 700 17px/1.1 sans-serif; text-align: center; border-radius: 3px 3px 5px 5px; background: linear-gradient(#f4f4f6, #c5c6cb 85%, #a9aaaf); box-shadow: 0 6px 0 #6c6d73, inset 0 1px 0 #fff; margin-bottom: 6px; transition: transform .08s, box-shadow .08s, background .15s; border: none; cursor: pointer; width: 100%; box-sizing: border-box; }
+.tape-deck a span, .tape-deck button span { margin-top: 4px; font: 400 13px/1.2 var(--font-body); color: #3a3a3e; }
+.tape-deck a:hover, .tape-deck button:hover { background: linear-gradient(#fff, #d5d6db 85%, #b5b6bb); }
+.tape-deck a:active, .tape-deck button:active, .tape-deck a.play, .tape-deck button.is-playing { transform: translateY(4px); box-shadow: 0 2px 0 #6c6d73, inset 0 1px 0 #fff; }
+.tape-deck a.play, .tape-deck button.is-playing { background: linear-gradient(#f2cc4d, #d9a92a 85%, #b98d1c); }
 .tape-intro { font-family: var(--font-soft); font-size: 20px; line-height: 1.6; color: var(--text); margin-top: 18px; }
+
+/* ── 1979 라운지 재즈 BGM 플로팅 바 ── */
+#lounge-bgm {
+  position: fixed;
+  left: 1.4rem;
+  bottom: 1.4rem;
+  z-index: 180;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface, #1e2228);
+  border: 1px solid var(--border, #3a3f4a);
+  border-radius: 999px;
+  padding: 6px 14px 6px 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35), 0 2px 6px rgba(0,0,0,0.18);
+  backdrop-filter: blur(8px);
+  color: var(--ink, #f0f6fc);
+  font-family: var(--font-sans, sans-serif);
+  transition: all .25s ease;
+  user-select: none;
+}
+#lounge-bgm:hover {
+  border-color: var(--accent, #d9a85b);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.45), 0 0 12px rgba(217,168,91,0.25);
+}
+.bgm-disc {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2b2b2e, #121214);
+  border: 1px solid rgba(217,168,91,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform .2s ease;
+  padding: 0;
+  color: inherit;
+}
+#lounge-bgm.playing .bgm-disc {
+  animation: bgm-rotate 4s linear infinite;
+  border-color: #f2cc4d;
+  box-shadow: 0 0 10px rgba(242,204,77,0.4);
+}
+@keyframes bgm-rotate { to { transform: rotate(360deg); } }
+
+.bgm-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+  cursor: pointer;
+}
+.bgm-kicker {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #d9a85b;
+  text-transform: uppercase;
+}
+.bgm-title {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink, #fff);
+  white-space: nowrap;
+  max-width: 170px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bgm-btns {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 4px;
+}
+.bgm-btn {
+  background: transparent;
+  border: none;
+  color: var(--muted, #a0aec0);
+  font-size: 12px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all .15s;
+  padding: 0;
+}
+.bgm-btn:hover {
+  color: var(--ink, #fff);
+  background: rgba(255,255,255,0.1);
+}
+.bgm-btn.play-toggle {
+  background: #d9a85b;
+  color: #121214;
+  font-size: 11px;
+  font-weight: bold;
+}
+.bgm-btn.play-toggle:hover {
+  background: #f2cc4d;
+  transform: scale(1.08);
+}
+
+@media(max-width: 600px) {
+  #lounge-bgm {
+    left: 1rem;
+    bottom: 4.8rem;
+    padding: 5px 10px 5px 6px;
+  }
+  .bgm-title {
+    max-width: 110px;
+    font-size: 11.5px;
+  }
+}
+
+html[data-theme="light"] #lounge-bgm {
+  background: #fbf8f1;
+  border-color: #d6ccba;
+  color: #2b2420;
+  box-shadow: 0 8px 20px rgba(80,60,30,0.15);
+}
+html[data-theme="light"] .bgm-disc {
+  background: linear-gradient(135deg, #ede3ce, #d8caad);
+  border-color: #b89858;
+}
+html[data-theme="light"] .bgm-title {
+  color: #2b2420;
+}
+html[data-theme="light"] .bgm-kicker {
+  color: #9c6e28;
+}
+html[data-theme="light"] .bgm-btn {
+  color: #635748;
+}
+html[data-theme="light"] .bgm-btn:hover {
+  color: #1a1714;
+  background: rgba(0,0,0,0.06);
+}
 
 /* ── 모토로라 삐삐 ── */
 .pager { width: 290px; max-width: 100%; margin: 0 0 22px auto; padding: 12px 14px 12px; border-radius: 14px 14px 20px 20px; background: linear-gradient(160deg, #3a3a3e 0%, #1b1b1e 55%, #111113 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 12px 24px rgba(0,0,0,.45); transform: rotate(3deg); position: relative; }
