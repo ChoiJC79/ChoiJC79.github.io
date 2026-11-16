@@ -142,6 +142,12 @@ def md_to_html(text):
                 klass += " g-verify"
             out.append(f'<blockquote class="{klass}">{inline(joined)}</blockquote>')
             continue
+        fig = re.match(r"^!\[(.*)\]\((.+)\)\s*$", line)
+        if fig:
+            alt, src = hl.escape(fig.group(1)), hl.escape(fig.group(2))
+            out.append(f'<figure class="g-fig"><img src="{src}" alt="{alt}" loading="lazy"><figcaption>{alt}</figcaption></figure>')
+            i += 1
+            continue
         if line.startswith("## "):
             title = line[3:].strip()
             hid = "quick-start" if title.lower().startswith("quick") else re.sub(r"[^가-힣a-zA-Z0-9]+", "-", title).strip("-").lower()

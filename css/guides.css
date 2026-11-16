@@ -79,6 +79,10 @@
 .g-term { border-left-color: var(--purple); background: rgba(188,140,255,0.08); }
 .g-verify { border-left-color: var(--green); background: rgba(57,255,20,0.06); }
 
+.g-fig { margin: 0 0 1.8em; }
+.g-fig img { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--border); }
+.g-fig figcaption { margin-top: 0.5rem; font-size: 12px; line-height: 1.6; color: var(--muted); }
+
 .g-table-wrap { overflow-x: auto; margin: 0 0 1.6em; }
 .g-table { width: 100%; border-collapse: collapse; font-size: 13px; }
 .g-table th, .g-table td { border: 1px solid var(--border); padding: 0.55rem 0.7rem; text-align: left; vertical-align: top; line-height: 1.6; }
