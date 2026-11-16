@@ -241,6 +241,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://choijc79.github.io/guides/claude-and-kordoc.html</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://choijc79.github.io/guides/claude-and-agent-skills.html</loc>
     <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>

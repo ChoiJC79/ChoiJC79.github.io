@@ -1,3 +1,14 @@
+# kordoc AI 가이드 발행 (2026-11-16)
+
+- [x] kordoc 공식 README·npm·GitHub API로 버전(4.24.80)·스타(2,995)·라이선스(MIT)·Node 20+ 확인
+- [x] PDF 변환, HWPX 생성·재읽기, json·chunks, lint를 직접 실행해 실제 출력 확보
+- [x] 그림 5장(`img/guides/kordoc-*.svg`): 개요·설치·PDF 예시·HWPX 왕복 예시·MCP 흐름
+- [x] `build_guides.py`에 `![설명](경로)` 그림 처리, `css/guides.css`에 `.g-fig` 추가
+- [x] `💬 AI가이드.md`에 `claude-and-kordoc` 추가, `python3 build_guides.py` 실행
+- [x] `sitemap.xml`에 항목 추가
+- [x] 데스크톱 1100px·모바일 390px 확인(가로 넘침 없음)
+- [ ] 미실행 항목(.hwp 원본·OCR·setup)은 본문에 '직접 돌리지 않음'으로 밝힘 — 운영자가 실제 HWP로 확인하면 본문 갱신
+
 # 항공권 검색 (`flights.html`) + 백엔드 배포 (2026-11-13)
 
 - [x] GitHub에서 API 키 없는 오픈소스 조사 → `AWeirdDev/flights`(fast-flights, 구글 플라이츠 스크래핑) 선정
