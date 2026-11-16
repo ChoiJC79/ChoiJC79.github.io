@@ -127,4 +127,5 @@ fast-flights 3.1.0은 실제로 깨져 있었다. 가격이 아직 안 뜬 itine
   - 실제로 돌린 버전은 npx 캐시의 4.24.76, npm 최신은 4.24.80. 본문에 둘 다 적음. .hwp 원본·OCR·`setup`은 실행하지 않았고(setup은 AI 설정 파일을 고침) 본문 '솔직히 한계'에 밝힘.
   - MCP 그림에 처음 "파일은 밖으로 안 나감"이라 썼다가 "변환은 내 컴퓨터에서"로 고침. 변환은 로컬이지만 읽힌 글은 클로드로 전달되기 때문.
   - 발견한 기존 문제(미수정): `sitemap.xml` 끝에 `</url>`이 하나 더 있어 XML이 깨져 있음(공약백서 항목 뒤, HEAD에도 있음). `publish.py`는 `img/` 바로 아래 파일만 올려 `img/guides/`는 git push로만 배포됨.
+  - 터미널 없이 쓰는 길 추가(2026-11-16): 공식 홈페이지(pubax.org/kordoc)·README·docs/usage.md를 확인한 결과 웹 변환기·설치형 앱이 없어, 그 사실을 본문에 그대로 밝히고 세 길(커서·VS Code 원클릭 버튼 / 클로드 데스크톱 설정 JSON 붙여넣기 / AI에게 시키기)만 안내. 세 길 모두 Node.js 필요. 직접 눌러 보지 않았고 본문에 명시. 그림 `kordoc-no-terminal.svg` 추가, 가이드 sections 9·minutes 17로 갱신.
 

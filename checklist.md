@@ -7,6 +7,7 @@
 - [x] `💬 AI가이드.md`에 `claude-and-kordoc` 추가, `python3 build_guides.py` 실행
 - [x] `sitemap.xml`에 항목 추가
 - [x] 데스크톱 1100px·모바일 390px 확인(가로 넘침 없음)
+- [x] '터미널을 못 쓰는 분을 위한 길' 절과 그림(`kordoc-no-terminal.svg`) 추가 (2026-11-16)
 - [ ] 미실행 항목(.hwp 원본·OCR·setup)은 본문에 '직접 돌리지 않음'으로 밝힘 — 운영자가 실제 HWP로 확인하면 본문 갱신
 
 # 항공권 검색 (`flights.html`) + 백엔드 배포 (2026-11-13)
