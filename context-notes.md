@@ -129,3 +129,9 @@ fast-flights 3.1.0은 실제로 깨져 있었다. 가격이 아직 안 뜬 itine
   - 발견한 기존 문제(미수정): `sitemap.xml` 끝에 `</url>`이 하나 더 있어 XML이 깨져 있음(공약백서 항목 뒤, HEAD에도 있음). `publish.py`는 `img/` 바로 아래 파일만 올려 `img/guides/`는 git push로만 배포됨.
   - 터미널 없이 쓰는 길 추가(2026-11-16): 공식 홈페이지(pubax.org/kordoc)·README·docs/usage.md를 확인한 결과 웹 변환기·설치형 앱이 없어, 그 사실을 본문에 그대로 밝히고 세 길(커서·VS Code 원클릭 버튼 / 클로드 데스크톱 설정 JSON 붙여넣기 / AI에게 시키기)만 안내. 세 길 모두 Node.js 필요. 직접 눌러 보지 않았고 본문에 명시. 그림 `kordoc-no-terminal.svg` 추가, 가이드 sections 9·minutes 17로 갱신.
 
+- **이번 주 AI 가이드: anthropics/skills (2026-11-16)**: 트렌드(주간 +6,077⭐, 총 195,401⭐)에서 이미 다룬 저장소를 빼고 클로드와 바로 짝지을 수 있고 업무(보고서·엑셀·PDF)에 맞는 것으로 선정. 운영자에게 초안을 먼저 보여 승인받고, '직접 설치·실행 후 게시' 조건으로 진행.
+  - 검증 방식: 사용자 전역 설정을 건드리지 않으려고 스크래치 임시 폴더에서 `claude plugin install document-skills@anthropic-agent-skills --scope local`로 설치(클로드 코드 2.1.325), 같은 폴더에서 `claude -p`로 docx·xlsx·pdf 스킬 시험, 끝나고 uninstall까지 확인. 세션 기록에서 `document-skills:docx` 호출을 확인. `/plugin` 슬래시 화면 자체와 `marketplace add`(이미 등록돼 있었음)는 새로 실행하지 않았고 본문에 밝힘.
+  - 결과 검증은 파일을 직접 열어서 함. docx는 XML에서 제목·표 1·목록 2·A4 세로 확인, xlsx는 `=B2+C2`→255, `=B3+C3`→790, pdf는 공문 텍스트 추출 확인. 이름을 적은 요청만 시험(이름 없는 요청, pptx, 예시 스킬, 한국식 개조식 서식은 미시험).
+  - 발견: 이 맥의 LibreOffice로 docx→PDF 변환 시 한글이 깨짐(PDF 안에서도 '향향 향향'). docx XML의 글은 정상이고 글꼴은 Malgun Gothic. 글꼴을 Apple SD Gothic Neo로 바꿔도 같아 원인 미확정. 그래서 결과 그림은 래스터 대신 파일 내용을 옮긴 SVG로 그림. 본문 '자주 막히는 곳'에 원인 미확정으로 적음.
+  - 같은 날짜(2026-11-16)라 목록에서 kordoc 글 아래에 놓임(build_guides.py는 날짜 내림차순·동률은 파일 순서).
+

@@ -1,3 +1,12 @@
+# 이번 주 AI 가이드: anthropics/skills (2026-11-16)
+
+- [x] 트렌드에서 후보 선정(기존 repo 제외), README·라이선스·스킬 원본 확인
+- [x] 초안을 채팅창에서 운영자 승인
+- [x] 임시 폴더에 설치(`--scope local`) 후 docx·xlsx·pdf 직접 실행·결과 파일 검증, 시험용 설치 제거
+- [x] 그림 4장 `img/guides/skills-*.svg`
+- [x] `💬 AI가이드.md` 추가, `build_guides.py` 실행, `sitemap.xml` 추가
+- [ ] 미시험(pptx·예시 스킬·이름 없는 요청·한국식 서식)은 본문에 밝힘 — 운영자가 써 보고 알려주면 갱신
+
 # kordoc AI 가이드 발행 (2026-11-16)
 
 - [x] kordoc 공식 README·npm·GitHub API로 버전(4.24.80)·스타(2,995)·라이선스(MIT)·Node 20+ 확인
