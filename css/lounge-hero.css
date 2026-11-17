@@ -1,5 +1,10 @@
 /* 홈 첫 화면: 1979 라운지 조감도 위 물건마다 메뉴 탭이 은은하게 떠오르는 영역 */
-#lounge-hero{background:#2b3038;padding:88px max(16px,env(safe-area-inset-right,0px)) 36px max(16px,env(safe-area-inset-left,0px))}
+#lounge-hero{position:relative;overflow:hidden;background:#20242b url("/img/hero-lake-mist.jpg") center/cover no-repeat;padding:88px max(16px,env(safe-area-inset-right,0px)) 36px max(16px,env(safe-area-inset-left,0px))}
+/* 호수 아침 사진 위를 천천히 미끄러지듯 이동하는 배경 (항공사진 느낌, transform만 사용) */
+#lounge-hero::before{content:"";position:absolute;inset:-4%;background:url("/img/hero-lake-mist.jpg") center/cover no-repeat;animation:lounge-drift 38s ease-in-out infinite alternate;will-change:transform}
+#lounge-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(18,20,26,.66),rgba(18,20,26,.46) 45%,rgba(18,20,26,.68));pointer-events:none}
+#lounge-hero>*{position:relative;z-index:1}
+@keyframes lounge-drift{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.1) translate(-1.5%,1%)}}
 .lounge-head{max-width:min(100%,calc((100svh - 124px) * 1024 / 571));margin:0 auto 14px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;color:#e9e2d6}
 .lounge-title{font-family:"Noto Serif KR",serif;font-size:clamp(20px,2.6vw,28px);font-weight:700;margin:0;letter-spacing:.01em}
 .lounge-title small{font-size:.55em;color:#d9a85b;margin-right:10px;letter-spacing:.12em;font-weight:600}
@@ -26,6 +31,6 @@
 .lounge-chips{max-width:min(100%,calc((100svh - 124px) * 1024 / 571));margin:14px auto 0;flex-wrap:wrap;gap:8px}
 .lounge-chips a{color:#f3e9d8;border:1px solid rgba(217,168,91,.5);border-radius:999px;padding:5px 12px;font-size:13px;text-decoration:none}
 @media (hover:none){.spot .tab{display:none}.lounge-chips{display:flex}.hint-mouse{display:none}.hint-touch{display:inline}}
-@media (prefers-reduced-motion:reduce){.spot .tab,.spot::before{transition:opacity .2s linear}.spot .tab,.lounge:hover .spot .tab,.lounge .spot:hover .tab{transform:translate(-50%,0)}}
+@media (prefers-reduced-motion:reduce){.spot .tab,.spot::before{transition:opacity .2s linear}.spot .tab,.lounge:hover .spot .tab,.lounge .spot:hover .tab{transform:translate(-50%,0)}#lounge-hero::before{animation:none}}
 @media (max-width:760px){#lounge-hero{padding-top:70px}}
 #tape-hero{padding-top:56px}

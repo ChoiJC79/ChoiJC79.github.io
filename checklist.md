@@ -74,3 +74,10 @@
 - [x] 채점 검증: 역문항 18개·유형별 문항 수·결과 코드 계산을 node로 확인, 스크립트 구문 검사
 - [x] `index.html` B면 트랙·`sitemap.xml`·`publish.py` 배포 목록 연결
 - [x] Apps Script 웹 앱 배포(시트 "진로나침반 응답", 프로젝트 "진로나침반 수집", 실행: 운영자 / 액세스: 모든 사용자) 후 URL을 `ENDPOINT`에 넣고 배포
+
+# 홈 첫 화면 배경 교체 (2026-11-17)
+
+- [x] `#lounge-hero` 평면 배경을 1번 호수 아침 사진(`img/hero-lake-mist.jpg`) + 38초 천천히 흐르는 드리프트로 교체
+- [x] 글자 가독용 어두운 그라디언트 오버레이, 동작 줄이기 설정 시 정지
+- [x] `publish.py`에 `css/lounge-hero.css` 업로드 추가
+- [ ] 운영자가 채팅에 올린 1번 사진을 `img/hero-lake-mist.jpg`로 저장 후 배포 확인
