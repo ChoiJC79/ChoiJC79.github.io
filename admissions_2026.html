@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2025-2026 수도권 주요 15개 대학 입시 전형 분석 | 최승환</title>
+<meta name="description" content="수도권 주요 15개 대학 2025~2026학년도 대입 전형 요강, 무전공 확대, 수시 최저기준, 정시 수능 반영비율 및 사탐런 가산점 정밀 데이터 분석.">
+<meta property="og:title" content="2025-2026 수도권 주요 15개 대학 입시 전형 분석 | 최승환">
+<meta property="og:description" content="공공데이터포털(data.go.kr) 및 대교협 공시 지표, 15개 대학 공식 모집요강 기반 정밀 대입 분석.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://choijc79.github.io/admissions_2026.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Noto+Sans+KR:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/motion.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard',var(--font-body),-apple-system,sans-serif;font-weight:400;background:var(--bg);color:var(--text);line-height:1.75;}
+a{color:var(--accent);text-decoration:none;}
+
+/* ── Header ── */
+.site-header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px;transition:background 0.3s,border-color 0.3s;}
+.logo{font-family:var(--font-display);font-size:15px;color:var(--accent);letter-spacing:0.04em;font-weight:700;}
+.nav-links{display:flex;gap:1.5rem;font-size:12px;}
+.nav-links a{color:var(--muted);text-decoration:none;transition:color 0.15s;}
+.nav-links a:hover{color:var(--accent);}
+#theme-toggle{background:none;border:1px solid var(--border);color:var(--muted);font-size:11px;padding:3px 11px;border-radius:20px;cursor:pointer;letter-spacing:0.05em;transition:all 0.2s;margin-left:1rem;}
+#theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
+
+/* ── Page Layout ── */
+.container{max-width:1100px;margin:0 auto;padding:0 1.5rem;}
+.page-intro{padding:3.5rem 0 2rem;border-bottom:1px solid var(--border);}
+.page-intro-label{font-size:11px;letter-spacing:0.16em;color:var(--accent);text-transform:uppercase;margin-bottom:0.6rem;font-weight:600;}
+.page-intro h1{font-family:var(--font-display);font-size:clamp(22px,3.2vw,32px);font-weight:700;line-height:1.35;margin-bottom:0.8rem;letter-spacing:-0.01em;}
+.page-intro p{font-size:13.5px;color:var(--muted);line-height:1.85;max-width:780px;}
+
+/* ── Key Metrics Grid ── */
+.metrics-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin:2rem 0;border-radius:6px;overflow:hidden;}
+.metric-box{background:var(--surface);padding:1.25rem 1.4rem;display:flex;flex-direction:column;gap:0.25rem;}
+.metric-num{font-family:'IBM Plex Mono',monospace;font-size:1.6rem;font-weight:700;color:var(--accent);line-height:1.1;}
+.metric-label{font-size:12px;font-weight:600;color:var(--text);}
+.metric-sub{font-size:11px;color:var(--muted);line-height:1.45;}
+@media(max-width:768px){.metrics-grid{grid-template-columns:repeat(2,1fr);}}
+
+/* ── Filter & Search Toolbar ── */
+.toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;margin:2rem 0 1.5rem;}
+.search-wrapper{position:relative;flex:1;min-width:260px;}
+.search-input{width:100%;padding:0.65rem 1rem 0.65rem 2.2rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;font-size:13px;color:var(--text);outline:none;transition:border-color 0.2s;}
+.search-input:focus{border-color:var(--accent);}
+.search-icon{position:absolute;left:0.75rem;top:50%;transform:translateY(-50%);font-size:13px;color:var(--muted);}
+.filter-chips{display:flex;gap:0.4rem;flex-wrap:wrap;}
+.chip-btn{background:var(--surface);border:1px solid var(--border);color:var(--muted);padding:0.45rem 0.85rem;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;transition:all 0.15s;}
+.chip-btn.active,.chip-btn:hover{background:var(--accent);color:#0d1117;border-color:var(--accent);font-weight:700;}
+
+/* ── Sub-Tabs ── */
+.nav-tabs{display:flex;gap:0.5rem;border-bottom:1px solid var(--border);margin-bottom:1.8rem;overflow-x:auto;padding-bottom:1px;}
+.tab-link{padding:0.65rem 1.1rem;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all 0.2s;}
+.tab-link.active{color:var(--accent);border-bottom-color:var(--accent);}
+
+/* ── University Cards ── */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1.25rem;}
+.u-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.4rem;display:flex;flex-direction:column;gap:0.9rem;transition:border-color 0.2s,transform 0.15s;}
+.u-card:hover{border-color:var(--accent);transform:translateY(-2px);}
+.u-card-header{display:flex;align-items:flex-start;justify-content:space-between;gap:0.5rem;}
+.u-card-title{font-size:1.1rem;font-weight:700;color:var(--text);line-height:1.3;}
+.u-card-eng{font-size:11px;color:var(--muted);font-family:'IBM Plex Mono',monospace;}
+.u-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:12px;border:1px solid;letter-spacing:0.04em;}
+.badge-sky{color:#79c0ff;background:rgba(56,139,253,0.1);border-color:rgba(56,139,253,0.3);}
+.badge-ssh{color:#7ee787;background:rgba(46,160,67,0.1);border-color:rgba(46,160,67,0.3);}
+.badge-cau{color:#e3b341;background:rgba(210,153,34,0.1);border-color:rgba(210,153,34,0.3);}
+.badge-gdh{color:#d2a8ff;background:rgba(187,128,247,0.1);border-color:rgba(187,128,247,0.3);}
+
+.u-meta-row{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;background:rgba(255,255,255,0.02);padding:0.6rem 0.8rem;border-radius:4px;border:1px solid var(--border);font-size:11px;}
+.u-meta-item strong{color:var(--accent);font-family:'IBM Plex Mono',monospace;}
+
+.section-pill{padding:0.65rem 0.8rem;border-radius:6px;background:rgba(255,255,255,0.02);border:1px solid var(--border);font-size:11.5px;}
+.pill-title{font-weight:700;font-size:11px;margin-bottom:0.25rem;display:flex;align-items:center;gap:0.35rem;}
+.pill-title.susi{color:var(--accent);}
+.pill-title.jungsi{color:#79c0ff;}
+.min-csat-val{font-weight:700;color:#ff7b72;}
+
+.u-strategy-box{background:rgba(224,120,40,0.06);border-left:3px solid var(--accent);padding:0.65rem 0.85rem;font-size:11.5px;color:var(--text);line-height:1.6;border-radius:0 6px 6px 0;}
+
+/* ── Tables ── */
+.table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:12.5px;text-align:left;}
+th{background:rgba(255,255,255,0.04);padding:0.85rem 1rem;font-weight:600;color:var(--muted);border-bottom:1px solid var(--border);white-space:nowrap;}
+td{padding:0.95rem 1rem;border-bottom:1px solid var(--border);line-height:1.6;vertical-align:top;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:rgba(255,255,255,0.02);}
+
+/* ── Strategy Callout Cards ── */
+.callout-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.4rem;margin-bottom:1.25rem;position:relative;overflow:hidden;}
+.callout-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;}
+.callout-blue::before{background:#388bfd;}
+.callout-rose::before{background:#ff7b72;}
+.callout-amber::before{background:var(--accent);}
+.callout-title{font-size:14.5px;font-weight:700;color:var(--text);margin-bottom:0.4rem;display:flex;align-items:center;gap:0.5rem;}
+.callout-desc{font-size:13px;color:var(--muted);line-height:1.75;}
+
+footer{border-top:1px solid var(--border);padding:2.5rem 0;text-align:center;font-size:11px;color:var(--muted);margin-top:4rem;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">최승환 · 대입 데이터 분석</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/research.html">연구</a>
+    <a href="/projects.html">프로젝트</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()" aria-label="테마 전환"><span id="theme-icon">☀</span><span id="theme-lbl"> 베이지</span></button>
+</header>
+
+<div class="container">
+  <!-- Page Intro -->
+  <div class="page-intro">
+    <div class="page-intro-label">Higher Education &amp; Policy Data Analytics</div>
+    <h1>2025~2026 수도권 주요 15개 대학<br>대입 전형 요강 및 입시 전략 데이터 리포트</h1>
+    <p>
+      공공데이터포털(data.go.kr)의 한국대학교육협의회 공식 API, 대학알리미 공시 지표, 그리고 수도권 상위 15개 대학 입학처의 2025~2026학년도 확정 모집요강을 정밀 대조·구조화하여 
+      <strong>무전공(자율전공) 정원 확대</strong>, <strong>수시 수능 최저학력기준 변동</strong>, <strong>정시 수학 가중치 및 사탐런 과탐 가산점(3~7%)</strong>을 한눈에 분석한 데이터 플랫폼입니다.
+    </p>
+  </div>
+
+  <!-- Key Metrics -->
+  <div class="metrics-grid">
+    <div class="metric-box">
+      <div class="metric-num">51,020명</div>
+      <div class="metric-label">15개 대학 총 모집정원</div>
+      <div class="metric-sub">학부 신입생 정원 기준</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-num">6,555명</div>
+      <div class="metric-label">무전공(자율전공) 선발 규모</div>
+      <div class="metric-sub">전체 정원의 약 12.8% 대규모 순증</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-num">연세·한양</div>
+      <div class="metric-label">수시 교과 수능최저 신설</div>
+      <div class="metric-sub">단순 내신컷 탈피, 최저 충족이 실질 합격선</div>
+    </div>
+    <div class="metric-box">
+      <div class="metric-num">+7% 가산</div>
+      <div class="metric-label">사탐런 대응 최고 과탐 가산점</div>
+      <div class="metric-sub">서울시립대(7%)·숙명여대(5%) 이과 수비벽</div>
+    </div>
+  </div>
+
+  <!-- Filter & Search Toolbar -->
+  <div class="toolbar">
+    <div class="search-wrapper">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" class="search-input" placeholder="대학명(예: 서울대, 성균관대) 또는 전형 키워드 검색..." oninput="filterData()">
+    </div>
+    <div class="filter-chips">
+      <button class="chip-btn active" data-filter="ALL" onclick="setFilter('ALL')">전체 (15)</button>
+      <button class="chip-btn" data-filter="SKY" onclick="setFilter('SKY')">SKY 리그</button>
+      <button class="chip-btn" data-filter="서성한" onclick="setFilter('서성한')">서성한 리그</button>
+      <button class="chip-btn" data-filter="중경외시" onclick="setFilter('중경외시')">중경외시 리그</button>
+      <button class="chip-btn" data-filter="건동홍숙" onclick="setFilter('건동홍숙')">건동홍숙·이화</button>
+    </div>
+  </div>
+
+  <!-- Navigation Sub-Tabs -->
+  <div class="nav-tabs">
+    <div class="tab-link active" data-tab="cards" onclick="switchView('cards')">🏛️ 대학별 요강 분석 카드</div>
+    <div class="tab-link" data-tab="susi" onclick="switchView('susi')">🎯 수시 수능 최저기준 비교표</div>
+    <div class="tab-link" data-tab="jungsi" onclick="switchView('jungsi')">⚖️ 정시 수능 반영비 &amp; 사탐런 가산점</div>
+    <div class="tab-link" data-tab="strategy" onclick="switchView('strategy')">💡 2025~2026 핵심 입시 이슈 &amp; 전략 리포트</div>
+  </div>
+
+  <!-- Dynamic Content Area -->
+  <div id="contentArea"></div>
+</div>
+
+<footer>
+  <div class="container">
+    © 2026 최승환 · 충청북도 제천시청 · 도시경영학 박사과정 · choijc79.github.io<br>
+    <span style="opacity:0.6;font-size:10.5px;margin-top:4px;display:inline-block;">데이터 출처: 공공데이터포털(data.go.kr), 한국대학교육협의회 대학정보공시센터, 15개 대학 입학처 확정요강</span>
+  </div>
+</footer>
+
+<script>
+const UNIV_DATA = [
+  {
+    id: "snu",
+    name: "서울대학교",
+    eng: "Seoul National Univ.",
+    group: "SKY",
+    badgeClass: "badge-sky",
+    quota: 3480,
+    unassigned: 218,
+    unassignedRatio: "6.3%",
+    dropRate: "1.9%",
+    susiGyogwa: "지역균형 (교과성격)",
+    susiGyogwaElements: "서류 100% (3배수) → 1단계 70% + 면접 30%",
+    susiGyogwaMin: "국·수·영·탐 중 3개 영역 등급 합 7 이내 (탐구 2과목 평균)",
+    susiGyogwaRule: "고교별 2명 이내 (재학생 전용)",
+    susiJonghap: "일반전형 (학생부종합)",
+    susiJonghapElements: "서류 100% (2배수) → 1단계 50% + 면접 및 구술고사 50%",
+    susiJonghapMin: "수능 최저 없음 (단, 의대/사범대 별도 면접)",
+    jungsiWeights: "국 33.3% / 수 40.0% / 영 감점제 / 탐 26.7%",
+    jungsiScienceRule: "과탐 응시 권장 (I+II 3점, II+II 5점 가산점 부여)",
+    strategy: "정시에서도 교과평가(내신 정성평가 20%)를 반영하므로 학교생활 충실도 필수. 수시 지균 최저기준(3합7) 완화로 경쟁률 지속 상승세."
+  },
+  {
+    id: "yonsei",
+    name: "연세대학교",
+    eng: "Yonsei Univ.",
+    group: "SKY",
+    badgeClass: "badge-sky",
+    quota: 3840,
+    unassigned: 487,
+    unassignedRatio: "12.7%",
+    dropRate: "2.8%",
+    susiGyogwa: "추천형 (학생부교과)",
+    susiGyogwaElements: "1단계 교과 100% (5배수) → 2단계 교과 100% (면접 폐지)",
+    susiGyogwaMin: "인문: 국/수 중 1 포함 2합 4 이내 / 자연: 국/수(미적·기하) 중 1 포함 2합 5 (영어 3)",
+    susiGyogwaRule: "고교별 3학년 재적 5% 이내 (재학생)",
+    susiJonghap: "활동우수형 (학생부종합)",
+    susiJonghapElements: "1단계 서류 100% → 2단계 서류 60% + 제시문 면접 40%",
+    susiJonghapMin: "인문: 2합 4 (영어 3) / 자연: 2합 5 (영어 3)",
+    jungsiWeights: "국 33.3% / 수 33.3% / 영 16.7% / 탐 16.7%",
+    jungsiScienceRule: "자연계열 과탐 3% 가산점 부여 (사탐 응시자 감점 효과)",
+    strategy: "추천형(교과)에 수능 최저학력기준이 전격 신설되고 면접이 폐지되었습니다. 내신 1.2~1.4선과 최저 충족이 절대적 합격 기준입니다."
+  },
+  {
+    id: "korea",
+    name: "고려대학교",
+    eng: "Korea Univ.",
+    group: "SKY",
+    badgeClass: "badge-sky",
+    quota: 4210,
+    unassigned: 560,
+    unassignedRatio: "13.3%",
+    dropRate: "3.1%",
+    susiGyogwa: "학교추천 (학생부교과)",
+    susiGyogwaElements: "교과 80% + 서류 20% (일괄합산, 면접 없음)",
+    susiGyogwaMin: "3개 영역 등급 합 7 이내 (한국사 4등급 이내)",
+    susiGyogwaRule: "고교별 3학년 재적 4% 이내 (재학생)",
+    susiJonghap: "학업우수전형 (학생부종합)",
+    susiJonghapElements: "서류 100% 일괄선발 (면접 폐지)",
+    susiJonghapMin: "국·수·영·탐 4개 영역 등급 합 8 이내 (탐구 1과목, 한국사 4)",
+    jungsiWeights: "국 35.7% / 수 37.5% / 영 감점제 / 탐 26.8%",
+    jungsiScienceRule: "자연계열 과탐 변환표준점수 가산점 3% 적용",
+    strategy: "학업우수전형의 면접 폐지 및 '4개 합 8'이라는 최상위권 최강 최저기준이 실질 합격선을 결정합니다. 논술전형이 8년 만에 신설 부활했습니다."
+  },
+  {
+    id: "sogang",
+    name: "서강대학교",
+    eng: "Sogang Univ.",
+    group: "서성한",
+    badgeClass: "badge-ssh",
+    quota: 1780,
+    unassigned: 340,
+    unassignedRatio: "19.1%",
+    dropRate: "3.4%",
+    susiGyogwa: "지역균형 (학생부교과)",
+    susiGyogwaElements: "교과 90% + 출결 10%",
+    susiGyogwaMin: "국·수·영·탐 중 3개 영역 각 3등급 이내 (한국사 4)",
+    susiGyogwaRule: "고교별 추천 최대 20명",
+    susiJonghap: "일반전형 (학생부종합)",
+    susiJonghapElements: "서류 100% 일괄선발 (면접 없음)",
+    susiJonghapMin: "수능 최저 없음",
+    jungsiWeights: "국 36.7% / 수 43.3% / 영 가산점 / 탐 20.0%",
+    jungsiScienceRule: "문·이과 통합선발 최선두 (수학 가중치 43.3%로 이과생 문과 침공 극대화)",
+    strategy: "수학 반영비율(43.3%)이 전국 최상위입니다. 정시에서 수학 1등급 이과생의 교차지원 및 무전공(19.1%) 자유전공학부가 초강세를 보입니다."
+  },
+  {
+    id: "skku",
+    name: "성균관대학교",
+    eng: "Sungkyunkwan Univ.",
+    group: "서성한",
+    badgeClass: "badge-ssh",
+    quota: 3980,
+    unassigned: 580,
+    unassignedRatio: "14.6%",
+    dropRate: "2.9%",
+    susiGyogwa: "학교장추천 (학생부교과)",
+    susiGyogwaElements: "공통·일반선택 80% + 진로선택·전문교과 20%",
+    susiGyogwaMin: "국·수·영·탐1·탐2 중 3개 등급 합 7 이내 (글로벌 3합 6)",
+    susiGyogwaRule: "고교별 3학년 재적 4% 이내",
+    susiJonghap: "융합형 / 탐구형 (학생부종합)",
+    susiJonghapElements: "서류 100% 일괄선발 (일부 의예/사범 면접 30%)",
+    susiJonghapMin: "대부분 없음 (의예·글로벌바이오 등은 수능 최저 적용)",
+    jungsiWeights: "국 35.0% / 수 35.0% / 영 10.0% / 탐 20.0%",
+    jungsiScienceRule: "자연계열 과탐 가산점 부여 (유형A/B 가중치 이원화)",
+    strategy: "정시 다군에 반도체·에너지 및 자율전공을 대거 신설 배치하여 최상위권 수험생의 다군 흡수 허브 역할을 수행합니다."
+  },
+  {
+    id: "hanyang",
+    name: "한양대학교",
+    eng: "Hanyang Univ.",
+    group: "서성한",
+    badgeClass: "badge-ssh",
+    quota: 3550,
+    unassigned: 540,
+    unassignedRatio: "15.2%",
+    dropRate: "2.6%",
+    susiGyogwa: "학생부교과 (추천형)",
+    susiGyogwaElements: "교과 90% + 정성평가 10%",
+    susiGyogwaMin: "3개 영역 등급 합 7 이내 (수능 최저 신설)",
+    susiGyogwaRule: "고교별 3학년 재적 11% 이내",
+    susiJonghap: "추천형 / 서류형 / 면접형 (학종 3분화)",
+    susiJonghapElements: "추천형: 수능최저 적용 / 서류형: 서류 100% / 면접형: 면접 30%",
+    susiJonghapMin: "추천형만 3개 등급 합 7 적용, 서류/면접형은 최저 없음",
+    jungsiWeights: "국 30.0% / 수 35.0% / 영 10.0% / 탐 25.0%",
+    jungsiScienceRule: "자연계열 과탐 3% 가산점 부여",
+    strategy: "'무수능 최저'의 전통을 깨고 교과(추천형)에 수능 최저(3합7) 및 정성평가 10%를 전격 도입하여 입결 컷라인 하락 및 실질경쟁률 축소가 예상됩니다."
+  },
+  {
+    id: "cau",
+    name: "중앙대학교",
+    eng: "Chung-Ang Univ.",
+    group: "중경외시",
+    badgeClass: "badge-cau",
+    quota: 4580,
+    unassigned: 610,
+    unassignedRatio: "13.3%",
+    dropRate: "3.2%",
+    susiGyogwa: "지역균형 (학생부교과)",
+    susiGyogwaElements: "교과 70% + 비교과 30%",
+    susiGyogwaMin: "3개 영역 등급 합 7 이내 (영어 1·2등급을 1등급으로 간주)",
+    susiGyogwaRule: "고교별 최대 20명",
+    susiJonghap: "CAU융합인재 / CAU탐구형",
+    susiJonghapElements: "융합인재: 서류+면접 / 탐구형: 서류 100% 일괄",
+    susiJonghapMin: "수능 최저 없음",
+    jungsiWeights: "국 35.0% / 수 40.0% / 영 가산점 / 탐 25.0%",
+    jungsiScienceRule: "자연계열 과탐 가산점 완화/폐지 추세",
+    strategy: "영어 2등급을 1등급으로 인정해주는 영어 보정 공식 덕분에 수시 최저 충족률이 상대적으로 매우 높습니다. 정시 다군 경영학부의 대규모 추합이 특징입니다."
+  },
+  {
+    id: "khu",
+    name: "경희대학교",
+    eng: "Kyung Hee Univ.",
+    group: "중경외시",
+    badgeClass: "badge-cau",
+    quota: 5120,
+    unassigned: 490,
+    unassignedRatio: "9.6%",
+    dropRate: "2.7%",
+    susiGyogwa: "지역균형 (학생부교과)",
+    susiGyogwaElements: "교과 및 출결 70% + 교과종합평가 30%",
+    susiGyogwaMin: "2개 영역 등급 합 5 이내 (한국사 5)",
+    susiGyogwaRule: "고교별 3학년 재적 5% 이내",
+    susiJonghap: "네오르네상스 (학생부종합)",
+    susiJonghapElements: "1단계 서류 100% (3배수) → 2단계 서류 70% + 면접 30%",
+    susiJonghapMin: "수능 최저 없음 (의약학 포함 전 학과)",
+    jungsiWeights: "국 35.0% / 수 35.0% / 영 15.0% / 탐 15.0%",
+    jungsiScienceRule: "자연계열 과탐 4점 가산점 적용 (사탐 지원 제한적)",
+    strategy: "교과전형에 '교과종합평가 30%'가 반영되어 세특 및 전공관련 이수과목이 매우 중요합니다. 네오르네상스 학종은 면접 30%의 변별력이 큽니다."
+  },
+  {
+    id: "hufs",
+    name: "한국외국어대학교",
+    eng: "Hankuk Univ. of Foreign Studies",
+    group: "중경외시",
+    badgeClass: "badge-cau",
+    quota: 3670,
+    unassigned: 410,
+    unassignedRatio: "11.2%",
+    dropRate: "3.7%",
+    susiGyogwa: "학교장추천 (학생부교과)",
+    susiGyogwaElements: "교과 100% (대학 자체 환산점수 상위과목 반영)",
+    susiGyogwaMin: "2개 등급 합 4 이내 (영어 포함 가능)",
+    susiGyogwaRule: "고교별 최대 20명",
+    susiJonghap: "학생부종합 (면접형 / 서류형)",
+    susiJonghapElements: "면접형: 1단계 서류 → 2단계 면접 50% / 서류형: 서류 100%",
+    susiJonghapMin: "수능 최저 없음",
+    jungsiWeights: "국 35.0% / 수 30.0% / 영 15.0% / 탐 20.0%",
+    jungsiScienceRule: "AI융합대학 등 자연계열 사탐 응시 허용",
+    strategy: "어문·인문계열의 전통적 허브입니다. 교과 전형의 독특한 환산점수 산출 공식으로 인해 내신 등급 대비 유리한 조합을 찾는 것이 핵심입니다."
+  },
+  {
+    id: "uos",
+    name: "서울시립대학교",
+    eng: "Univ. of Seoul",
+    group: "중경외시",
+    badgeClass: "badge-cau",
+    quota: 1820,
+    unassigned: 280,
+    unassignedRatio: "15.4%",
+    dropRate: "2.5%",
+    susiGyogwa: "지역균형선발 (학생부교과)",
+    susiGyogwaElements: "교과 100%",
+    susiGyogwaMin: "3개 등급 합 7 이내",
+    susiGyogwaRule: "고교별 10명 이내",
+    susiJonghap: "학생부종합Ⅰ (면접형) / Ⅱ (서류형)",
+    susiJonghapElements: "학종Ⅰ: 1단계 서류 → 2단계 면접 50% / 학종Ⅱ: 서류 100%",
+    susiJonghapMin: "수능 최저 없음 (학종Ⅱ는 경영학부만 선발)",
+    jungsiWeights: "국 35.0% / 수 40.0% / 영 10.0% / 탐 15.0%",
+    jungsiScienceRule: "자연계열 과탐 가산점 7% (과탐 응시자 절대 유리)",
+    strategy: "반값 등록금 공립대로 선호도가 높습니다. 정시 자연계열 과탐 가산점 7%가 강력하여 사탐 선택자의 교차지원을 원천 차단하고 있습니다."
+  },
+  {
+    id: "konkuk",
+    name: "건국대학교",
+    eng: "Konkuk Univ.",
+    group: "건동홍숙",
+    badgeClass: "badge-gdh",
+    quota: 3410,
+    unassigned: 470,
+    unassignedRatio: "13.8%",
+    dropRate: "2.9%",
+    susiGyogwa: "KU지역균형 (학생부교과)",
+    susiGyogwaElements: "교과 70% + 서류평가 30%",
+    susiGyogwaMin: "수능 최저 없음",
+    susiGyogwaRule: "고교별 추천 인원 제한 없음",
+    susiJonghap: "KU자기추천 (학생부종합)",
+    susiJonghapElements: "1단계 서류 100% (3배수) → 2단계 1단계 70% + 면접 30%",
+    susiJonghapMin: "수능 최저 없음 (수의예과 제외)",
+    jungsiWeights: "국 30.0% / 수 35.0% / 영 15.0% / 탐 20.0%",
+    jungsiScienceRule: "자연계열 과탐 3% 가산점 부여",
+    strategy: "KU지역균형(교과)에 수능 최저가 없는 대신 서류정성평가 30%가 반영됩니다. KU자기추천은 학생부의 진로역량과 주도적 탐구활동을 집중 평가합니다."
+  },
+  {
+    id: "dongguk",
+    name: "동국대학교",
+    eng: "Dongguk Univ.",
+    group: "건동홍숙",
+    badgeClass: "badge-gdh",
+    quota: 3090,
+    unassigned: 390,
+    unassignedRatio: "12.6%",
+    dropRate: "2.8%",
+    susiGyogwa: "학교장추천인재 (학생부교과)",
+    susiGyogwaElements: "교과 70% + 서류 30%",
+    susiGyogwaMin: "수능 최저 없음 (상위 10과목만 반영)",
+    susiGyogwaRule: "고교별 최대 8명",
+    susiJonghap: "Do Dream (학생부종합)",
+    susiJonghapElements: "1단계 서류 100% (3.5~4배수) → 2단계 면접 30%",
+    susiJonghapMin: "수능 최저 없음",
+    jungsiWeights: "국 35.0% / 수 30.0% / 영 15.0% / 탐 20.0%",
+    jungsiScienceRule: "자연계열 과탐 3% 가산점 적용",
+    strategy: "교과전형에서 석차등급 상위 10과목만 추출 반영하여 1등급 초반 동점자가 다수 발생합니다. 사실상 서류평가 30%가 합격을 결정합니다."
+  },
+  {
+    id: "hongik",
+    name: "홍익대학교",
+    eng: "Hongik Univ.",
+    group: "건동홍숙",
+    badgeClass: "badge-gdh",
+    quota: 2750,
+    unassigned: 420,
+    unassignedRatio: "15.3%",
+    dropRate: "3.9%",
+    susiGyogwa: "학교장추천자 (학생부교과)",
+    susiGyogwaElements: "교과 100%",
+    susiGyogwaMin: "인문 3합 7 / 자연 3합 8 이내 (최저기준 매우 엄격)",
+    susiGyogwaRule: "고교별 10명 이내",
+    susiJonghap: "학교생활우수자 (학생부종합)",
+    susiJonghapElements: "서류 100% 일괄선발 (면접 없음)",
+    susiJonghapMin: "인문 3합 8 / 자연 3합 8 이내",
+    jungsiWeights: "국 30.0% / 수 35.0% / 영 15.0% / 탐 20.0%",
+    jungsiScienceRule: "자연계열 과탐 필수 응시 유지",
+    strategy: "건동홍 라인 중 수능 최저학력기준(3합 7~8)이 가장 빡빡합니다. 내신이 조금 낮더라도 최저 충족 시 파격적인 역전 합격이 가능합니다."
+  },
+  {
+    id: "sookmyung",
+    name: "숙명여자대학교",
+    eng: "Sookmyung Women's Univ.",
+    group: "건동홍숙",
+    badgeClass: "badge-gdh",
+    quota: 2420,
+    unassigned: 310,
+    unassignedRatio: "12.8%",
+    dropRate: "2.4%",
+    susiGyogwa: "지역균형선발 (학생부교과)",
+    susiGyogwaElements: "교과 100%",
+    susiGyogwaMin: "2개 영역 등급 합 5 이내",
+    susiGyogwaRule: "고교별 3학년 재적 여학생 10% 이내",
+    susiJonghap: "숙명인재 (면접형 / 서류형)",
+    susiJonghapElements: "면접형: 1단계 서류 → 2단계 면접 40% / 서류형: 서류 100%",
+    susiJonghapMin: "수능 최저 없음 (약학부 제외)",
+    jungsiWeights: "국 35.0% / 수 30.0% / 영 15.0% / 탐 20.0%",
+    jungsiScienceRule: "자연계열 과탐 5% 가산점 부여",
+    strategy: "약학부 및 첨단공학부 집중 투자. 자연계열 과탐 가산점 5%로 사탐 선택 수험생의 이과 침공 방어벽이 견고합니다."
+  },
+  {
+    id: "ewha",
+    name: "이화여자대학교",
+    eng: "Ewha Womans Univ.",
+    group: "건동홍숙",
+    badgeClass: "badge-gdh",
+    quota: 3320,
+    unassigned: 450,
+    unassignedRatio: "13.6%",
+    dropRate: "2.1%",
+    susiGyogwa: "고교추천 (학생부교과)",
+    susiGyogwaElements: "교과 80% + 면접 20% (일괄합산)",
+    susiGyogwaMin: "수능 최저 없음 (면접 변별력 큼)",
+    susiGyogwaRule: "고교별 여학생 5% 이내 (최대 10명)",
+    susiJonghap: "미래인재 (학생부종합)",
+    susiJonghapElements: "서류 100% 일괄선발 (면접 없음)",
+    susiJonghapMin: "인문 3합 6 / 자연 2합 5 (수학 포함) / 스크랜튼 3합 5",
+    jungsiWeights: "국 30.0% / 수 30.0% / 영 20.0% / 탐 20.0%",
+    jungsiScienceRule: "인문/자연 분할 선발 후 100% 전공 자유선택권 보장",
+    strategy: "정시 계열별 통합선발(입학 후 100% 전공 자유선택)의 원조입니다. 미래인재 학종은 면접이 없는 대신 높은 3합 6 최저기준을 요구합니다."
+  }
+];
+
+let activeFilter = 'ALL';
+let activeView = 'cards';
+
+function setFilter(grp) {
+  activeFilter = grp;
+  document.querySelectorAll('.chip-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-filter') === grp);
+  });
+  render();
+}
+
+function switchView(view) {
+  activeView = view;
+  document.querySelectorAll('.tab-link').forEach(t => {
+    t.classList.toggle('active', t.getAttribute('data-tab') === view);
+  });
+  render();
+}
+
+function filterData() {
+  render();
+}
+
+function getFilteredList() {
+  const query = (document.getElementById('searchInput')?.value || '').trim().toLowerCase();
+  return UNIV_DATA.filter(u => {
+    const matchFilter = (activeFilter === 'ALL') || (u.group === activeFilter);
+    if (!matchFilter) return false;
+    if (!query) return true;
+    return u.name.toLowerCase().includes(query) ||
+           u.eng.toLowerCase().includes(query) ||
+           u.group.toLowerCase().includes(query) ||
+           u.susiGyogwaMin.toLowerCase().includes(query) ||
+           u.strategy.toLowerCase().includes(query);
+  });
+}
+
+function render() {
+  const container = document.getElementById('contentArea');
+  const list = getFilteredList();
+
+  if (list.length === 0) {
+    container.innerHTML = '<div style="padding:4rem;text-align:center;color:var(--muted);font-size:13px;">일치하는 대학 데이터가 없습니다.</div>';
+    return;
+  }
+
+  if (activeView === 'cards') {
+    container.innerHTML = `
+      <div class="cards-grid">
+        ${list.map(u => `
+          <div class="u-card">
+            <div class="u-card-header">
+              <div>
+                <div class="u-card-title">${u.name}</div>
+                <div class="u-card-eng">${u.eng}</div>
+              </div>
+              <span class="u-badge ${u.badgeClass}">${u.group}</span>
+            </div>
+
+            <div class="u-meta-row">
+              <div class="u-meta-item">총 정원: <strong>${u.quota.toLocaleString()}명</strong></div>
+              <div class="u-meta-item">무전공: <strong>${u.unassigned}명 (${u.unassignedRatio})</strong></div>
+            </div>
+
+            <div class="section-pill">
+              <div class="pill-title susi">🎯 수시 ${u.susiGyogwa}</div>
+              <div style="font-size:11px;margin-bottom:2px;"><span class="min-csat-val">최저:</span> ${u.susiGyogwaMin}</div>
+              <div style="font-size:10px;color:var(--muted);">${u.susiGyogwaRule}</div>
+            </div>
+
+            <div class="section-pill">
+              <div class="pill-title jungsi">⚖️ 정시 ${u.jungsiWeights}</div>
+              <div style="font-size:11px;color:var(--text);">${u.jungsiScienceRule}</div>
+            </div>
+
+            <div class="u-strategy-box">
+              <strong>💡 핵심 합격 팁:</strong> ${u.strategy}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  } else if (activeView === 'susi') {
+    container.innerHTML = `
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>대학명</th>
+              <th>그룹</th>
+              <th>수시 대표 전형</th>
+              <th>전형 방법</th>
+              <th style="color:#ff7b72;">수능 최저학력기준</th>
+              <th>지원 자격 / 추천 인원</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${list.map(u => `
+              <tr>
+                <td style="font-weight:700;white-space:nowrap;">${u.name}</td>
+                <td><span class="u-badge ${u.badgeClass}">${u.group}</span></td>
+                <td style="font-weight:600;">${u.susiGyogwa}</td>
+                <td style="font-size:11.5px;color:var(--muted);">${u.susiGyogwaElements}</td>
+                <td style="font-weight:700;color:#ff7b72;">${u.susiGyogwaMin}</td>
+                <td style="font-size:11px;color:var(--muted);">${u.susiGyogwaRule}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
+  } else if (activeView === 'jungsi') {
+    container.innerHTML = `
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>대학명</th>
+              <th>그룹</th>
+              <th>수능 영역별 반영비율</th>
+              <th style="color:#79c0ff;">자연계열 과탐/사탐 반영 규정</th>
+              <th>정시 합격 전략 분석</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${list.map(u => `
+              <tr>
+                <td style="font-weight:700;white-space:nowrap;">${u.name}</td>
+                <td><span class="u-badge ${u.badgeClass}">${u.group}</span></td>
+                <td style="font-family:'IBM Plex Mono',monospace;font-weight:600;white-space:nowrap;">${u.jungsiWeights}</td>
+                <td style="font-weight:600;color:#79c0ff;">${u.jungsiScienceRule}</td>
+                <td style="font-size:12px;color:var(--muted);">${u.strategy}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
+  } else if (activeView === 'strategy') {
+    container.innerHTML = `
+      <div style="display:flex;flex-direction:column;gap:1.2rem;">
+        <div class="callout-card callout-blue">
+          <div class="callout-title">📢 1. 무전공(자율전공) 6,555명 순증에 따른 학과별 '구멍(펑크)' 발생 가능성</div>
+          <div class="callout-desc">
+            수도권 상위 15개 대학의 무전공 선발 비율이 평균 12.8%에 달하며, 서강대(19.1%), 시립대(15.4%), 홍익대(15.3%), 한양대(15.2%), 성균관대(14.6%) 등이 대폭 정원을 할당했습니다.<br>
+            이로 인해 비인기 인문/기초자연 일반학과의 정원이 감축되어 <strong>최초 합격선 대비 충원율 폭증 및 컷라인 급락(펑크) 현상</strong>이 교차 지원과 맞물려 빈번하게 일어날 수 있습니다.
+          </div>
+        </div>
+
+        <div class="callout-card callout-rose">
+          <div class="callout-title">⚠️ 2. 연세대·한양대 '수능 최저 신설'로 인한 실질 경쟁률 급감</div>
+          <div class="callout-desc">
+            과거 면접 위주였던 연세대 추천형(교과)과 무수능 최저의 대표주자였던 한양대 추천형(교과)에 <strong>수능 최저학력기준(연세 2합4~5, 한양 3합7)</strong>이 신설되었습니다.<br>
+            내신 등급이 1.0~1.1극초반이 아니더라도 <strong>수능 최저를 맞출 수 있는 수험생에게 파격적인 역전 기회</strong>가 제공되며, 충족률 미달로 실질 경쟁률이 1/3 수준으로 축소됩니다.
+          </div>
+        </div>
+
+        <div class="callout-card callout-amber">
+          <div class="callout-title">🧭 3. 이과 수험생의 '사탐런'과 대학별 과탐 가산점 방어벽</div>
+          <div class="callout-desc">
+            과탐 대신 비교적 등급 확보가 쉬운 사탐을 선택하는 자연계 수험생이 급증함에 따라 대학별 유불리가 명확해졌습니다.<br>
+            <strong>서울시립대(과탐 7% 가산), 숙명여대(과탐 5% 가산), 경희대(과탐 4점 가산)</strong>는 강력한 가산점으로 사탐 선택자의 이과 지원을 철저히 차단하는 반면, 
+            <strong>서강대(수학 43.3% 반영), 중앙대, 한국외대</strong>는 사탐 응시자도 높은 수학 표준점수를 바탕으로 충분히 합격권에 진입할 수 있습니다.
+          </div>
+        </div>
+      </div>
+    `;
+  }
+}
+
+// Initial render
+render();
+
+// Theme toggle logic compatible with ChoiJC79 personal site
+(function(){
+  var t = localStorage.getItem('choijc-theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', t);
+  var btn = document.getElementById('theme-toggle');
+  if(btn) btn.innerHTML = t==='dark' ? '☀ <span id="theme-lbl">베이지</span>' : '☾ <span id="theme-lbl">다크</span>';
+})();
+
+function toggleTheme(){
+  var cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', cur);
+  localStorage.setItem('choijc-theme', cur);
+  var btn = document.getElementById('theme-toggle');
+  if(btn) btn.innerHTML = cur==='dark' ? '☀ <span id="theme-lbl">베이지</span>' : '☾ <span id="theme-lbl">다크</span>';
+}
+</script>
+</body>
+</html>
