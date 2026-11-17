@@ -1,4 +1,4 @@
-// 홈 카세트 데크 및 1979 라운지 재즈 BGM 플레이어
+// 홈 카세트 데크: 삐삐 연동과 1979 라운지 재즈 재생
 (function () {
   'use strict';
 
@@ -82,21 +82,11 @@
   var deckPrevBtn = document.getElementById('deck-prev');
   var deckNextBtn = document.getElementById('deck-next');
 
-  var bgmBar = document.getElementById('lounge-bgm');
-  var bgmPlayBtn = document.getElementById('bgm-play-btn');
-  var bgmPrevBtn = document.getElementById('bgm-prev-btn');
-  var bgmNextBtn = document.getElementById('bgm-next-btn');
-  var bgmMuteBtn = document.getElementById('bgm-mute-btn');
-  var bgmTrackDisplay = document.getElementById('bgm-track-display');
-  var bgmDiscBtn = document.getElementById('bgm-disc-btn');
-  var bgmInfoBtn = document.getElementById('bgm-info-btn');
-
   // 트랙 정보 UI 갱신
   function updateTrackUI() {
     var track = PLAYLIST[currentIndex];
-    var labelText = '♪ ' + track.no + '. ' + track.name;
+    var labelText = track.no + '. ' + track.name;
     if (tapeTrackName) tapeTrackName.textContent = labelText;
-    if (bgmTrackDisplay) bgmTrackDisplay.textContent = track.no + '. ' + track.name;
   }
 
   // 곡 로드
@@ -125,16 +115,6 @@
       deckPlayBtn.classList.toggle('is-playing', playing);
       if (deckPlayLabel) deckPlayLabel.textContent = playing ? '일시정지' : '재생';
       deckPlayBtn.setAttribute('title', playing ? '일시정지 (BGM)' : '재생 (1979 라운지 재즈)');
-    }
-
-    // 플로팅 바
-    if (bgmBar) bgmBar.classList.toggle('playing', playing);
-    if (bgmPlayBtn) {
-      bgmPlayBtn.textContent = playing ? '❚❚' : '▶';
-      bgmPlayBtn.setAttribute('title', playing ? '일시정지' : '재생');
-    }
-    if (bgmDiscBtn) {
-      bgmDiscBtn.setAttribute('title', playing ? '일시정지' : '재생');
     }
   }
 
@@ -189,15 +169,6 @@
     loadTrack(currentIndex + 1, true);
   }
 
-  // 음소거 토글
-  function toggleMute() {
-    audio.muted = !audio.muted;
-    if (bgmMuteBtn) {
-      bgmMuteBtn.textContent = audio.muted ? '🔇' : '🔊';
-      bgmMuteBtn.setAttribute('title', audio.muted ? '소리 켜기' : '음소거');
-    }
-  }
-
   // 카세트 카운터 업데이트 (초 단위 디지털 카운트)
   audio.addEventListener('timeupdate', function () {
     if (!tapeCounter) return;
@@ -219,14 +190,6 @@
   if (deckStopBtn) deckStopBtn.addEventListener('click', stopAudio);
   if (deckPrevBtn) deckPrevBtn.addEventListener('click', prevTrack);
   if (deckNextBtn) deckNextBtn.addEventListener('click', nextTrack);
-
-  // 플로팅 바 이벤트 연결
-  if (bgmPlayBtn) bgmPlayBtn.addEventListener('click', togglePlay);
-  if (bgmDiscBtn) bgmDiscBtn.addEventListener('click', togglePlay);
-  if (bgmPrevBtn) bgmPrevBtn.addEventListener('click', prevTrack);
-  if (bgmNextBtn) bgmNextBtn.addEventListener('click', nextTrack);
-  if (bgmMuteBtn) bgmMuteBtn.addEventListener('click', toggleMute);
-  if (bgmInfoBtn) bgmInfoBtn.addEventListener('click', nextTrack);
 
   // 초기화
   loadTrack(0, false);

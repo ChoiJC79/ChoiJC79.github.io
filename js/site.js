@@ -1,9 +1,5 @@
-(function(){var t=localStorage.getItem('choijc-theme')||'dark';document.documentElement.setAttribute('data-theme',t);var tb=document.getElementById('theme-btn');if(tb)tb.textContent=t==='dark'?'☀ 라이트':'☾ 다크';})();
-function toggleTheme(){var h=document.documentElement;var n=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('choijc-theme',n);var tb=document.getElementById('theme-btn');if(tb)tb.textContent=n==='dark'?'☀ 라이트':'☾ 다크';}
-function lkToggle(btn){btn.classList.toggle('lk-open');btn.nextElementSibling.classList.toggle('lk-open');}
-function searchNaver(e){e.preventDefault();var q=document.getElementById('naver-q').value.trim();if(q)window.open('https://search.naver.com/search.naver?query='+encodeURIComponent(q),'_blank');}
-function searchGoogle(e){e.preventDefault();var q=document.getElementById('google-q').value.trim();if(q)window.open('https://www.google.com/search?q='+encodeURIComponent(q),'_blank');}
-
+(function(){var t=localStorage.getItem('choijc-theme')||'light';document.documentElement.setAttribute('data-theme',t);var tb=document.getElementById('theme-btn');if(tb)tb.textContent=t==='dark'?'라이트':'다크';})();
+function toggleTheme(){var h=document.documentElement;var n=h.getAttribute('data-theme')==='dark'?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('choijc-theme',n);var tb=document.getElementById('theme-btn');if(tb)tb.textContent=n==='dark'?'라이트':'다크';}
 /* -- 제천 맛집 위젯 열기/닫기 -- */
 (function(){
   var corner=document.getElementById('jc-corner');
@@ -24,15 +20,11 @@ function searchGoogle(e){e.preventDefault();var q=document.getElementById('googl
 
 /* 제천 날씨 — Open-Meteo (no API key) */
 (function(){
-  var WX={0:'☀️',1:'🌤️',2:'⛅',3:'☁️',
-    45:'🌫️',48:'🌫️',
-    51:'🌦️',53:'🌦️',55:'🌦️',
-    56:'🌨️',57:'🌨️',
-    61:'🌧️',63:'🌧️',65:'🌧️',
-    71:'❄️',73:'❄️',75:'❄️',77:'🌨️',
-    80:'🌦️',81:'🌦️',82:'🌦️',
-    85:'🌨️',86:'🌨️',
-    95:'⛈️',96:'⛈️',99:'⛈️'};
+  var WX={0:'맑음',1:'대체로 맑음',2:'구름 조금',3:'흐림',45:'안개',48:'안개',
+    51:'이슬비',53:'이슬비',55:'이슬비',56:'어는 비',57:'어는 비',
+    61:'비',63:'비',65:'강한 비',71:'눈',73:'눈',75:'강한 눈',77:'눈',
+    80:'소나기',81:'소나기',82:'강한 소나기',85:'눈보라',86:'눈보라',
+    95:'뇌우',96:'뇌우',99:'뇌우'};
   var DOW=['일','월','화','수','목','금','토'];
   fetch('https://api.open-meteo.com/v1/forecast?latitude=37.13&longitude=128.19' +
     '&daily=weather_code,temperature_2m_max,temperature_2m_min' +
@@ -44,7 +36,7 @@ function searchGoogle(e){e.preventDefault();var q=document.getElementById('googl
     for(var i=0;i<7;i++){
       var dt=days.time[i];
       var dow=DOW[new Date(dt+'T12:00:00').getDay()];
-      var icon=WX[days.weather_code[i]]||'🌡️';
+      var icon=WX[days.weather_code[i]]||'-';
       var hi=Math.round(days.temperature_2m_max[i]);
       var lo=Math.round(days.temperature_2m_min[i]);
       var cls=dt===today?' today':'';
@@ -95,53 +87,6 @@ function searchGoogle(e){e.preventDefault();var q=document.getElementById('googl
 
 })();
 
-/* 네비: 마우스에 가까울수록 커지는 독 확대 */
-(function(){
-  var nav = document.querySelector('#navbar .nav-links, nav .nav-links, ul.nav-links');
-  if (!nav) return;
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-  var mobile = window.matchMedia('(max-width: 900px)');
-  var links = Array.prototype.slice.call(nav.querySelectorAll('a'));
-  if (!links.length) return;
-  var MAX = 1.55;
-  var RANGE = 90;
-  var raf = 0;
-  var px = 0;
-
-  function apply(){
-    raf = 0;
-    if (reduce.matches || mobile.matches) return;
-    links.forEach(function(a){
-      var r = a.getBoundingClientRect();
-      var d = Math.abs(px - (r.left + r.width / 2));
-      var t = Math.max(0, 1 - d / RANGE);
-      t = t * t * (3 - 2 * t);
-      a.style.transform = 'scale(' + (1 + (MAX - 1) * t).toFixed(3) + ')';
-      a.style.zIndex = String(Math.round(t * 12));
-      if (t > 0.28) a.classList.add('is-near');
-      else a.classList.remove('is-near');
-    });
-  }
-
-  function onMove(e){
-    px = e.clientX;
-    if (!raf) raf = requestAnimationFrame(apply);
-  }
-
-  function reset(){
-    if (raf) { cancelAnimationFrame(raf); raf = 0; }
-    links.forEach(function(a){
-      a.style.transform = '';
-      a.style.zIndex = '';
-      a.classList.remove('is-near');
-    });
-  }
-
-  var host = nav.closest('nav') || nav;
-  host.addEventListener('mousemove', onMove);
-  host.addEventListener('mouseleave', reset);
-})();
-
 /* 홈 최근 글: 칼럼 목록·가이드 목록 페이지에서 최신 글을 읽어 와 카드로 표시 */
 (function(){
   var sec = document.getElementById('recent'), list = document.getElementById('recent-list');
@@ -177,5 +122,28 @@ function searchGoogle(e){e.preventDefault();var q=document.getElementById('googl
     if (!items.length) return;
     items.forEach(function(o){ list.appendChild(card(o)); });
     sec.hidden = false;
+  });
+})();
+
+/* 모달: 푸터 버튼으로 열고, 닫기 버튼·바깥 클릭·ESC로 닫는다 */
+(function(){
+  var last=null;
+  function open(m,from){
+    last=from; m.hidden=false; document.body.classList.add('jm-open');
+    window.dispatchEvent(new Event('resize')); /* 노을 호 그래프가 숨김 상태에서 폭을 못 재므로 열 때 다시 잰다 */
+    var c=m.querySelector('.jmodal-close'); if(c) c.focus();
+  }
+  function close(m){
+    m.hidden=true; document.body.classList.remove('jm-open'); if(last) last.focus();
+  }
+  document.querySelectorAll('[data-modal]').forEach(function(b){
+    b.addEventListener('click',function(){ var m=document.getElementById(b.getAttribute('data-modal')); if(m) open(m,b); });
+  });
+  document.querySelectorAll('.jmodal').forEach(function(m){
+    m.addEventListener('click',function(e){ if(e.target===m||e.target.classList.contains('jmodal-close')) close(m); });
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Escape') return;
+    document.querySelectorAll('.jmodal:not([hidden])').forEach(close);
   });
 })();
