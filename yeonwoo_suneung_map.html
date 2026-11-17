@@ -1,0 +1,545 @@
+<!-- 연우 2030학년도 수능 대비 기출 문항 분석: 번호별 출제지도 -->
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>연우 수능 출제지도 | 최승환</title>
+<meta name="description" content="최근 수능·모의평가 1,625문항을 번호별로 분류해, 연우가 볼 2030학년도(2028 통합형) 수능의 출제 유형·번호별 규칙과 공부 방향을 정리한 지도.">
+<meta property="og:title" content="연우 수능 출제지도 | 최승환">
+<meta property="og:description" content="최근 수능·모의평가 1,625문항을 번호별로 분류해, 연우가 볼 2030학년도(2028 통합형) 수능의 출제 유형·번호별 규칙과 공부 방향을 정리한 지도.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/yeonwoo_suneung_map.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="연우 수능 출제지도 | 최승환">
+<meta name="twitter:description" content="최근 수능·모의평가 1,625문항을 번호별로 분류해, 연우가 볼 2030학년도(2028 통합형) 수능의 출제 유형·번호별 규칙과 공부 방향을 정리한 지도.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="/css/motion.css">
+<style>
+
+/* 사이트 공통 헤더 & 내비게이션 */
+.site-header{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--line);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:52px;transition:background .3s,border-color .3s}
+.site-logo{font-family:var(--display);font-size:15px;color:var(--accent);letter-spacing:.04em;text-decoration:none;font-weight:700}
+.nav-links{display:flex;gap:1.5rem;font-size:13px}
+.nav-links a{color:var(--muted);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--accent)}
+.nav-links a.active{color:var(--accent);font-weight:600}
+#theme-toggle{background:none;border:1px solid var(--line);color:var(--muted);font-size:11px;padding:3px 11px;border-radius:20px;cursor:pointer;font-family:var(--body);letter-spacing:.05em;transition:all .2s;margin-left:1rem}
+#theme-toggle:hover{border-color:var(--accent);color:var(--accent)}
+footer.site-footer{margin-top:60px;padding:32px 0;border-top:1px solid var(--line);text-align:center;font-size:12px;color:var(--muted)}
+footer.site-footer a{color:var(--accent);text-decoration:none}
+@media (max-width:600px){
+  .site-header{padding:0 1rem}
+  .nav-links{gap:.8rem;font-size:12px}
+}
+
+
+/* 레이아웃: 좌측 목차 + 본문 한 칼럼. 영역마다 '답안지 칸' 번호 지도 → 근거 패널 → 공부 방향 순서. 로드맵 페이지와 같은 토큰 */
+:root{
+  --bg:#f5f6f8; --surface:#ffffff; --fg:#1b2230; --muted:#5b6474; --line:#dde1e8; --faint:#eef0f4;
+  --ink:#1f3a5f; --accent:#0e7c6b; --accent-soft:#e3f3ef; --warn:#b4541a; --warn-soft:#fbeadd;
+  --c1:#1f5fbf; --c2:#0e7c6b; --c3:#b4541a; --c4:#7a3e9d;
+  --omr:#c8324b;
+  --display:"IBM Plex Sans KR","Noto Sans KR",system-ui,sans-serif;
+  --body:"Noto Sans KR",system-ui,-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#13171e; --surface:#1b2129; --fg:#e8ebf0; --muted:#9aa4b4; --line:#2c3440; --faint:#222934;
+  --ink:#9fc0ea; --accent:#4fc3ad; --accent-soft:#17352f; --warn:#f0a06a; --warn-soft:#3a2819;
+  --c1:#7fb0f5; --c2:#4fc3ad; --c3:#f0a06a; --c4:#c594e3;
+  --omr:#f07a8c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#13171e; --surface:#1b2129; --fg:#e8ebf0; --muted:#9aa4b4; --line:#2c3440; --faint:#222934;
+  --ink:#9fc0ea; --accent:#4fc3ad; --accent-soft:#17352f; --warn:#f0a06a; --warn-soft:#3a2819;
+  --c1:#7fb0f5; --c2:#4fc3ad; --c3:#f0a06a; --c4:#c594e3;
+  --omr:#f07a8c; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.65;margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-block:0 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.hero{padding:40px 0 24px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:12px;letter-spacing:.08em;color:var(--muted);font-weight:500}
+h1{font-family:var(--display);font-size:clamp(28px,4vw,40px);line-height:1.2;margin:6px 0 10px;text-wrap:balance;color:var(--ink)}
+h2{font-family:var(--display);font-size:22px;margin:0 0 6px;color:var(--ink);text-wrap:balance}
+h3{font-family:var(--display);font-size:16.5px;margin:22px 0 6px}
+p{margin:6px 0;max-width:72ch}
+.lead{font-size:16px;max-width:70ch}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-top:18px}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.fact .k{font-size:12px;color:var(--muted)}
+.fact .v{font-family:var(--display);font-weight:600;font-size:17px;margin-top:2px;font-variant-numeric:tabular-nums}
+.layout{display:grid;grid-template-columns:190px minmax(0,1fr);gap:32px;margin-top:24px}
+nav.toc{position:sticky;top:calc(68px + env(safe-area-inset-top,0px));align-self:start;font-size:13px}
+nav.toc a{display:block;padding:6px 0 6px 10px;color:var(--muted);text-decoration:none;border-left:2px solid var(--line)}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--fg);border-color:var(--accent);outline:none}
+main{min-width:0}
+section{padding:28px 0;border-bottom:1px solid var(--line)}
+section:last-child{border-bottom:0}
+.sub{color:var(--muted);font-size:14px;margin-bottom:14px;max-width:80ch}
+.note{background:var(--accent-soft);border-left:3px solid var(--accent);padding:10px 14px;border-radius:0 6px 6px 0;margin:12px 0;max-width:80ch}
+.caution{background:var(--warn-soft);border-left:3px solid var(--warn);padding:10px 14px;border-radius:0 6px 6px 0;margin:12px 0;max-width:80ch}
+.tbl{overflow-x:auto;margin:10px 0 4px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:560px}
+th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-weight:600;color:var(--muted);font-size:12.5px;background:var(--surface)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+ul,ol{margin:4px 0 8px;padding-left:20px}
+li{margin:4px 0;max-width:76ch}
+.src{color:var(--muted);font-size:12.5px}
+b.k{color:var(--ink)}
+/* 결론 */
+.takeaways{display:grid;gap:10px;margin:14px 0 0;padding:0;list-style:none;counter-reset:t}
+.takeaways li{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 16px 12px 52px;position:relative;max-width:none}
+.takeaways li::before{counter-increment:t;content:counter(t);position:absolute;left:14px;top:12px;width:26px;height:26px;border-radius:50%;border:2px solid var(--omr);color:var(--omr);font-family:var(--mono);font-size:13px;display:grid;place-items:center}
+.takeaways .t{font-family:var(--display);font-weight:600;color:var(--ink)}
+/* 답안지 칸 지도 */
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--muted);margin:8px 0 10px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+.hatch{width:14px;height:12px;border:1px solid var(--line);border-radius:3px;display:inline-block;background:repeating-linear-gradient(135deg,var(--surface) 0 3px,var(--muted) 3px 4px)}
+.omr{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:6px}
+.omr.compact{grid-template-columns:repeat(auto-fill,minmax(100px,1fr))}
+.cell{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 8px 7px;min-width:0;border-top:3px solid var(--cc,var(--line))}
+.cell .n{font-family:var(--mono);font-size:12px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:4px}
+.cell .l{font-size:13px;font-weight:600;line-height:1.3;margin-top:2px;word-break:keep-all;overflow-wrap:anywhere}
+.cell .m{font-size:11.5px;color:var(--muted);margin-top:3px;font-variant-numeric:tabular-nums}
+.cell .bar{height:4px;background:var(--faint);border-radius:2px;margin-top:5px;overflow:hidden}
+.cell .bar i{display:block;height:100%;background:var(--cc,var(--accent))}
+.p{font-size:10.5px;font-weight:700;padding:0 5px;border-radius:999px;border:1px solid var(--omr);color:var(--omr);white-space:nowrap;font-family:var(--body)}
+.p.p4{background:var(--omr);color:var(--surface)}
+.p.p2{border-color:var(--line);color:var(--muted)}
+.cell.short{background:repeating-linear-gradient(135deg,var(--surface) 0 7px,var(--faint) 7px 9px)}
+.band{font-size:12.5px;color:var(--muted);margin:16px 0 6px;font-weight:600}
+/* 패널 */
+.panels{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px 28px;margin-top:16px}
+.panel{min-width:0}
+.panel h4{font-family:var(--display);font-size:14.5px;margin:6px 0 8px;color:var(--fg)}
+.bars{display:grid;gap:5px}
+.brow{display:grid;grid-template-columns:minmax(96px,40%) minmax(0,1fr) 64px;gap:8px;align-items:center;font-size:13px}
+.brow .bl{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.brow .bt{height:12px;background:var(--faint);border-radius:3px;overflow:hidden}
+.brow .bt i{display:block;height:100%;background:var(--bc,var(--accent));border-radius:3px}
+.brow .bv{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted);font-size:12.5px;white-space:nowrap}
+svg.chart{width:100%;max-width:520px;height:auto;display:block}
+svg.chart text{fill:var(--muted);font-size:11px;font-family:var(--body)}
+svg.chart .grid{stroke:var(--line);stroke-width:1}
+.chart-legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--muted);margin-top:4px}
+.chart-legend span{display:inline-flex;align-items:center;gap:5px}
+.chart-legend i{width:14px;height:3px;border-radius:2px;display:inline-block}
+/* 공부 방향 */
+.plan{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.pcard{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px;min-width:0;border-top:3px solid var(--cc)}
+.pcard h3{margin:0 0 4px;color:var(--cc)}
+.pcard .when{font-size:12px;font-weight:600;color:var(--muted);margin-top:10px}
+.pcard ul{padding-left:18px}
+a{color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+footer{color:var(--muted);font-size:12.5px;padding-top:18px}
+@media (max-width:860px){.layout{grid-template-columns:1fr}nav.toc{position:static;display:flex;flex-wrap:wrap;gap:4px 12px}nav.toc a{border-left:0;padding:2px 0}}
+
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="/" class="site-logo">최승환 · Jecheon</a>
+  <div style="display:flex;align-items:center;">
+    <nav class="nav-links">
+      <a href="/about.html">소개</a>
+      <a href="/research.html">연구</a>
+      <a href="/column.html">칼럼</a>
+      <a href="/letter_wonwoo.html">원우에게</a>
+      <a href="/yeonwoo_suneung_roadmap.html">연우 로드맵</a>
+      <a href="/yeonwoo_suneung_map.html" class="active">연우 출제지도</a>
+    </nav>
+    <button id="theme-toggle" onclick="toggleTheme()">☾ 다크</button>
+  </div>
+</header>
+
+<div class="wrap">
+<header class="hero">
+  <div class="eyebrow">연우 · 2030학년도 수능 대비 · 기출 문항 분석</div>
+  <h1>연우 수능 출제지도</h1>
+  <p class="lead">최근 수능과 6월·9월 모의평가를 문항 하나하나 분류해, 번호마다 어떤 유형이 나오고 무엇을 묻는지 정리했습니다. 연우가 보는 2030학년도 수능은 2028 통합형 체제이므로, 그 체제에서도 유지되는 영어 전체, 수학 공통과 확률과 통계, 국어 독서·문학·문법만 골라 분석했습니다. 통합사회·통합과학은 평가원 2028 예시문항으로 분석했습니다.</p>
+  <div class="facts">
+    <div class="fact"><div class="k">연우가 보는 시험</div><div class="v">2030학년도 수능 (2029.11)</div></div>
+    <div class="fact"><div class="k">문항 단위로 분류한 문항</div><div class="v" id="f-items"></div></div>
+    <div class="fact"><div class="k">유형 분석 회차</div><div class="v">수능 5회 + 모평 6회</div></div>
+    <div class="fact"><div class="k">배점 구조 확인</div><div class="v" id="f-aexams"></div></div>
+    <div class="fact"><div class="k">기준일</div><div class="v">2026-11-16</div></div>
+  </div>
+</header>
+
+<div class="layout">
+<nav class="toc" aria-label="목차">
+  <a href="#conclusion">결론 다섯 줄</a>
+  <a href="#exam">연우가 볼 시험</a>
+  <a href="#eng">영어 번호 지도</a>
+  <a href="#math">수학 번호 지도</a>
+  <a href="#kor">국어 번호 지도</a>
+  <a href="#inq">통합사회·통합과학</a>
+  <a href="#study">공부 방향</a>
+  <a href="#basis">근거와 한계</a>
+  <a href="#next">다시 볼 때</a>
+</nav>
+<main>
+
+<section id="conclusion">
+  <h2>결론 다섯 줄</h2>
+  <p class="sub">아래 지도와 표에서 직접 나온 결론만 적었습니다. 근거 수치는 각 영역 섹션에 있습니다.</p>
+  <ol class="takeaways">
+    <li><span class="t">영어는 지금 기출이 그대로 연우의 시험입니다.</span> 45개 번호 중 44개가 11회 내내 같은 유형이었고, 2028 체제에서도 영어는 바뀌지 않습니다. 남은 1개(3번)도 최근 9회는 모두 요지 듣기입니다.</li>
+    <li><span class="t">수학은 번호보다 배점 블록이 규칙입니다.</span> 2점·3점·4점과 단답형 위치는 17회 모두 똑같았지만, 4점 번호의 단원은 매회 바뀝니다. 2028에는 같은 블록이 2점→3점→4점 객관식, 이어서 단답 22~30번 순으로 재배열됩니다.</li>
+    <li><span class="t">국어 3점은 세트마다 하나씩 나오는 &lt;보기&gt; 문항입니다.</span> 회당 정확히 10개(독서 4, 문학 4, 언어 1, 매체 1)이고, 자주 반복되는 번호는 34번(11회)과 21번(10회), 3번(9회), 8번(8회)입니다. 세트 크기가 바뀌면 3점 번호도 함께 움직입니다.</li>
+    <li><span class="t">문법은 2028부터 전원 필수입니다.</span> 2028 국어 1~10번이 화법과 언어이고, 그중 7~10번은 지문 없이 푸는 문법 독립 문항입니다. 현행 언어와 매체에서 11회 모두 나온 것은 문장 구조와 중세 국어 두 가지입니다.</li>
+    <li><span class="t">통합사회·통합과학은 고1 내신이 곧 수능 범위입니다.</span> 2028 예시문항 25문항 중 사회 18개, 과학 15개가 자료·&lt;보기&gt; 적용형이었습니다. 단원 두 개를 엮은 통합 문항은 가장 높은 배점(2.5점) 쪽에 몰렸습니다.</li>
+  </ol>
+</section>
+
+<section id="exam">
+  <h2>연우가 볼 시험</h2>
+  <p class="sub">평가원 「2028학년도 수능 예시문항 안내」(2025.04) 원문 기준입니다. 연우는 2027년 고1 입학, 2029년 11월 수능 응시로 이 체제의 3년차입니다.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>영역</th><th>지금 수능(~2027학년도)</th><th>연우의 수능(2028학년도~)</th><th>분석에서 쓴 기출</th></tr></thead>
+    <tbody>
+      <tr><td><b class="k">국어</b></td><td>45문항 80분. 공통 34 + 선택 11(화법과 작문 / 언어와 매체)</td><td>45문항 80분, 선택 없음. 화법과 언어 10 · 독서와 작문 20 · 문학 15</td><td>공통 1~34 + 언어와 매체 35~45 (11회)</td></tr>
+      <tr><td><b class="k">수학</b></td><td>30문항 100분. 공통 22 + 선택 8(확통 / 미적분 / 기하)</td><td>30문항 100분, 선택 없음. 대수 · 미적분Ⅰ · 확률과 통계, 단답 22~30번</td><td>공통 1~22 + 확률과 통계 23~30 (11회, 배점은 17회)</td></tr>
+      <tr><td><b class="k">영어</b></td><td>45문항 70분, 듣기 17, 절대평가</td><td>변경 없음</td><td>1~45 전체 (11회)</td></tr>
+      <tr><td><b class="k">탐구</b></td><td>17과목 중 2과목 선택, 과목당 20문항 30분</td><td>통합사회 + 통합과학 모두 응시, 과목당 25문항 40분, 1.5·2·2.5점</td><td>2028 예시문항 50문항</td></tr>
+      <tr><td><b class="k">한국사</b></td><td>20문항 30분, 절대평가</td><td>변경 없음</td><td>이번 분석 범위 밖</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="eng">
+  <h2>영어 번호 지도</h2>
+  <p class="sub">칸마다 그 번호의 유형과 11회 중 같은 유형이 나온 횟수입니다. 빨간 표시는 3점이었던 횟수이고, 수능 10회(2017~2026)와 모의평가 12회(2022~2027)를 합친 22회 기준입니다. 칸에 마우스를 올리면 자세한 값이 보입니다.</p>
+  <div class="legend">
+    <span><i class="sw" style="background:var(--c1)"></i>듣기 1~17</span>
+    <span><i class="sw" style="background:var(--c2)"></i>독해 18~45</span>
+    <span><span class="p p4">3점 15+</span>22회 중 15회 이상 3점</span>
+  </div>
+  <div class="omr" id="map-eng"></div>
+
+  <div class="panels">
+    <div class="panel">
+      <h4>3점이 자주 걸리는 번호 (22회 중)</h4>
+      <div class="bars" id="bar-eng3"></div>
+      <p class="src">최근 8회(2025학년도 이후)만 보면 34·30번이 8/8입니다. 6번 지불금액은 2024학년도까지 7회 3점이었다가 이후 한 번도 3점이 아니었습니다.</p>
+    </div>
+    <div class="panel">
+      <h4>지문 평균 단어 수 (번호대별, 11회)</h4>
+      <svg class="chart" id="chart-englen" viewBox="0 0 420 210" role="img" aria-label="영어 지문 평균 단어 수 추세"></svg>
+      <div class="chart-legend" id="lg-englen"></div>
+      <p class="src">31~40번대만 꾸준히 길어졌습니다. 2022 수능 152단어에서 2027 모의평가 164단어입니다.</p>
+    </div>
+  </div>
+  <div class="panels">
+    <div class="panel">
+      <h4>빈칸 31~34번이 묻는 길이 (11회)</h4>
+      <div class="tbl"><table style="min-width:260px"><thead><tr><th>번호</th><th class="num">단어</th><th class="num">구</th><th class="num">절</th></tr></thead><tbody id="tb-blank"></tbody></table></div>
+      <p class="src">빈칸이 글 중간 문장에 있는 경우가 44문항 중 34개(77%)입니다.</p>
+    </div>
+    <div class="panel">
+      <h4>29번 어법에 나온 문법 항목 (11회 × 5개 = 55개)</h4>
+      <div class="bars" id="bar-grammar"></div>
+      <p class="src">상위 4개가 55개 중 31개(56%)입니다. 항목 이름은 밑줄 주변 문맥을 보고 붙였습니다.</p>
+    </div>
+  </div>
+  <div class="note"><b>영어에서 읽히는 방향.</b> 번호마다 할 일이 정해져 있으니 유형별 풀이법을 번호 단위로 익히면 그대로 연우의 시험에 통합니다. 3점이 거의 고정된 곳은 빈칸 34번, 순서 37번, 삽입 39번, 듣기 15번이고, 최근에는 어휘 30번도 3점입니다.</div>
+</section>
+
+<section id="math">
+  <h2>수학 번호 지도</h2>
+  <p class="sub">위는 지금 시험(공통 1~22 + 확률과 통계 23~30)에서 번호마다 가장 자주 나온 단원과 11회 중 횟수, 아래는 2028 예시문항의 실제 배치입니다. 칸 위쪽 색이 2028 출제과목입니다.</p>
+  <div class="legend">
+    <span><i class="sw" style="background:var(--c1)"></i>대수</span>
+    <span><i class="sw" style="background:var(--c2)"></i>미적분Ⅰ</span>
+    <span><i class="sw" style="background:var(--c3)"></i>확률과 통계</span>
+    <span><i class="hatch"></i>단답형</span>
+  </div>
+  <div class="band">지금 시험 (11회) · 배점은 17회 모두 같음</div>
+  <div class="omr compact" id="map-math-now"></div>
+  <div class="band">2028 예시문항 (연우의 시험 체제)</div>
+  <div class="omr compact" id="map-math-28"></div>
+
+  <h3>같은 블록, 다른 순서</h3>
+  <p>배점과 형식으로 묶으면 지금 시험과 2028은 문항 수, 배점 합, 단답 개수가 모두 같습니다. 바뀌는 것은 번호 순서입니다.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>2028 번호</th><th>배점·형식</th><th>지금 시험의 해당 번호</th><th class="num">문항</th><th>지금 시험에서 주로 묻는 것 (11회)</th></tr></thead>
+    <tbody>
+      <tr><td>1~3</td><td>2점 객관식</td><td>1, 2, 23</td><td class="num">3</td><td>계산 100%: 지수·로그 계산, 미분계수, 순열 계산</td></tr>
+      <tr><td>4~13</td><td>3점 객관식</td><td>3~8, 24~27</td><td class="num">10</td><td>개념 적용 76%, 계산 17%</td></tr>
+      <tr><td>14~21</td><td>4점 객관식</td><td>9~15, 28</td><td class="num">8</td><td>조건 해석·경우 나누기 65%, 개념 적용 26%</td></tr>
+      <tr><td>22~25</td><td>3점 단답</td><td>16~19</td><td class="num">4</td><td>계산 70%: 로그 방정식, 부정적분, 수열의 합</td></tr>
+      <tr><td>26~30</td><td>4점 단답</td><td>20~22, 29, 30</td><td class="num">5</td><td>조건 해석 62%, 여러 단원 종합 29%</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="panels">
+    <div class="panel">
+      <h4>4점 문항이 가장 많이 나온 단원 (11회, 143문항)</h4>
+      <div class="bars" id="bar-math4"></div>
+    </div>
+    <div class="panel">
+      <h4>킬러 문항 배제(2024학년도) 전과 후의 4점 문항</h4>
+      <div class="tbl"><table style="min-width:300px">
+        <thead><tr><th></th><th class="num">전 (6회)</th><th class="num">후 (11회)</th></tr></thead>
+        <tbody>
+          <tr><td>조건 해석·경우 나누기</td><td class="num">68%</td><td class="num">66%</td></tr>
+          <tr><td>여러 단원 종합</td><td class="num">12%</td><td class="num">15%</td></tr>
+          <tr><td>(가)(나)(다) 조건 3개 문항</td><td class="num">6개</td><td class="num">2개</td></tr>
+          <tr><td>중간 4점(9~13번) 개념 적용</td><td class="num">27%</td><td class="num">42%</td></tr>
+          <tr><td>고난도 구간 종합형</td><td class="num">12%</td><td class="num">23%</td></tr>
+          <tr><td>증명 과정 빈칸 채우기</td><td class="num">1개</td><td class="num">6개</td></tr>
+        </tbody>
+      </table></div>
+      <p class="src">중간 4점은 쉬워졌고, 최고난도는 조건을 많이 거는 대신 단원을 섞는 쪽으로 바뀌었습니다. 정답률 자료 없이 문제 형태만 본 결과입니다.</p>
+    </div>
+  </div>
+  <div class="caution"><b>시기별 주의.</b> 6월 모의평가 6회에는 통계 단원(확률변수, 정규분포, 통계적 추정)이 한 문항도 없었습니다. 9월과 수능에서는 2024학년도 수능 이후 6회 모두 29·30번 단답에 정규분포나 표본평균이 나왔습니다. 증명 과정 빈칸 채우기는 2026학년도 6월부터 5회 연속 20번에 나왔습니다.</div>
+</section>
+
+<section id="kor">
+  <h2>국어 번호 지도</h2>
+  <p class="sub">위는 지금 시험(공통 1~34 + 언어와 매체 35~45)에서 번호마다 가장 자주 나온 발문 유형과 11회 중 횟수, 빨간 표시는 그 번호가 3점이었던 횟수입니다. 아래는 2028 예시문항이고 빨간 표시는 3점 문항입니다.</p>
+  <div class="legend">
+    <span><i class="sw" style="background:var(--c1)"></i>독서 (2028: 독서와 작문)</span>
+    <span><i class="sw" style="background:var(--c4)"></i>문학</span>
+    <span><i class="sw" style="background:var(--c3)"></i>언어·문법 (2028: 화법과 언어)</span>
+    <span><i class="sw" style="background:var(--c2)"></i>매체</span>
+  </div>
+  <div class="band">지금 시험 (11회) · 영역 경계는 11회 모두 같음: 독서 1~17, 문학 18~34, 언어 35~39, 매체 40~45</div>
+  <div class="omr compact" id="map-kor-now"></div>
+  <div class="band">2028 예시문항 · 화법과 언어 1~10, 독서와 작문 11~30, 문학 31~45</div>
+  <div class="omr compact" id="map-kor-28"></div>
+
+  <div class="panels">
+    <div class="panel">
+      <h4>문법(언어) 35~39번 세부 영역 (11회, 55문항)</h4>
+      <div class="bars" id="bar-lang"></div>
+      <p class="src">괄호 안은 그 영역이 나온 회차 수입니다. 문장 구조에서는 안은문장·관형사절, 중세 국어에서는 훈민정음 표기(이어적기, 팔종성 등)가 가장 많았습니다.</p>
+    </div>
+    <div class="panel">
+      <h4>독서 4세트 지문 길이 합계 (글자 수)</h4>
+      <svg class="chart" id="chart-korlen" viewBox="0 0 420 210" role="img" aria-label="국어 독서 지문 길이 추세"></svg>
+      <p class="src">2022 수능 3,921자에서 2027 모의평가 평균 4,659자로 19% 늘었습니다. 두 글을 함께 읽는 (가)(나) 세트는 11회 모두 정확히 1개였고 평균 1,651자입니다.</p>
+    </div>
+  </div>
+
+  <h3>문학은 매회 같은 구성입니다</h3>
+  <ul>
+    <li>11회 모두 현대소설 1세트, 고전소설 1세트, 시 계열 2세트로 구성됐습니다. 극·시나리오는 한 번도 나오지 않았습니다.</li>
+    <li>시 계열 중 한 세트는 매회 작품 3개를 묶은 복합 세트이고 수필이 꼭 들어갑니다. 현대시와 수필 조합이 8회, 고전시가와 수필이 3회입니다.</li>
+    <li>22번은 11회 모두 두 작품 이상을 비교하는 문항, 34번은 11회 모두 &lt;보기&gt; 감상 3점입니다.</li>
+  </ul>
+  <h3>2028 국어에서 새로 생기는 것</h3>
+  <ul>
+    <li><b class="k">7~10번 문법 독립 문항.</b> 지문 없이 의미 관계, 중세 국어, 단어 형성, 음운 변동을 하나씩 묻습니다. 지금 공통 문항에는 독립 문항이 없었습니다.</li>
+    <li><b class="k">24~27번 읽기와 쓰기 통합 세트.</b> 읽는 글 두 편과 그 글을 근거로 쓴 학생 논증문 초고가 한 세트입니다. 질문 확인, 읽기 방법, 글쓰기 계획, 추가 자료로 반박 보강을 묻습니다.</li>
+    <li><b class="k">문학은 17문항에서 15문항으로 줄어듭니다.</b> 3점은 지금처럼 세트마다 하나씩 10개입니다(6·7·13·17·23·27·33·38·42·45번).</li>
+  </ul>
+</section>
+
+<section id="inq">
+  <h2>통합사회·통합과학</h2>
+  <p class="sub">2028 예시문항 각 25문항(50점)을 평가원 문항별 성취기준표로 분류했습니다. 고1에서 배우는 통합사회1·2, 통합과학1·2가 수능 범위 전부입니다.</p>
+  <div class="panels">
+    <div class="panel"><h4>통합사회 대단원별 문항 수</h4><div class="bars" id="bar-soc"></div></div>
+    <div class="panel"><h4>통합과학 대단원별 문항 수</h4><div class="bars" id="bar-sci"></div></div>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>배점</th><th>통합사회</th><th>통합과학</th></tr></thead>
+    <tbody>
+      <tr><td>1.5점 (8문항)</td><td>개념만 묻는 문항은 2개뿐. 나머지도 지도·그래프·사례 자료가 붙음</td><td>8문항 중 7문항이 표·그림·실험 자료와 &lt;보기&gt; 형식</td></tr>
+      <tr><td>2점 (9문항)</td><td>자료와 &lt;보기&gt; 조합형 8문항</td><td>자료·&lt;보기&gt; 6, 통합 1, 계산 1, 개념 1</td></tr>
+      <tr><td>2.5점 (8문항)</td><td>&lt;보기&gt; 조합형 5 + 대단원 두 개를 엮은 문항 3</td><td>물리·화학·생명·지구 소재를 섞은 통합형 4문항이 몰림</td></tr>
+    </tbody>
+  </table></div>
+  <p>단원 두 개를 엮은 문항은 통합사회 8번(문화와 다양성 + 인권), 12번(인권 + 세계화와 평화), 14번(인권 + 행복), 22번(세계화와 평화 + 지속가능한 삶), 통합과학 10번(과학의 기초 + 환경과 에너지)입니다. 통합사회에서는 인권보장과 헌법 단원이 통합 문항 세 개에 걸쳐 있습니다.</p>
+  <div class="note"><b>탐구에서 읽히는 방향.</b> 지금 사회탐구·과학탐구 기출은 과목이 달라 그대로 쓸 수 없고, 단원 개념을 확인하는 용도로만 씁니다. 실제 대비 자료는 2028 예시문항, 고1 전국연합학력평가, 그리고 2028·2029학년도에 처음 나올 실제 수능입니다.</div>
+</section>
+
+<section id="study">
+  <h2>공부 방향</h2>
+  <p class="sub">위 수치에서 직접 나오는 것만 영역별로 적었습니다. 월별 일정은 <a href="/yeonwoo_suneung_roadmap.html">연우 수능 로드맵</a>에 있습니다.</p>
+  <div class="plan">
+    <div class="pcard" style="--cc:var(--c2)">
+      <h3>영어</h3>
+      <div class="when">중3 겨울 ~ 고1</div>
+      <ul><li>어법은 분사, 관계사, 수일치, 품사 네 가지부터 끝냅니다. 29번 출제 항목의 56%입니다.</li><li>듣기 1~17번은 번호별 유형이 고정이니 매일 한 회분씩 같은 순서로 풉니다.</li></ul>
+      <div class="when">고2 ~ 고3</div>
+      <ul><li>빈칸 34번, 순서 37번, 삽입 39번을 따로 시간을 재며 연습합니다. 22회 중 19~22회가 3점입니다.</li><li>31번 빈칸은 단어 하나, 32번은 구, 33·34번은 구나 절을 고르는 문제로 보고 접근합니다.</li><li>41~45번 장문은 300단어 안팎이니 긴 글 읽기 속도를 따로 기릅니다.</li></ul>
+    </div>
+    <div class="pcard" style="--cc:var(--c1)">
+      <h3>수학</h3>
+      <div class="when">중3 겨울 ~ 고1</div>
+      <ul><li>2점 문항과 3점 단답은 70~100%가 계산입니다. 지수·로그, 미분계수, 부정적분, 순열 계산은 정확도와 속도를 매일 확인합니다.</li><li>평가원은 공통수학1·2가 2028 수능에 간접적으로 포함된다고 명시했습니다. 고1 내신이 곧 수능의 토대입니다.</li></ul>
+      <div class="when">고2 ~ 고3</div>
+      <ul><li>4점 단원 우선순위는 정적분 활용, 도함수 활용, 지수·로그함수, 순열과 조합, 조건부확률입니다. 4점 143문항 중 69문항입니다.</li><li>4점의 3분의 2가 조건 해석과 경우 나누기입니다. (가)(나) 조건 두 개짜리 문제를 꾸준히 풉니다.</li><li>2028 배치에 맞춰 단답 22~30번을 한 번에 몰아 푸는 시간 배분을 연습합니다.</li></ul>
+    </div>
+    <div class="pcard" style="--cc:var(--c4)">
+      <h3>국어</h3>
+      <div class="when">중3 겨울 ~ 고1</div>
+      <ul><li>문법은 피할 수 없습니다. 문장 구조와 중세 국어(11회 모두 출제)를 먼저, 음운과 단어 형성(8회)을 다음으로 둡니다.</li><li>읽은 자료를 근거로 글을 쓰고 반박을 보강하는 연습이 2028 24~27번 세트와 바로 이어집니다. 고1 글쓰기 수행평가를 이 방식으로 합니다.</li></ul>
+      <div class="when">고2 ~ 고3</div>
+      <ul><li>3점은 세트마다 &lt;보기&gt; 적용·감상 문항이니 이 유형만 모아 반복합니다.</li><li>문학은 고전소설과 작품 3개 복합 세트(수필 포함)의 비교 문항을 우선합니다.</li><li>독서 지문이 5년 사이 19% 길어졌습니다. 1,600자 안팎의 (가)(나) 세트를 한 번에 읽는 연습을 합니다.</li></ul>
+    </div>
+    <div class="pcard" style="--cc:var(--c3)">
+      <h3>통합사회·통합과학</h3>
+      <div class="when">중3 겨울</div>
+      <ul><li>중학 사회·과학이 직접 선수 과목입니다. 겨울에 중학 개념을 복습하는 것이 가장 효율적입니다.</li></ul>
+      <div class="when">고1</div>
+      <ul><li>단원을 건너뛰지 않습니다. 통합사회는 10개 대단원 중 9개, 통합과학은 6개 전부 출제됐습니다.</li><li>내신 오답을 "자료를 보고 어떤 개념을 꺼내야 했나"로 다시 분류합니다. 25문항 중 15~18문항이 자료 적용형입니다.</li><li>과학의 기초(단위·측정)와 과학과 미래 사회도 5문항(20%)이니 가볍게 넘기지 않습니다.</li></ul>
+    </div>
+  </div>
+</section>
+
+<section id="basis">
+  <h2>근거와 한계</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>자료</th><th>범위</th><th class="num">문항</th><th>확인한 것</th></tr></thead>
+    <tbody>
+      <tr><td>정답표 (배점·정답·단답)</td><td>수능 2017~2026, 모평 2022~2027 6·9월, 2022 예시</td><td class="num" id="b-a"></td><td>시험·과목별 배점 합이 모두 100점. 2025 수능 정답표 3장은 이미지 PDF라 직접 판독해 입력</td></tr>
+      <tr><td>영어 문항 분류</td><td>수능 2022~2026, 모평 2025~2027 6·9월</td><td class="num" id="b-e"></td><td>무작위 10문항 원문 대조 오류 0건. 소재 분류는 판단이 갈릴 수 있음</td></tr>
+      <tr><td>수학 문항 분류</td><td>같은 11회 + 2022~2024 모평 6회</td><td class="num" id="b-m"></td><td>원본 PDF를 쪽 단위로 보고 분류. 무작위 10문항 오류 0건</td></tr>
+      <tr><td>국어 문항 분류</td><td>같은 11회</td><td class="num" id="b-k"></td><td>보정 전 표본 20문항 중 3건 오류로 규칙 수정, 보정 후 10문항 0건. 실제 오류율 5~10%로 봄</td></tr>
+      <tr><td>2028 예시문항</td><td>평가원 안내서 부록 전체 시험지</td><td class="num" id="b-x"></td><td>배점 합 국어·수학 100, 사회·과학 50. 성취기준은 안내서 부록 표</td></tr>
+    </tbody>
+  </table></div>
+  <p>영역별 분류 결과의 배점은 정답표 데이터와 한 문항도 어긋나지 않았습니다.</p>
+  <div class="caution">
+    <b>이 분석에 없는 것.</b>
+    <ul>
+      <li>문항별 정답률이 없습니다. 그래서 어려운 문제는 판단하지 않았고, 배점과 문제 형태만 봤습니다.</li>
+      <li>2028 예시문항에는 영어·한국사가 없고, 정답률과 풀이 시간 정보도 없습니다.</li>
+      <li>화법과 작문 선택 문항은 2028에 사라지는 형태라 분석하지 않았습니다. 그래서 2028 화법 문항(1~6번)에 대응하는 지금 기출 자료는 이 보고서에 없습니다.</li>
+      <li>번호별 규칙은 평가원의 관행이지 공식 약속이 아닙니다.</li>
+    </ul>
+  </div>
+  <p class="src">분류 단계에서 국어 담당 분석은 3점 위치가 거의 고정이라고 적었습니다. 다시 세어 보니 고정된 것은 개수(회당 10개)였고, 위치는 34·21·3·8번만 자주 반복됐습니다. 이 보고서는 다시 센 값을 씁니다.</p>
+</section>
+
+<section id="next">
+  <h2>다시 볼 때</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>언제</th><th>무엇을 더하나</th></tr></thead>
+    <tbody>
+      <tr><td>2027-03 (고1 3월 학력평가 후)</td><td>연우의 문항별 정오표를 이 번호 지도에 겹쳐 약한 번호를 찾습니다.</td></tr>
+      <tr><td>2027-06, 09 (2028학년도 모의평가)</td><td>통합형 체제의 첫 실제 모의평가를 같은 방식으로 분류해 2028 예시문항과 비교합니다.</td></tr>
+      <tr><td>2027-11 (2028학년도 수능 직후)</td><td>첫 통합형 수능으로 수학 블록 배치, 국어 화법과 언어, 통합사회·통합과학 지도를 실제 기출로 바꿉니다.</td></tr>
+      <tr><td>2028-11 (2029학년도 수능 직후)</td><td>통합형 기출 2회분으로 번호 고정률을 다시 계산합니다. 연우 고2 말이라 고3 계획의 근거가 됩니다.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<footer>분류 데이터와 재현 스크립트는 외장 SSD의 연우 폴더 안 분석 폴더에 있습니다. 출처: 한국교육과정평가원 수능·모의평가 문제지와 정답표, 「2028학년도 대학수학능력시험 예시문항 안내」(2025.04).</footer>
+</main>
+</div>
+</div>
+
+<script>
+const D = {"eng": [{"no": 1, "type": "목적", "fixed": 11, "three": 0, "area": "듣기"}, {"no": 2, "type": "의견", "fixed": 11, "three": 0, "area": "듣기"}, {"no": 3, "type": "요지", "fixed": 9, "three": 0, "area": "듣기"}, {"no": 4, "type": "그림불일치", "fixed": 11, "three": 0, "area": "듣기"}, {"no": 5, "type": "할일", "fixed": 11, "three": 0, "area": "듣기"}, {"no": 6, "type": "지불금액", "fixed": 11, "three": 7, "area": "듣기"}, {"no": 7, "type": "이유", "fixed": 11, "three": 0, "area": "듣기"}, {"no": 8, "type": "언급안된것", "fixed": 11, "three": 0, "area": "듣기"}, {"no": 9, "type": "내용불일치", "fixed": 11, "three": 2, "area": "듣기"}, {"no": 10, "type": "도표", "fixed": 11, "three": 0, "area": "듣기"}, {"no": 11, "type": "짧은대화응답", "fixed": 11, "three": 4, "area": "듣기"}, {"no": 12, "type": "짧은대화응답", "fixed": 11, "three": 4, "area": "듣기"}, {"no": 13, "type": "긴대화응답", "fixed": 11, "three": 14, "area": "듣기"}, {"no": 14, "type": "긴대화응답", "fixed": 11, "three": 12, "area": "듣기"}, {"no": 15, "type": "상황말", "fixed": 11, "three": 21, "area": "듣기"}, {"no": 16, "type": "세트주제", "fixed": 11, "three": 2, "area": "듣기"}, {"no": 17, "type": "세트언급안된것", "fixed": 11, "three": 0, "area": "듣기"}, {"no": 18, "type": "목적", "fixed": 11, "three": 0, "area": "독해"}, {"no": 19, "type": "심경", "fixed": 11, "three": 0, "area": "독해"}, {"no": 20, "type": "주장", "fixed": 11, "three": 0, "area": "독해"}, {"no": 21, "type": "함축의미", "fixed": 11, "three": 15, "area": "독해"}, {"no": 22, "type": "요지", "fixed": 11, "three": 0, "area": "독해"}, {"no": 23, "type": "주제", "fixed": 11, "three": 10, "area": "독해"}, {"no": 24, "type": "제목", "fixed": 11, "three": 5, "area": "독해"}, {"no": 25, "type": "도표", "fixed": 11, "three": 0, "area": "독해"}, {"no": 26, "type": "내용일치", "fixed": 11, "three": 0, "area": "독해"}, {"no": 27, "type": "안내문", "fixed": 11, "three": 0, "area": "독해"}, {"no": 28, "type": "안내문", "fixed": 11, "three": 2, "area": "독해"}, {"no": 29, "type": "어법", "fixed": 11, "three": 4, "area": "독해"}, {"no": 30, "type": "어휘", "fixed": 11, "three": 14, "area": "독해"}, {"no": 31, "type": "빈칸", "fixed": 11, "three": 2, "area": "독해"}, {"no": 32, "type": "빈칸", "fixed": 11, "three": 6, "area": "독해"}, {"no": 33, "type": "빈칸", "fixed": 11, "three": 18, "area": "독해"}, {"no": 34, "type": "빈칸", "fixed": 11, "three": 22, "area": "독해"}, {"no": 35, "type": "무관문장", "fixed": 11, "three": 0, "area": "독해"}, {"no": 36, "type": "순서", "fixed": 11, "three": 1, "area": "독해"}, {"no": 37, "type": "순서", "fixed": 11, "three": 21, "area": "독해"}, {"no": 38, "type": "삽입", "fixed": 11, "three": 1, "area": "독해"}, {"no": 39, "type": "삽입", "fixed": 11, "three": 19, "area": "독해"}, {"no": 40, "type": "요약", "fixed": 11, "three": 0, "area": "독해"}, {"no": 41, "type": "장문제목", "fixed": 11, "three": 1, "area": "독해"}, {"no": 42, "type": "장문어휘", "fixed": 11, "three": 13, "area": "독해"}, {"no": 43, "type": "장문순서", "fixed": 11, "three": 0, "area": "독해"}, {"no": 44, "type": "장문지칭", "fixed": 11, "three": 0, "area": "독해"}, {"no": 45, "type": "장문내용일치", "fixed": 11, "three": 0, "area": "독해"}], "eng_exams3": 22, "eng_len": {"18~24": [143, 145, 142, 142, 135, 134, 144, 138, 144, 148, 145], "25~30": [138, 134, 131, 134, 134, 135, 129, 134, 142, 134, 136], "31~40": [152, 162, 154, 153, 156, 155, 156, 160, 159, 164, 164], "41~45": [288, 264, 272, 276, 272, 300, 270, 294, 309, 305, 286]}, "eng_blank": {"31": {"단어": 8, "구": 3}, "32": {"구": 11}, "33": {"구": 7, "절": 4}, "34": {"구": 6, "절": 5}}, "math_now": [{"no": 1, "points": 2, "short": false, "domain": "대수", "dfix": 11, "unit": "지수와로그", "ufix": 11, "units": {"지수와로그": 11}}, {"no": 2, "points": 2, "short": false, "domain": "미적분Ⅰ", "dfix": 11, "unit": "미분계수/도함수", "ufix": 10, "units": {"미분계수/도함수": 10, "함수의극한": 1}}, {"no": 3, "points": 3, "short": false, "domain": "대수", "dfix": 11, "unit": "등차등비수열", "ufix": 5, "units": {"등차등비수열": 5, "수열의합": 5, "삼각함수": 1}}, {"no": 4, "points": 3, "short": false, "domain": "미적분Ⅰ", "dfix": 11, "unit": "함수의극한", "ufix": 5, "units": {"함수의극한": 5, "연속": 5, "미분계수/도함수": 1}}, {"no": 5, "points": 3, "short": false, "domain": "미적분Ⅰ", "dfix": 9, "unit": "미분계수/도함수", "ufix": 6, "units": {"미분계수/도함수": 6, "부정적분/정적분": 3, "수학적귀납법/귀납적정의": 1}}, {"no": 6, "points": 3, "short": false, "domain": "대수", "dfix": 9, "unit": "삼각함수", "ufix": 7, "units": {"삼각함수": 7, "도함수활용(접선·증감·극값·그래프)": 2, "등차등비수열": 1}}, {"no": 7, "points": 3, "short": false, "domain": "미적분Ⅰ", "dfix": 9, "unit": "도함수활용(접선·증감·극값·그래프)", "ufix": 4, "units": {"도함수활용(접선·증감·극값·그래프)": 4, "미분계수/도함수": 2, "삼각함수": 1}}, {"no": 8, "points": 3, "short": false, "domain": "대수", "dfix": 8, "unit": "지수와로그", "ufix": 3, "units": {"지수와로그": 3, "등차등비수열": 2, "삼각함수": 2}}, {"no": 9, "points": 4, "short": false, "domain": "미적분Ⅰ", "dfix": 8, "unit": "부정적분/정적분", "ufix": 4, "units": {"부정적분/정적분": 4, "정적분활용(넓이·속도거리)": 2, "지수함수로그함수": 1}}, {"no": 10, "points": 4, "short": false, "domain": "대수", "dfix": 8, "unit": "지수함수로그함수", "ufix": 3, "units": {"지수함수로그함수": 3, "정적분활용(넓이·속도거리)": 2, "사인코사인법칙": 2}}, {"no": 11, "points": 4, "short": false, "domain": "미적분Ⅰ", "dfix": 8, "unit": "정적분활용(넓이·속도거리)", "ufix": 5, "units": {"정적분활용(넓이·속도거리)": 5, "삼각함수": 1, "사인코사인법칙": 1}}, {"no": 12, "points": 4, "short": false, "domain": "대수", "dfix": 8, "unit": "등차등비수열", "ufix": 3, "units": {"등차등비수열": 3, "지수함수로그함수": 2, "연속": 1}}, {"no": 13, "points": 4, "short": false, "domain": "미적분Ⅰ", "dfix": 8, "unit": "정적분활용(넓이·속도거리)", "ufix": 5, "units": {"정적분활용(넓이·속도거리)": 5, "지수함수로그함수": 1, "지수와로그": 1}}, {"no": 14, "points": 4, "short": false, "domain": "대수", "dfix": 8, "unit": "사인코사인법칙", "ufix": 3, "units": {"사인코사인법칙": 3, "삼각함수": 2, "정적분활용(넓이·속도거리)": 1}}, {"no": 15, "points": 4, "short": false, "domain": "미적분Ⅰ", "dfix": 8, "unit": "도함수활용(접선·증감·극값·그래프)", "ufix": 5, "units": {"도함수활용(접선·증감·극값·그래프)": 5, "수학적귀납법/귀납적정의": 2, "부정적분/정적분": 2}}, {"no": 16, "points": 3, "short": true, "domain": "대수", "dfix": 11, "unit": "지수함수로그함수", "ufix": 8, "units": {"지수함수로그함수": 8, "수학적귀납법/귀납적정의": 2, "지수와로그": 1}}, {"no": 17, "points": 3, "short": true, "domain": "미적분Ⅰ", "dfix": 11, "unit": "부정적분/정적분", "ufix": 10, "units": {"부정적분/정적분": 10, "미분계수/도함수": 1}}, {"no": 18, "points": 3, "short": true, "domain": "대수", "dfix": 11, "unit": "수열의합", "ufix": 6, "units": {"수열의합": 6, "수학적귀납법/귀납적정의": 2, "등차등비수열": 2}}, {"no": 19, "points": 3, "short": true, "domain": "미적분Ⅰ", "dfix": 10, "unit": "도함수활용(접선·증감·극값·그래프)", "ufix": 7, "units": {"도함수활용(접선·증감·극값·그래프)": 7, "미분계수/도함수": 2, "삼각함수": 1}}, {"no": 20, "points": 4, "short": true, "domain": "대수", "dfix": 8, "unit": "삼각함수", "ufix": 3, "units": {"삼각함수": 3, "지수함수로그함수": 2, "부정적분/정적분": 1}}, {"no": 21, "points": 4, "short": true, "domain": "미적분Ⅰ", "dfix": 9, "unit": "도함수활용(접선·증감·극값·그래프)", "ufix": 4, "units": {"도함수활용(접선·증감·극값·그래프)": 4, "함수의극한": 3, "미분계수/도함수": 2}}, {"no": 22, "points": 4, "short": true, "domain": "대수", "dfix": 8, "unit": "수학적귀납법/귀납적정의", "ufix": 4, "units": {"수학적귀납법/귀납적정의": 4, "지수함수로그함수": 4, "도함수활용(접선·증감·극값·그래프)": 3}}, {"no": 23, "points": 2, "short": false, "domain": "확률과통계", "dfix": 11, "unit": "순열조합/중복", "ufix": 8, "units": {"순열조합/중복": 8, "이항정리": 3}}, {"no": 24, "points": 3, "short": false, "domain": "확률과통계", "dfix": 11, "unit": "조건부확률/독립", "ufix": 5, "units": {"조건부확률/독립": 5, "확률의뜻/덧셈정리": 4, "확률변수/이항분포": 1}}, {"no": 25, "points": 3, "short": false, "domain": "확률과통계", "dfix": 11, "unit": "확률의뜻/덧셈정리", "ufix": 5, "units": {"확률의뜻/덧셈정리": 5, "이항정리": 4, "순열조합/중복": 1}}, {"no": 26, "points": 3, "short": false, "domain": "확률과통계", "dfix": 11, "unit": "확률의뜻/덧셈정리", "ufix": 7, "units": {"확률의뜻/덧셈정리": 7, "통계적추정": 3, "확률변수/이항분포": 1}}, {"no": 27, "points": 3, "short": false, "domain": "확률과통계", "dfix": 11, "unit": "통계적추정", "ufix": 4, "units": {"통계적추정": 4, "순열조합/중복": 3, "확률변수/이항분포": 3}}, {"no": 28, "points": 4, "short": false, "domain": "확률과통계", "dfix": 11, "unit": "조건부확률/독립", "ufix": 6, "units": {"조건부확률/독립": 6, "순열조합/중복": 3, "확률변수/이항분포": 1}}, {"no": 29, "points": 4, "short": true, "domain": "확률과통계", "dfix": 11, "unit": "정규분포", "ufix": 4, "units": {"정규분포": 4, "조건부확률/독립": 2, "순열조합/중복": 2}}, {"no": 30, "points": 4, "short": true, "domain": "확률과통계", "dfix": 11, "unit": "순열조합/중복", "ufix": 6, "units": {"순열조합/중복": 6, "조건부확률/독립": 3, "정규분포": 1}}], "math_4pt_units": [["정적분활용(넓이·속도거리)", 17], ["지수함수로그함수", 15], ["도함수활용(접선·증감·극값·그래프)", 15], ["순열조합/중복", 11], ["조건부확률/독립", 11], ["사인코사인법칙", 10], ["부정적분/정적분", 10], ["삼각함수", 8]], "math_4pt_total": 143, "math_2028": [{"no": 1, "points": 2, "domain": "대수", "unit": "지수법칙", "short": false}, {"no": 2, "points": 2, "domain": "미적분Ⅰ", "unit": "함수의 연속", "short": false}, {"no": 3, "points": 2, "domain": "확률과통계", "unit": "경우의 수(중복순열)", "short": false}, {"no": 4, "points": 3, "domain": "대수", "unit": "등비수열", "short": false}, {"no": 5, "points": 3, "domain": "미적분Ⅰ", "unit": "미분(곱의 미분)", "short": false}, {"no": 6, "points": 3, "domain": "확률과통계", "unit": "통계적 추정(표본비율)", "short": false}, {"no": 7, "points": 3, "domain": "대수", "unit": "호도법·부채꼴", "short": false}, {"no": 8, "points": 3, "domain": "미적분Ⅰ", "unit": "정적분", "short": false}, {"no": 9, "points": 3, "domain": "확률과통계", "unit": "확률의 덧셈정리", "short": false}, {"no": 10, "points": 3, "domain": "대수", "unit": "지수함수 최솟값", "short": false}, {"no": 11, "points": 3, "domain": "미적분Ⅰ", "unit": "접선의 방정식", "short": false}, {"no": 12, "points": 3, "domain": "확률과통계", "unit": "확률(배열)", "short": false}, {"no": 13, "points": 3, "domain": "확률과통계", "unit": "정규분포", "short": false}, {"no": 14, "points": 4, "domain": "대수", "unit": "수열의 귀납적 정의", "short": false}, {"no": 15, "points": 4, "domain": "미적분Ⅰ", "unit": "속도·가속도", "short": false}, {"no": 16, "points": 4, "domain": "대수", "unit": "삼각함수 그래프", "short": false}, {"no": 17, "points": 4, "domain": "미적분Ⅰ", "unit": "정적분의 활용(넓이)", "short": false}, {"no": 18, "points": 4, "domain": "미적분Ⅰ", "unit": "함수의 극한", "short": false}, {"no": 19, "points": 4, "domain": "대수", "unit": "사인법칙·코사인법칙", "short": false}, {"no": 20, "points": 4, "domain": "미적분Ⅰ", "unit": "정적분(정적분으로 정의된 함수)", "short": false}, {"no": 21, "points": 4, "domain": "확률과통계", "unit": "경우의 수(중복조합·배열)", "short": false}, {"no": 22, "points": 3, "domain": "대수", "unit": "로그의 정의", "short": true}, {"no": 23, "points": 3, "domain": "미적분Ⅰ", "unit": "부정적분", "short": true}, {"no": 24, "points": 3, "domain": "대수", "unit": "시그마의 성질", "short": true}, {"no": 25, "points": 3, "domain": "미적분Ⅰ", "unit": "극대·극소", "short": true}, {"no": 26, "points": 4, "domain": "확률과통계", "unit": "이산확률변수 평균·분산", "short": true}, {"no": 27, "points": 4, "domain": "대수", "unit": "등차·등비수열(증명 빈칸)", "short": true}, {"no": 28, "points": 4, "domain": "미적분Ⅰ", "unit": "함수의 연속·미분계수", "short": true}, {"no": 29, "points": 4, "domain": "확률과통계", "unit": "조건부확률", "short": true}, {"no": 30, "points": 4, "domain": "대수", "unit": "지수·로그함수의 활용", "short": true}], "kor_now": [{"no": 1, "domain": "독서", "three": 0, "type": "내용일치", "fixed": 7}, {"no": 2, "domain": "독서", "three": 2, "type": "핵심개념이해", "fixed": 6}, {"no": 3, "domain": "독서", "three": 9, "type": "보기적용", "fixed": 10}, {"no": 4, "domain": "독서", "three": 0, "type": "비교/관점", "fixed": 5}, {"no": 5, "domain": "독서", "three": 0, "type": "핵심개념이해", "fixed": 7}, {"no": 6, "domain": "독서", "three": 2, "type": "비교/관점", "fixed": 6}, {"no": 7, "domain": "독서", "three": 1, "type": "핵심개념이해", "fixed": 5}, {"no": 8, "domain": "독서", "three": 8, "type": "보기적용", "fixed": 9}, {"no": 9, "domain": "독서", "three": 0, "type": "어휘/문맥의미", "fixed": 8}, {"no": 10, "domain": "독서", "three": 2, "type": "내용일치", "fixed": 6}, {"no": 11, "domain": "독서", "three": 1, "type": "핵심개념이해", "fixed": 5}, {"no": 12, "domain": "독서", "three": 4, "type": "핵심개념이해", "fixed": 4}, {"no": 13, "domain": "독서", "three": 4, "type": "보기적용", "fixed": 4}, {"no": 14, "domain": "독서", "three": 0, "type": "내용일치", "fixed": 6}, {"no": 15, "domain": "독서", "three": 0, "type": "핵심개념이해", "fixed": 8}, {"no": 16, "domain": "독서", "three": 7, "type": "보기적용", "fixed": 9}, {"no": 17, "domain": "독서", "three": 4, "type": "어휘/문맥의미", "fixed": 7}, {"no": 18, "domain": "문학", "three": 0, "type": "내용이해", "fixed": 7}, {"no": 19, "domain": "문학", "three": 0, "type": "내용이해", "fixed": 5}, {"no": 20, "domain": "문학", "three": 0, "type": "어휘/구절의미", "fixed": 6}, {"no": 21, "domain": "문학", "three": 10, "type": "보기감상", "fixed": 10}, {"no": 22, "domain": "문학", "three": 0, "type": "작품비교", "fixed": 11}, {"no": 23, "domain": "문학", "three": 2, "type": "시어/소재의미", "fixed": 4}, {"no": 24, "domain": "문학", "three": 4, "type": "시어/소재의미", "fixed": 5}, {"no": 25, "domain": "문학", "three": 2, "type": "내용이해", "fixed": 5}, {"no": 26, "domain": "문학", "three": 2, "type": "보기감상", "fixed": 6}, {"no": 27, "domain": "문학", "three": 2, "type": "보기감상", "fixed": 4}, {"no": 28, "domain": "문학", "three": 0, "type": "서술상특징", "fixed": 4}, {"no": 29, "domain": "문학", "three": 0, "type": "어휘/구절의미", "fixed": 7}, {"no": 30, "domain": "문학", "three": 5, "type": "보기감상", "fixed": 6}, {"no": 31, "domain": "문학", "three": 6, "type": "보기감상", "fixed": 6}, {"no": 32, "domain": "문학", "three": 0, "type": "시어/소재의미", "fixed": 6}, {"no": 33, "domain": "문학", "three": 0, "type": "시어/소재의미", "fixed": 7}, {"no": 34, "domain": "문학", "three": 11, "type": "보기감상", "fixed": 11}, {"no": 35, "domain": "언어(문법)", "three": 0, "type": "단어형성/품사", "fixed": 5}, {"no": 36, "domain": "언어(문법)", "three": 3, "type": "국어사/중세국어", "fixed": 5}, {"no": 37, "domain": "언어(문법)", "three": 2, "type": "의미/담화", "fixed": 4}, {"no": 38, "domain": "언어(문법)", "three": 2, "type": "음운", "fixed": 4}, {"no": 39, "domain": "언어(문법)", "three": 4, "type": "문장/통사", "fixed": 5}, {"no": 40, "domain": "매체", "three": 0, "type": "매체내용이해", "fixed": 5}, {"no": 41, "domain": "매체", "three": 0, "type": "매체내용이해", "fixed": 8}, {"no": 42, "domain": "매체", "three": 3, "type": "매체내용이해", "fixed": 5}, {"no": 43, "domain": "매체", "three": 2, "type": "매체내용이해", "fixed": 6}, {"no": 44, "domain": "매체", "three": 2, "type": "매체내용이해", "fixed": 7}, {"no": 45, "domain": "매체", "three": 4, "type": "매체제작/수정", "fixed": 8}], "kor_read_len": [3921, 4345, 4394, 4548, 4513, 4660, 4748, 4167, 4525, 4646, 4672], "kor_lang": [["문장/통사", 14], ["국어사/중세국어", 13], ["단어형성/품사", 10], ["음운", 10], ["의미/담화", 7], ["기타", 1]], "kor_lang_exams": {"문장/통사": 11, "국어사/중세국어": 11, "단어형성/품사": 8, "음운": 8, "의미/담화": 7, "기타": 1}, "kor_2028": [{"no": 1, "domain": "화법과언어", "points": 2, "type": "발표 말하기 방식"}, {"no": 2, "domain": "화법과언어", "points": 2, "type": "발표 계획 반영"}, {"no": 3, "domain": "화법과언어", "points": 2, "type": "언어(확신 정도 표현)"}, {"no": 4, "domain": "화법과언어", "points": 2, "type": "토의 참여자 역할"}, {"no": 5, "domain": "화법과언어", "points": 2, "type": "토의 발언 이해"}, {"no": 6, "domain": "화법과언어", "points": 3, "type": "토의 자료 활용 발언"}, {"no": 7, "domain": "화법과언어", "points": 3, "type": "언어(의미 관계)"}, {"no": 8, "domain": "화법과언어", "points": 2, "type": "언어(중세 국어)"}, {"no": 9, "domain": "화법과언어", "points": 2, "type": "언어(단어 형성)"}, {"no": 10, "domain": "화법과언어", "points": 2, "type": "언어(음운 변동)"}, {"no": 11, "domain": "독서와작문", "points": 2, "type": "독서(인문·예술) 내용 이해"}, {"no": 12, "domain": "독서와작문", "points": 2, "type": "독서 관점 비교"}, {"no": 13, "domain": "독서와작문", "points": 3, "type": "독서 외부 자료 적용(비평문 작성)"}, {"no": 14, "domain": "독서와작문", "points": 2, "type": "독서(과학·기술) 일치"}, {"no": 15, "domain": "독서와작문", "points": 2, "type": "독서 개념 비교"}, {"no": 16, "domain": "독서와작문", "points": 2, "type": "독서 이유 추론"}, {"no": 17, "domain": "독서와작문", "points": 3, "type": "독서 <보기> 적용"}, {"no": 18, "domain": "독서와작문", "points": 2, "type": "독서(사회) 복합 글 설명"}, {"no": 19, "domain": "독서와작문", "points": 2, "type": "독서 내용 이해"}, {"no": 20, "domain": "독서와작문", "points": 2, "type": "독서 학습활동 적용"}, {"no": 21, "domain": "독서와작문", "points": 2, "type": "독서 비판"}, {"no": 22, "domain": "독서와작문", "points": 2, "type": "독서 문맥 의미"}, {"no": 23, "domain": "독서와작문", "points": 3, "type": "독서 <보기> 적용"}, {"no": 24, "domain": "독서와작문", "points": 2, "type": "독서+작문 통합(읽기 질문 확인)"}, {"no": 25, "domain": "독서와작문", "points": 2, "type": "독서+작문 통합(읽기 방법)"}, {"no": 26, "domain": "독서와작문", "points": 2, "type": "독서+작문 통합(글쓰기 계획)"}, {"no": 27, "domain": "독서와작문", "points": 3, "type": "독서+작문 통합(추가 자료로 고쳐쓰기)"}, {"no": 28, "domain": "독서와작문", "points": 2, "type": "작문 글쓰기 상황(체험 일지 반영)"}, {"no": 29, "domain": "독서와작문", "points": 2, "type": "작문 글쓰기 방식"}, {"no": 30, "domain": "독서와작문", "points": 2, "type": "작문 고쳐쓰기(매체 대화)"}, {"no": 31, "domain": "문학", "points": 2, "type": "고전 산문 내용 이해"}, {"no": 32, "domain": "문학", "points": 2, "type": "고전 산문 장면 이해"}, {"no": 33, "domain": "문학", "points": 3, "type": "고전 산문 <보기> 감상"}, {"no": 34, "domain": "문학", "points": 2, "type": "고전 시가·수필 공통점"}, {"no": 35, "domain": "문학", "points": 2, "type": "시가 구절 이해"}, {"no": 36, "domain": "문학", "points": 2, "type": "시가 어구 이해"}, {"no": 37, "domain": "문학", "points": 2, "type": "수필 학습활동(감상문)"}, {"no": 38, "domain": "문학", "points": 3, "type": "<보기> 감상"}, {"no": 39, "domain": "문학", "points": 2, "type": "현대 소설 서술상 특징"}, {"no": 40, "domain": "문학", "points": 2, "type": "소설 어구·인물 이해"}, {"no": 41, "domain": "문학", "points": 2, "type": "소설 말의 의도"}, {"no": 42, "domain": "문학", "points": 3, "type": "교과 융합 학습활동(사회 생태주의 글+소설)"}, {"no": 43, "domain": "문학", "points": 2, "type": "현대시 어구 이해"}, {"no": 44, "domain": "문학", "points": 2, "type": "시 시구 이해"}, {"no": 45, "domain": "문학", "points": 3, "type": "(가) 이론 적용 감상"}], "통합사회": {"units": [["인권보장과 헌법", 4], ["세계화와 평화", 4], ["자연환경과 인간", 3], ["문화와 다양성", 3], ["사회정의와 불평등", 3], ["시장경제와 지속가능발전", 3], ["생활공간과 사회", 2], ["미래와 지속가능한 삶", 2], ["인간,사회,환경과 행복", 1]], "by_points": {"1.5": 8, "2.0": 9, "2.5": 8}, "skill": [["적용(<보기>·자료)", 18], ["종합/융합", 4], ["사실확인", 2], ["추론", 1]]}, "통합과학": {"units": [["물질과 규칙성", 6], ["변화와 다양성", 5], ["시스템과 상호작용", 5], ["환경과 에너지", 4], ["과학의 기초", 3], ["과학과 미래 사회", 2]], "by_points": {"1.5": 8, "2.0": 9, "2.5": 8}, "skill": [["적용(<보기>·자료)", 15], ["종합/융합", 5], ["계산", 3], ["사실확인", 1], ["추론", 1]]}, "exams": ["2022 수능", "2023 수능", "2024 수능", "2025 6월", "2025 9월", "2025 수능", "2026 6월", "2026 9월", "2026 수능", "2027 6월", "2027 9월"], "counts": {"eng": 495, "math": 510, "kor": 495, "x2028": 125, "a_rows": 3351, "a_exams": 23}};
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmt = n => n.toLocaleString('ko-KR');
+const C = D.counts;
+$('f-items').textContent = fmt(C.eng + C.math + C.kor + C.x2028) + '문항';
+$('f-aexams').textContent = C.a_exams + '회 · ' + fmt(C.a_rows) + '문항';
+$('b-a').textContent = fmt(C.a_rows); $('b-e').textContent = fmt(C.eng);
+$('b-m').textContent = fmt(C.math); $('b-k').textContent = fmt(C.kor); $('b-x').textContent = fmt(C.x2028);
+
+function cell({ no, label, meta, color, frac, badge, short, title }) {
+  const d = document.createElement('div');
+  d.className = 'cell' + (short ? ' short' : '');
+  d.style.setProperty('--cc', color);
+  if (title) d.title = title;
+  d.innerHTML = `<div class="n"><span>${no}</span>${badge || ''}</div><div class="l">${esc(label)}</div>` +
+    (meta ? `<div class="m">${meta}</div>` : '') +
+    (frac != null ? `<div class="bar"><i style="width:${Math.round(frac * 100)}%"></i></div>` : '');
+  return d;
+}
+const pbadge = p => p === 4 ? '<span class="p p4">4점</span>' : p === 3 ? '<span class="p">3점</span>' : p === 2 ? '<span class="p p2">2점</span>' : '';
+const freq3 = (n, hi) => !n ? '' : n >= hi ? `<span class="p p4">3점 ${n}</span>` : `<span class="p">3점 ${n}</span>`;
+
+// 영어
+D.eng.forEach(x => $('map-eng').appendChild(cell({
+  no: x.no, label: x.type, color: x.area === '듣기' ? 'var(--c1)' : 'var(--c2)', frac: x.fixed / 11,
+  meta: `${x.fixed}/11회 같은 유형`, badge: freq3(x.three, 15),
+  title: `${x.no}번 ${x.type}: 11회 중 ${x.fixed}회, 3점 ${x.three}/${D.eng_exams3}회`
+})));
+
+function bars(id, items, color, suffix = '', max) {
+  const box = $(id), m = max || Math.max(...items.map(i => i[1]));
+  items.forEach(([label, v, extra]) => {
+    const r = document.createElement('div'); r.className = 'brow'; r.style.setProperty('--bc', color);
+    r.innerHTML = `<span class="bl" title="${esc(label)}">${esc(label)}</span><span class="bt"><i style="width:${(v / m) * 100}%"></i></span><span class="bv">${v}${suffix}${extra ? ' ' + extra : ''}</span>`;
+    box.appendChild(r);
+  });
+}
+bars('bar-eng3', D.eng.filter(x => x.three >= 12).sort((a, b) => b.three - a.three).map(x => [`${x.no}번 ${x.type}`, x.three]), 'var(--omr)', '/22', D.eng_exams3);
+bars('bar-grammar', [['분사(분사구문 포함)', 10], ['관계사', 8], ['수일치', 7], ['품사(형용사/부사)', 6], ['접속사·명사절', 5], ['to부정사', 5], ['병렬', 3], ['대명사', 3], ['동명사', 3]], 'var(--c2)');
+[31, 32, 33, 34].forEach(n => { const b = D.eng_blank[n] || {}; $('tb-blank').insertAdjacentHTML('beforeend', `<tr><td>${n}번</td><td class="num">${b['단어'] || 0}</td><td class="num">${b['구'] || 0}</td><td class="num">${b['절'] || 0}</td></tr>`); });
+
+function lineChart(id, series, labels, yMin, yMax, step, legendId) {
+  const svg = $(id), W = 420, H = 210, L = 44, R = 12, T = 10, B = 44;
+  const x = i => L + i * (W - L - R) / (labels.length - 1);
+  const y = v => T + (yMax - v) * (H - T - B) / (yMax - yMin);
+  let s = '';
+  for (let v = yMin; v <= yMax; v += step) s += `<line class="grid" x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}"/><text x="${L - 6}" y="${y(v) + 4}" text-anchor="end">${fmt(v)}</text>`;
+  labels.forEach((lb, i) => { const [yr, ex] = lb.split(' '); s += `<text x="${x(i)}" y="${H - 26}" text-anchor="middle">${yr.slice(2)}</text><text x="${x(i)}" y="${H - 12}" text-anchor="middle">${ex === '수능' ? '수능' : ex}</text>`; });
+  series.forEach(se => {
+    const pts = se.values.map((v, i) => v == null ? null : [x(i), y(v)]).filter(Boolean);
+    s += `<polyline fill="none" stroke="${se.color}" stroke-width="2" points="${pts.map(p => p.join(',')).join(' ')}"/>`;
+    pts.forEach((p, i) => s += `<circle cx="${p[0]}" cy="${p[1]}" r="${i === pts.length - 1 ? 3.5 : 2.2}" fill="${se.color}"/>`);
+  });
+  svg.innerHTML = s;
+  if (legendId) $(legendId).innerHTML = series.map(se => `<span><i style="background:${se.color}"></i>${esc(se.name)}번</span>`).join('');
+}
+const cols = ['var(--c1)', 'var(--c3)', 'var(--omr)', 'var(--c4)'];
+lineChart('chart-englen', Object.entries(D.eng_len).map(([k, v], i) => ({ name: k, values: v, color: cols[i] })), D.exams, 120, 320, 40, 'lg-englen');
+lineChart('chart-korlen', [{ name: '독서', values: D.kor_read_len, color: 'var(--c1)' }], D.exams, 3800, 4800, 200);
+
+// 수학
+const mcol = d => d.startsWith('대수') ? 'var(--c1)' : d.startsWith('미적') ? 'var(--c2)' : 'var(--c3)';
+const unitName = u => u.replace(/\(.*\)/, '').replace(/\//g, '·');
+D.math_now.forEach(x => $('map-math-now').appendChild(cell({
+  no: x.no, label: unitName(x.unit), color: mcol(x.domain), frac: x.ufix / 11, short: x.short,
+  meta: `${x.ufix}/11회 · 과목 ${x.dfix}/11`, badge: pbadge(x.points),
+  title: `${x.no}번 자주 나온 단원: ` + Object.entries(x.units).map(([k, v]) => `${k} ${v}회`).join(', ')
+})));
+D.math_2028.forEach(x => $('map-math-28').appendChild(cell({
+  no: x.no, label: x.unit, color: mcol(x.domain), short: x.short, badge: pbadge(x.points),
+  meta: x.domain, title: `${x.no}번 ${x.domain} · ${x.unit}`
+})));
+bars('bar-math4', D.math_4pt_units.map(([u, v]) => [unitName(u), v]), 'var(--c1)');
+
+// 국어
+const kcol = d => d.startsWith('독서') ? 'var(--c1)' : d === '문학' ? 'var(--c4)' : d.startsWith('매체') ? 'var(--c2)' : 'var(--c3)';
+D.kor_now.forEach(x => $('map-kor-now').appendChild(cell({
+  no: x.no, label: x.type.replace(/\//g, '·'), color: kcol(x.domain), frac: x.fixed / 11,
+  meta: `${x.fixed}/11회`, badge: freq3(x.three, 8),
+  title: `${x.no}번 ${x.domain}: ${x.type} ${x.fixed}/11회, 3점 ${x.three}/11회`
+})));
+D.kor_2028.forEach(x => $('map-kor-28').appendChild(cell({
+  no: x.no, label: x.type.replace(/\//g, '·'), color: kcol(x.domain), badge: x.points === 3 ? '<span class="p p4">3점</span>' : '',
+  meta: x.domain, title: `${x.no}번 ${x.domain} · ${x.type} · ${x.points}점`
+})));
+bars('bar-lang', D.kor_lang.filter(([s]) => s !== '기타').map(([s, v]) => [s.replace(/\//g, '·'), v, `(${D.kor_lang_exams[s]}회)`]), 'var(--c3)');
+
+// 탐구
+bars('bar-soc', D['통합사회'].units, 'var(--c3)');
+bars('bar-sci', D['통합과학'].units, 'var(--c2)');
+</script>
+
+<footer class="site-footer">
+  <div>&copy; 2026 최승환 · Jecheon &nbsp;·&nbsp; <a href="/">choijc79.github.io</a></div>
+</footer>
+
+<script src="/js/theme-toggle.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+</body>
+</html>
