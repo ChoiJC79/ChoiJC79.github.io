@@ -81,3 +81,14 @@
 - [x] 글자 가독용 어두운 그라디언트 오버레이, 동작 줄이기 설정 시 정지
 - [x] `publish.py`에 `css/lounge-hero.css` 업로드 추가
 - [ ] 운영자가 채팅에 올린 1번 사진을 `img/hero-lake-mist.jpg`로 저장 후 배포 확인
+
+# 사이트 전용 MCP 서버 (2026-11-19)
+
+목표: Claude Desktop 같은 Mac 앱에서 칼럼·AI 가이드를 추가하면 빌드·커밋·push까지 한 번에 끝나게 한다. 로컬 stdio 전용이며 인터넷에 열지 않는다.
+
+- [x] `site_mcp.py` 작성. 도구는 `site_status`, `list_columns`, `add_column`, `add_guide`, `publish`
+- [x] `add_column`: 칼럼 md 추가, column.html 목차·태그·개수·카드 갱신, 이미지 복사, sitemap, `build_columns.py`, 커밋·push
+- [x] `add_guide`: AI가이드 md 추가, `build_guides.py`, sitemap, 커밋·push
+- [x] `python3 site_mcp.py --selftest`로 임시 사본에서 칼럼·가이드 추가 검증(push 없음)
+- [x] Claude Desktop 설정(`claude_desktop_config.json`)에 `jc-site` 등록
+- [x] CLAUDE.md 파일 구조 표에 한 줄 추가
