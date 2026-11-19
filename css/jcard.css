@@ -36,8 +36,6 @@ body{background:var(--bg)!important;color:var(--text);font-family:'Pretendard Va
 .lounge-head p{font-family:var(--font-mono);font-size:11px;color:var(--muted)}
 .lounge img{border-radius:0;border:1px solid var(--rule)}
 .spot{border-radius:0}
-.spot .tab{background:var(--paper);color:var(--paper-text);border:1px solid var(--paper-ink);border-radius:0;backdrop-filter:none}
-.spot .tab i{color:#6B655B;font-family:var(--font-mono);font-size:10px}
 .spot:focus-visible{box-shadow:0 0 0 2px var(--orange)}
 
 /* ── 본문: 카세트 데크(왼쪽, 고정)와 트랙리스트(오른쪽) ── */
