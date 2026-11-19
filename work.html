@@ -1,0 +1,171 @@
+<!-- 하루 한 장씩 업무·메모를 브라우저에 기록하는 개인 업무노트 페이지 -->
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>업무노트 | 최승환</title>
+<meta name="description" content="하루 한 장, 작은 업무의 기록. 할 일·메모·진행 현황을 이 브라우저에만 저장하는 업무노트.">
+<meta property="og:title" content="업무노트">
+<meta property="og:description" content="하루 한 장, 작은 업무의 기록. 할 일·메모·진행 현황을 이 브라우저에만 저장하는 업무노트.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://choijc79.github.io/work.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono:wght@400&family=Noto+Sans+KR:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/motion.css">
+<link rel="stylesheet" href="/css/work.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 업무노트</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9728; 라이트</button>
+</header>
+
+<main class="wn">
+  <section class="wn-top">
+    <div>
+      <p class="wn-kicker">WORK NOTEBOOK · 하루 한 장</p>
+      <h1>업무노트</h1>
+      <p class="wn-lead">적은 내용은 이 브라우저에만 저장됩니다. 다른 기기로 옮길 때는 백업 파일을 쓰세요.</p>
+    </div>
+    <div class="wn-actions">
+      <button type="button" class="wn-btn" id="btn-backup">백업</button>
+      <label class="wn-btn">복원<input type="file" id="file-restore" accept="application/json,.json" hidden></label>
+      <button type="button" class="wn-btn wn-btn-main" id="btn-add">업무 추가</button>
+    </div>
+  </section>
+
+  <section class="wn-desk">
+    <aside class="wn-side">
+      <div class="wn-index">
+        <p class="wn-label">INDEX</p>
+        <p class="wn-index-date" id="index-date"></p>
+        <ul id="index-list"></ul>
+      </div>
+      <div class="wn-clock" aria-label="현재 시각">
+        <p class="wn-label">지금</p>
+        <p class="wn-clock-time" id="clock-time">--:--</p>
+        <p class="wn-clock-day" id="clock-day"></p>
+      </div>
+    </aside>
+
+    <div class="wn-book">
+      <div class="wn-book-head">
+        <div>
+          <p class="wn-label">WORK NOTEBOOK · VOL. 01</p>
+          <h2>하루 한 장</h2>
+        </div>
+        <p class="wn-book-stat" id="book-stat"></p>
+      </div>
+      <div class="wn-datebar">
+        <button type="button" class="wn-btn" id="day-prev">‹ 전날</button>
+        <strong id="day-label"></strong>
+        <input type="date" id="day-input" aria-label="날짜 고르기">
+        <button type="button" class="wn-btn" id="day-today">오늘</button>
+        <button type="button" class="wn-btn" id="day-next">다음날 ›</button>
+      </div>
+      <div class="wn-pages">
+        <div class="wn-page">
+          <div class="wn-page-head">
+            <div><p class="wn-label">QUICK NOTES</p><h3>스티커 메모</h3></div>
+            <button type="button" class="wn-btn" id="memo-add">메모 붙이기</button>
+          </div>
+          <div class="wn-memos" id="memo-list"></div>
+        </div>
+        <div class="wn-page">
+          <div class="wn-page-head">
+            <div><p class="wn-label">TODAY</p><h3>오늘의 할 일</h3></div>
+            <button type="button" class="wn-btn" id="today-add">업무 추가</button>
+          </div>
+          <ul class="wn-today" id="today-list"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wn-grid">
+    <div class="wn-panel wn-cal">
+      <div class="wn-panel-head">
+        <div><p class="wn-label">CALENDAR</p><h2>업무 달력</h2></div>
+        <div class="wn-month">
+          <button type="button" class="wn-btn" id="cal-prev" aria-label="이전 달">‹</button>
+          <strong id="cal-title"></strong>
+          <button type="button" class="wn-btn" id="cal-next" aria-label="다음 달">›</button>
+        </div>
+      </div>
+      <div class="wn-cal-body">
+        <div class="wn-cal-grid" id="cal-grid"></div>
+        <div class="wn-cal-day">
+          <p class="wn-label" id="cal-day-label"></p>
+          <p class="wn-cal-count" id="cal-day-count"></p>
+          <ul class="wn-mini" id="cal-day-list"></ul>
+          <button type="button" class="wn-btn wn-btn-wide" id="cal-day-add">이 날짜에 업무 추가</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="wn-stack">
+      <div class="wn-panel">
+        <div class="wn-panel-head">
+          <div><p class="wn-label">WORKFLOW</p><h2>업무 진행 현황</h2></div>
+          <button type="button" class="wn-btn" id="clear-done">완료 업무 정리</button>
+        </div>
+        <p class="wn-hint">카드의 상태를 바꾸면 바로 옮겨집니다.</p>
+        <div class="wn-cols" id="flow-cols"></div>
+      </div>
+      <div class="wn-panel">
+        <div class="wn-panel-head">
+          <div><p class="wn-label">WORK FIELDS</p><h2>필드별 업무</h2></div>
+          <button type="button" class="wn-btn" id="field-manage" aria-expanded="false">필드 관리</button>
+        </div>
+        <form class="wn-field-form" id="field-form" hidden>
+          <input type="text" id="field-name" maxlength="20" placeholder="새 필드 이름" aria-label="새 필드 이름">
+          <button type="submit" class="wn-btn">추가</button>
+        </form>
+        <div class="wn-cols" id="field-cols"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dialog class="wn-dialog" id="task-dialog">
+  <form method="dialog" id="task-form">
+    <h2 id="task-dialog-title">업무 추가</h2>
+    <label>업무명<input type="text" id="t-title" required maxlength="120"></label>
+    <div class="wn-form-row">
+      <label>날짜<input type="date" id="t-date"></label>
+      <label>상태<select id="t-status"></select></label>
+      <label>필드<select id="t-field"></select></label>
+    </div>
+    <label>메모<textarea id="t-memo" rows="3" maxlength="2000"></textarea></label>
+    <div class="wn-dialog-actions">
+      <button type="button" class="wn-btn wn-btn-danger" id="t-delete">삭제</button>
+      <span></span>
+      <button type="button" class="wn-btn" id="t-cancel">취소</button>
+      <button type="submit" class="wn-btn wn-btn-main">저장</button>
+    </div>
+  </form>
+</dialog>
+
+<footer>&copy; 2026 최승환 · choijc79.github.io</footer>
+
+<script src="/js/theme-toggle.js"></script>
+<script src="/js/work.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+</body>
+</html>

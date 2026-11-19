@@ -92,3 +92,17 @@
 - [x] `python3 site_mcp.py --selftest`로 임시 사본에서 칼럼·가이드 추가 검증(push 없음)
 - [x] Claude Desktop 설정(`claude_desktop_config.json`)에 `jc-site` 등록
 - [x] CLAUDE.md 파일 구조 표에 한 줄 추가
+
+# 업무노트 페이지 (2026-11-19)
+
+참고: 운영자가 보낸 「Le Petit Journal 업무수첩」 화면. 배치와 기능은 따르고, 색·글꼴은 사이트 테마 토큰(`css/theme.css`)을 쓴다.
+
+- [x] `work.html` + `css/work.css` + `js/work.js` 작성
+- [x] 책상: 오늘 요약 카드, 시계, 펼친 수첩(전날·날짜·오늘·다음날, 왼쪽 스티커 메모, 오른쪽 오늘의 할 일)
+- [x] 업무 달력(날짜별 건수, 누르면 수첩 날짜 이동, 그날 업무 목록)
+- [x] 업무 진행 현황 4칸(예정·진행 중·완료·연기), 완료 일괄 정리
+- [x] 필드별 업무(사무·공무직급여·보안 기본값, 필드 추가·삭제)
+- [x] 업무 추가·수정 창(제목·날짜·상태·필드·메모), 백업(JSON 내려받기)·복원
+- [x] 저장은 localStorage(`jc-worknote-v1`)만, 읽기·쓰기 try/catch
+- [x] 홈 A면 트랙 A10 추가, `sitemap.xml`, `publish.py` 업로드 목록
+- [x] 브라우저로 다크·라이트, 휴대폰 폭 확인
