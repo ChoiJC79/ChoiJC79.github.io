@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>탈리스커 10년산 — 완전 가이드 | 최승환</title>
+<title>탈리스커 10년산: 완전 가이드 | 최승환</title>
 <meta name="description" content="스카이 섬의 파도와 피트 스모크, 강렬한 후추. 탈리스커 10년 완전 가이드.">
 <meta property="og:title" content="탈리스커 10년산 완전 가이드 | 최승환">
 <meta property="og:description" content="스카이 섬의 파도와 피트 스모크, 강렬한 후추. 탈리스커 10년 완전 가이드.">
@@ -97,6 +97,14 @@ footer p{font-family:"Cormorant Garamond",serif;font-size:0.8rem;color:rgba(201,
 .spec-label,.spec-box-label{font-size:.75rem;}
 .pair-note,.tl-text{font-size:.85rem;}
 }
+
+  /* 디자인 손질(unslop): 기울임·대문자 넓은 자간·번쩍임·반복 움직임을 지운다 */
+  .hero-title em, .section-title em, .hero-sub, .blockquote p, .method-en, .price-note { font-style: normal; }
+  .hero-badge, .section-label, .scroll-hint span { text-transform: none; letter-spacing: 0.06em; }
+  .scroll-line { animation: none; opacity: .6; }
+  .tl-item::before { box-shadow: none; }
+  .hero .hero-title, .hero-title em, .section-title, .section-title em { font-family: "Noto Serif KR", serif !important; font-weight: 600; text-shadow: none !important; }
+  :root { --font-body: "Noto Serif KR", serif; --muted: rgba(245,232,192,.7); }
 </style>
 <link rel="stylesheet" href="/css/motion.css">
 </head>
@@ -114,7 +122,7 @@ footer p{font-family:"Cormorant Garamond",serif;font-size:0.8rem;color:rgba(201,
 <section class="hero">
   <div class="hero-badge">Isle of Skye, Scotland · Single Malt Scotch Whisky</div>
   <h1 class="hero-title">탈리스커<br><em>10년산</em></h1>
-  <p class="hero-sub">Best Dram in the World — Robert Louis Stevenson</p>
+  <p class="hero-sub">Best Dram in the World: Robert Louis Stevenson</p>
   <div class="hero-divider"></div>
   <p class="hero-desc">스카이 섬의 바위 해안, 거친 파도, 스모크와 후추. 소설가 스티븐슨이<br>'세상 최고의 술'이라 칭했던 섬 위스키의 원형.</p>
   <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
@@ -214,7 +222,7 @@ footer p{font-family:"Cormorant Garamond",serif;font-size:0.8rem;color:rgba(201,
       <div class="taste-card"><span class="taste-icon">👅</span><div class="taste-label">Palate · 팔레트</div><div class="taste-notes">처음부터 후추 스파이스가 강렬하게 터집니다. 미디엄 바디에 스모크, 해염, 그리고 숨어있는 달콤한 몰트의 균형.</div></div>
       <div class="taste-card"><span class="taste-icon">✨</span><div class="taste-label">Finish · 피니시</div><div class="taste-notes">길고 따뜻하며 스파이시한 피니시. 후추와 스모크가 천천히 가라앉으며 남습니다.</div></div>
     </div>
-    <div class="blockquote"><p>"The King of drinks, as I conceive it." — Robert Louis Stevenson</p><cite>— Whisky Advocate, 93점</cite></div>
+    <div class="blockquote"><p>"The King of drinks, as I conceive it.": Robert Louis Stevenson</p><cite>Whisky Advocate, 93점</cite></div>
     <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold-light);margin-top:3.5rem;margin-bottom:1rem;">푸드 페어링</h3>
     <div class="divider-thin"></div>
     <div class="pair-grid"><div class="pair-item"><span class="pair-emoji">🦐</span><div class="pair-name">훈제 새우·문어</div><div class="pair-note">해산물과 해염 공명</div></div>

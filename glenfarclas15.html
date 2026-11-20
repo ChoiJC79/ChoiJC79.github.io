@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>글렌파클라스 15년산 — 완전 가이드 | 최승환</title>
+<title>글렌파클라스 15년산: 완전 가이드 | 최승환</title>
 <meta name="description" content="188년 독립 가문의 셰리 폭탄. 올로로소 셰리 오크 캐스크의 농밀한 진수. 글렌파클라스 15년 완전 가이드.">
 <meta property="og:title" content="글렌파클라스 15년산 완전 가이드 | 최승환">
 <meta property="og:description" content="188년 독립 가문의 셰리 폭탄. 올로로소 셰리 오크 캐스크의 농밀한 진수. 글렌파클라스 15년 완전 가이드.">
@@ -97,6 +97,14 @@ footer p{font-family:"Cormorant Garamond",serif;font-size:0.8rem;color:rgba(201,
 .spec-label,.spec-box-label{font-size:.75rem;}
 .pair-note,.tl-text{font-size:.85rem;}
 }
+
+  /* 디자인 손질(unslop): 기울임·대문자 넓은 자간·번쩍임·반복 움직임을 지운다 */
+  .hero-title em, .section-title em, .hero-sub, .blockquote p, .method-en, .price-note { font-style: normal; }
+  .hero-badge, .section-label, .scroll-hint span { text-transform: none; letter-spacing: 0.06em; }
+  .scroll-line { animation: none; opacity: .6; }
+  .tl-item::before { box-shadow: none; }
+  .hero .hero-title, .hero-title em, .section-title, .section-title em { font-family: "Noto Serif KR", serif !important; font-weight: 600; text-shadow: none !important; }
+  :root { --font-body: "Noto Serif KR", serif; --muted: rgba(245,232,192,.7); }
 </style>
 <link rel="stylesheet" href="/css/motion.css">
 </head>
@@ -114,7 +122,7 @@ footer p{font-family:"Cormorant Garamond",serif;font-size:0.8rem;color:rgba(201,
 <section class="hero">
   <div class="hero-badge">Speyside, Scotland · Single Malt Scotch Whisky</div>
   <h1 class="hero-title">글렌파클라스<br><em>15년산</em></h1>
-  <p class="hero-sub">The Sherry Bomb — Family Pride Since 1836</p>
+  <p class="hero-sub">The Sherry Bomb: Family Pride Since 1836</p>
   <div class="hero-divider"></div>
   <p class="hero-desc">독립 가문이 188년을 지켜온 셰리 폭탄. 오크와 셰리, 건과일이 만들어내는<br>짙고 풍요로운 스페이사이드의 진수.</p>
   <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
@@ -213,7 +221,7 @@ footer p{font-family:"Cormorant Garamond",serif;font-size:0.8rem;color:rgba(201,
       <div class="taste-card"><span class="taste-icon">👅</span><div class="taste-label">Palate · 팔레트</div><div class="taste-notes">풀바디하고 오일리합니다. 셰리 과일, 무화과, 다크 초콜릿, 오크 탄닌이 레이어를 이룹니다.</div></div>
       <div class="taste-card"><span class="taste-icon">✨</span><div class="taste-label">Finish · 피니시</div><div class="taste-notes">매우 길고 따뜻하며 건과일 향이 가득한 피니시. 오크 스파이스가 마무리를 잡아줍니다.</div></div>
     </div>
-    <div class="blockquote"><p>"One of the great traditional Sherried malts. Magnificently complex."</p><cite>— Malt Maniacs, 93점</cite></div>
+    <div class="blockquote"><p>"One of the great traditional Sherried malts. Magnificently complex."</p><cite>Malt Maniacs, 93점</cite></div>
     <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold-light);margin-top:3.5rem;margin-bottom:1rem;">푸드 페어링</h3>
     <div class="divider-thin"></div>
     <div class="pair-grid"><div class="pair-item"><span class="pair-emoji">🍰</span><div class="pair-name">크리스마스 푸딩</div><div class="pair-note">셰리 과일 공명</div></div>
