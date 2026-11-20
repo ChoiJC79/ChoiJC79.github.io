@@ -445,7 +445,7 @@ repo: ayghri/i-have-adhd
 minutes: 10
 steps: 4
 sections: 8
-excerpt: 커서 답이 ‘좋은 질문입니다’로 시작하면 할 일이 뒤로 밀립니다. i-have-adhd 스킬로 다음 행동부터 말하게 하는 네 단계입니다.
+excerpt: 커서 답이 칭찬 인사부터 시작하면 할 일이 뒤로 밀립니다. i-have-adhd 스킬로 다음 행동부터 말하게 하는 네 단계입니다.
 
 코딩 에이전트는 맥락을 길게 말하다 명령을 나중에 붙이는 버릇이 있습니다. 스크롤을 내려야 실행할 줄이 나옵니다. 이 자료는 GitHub 트렌드의 i-have-adhd 스킬을 커서에 넣어, 답의 첫 줄이 명령·경로·다음 행동이 되게 하는 네 단계를 담았습니다. 저장소 이름이 ADHD를 내걸지만, README는 진단이 필요 없다고 적습니다. 출력 형식 스킬입니다.
 
@@ -1724,5 +1724,170 @@ claude plugin uninstall document-skills@anthropic-agent-skills
 - 직접 만들기: [How to create custom skills](https://support.claude.com/en/articles/12512198-creating-custom-skills)
 - 스킬 규격: [agentskills.io](http://agentskills.io)
 - 라이선스: [Apache 2.0](https://github.com/anthropics/skills/blob/main/skills/docx/LICENSE.txt)
+
+---
+
+## 읽은 글과 한글 문서를 옵시디언 노트로 모아 두는 5단계 | 2026-11-20 | AI·지식관리·Obsidian
+slug: claude-and-knowledge-manager
+repo: treylom/knowledge-manager
+minutes: 14
+steps: 5
+sections: 8
+excerpt: 좋은 기사와 공문을 읽어도 어디 뒀는지 잊습니다. knowledge-manager 플러그인을 넣으면 링크 하나로 요약·태그·관련 노트 연결까지 된 옵시디언 노트가 생기고, 나중에 질문 한 줄로 다시 찾습니다.
+
+좋은 기사나 영상, 공문을 읽어도 몇 주 지나면 어디서 봤는지 잊습니다. 북마크는 쌓이기만 하고, 다시 찾으려면 제목을 기억해야 합니다. knowledge-manager(줄여서 km)는 클로드 코드에 넣는 플러그인입니다. 링크나 파일을 건네면 요약하고 태그를 달고 관련 노트까지 연결한 노트를 옵시디언(Obsidian) 폴더에 저장합니다. 나중에는 `/km:search` 한 줄로 질문하면 그 노트를 찾아 답해 줍니다. 한글(HWP·HWPX) 문서도 받는다는 점이 공무원에게 반갑습니다. 준비물은 클로드 코드와 옵시디언(무료)입니다.
+
+복사해서 바로 시작하는 프롬프트. 설치부터 첫 노트 한 장까지 AI에게 맡기기.
+
+클로드 코드를 쓰는 분의 첫 메시지로 붙여넣으세요.
+
+```prompt
+역할: 이 컴퓨터의 클로드 코드에 knowledge-manager(km) 플러그인을 설치하고 첫 노트를 만들어 보는 담당
+맥락: 저는 개발 경험이 적습니다. 읽은 글과 문서를 옵시디언 노트로 모아 두고, 나중에 질문으로 다시 찾고 싶습니다.
+작업: ① `claude plugin marketplace list` 로 `knowledge-manager` 가 이미 있는지 보세요. 없으면 `claude plugin marketplace add treylom/knowledge-manager` 를 실행하세요. ② `claude plugin list` 로 `km@knowledge-manager` 가 있는지 보세요. 없으면 `claude plugin install km@knowledge-manager` 를 실행하세요. ③ 설치가 끝나면 클로드 코드를 다시 켜는 방법을 알려 주세요. `/km:setup` 은 제가 다시 켠 뒤 직접 치겠습니다.
+제약: sudo 와 전역 npm 설치는 먼저 물어보세요. 이미 설치돼 있으면 다시 설치하지 마세요. 옵시디언 폴더(vault) 안의 기존 노트는 옮기거나 지우지 마세요.
+출력: 실행한 명령, 설치 전후 `claude plugin list` 에서 `km@knowledge-manager` 유무, 남은 오류
+검증: `claude plugin list` 출력에 `km@knowledge-manager` 와 `enabled` 가 보여야 합니다. 보이지 않으면 완료로 보고하지 말고 실패한 명령과 원인, 다음 조치를 알려 주세요.
+```
+
+## Quick Start
+
+- 공식 저장소: [treylom/knowledge-manager](https://github.com/treylom/knowledge-manager)
+- 한 줄 정의: 웹 글·유튜브·PDF·한글 문서·스레드 게시물을 받아 요약·태그·관련 노트 연결까지 마친 옵시디언 노트로 저장하고, 질문으로 다시 찾아 주는 클로드 코드 플러그인입니다.
+- 인기·만든 곳: 2026년 11월 20일 확인 기준 GitHub 스타 255개, 최신 판은 1.8.15(2026-11-18)입니다. 만든 사람은 tofukyung(GitHub treylom)입니다. 이번 주 트렌드 순위는 확인하지 못했습니다.
+- 라이선스: MIT. 개인 일과 기관 업무에 자유롭게 쓸 수 있습니다.
+- 필요한 환경: 클로드 코드 1.0.33 이상, 옵시디언(선택, 없으면 일반 폴더에 저장), 웹 글을 읽을 때 쓰는 Playwright(설정 단계에서 설치)
+- 비용: 플러그인과 옵시디언은 무료입니다. 클로드 사용 요금은 따로 나갑니다.
+
+클로드 코드에서 아래 세 줄이 설치의 전부입니다.
+
+클로드 코드 안에서 입력.
+
+```text
+/plugin marketplace add treylom/knowledge-manager
+/plugin install km@knowledge-manager
+/km:setup
+```
+
+> 검증: 2026-11-20 기준 (클로드 코드 2.1.329). 앞의 두 줄은 터미널에서 `claude plugin marketplace add treylom/knowledge-manager`, `claude plugin install km@knowledge-manager` 형태로 직접 실행해 `km@knowledge-manager` 1.8.15가 `enabled` 로 잡히는 것을 확인한 뒤 지웠습니다. `/km:setup` 이후 단계는 옵시디언 폴더가 있어야 해서 이 자료에서는 돌려 보지 않았고, README의 설명을 따랐습니다.
+
+## STEP 1. 옵시디언 폴더 준비하기: 3분
+
+이 단계에서는 노트가 저장될 자리를 정합니다.
+
+> 용어: 옵시디언은 내 컴퓨터의 폴더에 마크다운(.md) 파일로 노트를 저장하는 무료 메모 앱입니다. 노트를 모아 두는 그 폴더를 vault(볼트, 금고)라고 부릅니다. 파일이 내 컴퓨터에 있으니 앱을 지워도 노트는 남습니다.
+
+- [obsidian.md](https://obsidian.md) 에서 앱을 받아 새 vault를 하나 만드세요. 이름은 「업무노트」처럼 아무거나 좋습니다.
+- vault 경로를 모르면 옵시디언 왼쪽 아래 설정(톱니바퀴) → 「파일 및 링크」 → 위쪽 「Vault 경로」를 복사하세요.
+- 옵시디언을 쓰기 싫다면 이 단계는 건너뛰어도 됩니다. 설정 단계에서 일반 폴더(`km-notes/`)를 고르면 같은 형식으로 저장됩니다.
+
+## STEP 2. 플러그인 설치와 첫 설정: 5분
+
+이 단계에서는 플러그인을 넣고 내 정보를 알려 줍니다.
+
+위 Quick Start의 앞 두 줄로 설치한 뒤 클로드 코드를 완전히 껐다 켜고 `/km:setup` 을 칩니다. 설정은 아래 순서로 물어봅니다.
+
+1. 옵시디언을 쓰는지
+2. vault 경로 (윈도우는 `C:\Users\...` 대신 `C:/Users/...` 처럼 슬래시로)
+3. 도구 설치 (Playwright는 필수, 옵시디언·노션 연결은 선택)
+4. 「어떤 일을 어떻게 하는지」 묻는 대화 6가지
+5. 설정 파일 `km-config.json` 만들기
+6. vault 안에 안내 문서 3개(`000-START-HERE/`) 만들기
+
+4번에서 답한 내용은 vault의 `_meta/USER-PROFILE.md` 에 저장되고, 이후 노트를 만들 때 기본값으로 쓰입니다. 「지방세 업무 담당, 행정 칼럼을 씀, 논문 준비 중」처럼 구체적으로 답할수록 노트의 분류가 맞아집니다.
+
+- ❌ 이렇게 말고: 질문마다 「아무거나」라고 답하기
+- ✅ 이렇게: 하는 일, 자주 읽는 자료, 노트를 다시 꺼내 쓰는 때를 한두 문장으로 답하기
+
+## STEP 3. 링크 하나를 노트로 만들기: 3분
+
+이 단계에서는 실제로 노트 한 장을 만듭니다.
+
+클로드 코드 안에서 입력.
+
+```text
+/km:knowledge-manager https://example.com/article
+```
+
+주소 자리에 읽은 기사나 유튜브 주소를 넣으세요. PDF·워드·엑셀·한글 파일은 파일 경로를 넣습니다. 처음에는 요약을 얼마나 자세히 할지, 관련 노트를 얼마나 연결할지 물어봅니다.
+
+저장 전에 중복·모순·빠진 내용을 스스로 점검하고, 관련 노트 링크가 실제로 들어갔는지도 검사합니다. 끝나면 노트별 저장 경로가 표로 나옵니다. 저장 위치는 이렇게 나뉩니다.
+
+| 자료 | 저장 위치 |
+| --- | --- |
+| 내가 쓴 글 | `Mine/` |
+| 웹 글·유튜브 정리 | `Library/Zettelkasten/<주제>/` |
+| 논문 | `Library/Papers/` |
+
+한글 문서는 [kordoc](/guides/claude-and-kordoc.html) 으로 마크다운으로 바꾼 뒤 정리합니다. kordoc은 이 사이트에서 앞서 소개한 「딴짓하는 류주임」의 도구이고, km은 변환할 때마다 그 최신판을 내려받아 씁니다.
+
+## STEP 4. 질문 한 줄로 다시 찾기: 2분
+
+이 단계에서는 저장한 노트를 꺼내 봅니다.
+
+클로드 코드 안에서 입력.
+
+```text
+/km:search 등록면허세 납세지 불일치
+/km:search --deep 지방세 역외 유출을 줄이는 방법 비교
+/km:search --quick 옵시디언 단축키
+```
+
+짧은 키워드나 「~란?」은 3~5줄로 바로 답하고, 「비교」「방법」「차이」가 든 문장은 노트 사이 연결까지 보며 자세히 답합니다. `--quick`, `--deep` 으로 직접 정할 수도 있습니다. 답의 마지막 줄 `검색: …` 이 어떤 방식으로 찾았는지 알려 줍니다.
+
+이 명령은 읽기만 합니다. 노트를 만들거나 고치지 않으니 마음 놓고 쳐 보세요. 「vault에서 찾지 못했습니다」가 나오면 그 자료가 아직 없다는 뜻이니 STEP 3으로 먼저 넣으세요.
+
+## STEP 5. 노트가 쌓이면 정리하기: 1분
+
+이 단계는 노트가 수십 장 넘게 쌓였을 때 씁니다.
+
+| 명령 | 하는 일 |
+| --- | --- |
+| `/km:interview` | 폴더와 목차 노트(MOC)를 어떻게 짤지 대화로 정해 `_meta/KM-DESIGN.md` 한 장으로 남깁니다. 노트는 옮기지 않습니다 |
+| `/km:reform plan` | 폴더 이동·노트 머리 정보·링크를 한꺼번에 고칠 계획서만 만듭니다 |
+| `/km:reform apply <계획서>` | 계획서대로 실제로 고칩니다. vault가 git 저장소여야 하고, 고치기 전 상태를 자동으로 남깁니다 |
+| `/km:tofugraph` | 노트 사이 연결까지 보는 검색 엔진(GraphRAG)을 설치·점검합니다. 없어도 검색은 됩니다 |
+| `/km:km-update` | 플러그인을 최신판으로 받습니다 |
+
+- ❌ 이렇게 말고: 계획서를 읽지 않고 바로 `apply`
+- ✅ 이렇게: `plan` 으로 만든 계획서를 열어 옮길 노트 목록을 확인한 뒤 `apply`
+
+## 자주 막히는 곳
+
+| 증상 | 원인과 해결 |
+| --- | --- |
+| `/km:` 명령이 안 보입니다 | 설치 뒤 클로드 코드를 다시 켜지 않은 경우입니다. 완전히 껐다 켜세요 |
+| 큰 PDF를 넣으니 「Prompt is too long」이 뜹니다 | 한 번에 너무 많습니다. `pip install marker-pdf` 후 `marker_single "파일.pdf" --page_range "0-19" --output_format markdown --output_dir ./km-temp` 처럼 쪽을 나눠 바꾼 뒤, 생긴 .md 파일을 넣으세요 |
+| 경로에 한글이 있어 PDF가 안 읽힙니다 | 위와 같이 마크다운으로 먼저 바꾸거나, 영문 이름 폴더로 옮겨서 넣으세요 |
+| 윈도우에서 vault 경로를 못 찾습니다 | 역슬래시(`\`)를 슬래시(`/`)로 바꿔 적으세요 |
+| `/km:reform apply` 가 멈춥니다 | vault가 git 저장소가 아니라서입니다. `git -C <vault 경로> init` 을 먼저 하세요 |
+| `/km:knowledge-manager-at` 이 안 됩니다 | 에이전트 9명이 나눠 하는 판이라 tmux가 필요합니다. 보통은 `/km:knowledge-manager` 로 충분합니다 |
+
+## 솔직히 한계
+
+- 이 자료에서 직접 해 본 것은 설치와 삭제까지입니다. `/km:setup`, 노트 만들기, 검색은 README의 설명을 정리한 것이고 직접 돌려 보지 않았습니다.
+- 스타 255개의 개인 개발자 프로젝트입니다. 판이 자주 바뀌니(11월에만 1.8.13~1.8.15) 업데이트 뒤에는 CHANGELOG를 한번 보세요.
+- 웹 글과 문서 내용은 클로드에게 전달됩니다. 노트 파일은 내 컴퓨터에 남지만, 비공개 공문이나 개인정보가 든 문서를 넣기 전에는 기관 보안 지침을 먼저 확인하세요.
+- 노트 품질은 원자료와 설정 대화에 따라 달라집니다. 요약 속 숫자와 인용은 원문과 대조하세요.
+- 노트가 많아지면 `/km:reform` 처럼 여러 파일을 한꺼번에 고치는 명령도 있습니다. vault를 git으로 관리하거나 백업해 두고 쓰세요.
+
+되돌리기.
+
+터미널에서 실행.
+
+```bash
+claude plugin uninstall km@knowledge-manager
+```
+
+이 자료의 시험 설치도 이 명령으로 지웠고, 목록에서 `km@knowledge-manager` 가 사라지는 것까지 확인했습니다. 플러그인을 지워도 vault의 노트는 그대로 남습니다.
+
+## 공식 자료
+
+- 저장소: [treylom/knowledge-manager](https://github.com/treylom/knowledge-manager)
+- 변경 기록: [CHANGELOG.md](https://github.com/treylom/knowledge-manager/blob/master/CHANGELOG.md)
+- 한글 문서 변환: [chrisryugj/kordoc](https://github.com/chrisryugj/kordoc)
+- 옵시디언: [obsidian.md](https://obsidian.md)
+- 클로드 코드 플러그인: [Claude Code Plugins](https://claude.com/blog/claude-code-plugins)
+- 라이선스: [MIT](https://github.com/treylom/knowledge-manager/blob/master/LICENSE)
 
 ---
