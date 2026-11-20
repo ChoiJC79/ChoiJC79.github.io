@@ -711,19 +711,19 @@ footer{{border-top:1px solid var(--border);padding:2rem;text-align:center;font-s
 
 <div class="grid">
   <div class="card ideas">
-    <div class="card-title">💡 아이디어 · 기획</div>
+    <div class="card-title">아이디어 · 기획</div>
     {ideas}
   </div>
   <div class="card goals">
-    <div class="card-title">🎯 목표 · 계획 · 다짐</div>
+    <div class="card-title">목표 · 계획 · 다짐</div>
     {goals}
   </div>
   <div class="card diary">
-    <div class="card-title">📖 일상 · 감정 · 회고</div>
+    <div class="card-title">일상 · 감정 · 회고</div>
     {diary}
   </div>
   <div class="card work">
-    <div class="card-title">📚 업무 · 논문 · 공부</div>
+    <div class="card-title">업무 · 논문 · 공부</div>
     {work}
   </div>
 </div>

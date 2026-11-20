@@ -132,7 +132,7 @@ def build_list(guides):
         rows.append(
             f'  <li class="pr-row" data-cat="{e(g["cat"])}"><a href="/practice/{g["slug"]}.html">'
             f'<span class="pr-no">{n:02d}</span>'
-            f'<span class="pr-title">{g["icon"]} {e(g["title"])}</span>'
+            f'<span class="pr-title">{e(g["title"])}</span>'
             f'<span class="pr-side"><span class="pr-chip">{e(g["cat"])}</span>{g["date"]}</span>'
             f'<span class="pr-sum">{e(first_sentence(g["summary"]))}</span></a></li>'
         )
@@ -189,7 +189,7 @@ def build_page(g, prev_g, next_g):
     return (head(f"{g['title']} | AI 실무 가이드", g["summary"], f"{SITE}/practice/{g['slug']}.html", "article") + f"""
 <section class="hero pr-hero">
   <div class="hero-label"><a href="/practice.html">AI 실무 가이드</a> · {e(g["cat"])}</div>
-  <h1>{g["icon"]} {e(g["title"])}</h1>
+  <h1>{e(g["title"])}</h1>
   <p>{e(g["summary"])}</p>
   <div class="hero-meta">{g["date"]} · 약 {minutes(g)}분</div>
 </section>
