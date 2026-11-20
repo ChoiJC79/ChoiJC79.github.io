@@ -33,7 +33,7 @@ body{background:var(--bg)!important;color:var(--text);font-family:'Pretendard Va
 .lounge-head{color:var(--ink);align-items:baseline}
 .lounge-title{font-family:var(--font-display);color:var(--ink)}
 .lounge-title small{font-family:var(--font-mono);color:var(--orange);font-weight:500}
-.lounge-head p{font-family:var(--font-mono);font-size:11px;color:var(--muted)}
+.lounge-head p{font-family:var(--font-body,"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif);font-size:12px;color:var(--muted)}
 .lounge img{border-radius:0;border:1px solid var(--rule)}
 .spot{border-radius:0}
 .spot:focus-visible{box-shadow:0 0 0 2px var(--orange)}
@@ -41,9 +41,9 @@ body{background:var(--bg)!important;color:var(--text);font-family:'Pretendard Va
 /* ── 본문: 카세트 데크(왼쪽, 고정)와 트랙리스트(오른쪽) ── */
 #tape-hero{padding-top:20px;align-items:start}
 #tape-hero .tape-main{position:sticky;top:60px}
-.tape-greeting{font-family:var(--font-mono);font-size:12px;color:var(--orange);letter-spacing:.02em}
+.tape-greeting{font-family:var(--font-body,"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif);font-size:13px;color:var(--orange);letter-spacing:0}
 .tape-id h1{font-family:var(--font-display);color:var(--ink)}
-.tape-id p{font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+.tape-id p{font-family:var(--font-body,"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif);font-size:13px;color:var(--muted)}
 .tape-intro{font-family:var(--font-display);font-size:16px;color:var(--text)}
 .deck{box-shadow:none;border:1px solid var(--paper-ink);max-width:420px}
 #tape-track-name{font-family:var(--font-mono);font-size:.55em;letter-spacing:0;opacity:.9}
@@ -51,12 +51,12 @@ body{background:var(--bg)!important;color:var(--text);font-family:'Pretendard Va
 
 /* ── 트랙리스트: 카세트 케이스 속지 ── */
 html[data-theme] .tape-tracks{background:var(--paper);color:var(--paper-text);border:1px solid var(--paper-ink);border-radius:0;box-shadow:none;padding:26px 28px 14px}
-html[data-theme] .tape-tracks h2{font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-text);margin:20px 0 4px;padding-bottom:6px;border-bottom:1px solid var(--paper-ink)}
+html[data-theme] .tape-tracks h2{font-family:var(--font-body,"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif);font-size:13px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--paper-text);margin:20px 0 4px;padding-bottom:6px;border-bottom:1px solid var(--paper-ink)}
 html[data-theme] .tape-tracks ol{margin:0 0 12px}
 html[data-theme] .tape-tracks li a{display:flex;gap:14px;align-items:baseline;padding:8px 0;font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--paper-text);border-bottom:1px dotted var(--paper-ink)}
 html[data-theme] .tape-tracks li a:hover{color:var(--orange)}
 html[data-theme] .tape-tracks .no{font-family:var(--font-mono);font-size:12px;font-weight:500;color:var(--orange);min-width:2.2em}
-html[data-theme] .tape-tracks .sub{margin-left:auto;font-family:var(--font-mono);font-size:11px;font-weight:400;color:#6B655B;text-align:right}
+html[data-theme] .tape-tracks .sub{margin-left:auto;font-family:var(--font-body,"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif);font-size:12px;font-weight:400;color:#6B655B;text-align:right}
 html[data-theme] .tape-tracks .bonus{color:var(--olive)}
 html[data-theme] .tape-tracks .bonus .no{color:var(--olive)}
 .pager{transform:none;box-shadow:none;border:1px solid var(--paper-ink);margin:0 0 4px auto}
@@ -66,13 +66,13 @@ html[data-theme] .tape-tracks .bonus .no{color:var(--olive)}
 /* ── 푸터: 즐겨찾기 텍스트 링크와 모달 버튼 ── */
 #jfoot{text-align:left;display:block;max-width:1160px;margin:0 auto;padding:28px 2.5rem 40px;border-top:1px solid var(--rule)}
 .jf-links{display:flex;flex-wrap:wrap;gap:.3rem 1.1rem;align-items:baseline;margin-bottom:22px}
-.jf-k{flex-basis:100%;margin-top:.7rem;font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--olive)}
+.jf-k{flex-basis:100%;margin-top:.7rem;font-family:var(--font-body,"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif);font-size:12px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--olive)}
 html[data-theme="dark"] .jf-k{color:var(--accent2)}
 .jf-k:first-child{margin-top:0}
 .jf-links a{font-size:13px;color:var(--text);border-bottom:1px dotted var(--muted)}
 .jf-links a:hover{color:var(--orange);border-bottom-color:var(--orange)}
 .jf-tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:22px}
-.jf-btn,#jc-corner-toggle.jf-btn{font-family:var(--font-mono);font-size:12px;font-weight:500;color:var(--ink);background:transparent;border:1px solid var(--rule);border-radius:0;padding:6px 14px;box-shadow:none;cursor:pointer;transform:none}
+.jf-btn,#jc-corner-toggle.jf-btn{font-family:var(--font-body,"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif);font-size:13px;font-weight:500;color:var(--ink);background:transparent;border:1px solid var(--rule);border-radius:0;padding:6px 14px;box-shadow:none;cursor:pointer;transform:none}
 .jf-btn:hover,#jc-corner-toggle.jf-btn:hover{color:var(--orange);border-color:var(--orange);box-shadow:none;transform:none}
 .jf-name{font-size:13px;color:var(--muted)}
 .jf-name b{font-family:var(--font-display);font-weight:700;color:var(--ink);margin-right:.6rem}
