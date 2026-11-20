@@ -119,6 +119,9 @@ h1, h2, h3, .cat-title, .col-title, .hero-name, .page-header-title, .page-intro 
 .page-header-sub, .hero p, .hero-meta { color: var(--muted); font-size: 15px; }
 .hero::before { display: none; }
 .hero h1, .hero-name { text-shadow: none; }
+/* 페이지마다 남은 옛 설정(대문자·넓은 자간)을 덮는다: 한글 제목은 자간 0, 라벨은 대문자 없이 */
+body .hero h1, body .hero-name, body .page-intro h1, body .page-header-title { letter-spacing: -0.01em; text-transform: none; }
+body .hero-label, body .page-header-eyebrow, body .page-intro-label { letter-spacing: 0.01em; text-transform: none; }
 .page-link { border-radius: 14px !important; }
 .thesis-title { color: var(--ink); }
 
