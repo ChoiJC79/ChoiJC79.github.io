@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>터미널 셸과 명령줄 행정 자동화 | 바이브 코딩 단계별 과정</title>
+<meta name="description" content="macOS 터미널에서 경로 이동과 파일 탐색, 파이프와 리다이렉트를 활용해 대량의 공문서 목록을 필터링하고 안전하게 관리할 수 있다.">
+<meta property="og:title" content="터미널 셸과 명령줄 행정 자동화 | 바이브 코딩 단계별 과정">
+<meta property="og:description" content="macOS 터미널에서 경로 이동과 파일 탐색, 파이프와 리다이렉트를 활용해 대량의 공문서 목록을 필터링하고 안전하게 관리할 수 있다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/vibe/terminal-shell.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/practice.css">
+<link rel="stylesheet" href="/css/motion.css">
+<link rel="stylesheet" href="/css/vibe.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 가이드</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9728; 라이트</button>
+</header>
+
+<section class="hero pr-hero">
+  <div class="hero-label"><a href="/vibe.html">바이브 코딩 단계별 과정</a> · 도구 업무 자동화 도구 상자</div>
+  <h1>14. 터미널 셸과 명령줄 행정 자동화</h1>
+  <p>macOS 터미널에서 경로 이동과 파일 탐색, 파이프와 리다이렉트를 활용해 대량의 공문서 목록을 필터링하고 안전하게 관리할 수 있다.</p>
+  <div class="hero-meta">개념 읽기 → 실습 → 요점 카드 모두 「안다」 → 튜터와 대화로 다지기</div>
+</section>
+<main class="pr-wrap vb-lesson" data-slug="terminal-shell">
+  <p class="vb-lock" hidden></p>
+
+  <section class="pr-sec">
+    <h2>왜 여기서 막히나</h2>
+    <p class="vb-why">마우스 클릭만으로는 수백 개의 민원 접수 파일이나 첨부 문서를 조건별로 분류하고 찾아내기 어렵습니다. 터미널 명령어를 알면 폴더 안의 특정 단어가 들어간 문서만 골라내거나 파일 목록을 텍스트로 추출하는 작업을 즉시 끝냅니다. 파이프와 리다이렉트 기호를 알지 못하면 AI가 제안한 명령어 결과를 파일로 저장하거나 다른 도구와 결합하지 못합니다. 무엇보다 시스템 삭제를 유발하는 위험 명령어를 사전에 식별하고 방어할 수 있습니다.</p>
+  </section>
+
+  <section class="pr-sec">
+    <h2>핵심 개념 세 가지</h2>
+    <ol class="pr-steps">
+    <li><div><b>경로 탐색 pwd cd ls</b><span>현재 머무는 폴더 위치를 확인하고 다른 디렉터리로 이동하며 파일 목록을 조회하는 기본 명령어 체계입니다. <code>pwd</code> 명령으로 현재 작업 위치를 파악하고, <code>cd 폴더명</code> 명령으로 이동하며, <code>ls -la</code> 명령으로 숨김 파일을 포함한 상세 권한과 파일 크기를 조회합니다. 점 두 개 <code>..</code> 기호는 바로 상위 폴더를 의미합니다.</span></div></li>
+    <li><div><b>파이프와 리다이렉트</b><span>한 명령어의 처리 결과를 다른 명령어로 넘기거나 파일에 기록하는 셸 제어 기능입니다. 수직선 기호 <code>|</code>인 파이프는 앞선 명령의 화면 출력을 다음 명령의 입력으로 전달합니다. 꺾쇠 기호 <code>&gt;</code>는 결과를 새 파일로 저장하고 <code>&gt;&gt;</code> 기호는 기존 파일 내용 맨 아래에 추가하여 기록합니다.</span></div></li>
+    <li><div><b>grep과 find 그리고 위험 명령</b><span>대량의 데이터에서 원하는 파일이나 텍스트를 빠르게 추출하고 안전하게 작업하기 위한 도구와 판단 기준입니다. <code>find</code> 명령은 조건에 맞는 파일 경로를 찾고, <code>grep</code> 명령은 텍스트 내용에서 특정 단어나 패턴이 들어 있는 행을 추출합니다. <code>rm -rf</code> 명령처럼 확인 절차 없이 영구 삭제하는 위험 명령은 반드시 대상 경로를 두 번 확인하고 실행해야 합니다.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="pr-sec">
+    <h2>자주 쓰는 코드</h2>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>pwd  # 현재 작업 중인 폴더의 전체 경로를 확인합니다
+cd ./2026년_민원접수  # 작업 대상 민원 폴더로 이동합니다
+ls -lh *.csv  # 폴더 내 모든 csv 파일의 용량과 수정일을 확인합니다
+find . -name &quot;*.hwp&quot; | wc -l  # 현재 폴더와 하위 폴더의 모든 한글 문서 개수를 셉니다
+grep -r &quot;불법주정차&quot; ./*.csv &gt; 주정차민원목록.txt  # csv 파일들에서 불법주정차 단어가 포함된 행만 추출하여 새 파일에 씁니다
+grep -r &quot;소음&quot; ./*.csv &gt;&gt; 종합민원목록.txt  # 소음 관련 민원 행을 기존 목록 파일 끝에 추가하여 저장합니다
+chmod +x run.sh  # 자동화 셸 스크립트 파일에 실행 권한을 부여합니다</pre></div>
+  </section>
+
+  <section class="pr-sec">
+    <h2>같은 일, 다른 요청</h2>
+    <div class="vb-compare">
+      <div class="vb-ex bad"><h3>이렇게 요청하면</h3><pre>터미널에서 민원 파일 목록 중에서 주정차 관련된 것만 찾아서 저장해 줘.</pre></div>
+      <div class="vb-ex good"><h3>이렇게 요청한다</h3><div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>macOS `zsh` 환경에서 실행할 터미널 명령어를 작성해 주십시오.
+현재 폴더 안의 모든 `*.csv` 파일에서 「불법주정차」 단어가 포함된 행만 `grep` 명령어로 검색해야 합니다.
+검색 결과는 `주정차민원_집계.txt` 파일로 새로 저장되도록 리다이렉트 기호 `&gt;`를 사용해 주십시오.
+삭제 명령어나 시스템 경로를 수정하는 위험 명령은 제외하고, 실행 전 파일 개수를 확인하는 `wc -l` 파이프라인도 함께 제시해 주십시오.</pre></div></div>
+    </div>
+    <p class="vb-diff">정확한 셸 환경인 `zsh`과 구체적인 명령어인 `grep`, `wc -l` 및 파일 저장 방식을 지정하여 엉뚱한 파이썬 스크립트 생성을 방지합니다. 위험 명령 배제 조건을 넣어 시스템 오작동이나 파일 유실 위험을 원천 차단합니다. 결과 파일 이름을 명시하므로 실행 후 생성된 결과물을 즉시 검증할 수 있습니다.</p>
+  </section>
+
+  <section class="pr-sec">
+    <h2>30분 실습</h2>
+    <ol class="pr-steps">
+    <li><div><span>터미널을 열고 <code>pwd</code> 명령으로 현재 위치를 확인한 뒤 실습 폴더로 <code>cd</code> 명령을 써서 이동합니다.</span></div></li>
+    <li><div><span><code>ls -la</code> 명령으로 파일 목록과 숨김 파일, 파일 권한을 확인합니다.</span></div></li>
+    <li><div><span><code>grep -r &quot;도로복구&quot; ./*.txt &gt; 복구대상.txt</code> 명령을 실행하여 특정 단어가 들어간 행을 새 파일로 저장합니다.</span></div></li>
+    <li><div><span><code>cat 복구대상.txt</code> 명령과 <code>wc -l 복구대상.txt</code> 명령으로 결과 내용과 행 수를 터미널 화면에서 확인합니다.</span></div></li>
+    </ol>
+    <h3 class="vb-sub">통과 기준</h3>
+    <ul class="pr-checks">
+    <li><code>pwd</code> 명령 실행 결과 화면에 실습 대상 폴더의 절대 경로가 표시됩니다.</li>
+    <li>폴더 내부에 <code>복구대상.txt</code> 파일이 정상적으로 생성되어 있습니다.</li>
+    <li><code>cat 복구대상.txt</code> 명령 실행 시 「도로복구」 단어가 들어 있는 텍스트 행만 온전히 나열됩니다.</li>
+    </ul>
+  </section>
+
+  <section class="pr-sec" id="cards">
+    <h2>요점 카드</h2>
+    <p class="vb-note">질문을 보고 답을 먼저 떠올린 뒤 눌러서 확인합니다. 답을 보지 않고 말할 수 있는 카드에만 「안다」를 표시하고, 모든 카드에 표시하면 이 단계를 통과합니다.</p>
+    <button type="button" class="vb-open">모두 펼치기</button>
+    <ol class="vb-cards">
+      <li class="vb-card"><details><summary>현재 터미널이 위치한 작업 디렉터리의 전체 경로를 출력하는 명령어는?</summary><p><code>pwd</code> 명령을 실행합니다.</p></details><label class="vb-know"><input type="checkbox" data-i="0"> 안다</label></li>
+      <li class="vb-card"><details><summary>한 명령어의 출력을 다음 명령어의 입력으로 전달하는 셸 기호는?</summary><p>수직선 기호 <code>|</code>인 파이프를 사용합니다.</p></details><label class="vb-know"><input type="checkbox" data-i="1"> 안다</label></li>
+      <li class="vb-card"><details><summary>명령어 실행 결과를 기존 파일 끝에 추가하여 저장할 때 사용하는 리다이렉트 기호는?</summary><p><code>&gt;&gt;</code> 기호를 사용합니다.</p></details><label class="vb-know"><input type="checkbox" data-i="2"> 안다</label></li>
+      <li class="vb-card"><details><summary>하위 폴더를 포함하여 특정 텍스트를 검색하는 <code>grep</code> 명령어의 재귀 옵션은?</summary><p><code>-r</code> 옵션을 사용합니다.</p></details><label class="vb-know"><input type="checkbox" data-i="3"> 안다</label></li>
+      <li class="vb-card"><details><summary>작성한 셸 스크립트 <code>run.sh</code> 파일에 실행 권한을 부여하는 명령어는?</summary><p><code>chmod +x run.sh</code> 명령을 실행합니다.</p></details><label class="vb-know"><input type="checkbox" data-i="4"> 안다</label></li>
+      <li class="vb-card"><details><summary>경고 창 없이 폴더와 하위 파일을 영구 삭제하므로 실행 전 반드시 피해야 할 위험 명령어는?</summary><p><code>rm -rf</code>입니다. 휴지통을 거치지 않고 바로 지우므로, AI가 이 명령을 제안하면 <code>ls 경로</code>로 무엇이 지워지는지 먼저 본 뒤에 승인합니다.</p></details><label class="vb-know"><input type="checkbox" data-i="5"> 안다</label></li>
+    </ol>
+    <p class="vb-msg"></p>
+  </section>
+
+  <section class="pr-sec">
+    <h2>튜터와 다지기</h2>
+    <p class="vb-note">문제를 맞혔어도 내 프로젝트에서 바로 쓰지 못하면 아직 아는 것이 아닙니다. 아래 프롬프트를 Claude에 붙여 넣으면 「통과」라고 할 때까지 내 상황에 맞춘 질문을 계속 받습니다.</p>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>너는 내 바이브 코딩 튜터다. 나는 「터미널 셸과 명령줄 행정 자동화」 단계를 공부하고 있다.
+이 단계의 목표는 「macOS 터미널에서 경로 이동과 파일 탐색, 파이프와 리다이렉트를 활용해 대량의 공문서 목록을 필터링하고 안전하게 관리할 수 있다.」
+다룰 개념은 「경로 탐색 pwd cd ls」, 「파이프와 리다이렉트」, 「grep과 find 그리고 위험 명령」이다.
+
+규칙
+1. 설명부터 하지 말고, 내가 지금 만드는 프로젝트가 무엇인지 먼저 한 가지만 묻는다.
+2. 질문은 한 번에 하나씩. 내 프로젝트 상황에 맞춘 문제를 낸다.
+3. 내가 틀리면 정답을 바로 말하지 말고 힌트를 하나 준 뒤 다시 묻는다.
+4. 개념마다 내가 실제로 보낼 프롬프트를 직접 써 보게 하고, 부족한 점을 고쳐 준다.
+5. 서로 다른 상황 문제 세 개를 연속으로 맞히면 「통과」라고 말하고, 아직 약한 부분을 한 줄로 알려 준다.
+6. 통과하기 전에는 다음 단계로 넘어가지 않는다.</pre></div>
+  </section>
+
+  <nav class="pr-pager"><a class="prev" href="/vibe/python-automation-basics.html"><small>← 이전</small>파이썬 기초와 pathlib 파일 자동화</a><a class="next" href="/vibe/regex-text.html"><small>다음 →</small>정규표현식과 문서 텍스트 정제</a></nav>
+</main>
+
+<footer>&copy; 2026 최승환 · choijc79.github.io</footer>
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/about.html">👤<br>소개</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/guides.html" aria-current="page">⚙️<br>가이드</a>
+  <a href="/memo.html">📋<br>노트</a>
+</div>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'\u2600 라이트':'\u263e 다크';
+})();
+function toggleTheme(){
+  var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'\u2600 라이트':'\u263e 다크';
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+<script src="/js/vibe.js" defer></script>
+</body>
+</html>

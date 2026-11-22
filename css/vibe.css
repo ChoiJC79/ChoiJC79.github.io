@@ -20,19 +20,18 @@
 .vb-ex.good h3 { color: var(--accent); }
 .vb-ex.bad pre { margin: 0; padding: 1rem 1.2rem; border: 1px dashed var(--border); border-radius: var(--radius, 12px); font: 13px/1.75 var(--font-mono); color: var(--muted); white-space: pre-wrap; overflow-wrap: anywhere; }
 
-.vb-q { border: 1px solid var(--border); border-radius: var(--radius, 12px); padding: 1rem 1.1rem 0.9rem; margin: 0 0 0.9rem; background: var(--surface); }
-.vb-q legend { float: left; width: 100%; padding: 0; margin-bottom: 0.7rem; font-weight: 600; font-size: 15px; line-height: 1.6; color: var(--ink); }
-.vb-opt { display: flex; gap: 0.6rem; align-items: flex-start; padding: 0.5rem 0.6rem; border-radius: 8px; font-size: 14px; line-height: 1.6; cursor: pointer; transition: background-color 0.15s; }
-.vb-opt:hover { background: var(--bg); }
-.vb-opt input { margin-top: 0.3rem; accent-color: var(--accent); flex: none; }
-.vb-q.right { border-color: var(--green, var(--accent2)); }
-.vb-q.wrong { border-color: var(--accent3); }
-.vb-opt.answer { background: var(--bg); font-weight: 600; }
-.vb-ex-why { clear: both; margin-top: 0.6rem; padding-top: 0.6rem; border-top: 1px dashed var(--border); font-size: 13.5px; line-height: 1.7; color: var(--muted); }
-.vb-ex-why p { margin: 0 0 0.3rem; }
-.vb-submit { margin: 0.4rem 0.5rem 0 0; background: var(--accent); color: var(--bg); border: 0; border-radius: 999px; padding: 0.6rem 1.4rem; font: 600 14px var(--font-body); cursor: pointer; }
-.vb-submit:active { transform: scale(0.98); }
-.vb-msg { font-size: 14.5px; line-height: 1.7; margin: 0.8rem 0 0; }
+.vb-open { background: none; border: 1px solid var(--border); color: var(--muted); font: 13px var(--font-body); padding: 4px 13px; border-radius: 999px; cursor: pointer; margin-bottom: 0.8rem; }
+.vb-open:hover { color: var(--accent); border-color: var(--accent); }
+.vb-cards { list-style: none; margin: 0; padding: 0; counter-reset: c; }
+.vb-card { counter-increment: c; display: grid; grid-template-columns: 1fr auto; gap: 0.4rem 1rem; align-items: start; padding: 0.85rem 0; border-bottom: 1px dashed var(--border); }
+.vb-card summary { cursor: pointer; font-weight: 600; font-size: 15px; line-height: 1.6; color: var(--ink); list-style: none; }
+.vb-card summary::-webkit-details-marker { display: none; }
+.vb-card summary::before { content: counter(c, decimal-leading-zero) "  "; font: 500 12.5px var(--font-mono); color: var(--accent); }
+.vb-card details[open] summary { color: var(--accent); }
+.vb-card details p { margin: 0.5rem 0 0; padding: 0.7rem 0.9rem; background: var(--surface); border-radius: 8px; font-size: 14px; line-height: 1.75; color: var(--text); }
+.vb-know { font-size: 13px; color: var(--muted); white-space: nowrap; cursor: pointer; padding-top: 0.15rem; }
+.vb-know input { accent-color: var(--accent); vertical-align: -2px; }
+.vb-lesson code { font: 0.9em var(--font-mono); background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 0 4px; }
+.vb-card details p code { background: var(--bg); }
+.vb-msg { font-size: 14.5px; line-height: 1.7; margin: 0.8rem 0 0; color: var(--muted); }
 .vb-msg.pass { color: var(--green, var(--accent2)); font-weight: 600; }
-.vb-msg.fail { color: var(--accent3); }
-.vb-passed { font-size: 13.5px; color: var(--muted); margin: 0 0 0.8rem; }

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playwright로 웹 화면 자동화하기 | 바이브 코딩 단계별 과정</title>
+<meta name="description" content="Playwright 라이브러리로 브라우저 화면 조작 과정을 스크립트화하여 자동 입력과 스크린샷 저장을 수행할 수 있다.">
+<meta property="og:title" content="Playwright로 웹 화면 자동화하기 | 바이브 코딩 단계별 과정">
+<meta property="og:description" content="Playwright 라이브러리로 브라우저 화면 조작 과정을 스크립트화하여 자동 입력과 스크린샷 저장을 수행할 수 있다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/vibe/playwright-browser.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/practice.css">
+<link rel="stylesheet" href="/css/motion.css">
+<link rel="stylesheet" href="/css/vibe.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 가이드</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9728; 라이트</button>
+</header>
+
+<section class="hero pr-hero">
+  <div class="hero-label"><a href="/vibe.html">바이브 코딩 단계별 과정</a> · 도구 업무 자동화 도구 상자</div>
+  <h1>20. Playwright로 웹 화면 자동화하기</h1>
+  <p>Playwright 라이브러리로 브라우저 화면 조작 과정을 스크립트화하여 자동 입력과 스크린샷 저장을 수행할 수 있다.</p>
+  <div class="hero-meta">개념 읽기 → 실습 → 요점 카드 모두 「안다」 → 튜터와 대화로 다지기</div>
+</section>
+<main class="pr-wrap vb-lesson" data-slug="playwright-browser">
+  <p class="vb-lock" hidden></p>
+
+  <section class="pr-sec">
+    <h2>왜 여기서 막히나</h2>
+    <p class="vb-why">공공기관 내부망이나 구형 행정 포털은 데이터를 내려받는 공식 API를 제공하지 않는 경우가 많습니다. `Playwright`를 모르면 마우스 클릭과 서식 입력을 매일 수작업으로 반복하거나 구형 브라우저 제어 라이브러리의 설치 오류에 가로막힙니다. 다만 브라우저 자동화는 실행 속도가 느리고 화면 구조 변경에 취약하므로 API가 존재하는 업무라면 API 연동을 우선 검토해야 합니다. 이용약관과 `robots.txt` 규칙을 어긴 무분별한 자동 로그인은 기관 보안 정책에 저촉되므로 명확한 업무 목적과 허가 범위 안에서만 사용해야 합니다.</p>
+  </section>
+
+  <section class="pr-sec">
+    <h2>핵심 개념 세 가지</h2>
+    <ol class="pr-steps">
+    <li><div><b>브라우저 제어와 자동 대기</b><span><code>Playwright</code>는 파이썬 코드로 실제 크로미움 브라우저를 구동하여 웹 서핑을 재현하는 도구입니다. 웹 요소가 화면에 나타나고 조작 가능한 상태가 될 때까지 자동으로 기다려 주는 오토웨이팅 기능을 제공합니다. 네트워크 지연으로 버튼이 늦게 뜨더라도 별도의 복잡한 대기 코드를 작성하지 않아도 됩니다.</span></div></li>
+    <li><div><b>CSS 셀렉터와 사용자 조작</b><span>웹 페이지 안에서 특정 버튼이나 입력창의 위치를 지정할 때 <code>id</code>, <code>class</code>, 속성 값 기반의 CSS 셀렉터를 활용합니다. <code>page.locator()</code>에 셀렉터를 지정하여 <code>fill()</code>로 텍스트를 입력하거나 <code>click()</code>으로 제출 버튼을 누릅니다. 작업 결과를 검증하기 위해 <code>screenshot()</code> 메서드로 화면을 이미지 파일로 남길 수 있습니다.</span></div></li>
+    <li><div><b>브라우저 자동화의 주의 사항</b><span>데이터를 수집하거나 서식을 제출할 때 공식 API가 지원된다면 브라우저 자동화보다 API 연동을 먼저 선택하는 것이 원칙입니다. 브라우저 조작은 서버 자원을 많이 소모하며 사이트 개편 시 셀렉터가 변경되어 오류가 발생할 위험이 큽니다. 대상 사이트의 <code>robots.txt</code> 파일과 이용약관을 사전에 점검하여 자동화 접근이 차단된 서비스인지 확인해야 합니다.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="pr-sec">
+    <h2>자주 쓰는 코드</h2>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>from playwright.sync_api import sync_playwright  # 동기식 브라우저 제어 모듈을 불러옵니다.
+with sync_playwright() as p:  # Playwright 실행 환경을 컨텍스트 매니저로 실행합니다.
+    browser = p.chromium.launch(headless=True)  # 백그라운드 모드로 크로미움 브라우저를 실행합니다.
+    page = browser.new_page()  # 새로운 브라우저 탭 페이지를 생성합니다.
+    page.goto(&quot;https://www.data.go.kr&quot;)  # 대상 웹 사이트 주소로 이동합니다.
+    page.locator(&quot;input#search&quot;).wait_for()  # 검색창 요소가 화면에 나타날 때까지 대기합니다.
+    page.screenshot(path=&quot;search_page.png&quot;)  # 현재 웹 화면을 이미지 파일로 저장합니다.
+    browser.close()  # 실행 중인 브라우저를 닫고 리소스를 정리합니다.</pre></div>
+  </section>
+
+  <section class="pr-sec">
+    <h2>같은 일, 다른 요청</h2>
+    <div class="vb-compare">
+      <div class="vb-ex bad"><h3>이렇게 요청하면</h3><pre>인터넷 사이트 들어가서 검색창에 단어 넣고 결과 화면 캡처하는 코드 만들어줘.</pre></div>
+      <div class="vb-ex good"><h3>이렇게 요청한다</h3><div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>`playwright` 동기 API(`sync_api`)를 사용해 웹 화면을 자동 캡처하는 파이썬 스크립트를 작성해 주십시오.
+`p.chromium.launch(headless=True)`로 백그라운드 실행을 지정하고 `page.goto()`로 대상 공지사항 페이지에 접속해 주십시오.
+검색창 셀렉터 `input[name=&quot;searchWord&quot;]`에 `fill(&quot;민원&quot;)`으로 입력하고 검색 버튼 `button[type=&quot;submit&quot;]`을 `click()`해 주십시오.
+검색 결과 테이블 `table.board_list`가 화면에 나타날 때까지 대기한 뒤 전체 화면을 `output/search_result.png` 파일로 저장해 주십시오.
+작업이 끝나면 `browser.close()`로 프로세스를 정리하고 저장된 스크린샷 경로를 콘솔에 출력해 주십시오.</pre></div></div>
+    </div>
+    <p class="vb-diff">`playwright` 라이브러리와 백그라운드 브라우저 모드를 구체적으로 지정하여 환경 충돌 없이 동작하는 코드를 생성합니다. 조작할 HTML 요소의 CSS 셀렉터와 대기 조건을 명시하므로 스크립트가 엉뚱한 버튼을 누르거나 화면 로딩 전에 멈추는 오류를 차단합니다. 출력 파일명과 프로세스 종료 명령을 포함하여 작업 결과 확인과 시스템 자원 관리가 원활해집니다.</p>
+  </section>
+
+  <section class="pr-sec">
+    <h2>30분 실습</h2>
+    <ol class="pr-steps">
+    <li><div><span>터미널에서 <code>pip install playwright</code>를 실행하고 <code>playwright install chromium</code> 명령으로 브라우저 바이너리를 설치합니다.</span></div></li>
+    <li><div><span>자동화 대상 웹 사이트 주소 끝에 <code>/robots.txt</code>를 입력하여 접속한 뒤 자동화 봇 접근 허용 여부를 확인합니다.</span></div></li>
+    <li><div><span>브라우저 개발자 도구의 검사 기능으로 검색창과 버튼의 CSS 셀렉터를 찾아 메모장에 기록합니다.</span></div></li>
+    <li><div><span><code>capture.py</code> 스크립트를 작성하여 페이지 이동, 검색어 입력, 클릭, <code>screenshot()</code> 저장까지 순서대로 실행합니다.</span></div></li>
+    </ol>
+    <h3 class="vb-sub">통과 기준</h3>
+    <ul class="pr-checks">
+    <li>터미널에서 <code>python capture.py</code> 실행 시 브라우저 바이너리 누락 오류 없이 프로세스가 종료 코드 0으로 정상 완료됩니다.</li>
+    <li><code>output/search_result.png</code> 파일이 정상 생성되어 이미지 뷰어로 열었을 때 검색 결과 화면이 시각적으로 확인됩니다.</li>
+    <li>스크립트 실행 종료 후 백그라운드에 크로미움 프로세스가 잔존하지 않고 안전하게 닫힙니다.</li>
+    </ul>
+  </section>
+
+  <section class="pr-sec" id="cards">
+    <h2>요점 카드</h2>
+    <p class="vb-note">질문을 보고 답을 먼저 떠올린 뒤 눌러서 확인합니다. 답을 보지 않고 말할 수 있는 카드에만 「안다」를 표시하고, 모든 카드에 표시하면 이 단계를 통과합니다.</p>
+    <button type="button" class="vb-open">모두 펼치기</button>
+    <ol class="vb-cards">
+      <li class="vb-card"><details><summary><code>playwright</code> 패키지 설치 후 크로미움 브라우저 엔진을 내려받는 터미널 명령은?</summary><p><code>playwright install chromium</code> 명령을 실행합니다. 브라우저 구동에 필요한 바이너리 파일이 시스템에 설치됩니다.</p></details><label class="vb-know"><input type="checkbox" data-i="0"> 안다</label></li>
+      <li class="vb-card"><details><summary>웹사이트가 웹 크롤러나 자동화 봇의 접근을 허용하는지 확인하는 파일 경로는?</summary><p>웹사이트 도메인 최상위 경로의 <code>/robots.txt</code> 파일입니다. <code>User-agent</code>와 <code>Disallow</code> 항목을 통해 수집 제한 구역을 규정합니다.</p></details><label class="vb-know"><input type="checkbox" data-i="1"> 안다</label></li>
+      <li class="vb-card"><details><summary><code>Playwright</code>에서 CSS 셀렉터로 입력창을 지정해 텍스트를 채우는 코드는?</summary><p><code>page.locator(&quot;input#search&quot;).fill(&quot;검색어&quot;)</code> 한 줄을 실행합니다. 해당 요소를 찾아 자동으로 대기한 뒤 텍스트를 입력합니다.</p></details><label class="vb-know"><input type="checkbox" data-i="2"> 안다</label></li>
+      <li class="vb-card"><details><summary>웹 자동화 작업 시 <code>Playwright</code>보다 <code>requests</code> API 연동을 우선해야 하는 기준은?</summary><p>대상 시스템에서 공식 데이터 API나 JSON 반환 경로를 제공하는 경우입니다. API 호출이 실행 속도가 훨씬 빠르고 화면 변경에 따른 스크립트 장애 위험이 없습니다.</p></details><label class="vb-know"><input type="checkbox" data-i="3"> 안다</label></li>
+      <li class="vb-card"><details><summary><code>Playwright</code>에서 현재 브라우저 화면을 PNG 파일로 캡처하는 코드는?</summary><p><code>page.screenshot(path=&quot;result.png&quot;)</code> 메서드를 호출합니다. 지정한 파일 경로로 현재 렌더링된 뷰포트 이미지를 저장합니다.</p></details><label class="vb-know"><input type="checkbox" data-i="4"> 안다</label></li>
+      <li class="vb-card"><details><summary>화면을 띄우지 않고 메모리상에서 브라우저를 실행할 때 사용하는 <code>launch</code> 옵션은?</summary><p><code>headless=True</code> 옵션입니다. <code>browser = p.chromium.launch(headless=True)</code> 형태로 작성하여 그래픽 화면 없이 백그라운드로 실행합니다.</p></details><label class="vb-know"><input type="checkbox" data-i="5"> 안다</label></li>
+    </ol>
+    <p class="vb-msg"></p>
+  </section>
+
+  <section class="pr-sec">
+    <h2>튜터와 다지기</h2>
+    <p class="vb-note">문제를 맞혔어도 내 프로젝트에서 바로 쓰지 못하면 아직 아는 것이 아닙니다. 아래 프롬프트를 Claude에 붙여 넣으면 「통과」라고 할 때까지 내 상황에 맞춘 질문을 계속 받습니다.</p>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>너는 내 바이브 코딩 튜터다. 나는 「Playwright로 웹 화면 자동화하기」 단계를 공부하고 있다.
+이 단계의 목표는 「Playwright 라이브러리로 브라우저 화면 조작 과정을 스크립트화하여 자동 입력과 스크린샷 저장을 수행할 수 있다.」
+다룰 개념은 「브라우저 제어와 자동 대기」, 「CSS 셀렉터와 사용자 조작」, 「브라우저 자동화의 주의 사항」이다.
+
+규칙
+1. 설명부터 하지 말고, 내가 지금 만드는 프로젝트가 무엇인지 먼저 한 가지만 묻는다.
+2. 질문은 한 번에 하나씩. 내 프로젝트 상황에 맞춘 문제를 낸다.
+3. 내가 틀리면 정답을 바로 말하지 말고 힌트를 하나 준 뒤 다시 묻는다.
+4. 개념마다 내가 실제로 보낼 프롬프트를 직접 써 보게 하고, 부족한 점을 고쳐 준다.
+5. 서로 다른 상황 문제 세 개를 연속으로 맞히면 「통과」라고 말하고, 아직 약한 부분을 한 줄로 알려 준다.
+6. 통과하기 전에는 다음 단계로 넘어가지 않는다.</pre></div>
+  </section>
+
+  <nav class="pr-pager"><a class="prev" href="/vibe/requests-api.html"><small>← 이전</small>requests로 공공데이터 API 호출하기</a><a class="next" href="/vibe/sqlite-sql.html"><small>다음 →</small>SQLite와 SQL로 행정 데이터 관리하기</a></nav>
+</main>
+
+<footer>&copy; 2026 최승환 · choijc79.github.io</footer>
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/about.html">👤<br>소개</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/guides.html" aria-current="page">⚙️<br>가이드</a>
+  <a href="/memo.html">📋<br>노트</a>
+</div>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'\u2600 라이트':'\u263e 다크';
+})();
+function toggleTheme(){
+  var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'\u2600 라이트':'\u263e 다크';
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+<script src="/js/vibe.js" defer></script>
+</body>
+</html>

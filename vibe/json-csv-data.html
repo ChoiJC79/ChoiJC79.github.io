@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>json과 csv 모듈로 데이터 변환하기 | 바이브 코딩 단계별 과정</title>
+<meta name="description" content="공공데이터 포털의 CSV 파일을 웹용 JSON으로 변환하고 엑셀 한글 깨짐을 해결할 수 있다.">
+<meta property="og:title" content="json과 csv 모듈로 데이터 변환하기 | 바이브 코딩 단계별 과정">
+<meta property="og:description" content="공공데이터 포털의 CSV 파일을 웹용 JSON으로 변환하고 엑셀 한글 깨짐을 해결할 수 있다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/vibe/json-csv-data.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/practice.css">
+<link rel="stylesheet" href="/css/motion.css">
+<link rel="stylesheet" href="/css/vibe.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 가이드</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9728; 라이트</button>
+</header>
+
+<section class="hero pr-hero">
+  <div class="hero-label"><a href="/vibe.html">바이브 코딩 단계별 과정</a> · 도구 업무 자동화 도구 상자</div>
+  <h1>16. json과 csv 모듈로 데이터 변환하기</h1>
+  <p>공공데이터 포털의 CSV 파일을 웹용 JSON으로 변환하고 엑셀 한글 깨짐을 해결할 수 있다.</p>
+  <div class="hero-meta">개념 읽기 → 실습 → 요점 카드 모두 「안다」 → 튜터와 대화로 다지기</div>
+</section>
+<main class="pr-wrap vb-lesson" data-slug="json-csv-data">
+  <p class="vb-lock" hidden></p>
+
+  <section class="pr-sec">
+    <h2>왜 여기서 막히나</h2>
+    <p class="vb-why">공공데이터 포털이나 행정시스템에서 내려받은 자료는 대부분 CSV 형식입니다. 그러나 GitHub Pages로 운영하는 웹페이지는 자바스크립트의 `fetch` 함수를 사용하여 JSON 형식 데이터를 읽어옵니다. 데이터 형식을 모르면 AI에게 웹용 데이터를 만들어 달라고 요청할 때 의도하지 않은 구조가 생성되거나 한글이 깨집니다. 두 형식의 구조 차이와 인코딩 방식을 이해하면 Claude Code에게 명확한 변환 스크립트를 요청할 수 있습니다.</p>
+  </section>
+
+  <section class="pr-sec">
+    <h2>핵심 개념 세 가지</h2>
+    <ol class="pr-steps">
+    <li><div><b>CSV와 JSON의 구조 차이</b><span>CSV는 쉼표로 열을 나누는 2차원 표 형식 데이터입니다. JSON은 중괄호와 대괄호로 계층 구조와 목록을 표현하는 웹 표준 데이터 형식입니다. 표 형태 행정 문서는 CSV가 다루기 쉽고 웹 화면 목록 표시는 JSON이 적합합니다.</span></div></li>
+    <li><div><b>엑셀 한글 깨짐과 utf-8-sig</b><span>macOS나 리눅스 환경에서 생성한 <code>UTF-8</code> CSV 파일은 윈도우 엑셀에서 열 때 한글이 깨집니다. 엑셀 프로그램이 파일 시작 부분의 바이트 순서 표식인 BOM을 요구하기 때문입니다. 파이썬에서 파일 인코딩을 <code>utf-8-sig</code>로 지정하면 윈도우 엑셀에서도 한글이 정상 출력됩니다.</span></div></li>
+    <li><div><b>웹페이지의 fetch 동작 원리</b><span>웹 브라우저는 <code>fetch(&#x27;data.json&#x27;)</code> 명령으로 서버에 위치한 JSON 파일을 비동기로 가져옵니다. 브라우저 자바스크립트는 수신한 JSON 텍스트를 <code>response.json()</code> 함수로 자바스크립트 객체 배열로 변환합니다. 웹페이지에 행정 목록을 표시하려면 표 데이터를 이 형식으로 변환해 두어야 합니다.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="pr-sec">
+    <h2>자주 쓰는 코드</h2>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>import csv, json  # 표준 라이브러리인 csv와 json 모듈을 불러옵니다
+with open(&#x27;data.csv&#x27;, encoding=&#x27;utf-8-sig&#x27;) as f:  # 엑셀 호환 인코딩으로 CSV 파일을 엽니다
+    rows = list(csv.DictReader(f))  # 첫 줄 헤더를 키로 삼아 딕셔너리 목록을 만듭니다
+with open(&#x27;data.json&#x27;, &#x27;w&#x27;, encoding=&#x27;utf-8&#x27;) as f:  # 웹에서 쓸 JSON 파일을 엽니다
+    json.dump(rows, f, ensure_ascii=False, indent=2)  # 한글을 보존하고 들여쓰기 2칸으로 저장합니다</pre></div>
+  </section>
+
+  <section class="pr-sec">
+    <h2>같은 일, 다른 요청</h2>
+    <div class="vb-compare">
+      <div class="vb-ex bad"><h3>이렇게 요청하면</h3><pre>공공데이터에서 다운받은 엑셀 파일 웹사이트에 띄우게 코딩해 줘.</pre></div>
+      <div class="vb-ex good"><h3>이렇게 요청한다</h3><div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>다운로드 폴더의 `complaints.csv` 파일을 읽어서 웹용 `complaints.json`으로 변환하는 파이썬 스크립트를 작성해 주십시오.
+파이썬 기본 `csv.DictReader`와 `json.dump`를 사용하고 한글이 유니코드 기호로 바뀌지 않도록 `ensure_ascii=False` 옵션을 지정해 주십시오.
+변환 후 생성된 `complaints.json` 파일의 첫 번째 객체 키와 값을 터미널에 3줄 출력하여 검증하는 코드도 포함해 주십시오.</pre></div></div>
+    </div>
+    <p class="vb-diff">`good` 요청은 사용할 파이썬 내장 모듈과 입출력 파일명을 명확하게 지정합니다. 또한 `ensure_ascii=False` 옵션을 명시하여 한글 깨짐을 방지하고 터미널 검증 출력까지 요구합니다. Claude Code가 불필요한 외부 라이브러리 설치 없이 즉시 실행 가능한 검증 코드를 생성하게 만듭니다.</p>
+  </section>
+
+  <section class="pr-sec">
+    <h2>30분 실습</h2>
+    <ol class="pr-steps">
+    <li><div><span>공공데이터포털에서 주민센터 민원 현황 CSV 파일을 내려받아 작업 폴더에 <code>input.csv</code>로 저장합니다.</span></div></li>
+    <li><div><span>터미널에서 파이썬 스크립트를 작성하여 <code>input.csv</code>를 읽고 <code>utf-8-sig</code> 인코딩을 적용해 <code>excel_view.csv</code>로 다시 저장합니다.</span></div></li>
+    <li><div><span>같은 데이터를 <code>json.dump</code> 함수를 사용하여 <code>ensure_ascii=False</code>, <code>indent=2</code> 옵션으로 <code>web_data.json</code> 파일로 변환합니다.</span></div></li>
+    <li><div><span>터미널에서 <code>head -n 20 web_data.json</code> 명령을 실행하여 첫 번째 항목의 한글과 괄호 구조를 직접 확인합니다.</span></div></li>
+    </ol>
+    <h3 class="vb-sub">통과 기준</h3>
+    <ul class="pr-checks">
+    <li>엑셀 프로그램에서 <code>excel_view.csv</code>를 열었을 때 민원명과 부서명 한글이 깨지지 않고 표 형식으로 열립니다.</li>
+    <li><code>web_data.json</code> 파일 크기가 0바이트가 아니며 첫 글자가 대괄호 <code>[</code>로 시작하고 마지막 글자가 <code>]</code>로 끝납니다.</li>
+    <li>터미널에서 <code>cat web_data.json</code> 명령을 실행했을 때 유니코드 이스케이프 기호가 아니라 완성형 한글이 표시됩니다.</li>
+    </ul>
+  </section>
+
+  <section class="pr-sec" id="cards">
+    <h2>요점 카드</h2>
+    <p class="vb-note">질문을 보고 답을 먼저 떠올린 뒤 눌러서 확인합니다. 답을 보지 않고 말할 수 있는 카드에만 「안다」를 표시하고, 모든 카드에 표시하면 이 단계를 통과합니다.</p>
+    <button type="button" class="vb-open">모두 펼치기</button>
+    <ol class="vb-cards">
+      <li class="vb-card"><details><summary>윈도우 엑셀에서 UTF-8 CSV 파일의 한글 깨짐을 방지하는 파이썬 인코딩 이름은?</summary><p><code>utf-8-sig</code>입니다. 파일 시작 부분에 UTF-8 바이트 순서 표식인 3바이트 BOM을 기록하여 엑셀이 인코딩을 인식하도록 돕습니다.</p></details><label class="vb-know"><input type="checkbox" data-i="0"> 안다</label></li>
+      <li class="vb-card"><details><summary>CSV 파일의 첫 줄 머리글을 키로 활용해 각 행을 딕셔너리로 읽어오는 파이썬 클래스는?</summary><p><code>csv.DictReader</code>입니다. <code>list(csv.DictReader(f))</code> 형태로 호출하면 머리글 이름을 키로 갖는 딕셔너리 목록이 생성됩니다.</p></details><label class="vb-know"><input type="checkbox" data-i="1"> 안다</label></li>
+      <li class="vb-card"><details><summary>파이썬 <code>json.dump</code>에서 한글 문자가 아스키 형태의 유니코드 기호로 바뀌는 현상을 방지하는 옵션은?</summary><p><code>ensure_ascii=False</code>입니다. 이 옵션을 지정해야 원본 한글 문자 그대로 JSON 파일에 저장됩니다.</p></details><label class="vb-know"><input type="checkbox" data-i="2"> 안다</label></li>
+      <li class="vb-card"><details><summary>웹 브라우저 자바스크립트에서 외부 <code>data.json</code> 파일을 비동기로 가져오는 기본 함수는?</summary><p><code>fetch</code> 함수입니다. <code>fetch(&#x27;data.json&#x27;).then(response =&gt; response.json())</code> 구문으로 데이터를 수신하여 화면에 표시합니다.</p></details><label class="vb-know"><input type="checkbox" data-i="3"> 안다</label></li>
+      <li class="vb-card"><details><summary>JSON 파일이 사람이 읽기 편하도록 2칸 들여쓰기를 적용하는 <code>json.dump</code> 매개변수는?</summary><p><code>indent=2</code>입니다. 이 매개변수를 생략하면 줄바꿈 없이 한 줄로 압축 저장됩니다.</p></details><label class="vb-know"><input type="checkbox" data-i="4"> 안다</label></li>
+      <li class="vb-card"><details><summary>macOS 터미널에서 생성된 JSON 파일 내용의 앞부분 10줄을 확인하는 명령어는?</summary><p><code>head -n 10 파일명.json</code>입니다. 대용량 파일 전체를 열지 않고도 구조와 한글 정상 출력 여부를 즉시 검증할 수 있습니다.</p></details><label class="vb-know"><input type="checkbox" data-i="5"> 안다</label></li>
+    </ol>
+    <p class="vb-msg"></p>
+  </section>
+
+  <section class="pr-sec">
+    <h2>튜터와 다지기</h2>
+    <p class="vb-note">문제를 맞혔어도 내 프로젝트에서 바로 쓰지 못하면 아직 아는 것이 아닙니다. 아래 프롬프트를 Claude에 붙여 넣으면 「통과」라고 할 때까지 내 상황에 맞춘 질문을 계속 받습니다.</p>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>너는 내 바이브 코딩 튜터다. 나는 「json과 csv 모듈로 데이터 변환하기」 단계를 공부하고 있다.
+이 단계의 목표는 「공공데이터 포털의 CSV 파일을 웹용 JSON으로 변환하고 엑셀 한글 깨짐을 해결할 수 있다.」
+다룰 개념은 「CSV와 JSON의 구조 차이」, 「엑셀 한글 깨짐과 utf-8-sig」, 「웹페이지의 fetch 동작 원리」이다.
+
+규칙
+1. 설명부터 하지 말고, 내가 지금 만드는 프로젝트가 무엇인지 먼저 한 가지만 묻는다.
+2. 질문은 한 번에 하나씩. 내 프로젝트 상황에 맞춘 문제를 낸다.
+3. 내가 틀리면 정답을 바로 말하지 말고 힌트를 하나 준 뒤 다시 묻는다.
+4. 개념마다 내가 실제로 보낼 프롬프트를 직접 써 보게 하고, 부족한 점을 고쳐 준다.
+5. 서로 다른 상황 문제 세 개를 연속으로 맞히면 「통과」라고 말하고, 아직 약한 부분을 한 줄로 알려 준다.
+6. 통과하기 전에는 다음 단계로 넘어가지 않는다.</pre></div>
+  </section>
+
+  <nav class="pr-pager"><a class="prev" href="/vibe/regex-text.html"><small>← 이전</small>정규표현식과 문서 텍스트 정제</a><a class="next" href="/vibe/pandas-excel.html"><small>다음 →</small>pandas와 openpyxl로 엑셀 집계하기</a></nav>
+</main>
+
+<footer>&copy; 2026 최승환 · choijc79.github.io</footer>
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/about.html">👤<br>소개</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/guides.html" aria-current="page">⚙️<br>가이드</a>
+  <a href="/memo.html">📋<br>노트</a>
+</div>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'\u2600 라이트':'\u263e 다크';
+})();
+function toggleTheme(){
+  var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'\u2600 라이트':'\u263e 다크';
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+<script src="/js/vibe.js" defer></script>
+</body>
+</html>

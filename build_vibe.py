@@ -5,6 +5,7 @@
   python3 build_vibe.py --check  # 데이터 검증만
 """
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -13,7 +14,16 @@ from build_practice import e, foot, head as practice_head, SITE
 BASE = Path(__file__).parent
 DATA = BASE / "vibe_course.json"
 OUT = BASE / "vibe"
-KEYS = "slug title goal why concepts bad good diff mission done quiz".split()
+KEYS = "slug title goal why concepts bad good diff mission done cards".split()
+
+
+def t(s):
+    """이스케이프 후 `백틱`을 <code>로."""
+    return re.sub(r"`([^`]+)`", r"<code>\1</code>", e(s))
+
+
+def lv_label(lv):
+    return "도구" if lv["lv"] == "T" else f"Lv.{lv['lv']}"
 
 
 def head(title, desc, url, og_type):
@@ -30,9 +40,8 @@ def load():
     errs = []
     for x in d["lessons"]:
         errs += [f"{x.get('slug')}: '{k}' 누락" for k in KEYS if not x.get(k)]
-        for i, q in enumerate(x.get("quiz", [])):
-            if len(q["options"]) != 4 or len(q["why"]) != 4 or q["answer"] not in range(4):
-                errs.append(f"{x['slug']} 문항 {i + 1}: 보기·해설 4개, 정답 0~3")
+        if any(not (c.get("q") and c.get("a")) for c in x.get("cards", [])):
+            errs.append(f"{x['slug']}: 카드마다 q·a 필요")
     if errs:
         sys.exit("데이터 오류:\n  " + "\n  ".join(errs))
     return d
@@ -54,22 +63,32 @@ def tutor_prompt(x):
 
 
 def build_lesson(x, lv, n, prev_x, next_x):
-    concepts = "\n".join(f"    <li><div><b>{e(h)}</b><span>{e(b)}</span></div></li>" for h, b in x["concepts"])
-    mission = "\n".join(f"    <li><div><span>{e(m)}</span></div></li>" for m in x["mission"])
-    done = "\n".join(f"    <li>{e(d)}</li>" for d in x["done"])
-    quiz = json.dumps(x["quiz"], ensure_ascii=False).replace("</", "<\\/")
+    concepts = "\n".join(f"    <li><div><b>{t(h)}</b><span>{t(b)}</span></div></li>" for h, b in x["concepts"])
+    mission = "\n".join(f"    <li><div><span>{t(m)}</span></div></li>" for m in x["mission"])
+    done = "\n".join(f"    <li>{t(d)}</li>" for d in x["done"])
+    cards = "\n".join(
+        f'      <li class="vb-card"><details><summary>{t(c["q"])}</summary><p>{t(c["a"])}</p></details>'
+        f'<label class="vb-know"><input type="checkbox" data-i="{i}"> 안다</label></li>'
+        for i, c in enumerate(x["cards"]))
+    snippet = f"""
+  <section class="pr-sec">
+    <h2>자주 쓰는 코드</h2>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>{e(x["snippet"])}</pre></div>
+  </section>
+""" if x.get("snippet") else ""
     pager = ""
     if prev_x:
         pager += f'<a class="prev" href="/vibe/{prev_x["slug"]}.html"><small>← 이전</small>{e(prev_x["title"])}</a>'
     if next_x:
         pager += f'<a class="next" href="/vibe/{next_x["slug"]}.html"><small>다음 →</small>{e(next_x["title"])}</a>'
-    prev_attr = f' data-prev="{prev_x["slug"]}" data-prev-title="{e(prev_x["title"])}"' if prev_x else ""
+    locked = prev_x and lv["lv"] != "T"
+    prev_attr = f' data-prev="{prev_x["slug"]}" data-prev-title="{e(prev_x["title"])}"' if locked else ""
     return head(f"{x['title']} | 바이브 코딩 단계별 과정", x["goal"], f"{SITE}/vibe/{x['slug']}.html", "article") + f"""
 <section class="hero pr-hero">
-  <div class="hero-label"><a href="/vibe.html">바이브 코딩 단계별 과정</a> · Lv.{lv['lv']} {e(lv['name'])}</div>
+  <div class="hero-label"><a href="/vibe.html">바이브 코딩 단계별 과정</a> · {lv_label(lv)} {e(lv['name'])}</div>
   <h1>{n:02d}. {e(x["title"])}</h1>
   <p>{e(x["goal"])}</p>
-  <div class="hero-meta">개념 읽기 → 실습 → 확인 문제 5개 모두 맞히기 → 튜터와 대화로 다지기</div>
+  <div class="hero-meta">개념 읽기 → 실습 → 요점 카드 모두 「안다」 → 튜터와 대화로 다지기</div>
 </section>
 <main class="pr-wrap vb-lesson" data-slug="{x['slug']}"{prev_attr}>
   <p class="vb-lock" hidden></p>
@@ -85,7 +104,7 @@ def build_lesson(x, lv, n, prev_x, next_x):
 {concepts}
     </ol>
   </section>
-
+{snippet}
   <section class="pr-sec">
     <h2>같은 일, 다른 요청</h2>
     <div class="vb-compare">
@@ -106,11 +125,14 @@ def build_lesson(x, lv, n, prev_x, next_x):
     </ul>
   </section>
 
-  <section class="pr-sec" id="quiz">
-    <h2>확인 문제</h2>
-    <p class="vb-note">다섯 문제를 모두 맞혀야 이 단계를 통과합니다. 틀리면 해설을 읽고 다시 풀면 되고, 다시 풀 때마다 문제와 보기 순서가 바뀝니다.</p>
-    <div class="vb-quiz"></div>
-    <script type="application/json" class="vb-data">{quiz}</script>
+  <section class="pr-sec" id="cards">
+    <h2>요점 카드</h2>
+    <p class="vb-note">질문을 보고 답을 먼저 떠올린 뒤 눌러서 확인합니다. 답을 보지 않고 말할 수 있는 카드에만 「안다」를 표시하고, 모든 카드에 표시하면 이 단계를 통과합니다.</p>
+    <button type="button" class="vb-open">모두 펼치기</button>
+    <ol class="vb-cards">
+{cards}
+    </ol>
+    <p class="vb-msg"></p>
   </section>
 
   <section class="pr-sec">
@@ -134,12 +156,12 @@ def build_list(d, order):
             f'<span class="pr-side vb-state">아직</span><span class="pr-sum">{e(x["goal"])}</span></a></li>'
             for n, x in items)
         lv_rows.append(f"""  <section class="vb-level" data-lv="{lv['lv']}">
-    <h2><span class="vb-lv">Lv.{lv['lv']}</span>{e(lv['name'])}<small>{e(lv['band'])} · <span class="vb-count">0</span>/{len(items)} 통과</small></h2>
+    <h2><span class="vb-lv">{lv_label(lv)}</span>{e(lv['name'])}<small>{e(lv['band'])} · <span class="vb-count">0</span>/{len(items)} 통과</small></h2>
     <ol class="pr-index">
 {lis}
     </ol>
   </section>""")
-    desc = "「만들어줘」 다음 단계로 가는 바이브 코딩 과정. 스펙, 검증, 구조, 에이전트까지 네 단계 12편을 문제를 맞혀 가며 하나씩 통과합니다."
+    desc = "「만들어줘」 다음 단계로 가는 바이브 코딩 과정. 스펙, 검증, 구조, 에이전트까지 네 단계 12편과, 업무 자동화에 많이 쓰는 언어·라이브러리 도구 상자 10편을 요점 카드로 하나씩 익힙니다."
     return head("바이브 코딩 단계별 과정 | 최승환", desc, f"{SITE}/vibe.html", "website") + f"""
 <section class="hero">
   <div class="hero-label">Vibe Coding Course</div>
@@ -161,7 +183,7 @@ def build_list(d, order):
     <ol class="pr-steps">
       <li><div><b>읽기</b><span>막히는 이유와 개념 세 가지, 나쁜 요청과 좋은 요청을 비교합니다.</span></div></li>
       <li><div><b>실습</b><span>내 프로젝트에서 30분 안에 해 보고 통과 기준을 스스로 확인합니다.</span></div></li>
-      <li><div><b>확인 문제</b><span>상황 판단 문제 다섯 개를 모두 맞혀야 통과입니다. 틀린 문제는 해설을 읽고 순서를 바꿔 다시 풉니다.</span></div></li>
+      <li><div><b>요점 카드</b><span>명령어, 파일 경로, 판단 기준 같은 구체적인 사실을 카드로 정리했습니다. 답을 떠올린 뒤 확인하고, 모든 카드를 「안다」로 표시하면 통과입니다.</span></div></li>
       <li><div><b>튜터와 다지기</b><span>레슨마다 있는 튜터 프롬프트를 Claude에 붙여 넣으면, 내 프로젝트 상황으로 세 문제를 연속으로 맞힐 때까지 질문이 이어집니다.</span></div></li>
     </ol>
   </section>
@@ -172,11 +194,10 @@ def build_list(d, order):
 
 def main():
     d = load()
-    by_lv = {l["lv"]: l for l in d["levels"]}
-    order = sorted(((by_lv[x["level"]], x) for x in d["lessons"]), key=lambda t: t[0]["lv"])
+    order = [(lv, x) for lv in d["levels"] for x in d["lessons"] if x["level"] == lv["lv"]]
     if "--check" in sys.argv:
         for lv, x in order:
-            print(f"  Lv.{lv['lv']} {x['slug']}  {x['title']}")
+            print(f"  {lv_label(lv)} {x['slug']}  {x['title']}")
         print(f"OK: {len(order)}편")
         return
     OUT.mkdir(exist_ok=True)

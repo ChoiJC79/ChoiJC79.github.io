@@ -37,7 +37,7 @@
   <div class="hero-label"><a href="/vibe.html">바이브 코딩 단계별 과정</a> · Lv.4 검증하며 만들기</div>
   <h1>04. git을 세이브포인트로 쓰는 법</h1>
   <p>작업 단위마다 커밋하고 AI가 바꾼 코드를 검토하며 망가졌을 때 이전 상태로 복구할 수 있다.</p>
-  <div class="hero-meta">개념 읽기 → 실습 → 확인 문제 5개 모두 맞히기 → 튜터와 대화로 다지기</div>
+  <div class="hero-meta">개념 읽기 → 실습 → 요점 카드 모두 「안다」 → 튜터와 대화로 다지기</div>
 </section>
 <main class="pr-wrap vb-lesson" data-slug="git-savepoint" data-prev="give-context" data-prev-title="정확한 맥락을 전달하는 방법">
   <p class="vb-lock" hidden></p>
@@ -84,11 +84,19 @@
     </ul>
   </section>
 
-  <section class="pr-sec" id="quiz">
-    <h2>확인 문제</h2>
-    <p class="vb-note">다섯 문제를 모두 맞혀야 이 단계를 통과합니다. 틀리면 해설을 읽고 다시 풀면 되고, 다시 풀 때마다 문제와 보기 순서가 바뀝니다.</p>
-    <div class="vb-quiz"></div>
-    <script type="application/json" class="vb-data">[{"q": "AI에게 웹페이지 디자인 수정을 요청했더니 기존에 잘 작동하던 문의하기 버튼이 사라졌습니다. 이때 가장 먼저 취해야 할 올바른 행동은 무엇입니까?", "options": ["AI에게 버튼이 왜 사라졌는지 따져 묻고 다시 만들어 내라고 프롬프트를 보냅니다.", "git diff로 삭제된 코드를 확인하고 git restore로 변경을 취소하여 직전 정상 상태로 되돌립니다.", "처음부터 다시 만들기 위해 프로젝트 폴더를 삭제하고 새 폴더를 생성합니다.", "사라진 버튼 코드를 인터넷에서 검색하여 직접 index.html에 복사해 넣습니다."], "answer": 1, "why": ["이미 꼬인 상태에서 AI에게 추가 수정을 요구하면 코드가 더 복잡하게 망가질 위험이 큽니다.", "변경된 차이점을 먼저 확인하고 즉시 직전 세이브포인트로 되돌리는 것이 가장 빠르고 안전합니다.", "버전 관리 시스템이 있으므로 전체 프로젝트를 지우고 처음부터 다시 시작할 이유가 없습니다.", "버전 관리 도구로 복구할 수 있는데 수동으로 외부 코드를 복사해 오면 다른 오류를 유발합니다."]}, {"q": "여러 기능을 추가하려 할 때 git 세이브포인트를 운영하는 가장 권장되는 방식은 무엇입니까?", "options": ["하루 일과가 모두 끝난 뒤 한꺼번에 git commit을 진행합니다.", "작은 작업 하나를 완료하고 동작을 확인한 직후마다 커밋을 남깁니다.", "AI가 커밋 메시지까지 포함해 자동으로 모든 파일을 커밋하도록 맡깁니다.", "모든 기능이 완벽하게 개발될 때까지 커밋을 생성하지 않습니다."], "answer": 1, "why": ["하루 치 변경 사항을 한꺼번에 묶으면 중간에 발생한 버그를 특정하기 어렵습니다.", "검증된 최소 단위마다 저장 기록을 남겨야 문제가 생겼을 때 바로 전 단계로 돌아갈 수 있습니다.", "사람의 검증 없이 AI가 자동으로 커밋하면 망가진 코드가 그대로 저장소에 영구 기록됩니다.", "개발이 끝날 때까지 커밋하지 않으면 중간에 발생한 실패를 복구할 세이브포인트가 없습니다."]}, {"q": "AI가 작성을 완료했다고 알렸습니다. 코드를 반영하기 전에 터미널에서 확인해야 할 명령어로 가장 적절한 것은 무엇입니까?", "options": ["git diff를 입력하여 수정된 줄과 파일 목록을 직접 검토합니다.", "git push를 바로 입력하여 원격 저장소에 즉시 반영합니다.", "git clean -fd를 입력하여 모든 변경 사항을 강제로 삭제합니다.", "claude /clear를 입력하여 대화창 내용을 비웁니다."], "answer": 0, "why": ["AI가 의도하지 않은 코드를 건드렸는지 확인하기 위해 변경 내역 비교가 선행되어야 합니다.", "검증되지 않은 코드를 원격 저장소에 올리면 협업 공간이나 배포 서버가 고장 납니다.", "확인도 거치지 않고 작업 내용을 강제로 지우면 AI가 만든 유효한 작업물까지 날아갑니다.", "대화창을 비우는 것만으로는 실제 파일의 변경 상태를 확인할 수 없습니다."]}, {"q": "이미 git commit으로 저장 완료한 작업에 심각한 오류가 있음을 뒤늦게 발견했습니다. 안전하게 이전 상태로 되돌리는 명령어는 무엇입니까?", "options": ["git restore .", "rm -rf .git", "git revert HEAD", "git branch -D main"], "answer": 2, "why": ["git restore는 커밋되지 않은 작업 트리의 수정을 취소하는 명령어입니다.", "git 설정 폴더 자체를 삭제하면 모든 버전 관리 기록이 완전히 파괴됩니다.", "git revert는 이전 커밋의 변경 사항을 취소하는 새로운 커밋을 안전하게 생성합니다.", "현재 메인 브랜치를 강제 삭제하는 것은 잘못된 접근이며 실패할 확률이 높습니다."]}, {"q": "업무 자동화 스크립트에 기능을 추가하기 직전, 작업자가 가장 먼저 해야 할 준비는 무엇입니까?", "options": ["새로운 파이썬 라이브러리를 무작정 설치합니다.", "git status를 실행하여 현재 작업 폴더에 커밋되지 않은 잔여 변경 사항이 없는지 확인합니다.", "코드 파일의 이름을 backup_final_2.py 형태로 수동 복사합니다.", "기존 코드가 정상 작동하는지 확인하지 않고 곧바로 다음 기능 프롬프트를 전송합니다."], "answer": 1, "why": ["작업 전 상태가 불분명한데 패키지부터 설치하면 환경 충돌이 일어날 수 있습니다.", "현재 상태가 깨끗하게 커밋되어 있어야 이후 작업이 망가졌을 때 출발점으로 복구할 수 있습니다.", "수동 파일 복사는 파일 관리가 엉키는 주원인이며 git이 이를 대체합니다.", "이전 작업의 정상 동작과 세이브포인트를 확인하지 않고 다음 작업을 진행하면 오류 발생 시 되돌리기 어렵습니다."]}]</script>
+  <section class="pr-sec" id="cards">
+    <h2>요점 카드</h2>
+    <p class="vb-note">질문을 보고 답을 먼저 떠올린 뒤 눌러서 확인합니다. 답을 보지 않고 말할 수 있는 카드에만 「안다」를 표시하고, 모든 카드에 표시하면 이 단계를 통과합니다.</p>
+    <button type="button" class="vb-open">모두 펼치기</button>
+    <ol class="vb-cards">
+      <li class="vb-card"><details><summary>코드 수정 작업을 시작하기 직전에 현재 작업 폴더가 깨끗한지 확인하는 명령어는 무엇입니까?</summary><p><code>git status</code>를 실행합니다. 커밋되지 않은 잔여 변경 사항이 없는지 확인해야 작업이 실패했을 때 출발점으로 안전하게 복구할 수 있습니다.</p></details><label class="vb-know"><input type="checkbox" data-i="0"> 안다</label></li>
+      <li class="vb-card"><details><summary>인공지능이 코드 수정을 마쳤을 때 변경된 줄을 직접 대조하는 명령어는 무엇입니까?</summary><p><code>git diff</code>를 실행합니다. 요청하지 않은 파일이 수정되거나 기존 코드가 삭제되지 않았는지 한 줄씩 검토합니다.</p></details><label class="vb-know"><input type="checkbox" data-i="1"> 안다</label></li>
+      <li class="vb-card"><details><summary>커밋하기 전에 인공지능이 수정한 내용을 모두 취소하고 직전 상태로 되돌리는 명령어는 무엇입니까?</summary><p><code>git restore .</code> 명령어를 실행합니다. 커밋되지 않은 모든 작업 트리 변경 사항을 즉시 버리고 직전 커밋 상태로 복구합니다.</p></details><label class="vb-know"><input type="checkbox" data-i="2"> 안다</label></li>
+      <li class="vb-card"><details><summary>이미 <code>git commit</code>으로 저장을 완료한 뒤 오류를 발견했을 때 안전하게 취소 커밋을 만드는 명령어는 무엇입니까?</summary><p><code>git revert HEAD</code>를 실행합니다. 직전 커밋의 변경 사항을 되돌리는 새로운 커밋을 안전하게 생성합니다.</p></details><label class="vb-know"><input type="checkbox" data-i="3"> 안다</label></li>
+      <li class="vb-card"><details><summary><code>git</code>을 세이브포인트로 활용할 때 권장하는 커밋 시점은 언제입니까?</summary><p>작은 작업 하나를 완료하고 브라우저나 터미널에서 정상 동작을 확인한 직후입니다. 하루 일과를 한꺼번에 몰아서 저장하지 않고 검증된 최소 단위마다 커밋합니다.</p></details><label class="vb-know"><input type="checkbox" data-i="4"> 안다</label></li>
+      <li class="vb-card"><details><summary>인공지능에게 웹페이지 디자인 수정을 맡겼다가 기존 문의하기 버튼이 삭제되었을 때의 올바른 조치 순서는 무엇입니까?</summary><p><code>git diff</code>로 삭제된 코드를 확인하고 <code>git restore</code>로 변경을 취소합니다. 인공지능과 대화로 다투지 않고 명령어로 즉시 직전 정상 세이브포인트로 되돌립니다.</p></details><label class="vb-know"><input type="checkbox" data-i="5"> 안다</label></li>
+    </ol>
+    <p class="vb-msg"></p>
   </section>
 
   <section class="pr-sec">

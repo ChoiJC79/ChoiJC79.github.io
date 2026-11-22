@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SQLite와 SQL로 행정 데이터 관리하기 | 바이브 코딩 단계별 과정</title>
+<meta name="description" content="엑셀 한계를 넘는 대용량 민원 데이터를 파일 하나짜리 데이터베이스에 저장하고 SQL로 조건 검색과 부서별 집계를 실행할 수 있습니다.">
+<meta property="og:title" content="SQLite와 SQL로 행정 데이터 관리하기 | 바이브 코딩 단계별 과정">
+<meta property="og:description" content="엑셀 한계를 넘는 대용량 민원 데이터를 파일 하나짜리 데이터베이스에 저장하고 SQL로 조건 검색과 부서별 집계를 실행할 수 있습니다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/vibe/sqlite-sql.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/practice.css">
+<link rel="stylesheet" href="/css/motion.css">
+<link rel="stylesheet" href="/css/vibe.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 가이드</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9728; 라이트</button>
+</header>
+
+<section class="hero pr-hero">
+  <div class="hero-label"><a href="/vibe.html">바이브 코딩 단계별 과정</a> · 도구 업무 자동화 도구 상자</div>
+  <h1>21. SQLite와 SQL로 행정 데이터 관리하기</h1>
+  <p>엑셀 한계를 넘는 대용량 민원 데이터를 파일 하나짜리 데이터베이스에 저장하고 SQL로 조건 검색과 부서별 집계를 실행할 수 있습니다.</p>
+  <div class="hero-meta">개념 읽기 → 실습 → 요점 카드 모두 「안다」 → 튜터와 대화로 다지기</div>
+</section>
+<main class="pr-wrap vb-lesson" data-slug="sqlite-sql">
+  <p class="vb-lock" hidden></p>
+
+  <section class="pr-sec">
+    <h2>왜 여기서 막히나</h2>
+    <p class="vb-why">행정 포털에서 내려받은 누적 민원 대장이 수만 건을 넘어가면 엑셀 파일이 멈추거나 서식이 깨집니다. 매달 접수 내역을 덧붙이다가 파일이 손상되거나 담당자 컴퓨터마다 내용이 달라지는 문제가 발생합니다. `SQLite`를 사용하면 별도 서버 설치 없이 파일 하나에 자료를 보관하고, 중복 입력을 원천 차단하며 필요한 통계를 빠르게 계산합니다.</p>
+  </section>
+
+  <section class="pr-sec">
+    <h2>핵심 개념 세 가지</h2>
+    <ol class="pr-steps">
+    <li><div><b>단일 파일 데이터베이스</b><span><code>sqlite3</code>는 서버 프로그램을 띄우지 않고 <code>.db</code> 확장자를 가진 단일 파일로 모든 표를 저장합니다. 이동식 저장장치나 공용 폴더로 복사하는 것만으로 백업과 이전이 끝납니다.</span></div></li>
+    <li><div><b>SQL 기본 구문</b><span>자료를 조회할 때는 <code>SELECT</code>와 가져올 열 이름을 적고, 대상을 좁힐 때는 <code>WHERE</code> 조건을 사용합니다. 부서별 건수를 셀 때는 <code>GROUP BY</code>를 쓰고, 코드표와 민원 대장을 합칠 때는 <code>JOIN</code>을 씁니다.</span></div></li>
+    <li><div><b>고유 제약조건(UNIQUE)</b><span>접수번호 열에 <code>UNIQUE</code> 제약조건을 설정하면 이미 입력된 접수번호가 다시 들어올 때 데이터베이스가 기록을 거부합니다. 실수로 같은 엑셀 파일을 두 번 집어넣어도 데이터가 중복으로 쌓이지 않습니다.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="pr-sec">
+    <h2>자주 쓰는 코드</h2>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>import sqlite3  # 파이썬 내장 sqlite3 라이브러리를 불러옵니다.
+con = sqlite3.connect(&#x27;complaints.db&#x27;)  # complaints.db 파일에 접속하거나 새로 만듭니다.
+cur = con.cursor()  # SQL 구문을 전달할 작업 창구를 생성합니다.
+cur.execute(&#x27;CREATE TABLE IF NOT EXISTS civil (id TEXT PRIMARY KEY, dept TEXT, content TEXT)&#x27;)  # 고유 접수번호를 포함한 민원 테이블을 만듭니다.
+cur.execute(&#x27;INSERT OR IGNORE INTO civil VALUES (?, ?, ?)&#x27;, (&#x27;2024-001&#x27;, &#x27;교통과&#x27;, &#x27;신호등 고장&#x27;))  # 중복 번호는 건너뛰고 새 민원을 입력합니다.
+con.commit()  # 변경된 테이블 내용을 데이터베이스 파일에 반영합니다.
+cur.execute(&#x27;SELECT dept, COUNT(*) FROM civil GROUP BY dept&#x27;)  # 부서별 접수 건수를 집계하는 질의를 실행합니다.
+print(cur.fetchall())  # 집계 결과 행 목록을 터미널 화면에 출력합니다.
+con.close()  # 작업이 끝난 데이터베이스 연결을 안전하게 닫습니다.</pre></div>
+  </section>
+
+  <section class="pr-sec">
+    <h2>같은 일, 다른 요청</h2>
+    <div class="vb-compare">
+      <div class="vb-ex bad"><h3>이렇게 요청하면</h3><pre>엑셀 민원 파일이 너무 커서 느린데 파이썬으로 DB에 넣고 통계 내는 코드 짜 줘.</pre></div>
+      <div class="vb-ex good"><h3>이렇게 요청한다</h3><div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>macOS 환경의 `python3` 스크립트를 작성해 주십시오. `complaints.csv` 파일을 읽어서 단일 파일 데이터베이스인 `complaints.db`의 `minwon` 테이블에 넣어야 합니다. 테이블 스키마는 `receipt_no` TEXT PRIMARY KEY, `dept` TEXT, `category` TEXT, `received_at` TEXT로 구성해 주십시오. 이미 존재하는 접수번호는 건너뛰도록 `INSERT OR IGNORE` 문을 사용하고, 입력 완료 후 부서(`dept`)별 건수를 계산하는 `SELECT dept, COUNT(*) FROM minwon GROUP BY dept` 쿼리 결과를 터미널에 표 형식으로 출력해 주십시오.</pre></div></div>
+    </div>
+    <p class="vb-diff">도구 이름인 `SQLite`와 데이터베이스 파일명을 구체적으로 지정하여 불필요한 데이터베이스 서버 설치를 방지합니다. 테이블 구조와 기본키 조건을 사전에 정의하여 중복 적재 사고를 방지하고 검증용 집계 SQL문까지 지정합니다.</p>
+  </section>
+
+  <section class="pr-sec">
+    <h2>30분 실습</h2>
+    <ol class="pr-steps">
+    <li><div><span><code>python3</code> 기본 환경에서 <code>sqlite3</code> 모듈로 <code>office.db</code> 파일을 생성하고 <code>CREATE TABLE</code> 문으로 민원 접수 대장 테이블을 만듭니다.</span></div></li>
+    <li><div><span>가상의 민원 접수 내역 5건을 <code>INSERT</code> 문으로 입력하고, 동일한 접수번호를 다시 입력하여 <code>UNIQUE</code> 오류가 발생하는지 확인합니다.</span></div></li>
+    <li><div><span><code>SELECT dept, COUNT(*) FROM complaints GROUP BY dept</code> 쿼리를 실행하여 부서별 누적 접수 건수가 집계되는지 확인합니다.</span></div></li>
+    <li><div><span><code>cp office.db office_backup.db</code> 명령으로 파일을 복사하여 백업이 정상적으로 이루어지는지 확인합니다.</span></div></li>
+    </ol>
+    <h3 class="vb-sub">통과 기준</h3>
+    <ul class="pr-checks">
+    <li>작업 폴더에 단일 파일인 <code>office.db</code>가 생성되어 있습니다.</li>
+    <li>동일한 기본키 값을 가진 행을 넣었을 때 에러가 발생하거나 무시되어 중복 행이 생기지 않습니다.</li>
+    <li>터미널 실행 결과에 부서명과 부서별 건수가 숫자로 출력됩니다.</li>
+    </ul>
+  </section>
+
+  <section class="pr-sec" id="cards">
+    <h2>요점 카드</h2>
+    <p class="vb-note">질문을 보고 답을 먼저 떠올린 뒤 눌러서 확인합니다. 답을 보지 않고 말할 수 있는 카드에만 「안다」를 표시하고, 모든 카드에 표시하면 이 단계를 통과합니다.</p>
+    <button type="button" class="vb-open">모두 펼치기</button>
+    <ol class="vb-cards">
+      <li class="vb-card"><details><summary>SQLite 데이터베이스 전체를 백업하는 가장 간단한 방법은?</summary><p>데이터베이스가 단일 파일로 구성되어 있으므로 터미널에서 <code>cp data.db data_backup.db</code>처럼 파일 복사 명령을 실행하면 됩니다.</p></details><label class="vb-know"><input type="checkbox" data-i="0"> 안다</label></li>
+      <li class="vb-card"><details><summary>동일한 민원 접수번호가 두 번 입력되지 않도록 열에 부여하는 제약조건 이름은?</summary><p><code>UNIQUE</code> 또는 <code>PRIMARY KEY</code> 제약조건을 설정합니다.</p></details><label class="vb-know"><input type="checkbox" data-i="1"> 안다</label></li>
+      <li class="vb-card"><details><summary>부서별 또는 처리상태별로 건수를 묶어서 계산할 때 사용하는 SQL 절은?</summary><p><code>GROUP BY</code> 절을 사용하며 보통 <code>COUNT(*)</code> 함수와 함께 씁니다.</p></details><label class="vb-know"><input type="checkbox" data-i="2"> 안다</label></li>
+      <li class="vb-card"><details><summary>파이썬에서 변경된 데이터베이스 내용을 실제 파일에 최종 저장하는 명령어는?</summary><p>연결 객체에 대해 <code>con.commit()</code> 명령을 실행합니다.</p></details><label class="vb-know"><input type="checkbox" data-i="3"> 안다</label></li>
+      <li class="vb-card"><details><summary>터미널에서 SQLite 데이터베이스 파일에 직접 접속하여 대화형으로 여는 명령어는?</summary><p><code>sqlite3 파일명.db</code> 명령을 입력합니다.</p></details><label class="vb-know"><input type="checkbox" data-i="4"> 안다</label></li>
+      <li class="vb-card"><details><summary>파이썬 내장 SQLite를 사용할 때 별도 패키지 설치 없이 가져오는 모듈 이름은?</summary><p><code>import sqlite3</code> 구문으로 불러옵니다.</p></details><label class="vb-know"><input type="checkbox" data-i="5"> 안다</label></li>
+    </ol>
+    <p class="vb-msg"></p>
+  </section>
+
+  <section class="pr-sec">
+    <h2>튜터와 다지기</h2>
+    <p class="vb-note">문제를 맞혔어도 내 프로젝트에서 바로 쓰지 못하면 아직 아는 것이 아닙니다. 아래 프롬프트를 Claude에 붙여 넣으면 「통과」라고 할 때까지 내 상황에 맞춘 질문을 계속 받습니다.</p>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>너는 내 바이브 코딩 튜터다. 나는 「SQLite와 SQL로 행정 데이터 관리하기」 단계를 공부하고 있다.
+이 단계의 목표는 「엑셀 한계를 넘는 대용량 민원 데이터를 파일 하나짜리 데이터베이스에 저장하고 SQL로 조건 검색과 부서별 집계를 실행할 수 있습니다.」
+다룰 개념은 「단일 파일 데이터베이스」, 「SQL 기본 구문」, 「고유 제약조건(UNIQUE)」이다.
+
+규칙
+1. 설명부터 하지 말고, 내가 지금 만드는 프로젝트가 무엇인지 먼저 한 가지만 묻는다.
+2. 질문은 한 번에 하나씩. 내 프로젝트 상황에 맞춘 문제를 낸다.
+3. 내가 틀리면 정답을 바로 말하지 말고 힌트를 하나 준 뒤 다시 묻는다.
+4. 개념마다 내가 실제로 보낼 프롬프트를 직접 써 보게 하고, 부족한 점을 고쳐 준다.
+5. 서로 다른 상황 문제 세 개를 연속으로 맞히면 「통과」라고 말하고, 아직 약한 부분을 한 줄로 알려 준다.
+6. 통과하기 전에는 다음 단계로 넘어가지 않는다.</pre></div>
+  </section>
+
+  <nav class="pr-pager"><a class="prev" href="/vibe/playwright-browser.html"><small>← 이전</small>Playwright로 웹 화면 자동화하기</a><a class="next" href="/vibe/javascript-web.html"><small>다음 →</small>바닐라 자바스크립트로 웹 화면 제어하기</a></nav>
+</main>
+
+<footer>&copy; 2026 최승환 · choijc79.github.io</footer>
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/about.html">👤<br>소개</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/guides.html" aria-current="page">⚙️<br>가이드</a>
+  <a href="/memo.html">📋<br>노트</a>
+</div>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'\u2600 라이트':'\u263e 다크';
+})();
+function toggleTheme(){
+  var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'\u2600 라이트':'\u263e 다크';
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+<script src="/js/vibe.js" defer></script>
+</body>
+</html>

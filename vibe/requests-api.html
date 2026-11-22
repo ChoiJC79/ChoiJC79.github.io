@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>requests로 공공데이터 API 호출하기 | 바이브 코딩 단계별 과정</title>
+<meta name="description" content="requests 라이브러리로 공공데이터 API를 호출하여 행정 데이터를 수집하고 JSON 파일로 저장할 수 있다.">
+<meta property="og:title" content="requests로 공공데이터 API 호출하기 | 바이브 코딩 단계별 과정">
+<meta property="og:description" content="requests 라이브러리로 공공데이터 API를 호출하여 행정 데이터를 수집하고 JSON 파일로 저장할 수 있다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/vibe/requests-api.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/practice.css">
+<link rel="stylesheet" href="/css/motion.css">
+<link rel="stylesheet" href="/css/vibe.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 가이드</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9728; 라이트</button>
+</header>
+
+<section class="hero pr-hero">
+  <div class="hero-label"><a href="/vibe.html">바이브 코딩 단계별 과정</a> · 도구 업무 자동화 도구 상자</div>
+  <h1>19. requests로 공공데이터 API 호출하기</h1>
+  <p>requests 라이브러리로 공공데이터 API를 호출하여 행정 데이터를 수집하고 JSON 파일로 저장할 수 있다.</p>
+  <div class="hero-meta">개념 읽기 → 실습 → 요점 카드 모두 「안다」 → 튜터와 대화로 다지기</div>
+</section>
+<main class="pr-wrap vb-lesson" data-slug="requests-api">
+  <p class="vb-lock" hidden></p>
+
+  <section class="pr-sec">
+    <h2>왜 여기서 막히나</h2>
+    <p class="vb-why">행정 포털의 화면을 일일이 복사하거나 수동으로 내려받는 방식은 데이터가 갱신될 때마다 반복 작업을 부릅니다. `requests` 라이브러리를 모르면 웹 자동화를 시도할 때 불필요하게 무거운 브라우저 제어 도구를 사용하다가 잦은 오류를 겪게 됩니다. API 명세서의 요청 주소와 파라미터를 읽을 줄 알면 단 몇 줄의 파이썬 코드로 수천 건의 공공데이터를 바로 확보합니다. 서비스 인증키를 코드 안에 그대로 노출하여 보안 감사에서 지적받는 문제도 사전에 차단합니다.</p>
+  </section>
+
+  <section class="pr-sec">
+    <h2>핵심 개념 세 가지</h2>
+    <ol class="pr-steps">
+    <li><div><b>HTTP GET 요청과 파라미터</b><span>API 서버에 데이터를 조회할 때 사용하는 표준 방식입니다. 요청 주소 뒤에 물음표를 추가하고 조회 기간이나 정렬 기준 같은 조건을 키와 값 형태로 전달합니다. <code>requests.get()</code> 함수에 <code>params</code> 딕셔너리를 넘기면 안전하게 요청 주소를 완성합니다.</span></div></li>
+    <li><div><b>상태 코드와 응답 JSON</b><span>서버가 처리 결과를 3자리 숫자로 알려주는 규약입니다. 정상 처리는 <code>200</code>, 인증키 오류는 <code>401</code>, 일일 호출 횟수 제한 초과는 <code>429</code>, 서버 내부 장애는 <code>500</code>을 반환합니다. 응답 객체의 <code>.json()</code> 메서드를 호출하면 수신한 문자열 데이터를 파이썬 딕셔너리로 즉시 변환합니다.</span></div></li>
+    <li><div><b>환경 변수와 타임아웃 설정</b><span>공공데이터포털에서 발급받은 서비스키는 유출을 막기 위해 코드에 적지 않고 운영체제 환경 변수나 <code>.env</code> 파일에 보관합니다. 공공 서버의 응답 지연으로 스크립트가 멈추는 현상을 방지하기 위해 <code>timeout</code> 옵션을 반드시 지정합니다. 연결 실패에 대비하여 재시도 로직을 구성하면 수집 작업의 안정성을 보장합니다.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="pr-sec">
+    <h2>자주 쓰는 코드</h2>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>import os, requests  # 운영체제 환경 변수와 웹 요청 라이브러리를 불러옵니다.
+api_key = os.environ.get(&quot;DATA_GO_KR_API_KEY&quot;)  # 시스템 환경 변수에서 공공데이터 서비스키를 읽어옵니다.
+url = &quot;https://apis.data.go.kr/기관번호/서비스명/오퍼레이션&quot;  # 활용 신청한 API의 요청 주소로 바꿉니다.
+params = {&quot;serviceKey&quot;: api_key, &quot;returnType&quot;: &quot;JSON&quot;, &quot;numOfRows&quot;: 10}  # 서비스키와 조회 건수를 파라미터로 설정합니다.
+response = requests.get(url, params=params, timeout=10)  # 10초 타임아웃을 적용하여 서버로 GET 요청을 보냅니다.
+if response.status_code == 200:  # 응답 상태 코드가 정상인 200인지 검사합니다.
+    data = response.json()  # 응답 본문에서 JSON 데이터를 파이썬 딕셔너리로 변환합니다.
+    items = data[&quot;response&quot;][&quot;body&quot;][&quot;items&quot;]  # 본문 데이터에서 실제 목록 항목을 추출합니다.
+    print(f&quot;조회 성공: {len(items)}건&quot;)  # 수신한 데이터 건수를 화면에 출력합니다.</pre></div>
+  </section>
+
+  <section class="pr-sec">
+    <h2>같은 일, 다른 요청</h2>
+    <div class="vb-compare">
+      <div class="vb-ex bad"><h3>이렇게 요청하면</h3><pre>공공데이터포털에서 우리 지역 민원 통계 가져오는 파이썬 코드 짜줘.</pre></div>
+      <div class="vb-ex good"><h3>이렇게 요청한다</h3><div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>`requests` 라이브러리를 사용해 공공데이터포털 API를 호출하는 파이썬 스크립트를 작성해 주십시오.
+인증키는 코드에 직접 적지 말고 `os.environ.get(&quot;PUBLIC_DATA_API_KEY&quot;)`로 가져오도록 처리해 주십시오.
+요청 파라미터는 `page=1`, `perPage=50`, `returnType=JSON`으로 구성하고 네트워크 지연에 대비해 `timeout=10`을 설정해 주십시오.
+응답 상태 코드가 `200`인지 확인하고 `401`, `429`, `500` 오류가 발생하면 원인을 한국어로 출력한 뒤 중단해야 합니다.
+정상 응답인 경우 JSON 본문에서 목록 데이터를 추출하여 `data/complaints.json` 파일로 저장하고 총 수집 건수를 콘솔에 출력해 주십시오.</pre></div></div>
+    </div>
+    <p class="vb-diff">사용할 도구로 `requests`를 명시하고 환경 변수와 파라미터 규칙을 사전에 전달하여 보안 사고와 잘못된 요청을 방지합니다. 상태 코드별 예외 처리와 `timeout` 조건을 지정하여 네트워크 장애 발생 시 스크립트가 무한정 멈추는 문제를 예방합니다. 결과물이 저장될 파일 경로와 검증 방식을 정확히 지시하므로 생성된 코드의 정상 작동 여부를 즉시 판단할 수 있습니다.</p>
+  </section>
+
+  <section class="pr-sec">
+    <h2>30분 실습</h2>
+    <ol class="pr-steps">
+    <li><div><span>터미널에서 <code>export PUBLIC_DATA_API_KEY=&quot;발급받은인증키&quot;</code> 명령으로 공공데이터 서비스키를 환경 변수에 등록합니다.</span></div></li>
+    <li><div><span>작업 폴더에 <code>api_fetch.py</code> 파일을 생성하고 <code>requests</code> 라이브러리를 임포트하는 기본 코드를 작성합니다.</span></div></li>
+    <li><div><span>API 명세서에 안내된 기본 주소와 요청 파라미터를 딕셔너리로 작성한 뒤 <code>timeout=10</code>을 설정하여 <code>requests.get()</code>을 실행합니다.</span></div></li>
+    <li><div><span>수신된 응답의 <code>status_code</code>가 <code>200</code>인지 확인하고 수신 데이터를 <code>data/result.json</code> 파일에 저장한 뒤 파일 내용을 검토합니다.</span></div></li>
+    </ol>
+    <h3 class="vb-sub">통과 기준</h3>
+    <ul class="pr-checks">
+    <li>터미널에서 <code>python api_fetch.py</code> 실행 시 콘솔에 상태 코드 <code>200</code>과 함께 수집 건수 숫자가 출력됩니다.</li>
+    <li>프로젝트 폴더 하위에 <code>data/result.json</code> 파일이 생성되고 내부에 유효한 JSON 형식 데이터가 저장되어 있습니다.</li>
+    <li>스크립트 코드 원본에 실제 API 비밀키 문자열이 평문으로 노출되어 있지 않습니다.</li>
+    </ul>
+  </section>
+
+  <section class="pr-sec" id="cards">
+    <h2>요점 카드</h2>
+    <p class="vb-note">질문을 보고 답을 먼저 떠올린 뒤 눌러서 확인합니다. 답을 보지 않고 말할 수 있는 카드에만 「안다」를 표시하고, 모든 카드에 표시하면 이 단계를 통과합니다.</p>
+    <button type="button" class="vb-open">모두 펼치기</button>
+    <ol class="vb-cards">
+      <li class="vb-card"><details><summary><code>requests</code>로 10초 대기 제한을 두고 GET 요청을 보내는 코드는?</summary><p><code>response = requests.get(url, params=params, timeout=10)</code> 한 줄을 실행합니다.</p></details><label class="vb-know"><input type="checkbox" data-i="0"> 안다</label></li>
+      <li class="vb-card"><details><summary>API 응답이 정상인지 확인할 때 검사하는 HTTP 상태 코드는?</summary><p><code>response.status_code == 200</code> 조건을 확인합니다. 200은 서버가 요청을 정상적으로 처리했음을 나타내는 표준 성공 코드입니다.</p></details><label class="vb-know"><input type="checkbox" data-i="1"> 안다</label></li>
+      <li class="vb-card"><details><summary>공공데이터포털 API에서 인증키가 잘못됐을 때 확인할 곳은?</summary><p>HTTP <code>401</code>로 오기도 하지만, 상태코드는 <code>200</code>인데 본문에 <code>SERVICE_KEY_IS_NOT_REGISTERED_ERROR</code> 같은 오류 문구가 담겨 오는 경우가 많습니다. 그래서 상태코드와 함께 응답 본문도 출력해 봅니다.</p></details><label class="vb-know"><input type="checkbox" data-i="2"> 안다</label></li>
+      <li class="vb-card"><details><summary>일일 API 호출 허용 횟수를 초과했을 때 수신하는 HTTP 상태 코드는?</summary><p>표준은 <code>429</code>(요청이 너무 많음)입니다. 공공데이터포털은 일일 한도를 넘으면 본문에 <code>LIMITED_NUMBER_OF_SERVICE_REQUESTS_EXCEEDS_ERROR</code>를 담아 알려 주기도 합니다.</p></details><label class="vb-know"><input type="checkbox" data-i="3"> 안다</label></li>
+      <li class="vb-card"><details><summary><code>requests</code> 응답 본문을 파이썬 딕셔너리로 역직렬화하는 메서드는?</summary><p><code>response.json()</code> 메서드입니다. 서버가 반환한 JSON 문자열을 파이썬 객체로 즉시 변환합니다.</p></details><label class="vb-know"><input type="checkbox" data-i="4"> 안다</label></li>
+      <li class="vb-card"><details><summary>macOS 터미널에서 API 서비스키를 임시 환경 변수로 등록하는 쉘 명령은?</summary><p><code>export DATA_GO_KR_API_KEY=&quot;인증키&quot;</code>를 실행하면 그 터미널 창에서만 유지되고, 파이썬에서는 <code>os.environ.get(&quot;DATA_GO_KR_API_KEY&quot;)</code>로 읽습니다. 계속 쓰려면 <code>.env</code> 파일에 두고 <code>.gitignore</code>에 등록합니다.</p></details><label class="vb-know"><input type="checkbox" data-i="5"> 안다</label></li>
+    </ol>
+    <p class="vb-msg"></p>
+  </section>
+
+  <section class="pr-sec">
+    <h2>튜터와 다지기</h2>
+    <p class="vb-note">문제를 맞혔어도 내 프로젝트에서 바로 쓰지 못하면 아직 아는 것이 아닙니다. 아래 프롬프트를 Claude에 붙여 넣으면 「통과」라고 할 때까지 내 상황에 맞춘 질문을 계속 받습니다.</p>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>너는 내 바이브 코딩 튜터다. 나는 「requests로 공공데이터 API 호출하기」 단계를 공부하고 있다.
+이 단계의 목표는 「requests 라이브러리로 공공데이터 API를 호출하여 행정 데이터를 수집하고 JSON 파일로 저장할 수 있다.」
+다룰 개념은 「HTTP GET 요청과 파라미터」, 「상태 코드와 응답 JSON」, 「환경 변수와 타임아웃 설정」이다.
+
+규칙
+1. 설명부터 하지 말고, 내가 지금 만드는 프로젝트가 무엇인지 먼저 한 가지만 묻는다.
+2. 질문은 한 번에 하나씩. 내 프로젝트 상황에 맞춘 문제를 낸다.
+3. 내가 틀리면 정답을 바로 말하지 말고 힌트를 하나 준 뒤 다시 묻는다.
+4. 개념마다 내가 실제로 보낼 프롬프트를 직접 써 보게 하고, 부족한 점을 고쳐 준다.
+5. 서로 다른 상황 문제 세 개를 연속으로 맞히면 「통과」라고 말하고, 아직 약한 부분을 한 줄로 알려 준다.
+6. 통과하기 전에는 다음 단계로 넘어가지 않는다.</pre></div>
+  </section>
+
+  <nav class="pr-pager"><a class="prev" href="/vibe/office-docs.html"><small>← 이전</small>pypdf와 HWPX로 문서 자동화하기</a><a class="next" href="/vibe/playwright-browser.html"><small>다음 →</small>Playwright로 웹 화면 자동화하기</a></nav>
+</main>
+
+<footer>&copy; 2026 최승환 · choijc79.github.io</footer>
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/about.html">👤<br>소개</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/guides.html" aria-current="page">⚙️<br>가이드</a>
+  <a href="/memo.html">📋<br>노트</a>
+</div>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'\u2600 라이트':'\u263e 다크';
+})();
+function toggleTheme(){
+  var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'\u2600 라이트':'\u263e 다크';
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+<script src="/js/vibe.js" defer></script>
+</body>
+</html>

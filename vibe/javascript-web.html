@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>바닐라 자바스크립트로 웹 화면 제어하기 | 바이브 코딩 단계별 과정</title>
+<meta name="description" content="외부 라이브러리 없이 순수 자바스크립트로 웹 요소를 제어하고 JSON 공공데이터를 읽어와 화면에 목록을 출력할 수 있습니다.">
+<meta property="og:title" content="바닐라 자바스크립트로 웹 화면 제어하기 | 바이브 코딩 단계별 과정">
+<meta property="og:description" content="외부 라이브러리 없이 순수 자바스크립트로 웹 요소를 제어하고 JSON 공공데이터를 읽어와 화면에 목록을 출력할 수 있습니다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/vibe/javascript-web.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/practice.css">
+<link rel="stylesheet" href="/css/motion.css">
+<link rel="stylesheet" href="/css/vibe.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 가이드</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9728; 라이트</button>
+</header>
+
+<section class="hero pr-hero">
+  <div class="hero-label"><a href="/vibe.html">바이브 코딩 단계별 과정</a> · 도구 업무 자동화 도구 상자</div>
+  <h1>22. 바닐라 자바스크립트로 웹 화면 제어하기</h1>
+  <p>외부 라이브러리 없이 순수 자바스크립트로 웹 요소를 제어하고 JSON 공공데이터를 읽어와 화면에 목록을 출력할 수 있습니다.</p>
+  <div class="hero-meta">개념 읽기 → 실습 → 요점 카드 모두 「안다」 → 튜터와 대화로 다지기</div>
+</section>
+<main class="pr-wrap vb-lesson" data-slug="javascript-web">
+  <p class="vb-lock" hidden></p>
+
+  <section class="pr-sec">
+    <h2>왜 여기서 막히나</h2>
+    <p class="vb-why">AI에게 웹페이지 기능 구현을 요청하면 복잡한 프레임워크나 외부 패키지를 무분별하게 추가하여 GitHub Pages 배포 단계에서 빌드 오류를 겪기 쉽습니다. 브라우저가 기본 지원하는 순수 자바스크립트의 동작 방식을 이해해야 가벼운 단일 HTML 파일로 내부 알림판이나 민원 통계 조회 페이지를 안정적으로 운영합니다. 화면 요소를 선택하고 데이터를 화면에 그려내는 원리를 알면 브라우저 개발자 도구로 에러 원인을 바로 찾습니다.</p>
+  </section>
+
+  <section class="pr-sec">
+    <h2>핵심 개념 세 가지</h2>
+    <ol class="pr-steps">
+    <li><div><b>DOM 선택과 이벤트</b><span><code>document.querySelector()</code> 함수로 원하는 HTML 요소를 집어내고 <code>addEventListener()</code> 함수로 클릭이나 입력 이벤트를 감지합니다. 버튼을 눌렀을 때 특정 함수가 실행되도록 연결하는 기본 구조입니다.</span></div></li>
+    <li><div><b>비동기 데이터 호출(fetch)</b><span><code>fetch()</code> 함수를 사용하면 페이지 전체를 새로고침하지 않고 외부 <code>data.json</code> 파일에서 행정 목록을 읽어옵니다. 받아온 JSON 배열을 순회하면서 HTML 문자열을 동적으로 만들어 화면에 배치합니다.</span></div></li>
+    <li><div><b>로컬 저장소(localStorage)</b><span><code>localStorage.setItem()</code>과 <code>localStorage.getItem()</code> 함수를 사용하면 사용자의 브라우저 안에 설정값이나 입력 기록을 텍스트로 보관합니다. 사용자가 페이지를 닫았다가 다시 열어도 검색 조건이나 입력한 내용이 유지됩니다.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="pr-sec">
+    <h2>자주 쓰는 코드</h2>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>const btn = document.querySelector(&#x27;#load-btn&#x27;);  // 아이디가 load-btn인 버튼 요소를 찾습니다.
+const list = document.querySelector(&#x27;#notice-list&#x27;);  // 공지사항을 넣을 목록 요소를 찾습니다.
+btn.addEventListener(&#x27;click&#x27;, async () =&gt; {  // 버튼을 클릭했을 때 비동기 동작을 수행하도록 등록합니다.
+  const res = await fetch(&#x27;data.json&#x27;);  // 같은 폴더의 data.json 파일을 비동기로 요청합니다.
+  const data = await res.json();  // 받아온 응답 본문을 자바스크립트 객체 배열로 변환합니다.
+  list.innerHTML = data.map(item =&gt; `&lt;li&gt;${item.title}&lt;/li&gt;`).join(&#x27;&#x27;);  // 공지 제목들을 li 태그로 묶어 화면에 그립니다.
+  localStorage.setItem(&#x27;lastLoaded&#x27;, new Date().toISOString());  // 마지막으로 데이터를 불러온 시각을 브라우저에 저장합니다.
+});  // 클릭 이벤트 처리기 설정을 마칩니다.</pre></div>
+  </section>
+
+  <section class="pr-sec">
+    <h2>같은 일, 다른 요청</h2>
+    <div class="vb-compare">
+      <div class="vb-ex bad"><h3>이렇게 요청하면</h3><pre>웹페이지에서 버튼 누르면 JSON 데이터 가져와서 화면에 보여주는 코드 만들어 줘.</pre></div>
+      <div class="vb-ex good"><h3>이렇게 요청한다</h3><div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>GitHub Pages에 게시할 단일 `index.html` 파일 내부의 `&lt;script&gt;` 코드를 작성해 주십시오. 외부 라이브러리나 번들러 없이 브라우저 내장 바닐라 자바스크립트만 사용해야 합니다. `#search-btn` 버튼 클릭 시 `fetch(&#x27;notices.json&#x27;)` 명령으로 배열 데이터를 읽어와 `#result-table` 요소 내부에 `&lt;tr&gt;&lt;td&gt;제목&lt;/td&gt;&lt;td&gt;담당부서&lt;/td&gt;&lt;/tr&gt;` 형식으로 행을 생성해 주십시오. 네트워크 오류 발생 시 `console.error`로 상세 내용을 기록하고 화면에는 안내 문구를 표시하도록 `try...catch` 구문을 포함해 주십시오.</pre></div></div>
+    </div>
+    <p class="vb-diff">순수 바닐라 자바스크립트 사용을 명시하여 React나 빌드 도구 같은 불필요한 의존성이 섞이지 않도록 차단합니다. 대상 태그의 식별자와 데이터 파일 경로를 지정하고 `try...catch` 예외 처리까지 지시하여 오류 추적이 쉬워집니다.</p>
+  </section>
+
+  <section class="pr-sec">
+    <h2>30분 실습</h2>
+    <ol class="pr-steps">
+    <li><div><span><code>index.html</code> 파일에 버튼(<code>#load-btn</code>)과 비어 있는 <code>&lt;ul&gt;</code> 태그(<code>#dept-list</code>)를 작성합니다.</span></div></li>
+    <li><div><span><code>notices.json</code> 파일에 부서명과 공지 제목이 들어간 3건의 JSON 배열 데이터를 작성합니다.</span></div></li>
+    <li><div><span><code>fetch()</code> 함수로 <code>notices.json</code>을 호출하여 <code>dept-list</code> 태그 안에 목록을 동적으로 추가하는 스크립트를 작성합니다.</span></div></li>
+    <li><div><span>macOS Safari 또는 Chrome에서 <code>Option + Cmd + I</code> 키를 눌러 개발자 도구 콘솔 탭을 열고 네트워크 요청과 에러 로그를 확인합니다.</span></div></li>
+    </ol>
+    <h3 class="vb-sub">통과 기준</h3>
+    <ul class="pr-checks">
+    <li>웹 화면에서 버튼을 클릭했을 때 새로고침 없이 JSON 파일 내용이 목록으로 화면에 나타납니다.</li>
+    <li>개발자 도구 콘솔 창에 빨간색 문법 오류나 파일 경로 누락 에러가 표시되지 않습니다.</li>
+    <li><code>Application</code> 탭의 <code>Local Storage</code> 항목에 지정한 키와 값이 정상적으로 기록되어 있습니다.</li>
+    </ul>
+  </section>
+
+  <section class="pr-sec" id="cards">
+    <h2>요점 카드</h2>
+    <p class="vb-note">질문을 보고 답을 먼저 떠올린 뒤 눌러서 확인합니다. 답을 보지 않고 말할 수 있는 카드에만 「안다」를 표시하고, 모든 카드에 표시하면 이 단계를 통과합니다.</p>
+    <button type="button" class="vb-open">모두 펼치기</button>
+    <ol class="vb-cards">
+      <li class="vb-card"><details><summary>HTML 문서에서 특정 클래스나 아이디를 가진 요소를 하나 선택하는 표준 자바스크립트 함수는?</summary><p><code>document.querySelector(&#x27;선택자&#x27;)</code> 함수를 사용합니다.</p></details><label class="vb-know"><input type="checkbox" data-i="0"> 안다</label></li>
+      <li class="vb-card"><details><summary>버튼 클릭 같은 사용자 행동을 감지하여 동작을 실행하도록 등록하는 함수는?</summary><p><code>요소.addEventListener(&#x27;click&#x27;, 함수)</code> 형식을 사용합니다.</p></details><label class="vb-know"><input type="checkbox" data-i="1"> 안다</label></li>
+      <li class="vb-card"><details><summary>별도 라이브러리 없이 외부 JSON 파일을 비동기로 읽어올 때 사용하는 브라우저 내장 함수는?</summary><p><code>fetch(&#x27;경로&#x27;)</code> 함수를 사용합니다.</p></details><label class="vb-know"><input type="checkbox" data-i="2"> 안다</label></li>
+      <li class="vb-card"><details><summary>사용자 브라우저에 데이터를 반영구적으로 저장할 때 사용하는 저장소 객체 이름은?</summary><p><code>localStorage</code> 객체를 사용하며 <code>localStorage.setItem(&#x27;키&#x27;, &#x27;값&#x27;)</code>으로 기록합니다.</p></details><label class="vb-know"><input type="checkbox" data-i="3"> 안다</label></li>
+      <li class="vb-card"><details><summary>macOS 브라우저에서 개발자 도구 콘솔 화면을 여는 단축키는?</summary><p>Chrome에서 <code>Option + Cmd + J</code>를 누르면 콘솔이 바로 열리고, <code>Option + Cmd + I</code>는 개발자 도구 전체를 엽니다. 윈도우에서는 <code>F12</code>입니다.</p></details><label class="vb-know"><input type="checkbox" data-i="4"> 안다</label></li>
+      <li class="vb-card"><details><summary>선택한 HTML 요소 내부의 태그 구성을 새로운 문자열로 교체할 때 사용하는 속성은?</summary><p><code>요소.innerHTML = &#x27;문자열&#x27;</code>입니다. 다만 외부에서 받은 글자를 그대로 넣으면 스크립트가 실행될 수 있으므로, 글자만 넣을 때는 <code>요소.textContent</code>를 씁니다.</p></details><label class="vb-know"><input type="checkbox" data-i="5"> 안다</label></li>
+    </ol>
+    <p class="vb-msg"></p>
+  </section>
+
+  <section class="pr-sec">
+    <h2>튜터와 다지기</h2>
+    <p class="vb-note">문제를 맞혔어도 내 프로젝트에서 바로 쓰지 못하면 아직 아는 것이 아닙니다. 아래 프롬프트를 Claude에 붙여 넣으면 「통과」라고 할 때까지 내 상황에 맞춘 질문을 계속 받습니다.</p>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>너는 내 바이브 코딩 튜터다. 나는 「바닐라 자바스크립트로 웹 화면 제어하기」 단계를 공부하고 있다.
+이 단계의 목표는 「외부 라이브러리 없이 순수 자바스크립트로 웹 요소를 제어하고 JSON 공공데이터를 읽어와 화면에 목록을 출력할 수 있습니다.」
+다룰 개념은 「DOM 선택과 이벤트」, 「비동기 데이터 호출(fetch)」, 「로컬 저장소(localStorage)」이다.
+
+규칙
+1. 설명부터 하지 말고, 내가 지금 만드는 프로젝트가 무엇인지 먼저 한 가지만 묻는다.
+2. 질문은 한 번에 하나씩. 내 프로젝트 상황에 맞춘 문제를 낸다.
+3. 내가 틀리면 정답을 바로 말하지 말고 힌트를 하나 준 뒤 다시 묻는다.
+4. 개념마다 내가 실제로 보낼 프롬프트를 직접 써 보게 하고, 부족한 점을 고쳐 준다.
+5. 서로 다른 상황 문제 세 개를 연속으로 맞히면 「통과」라고 말하고, 아직 약한 부분을 한 줄로 알려 준다.
+6. 통과하기 전에는 다음 단계로 넘어가지 않는다.</pre></div>
+  </section>
+
+  <nav class="pr-pager"><a class="prev" href="/vibe/sqlite-sql.html"><small>← 이전</small>SQLite와 SQL로 행정 데이터 관리하기</a></nav>
+</main>
+
+<footer>&copy; 2026 최승환 · choijc79.github.io</footer>
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/about.html">👤<br>소개</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/guides.html" aria-current="page">⚙️<br>가이드</a>
+  <a href="/memo.html">📋<br>노트</a>
+</div>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'\u2600 라이트':'\u263e 다크';
+})();
+function toggleTheme(){
+  var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'\u2600 라이트':'\u263e 다크';
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+<script src="/js/vibe.js" defer></script>
+</body>
+</html>
