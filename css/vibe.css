@@ -1,0 +1,38 @@
+/* 바이브 코딩 과정 목록·레슨 스타일 (practice.css 위에 얹음, theme.css 토큰 사용) */
+.vb-level { margin-top: 2.6rem; }
+.vb-level > h2 { display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; font: 700 18px var(--font-body); color: var(--ink); margin: 0 0 0.8rem; }
+.vb-level > h2 small { font: 400 12.5px var(--font-body); color: var(--muted); margin-left: auto; }
+.vb-lv { font: 600 13px var(--font-mono); color: var(--accent); }
+.vb-row.done .pr-title { color: var(--muted); }
+.vb-row.done .vb-state { color: var(--green, var(--accent2)); }
+.vb-row.now { box-shadow: inset 3px 0 0 var(--accent); }
+.vb-row.now .vb-state { color: var(--accent); font-weight: 600; }
+
+.vb-lock { margin: 1.6rem 0 0; padding: 0.8rem 1rem; border: 1px solid var(--border); border-radius: var(--radius, 12px); background: var(--surface); font-size: 14px; color: var(--muted); }
+.vb-lock a { color: var(--accent); }
+.vb-why, .vb-diff, .vb-note { font-size: 15px; line-height: 1.85; color: var(--text); margin: 0; }
+.vb-note { color: var(--muted); font-size: 14px; margin-bottom: 1rem; }
+.vb-diff { margin-top: 1rem; }
+.vb-sub { font: 600 14px var(--font-body); color: var(--ink); margin: 1.4rem 0 0.4rem; }
+
+.vb-compare { display: grid; gap: 0.8rem; }
+.vb-ex h3 { font: 600 12.5px var(--font-body); color: var(--muted); margin: 0 0 0.4rem; }
+.vb-ex.good h3 { color: var(--accent); }
+.vb-ex.bad pre { margin: 0; padding: 1rem 1.2rem; border: 1px dashed var(--border); border-radius: var(--radius, 12px); font: 13px/1.75 var(--font-mono); color: var(--muted); white-space: pre-wrap; overflow-wrap: anywhere; }
+
+.vb-q { border: 1px solid var(--border); border-radius: var(--radius, 12px); padding: 1rem 1.1rem 0.9rem; margin: 0 0 0.9rem; background: var(--surface); }
+.vb-q legend { float: left; width: 100%; padding: 0; margin-bottom: 0.7rem; font-weight: 600; font-size: 15px; line-height: 1.6; color: var(--ink); }
+.vb-opt { display: flex; gap: 0.6rem; align-items: flex-start; padding: 0.5rem 0.6rem; border-radius: 8px; font-size: 14px; line-height: 1.6; cursor: pointer; transition: background-color 0.15s; }
+.vb-opt:hover { background: var(--bg); }
+.vb-opt input { margin-top: 0.3rem; accent-color: var(--accent); flex: none; }
+.vb-q.right { border-color: var(--green, var(--accent2)); }
+.vb-q.wrong { border-color: var(--accent3); }
+.vb-opt.answer { background: var(--bg); font-weight: 600; }
+.vb-ex-why { clear: both; margin-top: 0.6rem; padding-top: 0.6rem; border-top: 1px dashed var(--border); font-size: 13.5px; line-height: 1.7; color: var(--muted); }
+.vb-ex-why p { margin: 0 0 0.3rem; }
+.vb-submit { margin: 0.4rem 0.5rem 0 0; background: var(--accent); color: var(--bg); border: 0; border-radius: 999px; padding: 0.6rem 1.4rem; font: 600 14px var(--font-body); cursor: pointer; }
+.vb-submit:active { transform: scale(0.98); }
+.vb-msg { font-size: 14.5px; line-height: 1.7; margin: 0.8rem 0 0; }
+.vb-msg.pass { color: var(--green, var(--accent2)); font-weight: 600; }
+.vb-msg.fail { color: var(--accent3); }
+.vb-passed { font-size: 13.5px; color: var(--muted); margin: 0 0 0.8rem; }

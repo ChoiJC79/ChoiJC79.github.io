@@ -124,6 +124,7 @@ GitHub Pages 기반 개인 사이트 (`choijc79.github.io`) 관리 및 콘텐츠
 | `ai_practice.json` | AI 실무 가이드 원본 데이터 (편당 slug·date·cat·icon·title·summary·when·steps·prompt·cautions·takeaway). 분류는 기초·업무·연구·코딩·자동화, 날짜·슬러그 중복 불가 |
 | `build_practice.py` | `ai_practice.json` → `practice.html`(목록, 분류 탭) + `practice/{슬러그}.html` 생성. 데이터 수정 후 수동 실행 (`--check`로 검증만 가능). 주간 GitHub 도구 시리즈(`guides/`)와 별개 |
 | `practice.html`, `practice/`, `css/practice.css` | AI 실무 가이드 목록·상세 (생성물 — 직접 고치지 말고 JSON 수정 후 재생성). 상세는 '이럴 때·핵심·꼭 지킬 것' 세 칸 요약 → 단계 → 복사 프롬프트 → 함께 챙길 것 순서 |
+| `vibe_course.json`, `build_vibe.py`, `vibe.html`, `vibe/`, `css/vibe.css`, `js/vibe.js` | 바이브 코딩 단계별 과정(Lv.3~6, 12편). 레슨마다 개념·나쁜/좋은 요청·실습·확인 문제 5개(모두 맞혀야 통과, 기록은 localStorage `vibe-cleared`)·튜터 프롬프트. JSON 수정 후 `python3 build_vibe.py` |
 | `tour.html` | 투어 기사 목록 |
 | `whisky.html` | 위스키 가이드 목록 |
 | `memo.html` | 정리노트 (publish.py가 자동 생성) |

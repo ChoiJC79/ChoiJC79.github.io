@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>정확한 맥락을 전달하는 방법 | 바이브 코딩 단계별 과정</title>
+<meta name="description" content="CLAUDE.md 규칙 작성, 대상 파일 지정, 예시 제공을 통해 필요한 맥락만 정확히 전달할 수 있다.">
+<meta property="og:title" content="정확한 맥락을 전달하는 방법 | 바이브 코딩 단계별 과정">
+<meta property="og:description" content="CLAUDE.md 규칙 작성, 대상 파일 지정, 예시 제공을 통해 필요한 맥락만 정확히 전달할 수 있다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/vibe/give-context.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/practice.css">
+<link rel="stylesheet" href="/css/motion.css">
+<link rel="stylesheet" href="/css/vibe.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 가이드</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9728; 라이트</button>
+</header>
+
+<section class="hero pr-hero">
+  <div class="hero-label"><a href="/vibe.html">바이브 코딩 단계별 과정</a> · Lv.3 말로 설계하기</div>
+  <h1>03. 정확한 맥락을 전달하는 방법</h1>
+  <p>CLAUDE.md 규칙 작성, 대상 파일 지정, 예시 제공을 통해 필요한 맥락만 정확히 전달할 수 있다.</p>
+  <div class="hero-meta">개념 읽기 → 실습 → 확인 문제 5개 모두 맞히기 → 튜터와 대화로 다지기</div>
+</section>
+<main class="pr-wrap vb-lesson" data-slug="give-context" data-prev="one-task-at-a-time" data-prev-title="한 번에 하나의 작업만 지시하기">
+  <p class="vb-lock" hidden></p>
+
+  <section class="pr-sec">
+    <h2>왜 여기서 막히나</h2>
+    <p class="vb-why">인공지능에게 아무런 배경지식을 주지 않으면 프로젝트 전체를 헤매며 엉뚱한 라이브러리를 설치하거나 기존 코딩 스타일을 무시합니다. 반대로 불필요한 대화가 50턴 이상 길어지면 앞서 약속한 지침을 잊어버리고 오작동하기 시작합니다. 프로젝트 공통 규칙은 파일에 기록하고, 작업 파일은 경로를 정확히 적어 주며, 길어진 대화는 주기적으로 비워야 일관성을 유지합니다.</p>
+  </section>
+
+  <section class="pr-sec">
+    <h2>핵심 개념 세 가지</h2>
+    <ol class="pr-steps">
+    <li><div><b>CLAUDE.md 지침 파일</b><span>프로젝트 루트에 위치하며 Claude Code가 대화를 시작할 때마다 자동으로 읽는 지침서입니다. /init 명령으로 생성할 수 있으며, 공통 코딩 스타일, 금지 사항, 빌드 명령 등을 정의합니다. 매번 프롬프트에 같은 주의사항을 반복해서 적는 수고를 없앱니다.</span></div></li>
+    <li><div><b>정확한 파일 지정과 입출력 예시</b><span>명령을 내릴 때 관련된 파일 경로를 직접 적고 변경 전후의 데이터 예시를 보여주는 방식입니다. 인공지능이 관련 없는 수십 개 파일을 읽느라 시간을 낭비하지 않도록 통제합니다. 구체적인 예시는 백 줄의 설명보다 정확하게 의도를 전달합니다.</span></div></li>
+    <li><div><b>대화 맥락 청소 (/clear와 /compact)</b><span>대화가 오래 이어져 이전 기록이 쌓이면 인공지능이 과거 오류에 갇히거나 지시를 혼동합니다. 독립된 새 작업을 시작할 때는 /clear로 세션을 깨끗이 비우고, 진행 중인 맥락을 보존해야 할 때는 /compact로 요약합니다. 맥락 길이를 적절히 유지하는 것이 정확도를 높이는 지름길입니다.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="pr-sec">
+    <h2>같은 일, 다른 요청</h2>
+    <div class="vb-compare">
+      <div class="vb-ex bad"><h3>이렇게 요청하면</h3><pre>저번에 만든 파일에서 날짜 나오는 부분 이상하니까 공무원 서식에 맞게 좀 고쳐줘.</pre></div>
+      <div class="vb-ex good"><h3>이렇게 요청한다</h3><div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>scripts/format_report.py 파일의 날짜 출력 양식을 수정합니다.
+
+[수정 대상 파일]
+scripts/format_report.py
+
+[요구 사항]
+현재 &#x27;2026-03-05&#x27; 형태로 출력되는 날짜를 한국 공문서 표준 서식인 &#x27;2026. 3. 5.&#x27; 형태로 변경합니다.
+- 연도 뒤, 월 뒤, 일 뒤에 각각 마침표를 찍고 공백 한 칸을 둡니다.
+- 월과 일의 앞자리 0은 제거합니다.
+
+[입출력 예시]
+- 입력: datetime(2026, 3, 5)
+- 출력: &#x27;2026. 3. 5.&#x27;
+- 입력: datetime(2026, 11, 20)
+- 출력: &#x27;2026. 11. 20.&#x27;
+
+CLAUDE.md에 정의된 파이썬 표준 라이브러리 준수 규칙을 따르고, 다른 외부 패키지는 설치하지 마세요.</pre></div></div>
+    </div>
+    <p class="vb-diff">좋은 예시는 수정할 파일 경로를 명확히 지정하고 변경 전후의 입출력 예시를 구체적으로 제시했습니다. 또한 프로젝트 지침을 상기시켜 불필요한 라이브러리가 추가되는 현상을 막았습니다.</p>
+  </section>
+
+  <section class="pr-sec">
+    <h2>30분 실습</h2>
+    <ol class="pr-steps">
+    <li><div><span>프로젝트 터미널에서 /init을 실행하거나 직접 CLAUDE.md 파일을 생성합니다.</span></div></li>
+    <li><div><span>CLAUDE.md 안에 본인 업무의 필수 규칙(예: 외부 라이브러리 사용 금지, 공문서 날짜 형식 표기 등) 3가지를 작성합니다.</span></div></li>
+    <li><div><span>수정하려는 특정 파일 경로와 구체적인 입출력 예시 2쌍을 포함한 프롬프트를 전송합니다.</span></div></li>
+    <li><div><span>작업이 성공적으로 끝나면 /clear를 입력하여 세션을 초기화하고 다음 작업 준비를 마칩니다.</span></div></li>
+    </ol>
+    <h3 class="vb-sub">통과 기준</h3>
+    <ul class="pr-checks">
+    <li>프로젝트 루트에 유효한 규칙이 적힌 CLAUDE.md 파일이 존재합니다.</li>
+    <li>프롬프트에 수정할 대상 파일의 상대 경로가 명시되어 있습니다.</li>
+    <li>원하는 결과에 대한 입력과 출력 예시가 최소 1쌍 이상 프롬프트에 포함되었습니다.</li>
+    </ul>
+  </section>
+
+  <section class="pr-sec" id="quiz">
+    <h2>확인 문제</h2>
+    <p class="vb-note">다섯 문제를 모두 맞혀야 이 단계를 통과합니다. 틀리면 해설을 읽고 다시 풀면 되고, 다시 풀 때마다 문제와 보기 순서가 바뀝니다.</p>
+    <div class="vb-quiz"></div>
+    <script type="application/json" class="vb-data">[{"q": "매번 프롬프트를 보낼 때마다 「외부 라이브러리를 쓰지 말고 순수 자바스크립트로만 짜라」고 반복해서 적고 있습니다. 가장 올바른 해결책은 무엇입니까?", "options": ["프롬프트 맨 앞에 느낌표를 여러 개 붙여 강조한다.", "CLAUDE.md 파일에 외부 패키지 설치 금지 및 순수 자바스크립트 사용 규칙을 적어둔다.", "매번 코드가 완성된 후 외부 라이브러리가 있는지 확인하고 지워달라고 한다.", "Claude Code 대신 브라우저 챗봇을 켜서 복사해 붙여넣는다."], "answer": 1, "why": ["강조 기호는 일관된 시스템 지침이 되지 못하며 규칙 준수를 보장하지 않습니다.", "CLAUDE.md에 프로젝트 규칙을 적어두면 매 세션마다 자동으로 반영되어 반복 입력을 줄입니다.", "사후에 패키지를 제거하면 작성된 로직 전체를 다시 뜯어고쳐야 합니다.", "브라우저 챗봇을 쓰면 프로젝트 파일 구조와 로컬 환경을 연동하는 이점을 잃습니다."]}, {"q": "한 대화창에서 40턴 이상 질의응답을 이어가다 보니 인공지능이 이전의 지시를 잊고 엉뚱한 답변을 하기 시작했습니다. 이때 취해야 할 가장 적절한 행동은 무엇입니까?", "options": ["이전 지침을 다시 설명하지 않고 인공지능에게 제대로 다시 고쳐 달라고만 요청한다.", "새 세션을 시작하지 않고 맥락이 길어진 대화창에 추가 요구사항을 계속해서 덧붙인다.", "지금까지의 핵심 내용을 정리한 뒤 /clear로 대화를 비우거나 /compact로 압축한다.", "기존 질문 40개를 처음부터 끝까지 한 화면에 다시 복사해서 붙여넣는다."], "answer": 2, "why": ["대화 맥락이 포화된 상태에서 구체적 설명 없이 다시 고쳐 달라고만 하면 같은 실수를 반복합니다.", "맥락 용량이 찬 상태에서 대화를 계속 이어가면 인공지능의 기억 혼선과 환각 현상이 더욱 심해집니다.", "/clear로 새 출발을 하거나 /compact로 길어진 대화를 압축하면 정확도가 회복됩니다.", "기존 질문을 전부 다시 붙여넣으면 맥락 용량이 더 빠르게 고갈되어 오류가 악화됩니다."]}, {"q": "공문서 보고서 서식에 맞게 날짜 변환 함수를 만들려고 합니다. 인공지능에게 의도를 가장 오차 없이 전달하는 방법은 무엇입니까?", "options": ["「공무원 서식에 맞게 알아서 날짜를 바꿔줘」라고 요청한다.", "변환 전 데이터 문자열과 변환 후 기대하는 문자열 예시 2~3쌍을 함께 전달한다.", "행정업무운영편람 전체 텍스트를 파일로 첨부한다.", "구체적인 입출력 예시 없이 CLAUDE.md 파일에만 날짜 서식 규칙을 적어 둔다."], "answer": 1, "why": ["알아서 해 달라는 모호한 표현은 인공지능의 자의적 해석을 부릅니다.", "입력과 출력의 구체적인 예시를 보여주면 오차 없이 요구사항을 전달할 수 있습니다.", "수백 쪽의 업무편람을 그대로 주면 불필요한 정보 때문에 변환 규칙 추출이 빗나갑니다.", "CLAUDE.md에 규칙만 적고 프롬프트에 구체적인 입출력 예시를 제공하지 않으면 기대와 다른 형식으로 변환될 수 있습니다."]}, {"q": "특정 파일 하나의 버그를 고치고자 할 때 프롬프트 작성 방식으로 가장 알맞은 것은 무엇입니까?", "options": ["폴더 전체를 검색해서 알아서 이상한 곳을 찾아 고치라고 한다.", "수정할 파일의 경로를 명시하고 해당 파일의 현재 문제 증상을 함께 적는다.", "파일명은 언급하지 않고 화면에 나온 오류 메시지만 한 줄 적는다.", "수정할 파일을 삭제하고 새로 만들어 달라고 한다."], "answer": 1, "why": ["대상 파일을 지정하지 않으면 전체 프로젝트를 뒤지느라 엉뚱한 파일을 수정할 위험이 큽니다.", "파일 경로와 문제 현상을 구체적으로 지정하면 인공지능이 해당 영역에만 집중합니다.", "오류 메시지만 주면 어느 소스코드에서 발생한 문제인지 찾는 데 시간이 걸립니다.", "기존 코드를 지우면 이미 검증된 정상 로직까지 모두 유실됩니다."]}, {"q": "새 프로젝트 폴더를 만들고 Claude Code를 처음 실행했습니다. 프로젝트 지침 파일의 뼈대를 자동으로 잡기 위해 사용할 수 있는 실제 명령은 무엇입니까?", "options": ["/create-rule", "/init", "/project-start", "/make-claude-guide"], "answer": 1, "why": ["/create-rule은 Claude Code에 존재하지 않는 가상의 명령입니다.", "/init은 프로젝트를 분석하여 초기 CLAUDE.md 지침 파일을 생성하는 실제 명령입니다.", "/project-start는 존재하지 않는 명령어입니다.", "/make-claude-guide 역시 존재하지 않는 가상의 명령어입니다."]}]</script>
+  </section>
+
+  <section class="pr-sec">
+    <h2>튜터와 다지기</h2>
+    <p class="vb-note">문제를 맞혔어도 내 프로젝트에서 바로 쓰지 못하면 아직 아는 것이 아닙니다. 아래 프롬프트를 Claude에 붙여 넣으면 「통과」라고 할 때까지 내 상황에 맞춘 질문을 계속 받습니다.</p>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>너는 내 바이브 코딩 튜터다. 나는 「정확한 맥락을 전달하는 방법」 단계를 공부하고 있다.
+이 단계의 목표는 「CLAUDE.md 규칙 작성, 대상 파일 지정, 예시 제공을 통해 필요한 맥락만 정확히 전달할 수 있다.」
+다룰 개념은 「CLAUDE.md 지침 파일」, 「정확한 파일 지정과 입출력 예시」, 「대화 맥락 청소 (/clear와 /compact)」이다.
+
+규칙
+1. 설명부터 하지 말고, 내가 지금 만드는 프로젝트가 무엇인지 먼저 한 가지만 묻는다.
+2. 질문은 한 번에 하나씩. 내 프로젝트 상황에 맞춘 문제를 낸다.
+3. 내가 틀리면 정답을 바로 말하지 말고 힌트를 하나 준 뒤 다시 묻는다.
+4. 개념마다 내가 실제로 보낼 프롬프트를 직접 써 보게 하고, 부족한 점을 고쳐 준다.
+5. 서로 다른 상황 문제 세 개를 연속으로 맞히면 「통과」라고 말하고, 아직 약한 부분을 한 줄로 알려 준다.
+6. 통과하기 전에는 다음 단계로 넘어가지 않는다.</pre></div>
+  </section>
+
+  <nav class="pr-pager"><a class="prev" href="/vibe/one-task-at-a-time.html"><small>← 이전</small>한 번에 하나의 작업만 지시하기</a><a class="next" href="/vibe/git-savepoint.html"><small>다음 →</small>git을 세이브포인트로 쓰는 법</a></nav>
+</main>
+
+<footer>&copy; 2026 최승환 · choijc79.github.io</footer>
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/about.html">👤<br>소개</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/guides.html" aria-current="page">⚙️<br>가이드</a>
+  <a href="/memo.html">📋<br>노트</a>
+</div>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'\u2600 라이트':'\u263e 다크';
+})();
+function toggleTheme(){
+  var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'\u2600 라이트':'\u263e 다크';
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+<script src="/js/vibe.js" defer></script>
+</body>
+</html>

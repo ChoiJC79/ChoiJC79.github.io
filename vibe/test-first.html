@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>테스트를 먼저 요구하기 | 바이브 코딩 단계별 과정</title>
+<meta name="description" content="기능 수정 전에 실패하는 검증 스크립트를 먼저 작성하게 하고 통과 여부로 완료를 판단할 수 있다.">
+<meta property="og:title" content="테스트를 먼저 요구하기 | 바이브 코딩 단계별 과정">
+<meta property="og:description" content="기능 수정 전에 실패하는 검증 스크립트를 먼저 작성하게 하고 통과 여부로 완료를 판단할 수 있다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/vibe/test-first.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/practice.css">
+<link rel="stylesheet" href="/css/motion.css">
+<link rel="stylesheet" href="/css/vibe.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 가이드</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9728; 라이트</button>
+</header>
+
+<section class="hero pr-hero">
+  <div class="hero-label"><a href="/vibe.html">바이브 코딩 단계별 과정</a> · Lv.4 검증하며 만들기</div>
+  <h1>06. 테스트를 먼저 요구하기</h1>
+  <p>기능 수정 전에 실패하는 검증 스크립트를 먼저 작성하게 하고 통과 여부로 완료를 판단할 수 있다.</p>
+  <div class="hero-meta">개념 읽기 → 실습 → 확인 문제 5개 모두 맞히기 → 튜터와 대화로 다지기</div>
+</section>
+<main class="pr-wrap vb-lesson" data-slug="test-first" data-prev="debug-loop" data-prev-title="에러를 읽는 디버깅 루프">
+  <p class="vb-lock" hidden></p>
+
+  <section class="pr-sec">
+    <h2>왜 여기서 막히나</h2>
+    <p class="vb-why">AI가 「수정했습니다」라고 답변하면 대부분 눈대중으로 대충 훑어보고 성공했다고 믿어버립니다. 그러나 실제로 실행해 보면 특정 조건에서 멈추거나 엣지 케이스가 전혀 처리되지 않은 경우가 빈번합니다. 검증 코드가 없으면 코드가 늘어날 때마다 과거에 잘 되던 기능이 여전히 살아있는지 사람이 일일이 수동 테스트해야 합니다. 통과해야 할 객관적인 채점 기준표를 먼저 만들게 해야 AI의 완료 선언을 검증할 수 있습니다.</p>
+  </section>
+
+  <section class="pr-sec">
+    <h2>핵심 개념 세 가지</h2>
+    <ol class="pr-steps">
+    <li><div><b>실패하는 테스트 우선 작성</b><span>기능을 고치기 전에 현재 상태에서는 무조건 실패하는 검사 스크립트를 먼저 만드는 기법입니다. 문제가 실제로 존재함을 기계적으로 확인한 뒤 수정을 시작합니다. 코드가 고쳐진 후 해당 검사가 성공으로 바뀌어야만 비로소 작업 완료로 인정합니다.</span></div></li>
+    <li><div><b>검증 스크립트 기반 완료 판정</b><span>AI의 말 한마디를 믿지 않고 독립된 검증 스크립트의 종료 코드나 출력 결과로 작업 완료를 판정하는 방식입니다. 자동화 스크립트에서는 입력 대비 출력값 검사가 테스트가 됩니다. 검증 명령어가 오류 없이 종료될 때만 다음 단계로 넘어갑니다.</span></div></li>
+    <li><div><b>브라우저 관찰 검증</b><span>화면 인터페이스 개발에서는 콘솔 에러 유무 확인과 스크린샷 검토가 테스트 역할을 대신합니다. AI에게 요소를 렌더링한 뒤 콘솔 로그에 경고나 에러가 없는지 스크립트로 확인하게 만듭니다. 주관적인 육안 검사를 객관적인 관찰 지표로 변환합니다.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="pr-sec">
+    <h2>같은 일, 다른 요청</h2>
+    <div class="vb-compare">
+      <div class="vb-ex bad"><h3>이렇게 요청하면</h3><pre>엑셀 날짜 형식이 깨지는데 그거 고쳐 줘. 다 되면 다 됐다고 말해 줘.</pre></div>
+      <div class="vb-ex good"><h3>이렇게 요청한다</h3><div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>엑셀 파일에서 2024. 1. 5 형식의 텍스트 날짜를 읽었을 때 YYYY-MM-DD 표준 문자열로 변환하는 함수를 수정해야 합니다.
+
+본격적인 수정에 앞서, 아래 세 가지 입력값에 대해 현재 함수가 실패하는지 확인하는 검증 스크립트 test_date.py를 먼저 작성해 주십시오.
+- 입력 1: &#x27;2024. 1. 5&#x27; -&gt; 기대 출력: &#x27;2024-01-05&#x27;
+- 입력 2: &#x27;2024-02-29&#x27; -&gt; 기대 출력: &#x27;2024-02-29&#x27;
+- 입력 3: 빈 문자열 &#x27;&#x27; -&gt; 기대 출력: None
+
+이 테스트를 실행하여 실패함을 먼저 보여주십시오. 그 후 실제 코드를 수정하고, 해당 테스트가 모두 통과하는 터미널 결과를 제시하십시오.</pre></div></div>
+    </div>
+    <p class="vb-diff">단순히 고쳐달라고 맡기지 않고 구체적인 검증 케이스 세 가지를 명시했습니다. 수정 전 실패 확인과 수정 후 통과 검증 절차를 강제함으로써 AI가 임의로 완료를 주장하지 못하게 막았습니다.</p>
+  </section>
+
+  <section class="pr-sec">
+    <h2>30분 실습</h2>
+    <ol class="pr-steps">
+    <li><div><span>현재 프로젝트에서 가장 자주 사용하는 함수 하나를 선택합니다.</span></div></li>
+    <li><div><span>AI에게 해당 함수에 정상 값과 비정상 값을 넣었을 때의 결과를 비교하는 단독 테스트 스크립트를 작성하라고 요청합니다.</span></div></li>
+    <li><div><span>터미널에서 테스트 스크립트를 직접 실행하여 통과(PASS) 또는 실패(FAIL) 출력이 나오는지 확인합니다.</span></div></li>
+    <li><div><span>기능을 추가할 때 이 테스트 스크립트를 먼저 실행하고 통과한 뒤에만 git commit을 진행합니다.</span></div></li>
+    </ol>
+    <h3 class="vb-sub">통과 기준</h3>
+    <ul class="pr-checks">
+    <li>실제 코드 수정 전에 실패를 증명하는 스크립트를 먼저 확보했습니다.</li>
+    <li>테스트 실행 결과가 성공으로 바뀌는 것을 터미널 로그로 직접 확인했습니다.</li>
+    <li>AI의 완료 선언 대신 스크립트의 정상 종료 상태를 보고 완료를 승인했습니다.</li>
+    </ul>
+  </section>
+
+  <section class="pr-sec" id="quiz">
+    <h2>확인 문제</h2>
+    <p class="vb-note">다섯 문제를 모두 맞혀야 이 단계를 통과합니다. 틀리면 해설을 읽고 다시 풀면 되고, 다시 풀 때마다 문제와 보기 순서가 바뀝니다.</p>
+    <div class="vb-quiz"></div>
+    <script type="application/json" class="vb-data">[{"q": "새로운 데이터 가공 기능을 추가하려 합니다. AI에게 개발을 지시하는 가장 바람직한 순서는 무엇입니까?", "options": ["기능 구현 코드 전체를 먼저 작성하게 한 후 테스트 코드는 나중에 생각합니다.", "테스트할 입력값과 기대 결과표를 정의하고 이를 검증하는 스크립트부터 만들게 합니다.", "구체적인 입출력 예시를 제공하지 않고 전체 데이터 가공 로직을 한 번에 다 짜 달라고 요청합니다.", "CLAUDE.md 규칙 파일에만 요구사항을 적어 두고 실제 검증 스크립트는 생략한 채 코딩을 시작합니다."], "answer": 1, "why": ["기능을 먼저 만들면 무엇을 검증해야 하는지 모호해져 부실한 결과물이 나옵니다.", "검증 스크립트를 먼저 세워야 명확한 성공 기준을 바탕으로 안전하게 기능을 구현합니다.", "구체적인 입력과 기대 결과 없이 한 번에 다 시키면 AI가 모호한 로직을 생성해 검증하기 어려워집니다.", "규칙 파일에 지침을 적는 것만으로는 실제 데이터 변환 로직이 올바르게 동작하는지 자동으로 증명할 수 없습니다."]}, {"q": "AI가 「요청하신 수정 작업을 완료했습니다」라고 응답했습니다. 이때 작업자가 가장 먼저 취해야 할 행동은 무엇입니까?", "options": ["준비해 둔 테스트 검증 스크립트를 직접 실행하여 모든 조건이 통과하는지 확인합니다.", "AI의 말을 신뢰하고 즉시 원격 저장소에 push합니다.", "AI의 완료 안내만 믿고 실제 기능 동작을 확인하지 않은 채 곧바로 다음 기능 개발을 지시합니다.", "터미널에서 변경된 코드 diff를 확인하지 않고 웹 브라우저 페이지만 새로고침해 봅니다."], "answer": 0, "why": ["AI의 텍스트 답변은 환각일 수 있으므로 실제 검증 스크립트의 통과 로그로 확인해야 합니다.", "검증을 거치지 않은 코드를 배포하면 심각한 시스템 오류로 이어집니다.", "AI의 완료 보고는 착각일 수 있으므로 사람이 직접 검증하지 않고 넘어가면 결함이 누적됩니다.", "브라우저 화면이 겉으로 뜨더라도 실제 내부 로직이나 데이터 처리가 깨졌는지 diff와 테스트 없이 알 수 없습니다."]}, {"q": "웹 프론트엔드 화면의 작동 여부를 검증할 때 비개발자가 활용하기 가장 좋은 테스트 수단은 무엇입니까?", "options": ["브라우저를 직접 띄우지 않고 AI에게 화면이 제대로 잘 나오는지 말로 물어보고 확인합니다.", "화면을 브라우저로 띄우고 개발자 도구 콘솔의 에러 여부와 화면 스크린샷을 확인합니다.", "화면 동작을 확인하지 않고 AI가 작성한 코드 파일의 전체 줄 수가 늘어났는지만 살펴봅니다.", "브라우저 개발자 도구 콘솔을 열지 않고 화면에 붉은색 경고 창이 없는지만 훑어봅니다."], "answer": 1, "why": ["AI는 실제 렌더링된 브라우저 상태를 체감하지 못하므로 말로만 물어보면 잘못된 동작을 정상이라고 답할 수 있습니다.", "콘솔 에러 유무 확인과 시각적 렌더링 검토는 프론트엔드 작업의 기본 검증 수단입니다.", "코드 파일의 줄 수가 늘어난 것만으로는 실제 프론트엔드 화면이 정상 작동하는지 알 수 없습니다.", "콘솔 창을 열어 보지 않으면 화면에 직접 노출되지 않는 자바스크립트 실행 오류를 발견할 수 없습니다."]}, {"q": "버그를 고치기 전에 「실패하는 테스트」를 먼저 실행해 보아야 하는 이유는 무엇입니까?", "options": ["버그 원인을 정확히 재현하기보다 AI에게 에러가 났다는 사실만 빠르게 알리고 전체 수정을 맡기기 위해서입니다.", "테스트 자체가 잘못되어 항상 통과하고 있던 것은 아닌지 사전에 확인하고 문제가 실제로 존재하는지 증명하기 위해서입니다.", "버그의 근본 원인을 해결하지 않고 일단 테스트 통과 기준 수치를 낮춰서 성공으로 처리하기 위해서입니다.", "에러 재현 범위를 좁히지 않고 프로젝트의 모든 기능을 한 번에 점검하는 거대한 테스트를 돌리기 위해서입니다."], "answer": 1, "why": ["실패 조건을 정확히 재현하지 않고 전체 수정을 맡기면 기존에 잘 작동하던 로직까지 망가질 위험이 있습니다.", "기존 상태에서 테스트가 실패하는 것을 봐야 나중에 성공했을 때 버그가 진짜 해결되었음을 확신할 수 있습니다.", "통과 기준을 임의로 낮추는 것은 버그를 해결하는 것이 아니라 프로그램의 결함을 은폐하는 위험한 행동입니다.", "너무 광범위한 테스트를 한꺼번에 돌리면 특정 버그가 어디서 발생했는지 인과관계를 파악하기 어렵습니다."]}, {"q": "공문서 자동 변환 스크립트를 수정할 때 가장 이상적인 완료 기준은 무엇입니까?", "options": ["AI가 작성한 코드가 길고 화려해 보일 때입니다.", "AI가 「잘 될 것입니다」라고 공손하게 답변했을 때입니다.", "대표 서식 파일 세 개를 검증 스크립트에 넣었을 때 모두 에러 없이 올바른 서식 파일로 추출될 때입니다.", "터미널에서 실행 오류가 뜨지 않았다는 이유로 생성된 결과 문서를 직접 열어보지 않고 마칠 때입니다."], "answer": 2, "why": ["코드의 길이나 복잡도는 품질의 척도가 아니며 도리어 버그의 온상이 됩니다.", "공손한 어조의 답변이 코드의 무결성을 보장하지 않습니다.", "실제 대표 데이터를 통과시키는 구체적이고 관찰 가능한 결과물이 있어야 완료로 인정할 수 있습니다.", "터미널에 에러가 없더라도 변환된 문서 내부의 서식이나 표 데이터가 깨질 수 있으므로 직접 열어 확인해야 합니다."]}]</script>
+  </section>
+
+  <section class="pr-sec">
+    <h2>튜터와 다지기</h2>
+    <p class="vb-note">문제를 맞혔어도 내 프로젝트에서 바로 쓰지 못하면 아직 아는 것이 아닙니다. 아래 프롬프트를 Claude에 붙여 넣으면 「통과」라고 할 때까지 내 상황에 맞춘 질문을 계속 받습니다.</p>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>너는 내 바이브 코딩 튜터다. 나는 「테스트를 먼저 요구하기」 단계를 공부하고 있다.
+이 단계의 목표는 「기능 수정 전에 실패하는 검증 스크립트를 먼저 작성하게 하고 통과 여부로 완료를 판단할 수 있다.」
+다룰 개념은 「실패하는 테스트 우선 작성」, 「검증 스크립트 기반 완료 판정」, 「브라우저 관찰 검증」이다.
+
+규칙
+1. 설명부터 하지 말고, 내가 지금 만드는 프로젝트가 무엇인지 먼저 한 가지만 묻는다.
+2. 질문은 한 번에 하나씩. 내 프로젝트 상황에 맞춘 문제를 낸다.
+3. 내가 틀리면 정답을 바로 말하지 말고 힌트를 하나 준 뒤 다시 묻는다.
+4. 개념마다 내가 실제로 보낼 프롬프트를 직접 써 보게 하고, 부족한 점을 고쳐 준다.
+5. 서로 다른 상황 문제 세 개를 연속으로 맞히면 「통과」라고 말하고, 아직 약한 부분을 한 줄로 알려 준다.
+6. 통과하기 전에는 다음 단계로 넘어가지 않는다.</pre></div>
+  </section>
+
+  <nav class="pr-pager"><a class="prev" href="/vibe/debug-loop.html"><small>← 이전</small>에러를 읽는 디버깅 루프</a><a class="next" href="/vibe/plan-and-refactor.html"><small>다음 →</small>계획 모드와 안전한 코드 개선</a></nav>
+</main>
+
+<footer>&copy; 2026 최승환 · choijc79.github.io</footer>
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/about.html">👤<br>소개</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/guides.html" aria-current="page">⚙️<br>가이드</a>
+  <a href="/memo.html">📋<br>노트</a>
+</div>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'\u2600 라이트':'\u263e 다크';
+})();
+function toggleTheme(){
+  var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'\u2600 라이트':'\u263e 다크';
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+<script src="/js/vibe.js" defer></script>
+</body>
+</html>

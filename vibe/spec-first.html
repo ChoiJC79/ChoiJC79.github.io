@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>만들기 전에 스펙부터 작성하기 | 바이브 코딩 단계별 과정</title>
+<meta name="description" content="요청 전에 목적과 입출력을 정리한 스펙을 작성하고 인공지능에게 질문을 유도할 수 있다.">
+<meta property="og:title" content="만들기 전에 스펙부터 작성하기 | 바이브 코딩 단계별 과정">
+<meta property="og:description" content="요청 전에 목적과 입출력을 정리한 스펙을 작성하고 인공지능에게 질문을 유도할 수 있다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/vibe/spec-first.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/practice.css">
+<link rel="stylesheet" href="/css/motion.css">
+<link rel="stylesheet" href="/css/vibe.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 가이드</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9728; 라이트</button>
+</header>
+
+<section class="hero pr-hero">
+  <div class="hero-label"><a href="/vibe.html">바이브 코딩 단계별 과정</a> · Lv.3 말로 설계하기</div>
+  <h1>01. 만들기 전에 스펙부터 작성하기</h1>
+  <p>요청 전에 목적과 입출력을 정리한 스펙을 작성하고 인공지능에게 질문을 유도할 수 있다.</p>
+  <div class="hero-meta">개념 읽기 → 실습 → 확인 문제 5개 모두 맞히기 → 튜터와 대화로 다지기</div>
+</section>
+<main class="pr-wrap vb-lesson" data-slug="spec-first">
+  <p class="vb-lock" hidden></p>
+
+  <section class="pr-sec">
+    <h2>왜 여기서 막히나</h2>
+    <p class="vb-why">공무원 업무에서 기안문 없이 사업을 집행하지 않는 것과 같습니다. 목적과 완료 기준이 빠진 상태에서 바로 코드를 만들라고 요청하면 인공지능은 임의의 가정을 바탕으로 코드를 작성합니다. 결과물이 마음에 들지 않아 추가 수정을 지시할수록 코드가 엉키고 처음 의도와 멀어집니다. 짧은 명세서를 먼저 제시해 생각의 범위를 고정해야 원하는 결과를 얻습니다.</p>
+  </section>
+
+  <section class="pr-sec">
+    <h2>핵심 개념 세 가지</h2>
+    <ol class="pr-steps">
+    <li><div><b>4요소 미니 스펙</b><span>목적, 주 사용자, 입력과 출력 데이터, 완료 기준을 포함하는 10줄 안팎의 최소 기획서입니다. 구현 방법 대신 기능이 달성해야 하는 목표와 조건을 명확히 밝힙니다. 이 네 가지가 갖추어지면 인공지능이 엉뚱한 방향으로 코드를 작성하지 않습니다.</span></div></li>
+    <li><div><b>역질문 유도</b><span>명세서를 제시한 뒤 곧바로 코드를 짜게 하지 않고 빠진 조건이나 모호한 부분을 먼저 묻도록 지시하는 방법입니다. 사용자가 미처 생각하지 못한 예외 상황을 설계 단계에서 발견합니다. 이 과정을 거치면 재작업 시간을 크게 줄입니다.</span></div></li>
+    <li><div><b>완료 기준의 구체화</b><span>개발이 끝났음을 판단하는 관찰 가능한 조건을 명시하는 일입니다. 정상 작동 여부를 판단할 구체적인 화면 변화나 산출 파일 형식을 정의합니다. 모호한 완료 기준은 불필요한 재작업을 부릅니다.</span></div></li>
+    </ol>
+  </section>
+
+  <section class="pr-sec">
+    <h2>같은 일, 다른 요청</h2>
+    <div class="vb-compare">
+      <div class="vb-ex bad"><h3>이렇게 요청하면</h3><pre>우리 면사무소 민원 안내 페이지에 넣을 직원 담당 업무 검색창 하나 예쁘게 만들어줘.</pre></div>
+      <div class="vb-ex good"><h3>이렇게 요청한다</h3><div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>면사무소 홈페이지에 들어갈 직원 업무 검색 기능을 만듭니다.
+
+1. 목적: 민원인이 담당 부서와 직원을 빠르게 찾도록 돕습니다.
+2. 사용자: 스마트폰 사용에 익숙하지 않은 고령 민원인.
+3. 데이터: data/staff.json 파일의 이름, 직급, 담당업무, 전화번호 필드를 사용합니다.
+4. 화면 및 동작: 상단 검색창에 단어를 치면 실시간으로 결과 표가 축소되며, 일치 단어는 강조 표시합니다.
+5. 완료 기준: 검색어를 지우면 전체 목록 20명이 다시 나타나고, 검색 결과가 없을 때는 「담당 직원이 없습니다. 총무계(041-000-0000)로 문의하세요」 문구가 표시됩니다.
+
+코드를 작성하기 전에 위 내용에서 모호하거나 구현을 위해 추가로 결정해야 할 사항이 있다면 3가지만 먼저 질문해 주세요.</pre></div></div>
+    </div>
+    <p class="vb-diff">좋은 예시는 주 사용자와 사용할 데이터 경로, 구체적인 예외 문구까지 명시했습니다. 또한 코드를 바로 생성하지 않고 질문을 먼저 던지게 하여 누락된 요구사항을 사전에 확인합니다.</p>
+  </section>
+
+  <section class="pr-sec">
+    <h2>30분 실습</h2>
+    <ol class="pr-steps">
+    <li><div><span>현재 운영 중인 GitHub Pages나 작성했던 업무 스크립트에서 개선할 기능 하나를 선택합니다.</span></div></li>
+    <li><div><span>메모장에 목적, 주 사용자, 입력과 출력 데이터, 완료 기준을 각각 두 줄씩 적어 4요소 미니 스펙을 만듭니다.</span></div></li>
+    <li><div><span>Claude Code에 해당 스펙을 제시하고 「코드를 작성하기 전에 불명확한 부분을 질문하라」고 프롬프트를 전송합니다.</span></div></li>
+    <li><div><span>인공지능이 제시한 질문 2~3개에 답변하여 최종 확정된 명세를 얻습니다.</span></div></li>
+    </ol>
+    <h3 class="vb-sub">통과 기준</h3>
+    <ul class="pr-checks">
+    <li>명세서에 목적, 사용자, 입출력, 완료 기준 4가지가 모두 기록되어 있습니다.</li>
+    <li>Claude Code가 코드를 바로 출력하지 않고 추가 질문을 최소 2개 이상 제시했습니다.</li>
+    <li>인공지능의 질문에 답변하여 수정된 요구사항이 한 화면 안에 정리되었습니다.</li>
+    </ul>
+  </section>
+
+  <section class="pr-sec" id="quiz">
+    <h2>확인 문제</h2>
+    <p class="vb-note">다섯 문제를 모두 맞혀야 이 단계를 통과합니다. 틀리면 해설을 읽고 다시 풀면 되고, 다시 풀 때마다 문제와 보기 순서가 바뀝니다.</p>
+    <div class="vb-quiz"></div>
+    <script type="application/json" class="vb-data">[{"q": "면사무소 복지 지원금 계산기를 만들려고 합니다. 프롬프트를 보내기 전 가장 먼저 취해야 할 행동은 무엇입니까?", "options": ["계산 공식과 신청 자격, 결과 화면 형태를 정리한 짧은 명세서를 작성한다.", "화면이 예쁘게 나오도록 최신 CSS 프레임워크를 설치해 달라고 요청한다.", "다른 지자체 복지 사이트 주소를 복사해 그대로 만들어 달라고 한다.", "Claude Code에 바로 계산기 코드를 만들어 달라고 요청한다."], "answer": 0, "why": ["계산 조건과 입력, 결과 형식을 먼저 정의해야 올바른 계산 결과가 나옵니다.", "화면 디자인보다 지원금 계산 규칙과 대상자 조건 명시가 우선입니다.", "외부 사이트 주소만으로는 내부 계산 규칙과 데이터 형식을 파악하기 어렵습니다.", "기본 스펙 없이 코드를 생성하면 계산 공식의 오류를 수정하느라 시간을 낭비합니다."]}, {"q": "Claude Code에 스펙을 전달한 뒤 인공지능이 임의로 코드를 작성하는 현상을 막기 위해 추가할 문구로 적절한 것은 무엇입니까?", "options": ["최대한 알아서 잘 판단해서 코드를 완성해 줘.", "틀리지 말고 완벽하게 작성해 줘.", "코드를 작성하기 전에 빠진 조건이나 확인이 필요한 사항을 먼저 질문해 주세요.", "질문하지 말고 알아서 완성해 줘."], "answer": 2, "why": ["인공지능에게 임의 판단을 맡기면 의도와 다른 방향으로 개발이 진행됩니다.", "완벽을 요구하는 추상적인 문구는 실제 동작에 아무런 제약을 주지 못합니다.", "역질문을 요구하면 인공지능이 코드를 작성하기 전 누락된 조건을 확인합니다.", "질문을 막으면 모호한 요구사항을 자의적으로 해석하여 오류를 만듭니다."]}, {"q": "다음 중 관찰 가능한 「완료 기준」으로 가장 적절하게 작성된 것은 무엇입니까?", "options": ["누구나 만족할 만큼 화면이 보기 편해야 한다.", "버튼을 누르면 엑셀 파일이 정상적으로 잘 저장되어야 한다.", "시스템이 안정적이고 빠르게 실행되어야 한다.", "생성 버튼을 누르면 10초 이내에 out.csv 파일이 생성되고 5개 열의 헤더가 채워진다."], "answer": 3, "why": ["만족도나 편리함은 개인마다 달라 완료 여부를 객관적으로 확인할 수 없습니다.", "정상적으로 잘 저장된다는 표현은 구체적인 파일 형태나 내용을 확인하기 어렵습니다.", "안정적이고 빠르다는 표현은 수치 기준이 없어 검증이 불가능합니다.", "시간, 생성 파일명, 열 헤더라는 구체적이고 관찰 가능한 기준을 갖추고 있습니다."]}, {"q": "인공지능이 질문한 3가지 항목 중 본인이 아직 결정하지 못한 행정 절차가 포함되어 있습니다. 이때 올바른 대처 방법은 무엇입니까?", "options": ["질문을 무시하고 질문했던 코드를 즉시 작성하라고 지시한다.", "아직 미정인 기준은 기본값으로 임시 처리하도록 명시하고 확정된 기준만 답변한다.", "인공지능에게 법령을 검색해서 알아서 최선의 방안을 골라 달라고 한다.", "전체 프로젝트를 중단하고 기획을 처음부터 완전히 다시 시작한다."], "answer": 1, "why": ["결정되지 않은 사항을 방치한 채 개발을 진행하면 나중에 전면 수정해야 합니다.", "미정인 항목에 임시 기준을 명시하면 개발을 중단하지 않고 범위를 통제할 수 있습니다.", "법령 해석과 행정 판단을 인공지능에 일임하면 규정 위반이 발생합니다.", "작은 세부 항목 하나 때문에 전체 작업을 포기할 이유는 없습니다."]}, {"q": "작성한 스펙 문서의 크기로 가장 알맞은 분량은 어느 정도입니까?", "options": ["요청 사항을 한 줄로 요약한 간단한 문장.", "목적, 사용자, 입출력, 완료 기준을 포함한 10줄에서 20줄 안팎의 명세.", "지자체 정보화 사업 표준 제안요청서 형식의 50페이지 문서.", "데이터베이스 테이블 설계도와 모든 함수의 순서도."], "answer": 1, "why": ["한 줄 요청은 인공지능이 제멋대로 살을 붙여 실패하기 쉽습니다.", "10~20줄 분량의 4요소 미니 스펙이 빠르고 명확하게 범위를 고정합니다.", "과도하게 방대한 문서는 핵심 조건을 파악하기 어렵고 관리가 번거롭습니다.", "초기 단계에서 지나치게 세밀한 도면은 유연한 수정을 방해합니다."]}]</script>
+  </section>
+
+  <section class="pr-sec">
+    <h2>튜터와 다지기</h2>
+    <p class="vb-note">문제를 맞혔어도 내 프로젝트에서 바로 쓰지 못하면 아직 아는 것이 아닙니다. 아래 프롬프트를 Claude에 붙여 넣으면 「통과」라고 할 때까지 내 상황에 맞춘 질문을 계속 받습니다.</p>
+    <div class="pr-prompt"><button type="button" class="pr-copy">복사</button><pre>너는 내 바이브 코딩 튜터다. 나는 「만들기 전에 스펙부터 작성하기」 단계를 공부하고 있다.
+이 단계의 목표는 「요청 전에 목적과 입출력을 정리한 스펙을 작성하고 인공지능에게 질문을 유도할 수 있다.」
+다룰 개념은 「4요소 미니 스펙」, 「역질문 유도」, 「완료 기준의 구체화」이다.
+
+규칙
+1. 설명부터 하지 말고, 내가 지금 만드는 프로젝트가 무엇인지 먼저 한 가지만 묻는다.
+2. 질문은 한 번에 하나씩. 내 프로젝트 상황에 맞춘 문제를 낸다.
+3. 내가 틀리면 정답을 바로 말하지 말고 힌트를 하나 준 뒤 다시 묻는다.
+4. 개념마다 내가 실제로 보낼 프롬프트를 직접 써 보게 하고, 부족한 점을 고쳐 준다.
+5. 서로 다른 상황 문제 세 개를 연속으로 맞히면 「통과」라고 말하고, 아직 약한 부분을 한 줄로 알려 준다.
+6. 통과하기 전에는 다음 단계로 넘어가지 않는다.</pre></div>
+  </section>
+
+  <nav class="pr-pager"><a class="next" href="/vibe/one-task-at-a-time.html"><small>다음 →</small>한 번에 하나의 작업만 지시하기</a></nav>
+</main>
+
+<footer>&copy; 2026 최승환 · choijc79.github.io</footer>
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/about.html">👤<br>소개</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/guides.html" aria-current="page">⚙️<br>가이드</a>
+  <a href="/memo.html">📋<br>노트</a>
+</div>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'\u2600 라이트':'\u263e 다크';
+})();
+function toggleTheme(){
+  var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'\u2600 라이트':'\u263e 다크';
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+<script src="/js/vibe.js" defer></script>
+</body>
+</html>
