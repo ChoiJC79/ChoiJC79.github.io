@@ -3,6 +3,7 @@
 """
 실행:  python3 site_mcp.py            # MCP 서버(stdio)
 검사:  python3 site_mcp.py --selftest # 임시 사본에서 칼럼·가이드 추가를 시험(push 없음)
+추가:  python3 site_mcp.py --add column|guide 초안.json  # 스킬에서 호출, 바로 배포
 """
 
 import html, re, shutil, subprocess, sys, tempfile
@@ -297,5 +298,18 @@ def selftest():
     print("selftest 통과")
 
 
+def cli_add(kind, path):
+    """스킬용: JSON 파일(키는 add_column/add_guide 인자와 같음)로 추가하고 배포한다."""
+    import json
+    a = json.loads(Path(path).read_text(encoding="utf-8"))
+    fn = {"column": add_column_core, "guide": add_guide_core}[kind]
+    print(fn(BASE, **a, deploy=True))
+
+
 if __name__ == "__main__":
-    selftest() if "--selftest" in sys.argv else serve()
+    if "--selftest" in sys.argv:
+        selftest()
+    elif len(sys.argv) == 4 and sys.argv[1] == "--add":
+        cli_add(sys.argv[2], sys.argv[3])
+    else:
+        serve()
