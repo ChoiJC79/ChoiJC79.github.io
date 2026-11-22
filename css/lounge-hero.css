@@ -28,3 +28,6 @@
 @media (prefers-reduced-motion:reduce){.spot .tab,.spot::before{transition:opacity .2s linear}.spot .tab,.lounge:hover .spot .tab,.lounge .spot:hover .tab{transform:translate(-50%,0)}}
 @media (max-width:760px){#lounge-hero{padding-top:70px}}
 #tape-hero{padding-top:56px}
+.lounge-more{padding:0;max-width:min(100%,calc((100svh - 124px) * 1024 / 571));margin:12px auto 0;display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:#a7a39b}
+.lounge-more a{color:#e9e2d6;text-decoration:none;border-bottom:1px solid rgba(217,168,91,.35)}
+.lounge-more a:hover,.lounge-more a:focus-visible{color:#d9a85b;border-color:#d9a85b}
