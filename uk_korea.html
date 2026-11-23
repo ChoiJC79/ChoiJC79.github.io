@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<!-- 영국 세계 최초 30가지와 같은 해 조선·한국 상황을 연도순으로 비교하는 페이지 -->
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>영국이 처음 한 일, 그해 우리는 | 최승환</title>
+<meta name="description" content="산업혁명, 지하철, 우표, 백신. 영국이 처음 해낸 30가지와, 같은 해 조선과 한국에서는 무슨 일이 있었는지를 연도순으로 나란히 놓았다.">
+<meta property="og:title" content="영국이 처음 한 일, 그해 우리는 | 최승환">
+<meta property="og:description" content="산업혁명, 지하철, 우표, 백신. 영국이 처음 해낸 30가지와, 같은 해 조선과 한국에서는 무슨 일이 있었는지를 연도순으로 나란히 놓았다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://choijc79.github.io/uk_korea.html">
+<meta property="og:site_name" content="최승환 · Jecheon">
+<link rel="stylesheet" href="/css/synthwave.css">
+<link rel="stylesheet" href="/css/pages.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/theme.css">
+<link rel="stylesheet" href="/css/practice.css">
+<link rel="stylesheet" href="/css/motion.css">
+<style>
+.uk-wrap { max-width: 960px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+.uk-tools { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: 1.6rem 0 .6rem; }
+.uk-tools input { flex: 1 1 220px; background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 8px 12px; border-radius: 8px; font: inherit; }
+.uk-tools button.sort { background: none; border: 1px solid var(--border); color: var(--muted); padding: 6px 14px; border-radius: 999px; cursor: pointer; font: 500 13px var(--font-body); }
+.uk-tools button.sort:hover { color: var(--accent); border-color: var(--accent); }
+.uk-count { color: var(--muted); font-size: 13px; margin: 0 0 1rem; }
+.uk-side { display: grid; grid-template-columns: 4.6rem 1fr 1fr; gap: 0 1.4rem; font: 600 12px var(--font-mono, monospace); letter-spacing: .08em; color: var(--muted); padding: 0 0 .5rem; border-bottom: 2px solid var(--border); }
+.uk-side span:nth-child(2) { color: var(--accent); }
+.uk-side span:nth-child(3) { color: var(--accent2); }
+.uk-list { list-style: none; margin: 0; padding: 0; }
+.uk-row { display: grid; grid-template-columns: 4.6rem 1fr 1fr; gap: .3rem 1.4rem; padding: 1.2rem 0; border-bottom: 1px solid var(--border); }
+.uk-year { font: 700 1.35rem 'Noto Serif KR', serif; color: var(--text); line-height: 1.2; }
+.uk-year small { display: block; font: 500 11px var(--font-body); color: var(--muted); margin-top: .3rem; }
+.uk-a h3 { font: 700 1.02rem 'Noto Serif KR', serif; margin: 0 0 .35rem; color: var(--text); }
+.uk-a p, .uk-b p { margin: 0; color: var(--muted); font-size: 14.5px; line-height: 1.7; }
+.uk-b { border-left: 3px solid var(--accent2); padding-left: 1rem; }
+.uk-b b { display: block; font: 600 13px var(--font-body); color: var(--accent2); margin-bottom: .3rem; }
+.uk-empty { color: var(--muted); padding: 2rem 0; }
+.uk-note { color: var(--muted); font-size: 13px; margin-top: 2rem; line-height: 1.7; }
+@media (max-width: 680px) {
+  .uk-side { display: none; }
+  .uk-row { grid-template-columns: 1fr; }
+  .uk-year { display: flex; gap: .6rem; align-items: baseline; }
+  .uk-year small { margin: 0; }
+  .uk-b { margin-top: .6rem; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">최승환 · 라운지</div>
+  <nav class="nav-links">
+    <a href="/">← 홈</a>
+    <a href="/about.html">소개</a>
+    <a href="/research.html">연구</a>
+    <a href="/column.html">칼럼</a>
+    <a href="/guides.html">가이드</a>
+    <a href="/memo.html">정리노트</a>
+  </nav>
+  <button id="theme-toggle" onclick="toggleTheme()">&#9728; 라이트</button>
+</header>
+
+<section class="hero">
+  <div class="hero-label">Side A 영국 · Side B 같은 해 한국</div>
+  <h1>영국이 처음 한 일,<br>그해 우리는</h1>
+  <p>산업혁명, 지하철, 우표, 백신. 영국이 처음 해낸 30가지와, 같은 해 조선과 한국에서는 무슨 일이 있었는지를 연도순으로 나란히 놓았다.</p>
+  <div class="hero-meta">정치·행정, 토목·건축·도시, 산업·교통, 과학·의학·IT, 생활·문화, 스포츠 6개 분야</div>
+</section>
+<main class="uk-wrap">
+  <div class="pr-tabs" id="cats" role="group" aria-label="분야">
+    <button class="pr-tab active" type="button" data-c="">전체</button>
+    <button class="pr-tab" type="button" data-c="정치·행정">정치·행정</button><button class="pr-tab" type="button" data-c="토목·건축·도시">토목·건축·도시</button><button class="pr-tab" type="button" data-c="산업·교통">산업·교통</button><button class="pr-tab" type="button" data-c="과학·의학·IT">과학·의학·IT</button><button class="pr-tab" type="button" data-c="생활·문화">생활·문화</button><button class="pr-tab" type="button" data-c="스포츠">스포츠</button>
+  </div>
+  <div class="uk-tools">
+    <input id="q" type="search" placeholder="항목, 연도, 왕 이름으로 찾기" aria-label="검색">
+    <button class="sort" id="sort" type="button">최신순으로</button>
+  </div>
+  <p class="uk-count" id="count"></p>
+  <div class="uk-side" aria-hidden="true"><span>연도</span><span>A면 · 영국이 처음</span><span>B면 · 그해 한국</span></div>
+  <ol class="uk-list" id="list"></ol>
+  <p class="uk-note">「세계 최초」는 기준에 따라 다른 나라가 앞서는 항목이 있어 본문에 함께 적었다(중앙은행, 사회보험, 월드 와이드 웹). 한국 쪽 왕의 재위 연차는 즉위년 칭원법을 따른다.</p>
+</main>
+<script>
+const V = [{"c": "정치·행정", "y": 1215, "t": "마그나 카르타", "uk": "왕권을 법으로 묶어 의회주의와 법치주의의 첫 근거가 된 문서.", "era": "고려 고종 2년", "kr": "최충헌의 무신정권기. 몽골의 1차 침입(1231)보다 16년 앞선다."}, {"c": "정치·행정", "y": 1689, "t": "권리장전과 입헌군주제", "uk": "의회 동의 없는 과세와 평시 상비군을 금지해 근대 의회정치를 확립.", "era": "조선 숙종 15년", "kr": "기사환국으로 서인이 물러나고 남인이 다시 집권."}, {"c": "정치·행정", "y": 1694, "t": "잉글랜드 은행 설립", "uk": "국채 발행을 맡은 은행으로 출발해 근대 중앙은행의 원형이 됐다. 설립 연도로는 스웨덴 릭스방크(1668)가 앞선다.", "era": "조선 숙종 20년", "kr": "갑술환국으로 서인이 재집권하고 장희빈이 강등, 인현왕후가 복위."}, {"c": "정치·행정", "y": 1829, "t": "근대 경찰 창설", "uk": "내무장관 로버트 필이 런던 수도경찰청(스코틀랜드 야드)을 만들어 치안을 제도로 묶었다.", "era": "조선 순조 29년", "kr": "효명세자 대리청정기(1827~1830). 세도정치를 견제하며 왕권 회복을 시도."}, {"c": "정치·행정", "y": 1840, "t": "근대 우편과 우표", "uk": "거리와 무관한 균일 요금제를 도입하고 접착식 우표 「페니 블랙」을 처음 발행.", "era": "조선 헌종 6년", "kr": "기해박해(1839) 직후로 척사윤음을 반포하며 천주교를 탄압. 한국 첫 근대 우편 관서인 우정총국은 1884년 개설."}, {"c": "정치·행정", "y": 1942, "t": "베버리지 보고서", "uk": "사회보험과 공공부조를 묶어 「요람에서 무덤까지」 전 국민 복지국가를 설계. 사회보험 자체는 독일 비스마르크 시대(1880년대)가 먼저다.", "era": "일제강점기 말기", "kr": "조선어학회 사건이 일어나고, 국가총동원법(1938)에 따른 인력·물자 수탈이 극에 달했다."}, {"c": "토목·건축·도시", "y": 1779, "t": "아이언 브리지", "uk": "슈롭셔 세번강에 놓인 세계 첫 주철 아치교. 철골 구조물 시대를 열었다.", "era": "조선 정조 3년", "kr": "규장각 기능을 키우던 때. 박제가가 청을 다녀와 『북학의』(1778)를 썼다."}, {"c": "토목·건축·도시", "y": 1824, "t": "포틀랜드 시멘트", "uk": "벽돌공 조지프 애스프딘이 석회석과 점토를 구워 만든 시멘트로 특허를 받았다.", "era": "조선 순조 24년", "kr": "안동 김씨 세도정치 아래 삼정의 문란이 깊어지던 때."}, {"c": "토목·건축·도시", "y": 1843, "t": "템스 터널", "uk": "마크 이점바드 브루넬이 실드 공법으로 뚫은, 항행 가능한 강 밑을 지나는 첫 터널.", "era": "조선 헌종 9년", "kr": "풍양 조씨와 안동 김씨가 세도 권력을 주고받던 시기."}, {"c": "토목·건축·도시", "y": 1858, "t": "런던 대하수도", "uk": "「대악취」 사태 뒤 조지프 바잘제트가 설계한 차집관거망. 이듬해 착공해 콜레라를 크게 줄인 근대 도시 하수도의 표본이 됐다.", "era": "조선 철종 9년", "kr": "임술농민봉기(1862)를 4년 앞둔 사회 불안기."}, {"c": "토목·건축·도시", "y": 1898, "t": "전원도시 이론", "uk": "에버니저 하워드가 도시와 농촌의 장점을 합친 계획도시 이론을 내고 레치워스(1903)를 세웠다.", "era": "대한제국 광무 2년", "kr": "독립협회가 만민공동회를 열고, 한성전기회사가 세워져 전차·전기 도입을 추진."}, {"c": "산업·교통", "y": 1760, "t": "산업혁명", "uk": "면직물 기계화와 제임스 와트의 증기기관 개량(1769)으로 공장제 기계공업이 시작됐다.", "era": "조선 영조 36년", "kr": "준천사를 두고 청계천을 대대적으로 준설. 화폐 유통과 상업이 커지던 때."}, {"c": "산업·교통", "y": 1825, "t": "공공 증기철도", "uk": "조지 스티븐슨의 기관차로 스톡턴과 달링턴 사이 첫 공공 증기철도가 달렸다.", "era": "조선 순조 25년", "kr": "세도정치와 쇄국이 이어지던 때. 한국 첫 철도 경인선은 1899년 개통."}, {"c": "산업·교통", "y": 1863, "t": "런던 지하철", "uk": "증기기관차로 달린 메트로폴리탄 철도, 세계 첫 지하철.", "era": "조선 고종 즉위년", "kr": "흥선대원군이 집권해 경복궁 중건과 서원 철폐로 이어지는 내정 개혁을 시작."}, {"c": "산업·교통", "y": 1868, "t": "교통신호등", "uk": "런던 국회의사당 앞에 가스등을 켜는 수동식 신호등을 세웠다.", "era": "조선 고종 5년", "kr": "오페르트 도굴 사건이 일어나 흥선대원군의 통상 거부가 더 강해졌다."}, {"c": "산업·교통", "y": 1952, "t": "제트 여객기 취항", "uk": "드 하빌랜드 코멧이 런던과 요하네스버그 노선에 취항.", "era": "대한민국, 6·25 전쟁 중", "kr": "휴전 회담이 이어지는 가운데 발췌개헌으로 대통령 직선제가 통과."}, {"c": "과학·의학·IT", "y": 1796, "t": "종두법(백신)", "uk": "에드워드 제너가 우두로 천연두를 막는 접종법을 만들어 면역학의 기초를 놓았다.", "era": "조선 정조 20년", "kr": "2년 9개월 공사 끝에 수원 화성 완공. 정약용이 『마과회통』(1798)을 준비하던 시기."}, {"c": "과학·의학·IT", "y": 1928, "t": "페니실린 발견", "uk": "알렉산더 플레밍이 푸른곰팡이에서 세균을 죽이는 물질을 발견.", "era": "일제강점기", "kr": "신간회가 민족유일당 운동을 펼치고, 이듬해 원산 총파업이 일어났다."}, {"c": "과학·의학·IT", "y": 1948, "t": "맨체스터 베이비", "uk": "맨체스터 대학교에서 프로그램을 메모리에 담아 돌린 첫 전자식 컴퓨터가 작동.", "era": "대한민국 정부 수립", "kr": "제헌헌법 공포(7월 17일)와 정부 수립 선포(8월 15일)."}, {"c": "과학·의학·IT", "y": 1953, "t": "DNA 이중나선", "uk": "케임브리지 대학교의 프랜시스 크릭과 제임스 왓슨이 유전물질의 구조를 밝혔다.", "era": "대한민국, 정전", "kr": "정전협정 체결(7월 27일)과 한미상호방위조약 조인(10월)."}, {"c": "과학·의학·IT", "y": 1989, "t": "월드 와이드 웹", "uk": "영국인 팀 버너스리가 스위스 CERN에서 HTTP·HTML·URL을 고안. 장소는 영국 밖이다.", "era": "대한민국, 노태우 정부", "kr": "해외여행 전면 자유화와 헝가리 수교로 시작한 북방정책."}, {"c": "과학·의학·IT", "y": 1996, "t": "복제양 돌리", "uk": "에든버러 로슬린 연구소에서 성체 체세포로 복제한 첫 포유류가 태어났다(발표는 1997년).", "era": "대한민국, 김영삼 정부", "kr": "OECD 가입. 지방자치 전면 실시(1995) 이듬해."}, {"c": "생활·문화", "y": 1753, "t": "대영박물관", "uk": "한스 슬론의 수집품으로 세운 첫 국립 공공 박물관. 1759년 무료 공개를 시작.", "era": "조선 영조 29년", "kr": "균역법(1750)으로 군역 부담을 줄인 직후, 민생 안정에 힘쓰던 때."}, {"c": "생활·문화", "y": 1796, "t": "백화점의 시작", "uk": "런던 폴몰의 하딩 하월 상회가 여러 매장을 한 건물에 모아 팔며 백화점의 원형으로 꼽힌다.", "era": "조선 정조 20년", "kr": "수원 화성 완공. 신해통공(1791)으로 금난전권이 폐지된 뒤 사상(私商)이 늘었다."}, {"c": "생활·문화", "y": 1868, "t": "장편 추리소설", "uk": "윌키 콜린스의 『월장석』이 영어로 쓴 첫 장편 추리소설로 꼽힌다.", "era": "조선 고종 5년", "kr": "경복궁 중건을 마치고 쇄국을 이어 가던 때."}, {"c": "생활·문화", "y": 1922, "t": "BBC 방송", "uk": "BBC가 라디오 정규 방송을 시작했고, 1936년에는 첫 고화질 TV 정규 방송을 열었다.", "era": "일제강점기", "kr": "문화통치기에 물산장려운동이 퍼졌다. 경성방송국 라디오는 1927년 시작."}, {"c": "스포츠", "y": 1744, "t": "골프 규칙", "uk": "에든버러 골퍼 모임이 처음으로 13개 조항의 골프 규칙을 글로 정했다.", "era": "조선 영조 20년", "kr": "탕평책을 펴고, 국가 의례를 정리한 『속오례의』를 펴냈다."}, {"c": "스포츠", "y": 1863, "t": "축구협회와 축구 규칙", "uk": "잉글랜드 축구협회(FA)가 생기고 손을 쓰지 않는 현대 축구 규칙을 정했다.", "era": "조선 고종 즉위년", "kr": "철종이 승하하고 고종이 즉위해 흥선대원군이 섭정을 시작."}, {"c": "스포츠", "y": 1871, "t": "럭비 협회와 첫 국가대항전", "uk": "잉글랜드 럭비풋볼유니언(RFU)이 결성되고 스코틀랜드와 첫 국가대항전을 치렀다.", "era": "조선 고종 8년", "kr": "신미양요가 일어나고 전국에 척화비를 세웠다."}, {"c": "스포츠", "y": 1877, "t": "윔블던", "uk": "올잉글랜드 클럽이 제1회 윔블던 선수권을 열며 현대 테니스 규칙을 정했다.", "era": "조선 고종 14년", "kr": "강화도조약(1876) 이듬해. 부산이 개항하고 개화 정책이 싹트던 때."}];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"})[c]);
+let cat = "", q = "", desc = false;
+function render() {
+  const rows = V.filter(v => (!cat || v.c === cat) && (!q || [v.y, v.t, v.uk, v.era, v.kr, v.c].join(" ").toLowerCase().includes(q)))
+    .sort((a, b) => desc ? b.y - a.y : a.y - b.y);
+  document.getElementById("count").textContent = `${rows.length}개 항목`;
+  document.getElementById("list").innerHTML = rows.length ? rows.map(v => `
+    <li class="uk-row"><div class="uk-year">${v.y}<small>${esc(v.c)}</small></div>
+      <div class="uk-a"><h3>${esc(v.t)}</h3><p>${esc(v.uk)}</p></div>
+      <div class="uk-b"><b>${esc(v.era)}</b><p>${esc(v.kr)}</p></div></li>`).join("")
+    : '<li class="uk-empty">맞는 항목이 없습니다.</li>';
+}
+document.getElementById("cats").onclick = e => {
+  const b = e.target.closest(".pr-tab"); if (!b) return;
+  cat = b.dataset.c;
+  document.querySelectorAll("#cats .pr-tab").forEach(x => x.classList.toggle("active", x === b));
+  render();
+};
+document.getElementById("q").oninput = e => { q = e.target.value.trim().toLowerCase(); render(); };
+document.getElementById("sort").onclick = e => { desc = !desc; e.target.textContent = desc ? "오래된순으로" : "최신순으로"; render(); };
+render();
+</script>
+
+<footer>&copy; 2026 최승환 · choijc79.github.io</footer>
+<div id="mqb">
+  <a href="/">🏠<br>홈</a>
+  <a href="/about.html">👤<br>소개</a>
+  <a href="/column.html">💬<br>칼럼</a>
+  <a href="/guides.html">⚙️<br>가이드</a>
+  <a href="/memo.html">📋<br>노트</a>
+</div>
+<script>
+(function(){
+  var t=localStorage.getItem('choijc-theme')||'dark';
+  document.documentElement.setAttribute('data-theme',t);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=t==='dark'?'\u2600 라이트':'\u263e 다크';
+})();
+function toggleTheme(){
+  var next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('choijc-theme',next);
+  var btn=document.getElementById('theme-toggle');
+  if(btn) btn.textContent=next==='dark'?'\u2600 라이트':'\u263e 다크';
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/motion@13.4.6/dist/motion.js" defer></script>
+<script src="/js/motion.js" defer></script>
+</body>
+</html>
