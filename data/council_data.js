@@ -1732,6 +1732,22 @@ window.COUNCIL_DATA = {
   ],
   "videos": [
     {
+      "id": "_v4guqGyNi4",
+      "title": "제364회 제천시의회 제2차 정례회  제1차 본회의(2026. 11. 23.)",
+      "session": "기타 의정활동·간담회",
+      "type": "본회의",
+      "date": "2026-11-23",
+      "transcriptLines": 0
+    },
+    {
+      "id": "4zAvqMOu4K0",
+      "title": "제천시 공공기관유치 범시민추진위원회 1주년 행사 및 결의대회(2026. 11. 17.)",
+      "session": "기타 의정활동·간담회",
+      "type": "의정영상",
+      "date": "2026-11-17",
+      "transcriptLines": 32
+    },
+    {
       "id": "AjXaecnrTTI",
       "title": "제363회 제천시의회 임시회 제2차 본회의(2026. 11. 9.)",
       "session": "제363회 임시회 (2026. 11. 2. ~ 11. 9.)",
@@ -1746,6 +1762,14 @@ window.COUNCIL_DATA = {
       "type": "5분 자유발언",
       "date": "2026-11-09",
       "transcriptLines": 86
+    },
+    {
+      "id": "pBhrwcGoOko",
+      "title": "제363회 제천시의회 임시회 제2차 본회의 5분 자유발언 - 신동윤 의원(2026. 11. 9.)",
+      "session": "제363회 임시회 (2026. 11. 2. ~ 11. 9.)",
+      "type": "5분 자유발언",
+      "date": "2026-11-09",
+      "transcriptLines": 143
     },
     {
       "id": "38Ei8RcK9ro",
@@ -1810,6 +1834,14 @@ window.COUNCIL_DATA = {
       "type": "산업건설위",
       "date": "2026-11-03",
       "transcriptLines": 1825
+    },
+    {
+      "id": "2s3MjEOx9WY",
+      "title": "제363회 제천시의회 임시회 통합본(2026. 11. 2. ~ 9.)",
+      "session": "제363회 임시회 (2026. 11. 2. ~ 11. 9.)",
+      "type": "회기 통합본",
+      "date": "2026-11-02",
+      "transcriptLines": 48
     },
     {
       "id": "5yDXlwBxEDk",
