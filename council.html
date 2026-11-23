@@ -45,12 +45,6 @@ a{color:var(--accent);text-decoration:none;}
 .sync-badge{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.7rem 1rem;font-size:11.5px;color:var(--muted);display:flex;flex-direction:column;gap:0.25rem;min-width:230px;}
 .sync-badge strong{color:var(--ink);font-family:var(--font-mono);font-size:12px;}
 
-/* ── KPI Strip ── */
-.kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:0.8rem;margin-top:1.4rem;padding-top:1.4rem;border-top:1px solid var(--border);}
-.kpi-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.9rem 1rem;}
-.kpi-num{font-family:var(--font-mono);font-size:1.35rem;font-weight:700;color:var(--accent);line-height:1.2;}
-.kpi-label{font-size:12px;font-weight:600;color:var(--ink);margin-top:0.2rem;}
-.kpi-sub{font-size:11px;color:var(--muted);margin-top:0.1rem;}
 
 /* ── View Tabs ── */
 .view-tabs{display:grid;grid-template-columns:repeat(6,1fr);gap:0.65rem;margin-bottom:1.8rem;position:sticky;top:62px;z-index:95;background:color-mix(in srgb,var(--bg) 88%,transparent);padding:0.55rem;border:1px solid var(--border);border-radius:14px;backdrop-filter:blur(12px);}
@@ -231,7 +225,6 @@ a{color:var(--accent);text-decoration:none;}
 footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:center;font-size:11.5px;color:var(--muted);margin-top:3rem;}
 
 @media(max-width:980px){
-  .kpi-grid{grid-template-columns:repeat(2,1fr);}
   .view-tabs{grid-template-columns:repeat(2,1fr);position:static;}
   .net-layout,.matrix-layout,.logic-tree,.member-grid,.anomaly-grid,.archive-grid{grid-template-columns:1fr;}
   .stage-node{flex:0 0 288px;}
@@ -248,11 +241,6 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
 .hero-desc{font-size:14px;}
 .hero-desc strong{font-weight:600;color:var(--ink);}
 .sync-badge{background:transparent;border:0;border-left:1px solid var(--hair);border-radius:0;padding:0.15rem 0 0.15rem 1.1rem;}
-.kpi-grid{gap:0;border-top:1px solid var(--hair);padding-top:0;margin-top:1.6rem;}
-.kpi-card{background:transparent;border:0;border-left:1px solid var(--hair);border-radius:0;padding:1.05rem 1.15rem 1.1rem;}
-.kpi-card:first-child{border-left:0;padding-left:0;}
-.kpi-num{font-family:var(--font-display);font-size:1.95rem;font-weight:700;color:var(--ink);letter-spacing:-0.02em;}
-.kpi-label{font-weight:500;margin-top:0.3rem;}
 .view-tabs{gap:0;padding:0;border:0;border-bottom:1px solid var(--hair);border-radius:0;box-shadow:none;background:var(--bg);margin-bottom:2.2rem;}
 .view-tab{background:transparent;border:0;border-radius:0;box-shadow:none;padding:0.95rem 1rem 0.9rem;}
 .view-tab:hover,.view-tab.active{background:transparent;border:0;box-shadow:none;}
@@ -310,10 +298,34 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
   .req-who,.req-item,.req-ans{grid-column:1/-1;}
 }
 @media(max-width:980px){
-  .kpi-card{border-left:0;border-top:1px solid var(--hair);padding-left:0;}
-  .kpi-card:nth-child(-n+2){border-top:0;}
   .vt-ind{display:none;}
   .view-tab.active{box-shadow:inset 0 -2px 0 var(--ink);}
+}
+
+/* ── 전체 검색 ── */
+.gs-bar{display:flex;gap:0.5rem;margin-top:1.4rem;padding-top:1.4rem;border-top:1px solid var(--hair);}
+.gs-bar .filter-input{min-width:0;font-size:14px;padding:0.65rem 0.9rem;}
+.gs-btn{padding:0.6rem 1.2rem;font-size:13px;white-space:nowrap;}
+#gs-out:not(:empty){margin-top:0.9rem;max-height:460px;overflow-y:auto;border:1px solid var(--hair);border-radius:4px;}
+.gs-note{font-size:12px;color:var(--muted);padding:0.6rem 0.9rem;border-bottom:1px solid var(--hair);}
+.gs-hit{all:unset;box-sizing:border-box;display:block;width:100%;cursor:pointer;padding:0.65rem 0.9rem;border-bottom:1px solid var(--hair);font-size:13px;line-height:1.55;}
+.gs-hit:hover{background:color-mix(in srgb,var(--accent) 8%,transparent);}
+.gs-hit b{color:var(--ink);font-weight:600;}
+.gs-hit i{font-style:normal;font-family:var(--font-mono);font-size:11px;color:var(--accent);margin-right:0.5rem;}
+.gs-hit span{display:block;color:var(--muted);font-size:12px;overflow-wrap:anywhere;}
+/* ── 탭: 단추형 ── */
+.view-tabs{display:flex;flex-wrap:wrap;gap:0.5rem;border-bottom:0;}
+.view-tab{border:1px solid var(--hair2);border-radius:999px;padding:0.5rem 0.95rem;}
+.view-tab:hover{border:1px solid var(--ink);}
+.view-tab.active{border:1px solid var(--ink);background:color-mix(in srgb,var(--ink) 10%,transparent);box-shadow:none;}
+.view-tab .vt-top{margin:0;gap:0.5rem;}
+.vt-sub,.vt-ind{display:none;}
+/* ── 의원 카드: 모바일 세로 배치 ── */
+.member-grid>*{min-width:0;}
+@media(max-width:640px){
+  .mc-top{flex-direction:column;}
+  .mc-foot{flex-direction:column;align-items:stretch !important;}
+  .mc-foot>span{white-space:normal !important;}
 }
 </style>
 </head>
@@ -352,33 +364,11 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
       </div>
     </div>
 
-    <div class="kpi-grid">
-      <div class="kpi-card">
-        <div class="kpi-num" id="kpi-videos">80편</div>
-        <div class="kpi-label">2026.07 이후 분석 영상</div>
-        <div class="kpi-sub">생중계 37편 · 녹화·인터뷰 43편</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-num" id="kpi-members">14명</div>
-        <div class="kpi-label">제10대 의원 전수 프로파일</div>
-        <div class="kpi-sub">국민의힘 7명 · 더불어민주당 7명</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-num" id="kpi-speeches">15건</div>
-        <div class="kpi-label">5단계 논리 해부도</div>
-        <div class="kpi-sub">워딩 → 의미 해석 → 예상 후속논리</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-num" id="kpi-storylines">5대 줄기</div>
-        <div class="kpi-label">회차 간 인과 흐름도</div>
-        <div class="kpi-sub">제359회(7월) ➔ 제364회(11월)</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-num" id="kpi-anomalies">7건</div>
-        <div class="kpi-label">비만장일치·삭감·삭제</div>
-        <div class="kpi-sub">공유재산 삭제 3건 · 표결이탈 3건</div>
-      </div>
-    </div>
+    <form class="gs-bar" onsubmit="event.preventDefault();globalSearch()">
+      <input type="search" id="gs-q" class="filter-input" placeholder="전체 검색: 의원명, 워딩, 부서, 영상 제목, 질의·요구자료 (예: 파크골프, 용역)" aria-label="전체 검색">
+      <button type="submit" class="yt-btn gs-btn">검색</button>
+    </form>
+    <div id="gs-out"></div>
   </section>
 
   <!-- 4 Interactive View Tabs -->
@@ -515,7 +505,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
       <div>
         <h2 class="sec-title">의원 14명 전수 프로파일 (핵심 관심사 · 비판 패턴 · 의미 해석 · 예상 논리)</h2>
       </div>
-      <div style="display:flex;gap:0.5rem;">
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
         <button class="yt-btn" onclick="filterMemberCards('__all__')">전체 (14)</button>
         <button class="yt-btn" onclick="filterMemberCards('국민의힘')">국민의힘 (7)</button>
         <button class="yt-btn" onclick="filterMemberCards('더불어민주당')">더불어민주당 (7)</button>
@@ -1367,7 +1357,7 @@ function renderMemberCards() {
           <div class="mc-row subtext"><strong>의미 해석:</strong>${m.subtext}</div>
           <div class="mc-row nextlogic"><strong>11월 정례회 예상논리:</strong>${m.nextLogic}</div>
         </div>
-        <div style="display:flex;justify-content:space-between;align-items:center;gap:0.6rem;padding-top:0.2rem;">
+        <div class="mc-foot" style="display:flex;justify-content:space-between;align-items:center;gap:0.6rem;padding-top:0.2rem;">
           <span style="font-size:11.5px;color:var(--muted);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">"${m.signatureQuote.text}"</span>
           <button class="yt-btn" onclick="event.stopPropagation();openYtModal('${m.signatureQuote.videoId}', ${m.signatureQuote.sec}, '${m.name} 의원 (${m.signatureQuote.session})', '${m.signatureQuote.text.replace(/'/g, '')}')">
             ▶ ${m.signatureQuote.time}
@@ -1528,13 +1518,35 @@ function renderQA() {
   document.getElementById('qa-list').innerHTML = html || '<p class="qa-note">조건에 맞는 질의가 없습니다.</p>';
 }
 
+
+// 전체 검색: 의원·발언·영상·질의응답·요구자료를 한 번에
+let GS_HITS = [];
+function globalSearch() {
+  const kw = document.getElementById('gs-q').value.trim();
+  const out = document.getElementById('gs-out');
+  if (!kw) { out.innerHTML = ''; return; }
+  const esc = t => String(t ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const has = o => JSON.stringify(o).includes(kw);
+  const snip = t => { t = String(t || ''); const i = t.indexOf(kw); return i < 0 ? t.slice(0, 90) : (i > 40 ? '…' : '') + t.slice(Math.max(0, i - 40), i + 60) + '…'; };
+  const play = (v, sec, title, text) => () => openYtModal(v, sec || 0, title, String(text || '').slice(0, 200).replace(/'/g, ''));
+  const tab = i => document.querySelectorAll('.view-tab')[i];
+  GS_HITS = [
+    ...DATA.members.filter(has).map(m => ({k: '의원', t: `${m.name} ${m.role || ''}`, s: `${m.party} · ${m.committee} · ${m.styleTag}`,
+      go: () => { switchView('members', tab(2)); selectMember(m.id); document.querySelector(`.member-card[data-id="${m.id}"]`)?.scrollIntoView({behavior: 'smooth', block: 'center'}); }})),
+    ...DATA.speeches.filter(has).map(x => ({k: '발언', t: `${x.memberName} · ${x.title}`, s: `${x.date} ${x.session} · ${snip((x.exactQuotes || x.quotes || []).map(q => q.text || q).join(' '))}`, go: play(x.videoId, x.sec, x.title, x.title)})),
+    ...DATA.videos.filter(has).map(v => ({k: '영상', t: v.title, s: `${v.date} · ${v.type}`, go: play(v.id, 0, v.title, '')})),
+    ...(window.QA_DATA || []).filter(has).map(q => ({k: '질의', t: `${q.member} · ${q.dept} (${q.ts})`, s: `${q.date} ${q.title} · ${snip(q.text)}`, go: play(q.vid, q.sec, q.title, q.text)})),
+    ...(window.REQUESTS || []).filter(has).map(r => ({k: '요구자료', t: `${r.member} → ${r.dept}: ${r.item}`, s: `${r.date} ${r.title} (${r.ts})`, go: play(r.vid, r.sec, r.title, r.item)})),
+  ];
+  const MAX = 100;
+  out.innerHTML = `<div class="gs-note">"${esc(kw)}" ${GS_HITS.length}건${GS_HITS.length > MAX ? ` · 상위 ${MAX}건 표시` : ''} · 누르면 해당 의원 또는 영상 시점으로 이동</div>`
+    + GS_HITS.slice(0, MAX).map((h, i) => `<button type="button" class="gs-hit" onclick="GS_HITS[${i}].go()"><i>${h.k}</i><b>${esc(h.t)}</b><span>${esc(h.s)}</span></button>`).join('');
+}
+
 // 초기화 실행
 document.addEventListener('DOMContentLoaded', () => {
   if (DATA.meta) {
     document.getElementById('meta-sync-time').textContent = DATA.meta.generatedAt + ' KST';
-    document.getElementById('kpi-videos').textContent = DATA.videos.length + '편';
-    document.getElementById('kpi-speeches').textContent = DATA.speeches.length + '건';
-    document.getElementById('kpi-storylines').textContent = DATA.storylines.length + '대 줄기';
     document.getElementById('tab-count-videos').textContent = DATA.videos.length;
     document.getElementById('tab-count-speeches').textContent = DATA.speeches.length;
   }
@@ -1580,7 +1592,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (reduce) return;
 
   // 첫 화면: 머리말부터 지표까지 차례로
-  var first = document.querySelectorAll('.hero-eyebrow,.hero-title,.hero-desc,.sync-badge,.kpi-card,.view-tabs');
+  var first = document.querySelectorAll('.hero-eyebrow,.hero-title,.hero-desc,.sync-badge,.view-tabs');
   var n = 0;
   first.forEach(function (el) {
     if (el.__motionDone || el.style.opacity === '0') return;
