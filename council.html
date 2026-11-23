@@ -90,18 +90,37 @@ a{color:var(--accent);text-decoration:none;}
 /* ── Cross-Session Storyline Flows ── */
 .storyline-list{display:flex;flex-direction:column;gap:1.1rem;margin-bottom:2.2rem;}
 .story-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.4rem 1.5rem;position:relative;}
-.story-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:1.1rem;}
+.story-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:0.85rem;}
 .story-title{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:var(--ink);}
 .story-cat{font-size:11px;padding:3px 10px;border-radius:99px;background:color-mix(in srgb,var(--accent) 15%,transparent);color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 40%,transparent);font-weight:600;}
-.story-summary{font-size:12.5px;color:var(--muted);margin-bottom:1.1rem;}
-.story-stages{display:grid;grid-template-columns:repeat(4,1fr);gap:0.75rem;position:relative;}
-.stage-node{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.95rem;position:relative;display:flex;flex-direction:column;gap:0.4rem;}
+.story-meta-row{display:flex;justify-content:space-between;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.9rem;}
+.story-summary{font-size:12.5px;color:var(--muted);margin:0;}
+.story-scroll-controls{display:inline-flex;align-items:center;gap:0.4rem;flex-shrink:0;}
+.story-stage-count{font-family:var(--font-mono);font-size:11px;color:var(--muted);margin-right:0.2rem;}
+.story-scroll-btn{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:1px solid var(--hair2,var(--border));border-radius:3px;background:transparent;color:var(--ink);font-family:var(--font-mono);font-size:13px;line-height:1;cursor:pointer;transition:border-color 0.15s,color 0.15s,opacity 0.15s;}
+.story-scroll-btn:hover:not(:disabled){border-color:var(--ink);color:var(--accent);}
+.story-scroll-btn:disabled{opacity:0.32;cursor:default;}
+.story-stages-wrap{position:relative;}
+.story-stages-wrap::before,.story-stages-wrap::after{content:'';position:absolute;top:0;bottom:10px;width:36px;pointer-events:none;z-index:2;opacity:0;transition:opacity 0.2s ease;}
+.story-stages-wrap::before{left:0;background:linear-gradient(90deg,var(--surface),transparent);}
+.story-stages-wrap::after{right:0;background:linear-gradient(270deg,var(--surface),transparent);}
+.story-stages-wrap.can-scroll-left::before{opacity:1;}
+.story-stages-wrap.can-scroll-right::after{opacity:1;}
+.story-stages{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:stretch;gap:0.75rem;position:relative;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;scroll-behavior:smooth;padding:0.1rem 0.1rem 0.65rem;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--hair2,var(--border)) transparent;}
+.story-stages.is-scrollable{cursor:grab;}
+.story-stages.is-dragging{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto;user-select:none;}
+.story-stages::-webkit-scrollbar{height:6px;}
+.story-stages::-webkit-scrollbar-track{background:color-mix(in srgb,var(--hair,var(--border)) 45%,transparent);border-radius:999px;}
+.story-stages::-webkit-scrollbar-thumb{background:var(--hair2,var(--border));border-radius:999px;}
+.story-stages::-webkit-scrollbar-thumb:hover{background:var(--muted);}
+.stage-node{flex:0 0 320px;min-width:268px;scroll-snap-align:start;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.95rem;position:relative;display:flex;flex-direction:column;gap:0.4rem;}
 .stage-node.shock{border-color:rgba(226,96,63,0.65);background:color-mix(in srgb,var(--red) 7%,var(--bg));}
 .stage-node.pivot{border-color:rgba(242,163,58,0.65);}
 .stage-node.resolve{border-color:rgba(169,196,106,0.65);}
 .stage-node.forecast{border-style:dashed;border-color:var(--purple);background:color-mix(in srgb,var(--purple) 7%,var(--bg));}
-.stage-step-num{font-family:var(--font-mono);font-size:10.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--accent);}
-.stage-session{font-size:11px;color:var(--muted);}
+.stage-top{display:flex;justify-content:space-between;align-items:baseline;gap:0.5rem;}
+.stage-step-num{font-family:var(--font-mono);font-size:10.5px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--accent);white-space:nowrap;}
+.stage-session{font-size:11px;color:var(--muted);text-align:right;}
 .stage-label{font-size:13px;font-weight:700;color:var(--ink);line-height:1.4;}
 .stage-detail{font-size:11.8px;color:var(--text);line-height:1.55;flex:1;}
 .stage-actors{font-size:11px;color:var(--accent2);font-weight:500;margin-top:0.2rem;}
@@ -214,7 +233,11 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
 @media(max-width:980px){
   .kpi-grid{grid-template-columns:repeat(2,1fr);}
   .view-tabs{grid-template-columns:repeat(2,1fr);position:static;}
-  .net-layout,.matrix-layout,.story-stages,.logic-tree,.member-grid,.anomaly-grid,.archive-grid{grid-template-columns:1fr;}
+  .net-layout,.matrix-layout,.logic-tree,.member-grid,.anomaly-grid,.archive-grid{grid-template-columns:1fr;}
+  .stage-node{flex:0 0 288px;}
+}
+@media(max-width:640px){
+  .stage-node{flex:0 0 84%;min-width:245px;}
 }
 /* ── 편집 디자인 덧씌움: 둥근 상자·광택·이중 상자를 걷어내고 가는 선과 활자로 위계를 만든다 ── */
 :root{--hair:color-mix(in srgb,var(--ink) 13%,transparent);--hair2:color-mix(in srgb,var(--ink) 30%,transparent);}
@@ -717,7 +740,7 @@ const DATA = window.COUNCIL_DATA || { members:[], storylines:[], speeches:[], ne
     st.members = st.members || [...new Set(steps.map(s => s.actor).filter(Boolean))];
     st.summary = st.summary || st.status || '';
     st.stages = steps.map(s => ({
-      status: /삭제|제동|보류|부결|삭감/.test(s.tag) ? 'shock' : /예상|정례회|전망/.test(s.tag + s.session) ? 'forecast'
+      status: /삭제|제동|보류|부결|삭감/.test(s.tag) ? 'shock' : /예상|전망|향후/.test((s.tag || '') + (s.session || '')) ? 'forecast'
              : /가결|부활|통과|반영/.test(s.tag) ? 'resolve' : 'pivot',
       session: s.session, date: s.date, label: s.tag, detail: s.desc, actors: s.actor || '',
       videoId: s.videoId, sec: s.sec
@@ -972,6 +995,65 @@ function renderNetworkInspector() {
 // ============================================================================
 // 2. 회차 간 인과 흐름도 & 비만장일치 표결 렌더링
 // ============================================================================
+function initStoryScrollers() {
+  document.querySelectorAll('.story-card').forEach(card => {
+    const wrap = card.querySelector('.story-stages-wrap');
+    const track = card.querySelector('.story-stages');
+    const prevBtn = card.querySelector('.story-scroll-btn[data-dir="-1"]');
+    const nextBtn = card.querySelector('.story-scroll-btn[data-dir="1"]');
+    if (!wrap || !track) return;
+
+    const update = () => {
+      const max = track.scrollWidth - track.clientWidth;
+      const canLeft = track.scrollLeft > 2;
+      const canRight = max - track.scrollLeft > 2;
+      wrap.classList.toggle('can-scroll-left', canLeft);
+      wrap.classList.toggle('can-scroll-right', canRight);
+      track.classList.toggle('is-scrollable', max > 2);
+      if (prevBtn) prevBtn.disabled = !canLeft;
+      if (nextBtn) nextBtn.disabled = !canRight;
+    };
+
+    const scrollByStep = (dir) => {
+      const first = track.querySelector('.stage-node');
+      const step = first ? first.offsetWidth + 12 : 332;
+      track.scrollBy({ left: dir * step, behavior: 'smooth' });
+    };
+
+    if (prevBtn) prevBtn.addEventListener('click', () => scrollByStep(-1));
+    if (nextBtn) nextBtn.addEventListener('click', () => scrollByStep(1));
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+
+    // 데스크톱 마우스 드래그로 좌우 스크롤 지원
+    let dragging = false, moved = false, startX = 0, startLeft = 0;
+    track.addEventListener('mousedown', (e) => {
+      if (e.button !== 0 || e.target.closest('button, a')) return;
+      if (track.scrollWidth <= track.clientWidth + 2) return;
+      dragging = true;
+      moved = false;
+      startX = e.clientX;
+      startLeft = track.scrollLeft;
+    });
+    window.addEventListener('mousemove', (e) => {
+      if (!dragging) return;
+      const dx = e.clientX - startX;
+      if (!moved && Math.abs(dx) > 4) {
+        moved = true;
+        track.classList.add('is-dragging');
+      }
+      if (moved) track.scrollLeft = startLeft - dx;
+    });
+    window.addEventListener('mouseup', () => {
+      if (!dragging) return;
+      dragging = false;
+      track.classList.remove('is-dragging');
+    });
+
+    requestAnimationFrame(update);
+  });
+}
+
 function renderStorylines() {
   const wrap = document.getElementById('storyline-list');
   if (!wrap) return;
@@ -984,27 +1066,37 @@ function renderStorylines() {
         </div>
         <span style="font-size:11.5px;color:var(--muted);">참여 의원: <strong style="color:var(--ink);">${st.members.join(', ')}</strong></span>
       </div>
-      <p class="story-summary">${st.summary}</p>
-      <div class="story-stages">
-        ${st.stages.map((sg, idx) => `
-          <div class="stage-node ${sg.status}">
-            <div style="display:flex;justify-content:space-between;align-items:center;">
-              <span class="stage-step-num">STAGE ${idx + 1}</span>
-              <span class="stage-session">${sg.session} (${sg.date})</span>
+      <div class="story-meta-row">
+        <p class="story-summary">${st.summary}</p>
+        <div class="story-scroll-controls">
+          <span class="story-stage-count">${st.stages.length}단계 · 좌우 스크롤</span>
+          <button type="button" class="story-scroll-btn" data-dir="-1" aria-label="이전 단계로 스크롤" title="왼쪽으로 스크롤">←</button>
+          <button type="button" class="story-scroll-btn" data-dir="1" aria-label="다음 단계로 스크롤" title="오른쪽으로 스크롤">→</button>
+        </div>
+      </div>
+      <div class="story-stages-wrap">
+        <div class="story-stages" tabindex="0" aria-label="${st.title} 단계별 흐름">
+          ${st.stages.map((sg, idx) => `
+            <div class="stage-node ${sg.status}">
+              <div class="stage-top">
+                <span class="stage-step-num">STAGE ${idx + 1}</span>
+                <span class="stage-session">${sg.session} (${sg.date})</span>
+              </div>
+              <div class="stage-label">${sg.label}</div>
+              <p class="stage-detail">${sg.detail}</p>
+              <div class="stage-actors">${sg.actors}</div>
+              ${sg.videoId ? `
+                <button class="yt-btn" style="margin-top:0.4rem;width:100%;justify-content:center;" onclick="openYtModal('${sg.videoId}', ${sg.sec || 0}, '${st.title} — ${sg.label}', '${sg.detail.replace(/'/g, '')}')">
+                  ▶ ${sg.session.split(' ')[0]} 영상 확인
+                </button>
+              ` : ''}
             </div>
-            <div class="stage-label">${sg.label}</div>
-            <p class="stage-detail">${sg.detail}</p>
-            <div class="stage-actors">${sg.actors}</div>
-            ${sg.videoId ? `
-              <button class="yt-btn" style="margin-top:0.4rem;width:100%;justify-content:center;" onclick="openYtModal('${sg.videoId}', ${sg.sec || 0}, '${st.title} — ${sg.label}', '${sg.detail.replace(/'/g, '')}')">
-                ▶ ${sg.session.split(' ')[0]} 영상 확인
-              </button>
-            ` : ''}
-          </div>
-        `).join('')}
+          `).join('')}
+        </div>
       </div>
     </article>
   `).join('');
+  initStoryScrollers();
 
   const anomWrap = document.getElementById('anomaly-grid');
   if (anomWrap) {
@@ -1441,6 +1533,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (DATA.meta) {
     document.getElementById('meta-sync-time').textContent = DATA.meta.generatedAt + ' KST';
     document.getElementById('kpi-videos').textContent = DATA.videos.length + '편';
+    document.getElementById('kpi-speeches').textContent = DATA.speeches.length + '건';
+    document.getElementById('kpi-storylines').textContent = DATA.storylines.length + '대 줄기';
     document.getElementById('tab-count-videos').textContent = DATA.videos.length;
     document.getElementById('tab-count-speeches').textContent = DATA.speeches.length;
   }
