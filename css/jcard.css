@@ -50,15 +50,15 @@ body{background:var(--bg)!important;color:var(--text);font-family:'Pretendard Va
 .tape-counter,.tape-type,.deck-brand,.deck-brand small,.deck-lamp{font-family:var(--font-mono)}
 
 /* ── 트랙리스트: 카세트 케이스 속지 ── */
-html[data-theme] .tape-tracks{background:var(--paper);color:var(--paper-text);border:1px solid var(--paper-ink);border-radius:0;box-shadow:none;padding:26px 28px 14px}
-html[data-theme] .tape-tracks h2{font-family:var(--font-body,"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif);font-size:13px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--paper-text);margin:20px 0 4px;padding-bottom:6px;border-bottom:1px solid var(--paper-ink)}
+html[data-theme] .tape-tracks{--wood-text:#f3e6cc;--wood-accent:#f2b45a;color:var(--wood-text);border:1px solid #1e130b;border-radius:0;box-shadow:inset 0 0 0 1px rgba(255,220,160,.12),inset 0 0 40px rgba(0,0,0,.35);padding:26px 28px 14px;background:repeating-linear-gradient(90deg,rgba(0,0,0,.0) 0 3px,rgba(0,0,0,.07) 3px 4px,rgba(255,225,170,.04) 4px 9px,rgba(0,0,0,.05) 9px 11px),repeating-linear-gradient(0deg,rgba(20,10,4,.28) 0 1px,transparent 1px 74px),linear-gradient(180deg,#6b4527 0%,#5a3a20 35%,#6a4426 70%,#52341c 100%)}
+html[data-theme] .tape-tracks h2{font-family:var(--font-body,"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif);font-size:13px;font-weight:600;letter-spacing:0;text-transform:none;color:var(--wood-accent);margin:20px 0 4px;padding-bottom:6px;border-bottom:1px solid rgba(243,230,204,.45)}
 html[data-theme] .tape-tracks ol{margin:0 0 12px}
-html[data-theme] .tape-tracks li a{display:flex;gap:14px;align-items:baseline;padding:8px 0;font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--paper-text);border-bottom:1px dotted var(--paper-ink)}
-html[data-theme] .tape-tracks li a:hover{color:var(--orange)}
-html[data-theme] .tape-tracks .no{font-family:var(--font-mono);font-size:12px;font-weight:500;color:var(--orange);min-width:2.2em}
-html[data-theme] .tape-tracks .sub{margin-left:auto;font-family:var(--font-body,"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif);font-size:12px;font-weight:400;color:#6B655B;text-align:right}
-html[data-theme] .tape-tracks .bonus{color:var(--olive)}
-html[data-theme] .tape-tracks .bonus .no{color:var(--olive)}
+html[data-theme] .tape-tracks li a{display:flex;gap:14px;align-items:baseline;padding:8px 0;font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--wood-text);border-bottom:1px dotted rgba(243,230,204,.35)}
+html[data-theme] .tape-tracks li a:hover{color:#ffd27a}
+html[data-theme] .tape-tracks .no{font-family:var(--font-mono);font-size:12px;font-weight:500;color:var(--wood-accent);min-width:2.2em}
+html[data-theme] .tape-tracks .sub{margin-left:auto;font-family:var(--font-body,"Pretendard Variable",Pretendard,"Noto Sans KR",sans-serif);font-size:12px;font-weight:400;color:#d8c5a2;text-align:right}
+html[data-theme] .tape-tracks .bonus{color:#cfe0b8}
+html[data-theme] .tape-tracks .bonus .no{color:#cfe0b8}
 .pager{transform:none;box-shadow:none;border:1px solid var(--paper-ink);margin:0 0 4px auto}
 .pager-num,.pager-row,.pager-msg,.pager-brand,.pager-brand small{font-family:var(--font-mono)}
 .pager-num{font-size:24px;letter-spacing:2px}
