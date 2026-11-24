@@ -126,11 +126,11 @@ GitHub Pages 기반 개인 사이트 (`choijc79.github.io`) 관리 및 콘텐츠
 | `practice.html`, `practice/`, `css/practice.css` | AI 실무 가이드 목록·상세 (생성물 — 직접 고치지 말고 JSON 수정 후 재생성). 상세는 '이럴 때·핵심·꼭 지킬 것' 세 칸 요약 → 단계 → 복사 프롬프트 → 함께 챙길 것 순서 |
 | `vibe_course.json`, `build_vibe.py`, `vibe.html`, `vibe/`, `css/vibe.css`, `js/vibe.js` | 바이브 코딩 단계별 과정(Lv.3~6 12편) + 업무 자동화 도구 상자(`level: "T"`, 10편: 파이썬·터미널·정규식·JSON/CSV·pandas·문서·requests·Playwright·SQLite·JS). 레슨마다 개념·나쁜/좋은 요청·실습·요점 카드 6장(모두 「안다」면 통과, localStorage `vibe-cleared`·`vibe-known`)·튜터 프롬프트, 도구 레슨은 `snippet`(자주 쓰는 코드) 추가. JSON 수정 후 `python3 build_vibe.py` |
 | `badq.html` | 정영진의 나쁜질문 유튜브 최신 50편 요약 (jisikinside.html 구조 복사). `~/badq-auto/update.py`가 launchd `com.aipon.badq-update`로 7일마다 갱신·push하므로 직접 고치지 않는다 |
-| `retire.html` | 퇴직이후 계획기(정년·연금 개시 공백, 연금과 일시금 손익분기, 월 가계부, 준비 목록). 개인 금액은 페이지에 넣지 않고 방문자 localStorage `retire-plan`에만 저장. 실제 숫자는 저장소 밖 `~/retire-private/pension.json`에 두고 MCP `retire_data`·`retire_save`로 읽고 고친다 |
+| `retire_notes.json`, `build_retire.py`, `retire.html` | 퇴직이후 탭. 기본정보(출생·임용 연월은 build_retire.py 위쪽 상수, 정년·연금 개시·소득 공백 자동 계산), 간단 계산(금액은 방문자 localStorage `retire-plan`에만), 자료 목록(retire_notes.json: date·tag·title·summary·url). 자료는 MCP `add_retire_note`로 추가. 개인 금액은 페이지·저장소에 넣지 않는다 |
 | `tour.html` | 투어 기사 목록 |
 | `whisky.html` | 위스키 가이드 목록 |
 | `memo.html` | 정리노트 (publish.py가 자동 생성) |
-| `site_mcp.py` | 사이트 전용 MCP 서버(stdio, Claude Desktop에 `jc-site`로 등록). 도구: `site_status`·`list_columns`·`add_column`·`add_guide`·`publish`·`run_update`(지식인사이드 jisik·나쁜질문 badq·민선9기 lsc·의회 council 갱신을 백그라운드로 즉시 실행)·`update_log`·`retire_data`·`retire_save`(퇴직이후 비공개 숫자). Claude Desktop과 Claude Code(user 범위)에 `jc-site`로 등록. 추가 도구는 빌드·커밋·push까지 바로 한다. 고친 뒤 `python3 site_mcp.py --selftest`로 검사 |
+| `site_mcp.py` | 사이트 전용 MCP 서버(stdio, Claude Desktop에 `jc-site`로 등록). 도구: `site_status`·`list_columns`·`add_column`·`add_guide`·`publish`·`run_update`(지식인사이드 jisik·나쁜질문 badq·민선9기 lsc·의회 council 갱신을 백그라운드로 즉시 실행)·`update_log`·`add_retire_note`(퇴직이후 자료 추가). Claude Desktop과 Claude Code(user 범위)에 `jc-site`로 등록. 추가 도구는 빌드·커밋·push까지 바로 한다. 고친 뒤 `python3 site_mcp.py --selftest`로 검사 |
 | `.claude/skills/site-column`·`site-guide`·`site-council` | 발행 스킬. 칼럼·AI 가이드는 초안 승인 후 `python3 site_mcp.py --add column\|guide 초안.json`으로 배포, 시의회는 외장 SSD 동기화 스크립트를 손으로 실행 |
 | `templates/` | 반복되는 발행 흐름(위스키 리뷰, 칼럼, 신규 페이지)의 재사용 템플릿 + 체크리스트. 새 항목 추가 시 `templates/README.md`부터 확인 |
 

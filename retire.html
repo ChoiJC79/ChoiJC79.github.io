@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<!-- 퇴직이후 계획기: 개인 금액은 싣지 않고 방문자 브라우저 localStorage에만 저장 -->
+<!-- 퇴직이후 탭: build_retire.py가 retire_notes.json으로 생성. 직접 고치지 않는다 -->
 <html lang="ko" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>퇴직 이후 계획 | 최승환</title>
-<meta name="description" content="공무원연금 예상액을 넣어 정년 뒤 소득 공백, 연금과 일시금의 손익분기, 매달 가계부를 계산하는 퇴직이후 계획기">
-<meta property="og:title" content="퇴직 이후 계획 | 최승환">
-<meta property="og:description" content="공무원연금 예상액을 넣어 정년 뒤 소득 공백, 연금과 일시금의 손익분기, 매달 가계부를 계산하는 퇴직이후 계획기">
+<title>퇴직 이후 준비 | 최승환</title>
+<meta name="description" content="정년·연금 개시 일정과 소득 공백, 연금과 일시금 손익분기를 간단히 계산하고 퇴직 준비 자료를 모아 두는 페이지">
+<meta property="og:title" content="퇴직 이후 준비 | 최승환">
+<meta property="og:description" content="정년·연금 개시 일정과 소득 공백, 연금과 일시금 손익분기를 간단히 계산하고 퇴직 준비 자료를 모아 두는 페이지">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://choijc79.github.io/retire.html">
 <meta property="og:site_name" content="최승환 · Jecheon">
@@ -21,28 +21,24 @@
 <style>
 .rt-wrap{max-width:860px;margin:0 auto;padding:32px 16px 80px}
 .rt-wrap h1{font-family:var(--font-display);font-size:clamp(1.6rem,4vw,2.2rem);margin:.2em 0 .3em}
-.rt-lead{color:var(--muted);line-height:1.7}
-.rt-lock{border:1px dashed var(--border);border-radius:var(--radius);padding:12px 14px;margin:18px 0;color:var(--muted);font-size:.92rem;line-height:1.6}
+.rt-lead,.rt-small{color:var(--muted);line-height:1.7}
+.rt-small{font-size:.85rem}
 .rt-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin:18px 0}
 .rt-card h2{font-family:var(--font-display);font-size:1.15rem;margin:0 0 12px}
-.rt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.rt-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.rt-stat{border-left:3px solid var(--accent);padding:4px 0 4px 12px}
+.rt-stat b{display:block;font-family:var(--font-mono);font-size:1.15rem}
+.rt-stat span{font-size:.85rem;color:var(--muted)}
+.rt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:16px}
 .rt-grid label{display:flex;flex-direction:column;gap:4px;font-size:.88rem;color:var(--muted)}
 .rt-grid input{font:inherit;font-family:var(--font-mono);background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:8px 10px}
-.rt-btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.rt-btns button{font:inherit;font-size:.88rem;background:transparent;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:7px 12px;cursor:pointer}
-.rt-btns button:hover{border-color:var(--accent);color:var(--accent)}
-#paste{width:100%;min-height:90px;margin-top:10px;font-family:var(--font-mono);font-size:.82rem;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:8px}
-.rt-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
-.rt-stat{border-left:3px solid var(--accent);padding:4px 0 4px 12px}
-.rt-stat b{display:block;font-family:var(--font-mono);font-size:1.25rem;color:var(--text)}
-.rt-stat span{font-size:.85rem;color:var(--muted)}
-.rt-card p,.rt-card li{line-height:1.7}
-.rt-note{font-size:.85rem;color:var(--muted)}
-.rt-table{width:100%;border-collapse:collapse;font-size:.9rem}
-.rt-table th,.rt-table td{border-bottom:1px solid var(--border);padding:7px 6px;text-align:left}
-.rt-table tr.me td{color:var(--accent);font-weight:600}
-.rt-check li{list-style:none;margin:6px 0}
-.rt-check input{margin-right:8px;accent-color:var(--accent)}
+.rt-notes{list-style:none;padding:0;margin:0}
+.rt-note-item{border-top:1px solid var(--border);padding:14px 0}
+.rt-note-item:first-child{border-top:0;padding-top:0}
+.rt-note-item h3{font-size:1.02rem;margin:4px 0}
+.rt-note-item a{color:var(--accent)}
+.rt-note-item p{margin:0;line-height:1.7}
+.rt-meta{font-family:var(--font-mono);font-size:.78rem;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -60,153 +56,61 @@
 </header>
 
 <main class="rt-wrap">
-  <p class="rt-note">LOUNGE · 퇴직이후</p>
-  <h1>퇴직 이후, 숫자로 미리 그려 보기</h1>
-  <p class="rt-lead">공무원연금 퇴직급여 예상액을 넣으면 정년부터 연금이 나오기까지 비는 기간, 연금과 일시금의 손익분기, 매달 남는 돈을 계산합니다.</p>
-  <p class="rt-lock">내 금액은 이 페이지에 실려 있지 않습니다. 아래 칸에 넣은 숫자는 이 브라우저에만 저장되고 어디로도 전송되지 않습니다. 금액은 공무원연금공단 「퇴직급여 예상액」 조회 결과(세후 실지급액)를 넣습니다.</p>
+  <p class="rt-small">LOUNGE · 퇴직이후</p>
+  <h1>퇴직 이후를 준비하는 방</h1>
+  <p class="rt-lead">정년과 연금 개시까지의 기본 일정, 간단한 계산, 모아 둔 자료를 둡니다.</p>
 
   <section class="rt-card">
-    <h2>내 숫자</h2>
+    <h2>기본정보</h2>
+    <div class="rt-stats"><div class="rt-stat"><b>2007년 1월</b><span>임용</span></div><div class="rt-stat"><b>2039년 12월 (만 60세)</b><span>정년퇴직</span></div><div class="rt-stat"><b>13년 1개월</b><span>정년까지</span></div><div class="rt-stat"><b>33년 0개월</b><span>정년 때 재직기간</span></div><div class="rt-stat"><b>2044년 11월 (65세)</b><span>연금 개시</span></div><div class="rt-stat"><b>4년 10개월</b><span>소득 공백</span></div></div>
+    <p class="rt-small">정년은 만 60세가 되는 해의 6월 말 또는 12월 말이고, 연금 개시 연령은 퇴직한 해로 정해집니다(공무원연금법 부칙 제11조).</p>
+  </section>
+
+  <section class="rt-card">
+    <h2>간단 계산</h2>
     <div class="rt-grid">
-      <label>출생 연월<input id="birth" type="month"></label>
-      <label>퇴직연금 월액(세후, 원)<input id="pension" type="number" inputmode="numeric"></label>
-      <label>퇴직수당(세후, 원)<input id="allowance" type="number" inputmode="numeric"></label>
-      <label>퇴직일시금 받을 때 총액(세후, 원)<input id="lump" type="number" inputmode="numeric"></label>
-      <label>공제일시금 선택 시 연금 월액(원)<input id="partPension" type="number" inputmode="numeric"></label>
-      <label>공제일시금 선택 시 일시금(원)<input id="partLump" type="number" inputmode="numeric"></label>
-      <label>은퇴 후 한 달 생활비(원)<input id="living" type="number" inputmode="numeric"></label>
-      <label>공백기에 쓸 모아 둔 돈(원)<input id="savings" type="number" inputmode="numeric"></label>
+      <label>연금 월액(세후, 만 원)<input id="pension" type="number" inputmode="numeric"></label>
+      <label>일시금으로 받을 때 총액(만 원)<input id="lump" type="number" inputmode="numeric"></label>
+      <label>퇴직수당(만 원)<input id="allowance" type="number" inputmode="numeric"></label>
+      <label>한 달 생활비(만 원)<input id="living" type="number" inputmode="numeric"></label>
     </div>
-    <div class="rt-btns">
-      <button type="button" id="openPaste">JSON 붙여넣기</button>
-      <button type="button" id="clear">이 브라우저에서 지우기</button>
-    </div>
-    <textarea id="paste" hidden placeholder='Claude에게 「퇴직 데이터 보여 줘」라고 하면 나오는 JSON을 붙여 넣으세요'></textarea>
-  </section>
-
-  <section class="rt-card">
-    <h2>정년과 연금 개시</h2>
     <div class="rt-stats">
-      <div class="rt-stat"><b id="o-retire">-</b><span>정년퇴직일(만 60세)</span></div>
-      <div class="rt-stat"><b id="o-start">-</b><span>연금 받기 시작하는 달</span></div>
-      <div class="rt-stat"><b id="o-gap">-</b><span>월급도 연금도 없는 기간</span></div>
-      <div class="rt-stat"><b id="o-need">-</b><span>공백기 생활비 합계</span></div>
+      <div class="rt-stat"><b id="o-gap">-</b><span>공백기 생활비 합계</span></div>
+      <div class="rt-stat"><b id="o-month">-</b><span>연금 받을 때 매달 남는 돈</span></div>
+      <div class="rt-stat"><b id="o-even">-</b><span>연금이 일시금을 넘는 나이</span></div>
     </div>
-    <p id="o-gapmsg"></p>
-    <p class="rt-note">공무원 정년은 만 60세이고, 생일이 1~6월이면 6월 30일, 7~12월이면 12월 31일에 퇴직합니다. 1996년 이후 임용자는 퇴직한 해에 따라 연금 개시 연령이 정해집니다(공무원연금법 부칙 제11조).</p>
-    <table class="rt-table" id="ageTable">
-      <thead><tr><th>퇴직 연도</th><th>연금 개시 연령</th></tr></thead>
-      <tbody></tbody>
-    </table>
+    <p class="rt-small">넣은 숫자는 이 브라우저에만 저장됩니다. 퇴직수당은 연금을 골라도 한 번에 받으므로 손익분기에서 뺍니다. 연금의 물가 연동은 넣지 않았습니다.</p>
   </section>
 
   <section class="rt-card">
-    <h2>연금으로 받을까, 한 번에 받을까</h2>
-    <div class="rt-stats">
-      <div class="rt-stat"><b id="o-diff">-</b><span>일시금이 더 받는 금액</span></div>
-      <div class="rt-stat"><b id="o-even">-</b><span>연금이 따라잡는 데 걸리는 기간</span></div>
-      <div class="rt-stat"><b id="o-evenage">-</b><span>손익분기 나이</span></div>
-      <div class="rt-stat"><b id="o-part">-</b><span>공제일시금 손익분기 나이</span></div>
-    </div>
-    <p id="o-evenmsg"></p>
-    <p class="rt-note">퇴직수당은 어느 쪽을 골라도 한 번에 받으므로 비교에서 뺍니다. 연금은 해마다 물가상승률만큼 오르고 유족연금도 남으므로, 실제 손익분기는 여기 나온 나이보다 빠릅니다. 이자와 세금 변동은 넣지 않았습니다.</p>
-  </section>
-
-  <section class="rt-card">
-    <h2>매달 가계부</h2>
-    <div class="rt-stats">
-      <div class="rt-stat"><b id="o-month">-</b><span>연금 개시 후 매달 남거나 모자란 돈</span></div>
-      <div class="rt-stat"><b id="o-cover">-</b><span>연금이 생활비를 채우는 비율</span></div>
-      <div class="rt-stat"><b id="o-bridge">-</b><span>공백기에 모자라는 돈</span></div>
-    </div>
-  </section>
-
-  <section class="rt-card">
-    <h2>준비 목록</h2>
-    <ul class="rt-check" id="check">
-      <li><label><input type="checkbox" data-i="0">해마다 퇴직급여 예상액을 다시 조회해 숫자를 고친다</label></li>
-      <li><label><input type="checkbox" data-i="1">정년 기준 개시 연령과 공백 기간을 확인한다</label></li>
-      <li><label><input type="checkbox" data-i="2">공백기 생활비를 따로 모을 계좌를 정한다</label></li>
-      <li><label><input type="checkbox" data-i="3">연금저축·IRP 세액공제 한도를 채운다</label></li>
-      <li><label><input type="checkbox" data-i="4">정년 뒤 할 일(강의·연구·재취업)을 한 가지 정한다</label></li>
-      <li><label><input type="checkbox" data-i="5">건강보험 피부양자 요건과 지역가입자 보험료를 계산해 본다</label></li>
-      <li><label><input type="checkbox" data-i="6">퇴직 1년 전 연금 수령 방식(연금·일시금·공제일시금)을 정한다</label></li>
-    </ul>
+    <h2>자료</h2>
+    <ul class="rt-notes"><li class="rt-note-item"><div class="rt-meta">2026-11-24 · 연금</div><h3><a href="https://www.law.go.kr/법령/공무원연금법" target="_blank" rel="noopener">연금 지급개시연령 표</a></h3><p>1996년 이후 임용자는 퇴직한 해에 따라 연금 개시 연령이 정해진다. 2033년 이후 퇴직하면 65세부터 받는다. 정년(60세)에 퇴직하면 연금이 나오기 전 약 5년이 빈다.</p></li></ul>
   </section>
 </main>
 
 <script>
 (function () {
-  var KEY = "retire-plan", F = ["birth","pension","allowance","lump","partPension","partLump","living","savings"];
+  var KEY = "retire-plan", F = ["pension", "lump", "allowance", "living"], GAP = 58, AGE = 65;
   var d = {};
   try { d = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (_) {}
   var $ = function (id) { return document.getElementById(id); };
-  var man = function (n) { return (n < 0 ? "-" : "") + Math.round(Math.abs(n) / 10000).toLocaleString("ko-KR") + "만 원"; };
-  var ym = function (y, m) { return y + "년 " + m + "월"; };
-  var span = function (mo) { mo = Math.max(0, Math.round(mo)); return Math.floor(mo / 12) + "년 " + (mo % 12) + "개월"; };
-  function startAge(year) { return year <= 2021 ? 60 : year <= 2023 ? 61 : year <= 2026 ? 62 : year <= 2029 ? 63 : year <= 2032 ? 64 : 65; }
-  function save() { try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (_) {} }
-  function fill() { F.forEach(function (k) { $(k).value = d[k] == null ? "" : d[k]; }); }
-
+  var man = function (n) { return Math.round(n).toLocaleString("ko-KR") + "만 원"; };
   function calc() {
     var n = function (k) { return +d[k] || 0; };
-    var b = /^(\d{4})-(\d{2})$/.exec(d.birth || "");
-    if (!b) return;
-    var by = +b[1], bm = +b[2], ry = by + 60, rm = bm <= 6 ? 6 : 12;
-    var age = startAge(ry), sy = by + age, sm = bm;
-    var gap = (sy * 12 + sm) - (ry * 12 + rm) - 1;
-    $("o-retire").textContent = ym(ry, rm);
-    $("o-start").textContent = ym(sy, sm) + " (" + age + "세)";
-    $("o-gap").textContent = span(gap);
-    $("o-need").textContent = man(n("living") * gap);
-    $("o-gapmsg").textContent = gap > 0 ? "정년 뒤 " + span(gap) + " 동안은 퇴직수당과 모아 둔 돈으로 지내야 합니다." : "";
-    var bridge = n("living") * gap - n("allowance") - n("savings");
-    $("o-bridge").textContent = bridge > 0 ? man(bridge) : "모자라지 않음";
-    var rows = [["2016~2021", 60], ["2022~2023", 61], ["2024~2026", 62], ["2027~2029", 63], ["2030~2032", 64], ["2033 이후", 65]];
-    $("ageTable").tBodies[0].innerHTML = rows.map(function (r) {
-      return "<tr" + (r[1] === age ? ' class="me"' : "") + "><td>" + r[0] + "</td><td>" + r[1] + "세" + (r[1] === age ? " (내 정년 " + ry + "년)" : "") + "</td></tr>";
-    }).join("");
+    $("o-gap").textContent = n("living") ? man(n("living") * GAP) : "-";
+    $("o-month").textContent = n("living") && n("pension") ? man(n("pension") - n("living")) : "-";
     var diff = n("lump") - n("allowance");
-    if (n("pension") > 0 && diff > 0) {
-      var mo = diff / n("pension");
-      $("o-diff").textContent = man(diff);
-      $("o-even").textContent = span(mo);
-      $("o-evenage").textContent = Math.floor(age + mo / 12) + "세";
-      $("o-evenmsg").textContent = "연금을 " + span(mo) + " 넘게 받으면 일시금보다 많아집니다.";
-    }
-    // 공제일시금: 일시금을 더 받는 대신 연금 월액이 평생 줄어든다. 줄어든 몫이 더 받은 일시금을 넘는 시점
-    var extra = n("partLump") - n("allowance"), less = n("pension") - n("partPension");
-    if (n("partPension") > 0 && less > 0 && extra > 0) $("o-part").textContent = Math.floor(age + extra / less / 12) + "세";
-    if (n("living") > 0 && n("pension") > 0) {
-      $("o-month").textContent = man(n("pension") - n("living"));
-      $("o-cover").textContent = Math.round(n("pension") / n("living") * 100) + "%";
-    }
+    $("o-even").textContent = n("pension") && diff > 0 ? Math.floor(AGE + diff / n("pension") / 12) + "세" : "-";
   }
-
   F.forEach(function (k) {
-    $(k).addEventListener("input", function (e) { d[k] = e.target.value; save(); calc(); });
-  });
-  $("openPaste").onclick = function () { $("paste").hidden = !$("paste").hidden; };
-  $("paste").addEventListener("input", function (e) {
-    try {
-      var j = JSON.parse(e.target.value);
-      F.forEach(function (k) { if (j[k] != null) d[k] = String(j[k]); });
-      save(); fill(); calc(); e.target.value = ""; e.target.hidden = true;
-    } catch (_) {}
-  });
-  $("clear").onclick = function () { d = {}; try { localStorage.removeItem(KEY); } catch (_) {} location.reload(); };
-
-  var CK = "retire-check", done = [];
-  try { done = JSON.parse(localStorage.getItem(CK)) || []; } catch (_) {}
-  var boxes = document.querySelectorAll("#check input");
-  boxes.forEach(function (c) {
-    c.checked = done.indexOf(+c.dataset.i) > -1;
-    c.addEventListener("change", function () {
-      done = [].filter.call(boxes, function (x) { return x.checked; }).map(function (x) { return +x.dataset.i; });
-      try { localStorage.setItem(CK, JSON.stringify(done)); } catch (_) {}
+    $(k).value = d[k] || "";
+    $(k).addEventListener("input", function (e) {
+      d[k] = e.target.value;
+      try { localStorage.setItem(KEY, JSON.stringify(d)); } catch (_) {}
+      calc();
     });
   });
-  fill(); calc();
+  calc();
 })();
 </script>
 
