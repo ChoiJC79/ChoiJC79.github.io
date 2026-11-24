@@ -125,3 +125,29 @@ body.jm-open{overflow:hidden}
   #modal-sky .wx-icon{font-size:11px}
 }
 @media(max-width:600px){body{padding-bottom:0!important}}
+
+/* 트랙 목록 판: 빈티지 칠 나무 바닥 사진 + 분필 글씨 */
+html[data-theme] .tape-tracks{--wood-text:#f4f1e8;--wood-accent:#f6e7b0;
+  background:linear-gradient(rgba(18,14,10,.42),rgba(18,14,10,.5)),url(/img/tape-vintage-wood.jpg) center/cover #3b2a1e}
+html[data-theme] .tape-tracks h2,html[data-theme] .tape-tracks ol{
+  -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.2 2.1'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.2 2.1'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+html[data-theme] .tape-tracks h2{font-family:var(--chalk);font-size:19px;font-weight:700;border-bottom:2px solid rgba(244,241,232,.55);text-shadow:0 0 1px rgba(255,255,255,.5)}
+html[data-theme] .tape-tracks li a{font-family:var(--chalk);font-size:21px;font-weight:700;border-bottom:1px dashed rgba(244,241,232,.4);text-shadow:0 0 1px rgba(255,255,255,.45),0 0 6px rgba(255,255,255,.12)}
+html[data-theme] .tape-tracks li a:hover{color:#fff6c9}
+html[data-theme] .tape-tracks .no,html[data-theme] .tape-tracks .sub{font-family:var(--chalk);font-size:15px;font-weight:400;color:#e6dfcd}
+html[data-theme] .tape-tracks .no{color:var(--wood-accent)}
+
+/* 홈 전체 배경: 빈티지 칠 나무 바닥. 베이지 바탕을 없애고 두 테마 모두 어두운 나무 위 밝은 글씨로 맞춘다 */
+html[data-theme]{--bg:#2a1f17;--surface:rgba(30,23,17,.82);--surface2:rgba(42,32,24,.85);--border:rgba(244,236,220,.22);
+  --text:#f2ede2;--muted:#cdc2ae;--accent:#f2b45a;--accent2:#f6e7b0;--accent3:#e2603f;--header-bg:rgba(24,18,13,.82);--ink:#f2ede2;--light:#2a1f17;--rule:rgba(244,236,220,.25);--chalk:'Gaegu','Nanum Pen Script',cursive;color-scheme:dark;
+  background:#2a1f17}
+html[data-theme] body{background:linear-gradient(rgba(16,12,9,.38),rgba(16,12,9,.48)),url(/img/tape-vintage-wood.jpg) center/cover fixed #2a1f17!important}
+html[data-theme] #lounge-hero{background:transparent}
+html[data-theme] .tape-tracks{background:rgba(14,10,7,.35);border-color:rgba(244,236,220,.18)}
+html[data-theme] #tape-hero .tape-greeting,html[data-theme] #tape-hero h1,html[data-theme] #tape-hero .tape-id p,html[data-theme] #tape-hero .tape-intro{
+  font-family:var(--chalk);color:#f4f1e8;text-shadow:0 0 1px rgba(255,255,255,.5),0 0 8px rgba(255,255,255,.1)}
+html[data-theme] #tape-hero h1{font-size:clamp(52px,7vw,72px);font-weight:700}
+html[data-theme] #tape-hero .tape-intro{font-size:21px;line-height:1.6}
+html[data-theme] #tape-hero .tape-greeting{color:var(--accent2);font-size:18px}
+@media (max-width:760px){html[data-theme] body{background-attachment:scroll}}
