@@ -1834,7 +1834,7 @@ window.COUNCIL_DATA = {
       "session": "기타 의정활동·간담회",
       "type": "본회의",
       "date": "2026-11-23",
-      "transcriptLines": 0
+      "transcriptLines": 792
     },
     {
       "id": "4zAvqMOu4K0",
