@@ -151,3 +151,23 @@ html[data-theme] #tape-hero h1{font-size:clamp(52px,7vw,72px);font-weight:700}
 html[data-theme] #tape-hero .tape-intro{font-size:21px;line-height:1.6}
 html[data-theme] #tape-hero .tape-greeting{color:var(--accent2);font-size:18px}
 @media (max-width:760px){html[data-theme] body{background-attachment:scroll}}
+
+/* 카세트 데크 대신 턴테이블 실사 사진(Wikimedia Commons, Joe Haupt, CC BY-SA 2.0). 재생 중에는 레코드 위에 도는 반사광을 겹친다 */
+.deck.turntable{max-width:440px;padding:0;border:0;border-radius:10px;background:#1a1410;overflow:hidden;box-shadow:0 22px 44px rgba(0,0,0,.55),0 4px 10px rgba(0,0,0,.4)}
+.tt-photo{position:relative;overflow:hidden}
+.tt-photo img{display:block;width:100%;height:auto}
+.tt-glint{position:absolute;left:48.9%;top:27.9%;width:58.6%;aspect-ratio:1;transform:translate(-50%,-50%) rotate(-4deg) scaleY(.46);pointer-events:none;opacity:0;transition:opacity .5s ease-out}
+.tt-glint i{position:absolute;inset:0;border-radius:50%;
+  background:conic-gradient(from 0deg,transparent 0 18deg,rgba(255,255,255,.28) 32deg,transparent 50deg 196deg,rgba(255,255,255,.2) 212deg,transparent 230deg);
+  -webkit-mask:radial-gradient(circle,transparent 30%,#000 31%,#000 69%,transparent 70%);mask:radial-gradient(circle,transparent 30%,#000 31%,#000 69%,transparent 70%)}
+.deck.playing .tt-glint{opacity:1}
+@media (prefers-reduced-motion:no-preference){.deck.playing .tt-glint i{animation:tt-rot 1.8s linear infinite}}
+@keyframes tt-rot{to{transform:rotate(360deg)}}
+.tt-panel{display:flex;align-items:center;gap:10px;padding:10px 12px;background:linear-gradient(180deg,#2a211a,#1c1612);border-top:1px solid rgba(255,230,190,.12)}
+.tt-now{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.deck.turntable #tape-title-display{font:700 15px/1.2 var(--chalk);color:#f4f1e8}
+.deck.turntable #tape-track-name{font:400 13px/1.2 var(--chalk);color:#cdbfa5;opacity:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.deck.turntable .deck-lamp{color:#d8cdb8}
+.deck.turntable .tape-counter{font-size:13px;padding:4px 7px;border-radius:3px;background:#0c0b0a;color:#f2b45a;box-shadow:inset 0 1px 3px rgba(0,0,0,.9)}
+.deck.turntable .tape-deck{margin:0;border-radius:0;background:#14100c}
+@media (max-width:760px){.deck.turntable .deck-lamp{display:none}}
