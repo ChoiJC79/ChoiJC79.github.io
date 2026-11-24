@@ -171,3 +171,13 @@ html[data-theme] #tape-hero .tape-greeting{color:var(--accent2);font-size:18px}
 .deck.turntable .tape-counter{font-size:13px;padding:4px 7px;border-radius:3px;background:#0c0b0a;color:#f2b45a;box-shadow:inset 0 1px 3px rgba(0,0,0,.9)}
 .deck.turntable .tape-deck{margin:0;border-radius:0;background:#14100c}
 @media (max-width:760px){.deck.turntable .deck-lamp{display:none}}
+
+/* 삐삐 실사 사진(Wikimedia Commons, Jorgebarrios, CC BY-SA 4.0, 배경 지움). 사진 속 액정 자리에 시각·새 글 표시를 겹친다 */
+.pager.photo{width:320px;max-width:100%;aspect-ratio:640/430;padding:0;border:0;border-radius:0;background:url(/img/pager-bravo.webp) center/contain no-repeat;box-shadow:none;position:relative;filter:drop-shadow(0 12px 14px rgba(0,0,0,.55))}
+.pager.photo::before,.pager.photo .pager-top,.pager.photo .pager-brand{display:none}
+.pager.photo .pager-lcd{position:absolute;left:18.6%;top:20.6%;width:61.6%;height:23.8%;box-sizing:border-box;padding:1.5% 3.5%;overflow:hidden;display:flex;flex-direction:column;justify-content:center;border-radius:4px;
+  background:linear-gradient(180deg,#b9c2b2,#a9b3a2);color:#1f2a22;box-shadow:inset 0 2px 4px rgba(0,0,0,.45)}
+.pager.photo .pager-row{font-size:8.5px;line-height:1.05}
+.pager.photo .pager-num{font-size:16px;letter-spacing:2px;line-height:1.05}
+.pager.photo .pager-msg{font-size:10px;line-height:1.15;flex:none}
+@media (max-width:760px){.pager.photo{width:min(320px,100%);margin:0 auto 18px}}
