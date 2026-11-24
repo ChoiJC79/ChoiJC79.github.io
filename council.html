@@ -302,6 +302,11 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
   .view-tab.active{box-shadow:inset 0 -2px 0 var(--ink);}
 }
 
+/* ── 관계망 최신 갱신 표시 ── */
+.net-fresh{font-size:12px;color:var(--muted);padding:0.4rem 0.2rem 0.6rem;}
+.net-fresh b{color:var(--ink);font-family:var(--font-mono);font-weight:600;}
+.net-fresh .nf-new{color:#3fb950;font-weight:700;}
+.insp-new{font-style:normal;font-size:10px;font-weight:700;color:#3fb950;border:1px solid #3fb950;border-radius:3px;padding:0 4px;margin-right:0.35rem;}
 /* ── 전체 검색 ── */
 .gs-bar{display:flex;gap:0.5rem;margin-top:1.4rem;padding-top:1.4rem;border-top:1px solid var(--hair);}
 .gs-bar .filter-input{min-width:0;font-size:14px;padding:0.65rem 0.9rem;}
@@ -423,6 +428,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
           </div>
           <span style="font-size:11px;color:var(--muted);">실선: 주도·압박 / 점선: 제동·삭제·충돌</span>
         </div>
+        <div class="net-fresh" id="net-fresh"></div>
         <svg id="network-svg" viewBox="0 0 820 470"></svg>
       </div>
 
@@ -819,6 +825,37 @@ function getNodeColor(group) {
   return '#a9c46a';
 }
 
+// 관계망 최신화: 자동 수집되는 영상·발언·질의·요구자료에서 노드별 활동을 매번 계산한다.
+// (손으로 작성한 연결선은 그대로 두고, 새 자료는 날짜와 함께 자동으로 붙는다.)
+const NET_BASE = '2026-11-10';  // 연결선(edges) 마지막 수동 정리일
+function ymd(t) { const m = /(\d{4})\D+(\d{1,2})\D+(\d{1,2})/.exec(String(t || '')); return m ? `${m[1]}-${m[2].padStart(2, '0')}-${m[3].padStart(2, '0')}` : ''; }
+function netKeyword(n) {
+  if (n.group === 'member_ppp' || n.group === 'member_dpk') return n.label.split(' ')[0];
+  return n.label.replace(/[&()·]/g, ' ').split(/\s+/).filter(Boolean).sort((a, b) => b.length - a.length)[0] || '';
+}
+function netActivity(n) {
+  const kw = netKeyword(n), isM = n.group === 'member_ppp' || n.group === 'member_dpk';
+  if (!kw) return [];
+  const hit = (...f) => f.some(x => String(x || '').includes(kw));
+  const out = [];
+  DATA.speeches.forEach(x => (isM ? x.memberId === n.id : hit(x.title, x.department)) && out.push({k: '발언', d: ymd(x.date), t: `${x.memberName} · ${x.title}`, v: x.videoId, sec: x.quotes[0]?.sec || x.sec || 0}));
+  (window.QA_DATA || []).forEach(q => (isM ? q.member === kw : hit(q.text, q.dept)) && out.push({k: '질의', d: ymd(q.date), t: `${q.member} → ${q.dept}`, v: q.vid, sec: q.sec}));
+  (window.REQUESTS || []).forEach(r => (isM ? r.member === kw : hit(r.item, r.dept)) && out.push({k: '요구자료', d: ymd(r.date), t: `${r.member} → ${r.dept}: ${r.item}`, v: r.vid, sec: r.sec}));
+  DATA.videos.forEach(v => hit(v.title) && out.push({k: '영상', d: ymd(v.date), t: v.title, v: v.id, sec: 0}));
+  return out.filter(o => o.d).sort((a, b) => b.d.localeCompare(a.d));
+}
+let NET_ACT = {};
+function refreshNetFresh() {
+  NET_ACT = {}; DATA.network.nodes.forEach(n => NET_ACT[n.id] = netActivity(n));
+  const all = [...DATA.speeches.map(x => ymd(x.date)), ...DATA.videos.map(v => ymd(v.date)),
+    ...(window.QA_DATA || []).map(q => ymd(q.date)), ...(window.REQUESTS || []).map(r => ymd(r.date))].filter(Boolean).sort();
+  const latest = all[all.length - 1] || NET_BASE;
+  const nNew = DATA.videos.filter(v => ymd(v.date) > NET_BASE).length;
+  const el = document.getElementById('net-fresh');
+  if (el) el.innerHTML = `최신 업데이트 <b>${latest}</b>`
+    + (nNew ? ` · <span class="nf-new">${NET_BASE.slice(5)} 이후 신규 영상 ${nNew}편 자동 반영</span>` : '') + ` · 초록 점 = 신규 활동이 있는 노드`;
+}
+
 function renderNetworkGraph() {
   const svg = document.getElementById('network-svg');
   if (!svg) return;
@@ -875,6 +912,7 @@ function renderNetworkGraph() {
     const short = isMember ? n.label.split(' ')[0] : (n.label.length > 9 ? n.label.slice(0, 9) + '…' : n.label);
     html += `<title>${n.fullLabel || n.label}</title>`;
     html += `<circle r="${r}" fill="${col}" stroke="#1b1612" stroke-width="2"/>`;
+    if ((NET_ACT[n.id] || []).some(a => a.d > NET_BASE)) html += `<circle cx="${r - 2}" cy="${-r + 2}" r="5" fill="#3fb950" stroke="#1b1612" stroke-width="1.5"/>`;
     html += `<text y="${r + 13}" text-anchor="middle" fill="var(--ink)" stroke="var(--bg)" stroke-width="3" paint-order="stroke" font-size="11" font-weight="${isSel ? '700' : '600'}">${short}</text>`;
     html += `</g>`;
   });
@@ -963,6 +1001,13 @@ function renderNetworkInspector() {
     </div>
   `).join('');
 
+  const recent = (NET_ACT[selectedNetNodeId] || []).slice(0, 6);
+  const recentHtml = recent.map(a => `
+    <div class="insp-conn-item" onclick="openYtModal('${a.v}', ${a.sec || 0}, '${a.t.replace(/'/g, '')}', '')">
+      <div style="font-size:11px;color:var(--accent);font-weight:600;">${a.d > NET_BASE ? '<i class="insp-new">NEW</i>' : ''}▶ ${a.d} · ${a.k}</div>
+      <div style="color:var(--ink);margin-top:0.15rem;">${a.t}</div>
+    </div>`).join('');
+
   box.innerHTML = `
     <div>
       <span class="insp-badge" style="background:rgba(242,163,58,0.16);color:var(--accent);">${badgeLabel}</span>
@@ -974,6 +1019,11 @@ function renderNetworkInspector() {
       <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:0.35rem;">직접 연결된 관계망 (${edges.length}건)</div>
       <div class="insp-conn-list">${connHtml || '<div style="font-size:12px;color:var(--muted);">연결 항목 없음</div>'}</div>
     </div>
+    ${recent.length ? `
+    <div>
+      <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:0.35rem;">최근 활동 · 자동 갱신 (최신 ${recent[0].d}, 총 ${(NET_ACT[selectedNetNodeId] || []).length}건)</div>
+      <div class="insp-conn-list">${recentHtml}</div>
+    </div>` : ''}
     ${relSpeeches.length ? `
     <div>
       <div style="font-size:12px;font-weight:700;color:var(--ink);margin-bottom:0.35rem;">관련 핵심 발언 바로 재생 (${relSpeeches.length}건)</div>
@@ -1551,7 +1601,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('tab-count-speeches').textContent = DATA.speeches.length;
   }
   // 단계별 격리: 한 탭의 데이터 불일치가 다른 탭 렌더링을 막지 않도록
-  [initNetworkLayout, renderNetworkGraph, renderNetworkInspector, renderStorylines, initSpeechFilters,
+  [initNetworkLayout, refreshNetFresh, renderNetworkGraph, renderNetworkInspector, renderStorylines, initSpeechFilters,
    renderSpeeches, renderMatrixAndRadar, renderMemberCards, renderArchive, initQAFilters, renderQA]
     .forEach(fn => { try { fn(); } catch (e) { console.error(fn.name, e); } });
 });
