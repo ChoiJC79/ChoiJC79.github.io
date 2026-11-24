@@ -44,8 +44,6 @@ a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
 a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .eyebrow{color:var(--amber);font-size:12px;letter-spacing:.08em;font-weight:500}
 .lede{color:var(--muted);max-width:65ch;margin:10px 0 0}
-.facts{display:flex;flex-wrap:wrap;gap:8px 28px;margin:22px 0 0;padding:0;list-style:none;font-variant-numeric:tabular-nums}
-.facts b{display:block;font-size:22px;font-weight:500;color:var(--text)}.facts li{color:var(--muted);font-size:12px}
 section{margin-top:44px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:28px}
 @media (max-width:760px){.grid2{grid-template-columns:1fr}}
@@ -94,10 +92,6 @@ header{border-top:1px solid var(--text);padding-top:22px}
 .eyebrow{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.1em}
 h1{font-size:clamp(28px,4.4vw,42px);letter-spacing:-.025em;line-height:1.25;margin-top:12px}
 .lede{font-size:15.5px;margin-top:14px}
-.facts{gap:0;margin-top:28px;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);display:grid;grid-template-columns:repeat(4,1fr)}
-.facts li{padding:14px 16px 14px;border-left:1px solid var(--hair)}
-.facts li:first-child{border-left:0;padding-left:0}
-.facts b{font-family:var(--serif);font-size:28px;font-weight:700;letter-spacing:-.02em;line-height:1.2;margin-bottom:2px}
 section{margin-top:56px}
 section>h2,section>div>h2{position:relative;font-size:20px;letter-spacing:-.02em;border-top:1px solid var(--hair);padding-top:14px;margin-bottom:18px}
 .h-rule{position:absolute;left:0;top:-1px;width:56px;height:1px;background:var(--text);transform-origin:0 50%}
@@ -132,9 +126,6 @@ blockquote{border-left-width:1px;border-left-color:var(--text);font-size:16px}
 .admin{background:transparent;border-left:2px solid var(--green);border-radius:0;padding:2px 0 2px 12px}
 .note{border-top:1px solid var(--hair);padding-top:14px}
 @media (max-width:640px){
-  .facts{grid-template-columns:1fr 1fr}
-  .facts li:nth-child(3){border-left:0;padding-left:0}
-  .facts li:nth-child(n+3){border-top:1px solid var(--hair)}
   .insight>div{grid-template-columns:2.4em 1fr}
 }
 </style>
@@ -147,7 +138,7 @@ blockquote{border-left-width:1px;border-left-color:var(--text);font-size:16px}
     <div class="eyebrow">YOUTUBE · 지식인사이드</div>
     <h1>지식인사이드 최근 영상 59편, 무엇을 말했나</h1>
     <p class="lede" id="lede">2026.09.17부터 2026.11.08까지 올라온 영상 47편의 자막을 읽고 영상마다 핵심을 정리했다. 위는 전체 분석, 아래는 영상별 요약이다.</p>
-    <ul class="facts" id="facts"><li><b>47편</b>분석한 영상</li><li><b>27시간 14분</b>전체 재생 시간</li><li><b>8486만회</b>조회수 합계</li><li><b>181만회</b>편당 평균 조회수</li></ul>
+    <div class="tools js-only" style="margin-top:28px"><input id="q" type="search" placeholder="제목·출연자·키워드 검색" aria-label="검색"></div>
   </header>
 
   <section class="grid2" aria-label="분야와 조회수">
@@ -169,7 +160,6 @@ blockquote{border-left-width:1px;border-left-color:var(--text);font-size:16px}
   <section>
     <h2>영상별 요약</h2>
     <div class="tools js-only">
-      <input id="q" type="search" placeholder="제목·출연자·키워드 검색" aria-label="검색">
       <select id="sort" aria-label="정렬"><option value="date">최신순</option><option value="views">조회수순</option></select>
       <button id="toggleAll" type="button" class="btn-toggle">핵심 내용 모두 접기</button>
     </div>
@@ -783,6 +773,7 @@ const pick = c => { cat = c; render(); };
 document.getElementById("cats").onclick = e => { const b = e.target.closest(".chip"); if (b) pick(b.dataset.c); };
 document.getElementById("bars").onclick = e => { const b = e.target.closest(".bar"); if (b) { pick(b.dataset.c); document.getElementById("list").scrollIntoView({behavior: "smooth"}); } };
 document.getElementById("q").oninput = e => { q = e.target.value.trim().toLowerCase(); render(); };
+document.getElementById("q").onkeydown = e => { if (e.key === "Enter") document.getElementById("list").scrollIntoView({ behavior: "smooth" }); };
 document.getElementById("sort").onchange = render;
 document.getElementById("toggleAll").onclick = () => {
   allOpen = !allOpen;
@@ -792,12 +783,9 @@ document.getElementById("toggleAll").onclick = () => {
 
 // 머리 숫자·분야 막대·조회수 상위 10은 데이터에서 다시 계산한다(자동 갱신으로 편수가 늘어도 맞게)
 function stats() {
-  const n = V.length, views = V.reduce((a, v) => a + (v.views || 0), 0), sec = V.reduce((a, v) => a + (v.duration || 0), 0);
+  const n = V.length;
   const dates = V.map(v => v.date).filter(Boolean).sort();
   document.getElementById("lede").textContent = `${ymd(dates[0])}부터 ${ymd(dates[dates.length - 1])}까지 올라온 영상 ${n}편의 자막을 읽고 영상마다 핵심을 정리했다. 위는 전체 분석, 아래는 영상별 요약이다.`;
-  document.getElementById("facts").innerHTML = [[`${n}편`, "분석한 영상"], [`${Math.floor(sec / 3600)}시간 ${Math.round(sec % 3600 / 60)}분`, "전체 재생 시간"],
-    [`${Math.round(views / 1e4)}만회`, "조회수 합계"], [`${Math.round(views / n / 1e4)}만회`, "편당 평균 조회수"]]
-    .map(([b, t]) => `<li><b>${b}</b>${t}</li>`).join("");
   const by = {};
   V.forEach(v => { by[v.category] = (by[v.category] || 0) + 1; });
   const cats = Object.entries(by).sort((a, b) => b[1] - a[1]), max = cats[0][1];
@@ -833,14 +821,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   if (reduce) return;
 
-  document.querySelectorAll('header .eyebrow, header h1, header .lede, #facts li').forEach(function (el, i) { rise(el, 0.04 + i * 0.06, 10); });
-
-  document.querySelectorAll('#facts b').forEach(function (b) {
-    var t = b.textContent, m = /^(\d+)(.*)$/.exec(t);
-    if (!m) return;
-    animate(0, +m[1], { duration: 1.1, ease: 'easeOut', delay: 0.2, onUpdate: function (v) { b.textContent = Math.round(v) + m[2]; } })
-      .then(function () { b.textContent = t; });
-  });
+  document.querySelectorAll('header .eyebrow, header h1, header .lede').forEach(function (el, i) { rise(el, 0.04 + i * 0.06, 10); });
 
   var bars = document.getElementById('bars');
   if (bars) inView(bars, function () {
