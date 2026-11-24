@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Claude Desktop 같은 Mac 앱에서 칼럼·AI 가이드를 추가하고 빌드·커밋·push까지 하는 사이트 전용 MCP 서버(stdio)
+# 칼럼·AI 가이드 추가와 지식·의회·민선9기 자동 갱신 실행까지 맡는 사이트 전용 MCP 서버(stdio)
 """
 실행:  python3 site_mcp.py            # MCP 서버(stdio)
 검사:  python3 site_mcp.py --selftest # 임시 사본에서 칼럼·가이드 추가를 시험(push 없음)
@@ -206,6 +206,43 @@ def add_guide_core(base, title, date, tags, slug, repo, minutes, steps, sections
                        f"이번 주 AI 가이드: {title}") + f"\n{url}"
 
 
+# ─── 자동 갱신 작업(지식·의회·민선9기) ─────────────────────────
+
+H = Path.home()
+JOBS = {  # 이름: (스크립트, 인자, 로그)
+    "jisik": (H / "jisik-auto/update.py", ["--force"], H / "jisik-auto/logs/update.log"),
+    "badq": (H / "badq-auto/update.py", ["--force"], H / "badq-auto/logs/update.log"),
+    "lsc": (H / "lsc-auto/update.py", ["--force"], H / "lsc-auto/logs/update.log"),
+    "council": (H / "council-auto/work/scripts/daily_council_sync.py", [], H / "council-auto/work/logs/daily_sync.log"),
+}
+JOB_PATH = f"{H}/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin"
+
+
+def job_running(name):
+    return subprocess.run(["pgrep", "-f", str(JOBS[name][0])], capture_output=True).returncode == 0
+
+
+def start_job(name):
+    """작업을 백그라운드로 띄운다. 요약에 수십 분 걸리므로 기다리지 않는다."""
+    if name not in JOBS:
+        raise ValueError(f"작업 이름은 {', '.join(JOBS)} 중 하나")
+    script, args, log = JOBS[name]
+    if job_running(name):
+        return f"{name}은 이미 실행 중입니다. update_log로 진행을 확인하세요."
+    import os
+    out = open(H / f"{script.parent.name}-mcp.out", "a")
+    subprocess.Popen([sys.executable, str(script), *args], cwd=script.parent, stdout=out, stderr=out,
+                     env={**os.environ, "PATH": JOB_PATH}, start_new_session=True)
+    return f"{name} 갱신을 시작했습니다. 끝나면 스크립트가 직접 커밋·push합니다. 로그: {log}"
+
+
+def tail_log(name, lines=30):
+    log = JOBS[name][2]
+    state = "실행 중" if job_running(name) else "쉬는 중"
+    text = log.read_text("utf-8", "replace").splitlines()[-lines:] if log.exists() else ["로그 없음"]
+    return f"[{name} · {state}]\n" + "\n".join(text)
+
+
 # ─── MCP 도구 ────────────────────────────────────────────────
 
 def serve():
@@ -251,6 +288,17 @@ def serve():
         run(["git", "add", "-u"], BASE)
         return commit_push(BASE, ["columns", "guides", "practice", "img"], message)
 
+    @mcp.tool()
+    def run_update(job: str) -> str:
+        """자동 갱신 작업을 지금 바로 돌린다(주기 무시). job: 'jisik'(지식인사이드), 'badq'(나쁜질문),
+        'lsc'(민선9기), 'council'(제천시의회 회의 분석). 백그라운드로 돌고 끝나면 스스로 push한다."""
+        return start_job(job)
+
+    @mcp.tool()
+    def update_log(job: str, lines: int = 30) -> str:
+        """자동 갱신 작업의 실행 여부와 로그 끝부분. job은 run_update와 같다."""
+        return tail_log(job, lines)
+
     mcp.run()
 
 
@@ -295,6 +343,14 @@ def selftest():
                        10, 3, 5, "시험 요약", "## STEP 1. 설치\n\n```bash\necho hi\n```", deploy=False)
         assert (base / "guides" / "claude-and-selftest.html").exists()
         assert "claude-and-selftest" in read(base, "guides.html")
+    for n in JOBS:
+        assert JOBS[n][0].exists(), n
+        tail_log(n, 1)
+    try:
+        start_job("nope")
+        raise AssertionError("없는 작업이 통과됨")
+    except ValueError:
+        pass
     print("selftest 통과")
 
 
