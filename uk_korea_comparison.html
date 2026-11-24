@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영국이 세계 최초인 것들 & 동시대 한국사 비교</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #eff6ff;
+            --secondary: #b91c1c;
+            --korea-bg: #fefce8;
+            --korea-border: #fef08a;
+            --korea-text: #854d0e;
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --border: #e2e8f0;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+        header h1 {
+            font-size: 1.9rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .action-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .tab-btn, .ctrl-btn {
+            padding: 0.5rem 0.9rem;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            color: var(--text-main);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: all 0.15s ease;
+        }
+        .tab-btn:hover, .ctrl-btn:hover {
+            background: var(--primary-light);
+            border-color: var(--primary);
+        }
+        .tab-btn.active, .ctrl-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+        }
+        .search-box {
+            padding: 0.5rem 0.9rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            width: 300px;
+            max-width: 100%;
+        }
+        .search-box:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .stats {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 1.25rem;
+        }
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        .badge-cat {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+        .badge-year {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+        .card p.uk-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .korea-box {
+            background-color: var(--korea-bg);
+            border: 1px solid var(--korea-border);
+            border-radius: 6px;
+            padding: 0.8rem 0.9rem;
+            font-size: 0.86rem;
+        }
+        .korea-label {
+            display: inline-block;
+            font-weight: 700;
+            color: var(--korea-text);
+            margin-bottom: 0.25rem;
+            font-size: 0.8rem;
+        }
+        .korea-text {
+            color: #374151;
+        }
+        .table-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+        th, td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+        th {
+            background: #f1f5f9;
+            font-weight: 600;
+            color: var(--text-main);
+            white-space: nowrap;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tr:hover td {
+            background: #f8fafc;
+        }
+        .col-year {
+            width: 80px;
+            font-weight: 700;
+            color: var(--secondary);
+            white-space: nowrap;
+        }
+        .col-cat {
+            width: 140px;
+            white-space: nowrap;
+        }
+        .col-title {
+            width: 220px;
+            font-weight: 600;
+        }
+        .col-uk {
+            width: 30%;
+            color: var(--text-muted);
+        }
+        .col-kr {
+            width: 32%;
+            background-color: #fefce855;
+        }
+        .kr-era {
+            font-weight: 600;
+            color: var(--korea-text);
+        }
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+            grid-column: 1 / -1;
+            background: var(--bg-card);
+            border: 1px dashed var(--border);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>영국이 세계 최초인 것들 & 동시대 한국사 비교</h1>
+        <p>정치·행정, 토목·건축, 산업·교통, 과학·IT, 생활·문화, 스포츠 6개 분야 및 동시대 조선·한국 상황</p>
+    </header>
+
+    <div class="controls">
+        <div class="tabs" id="categoryTabs">
+            <button class="tab-btn active" data-category="전체">전체</button>
+            <button class="tab-btn" data-category="정치·행정·경제">정치·행정·경제</button>
+            <button class="tab-btn" data-category="토목·건축·도시">토목·건축·도시</button>
+            <button class="tab-btn" data-category="산업·교통">산업·교통</button>
+            <button class="tab-btn" data-category="과학·의학·IT">과학·의학·IT</button>
+            <button class="tab-btn" data-category="생활·문화·미디어">생활·문화·미디어</button>
+            <button class="tab-btn" data-category="스포츠">스포츠</button>
+        </div>
+
+        <div class="toolbar">
+            <div class="action-group">
+                <button class="ctrl-btn active" id="sortDefaultBtn" data-sort="default">기본순 (분야별)</button>
+                <button class="ctrl-btn" id="sortAscBtn" data-sort="asc">연도 오름차순 (과거→최신)</button>
+                <button class="ctrl-btn" id="sortDescBtn" data-sort="desc">연도 내림차순 (최신→과거)</button>
+            </div>
+            <div class="action-group">
+                <button class="ctrl-btn active" id="viewCardBtn" data-view="card">카드형 보기</button>
+                <button class="ctrl-btn" id="viewTableBtn" data-view="table">표(Table) 비교 보기</button>
+            </div>
+            <input type="text" id="searchInput" class="search-box" placeholder="영국·한국 항목, 연도, 왕조 검색...">
+        </div>
+    </div>
+
+    <div class="stats" id="statsText">총 30개 항목 표시 중</div>
+
+    <div id="contentContainer"></div>
+</div>
+
+<script>
+    const ukWorldFirsts = [
+        // 1. 정치·행정·경제
+        {
+            category: "정치·행정·경제",
+            year: 1215,
+            title: "마그나 카르타(대헌장) 제정",
+            desc: "왕권을 법으로 제한하고 의회주의 및 법치주의의 기초를 마련한 문서.",
+            krEra: "고려 고종 2년",
+            krDesc: "최충헌의 무신집권기이며, 몽골(원)의 1차 침입(1231) 직전 시기."
+        },
+        {
+            category: "정치·행정·경제",
+            year: 1689,
+            title: "권리장전 및 입헌군주제 확립",
+            desc: "의회의 동의 없는 과세와 상비군 유지를 금지하며 근대 의회정치 확립.",
+            krEra: "조선 숙종 15년",
+            krDesc: "기사환국 발생으로 서인이 실각하고 남인이 재집권한 시기."
+        },
+        {
+            category: "정치·행정·경제",
+            year: 1694,
+            title: "근대적 중앙은행 설립",
+            desc: "국채 발행 및 통화 관리를 위해 잉글랜드 은행(Bank of England) 설립.",
+            krEra: "조선 숙종 20년",
+            krDesc: "갑술환국으로 서인이 재집권하고 장희빈 강등 및 인현왕후 복위."
+        },
+        {
+            category: "정치·행정·경제",
+            year: 1829,
+            title: "근대적 경찰 조직 창설",
+            desc: "로버트 필 내무장관이 런던 광역경찰청(Scotland Yard)을 창설하여 치안 체계화.",
+            krEra: "조선 순조 29년",
+            krDesc: "효명세자 대리청정기(1827~1830)로 세도정치를 견제하고 왕권 회복 시도."
+        },
+        {
+            category: "정치·행정·경제",
+            year: 1840,
+            title: "근대 우편 제도 및 우표 발행",
+            desc: "거리와 무관한 단일 요금제 도입 및 세계 최초 접착식 우표 '페니 블랙' 발행.",
+            krEra: "조선 헌종 6년",
+            krDesc: "기해박해(1839) 직후 천주교 탄압과 척화윤음 반포 (한국 근대 우편 우정총국은 1884년 개설)."
+        },
+        {
+            category: "정치·행정·경제",
+            year: 1942,
+            title: "근대적 사회보장제도(베버리지 보고서)",
+            desc: "전 국민 대상 사회보험과 공공부조를 결합한 '요람에서 무덤까지' 복지 모델 제시.",
+            krEra: "일제강점기 말기",
+            krDesc: "조선어학회 사건 발생 및 일제의 국가총동원령에 따른 인적·물적 수탈 극대화."
+        },
+
+        // 2. 토목·건축·도시
+        {
+            category: "토목·건축·도시",
+            year: 1779,
+            title: "최초의 주철 아치교 건설",
+            desc: "슈롭셔주 세번강에 건립된 '아이언 브리지(Iron Bridge)'로 근대 철골 구조물 시대 개막.",
+            krEra: "조선 정조 3년",
+            krDesc: "규장각 기능 강화 및 박제가가 청나라 문물을 시찰하고 《북학의》 저술(1778)."
+        },
+        {
+            category: "토목·건축·도시",
+            year: 1824,
+            title: "포틀랜드 시멘트 발명",
+            desc: "벽돌공 조셉 애스프딘이 석회석과 점토를 소성하여 현대 건축의 핵심 자재 특허 취득.",
+            krEra: "조선 순조 24년",
+            krDesc: "안동 김씨 세도정치기이며 삼정의 문란이 심화되던 시기."
+        },
+        {
+            category: "토목·건축·도시",
+            year: 1843,
+            title: "최초의 수저(하저) 터널 개통",
+            desc: "마크 이점바드 브루넬이 실드 공법을 개발하여 템스강 아래를 관통하는 템스 터널 완공.",
+            krEra: "조선 헌종 9년",
+            krDesc: "풍양 조씨와 안동 김씨 간의 세도 권력 교체기."
+        },
+        {
+            category: "토목·건축·도시",
+            year: 1858,
+            title: "근대적 도시 하수도망 구축",
+            desc: "조셉 바잘젯이 런던의 콜레라 방지를 위해 대규모 차집관거 및 하수 처리 시스템 설계.",
+            krEra: "조선 철종 9년",
+            krDesc: "전국적인 민란(임술농민봉기, 1862) 발생 4년 전의 사회 불안정기."
+        },
+        {
+            category: "토목·건축·도시",
+            year: 1898,
+            title: "전원도시(Garden City) 개념 창시",
+            desc: "에벤에저 하워드가 도시와 농촌의 장점을 결합한 계획도시 이론 발표 및 레치워스 건설(1903).",
+            krEra: "대한제국 광무 2년",
+            krDesc: "독립협회 만민공동회 개최 및 한성전기회사 설립(한성 전차·전기 도입 추진)."
+        },
+
+        // 3. 산업·교통
+        {
+            category: "산업·교통",
+            year: 1760,
+            title: "산업혁명 시작",
+            desc: "면직물 기계화 및 제임스 와트의 증기기관 개량(1769)을 기점으로 공장제 기계공업 전환.",
+            krEra: "조선 영조 36년",
+            krDesc: "청계천 준설(준천사 설치) 대역사 시행 및 화폐 유통·상업 발달."
+        },
+        {
+            category: "산업·교통",
+            year: 1825,
+            title: "증기기관차 상업 철도 개통",
+            desc: "조지 스티븐슨이 설계한 기관차로 스톡턴-달링턴 간 세계 최초 공영 철도 운행.",
+            krEra: "조선 순조 25년",
+            krDesc: "쇄국 및 세도정치 유지기 (한국 최초 철도 경인선은 1899년 개통)."
+        },
+        {
+            category: "산업·교통",
+            year: 1863,
+            title: "지하철 개통",
+            desc: "증기기관차를 이용한 런던 메트로폴리탄 철도(현 런던 지하철) 개통.",
+            krEra: "조선 고종 즉위년",
+            krDesc: "흥선대원군 집권 시작 및 경복궁 중건·서원 철폐 등 내정 개혁 착수."
+        },
+        {
+            category: "산업·교통",
+            year: 1868,
+            title: "최초의 교통신호등 설치",
+            desc: "런던 국회의사당 앞에 가스등을 이용한 수동식 회전 신호등 설치.",
+            krEra: "조선 고종 5년",
+            krDesc: "오페르트 도굴 사건 발생 및 흥선대원군의 통상수교거부정책 강화."
+        },
+        {
+            category: "산업·교통",
+            year: 1952,
+            title: "제트 여객기 상업 운항",
+            desc: "드 하빌랜드 코멧(de Havilland Comet)기가 런던-요하네스버그 노선에 취항.",
+            krEra: "대한민국 (6·25 전쟁 중)",
+            krDesc: "휴전 협정 회담 진행 및 발췌개헌(대통령 직선제) 통과."
+        },
+
+        // 4. 과학·의학·IT
+        {
+            category: "과학·의학·IT",
+            year: 1796,
+            title: "백신 개발 (종두법)",
+            desc: "에드워드 제너가 우두를 이용한 천연두 예방 접종법을 개발하여 면역학 기초 마련.",
+            krEra: "조선 정조 20년",
+            krDesc: "2년 9개월의 공사 끝에 수원 화성 축성 완공 (정약용의 인두법 연구 시기)."
+        },
+        {
+            category: "과학·의학·IT",
+            year: 1928,
+            title: "최초의 항생제(페니실린) 발견",
+            desc: "알렉산더 플레밍이 푸른곰팡이에서 항균 물질을 발견하여 감염병 치료 혁신.",
+            krEra: "일제강점기",
+            krDesc: "원산 총파업 발생(1929) 직전 시기 및 민족유일당 운동(신간회 활동) 전개."
+        },
+        {
+            category: "과학·의학·IT",
+            year: 1948,
+            title: "프로그램 내장식 컴퓨터 구동",
+            desc: "맨체스터 대학교에서 전자식 메모리 기반 '맨체스터 베이비(SSEM)' 구동 성공.",
+            krEra: "대한민국 정부 수립",
+            krDesc: "제헌헌법 공포(7월 17일) 및 대한민국 정부 수립 선포(8월 15일)."
+        },
+        {
+            category: "과학·의학·IT",
+            year: 1953,
+            title: "DNA 이중나선 구조 규명",
+            desc: "케임브리지 대학교의 프랜시스 크릭과 제임스 왓슨이 유전물질의 분자 구조 규명.",
+            krEra: "대한민국 (정전협정)",
+            krDesc: "6·25 전쟁 정전협정 체결(7월 27일) 및 한미상호방위조약 조인."
+        },
+        {
+            category: "과학·의학·IT",
+            year: 1989,
+            title: "월드 와이드 웹(WWW) 개발",
+            desc: "팀 버너스리가 CERN 근무 당시 HTTP, HTML, URL을 고안하여 인터넷 대중화 기반 구축.",
+            krEra: "대한민국 (노태우 정부)",
+            krDesc: "해외여행 전면 자유화 시행 및 북방정책(동유럽 수교) 추진."
+        },
+        {
+            category: "과학·의학·IT",
+            year: 1996,
+            title: "체세포 복제 포유류 탄생",
+            desc: "에든버러 로스린 연구소에서 성체 체세포를 복제한 양 '돌리(Dolly)' 탄생.",
+            krEra: "대한민국 (김영삼 정부)",
+            krDesc: "경제협력개발기구(OECD) 가입 및 지방자치제 전면 실시(1995) 이듬해."
+        },
+
+        // 5. 생활·문화·미디어
+        {
+            category: "생활·문화·미디어",
+            year: 1753,
+            title: "근대적 국립 박물관 설립",
+            desc: "한스 슬론의 수집품을 기반으로 대영박물관 설립(1759년 일반 무료 공개 시작).",
+            krEra: "조선 영조 29년",
+            krDesc: "균역법 시행(1750) 직후로 군역의 폐단을 보완하며 민생 안정 도모."
+        },
+        {
+            category: "생활·문화·미디어",
+            year: 1796,
+            title: "근대적 백화점 개점",
+            desc: "더비 지역에 '베네츠(Bennetts)'가 개점하여 정찰제 및 다품목 진열 판매 시작.",
+            krEra: "조선 정조 20년",
+            krDesc: "수원 화성 완공 및 시전 상인의 금난전권 폐지(신해통공, 1791) 이후 상업 활성화."
+        },
+        {
+            category: "생활·문화·미디어",
+            year: 1868,
+            title: "최초의 장편 추리소설 출간",
+            desc: "윌키 콜린스가 현대 추리소설의 문법을 확립한 '월장석(The Moonstone)' 출간.",
+            krEra: "조선 고종 5년",
+            krDesc: "흥선대원군 집권기로 경복궁 중건 완료(1868) 및 쇄국정책 유지."
+        },
+        {
+            category: "생활·문화·미디어",
+            year: 1922,
+            title: "공영 라디오 및 TV 정규 방송",
+            desc: "BBC 라디오 정규 방송 시작(1922), 세계 최초 고화질 흑백 TV 정규 방송 개시(1936).",
+            krEra: "일제강점기",
+            krDesc: "문화통치기 속 물산장려운동 전개 (경성방송국 라디오 방송은 1927년 시작)."
+        },
+
+        // 6. 스포츠
+        {
+            category: "스포츠",
+            year: 1744,
+            title: "골프 규칙 성문화",
+            desc: "스코틀랜드 에든버러 골퍼 협회가 최초의 성문화된 13개 골프 규칙 제정.",
+            krEra: "조선 영조 20년",
+            krDesc: "탕평책 추진 및 왕실과 국가 전례를 정리한 《속오례의》 간행."
+        },
+        {
+            category: "스포츠",
+            year: 1863,
+            title: "근대 축구 규칙 제정 및 협회 창설",
+            desc: "잉글랜드 축구협회(FA) 창설 및 손을 쓰지 않는 현대 축구 규칙 명문화.",
+            krEra: "조선 고종 즉위년",
+            krDesc: "철종 승하 후 고종 즉위 및 흥선대원군 섭정 시작."
+        },
+        {
+            category: "스포츠",
+            year: 1871,
+            title: "럭비 협회 창설 및 규칙 표준화",
+            desc: "잉글랜드 럭비풋볼유니온(RFU) 결성 및 세계 최초 럭비 국가대항전 개최.",
+            krEra: "조선 고종 8년",
+            krDesc: "신미양요 발생 및 전국 각지에 척화비 건립."
+        },
+        {
+            category: "스포츠",
+            year: 1877,
+            title: "근대 테니스 대회 개최",
+            desc: "올잉글랜드 클럽에서 제1회 윔블던 선수권 대회를 개최하며 현대 테니스 규칙 정립.",
+            krEra: "조선 고종 14년",
+            krDesc: "강화도 조약(1876) 체결 이듬해로 부산항 개항 및 개화 정책 태동기."
+        }
+    ];
+
+    let currentCategory = "전체";
+    let currentSearch = "";
+    let currentSort = "default";
+    let currentView = "card";
+
+    const contentContainer = document.getElementById("contentContainer");
+    const statsText = document.getElementById("statsText");
+    const tabBtns = document.querySelectorAll(".tab-btn");
+    const sortBtns = document.querySelectorAll("[data-sort]");
+    const viewBtns = document.querySelectorAll("[data-view]");
+    const searchInput = document.getElementById("searchInput");
+
+    function render() {
+        let filtered = ukWorldFirsts.filter(item => {
+            const matchCat = currentCategory === "전체" || item.category === currentCategory;
+            const query = currentSearch.toLowerCase().trim();
+            const matchSearch = !query || 
+                item.title.toLowerCase().includes(query) || 
+                item.desc.toLowerCase().includes(query) || 
+                item.krEra.toLowerCase().includes(query) ||
+                item.krDesc.toLowerCase().includes(query) ||
+                String(item.year).includes(query) ||
+                item.category.toLowerCase().includes(query);
+            return matchCat && matchSearch;
+        });
+
+        if (currentSort === "asc") {
+            filtered = [...filtered].sort((a, b) => a.year - b.year);
+        } else if (currentSort === "desc") {
+            filtered = [...filtered].sort((a, b) => b.year - a.year);
+        }
+
+        statsText.textContent = `총 ${filtered.length}개 항목 표시 중`;
+
+        if (filtered.length === 0) {
+            contentContainer.innerHTML = `<div class="empty-state">검색 조건에 일치하는 항목이 없습니다.</div>`;
+            return;
+        }
+
+        if (currentView === "card") {
+            const cardsHtml = filtered.map(item => `
+                <article class="card">
+                    <div>
+                        <div class="card-header">
+                            <span class="badge-cat">${item.category}</span>
+                            <span class="badge-year">${item.year}년</span>
+                        </div>
+                        <h3>${item.title}</h3>
+                        <p class="uk-desc">${item.desc}</p>
+                    </div>
+                    <div class="korea-box">
+                        <div class="korea-label">🇰🇷 동시대 한국 (${item.krEra})</div>
+                        <div class="korea-text">${item.krDesc}</div>
+                    </div>
+                </article>
+            `).join("");
+            contentContainer.innerHTML = `<div class="grid">${cardsHtml}</div>`;
+        } else {
+            const rowsHtml = filtered.map(item => `
+                <tr>
+                    <td class="col-year">${item.year}년</td>
+                    <td class="col-cat"><span class="badge-cat">${item.category}</span></td>
+                    <td class="col-title">${item.title}</td>
+                    <td class="col-uk">${item.desc}</td>
+                    <td class="col-kr"><span class="kr-era">[${item.krEra}]</span> ${item.krDesc}</td>
+                </tr>
+            `).join("");
+            contentContainer.innerHTML = `
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>연도</th>
+                                <th>분야</th>
+                                <th>영국 세계 최초 항목</th>
+                                <th>영국 내용 요약</th>
+                                <th>동시대 한국 상황</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${rowsHtml}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+    }
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            tabBtns.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            currentCategory = btn.dataset.category;
+            render();
+        });
+    });
+
+    sortBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            sortBtns.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            currentSort = btn.dataset.sort;
+            render();
+        });
+    });
+
+    viewBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            viewBtns.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            currentView = btn.dataset.view;
+            render();
+        });
+    });
+
+    searchInput.addEventListener("input", (e) => {
+        currentSearch = e.target.value;
+        render();
+    });
+
+    render();
+</script>
+
+</body>
+</html>
