@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# 칼럼·AI 가이드 추가와 지식·의회·민선9기 자동 갱신 실행까지 맡는 사이트 전용 MCP 서버(stdio)
+# 칼럼·AI 가이드 추가, 지식·의회·민선9기 자동 갱신 실행, 퇴직이후 비공개 숫자 관리를 맡는 사이트 전용 MCP 서버(stdio)
 """
 실행:  python3 site_mcp.py            # MCP 서버(stdio)
 검사:  python3 site_mcp.py --selftest # 임시 사본에서 칼럼·가이드 추가를 시험(push 없음)
@@ -243,6 +243,25 @@ def tail_log(name, lines=30):
     return f"[{name} · {state}]\n" + "\n".join(text)
 
 
+# ─── 퇴직이후 계획(개인 금액은 저장소 밖 비공개 파일) ───────────────
+
+RETIRE = H / "retire-private/pension.json"
+RETIRE_KEYS = {"birth", "hired", "pension", "allowance", "lump", "partPension", "partLump", "living", "savings", "_출처"}
+
+
+def retire_merge(updates, path=RETIRE):
+    import json
+    bad = set(updates) - RETIRE_KEYS
+    if bad:
+        raise ValueError(f"모르는 항목: {', '.join(sorted(bad))}. 쓸 수 있는 항목: {', '.join(sorted(RETIRE_KEYS))}")
+    d = json.loads(path.read_text("utf-8")) if path.exists() else {}
+    d.update(updates)
+    path.parent.mkdir(mode=0o700, exist_ok=True)
+    path.write_text(json.dumps(d, ensure_ascii=False, indent=2), "utf-8")
+    path.chmod(0o600)
+    return json.dumps(d, ensure_ascii=False)
+
+
 # ─── MCP 도구 ────────────────────────────────────────────────
 
 def serve():
@@ -299,6 +318,20 @@ def serve():
         """자동 갱신 작업의 실행 여부와 로그 끝부분. job은 run_update와 같다."""
         return tail_log(job, lines)
 
+    @mcp.tool()
+    def retire_data() -> str:
+        """퇴직이후 계획기(retire.html)에 붙여 넣을 내 연금 숫자 JSON. 저장소 밖 비공개 파일에서 읽으며 사이트에는 올리지 않는다.
+        운영자에게 이 JSON을 보여 주고 페이지의 「JSON 붙여넣기」 칸에 넣으라고 안내한다."""
+        return retire_merge({})
+
+    @mcp.tool()
+    def retire_save(updates: dict) -> str:
+        """퇴직이후 숫자를 고친다(비공개 파일, 커밋 없음). 금액은 원 단위 정수, birth는 'YYYY-MM'.
+        항목: pension(퇴직연금 월액 세후), allowance(퇴직수당 세후), lump(퇴직일시금 총액 세후),
+        partPension·partLump(공제일시금 선택 시 연금 월액·일시금), living(월 생활비), savings(공백기용 저축), _출처(조회일 메모).
+        공무원연금공단 예상액 PDF를 새로 받으면 세후 실지급액을 읽어 여기에 넣는다."""
+        return retire_merge(updates)
+
     mcp.run()
 
 
@@ -346,6 +379,15 @@ def selftest():
     for n in JOBS:
         assert JOBS[n][0].exists(), n
         tail_log(n, 1)
+    import json
+    p = Path(tempfile.mkdtemp()) / "r.json"
+    assert json.loads(retire_merge({"pension": 100}, p))["pension"] == 100
+    assert json.loads(retire_merge({"living": 5}, p)) == {"pension": 100, "living": 5}
+    try:
+        retire_merge({"name": "x"}, p)
+        raise AssertionError("모르는 항목이 통과됨")
+    except ValueError:
+        pass
     try:
         start_job("nope")
         raise AssertionError("없는 작업이 통과됨")
