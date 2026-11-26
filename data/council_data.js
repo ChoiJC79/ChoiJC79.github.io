@@ -1794,7 +1794,7 @@ window.COUNCIL_DATA = {
       "session": "기타 의정활동·간담회",
       "type": "자치행정위",
       "date": "2026-11-25",
-      "transcriptLines": 0
+      "transcriptLines": 122
     },
     {
       "id": "ArnvzfqjJeQ",
@@ -1802,7 +1802,7 @@ window.COUNCIL_DATA = {
       "session": "기타 의정활동·간담회",
       "type": "산업건설위",
       "date": "2026-11-25",
-      "transcriptLines": 0
+      "transcriptLines": 159
     },
     {
       "id": "kgl_kqUSQ00",
