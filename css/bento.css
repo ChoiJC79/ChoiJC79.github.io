@@ -40,3 +40,10 @@ html[data-theme] body{background:#0d0e11!important}
 html[data-theme] #tape-hero .tape-tracks h2,html[data-theme] #tape-hero .tape-tracks ol{-webkit-mask-image:none!important;mask-image:none!important;text-shadow:none!important}
 html[data-theme] #tape-hero h1,html[data-theme] #tape-hero h2,html[data-theme] #tape-hero p,html[data-theme] #tape-hero div,html[data-theme] #tape-hero li a,html[data-theme] #tape-hero span{font-family:'Noto Sans KR',sans-serif!important;text-shadow:none!important}
 html[data-theme] #tape-hero .pager::before{content:none}
+
+/* 새 글 카드 제거, 스크롤 끝까지 같은 바탕색, 즐겨찾기를 카드 폭에 맞춤 */
+html:root[data-theme]{background:#0d0e11;--header-bg:#0d0e11}
+html[data-theme] #tape-hero .pager{display:none}
+html[data-theme] #tape-hero .tape-main{position:static}
+html[data-theme] #jfoot{box-sizing:border-box;width:min(1072px,calc(100% - 48px));padding:28px 0 40px}
+@media (max-width:600px){html[data-theme] #jfoot{width:calc(100% - 32px);padding:24px 0 32px}}
