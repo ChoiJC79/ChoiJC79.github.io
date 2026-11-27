@@ -66,15 +66,19 @@ a{color:var(--accent);text-decoration:none;}
 .sec-sub{font-size:12.5px;color:var(--muted);}
 
 /* ── View 1: Network Graph & Storylines ── */
-.net-layout{display:grid;grid-template-columns:1fr 370px;gap:1rem;margin-bottom:2rem;}
+.net-layout{display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:2rem;}
 .net-canvas-box{background:var(--surface);border:1px solid var(--border);border-radius:14px;position:relative;overflow:hidden;min-height:520px;display:flex;flex-direction:column;}
 .net-toolbar{display:flex;justify-content:space-between;align-items:center;padding:0.75rem 1rem;border-bottom:1px solid var(--border);background:var(--bg);flex-wrap:wrap;gap:0.5rem;}
 .net-legend{display:flex;gap:0.9rem;flex-wrap:wrap;font-size:11.5px;color:var(--muted);}
 .legend-item{display:inline-flex;align-items:center;gap:0.35rem;}
 .legend-dot{width:10px;height:10px;border-radius:50%;display:inline-block;}
-#network-svg{width:100%;height:465px;cursor:grab;user-select:none;background:radial-gradient(circle at center,rgba(242,163,58,0.05) 0%,transparent 70%);}
-#network-svg:active{cursor:grabbing;}
-.net-inspector{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.25rem;display:flex;flex-direction:column;gap:0.9rem;max-height:525px;overflow-y:auto;}
+#network-svg{display:block;width:100%;height:auto;aspect-ratio:1160/680;touch-action:pan-y;cursor:grab;user-select:none;background:radial-gradient(circle at center,rgba(242,163,58,0.05) 0%,transparent 70%);}
+.net-scroll{position:relative;}
+.net-zoom{position:absolute;right:12px;top:12px;display:flex;flex-direction:column;gap:4px;}
+.net-zoom button{width:30px;height:30px;border:1px solid var(--border);background:var(--surface);color:var(--ink);border-radius:6px;cursor:pointer;font-size:15px;line-height:1;}
+.net-zoom button:hover{border-color:var(--accent);}
+.net-hint{position:absolute;left:12px;bottom:10px;font-size:11.5px;color:var(--muted);pointer-events:none;}
+.net-inspector{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.25rem;display:flex;flex-direction:column;gap:0.9rem;max-height:560px;overflow-y:auto;}
 .insp-badge{display:inline-block;font-size:11px;padding:2px 9px;border-radius:99px;font-weight:600;margin-bottom:0.3rem;}
 .insp-title{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:var(--ink);}
 .insp-conn-list{display:flex;flex-direction:column;gap:0.5rem;margin-top:0.4rem;}
@@ -159,11 +163,14 @@ a{color:var(--accent);text-decoration:none;}
 .quote-row blockquote{flex:1;font-style:normal;color:var(--text);}
 
 /* ── View 3: 14 Members Positioning Map & Radar ── */
-.matrix-layout{display:grid;grid-template-columns:1.1fr 0.9fr;gap:1.2rem;margin-bottom:2rem;}
+.matrix-layout{display:grid;grid-template-columns:1fr;gap:1.2rem;margin-bottom:2rem;}
+.matrix-scroll{overflow-x:auto;}
+.radar-body{display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:1.2rem;align-items:center;}
+@media(max-width:980px){.radar-body{grid-template-columns:1fr;}}
 .matrix-box,.radar-box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.3rem;}
-#matrix-svg{width:100%;height:420px;background:var(--bg);border:1px solid var(--border);border-radius:10px;user-select:none;}
+#matrix-svg{display:block;width:100%;height:auto;aspect-ratio:1100/620;min-width:720px;background:var(--bg);border:1px solid var(--border);border-radius:10px;user-select:none;}
 .radar-top{display:flex;justify-content:space-between;align-items:flex-start;gap:0.8rem;margin-bottom:0.8rem;}
-#radar-svg{width:100%;height:260px;}
+#radar-svg{width:100%;height:auto;aspect-ratio:420/300;}
 .member-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;}
 .member-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.35rem;display:flex;flex-direction:column;gap:0.75rem;cursor:pointer;transition:border-color 0.2s,transform 0.15s;}
 .member-card:hover,.member-card.selected{border-color:var(--accent);transform:translateY(-2px);}
@@ -412,7 +419,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
     <div class="sec-head">
       <div>
         <h2 class="sec-title">의원 14명 ↔ 핵심 현안 12건 ↔ 이해관계자 유기적 관계망</h2>
-        <p class="sec-sub">노드를 클릭하면 해당 의원이나 현안에 연결된 발언·공방·이해관계가 우측 패널에 즉시 필터링됩니다. 드래그하여 위치를 조정할 수 있습니다.</p>
+        <p class="sec-sub">노드에 마우스를 올리면 연결된 노드만 밝아지고, 클릭하면 연결된 발언·공방·이해관계가 그림 아래 패널에 표시됩니다. 점은 끌어서 옮길 수 있고, 연결이 많은 노드일수록 크게 그려집니다.</p>
       </div>
       <button class="yt-btn" onclick="resetNetworkSelection()">↺ 전체 관계망 초기화</button>
     </div>
@@ -429,7 +436,7 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
           <span style="font-size:11px;color:var(--muted);">실선: 주도·압박 / 점선: 제동·삭제·충돌</span>
         </div>
         <div class="net-fresh" id="net-fresh"></div>
-        <svg id="network-svg" viewBox="0 0 820 470"></svg>
+        <div class="net-scroll"><svg id="network-svg" viewBox="0 0 1160 680"></svg><div class="net-zoom"><button type="button" onclick="netZoom(1.25)" aria-label="확대">+</button><button type="button" onclick="netZoom(0.8)" aria-label="축소">−</button><button type="button" onclick="netFit();renderNetworkGraph()" aria-label="전체 보기">⤢</button></div><div class="net-hint">마우스를 올리면 회전이 멈춥니다 · 점 끌기 · 빈 곳 끌어 이동 · Ctrl+휠로 확대</div></div>
       </div>
 
       <aside class="net-inspector" id="net-inspector">
@@ -496,10 +503,10 @@ footer{border-top:1px solid var(--border);padding:2.5rem 1.5rem;text-align:cente
     <div class="matrix-layout">
       <div class="matrix-box">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem;">
-          <strong style="font-size:13.5px;color:var(--ink);">의정 성향 2x2 포지셔닝 매트릭스 (의원 클릭 시 우측 레이더 연동)</strong>
+          <strong style="font-size:13.5px;color:var(--ink);">의정 성향 2x2 포지셔닝 매트릭스 (의원 클릭 시 아래 레이더 연동)</strong>
           <span style="font-size:11.5px;color:var(--muted);"><span class="party-dot party-ppp"></span> 국민의힘 · <span class="party-dot party-dpk"></span> 더불어민주당</span>
         </div>
-        <svg id="matrix-svg" viewBox="0 0 560 400"></svg>
+        <div class="matrix-scroll"><svg id="matrix-svg" viewBox="0 0 1100 620"></svg></div>
       </div>
 
       <div class="radar-box" id="radar-inspector">
@@ -758,7 +765,7 @@ const DATA = window.COUNCIL_DATA || { members:[], storylines:[], speeches:[], ne
   });
 })(DATA);
 
-let selectedNetNodeId = 'i_jobcenter';
+let selectedNetNodeId = null;
 let selectedMemberId = 'kim_jeongmun';
 let currentMemberFilter = '__all__';
 
@@ -794,28 +801,158 @@ function closeYtModal() {
 // 1. 유기적 관계망 SVG 렌더링 (드래그 & 클릭 필터링 지원)
 // ============================================================================
 const nodePositions = {};
+// 옵시디언식 힘 배치: 노드끼리 밀어내고 연결선은 당겨서 x·y 자리를 스스로 찾고, 깊이 z는 노드마다 고정값을 줘서 회전할 때 입체감을 낸다.
+// 노드·연결이 늘어나도 칸을 다시 나눌 필요가 없다. (ponytail: 노드 쌍 전부 계산 O(n²), 노드가 수백 개를 넘으면 격자 분할로 바꿀 것)
+// 배치 좌표(LW·LH)는 고정, 화면 판(NET_W·NET_H)은 화면 폭에 맞춘다. 휴대폰에서는 세로로 긴 판
+const LW = 1160, LH = 680, LCX = LW / 2, LCY = LH / 2, NET_D = 1500;
+let NET_W = LW, NET_H = LH;
+const NET_VIEW = { k: 1, tx: 0, ty: 0 };
+let NET_ALPHA = 0, NET_HOVER = null, NET_DEG = {}, NET_ROT = 0, NET_T = 0, NET_INSIDE = false, NET_VISIBLE = true, NET_DIRTY = true;
+const NET_STILL = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+function netSizeView() {
+  const svg = document.getElementById('network-svg');
+  const narrow = svg && svg.clientWidth > 0 && svg.clientWidth < 700;
+  NET_W = narrow ? Math.round(svg.clientWidth * 1.25) : LW;
+  NET_H = narrow ? Math.round(NET_W * 1.25) : LH;
+  if (svg) { svg.setAttribute('viewBox', `0 0 ${NET_W} ${NET_H}`); svg.style.aspectRatio = `${NET_W}/${NET_H}`; }
+}
+function netRadius(n) {
+  const base = n.group === 'issue' ? 9 : 7;
+  return base + Math.sqrt(NET_DEG[n.id] || 0) * 4;
+}
+// y축 회전 + 원근: 화면에 그릴 좌표·배율·깊이(0 먼 쪽 ~ 1 가까운 쪽)
+function netProject(p) {
+  const c = Math.cos(NET_ROT), s = Math.sin(NET_ROT);
+  const dx = p.x - LCX, z = dx * s + p.z * c;
+  const sc = NET_D / (NET_D - z);
+  return { x: LCX + (dx * c - p.z * s) * sc, y: LCY + (p.y - LCY) * sc, s: sc, depth: Math.max(0, Math.min(1, (z + 160) / 320)) };
+}
 function initNetworkLayout() {
   const nodes = DATA.network.nodes;
-  const members = nodes.filter(n => n.group === 'member_ppp' || n.group === 'member_dpk');
-  const issues = nodes.filter(n => n.group === 'issue');
-  const actors = nodes.filter(n => n.group === 'actor');
-
-  // 좌측: 의원 14명 (2열 × 7행)
-  members.forEach((n, idx) => {
-    const col = idx % 2;
-    const row = Math.floor(idx / 2);
-    nodePositions[n.id] = { x: 62 + col * 92, y: 36 + row * 62 };
+  NET_DEG = {};
+  DATA.network.edges.forEach(e => { NET_DEG[e.source] = (NET_DEG[e.source] || 0) + 1; NET_DEG[e.target] = (NET_DEG[e.target] || 0) + 1; });
+  // 시작 자리: 묶음별로 왼쪽(의원)·가운데(현안)·오른쪽(외부) 근처, 매번 같은 결과가 나오게 ID로 흩뿌린다
+  const hx = { member_ppp: 330, member_dpk: 330, issue: 600, actor: 880 };
+  nodes.forEach(n => {
+    let h = 0; for (const c of n.id) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+    nodePositions[n.id] = { x: (hx[n.group] || 600) + ((h % 200) - 100), y: LH / 2 + (((h >> 8) % 400) - 200), z: ((h >> 4) % 220) - 110, vx: 0, vy: 0 };
   });
-  // 가운데: 핵심 현안 12건 (3열 × 4행, 이름이 겹치지 않게 넓게)
-  issues.forEach((n, idx) => {
-    const col = idx % 3;
-    const row = Math.floor(idx / 3);
-    nodePositions[n.id] = { x: 335 + col * 145, y: 58 + row * 112 };
+  NET_ALPHA = 1;
+  for (let i = 0; i < 400; i++) netTick();
+  NET_ALPHA = 0;
+  netSizeView();
+  netFit();
+  initNetworkControls();
+  netLoop();
+}
+function netTick() {
+  const nodes = DATA.network.nodes, P = nodePositions, a = NET_ALPHA;
+  for (let i = 0; i < nodes.length; i++) {
+    const p = P[nodes[i].id], ri = netRadius(nodes[i]);
+    for (let j = i + 1; j < nodes.length; j++) {
+      const q = P[nodes[j].id];
+      let dx = q.x - p.x, dy = q.y - p.y, d2 = dx * dx + dy * dy || 1;
+      const d = Math.sqrt(d2), min = ri + netRadius(nodes[j]) + 56;
+      let f = 3200 / Math.max(d2, 400);
+      if (d < min) f += (min - d) * 0.5 / d;  // 겹침 방지
+      f *= a / d;
+      p.vx -= dx * f; p.vy -= dy * f; q.vx += dx * f; q.vy += dy * f;
+    }
+  }
+  DATA.network.edges.forEach(e => {
+    const p = P[e.source], q = P[e.target]; if (!p || !q) return;
+    const dx = q.x - p.x, dy = q.y - p.y, d = Math.sqrt(dx * dx + dy * dy) || 1;
+    const f = (d - 150) * 0.05 * a / d;
+    p.vx += dx * f; p.vy += dy * f; q.vx -= dx * f; q.vy -= dy * f;
   });
-  // 우측: 외부 이해관계자 4건
-  actors.forEach((n, idx) => {
-    nodePositions[n.id] = { x: 760, y: 70 + idx * 110 };
+  const bias = { member_ppp: 330, member_dpk: 330, actor: 880 };
+  nodes.forEach(n => {
+    const p = P[n.id];
+    p.vx += ((bias[n.group] || LCX) - p.x) * 0.006 * a + (LCX - p.x) * 0.004 * a;
+    p.vy += (LCY - p.y) * 0.012 * a;
+    if (p.fixed) { p.vx = p.vy = 0; return; }
+    p.vx *= 0.55; p.vy *= 0.55; p.x += p.vx; p.y += p.vy;
   });
+}
+function netFit() {
+  const ps = Object.values(nodePositions); if (!ps.length) return;
+  const xs = ps.map(p => p.x), ys = ps.map(p => p.y), pad = 70;  // 회전 여유
+  const x0 = Math.min(...xs) - pad, x1 = Math.max(...xs) + pad, y0 = Math.min(...ys) - pad, y1 = Math.max(...ys) + pad;
+  const k = Math.min(1.6, NET_W / (x1 - x0), NET_H / (y1 - y0));
+  NET_VIEW.k = k; NET_VIEW.tx = (NET_W - (x0 + x1) * k) / 2; NET_VIEW.ty = (NET_H - (y0 + y1) * k) / 2;
+  NET_DIRTY = true;
+}
+function netZoom(f, cx, cy) {
+  if (cx === undefined) { cx = NET_W / 2; cy = NET_H / 2; }
+  const k = Math.min(3, Math.max(0.35, NET_VIEW.k * f)); f = k / NET_VIEW.k;
+  NET_VIEW.tx = cx - (cx - NET_VIEW.tx) * f; NET_VIEW.ty = cy - (cy - NET_VIEW.ty) * f; NET_VIEW.k = k;
+  NET_DIRTY = true;
+}
+function netReheat() { NET_ALPHA = Math.max(NET_ALPHA, 0.35); NET_DIRTY = true; }
+// 한 개의 그리기 고리: 천천히 좌우로 흔들리는 회전 + 끌기 뒤 자리 잡기. 화면 밖이거나 탭이 숨으면 쉰다
+function netLoop() {
+  let last = performance.now();
+  const frame = now => {
+    const dt = Math.min(64, now - last); last = now;
+    const svg = document.getElementById('network-svg');
+    if (NET_VISIBLE && !document.hidden && svg && svg.clientWidth) {
+      if (!NET_STILL && !NET_INSIDE) { NET_T += dt; NET_DIRTY = true; }
+      NET_ROT = NET_STILL ? 0 : Math.sin(NET_T / 7000) * 0.16;
+      if (NET_ALPHA > 0.01) { netTick(); NET_ALPHA *= 0.96; NET_DIRTY = true; }
+      if (NET_DIRTY) { NET_DIRTY = false; renderNetworkGraph(); }
+    }
+    requestAnimationFrame(frame);
+  };
+  requestAnimationFrame(frame);
+}
+function initNetworkControls() {
+  const svg = document.getElementById('network-svg');
+  if (!svg || svg.dataset.bound) return;
+  svg.dataset.bound = '1';
+  if ('IntersectionObserver' in window) new IntersectionObserver(es => { NET_VISIBLE = es[0].isIntersecting; }).observe(svg);
+  const toSvg = ev => { const pt = new DOMPoint(ev.clientX, ev.clientY).matrixTransform(svg.getScreenCTM().inverse()); return { x: pt.x, y: pt.y }; };
+  const toGraph = s => ({ x: (s.x - NET_VIEW.tx) / NET_VIEW.k, y: (s.y - NET_VIEW.ty) / NET_VIEW.k });
+  let drag = null;
+  svg.addEventListener('pointerenter', () => { NET_INSIDE = true; });
+  svg.addEventListener('pointerdown', ev => {
+    NET_INSIDE = true;
+    const g = ev.target.closest('.net-node'), s = toSvg(ev);
+    drag = { id: g && g.dataset.id, sx: s.x, sy: s.y, tx: NET_VIEW.tx, ty: NET_VIEW.ty, moved: false };
+    svg.setPointerCapture(ev.pointerId);
+  });
+  svg.addEventListener('pointermove', ev => {
+    if (!drag) {
+      const g = ev.target.closest('.net-node'), id = g ? g.dataset.id : null;
+      if (id !== NET_HOVER) { NET_HOVER = id; NET_DIRTY = true; }
+      return;
+    }
+    const s = toSvg(ev);
+    if (Math.abs(s.x - drag.sx) + Math.abs(s.y - drag.sy) > 4) drag.moved = true;
+    if (!drag.moved) return;
+    if (drag.id) {
+      // 화면 위치를 회전·원근 전 좌표로 되돌린다(깊이 z는 그대로)
+      const p = nodePositions[drag.id], gp = toGraph(s), sc = netProject(p).s;
+      const c = Math.cos(NET_ROT), sn = Math.sin(NET_ROT);
+      p.x = LCX + ((gp.x - LCX) / sc + p.z * sn) / c; p.y = LCY + (gp.y - LCY) / sc; p.fixed = true; netReheat();
+    } else {
+      NET_VIEW.tx = drag.tx + (s.x - drag.sx); NET_VIEW.ty = drag.ty + (s.y - drag.sy); NET_DIRTY = true;
+    }
+  });
+  const end = ev => {
+    if (!drag) return;
+    if (drag.id) nodePositions[drag.id].fixed = false;
+    if (!drag.moved) { selectedNetNodeId = drag.id || null; NET_DIRTY = true; renderNetworkInspector(); }
+    drag = null;
+    if (ev.pointerType !== 'mouse') NET_INSIDE = false;  // 터치는 손을 떼면 다시 움직인다
+  };
+  svg.addEventListener('pointerup', end);
+  svg.addEventListener('pointercancel', end);
+  svg.addEventListener('pointerleave', () => { if (!drag) { NET_INSIDE = false; if (NET_HOVER) { NET_HOVER = null; NET_DIRTY = true; } } });
+  // 페이지 스크롤을 막지 않도록 Ctrl(맥은 트랙패드 오므리기)과 함께 굴릴 때만 확대
+  svg.addEventListener('wheel', ev => {
+    if (!ev.ctrlKey && !ev.metaKey) return;
+    ev.preventDefault(); const s = toSvg(ev); netZoom(ev.deltaY < 0 ? 1.12 : 1 / 1.12, s.x, s.y);
+  }, { passive: false });
 }
 
 function getNodeColor(group) {
@@ -861,78 +998,59 @@ function renderNetworkGraph() {
   if (!svg) return;
   const nodes = DATA.network.nodes;
   const edges = DATA.network.edges;
+  // 강조 기준: 마우스를 올린 노드가 우선, 없으면 클릭해 고른 노드
+  const focus = NET_HOVER || selectedNetNodeId;
+  const near = new Set();
+  if (focus) { near.add(focus); edges.forEach(e => { if (e.source === focus) near.add(e.target); if (e.target === focus) near.add(e.source); }); }
+  const k = NET_VIEW.k;
+  const P = {}; nodes.forEach(n => { if (nodePositions[n.id]) P[n.id] = netProject(nodePositions[n.id]); });
+  const grads = { member_ppp: '#e2603f', member_dpk: '#58a6ff', issue: '#f2a33a', actor: '#a9c46a' };
 
-  const connectedEdges = selectedNetNodeId
-    ? edges.filter(e => e.source === selectedNetNodeId || e.target === selectedNetNodeId)
-    : edges;
-  const connectedNodeIds = new Set();
-  if (selectedNetNodeId) {
-    connectedNodeIds.add(selectedNetNodeId);
-    connectedEdges.forEach(e => { connectedNodeIds.add(e.source); connectedNodeIds.add(e.target); });
-  }
-
-  let html = '';
-  // Edges
+  let html = `<defs>
+    <radialGradient id="net-bg" cx="50%" cy="45%" r="75%"><stop offset="0" stop-color="var(--surface)"/><stop offset="1" stop-color="var(--bg)"/></radialGradient>
+    ${Object.entries(grads).map(([g, c]) => `<radialGradient id="ng-${g}" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity="0.75"/><stop offset="0.28" stop-color="${c}"/><stop offset="1" stop-color="${c}" stop-opacity="0.55"/></radialGradient>`).join('')}
+    <filter id="net-glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="${NET_W}" height="${NET_H}" fill="url(#net-bg)"/>
+  <g transform="translate(${NET_VIEW.tx},${NET_VIEW.ty}) scale(${k})">`;
+  // 선: 먼 쪽일수록 흐리게
   edges.forEach(e => {
-    const p1 = nodePositions[e.source];
-    const p2 = nodePositions[e.target];
+    const p1 = P[e.source], p2 = P[e.target];
     if (!p1 || !p2) return;
-    const isHi = !selectedNetNodeId || (e.source === selectedNetNodeId || e.target === selectedNetNodeId);
-    const stroke = e.type === 'block' ? '#e2603f' : (e.type === 'lead' ? '#f2a33a' : '#8b949e');
-    const dash = e.type === 'block' ? '5,4' : '';
-    const op = isHi ? 0.88 : 0.14;
-    const sw = isHi ? 2.2 : 1;
-    const mx = (p1.x + p2.x) / 2;
-    const my = (p1.y + p2.y) / 2;
-    // 가로 방향 완만한 곡선 (중점은 직선과 같아 라벨 위치는 그대로)
-    const dx = (p2.x - p1.x) * 0.5;
-    html += `<path d="M${p1.x},${p1.y} C${p1.x + dx},${p1.y} ${p2.x - dx},${p2.y} ${p2.x},${p2.y}" fill="none" stroke="${stroke}" stroke-width="${sw}" stroke-dasharray="${dash}" opacity="${op}" />`;
-    if (isHi && selectedNetNodeId) {
-      const w = Math.max(40, String(e.label).length * 8.4 + 12);  // 라벨 길이에 맞춘 상자
-      html += `<rect x="${mx - w / 2}" y="${my - 9}" width="${w}" height="17" rx="4" fill="#1b1612" stroke="${stroke}" stroke-width="0.8" opacity="0.95"/>`;
-      html += `<text x="${mx}" y="${my + 3.5}" text-anchor="middle" fill="#efe4cf" font-size="9.5" font-weight="600">${e.label}</text>`;
-    }
+    const on = focus && (e.source === focus || e.target === focus);
+    const stroke = on ? (e.type === 'block' ? '#e2603f' : (e.type === 'lead' ? '#f2a33a' : '#8b949e')) : 'var(--muted)';
+    const dep = (p1.depth + p2.depth) / 2;
+    const op = !focus ? 0.14 + 0.32 * dep : (on ? 0.95 : 0.05);
+    const sw = (on ? 2.4 : 0.7 + 0.8 * dep) / Math.sqrt(k);
+    // 선 설명은 겹치지 않게 그림에 쓰지 않고, 마우스를 올리면 보이는 말풍선과 아래 패널 목록으로 보여 준다
+    html += `<line x1="${p1.x.toFixed(1)}" y1="${p1.y.toFixed(1)}" x2="${p2.x.toFixed(1)}" y2="${p2.y.toFixed(1)}" stroke="${stroke}" stroke-width="${sw.toFixed(2)}" stroke-dasharray="${on && e.type === 'block' ? '6,4' : ''}" opacity="${op.toFixed(2)}"><title>${e.label || ''}</title></line>`;
   });
-
-  // Nodes
-  nodes.forEach(n => {
-    const pos = nodePositions[n.id];
-    if (!pos) return;
-    const isHi = !selectedNetNodeId || connectedNodeIds.has(n.id);
+  // 점: 먼 것부터 그려서 가까운 점이 위에 오게
+  nodes.filter(n => P[n.id]).sort((a, b) => P[a.id].depth - P[b.id].depth).forEach(n => {
+    const pr = P[n.id];
     const isSel = n.id === selectedNetNodeId;
-    const col = getNodeColor(n.group);
-    const r = n.group === 'issue' ? 16 : (n.group === 'actor' ? 14 : 14);
-    const op = isHi ? 1 : 0.22;
-    html += `<g class="net-node" data-id="${n.id}" transform="translate(${pos.x},${pos.y})" style="opacity:${op};cursor:pointer;">`;
-    if (isSel) {
-      html += `<circle r="${r + 6}" fill="none" stroke="${col}" stroke-width="2" stroke-dasharray="3,2"/>`;
-    }
-    // 그래프에는 짧은 이름(의원은 이름만, 현안은 9자), 전체 이름은 마우스를 올리면 표시
+    const lit = !focus || near.has(n.id);
+    const r = netRadius(n) * pr.s;
     const isMember = n.group === 'member_ppp' || n.group === 'member_dpk';
-    const short = isMember ? n.label.split(' ')[0] : (n.label.length > 9 ? n.label.slice(0, 9) + '…' : n.label);
+    const short = isMember ? n.label.split(' ')[0] : (n.label.length > 12 ? n.label.slice(0, 12) + '…' : n.label);
+    // 이름표는 화면에서 늘 같은 크기로, 멀리 축소했을 때는 강조된 노드만 표시
+    const showLabel = lit && (k >= 0.75 || near.has(n.id));
+    const op = lit ? 0.6 + 0.4 * pr.depth : 0.12;
+    html += `<g class="net-node" data-id="${n.id}" transform="translate(${pr.x.toFixed(1)},${pr.y.toFixed(1)})" style="opacity:${focus && near.has(n.id) ? 1 : op.toFixed(2)};cursor:pointer;">`;
     html += `<title>${n.fullLabel || n.label}</title>`;
-    html += `<circle r="${r}" fill="${col}" stroke="#1b1612" stroke-width="2"/>`;
-    if ((NET_ACT[n.id] || []).some(a => a.d > NET_BASE)) html += `<circle cx="${r - 2}" cy="${-r + 2}" r="5" fill="#3fb950" stroke="#1b1612" stroke-width="1.5"/>`;
-    html += `<text y="${r + 13}" text-anchor="middle" fill="var(--ink)" stroke="var(--bg)" stroke-width="3" paint-order="stroke" font-size="11" font-weight="${isSel ? '700' : '600'}">${short}</text>`;
+    if (isSel) html += `<circle r="${r + 7}" fill="none" stroke="${grads[n.group] || '#a9c46a'}" stroke-width="${2 / k}" stroke-dasharray="${4 / k},${3 / k}"/>`;
+    html += `<circle r="${r.toFixed(1)}" fill="url(#ng-${grads[n.group] ? n.group : 'actor'})" ${n.id === focus ? 'filter="url(#net-glow)"' : ''}/>`;
+    if ((NET_ACT[n.id] || []).some(a => a.d > NET_BASE)) html += `<circle cx="${(r * 0.75).toFixed(1)}" cy="${(-r * 0.75).toFixed(1)}" r="${(4.5 / Math.sqrt(k)).toFixed(1)}" fill="#3fb950" stroke="var(--bg)" stroke-width="1.5"/>`;
+    if (showLabel) html += `<text y="${(r + 16 / k).toFixed(1)}" text-anchor="middle" fill="${focus && near.has(n.id) ? 'var(--ink)' : 'var(--muted)'}" stroke="var(--bg)" stroke-width="${4 / k}" paint-order="stroke" font-size="${((isMember ? 14 : 13) / k * (0.85 + 0.15 * pr.s)).toFixed(1)}" font-weight="${isSel || n.id === NET_HOVER ? 700 : 500}">${short}</text>`;
     html += `</g>`;
   });
 
-  svg.innerHTML = html;
-
-  // Bind click & drag
-  svg.querySelectorAll('.net-node').forEach(g => {
-    const id = g.getAttribute('data-id');
-    g.addEventListener('click', (ev) => {
-      ev.stopPropagation();
-      selectedNetNodeId = id;
-      renderNetworkGraph();
-      renderNetworkInspector();
-    });
-  });
+  svg.innerHTML = html + '</g>';
 }
 
 function resetNetworkSelection() {
   selectedNetNodeId = null;
+  netFit();
   renderNetworkGraph();
   renderNetworkInspector();
 }
@@ -946,7 +1064,7 @@ function renderNetworkInspector() {
         <span class="insp-badge" style="background:rgba(242,163,58,0.15);color:var(--accent);">전체 관계망 보기 모드</span>
         <h3 class="insp-title">노드를 클릭해 상세 연결망을 확인하세요</h3>
         <p style="font-size:12.5px;color:var(--muted);margin-top:0.4rem;">
-          좌측의 의원(14명), 중앙의 핵심 현안(12건), 우측의 이해관계자(4곳) 중 아무 노드나 클릭하면 연결된 발언·표결·의미 해석이 여기에 표시됩니다.
+          의원(14명)·핵심 현안(12건)·이해관계자(4곳) 중 아무 노드나 클릭하면 연결된 발언·표결·의미 해석이 여기에 표시됩니다.
         </p>
       </div>
     `;
@@ -1266,7 +1384,7 @@ function renderSpeeches() {
 function renderMatrixAndRadar() {
   const svg = document.getElementById('matrix-svg');
   if (!svg) return;
-  const W = 560, H = 400, pad = 44;
+  const W = 1100, H = 620, pad = 70;
   const cx = W / 2, cy = H / 2;
 
   let html = `
@@ -1281,23 +1399,41 @@ function renderMatrixAndRadar() {
     <line x1="${cx}" y1="${pad}" x2="${cx}" y2="${H - pad}" stroke="var(--border)" stroke-width="1.5" stroke-dasharray="4,3"/>
 
     <!-- Axis Labels -->
-    <text x="${cx}" y="22" text-anchor="middle" fill="var(--amber)" font-size="11.5" font-weight="700">▲ 집행부 강성 견제 · 예산 제동 · 송곳 검증</text>
-    <text x="${cx}" y="${H - 12}" text-anchor="middle" fill="var(--green)" font-size="11.5" font-weight="700">▼ 집행부 협조 · 조례 입법 · 대안 제시</text>
-    <text x="14" y="${cy - 8}" text-anchor="start" fill="var(--muted)" font-size="11" font-weight="600">◀ 지역구·현장민원 밀착</text>
-    <text x="${W - 14}" y="${cy - 8}" text-anchor="end" fill="var(--muted)" font-size="11" font-weight="600">거시 정책·재정·제도 ▶</text>
-  `;
+    <text x="${cx}" y="40" text-anchor="middle" fill="var(--amber)" font-size="16" font-weight="700">▲ 집행부 강성 견제 · 예산 제동 · 송곳 검증</text>
+    <text x="${cx}" y="${H - 26}" text-anchor="middle" fill="var(--green)" font-size="16" font-weight="700">▼ 집행부 협조 · 조례 입법 · 대안 제시</text>
+    <text x="${pad + 6}" y="${cy - 10}" text-anchor="start" fill="var(--muted)" font-size="14" font-weight="600">◀ 지역구·현장민원 밀착</text>
+    <text x="${W - pad - 6}" y="${cy - 10}" text-anchor="end" fill="var(--muted)" font-size="14" font-weight="600">거시 정책·재정·제도 ▶</text>
 
-  DATA.members.forEach(m => {
-    const x = cx + (m.x / 100) * (cx - pad - 24);
-    const y = cy - (m.y / 100) * (cy - pad - 24);
+    <!-- Quadrant Names -->
+    <text x="${pad + 14}" y="${pad + 26}" fill="var(--muted)" font-size="13" opacity="0.75">현장 밀착 · 강성 견제</text>
+    <text x="${W - pad - 14}" y="${pad + 26}" text-anchor="end" fill="var(--muted)" font-size="13" opacity="0.75">거시 정책 · 강성 견제</text>
+    <text x="${pad + 14}" y="${H - pad - 14}" fill="var(--muted)" font-size="13" opacity="0.75">현장 밀착 · 협조·대안</text>
+    <text x="${W - pad - 14}" y="${H - pad - 14}" text-anchor="end" fill="var(--muted)" font-size="13" opacity="0.75">거시 정책 · 협조·대안</text>
+  `;
+  // 이름표 겹침 피하기: 위 → 아래 → 오른쪽 → 왼쪽 순으로 빈자리를 찾는다
+  const placed = [];
+  const pts = DATA.members.map(m => ({ m, x: cx + (m.x / 100) * (cx - pad - 40), y: cy - (m.y / 100) * (cy - pad - 40) }));
+  const boxOf = (x, y, w, anchor) => anchor === 'start' ? { x1: x, x2: x + w, y1: y - 13, y2: y + 3 }
+    : anchor === 'end' ? { x1: x - w, x2: x, y1: y - 13, y2: y + 3 } : { x1: x - w / 2, x2: x + w / 2, y1: y - 13, y2: y + 3 };
+  const hits = b => placed.some(o => b.x1 < o.x2 && b.x2 > o.x1 && b.y1 < o.y2 && b.y2 > o.y1)
+    || pts.some(p => b.x1 < p.x + 12 && b.x2 > p.x - 12 && b.y1 < p.y + 12 && b.y2 > p.y - 12);
+  pts.forEach(p => {
+    const w = p.m.name.length * 15.5;
+    const cand = [[p.x, p.y - 18, 'middle'], [p.x, p.y + 30, 'middle'], [p.x + 18, p.y + 6, 'start'], [p.x - 18, p.y + 6, 'end']];
+    const c = cand.find(([x, y, a]) => !hits(boxOf(x, y, w, a))) || cand[0];
+    placed.push(boxOf(c[0], c[1], w, c[2]));
+    p.lx = c[0]; p.ly = c[1]; p.la = c[2];
+  });
+
+  pts.forEach(({ m, x, y, lx, ly, la }) => {
     const col = m.party === '국민의힘' ? '#e2603f' : '#58a6ff';
     const isSel = m.id === selectedMemberId;
     html += `<g style="cursor:pointer;" onclick="selectMember('${m.id}')">`;
     if (isSel) {
-      html += `<circle cx="${x}" cy="${y}" r="15" fill="none" stroke="var(--accent2)" stroke-width="2.2" stroke-dasharray="3,2"/>`;
+      html += `<circle cx="${x}" cy="${y}" r="20" fill="none" stroke="var(--accent2)" stroke-width="2.5" stroke-dasharray="4,3"/>`;
     }
-    html += `<circle cx="${x}" cy="${y}" r="${isSel ? 9.5 : 7.5}" fill="${col}" stroke="#1b1612" stroke-width="2"/>`;
-    html += `<text x="${x}" y="${y - 12}" text-anchor="middle" fill="var(--ink)" font-size="11" font-weight="${isSel ? '700' : '600'}">${m.name}</text>`;
+    html += `<circle cx="${x}" cy="${y}" r="${isSel ? 13 : 10}" fill="${col}" stroke="#1b1612" stroke-width="2.5"/>`;
+    html += `<text x="${lx}" y="${ly}" text-anchor="${la}" fill="var(--ink)" stroke="var(--bg)" stroke-width="4" paint-order="stroke" font-size="15" font-weight="${isSel ? '700' : '600'}">${m.name}</text>`;
     html += `</g>`;
   });
 
@@ -1313,7 +1449,7 @@ function renderRadarBox() {
 
   const labels = ['예산·재정 검증', '정책·제도 설계', '현장·상권 밀착', '집행부 압박강도', '조례·대안 입법'];
   const vals = [m.radar.budget, m.radar.policy, m.radar.field, m.radar.critique, m.radar.legislation];
-  const cx = 150, cy = 122, maxR = 82;
+  const cx = 210, cy = 150, maxR = 100;
 
   let gridHtml = '';
   [0.25, 0.5, 0.75, 1].forEach(level => {
@@ -1329,10 +1465,11 @@ function renderRadarBox() {
     const ang = -Math.PI / 2 + (i * 2 * Math.PI) / 5;
     const gx = cx + Math.cos(ang) * maxR;
     const gy = cy + Math.sin(ang) * maxR;
-    const lx = cx + Math.cos(ang) * (maxR + 24);
-    const ly = cy + Math.sin(ang) * (maxR + 16);
+    const lx = cx + Math.cos(ang) * (maxR + 14);
+    const ly = cy + Math.sin(ang) * (maxR + 18);
+    const anchor = Math.abs(Math.cos(ang)) < 0.2 ? 'middle' : (Math.cos(ang) > 0 ? 'start' : 'end');
     axisHtml += `<line x1="${cx}" y1="${cy}" x2="${gx}" y2="${gy}" stroke="var(--border)" stroke-width="1"/>`;
-    axisHtml += `<text x="${lx}" y="${ly + 4}" text-anchor="middle" fill="var(--muted)" font-size="10.5" font-weight="600">${lb}(${vals[i]})</text>`;
+    axisHtml += `<text x="${lx}" y="${ly + 4}" text-anchor="${anchor}" fill="var(--muted)" font-size="13" font-weight="600">${lb} <tspan fill="var(--ink)" font-weight="700">${vals[i]}</tspan></text>`;
     const r = (vals[i] / 100) * maxR;
     return `${cx + Math.cos(ang) * r},${cy + Math.sin(ang) * r}`;
   }).join(' ');
@@ -1347,12 +1484,13 @@ function renderRadarBox() {
         <div style="font-size:12px;color:var(--muted);">지역구: ${m.district} | 스타일: <strong style="color:var(--accent2);">${m.styleTag}</strong></div>
       </div>
     </div>
-    <svg id="radar-svg" viewBox="0 0 300 245">
+    <div class="radar-body">
+    <svg id="radar-svg" viewBox="0 0 420 300">
       ${gridHtml}
       ${axisHtml}
-      <polygon points="${dataPts}" fill="${col}" fill-opacity="0.28" stroke="${col}" stroke-width="2.2"/>
+      <polygon points="${dataPts}" fill="${col}" fill-opacity="0.28" stroke="${col}" stroke-width="2.5"/>
     </svg>
-    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:0.85rem;font-size:12px;display:flex;flex-direction:column;gap:0.4rem;">
+    <div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:1rem;font-size:13px;line-height:1.75;display:flex;flex-direction:column;gap:0.4rem;">
       <div><strong style="color:var(--accent);">핵심 워딩:</strong> "${m.signatureQuote.text}"</div>
       <div><strong style="color:var(--amber);">의미 해석:</strong> ${m.subtext}</div>
       <div><strong style="color:var(--purple);">예상 논리:</strong> ${m.nextLogic}</div>
@@ -1361,6 +1499,7 @@ function renderRadarBox() {
           ▶ [${m.signatureQuote.time}] 대표 워딩 영상 재생
         </button>
       </div>
+    </div>
     </div>
   `;
 }
