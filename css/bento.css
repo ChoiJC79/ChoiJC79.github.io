@@ -1,0 +1,42 @@
+/* 홈 전용 다크 벤토 테마. index.html 에서 마지막에 불러온다. 이 파일 링크를 지우면 이전 모습으로 돌아간다 */
+html:root[data-theme]{
+  --bg:#0d0e11; --surface:#17191e; --surface2:#1f2229; --border:#2a2e36;
+  --text:#f2f3f5; --ink:#f2f3f5; --muted:#a2a7b0; --light:#17191e;
+  --accent:#8ab4ff; --accent2:#8ab4ff; --accent3:#8ab4ff; --red:#8ab4ff; --yellow:#8ab4ff; --rule:#2a2e36;
+  --paper:#17191e; --paper-ink:#2a2e36; --paper-text:#f2f3f5; --orange:#8ab4ff; --olive:#8ab4ff;
+  --font-display:'Noto Sans KR',sans-serif; --font-hand:'Noto Sans KR',sans-serif; --font-soft:'Noto Sans KR',sans-serif;
+}
+html[data-theme] body{background:#0d0e11;color:#f2f3f5}
+html[data-theme] #lounge-hero,html[data-theme] #theme-btn,html[data-theme] #tape-hero .deck,html[data-theme] #tape-hero .pager-top,html[data-theme] #tape-hero .pager-brand,html[data-theme] #tape-hero .pager-row,html[data-theme] #tape-hero .pager-num{display:none}
+
+html[data-theme] #tape-hero{display:flex;flex-direction:column;align-items:stretch;gap:16px;max-width:1120px;min-height:0;margin:0 auto;padding:88px 24px 32px;background:none}
+html[data-theme] #tape-hero .tape-main{background:#17191e;border-radius:20px;padding:40px;text-align:left;align-items:flex-start;max-width:none;margin:0}
+html[data-theme] #tape-hero .tape-id h1{font-size:44px;letter-spacing:-.03em;color:#f2f3f5}
+html[data-theme] #tape-hero .tape-intro{font-family:'Noto Sans KR',sans-serif;font-size:18px;color:#a2a7b0;margin:16px 0 0;text-align:left}
+
+html[data-theme] #tape-hero .tape-tracks{display:flex;flex-direction:column;gap:12px;background:none;border:0;box-shadow:none;padding:0;color:#f2f3f5}
+html[data-theme] #tape-hero .pager{width:100%;max-width:none;height:auto;aspect-ratio:auto;margin:0;padding:28px 32px;box-sizing:border-box;background:#8ab4ff;border:0;border-radius:20px;transform:none;box-shadow:none}
+html[data-theme] #tape-hero .pager::before{content:'새 글';position:static;display:block;height:auto;background:none;font-size:13px;font-weight:700;color:#0d0e11;margin-bottom:8px}
+html[data-theme] #tape-hero .pager-lcd{position:static;display:block;width:auto;height:auto;transform:none;background:none;box-shadow:none;padding:0;color:#0d0e11}
+html[data-theme] #tape-hero .pager-msg{display:block;font:700 24px/1.4 'Noto Sans KR',sans-serif;white-space:normal;color:#0d0e11}
+html[data-theme] #tape-hero .pager-msg span{padding:0;animation:none;transform:none}
+
+html[data-theme] #tape-hero .tape-tracks h2{font-size:14px;font-weight:500;color:#a2a7b0;border:0;margin:20px 4px 0;padding:0}
+html[data-theme] #tape-hero .tape-tracks ol{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin:0}
+html[data-theme] #tape-hero .tape-tracks li a{display:flex;flex-direction:column;align-items:flex-start;gap:4px;height:100%;box-sizing:border-box;padding:22px 24px;background:#17191e;border:0;border-radius:16px;font:700 19px/1.4 'Noto Sans KR',sans-serif;color:#f2f3f5}
+html[data-theme] #tape-hero .tape-tracks li a:hover{background:#1f2229;color:#8ab4ff}
+html[data-theme] #tape-hero .tape-tracks .no{display:none}
+html[data-theme] #tape-hero .tape-tracks .sub{margin:0;text-align:left;font-size:13px;font-weight:400;color:#a2a7b0}
+
+@media (max-width:600px){
+  html[data-theme] #tape-hero{padding:72px 16px 24px}
+  html[data-theme] #tape-hero .tape-main{padding:28px 22px}
+  html[data-theme] #tape-hero .tape-tracks ol{grid-template-columns:1fr 1fr}
+  html[data-theme] #tape-hero .tape-tracks li a{padding:16px;font-size:16px}
+}
+
+/* 이전 나무 사진 배경·분필 질감·손글씨체를 걷어낸다 */
+html[data-theme] body{background:#0d0e11!important}
+html[data-theme] #tape-hero .tape-tracks h2,html[data-theme] #tape-hero .tape-tracks ol{-webkit-mask-image:none!important;mask-image:none!important;text-shadow:none!important}
+html[data-theme] #tape-hero h1,html[data-theme] #tape-hero h2,html[data-theme] #tape-hero p,html[data-theme] #tape-hero div,html[data-theme] #tape-hero li a,html[data-theme] #tape-hero span{font-family:'Noto Sans KR',sans-serif!important;text-shadow:none!important}
+html[data-theme] #tape-hero .pager::before{content:none}
