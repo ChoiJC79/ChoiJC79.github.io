@@ -54,3 +54,36 @@ html[data-theme] #lounge-hero .lounge-title,html[data-theme] #lounge-hero p{font
 /* 라운지 폭을 아래 카드 폭에 맞춘다 */
 html[data-theme] #lounge-hero{box-sizing:border-box;width:100%;max-width:1120px;margin-inline:auto;padding-inline:24px}
 @media (max-width:600px){html[data-theme] #lounge-hero{padding-inline:16px}}
+
+/* 라운지가 첫 화면을 가득 채우고 천천히 커지며 나타난다 (가로가 넓은 화면만, 좁은 화면은 위 배치 그대로) */
+@media (min-aspect-ratio:4/3){
+  html[data-theme] #lounge-hero{position:relative;max-width:none;height:100vh;height:100svh;padding:0;overflow:hidden;background:#0d0e11}
+  html[data-theme] #lounge-hero .lounge{position:absolute;left:50%;top:50%;width:max(100vw,calc(100svh * 1024 / 571));max-width:none;margin:0;transform:translate(-50%,-50%);z-index:0}
+  html[data-theme] #lounge-hero .lounge img{border:0;border-radius:0}
+  html[data-theme] #lounge-hero .lounge-head{position:absolute;left:28px;bottom:22px;z-index:2;max-width:none;margin:0;display:block;padding:12px 18px;border-radius:12px;background:rgba(13,14,17,.55);backdrop-filter:blur(6px)}
+  html[data-theme] #lounge-hero .lounge-head p{margin-top:4px}
+}
+@media (min-aspect-ratio:4/3) and (prefers-reduced-motion:no-preference){
+  html[data-theme] #lounge-hero .lounge{animation:lounge-in 1.6s cubic-bezier(.22,1,.36,1) both}
+  html[data-theme] #lounge-hero .lounge-head{animation:lounge-head-in .8s .9s ease-out both}
+}
+@keyframes lounge-in{from{opacity:0;transform:translate(-50%,-50%) scale(.86)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+@keyframes lounge-head-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* 위 메뉴: 평소에는 화면 위로 숨어 있다가 위쪽 가장자리에 커서를 대면 내려온다 */
+html[data-theme] #navbar{height:auto;flex-wrap:wrap;align-items:center;gap:6px 0;padding:10px 24px 12px;background:rgba(13,14,17,.86)!important;backdrop-filter:blur(10px)!important;border-bottom:1px solid rgba(255,255,255,.08)!important;transform:translateY(-100%);transition:transform .45s cubic-bezier(.22,1,.36,1)}
+html[data-theme] #navbar::before{content:"";position:absolute;left:0;right:0;top:100%;height:18px}
+html[data-theme] #navbar>:not(.tm-handle){opacity:0;transition:opacity .3s ease-out}
+html[data-theme] #navbar:hover,html[data-theme] #navbar:focus-within,html[data-theme] #navbar.open{transform:none}
+html[data-theme] #navbar:hover>*,html[data-theme] #navbar:focus-within>*,html[data-theme] #navbar.open>*{opacity:1}
+html[data-theme] #navbar .nav-logo{font-size:13px;color:#a2a7b0}
+html[data-theme] .tm{flex-basis:100%;display:flex;flex-direction:column;gap:2px}
+html[data-theme] .tm-row{display:flex;flex-wrap:wrap;align-items:center;gap:0 2px}
+html[data-theme] .tm-k{min-width:120px;font-size:11px;color:#6f7580;letter-spacing:.02em}
+html[data-theme] .tm a{display:inline-block;padding:3px 8px;border-radius:6px;font-size:12.5px;color:#d9dce1;text-decoration:none;transition:transform .2s ease-out,color .2s ease-out}
+html[data-theme] .tm a:hover,html[data-theme] .tm a:focus-visible{transform:scale(1.18);color:#8ab4ff}
+html[data-theme] .tm-handle{position:absolute;top:100%;left:50%;transform:translateX(-50%);padding:3px 12px 4px;border:0;border-radius:0 0 8px 8px;background:rgba(13,14,17,.6);color:#a2a7b0;font:500 10px/1 'JetBrains Mono',monospace;letter-spacing:.2em;cursor:pointer;transition:opacity .3s ease-out}
+html[data-theme] #navbar:hover .tm-handle,html[data-theme] #navbar.open .tm-handle{opacity:0}
+@media (hover:none){html[data-theme] #navbar.open .tm-handle{opacity:1}html[data-theme] .tm a{padding:6px 8px;font-size:13.5px}}
+@media (prefers-reduced-motion:reduce){html[data-theme] #navbar,html[data-theme] .tm a{transition:opacity .2s linear}html[data-theme] .tm a:hover{transform:none}}
+@media (max-width:600px){html[data-theme] #navbar{padding:10px 16px 12px}html[data-theme] .tm-k{flex-basis:100%;margin-top:6px}}
