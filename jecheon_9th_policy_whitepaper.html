@@ -187,113 +187,157 @@ html[data-theme="dark"] ::selection { background: #1f6feb; color: #ffffff; }
 }
 .letterhead small { opacity: 0.8; letter-spacing: 0.05em; }
 
-/* ── Hero ── */
-.hero {
+/* ── Hero: 백서 표지 ── */
+header.hero {
+  --cv-bg: #0e1a2e;
+  --cv-ivory: #f3ecdd;
+  --cv-ivory-soft: rgba(243, 236, 221, 0.72);
+  --cv-gold: #c9a45c;
+  --cv-gold-soft: rgba(201, 164, 92, 0.35);
+  --cv-seal: #b3362b;
   position: relative;
-  background: var(--surface);
-  padding: 3rem 3.5rem 2.4rem;
-  border-bottom: 1px solid var(--line);
+  max-width: none;
+  margin: 0;
+  padding: 4.5rem 3.5rem 3.5rem;
+  background:
+    radial-gradient(ellipse 70% 90% at 85% 10%, rgba(201, 164, 92, 0.10), transparent 60%),
+    linear-gradient(160deg, #13233d 0%, var(--cv-bg) 55%, #0a1322 100%);
+  border-bottom: 1px solid var(--cv-gold-soft);
   overflow: hidden;
+  isolation: isolate;
+}
+header.hero::before {
+  content: '';
+  position: absolute;
+  inset: 14px;
+  border: 1px solid var(--cv-gold-soft);
+  background: none !important;
+  pointer-events: none;
+  z-index: -1;
+}
+header.hero::after {
+  content: '堤川';
+  position: absolute;
+  right: -0.08em;
+  bottom: -0.28em;
+  font-family: var(--font-serif);
+  font-weight: 900;
+  font-size: clamp(9rem, 22vw, 18rem);
+  line-height: 1;
+  color: rgba(243, 236, 221, 0.03);
+  pointer-events: none;
+  z-index: -1;
+}
+.hero__inner { max-width: 1100px; margin: 0 auto; }
+header.hero .hero__meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.32em;
+  color: var(--cv-gold);
+  margin: 0 0 2.4rem;
+}
+.hero__meta::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--cv-gold-soft), transparent);
 }
 .hero__top {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 2rem;
-  flex-wrap: wrap;
+  gap: 2.5rem;
 }
-.hero__eyebrow {
-  font-size: 0.82rem;
-  color: var(--ember);
-  font-weight: 700;
-  margin: 0 0 0.5rem;
-  letter-spacing: 0.06em;
+header.hero .hero__eyebrow {
+  font-family: var(--font-serif) !important;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--cv-gold);
+  margin: 0 0 1rem;
+  letter-spacing: 0.12em;
 }
-.hero__title {
-  font-family: var(--font-serif);
+header.hero .hero__title {
+  font-family: var(--font-serif) !important;
   font-weight: 900;
-  font-size: clamp(2rem, 3.8vw, 3rem);
-  line-height: 1.25;
+  font-size: clamp(2.4rem, 5.4vw, 4.4rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  text-shadow: none;
   margin: 0;
-  color: var(--ink);
+  color: var(--cv-ivory);
 }
-.hero__desc {
-  max-width: 620px;
-  margin-top: 1rem;
-  color: var(--ink-soft);
-  font-size: 0.93rem;
-  line-height: 1.85;
+.hero__title em { font-style: normal; color: var(--cv-gold); }
+.hero__rule {
+  width: 56px;
+  height: 2px;
+  margin: 1.8rem 0 1.4rem;
+  background: var(--cv-gold);
 }
-.hero__stamp-wrap {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
+header.hero .hero__desc {
+  max-width: 600px;
+  margin: 0;
+  color: var(--cv-ivory-soft);
+  font-size: 0.95rem;
+  line-height: 1.95;
 }
 .stamp {
   flex-shrink: 0;
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  border: 2.5px solid var(--seal);
-  color: var(--seal);
+  width: 104px;
+  height: 104px;
+  margin-top: 0.4rem;
+  border-radius: 6px;
+  background: var(--cv-seal);
+  color: var(--cv-ivory);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-family: var(--font-serif);
   font-weight: 900;
-  font-size: 1rem;
-  line-height: 1.15;
-  text-align: center;
-  transform: rotate(-5deg);
-  opacity: 0.9;
-  letter-spacing: 0.05em;
-  position: relative;
-}
-.stamp::before {
-  content: '';
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  border: 1px dashed var(--seal);
-  opacity: 0.45;
+  font-size: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: 0.12em;
+  transform: rotate(-4deg);
+  box-shadow: inset 0 0 0 4px var(--cv-seal), inset 0 0 0 5.5px rgba(243, 236, 221, 0.85), 0 10px 24px rgba(0, 0, 0, 0.35);
 }
 .stamp small {
-  display: block;
-  font-size: 0.55rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.2em;
-  margin-top: 0.2rem;
+  letter-spacing: 0.4em;
+  margin: 0.35rem 0 0 0.4em;
 }
-
 .hero__stats {
-  display: flex;
-  gap: 0;
-  flex-wrap: wrap;
-  margin-top: 2.2rem;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  overflow: hidden;
-  background: var(--surface2);
-  width: fit-content;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 3.2rem;
+  border-top: 1px solid var(--cv-gold-soft);
+  max-width: 760px;
 }
 .stat {
-  padding: 0.9rem 1.6rem;
-  border-right: 1px solid var(--line);
+  padding: 1.3rem 1.4rem 0 0;
+  margin-right: 1.4rem;
+  border-right: 1px solid var(--cv-gold-soft);
 }
-.stat:last-child { border-right: none; }
+.stat:last-child { border-right: none; margin-right: 0; }
 .stat strong {
   display: block;
   font-family: var(--font-serif);
-  font-weight: 900;
-  font-size: 1.75rem;
-  color: var(--lake);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+  color: var(--cv-gold);
   line-height: 1;
+  font-variant-numeric: lining-nums;
 }
 .stat span {
-  font-size: 0.72rem;
-  color: var(--ink-muted);
-  margin-top: 0.25rem;
   display: block;
+  margin-top: 0.55rem;
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+  color: var(--cv-ivory-soft);
 }
 
 /* ── Tab Navigation Bar ── */
@@ -1137,9 +1181,12 @@ html[data-theme="dark"] .row-core {
   .site-header { padding: 0 1.2rem; }
   .site-header .nav-links { display: none; }
   .letterhead { padding: 0.4rem 1.4rem; font-size: 0.65rem; }
-  .hero { padding: 2.2rem 1.4rem 1.8rem; }
-  .hero__stats { width: 100%; }
-  .hero__stamp-wrap { justify-content: space-between; width: 100%; }
+  header.hero { padding: 3rem 1.6rem 2.4rem; }
+  header.hero::before { inset: 8px; }
+  .hero__meta { margin-bottom: 1.6rem; letter-spacing: 0.2em; }
+  .stamp { display: none; }
+  .hero__stats { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 1.2rem; }
+  .stat:nth-child(2) { border-right: none; margin-right: 0; }
   .tab-nav-container { padding: 0.5rem 1rem; }
   
   .layout { flex-direction: column; }
@@ -1193,21 +1240,23 @@ html[data-theme="dark"] .row-core {
 
 <!-- ── Hero ── -->
 <header class="hero">
-  <div class="hero__top">
-    <div>
-      <p class="hero__eyebrow">다시, 제천을 위해</p>
-      <h1 class="hero__title">민선9기 제천시장<br>공약백서</h1>
-      <p class="hero__desc">제9회 전국동시지방선거 이상천 당선인 공약사항 56건 및 시책사업 29건을 체계화한 종합 백서이다. 시민의 삶에서 체감되는 10대 핵심공약을 중심으로 6개 분과별 실행계획과 인수위원회 실무 검토의견을 담았다.</p>
+  <div class="hero__inner">
+    <p class="hero__meta">WHITE PAPER · JECHEON · 2026</p>
+    <div class="hero__top">
+      <div>
+        <p class="hero__eyebrow">다시, 제천을 위해</p>
+        <h1 class="hero__title">민선9기 제천시장<br><em>공약백서</em></h1>
+        <div class="hero__rule"></div>
+        <p class="hero__desc">제9회 전국동시지방선거 이상천 당선인 공약사항 56건 및 시책사업 29건을 체계화한 종합 백서이다. 시민의 삶에서 체감되는 10대 핵심공약을 중심으로 6개 분과별 실행계획과 인수위원회 실무 검토의견을 담았다.</p>
+      </div>
+      <div class="stamp" aria-hidden="true">堤川<small>市長</small></div>
     </div>
-    <div class="hero__stamp-wrap">
-      <div class="stamp">堤川<small>市長</small></div>
+    <div class="hero__stats">
+      <div class="stat"><strong>56</strong><span>공약사업</span></div>
+      <div class="stat"><strong>29</strong><span>시책사업</span></div>
+      <div class="stat"><strong>10</strong><span>핵심공약</span></div>
+      <div class="stat"><strong>6</strong><span>분과위원회</span></div>
     </div>
-  </div>
-  <div class="hero__stats">
-    <div class="stat"><strong>56</strong><span>공약사업</span></div>
-    <div class="stat"><strong>29</strong><span>시책사업</span></div>
-    <div class="stat"><strong>10</strong><span>핵심공약</span></div>
-    <div class="stat"><strong>6</strong><span>분과위원회</span></div>
   </div>
 </header>
 
