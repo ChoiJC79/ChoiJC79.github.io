@@ -7,7 +7,7 @@ html:root[data-theme]{
   --font-display:'Noto Sans KR',sans-serif; --font-hand:'Noto Sans KR',sans-serif; --font-soft:'Noto Sans KR',sans-serif;
 }
 html[data-theme] body{background:#0d0e11;color:#f2f3f5}
-html[data-theme] #lounge-hero,html[data-theme] #theme-btn,html[data-theme] #tape-hero .deck,html[data-theme] #tape-hero .pager-top,html[data-theme] #tape-hero .pager-brand,html[data-theme] #tape-hero .pager-row,html[data-theme] #tape-hero .pager-num{display:none}
+html[data-theme] #theme-btn,html[data-theme] #tape-hero .deck,html[data-theme] #tape-hero .pager-top,html[data-theme] #tape-hero .pager-brand,html[data-theme] #tape-hero .pager-row,html[data-theme] #tape-hero .pager-num{display:none}
 
 html[data-theme] #tape-hero{display:flex;flex-direction:column;align-items:stretch;gap:16px;max-width:1120px;min-height:0;margin:0 auto;padding:88px 24px 32px;background:none}
 html[data-theme] #tape-hero .tape-main{background:#17191e;border-radius:20px;padding:40px;text-align:left;align-items:flex-start;max-width:none;margin:0}
@@ -47,3 +47,10 @@ html[data-theme] #tape-hero .pager{display:none}
 html[data-theme] #tape-hero .tape-main{position:static}
 html[data-theme] #jfoot{box-sizing:border-box;width:min(1072px,calc(100% - 48px));padding:28px 0 40px}
 @media (max-width:600px){html[data-theme] #jfoot{width:calc(100% - 32px);padding:24px 0 32px}}
+
+/* 1979 라운지는 맨 위에 유지. 아래 카드 영역은 내비 여백이 필요 없다 */
+html[data-theme] #tape-hero{padding-top:16px}
+html[data-theme] #lounge-hero .lounge-title,html[data-theme] #lounge-hero p{font-family:'Noto Sans KR',sans-serif!important;text-shadow:none!important}
+/* 라운지 폭을 아래 카드 폭에 맞춘다 */
+html[data-theme] #lounge-hero{box-sizing:border-box;width:100%;max-width:1120px;margin-inline:auto;padding-inline:24px}
+@media (max-width:600px){html[data-theme] #lounge-hero{padding-inline:16px}}
